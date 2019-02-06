@@ -10,24 +10,36 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## SQL Server Engine Workshops
 
-- [SQL Server 2019 Big Data Clusters](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
+- [SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 
+## SQL Server Programming
+
+- [In Development](https://github.com/Microsoft/sqlworkshops)
+
+## SQL Server Machine Learning and AI
+
+- [In Development](https://github.com/Microsoft/sqlworkshops)
+
+
+## SQL Server Business Analytics and Advanced Analytics
+
+- [In Development](https://github.com/Microsoft/sqlworkshops)
 
 *Disclaimer*
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## Download all Workshops as a zip file
+#### Download all Workshops as a zip file
 
 The entire repository can be [downloaded as a single ZIP file here](https://github.com/Microsoft/sqlworkshops/archive/master.zip). 
 
 
-## Clone all Workshops using git
+#### Clone all Workshops using git
 
 You can [clone the entire respository using `git` here](https://github.com/Microsoft/sqlworkshops.git). 
 
-## Get only one Workshop (must use git with sparse checkout)
-You can follow the steps below to clone individual files from a git repo. 
+#### Get only one Workshop
+You can follow the steps below to clone individual files from a git repo using a git client. 
 
 Example:
 
@@ -41,11 +53,11 @@ git checkout
 
 For more information about `sparse checkout please` visit [this](https://stackoverflow.com/questions/23289006/on-windows-git-error-sparse-checkout-leaves-no-entry-on-the-working-directory) stackoverflow thread.
 
-## Code of Conduct
+### Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## License
+### License
 These samples and templates are all licensed under the MIT license. See the LICENSE file in the root.
 
-## Questions
+### Questions
 Email questions to: sqlserversamples@microsoft.com.
