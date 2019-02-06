@@ -29,16 +29,16 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-#### Download all Workshops as a zip file
+### Download all Workshops as a zip file
 
 The entire repository can be [downloaded as a single ZIP file here](https://github.com/Microsoft/sqlworkshops/archive/master.zip). 
 
 
-#### Clone all Workshops using git
+### Clone all Workshops using git
 
 You can [clone the entire respository using `git` here](https://github.com/Microsoft/sqlworkshops.git). 
 
-#### Get only one Workshop
+### Get only one Workshop
 You can follow the steps below to clone individual files from a git repo using a git client. 
 
 Example:
