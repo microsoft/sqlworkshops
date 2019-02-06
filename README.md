@@ -10,7 +10,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## SQL Server Engine Workshops
 
-- [SQL Server 2019 Big Data Clusters](./SQL2019BDC/README.md)
+- [SQL Server 2019 Big Data Clusters](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 
 
 *Disclaimer*
