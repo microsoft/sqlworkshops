@@ -8,7 +8,7 @@ See the license information at the bottom of this README.md file.
 
 Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sqlworkshops/issues) and we'll try and fix it.
 
-## Data Platform
+## SQL Server Data Platform
 
 - [SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 
