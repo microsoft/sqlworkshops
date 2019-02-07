@@ -14,11 +14,14 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## SQL Server Programming
 
-- [In Development](https://github.com/Microsoft/sqlworkshops)
+- [Python for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/Python%20for%20Data%20Professionals)
+- [R for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/R%20For%20Data%20Professionals)
 
 ## SQL Server Machine Learning and AI
 
-- [In Development](https://github.com/Microsoft/sqlworkshops)
+- [Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/ML%20Services%20for%20SQL%20Server)
+- [Hybrid Architectures for Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/Hybrid%20ML%20for%20SQL%20Server)
+- [Machine Learning Using R for the Data Professional](https://github.com/Microsoft/sqlworkshops/tree/master/ML%20Services%20for%20SQL%20Server)
 
 
 ## SQL Server Business Analytics and Advanced Analytics
