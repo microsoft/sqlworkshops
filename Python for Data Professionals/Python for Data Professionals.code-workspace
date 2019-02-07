@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "Python for Data Professionals"
+		}
+	],
+	"settings": {
+		"workbench.startupEditor": "01 - Overview and Setup.md"
+	}
+}
