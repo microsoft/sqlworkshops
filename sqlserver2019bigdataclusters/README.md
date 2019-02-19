@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server Big Data Clusters Architecture
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -21,11 +21,11 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2><a name="about">About this Workshop</a></h2>
 
-Welcome to this Microsoft solutions workshop on *Microsoft SQL Server Big Data Clusters Architecture*. In this workshop, you'll learn how SQL Server Big Data Clusters implements large-scale data processing and machine learning, and how to select and plan for the proper architecture to enable machine learning to train your models using Python, R, Java or SparkML to operationalize these models, and how to deploy your intelligent apps side-by-side with their data.
+Welcome to this Microsoft solutions workshop on *Microsoft SQL Server big data clusters Architecture*. In this workshop, you'll learn how SQL Server big data clusters implements large-scale data processing and machine learning, and how to select and plan for the proper architecture to enable machine learning to train your models using Python, R, Java or SparkML to operationalize these models, and how to deploy your intelligent apps side-by-side with their data.
 
-The focus of this workshop is to understand how to deploy an on-premise, hybrid or local environment of a Big Data Cluster, and understand the components of the big data solution architecture.
+The focus of this workshop is to understand how to deploy an on-premise, hybrid or local environment of a big data cluster, and understand the components of the big data solution architecture.
 
-You'll start by understanding the concepts of big data analytics, and you'll get an overview of the technologies (such as containers, Kubernetes, Spark and HDFS, machine learning, and other technologies) that you will use throughout the workshop. Next, you'll understand the architecture of SQL Server Big Data Clusters. You'll learn how to create external tables over other data sources to unify your data, and how to use Spark to run big queries over your data in HDFS or do data preparation. You'll review a complete solution for an end-to-end scenario, with a focus on how to extrapolate what you have learned to create other solutions for your organization.
+You'll start by understanding the concepts of big data analytics, and you'll get an overview of the technologies (such as containers, Kubernetes, Spark and HDFS, machine learning, and other technologies) that you will use throughout the workshop. Next, you'll understand the architecture of SQL Server big data clusters. You'll learn how to create external tables over other data sources to unify your data, and how to use Spark to run big queries over your data in HDFS or do data preparation. You'll review a complete solution for an end-to-end scenario, with a focus on how to extrapolate what you have learned to create other solutions for your organization.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -42,20 +42,20 @@ In this workshop you'll learn:
 - The components and technologies of Big Data processing
 - Abstractions such as Containers and Container Management as they relate to SQL Server and Big Data
 - Planning and architecting an on-premises, in-cloud, or hybrid big data solution with SQL Server
-- How to install SQL Server Big Data Clusters on-premises and in the Azure Kubernetes Service (AKS)
+- How to install SQL Server big data clusters on-premises and in the Azure Kubernetes Service (AKS)
 - How to work with Apache Spark
 - The Data Science Process to create an end-to-end solution
-- How to work with the tooling for SQL Server Big Data Clusters (Azure Data Studio)
-- Monitoring and managing SQL Server Big Data Clusters
-- Security considerations for SQL Server Big Data Clusters
+- How to work with the tooling for SQL Server big data clusters (Azure Data Studio)
+- Monitoring and managing SQL Server big data clusters
+- Security considerations for SQL Server big data clusters
 
-Starting in SQL Server 2019, Big Data Clusters allows for large-scale, near real-time processing of data over the HDFS file system and other data sources. It also leverages the Apache Spark framework which is integrated into one environment for management, monitoring, and security of your environment. This means that organizations can implement everything from queries to analysis to Machine Learning and Artificial Intelligence within SQL Server, over large-scale, heterogeneous data. SQL Server Big Data Clusters can be implemented fully on-premises, in the cloud using a Kubernetes service such as Azure's AKS, and in a hybrid fashion. This allows for full, partial, and mixed security and control as desired.
+Starting in SQL Server 2019, big data clusters allows for large-scale, near real-time processing of data over the HDFS file system and other data sources. It also leverages the Apache Spark framework which is integrated into one environment for management, monitoring, and security of your environment. This means that organizations can implement everything from queries to analysis to Machine Learning and Artificial Intelligence within SQL Server, over large-scale, heterogeneous data. SQL Server big data clusters can be implemented fully on-premises, in the cloud using a Kubernetes service such as Azure's AKS, and in a hybrid fashion. This allows for full, partial, and mixed security and control as desired.
 
-The goal of this workshop is to train the team tasked with architecting and implementing SQL Server Big Data Clusters in the planning, creation, and delivery of a system designed to be used for large-scale data analytics. Since there are multiple technologies and concepts within this solution, the workshop uses multiple types of exercises to prepare the students for this implementation.
+The goal of this workshop is to train the team tasked with architecting and implementing SQL Server big data clusters in the planning, creation, and delivery of a system designed to be used for large-scale data analytics. Since there are multiple technologies and concepts within this solution, the workshop uses multiple types of exercises to prepare the students for this implementation.
 
 The concepts and skills taught in this workshop form the starting points for:
 
-  * Data Professionals and DevOps teams, to implement and operate a SQL Server Big Data Cluster system.
+  * Data Professionals and DevOps teams, to implement and operate a SQL Server big data cluster system.
   * Solution Architects and Developers, to understand how to put together an end-to-end solution.
   * Data Scientists, to understand the environment used to analyze and solve specific predictive problems.
 
@@ -77,7 +77,7 @@ The solution includes the following technologies - although you are not limited 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
 
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
-  <tr><td><i>Docker</i></td><td>Encapsulation level for the SQL Server Big Data Cluster architecture</td></tr>
+  <tr><td><i>Docker</i></td><td>Encapsulation level for the SQL Server big data cluster architecture</td></tr>
   <tr><td><i>Kubernetes</i></td><td>Management, control plane for Containers</td></tr>
   <tr><td>Microsoft Azure</td><td>Cloud environment for services</td></tr>
   <tr><td>Azure Kubernetes Service (AKS)</td><td>Kubernetes as a Service</td></tr>
@@ -147,10 +147,10 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
   <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
 
   <tr><td><a href="SQL2019BDC/01%20-%20The%20Big%20Data%20Landscape.md" target="_blank">01 - The Big Data Landscape </a></td><td> Overview of the workshop, problem space, solution options and architectures</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="SQL2019BDC/02%20-%20SQL%20Server%20BDC%20Components.md" target="_blank">02 - SQL Server BDC Components</a> </td><td td style="background-color: AliceBlue; color: black;"> Abstraction levels, frameworks, architectures and components within SQL Server Big Data Clusters</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="SQL2019BDC/02%20-%20SQL%20Server%20BDC%20Components.md" target="_blank">02 - SQL Server BDC Components</a> </td><td td style="background-color: AliceBlue; color: black;"> Abstraction levels, frameworks, architectures and components within SQL Server big data clusters</td></tr>
   <tr><td><a href="SQL2019BDC/03%20-%20Planning,%20Installation%20and%20Configuration.md" target="_blank">03 - Planning, Installation<br> and Configuration</a> </td><td> Mapping the requirements to the architecture design, constraints, and diagrams</td></tr>
   <tr><td style="background-color: AliceBlue; color: black;"><a href="SQL2019BDC/04%20-%20Operationalization.md" target="_blank">04 - Operationalization</a> </td><td style="background-color: AliceBlue; color: black;"> Connecting applications to the solution; DDL, DML, DCL</td></tr>
-  <tr><td><a href="SQL2019BDC/05%20-%20Management%20and%20Monitoring.md" target="_blank">05 - Management and <br> Monitoring</a> </td><td> Tools and processes to manage the Big Data Cluster</td></tr>
+  <tr><td><a href="SQL2019BDC/05%20-%20Management%20and%20Monitoring.md" target="_blank">05 - Management and <br> Monitoring</a> </td><td> Tools and processes to manage the big data cluster</td></tr>
   <tr><td style="background-color: AliceBlue; color: black;"><a href="SQL2019BDC/06%20-%20Security.md" target="_blank">06 - Security</a> </td><td style="background-color: AliceBlue; color: black;"> Access and Authentication to the various levels of the solution</td></tr>
 
 </table>

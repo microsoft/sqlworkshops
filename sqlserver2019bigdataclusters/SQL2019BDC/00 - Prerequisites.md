@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server Big Data Clusters Architecture
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>00 prerequisites</h2>
 
-The "Microsoft SQL Server Big Data Clusters Architecture" workshop is taught using the following components, which you will install and configure in the sections that follow. 
+The "Microsoft SQL Server big data clusters Architecture" workshop is taught using the following components, which you will install and configure in the sections that follow. 
 
 *(Note: Due to the nature of working with large-scale systems, it may not be possible for you to set up everything you need to perform each lab exercise.  Participation in each Activity is optional - we will be working through the exercises together, but if you cannot install any software or don't have an Azure account, the instructor will work through each exercise in the workshop. You will also have full access to these materials so that you can work through them later when you have more time and resources.)*
 
@@ -17,12 +17,12 @@ For this workshop, you will use Microsoft Windows as the base workstation, altho
 The other requirements are:
 
 - **Microsoft Azure**: This workshop uses the Microsoft Azure platform to host the Kubernetes cluster (using the Azure Kubernetes Service), and optionally you can deploy a system there to act as a workstation. You can use a free Azure account, an MSDN Account, your own account, or potentially one provided for you, as long as you can create about $100.00 (U.S.) worth of assets.
-- **SQL Server Big Data Cluster credentials** - As of this writing, you must have an invitation code to install and configure SQL Server Big Data Clusters.
+- **SQL Server big data cluster credentials** - As of this writing, you must have an invitation code to install and configure SQL Server big data clusters.
 - **Azure Command Line Interface**: The Azure CLI allows you to work from the command line on multiple platforms to interact with your Azure subscription, and also has control statements for AKS.
-- **Python (3)**: Python version 3.5 (and higher) is used by the SQL Server programs to deploy and manage a SQL Server Big Data Cluster.
+- **Python (3)**: Python version 3.5 (and higher) is used by the SQL Server programs to deploy and manage a SQL Server big data cluster.
 - **The pip3 Package**: The Python package manager *pip3* is used to install various SQL Server BDC deployment and configuration tools. 
 - **The kubectl program**: The *kubectl* program is the command-line control feature for Kubernetes.
-- **The mssqlctl program**: The *mssqlctl* program is the deployment and configuration tool for SQL Server Big Data Clusters.
+- **The mssqlctl program**: The *mssqlctl* program is the deployment and configuration tool for SQL Server big data clusters.
 - **Azure Data Studio**: The *Azure Data Studio*, along with various Extensions, is used for both the query and management of SQL Server BDC. In addition, you will use this tool to participate in the workshop.
 
 *Note that all following activities must be completed prior to class - there will not be time to perform these operations during the workshop.*
@@ -59,7 +59,7 @@ Your workshop invitation may have instructed you that they will provide a Micros
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 2: Request Access Credentials to SQL Server 2019 BDC features</b></p>
 <br>
-As of this writing, the SQL Server Big Data Cluster feature is enabled for preview customers. You can request access at this site:
+As of this writing, the SQL Server big data cluster feature is enabled for preview customers. You can request access at this site:
 
 https://aka.ms/eapsignup 
 
@@ -107,7 +107,7 @@ Your environment variables control how the cluster will be built.
 
 <p><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sqlallproducts-allversions#define-environment-variables" target="_blank">Refer to this documentation for both the latest statements, and for what they need to be set to. These change based on the current release of the Private Preview.</a> Do not set these at this time, just review the page.</p> 
 
-The variables for **name**, **password** and **e-mail** for the Big Data Cluster is provided to you when you request access to the Early Adopter program. 
+The variables for **name**, **password** and **e-mail** for the big data cluster is provided to you when you request access to the Early Adopter program. 
 
 *(Note that in production, you'll set these environment variables permanently using the Control Panel or by adding them with a Registry command, and may be handled by an improved installation experience)*
 
@@ -142,7 +142,7 @@ Note: Python can install in multiple locations based on various conditions. To s
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 6: Install kubectl</b></p>
 
-The `kubectl` program is used to deploy, configure and manage Kubernetes Clusters. It is used in several parts of the Big Data Clusters program.
+The `kubectl` program is used to deploy, configure and manage Kubernetes Clusters. It is used in several parts of the big data clusters program.
 
 <pre>
 write-host "Install kubectl"
@@ -151,12 +151,20 @@ choco install kubernetes-cli
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 7: Install mssqlctl</b></p>
 
-the `mssqlctl` program then deploys the SQL Server Big Data Cluster environment onto Kubernetes. 
+the `mssqlctl` program then deploys the SQL Server big data cluster environment onto Kubernetes. 
 
-<i>Note - you must delete the old version before the class. It is updated quite frequently during the preview phase.</i>
+<i>Notes: 
+
+You must delete the old version before the class. It is updated quite frequently during the preview phase.
+
+You may need to run these steps in CMD rather than PowerShell.
+</i>
+
+
 
 <pre>
-setx path "%path%;C:\Users\<replace with your login name>\AppData\Roaming\Python\Python37\Scripts"
+REM If Python does not run in your path, try:
+REM setx path "%path%;C:\Users\<replace with your login name>\AppData\Roaming\Python\Python37\Scripts"
 
 choco upgrade kubernetes-cli
 
@@ -169,7 +177,7 @@ pip install --extra-index-url https://private-repo.microsoft.com/python/ctp-2.2 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 8: Install Azure Data Studio and Extensions</b></p>
 
-The primary management tool for working with SQL Server Big Data Clusters is Azure Data Studio. You will also use this tool in your workshop.
+The primary management tool for working with SQL Server big data clusters is Azure Data Studio. You will also use this tool in your workshop.
 
 <pre>
 write-host "Install Azure Data Studio" 
