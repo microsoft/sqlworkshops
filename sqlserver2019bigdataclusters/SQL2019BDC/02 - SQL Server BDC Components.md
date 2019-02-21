@@ -67,7 +67,7 @@ In this section you will review the solution tutorial you will perform in the <i
 
 <h2><a name="2-2">2.2 SQL Server 2019 big data cluster Components</a></h2>
 
-The Big Data capabilities for SQL Server can be used in a stand-alone Instance by leveraging the Data Virtualization feature described above. To perform scale-out Big Data, SQL Server implments a big data cluster by leveraging Kubernetes with several other components. 
+The Big Data capabilities for SQL Server can be used in a stand-alone Instance by leveraging the Data Virtualization feature described above. To perform scale-out Big Data, SQL Server implements a big data cluster by leveraging Kubernetes with several other components. 
 
 <br>
 <img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="../graphics/bdc.png">
