@@ -28,6 +28,18 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [In Development](https://github.com/Microsoft/sqlworkshops)
 
+## Learning how to self-learn
+
+Many of these topics are quite deep, and take time to fully absorb. There are several phases of learning:
+
+ - Awareness (You learn a technology exists)
+ - Understanding (You learn the components, processes and steps of a technology)
+ - Practice (You can perform the steps with the technology to complete a task or series of tasks)
+ - Mastery (You are able to explain the technolyg to others)
+
+
+These courses are designed for you to repeat many times to move through these phases. Before you embark on any of these, you may want to complete a "Learning how to Learn" course. <a href="https://www.nytimes.com/2017/08/04/education/edlife/learning-how-to-learn-barbara-oakley.html" target="_blank">You can find more information on that here</a>. 
+
 *Disclaimer*
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
