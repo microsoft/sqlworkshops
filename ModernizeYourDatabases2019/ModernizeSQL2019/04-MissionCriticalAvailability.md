@@ -24,7 +24,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Accelerated Database Recovery</a></b></p>
 
-Follow the instructions for [Accelerated Database Recovery Exercise](Module%204%20Activity%20-%20Mission%20Critical%20Availability/adr)
+Follow the instructions for [Accelerated Database Recovery Exercise](Module%204%20Activity%20-%20MIssion%20Critical%20Availability/adr)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
