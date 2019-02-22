@@ -1,0 +1,1 @@
+ostress -E -ireport.sql -n8 -r10000 -q -S.\sql2017

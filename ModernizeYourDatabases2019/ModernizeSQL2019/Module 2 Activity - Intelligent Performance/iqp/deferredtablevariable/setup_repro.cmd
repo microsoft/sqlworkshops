@@ -1,0 +1,1 @@
+sqlcmd -E -iproc.sql

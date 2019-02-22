@@ -1,0 +1,1 @@
+sqlcmd -E -iregression.sql -S.\sql2017

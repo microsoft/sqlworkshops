@@ -1,0 +1,1 @@
+sqlcmd -E -iauto_tune.sql -S.\sql2017

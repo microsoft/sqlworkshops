@@ -1,0 +1,1 @@
+sqlcmd -E -iinitialize.sql -S.\sql2017

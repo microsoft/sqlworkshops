@@ -1,0 +1,1 @@
+sqlcmd -E -isetup.sql -S.\sql2017
