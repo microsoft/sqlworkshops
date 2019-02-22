@@ -34,4 +34,4 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04%20-%20Operationalization.md" target="_blank"><i> Operationalization</i></a>.
+Next, Continue to <a href="10-MigratingAndNextSteps.md" target="_blank"><i>Migrating to SQL Server 2019 and Next Steps</i></a>.

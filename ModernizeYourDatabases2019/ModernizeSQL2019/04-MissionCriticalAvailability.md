@@ -35,4 +35,4 @@ Follow the instructions for [Accelerated Database Recovery Exercise](Module%204%
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04%20-%20Operationalization.md" target="_blank"><i> Operationalization</i></a>.
+Next, Continue to <a href="ModernDevelopmentPlatform.md" target="_blank"><i> Modern Development Platform</i></a>.

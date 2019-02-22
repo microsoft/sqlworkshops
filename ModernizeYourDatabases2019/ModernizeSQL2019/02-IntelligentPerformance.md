@@ -57,4 +57,4 @@ Follow the instructions for [Lightweight Query Profiling Exercise](Module%202%20
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04%20-%20Operationalization.md" target="_blank"><i> Operationalization</i></a>.
+Next, Continue to <a href="03-Security.md" target="_blank"><i> New Security Capabilities</i></a>.

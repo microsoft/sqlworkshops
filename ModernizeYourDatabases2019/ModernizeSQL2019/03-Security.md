@@ -36,4 +36,4 @@ Follow the instructions for [Static Data Masking Exercise](Module%203%20Activity
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04%20-%20Operationalization.md" target="_blank"><i> Operationalization</i></a>.
+Next, Continue to <a href="04-MissionCriticalAvailability" target="_blank"><i>Mission Critical Availability</i></a>.

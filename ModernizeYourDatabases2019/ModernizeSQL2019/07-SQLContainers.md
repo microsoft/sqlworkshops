@@ -46,4 +46,4 @@ Follow the instructions for [Updating and Upgrading with SQL Containers Exercise
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04%20-%20Operationalization.md" target="_blank"><i> Operationalization</i></a>.
+Next, Continue to <a href="08-DataVirtualization.md" target="_blank"><i>Data Virtualization</i></a>.

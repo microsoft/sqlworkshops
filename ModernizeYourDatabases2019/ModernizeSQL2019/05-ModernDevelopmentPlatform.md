@@ -46,4 +46,4 @@ Follow the instructions for [Java Exercise](Module%205%20Activity%20-%20Modern%2
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04%20-%20Operationalization.md" target="_blank"><i> Operationalization</i></a>.
+Next, Continue to <a href="06-SQLLinux.md" target="_blank"><i>SQL Server on Linux</i></a>.
