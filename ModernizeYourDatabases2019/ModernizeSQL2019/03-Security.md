@@ -24,7 +24,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Static Data Masking</a></b></p>
 
-Follow the instructions for [Static Data Masking Exercise](Module%203%20Activity%20-%20Security/staticmask/readme.md)
+Follow the instructions for [Static Data Masking Exercise](Module%203%20Activity%20-%20Security/staticmask)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

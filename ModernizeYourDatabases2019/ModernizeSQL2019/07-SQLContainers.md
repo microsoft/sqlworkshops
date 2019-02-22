@@ -25,7 +25,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: SQL Server Containers Fundamentals</a></b></p>
 
-Follow the instructions for [SQL Server Containers Fundamentals Exercise](Module%207%20Activity%20-%20SQL%20Server%20Containers/sqlcontainers/readme.md)
+Follow the instructions for [SQL Server Containers Fundamentals Exercise](Module%207%20Activity%20-%20SQL%20Server%20Containers/sqlcontainers)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,7 +35,7 @@ Follow the instructions for [SQL Server Containers Fundamentals Exercise](Module
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Updating and Upgrading with SQL Containers</a></b></p>
 
-Follow the instructions for [Updating and Upgrading with SQL Containers Exercise](Module%207%20Activity%20-%20SQL%20Server%20Containers/sqlcontainerupdate/readme.md)
+Follow the instructions for [Updating and Upgrading with SQL Containers Exercise](Module%207%20Activity%20-%20SQL%20Server%20Containers/sqlcontainerupdate)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

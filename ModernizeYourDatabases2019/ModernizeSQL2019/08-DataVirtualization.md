@@ -25,7 +25,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: SQL Server Polybase</a></b></p>
 
-Follow the instructions for [SQL Server Polybase Exercise](Module%208%20Activity%20-%20Data%20Virtualization/polybase/readme.md)
+Follow the instructions for [SQL Server Polybase Exercise](Module%208%20Activity%20-%20Data%20Virtualization/polybase)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,7 +35,7 @@ Follow the instructions for [SQL Server Polybase Exercise](Module%208%20Activity
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: 8.1 A SQL Server Data Hub</a></b></p>
 
-Follow the instructions for [SQL Server Data Hub Exercise](Module%208%20Activity%20-%20Data%20Virtualization/sqldatahub/readme.md)
+Follow the instructions for [SQL Server Data Hub Exercise](Module%208%20Activity%20-%20Data%20Virtualization/sqldatahub)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

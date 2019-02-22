@@ -25,7 +25,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Deploy SQL Server on Linux</a></b></p>
 
-Follow the instructions for [Deploy SQL Server on Linux Exercise](Module%206%20Activity%20-%20SQL%20Server%20on%20Linux/deploy/readme.md)
+Follow the instructions for [Deploy SQL Server on Linux Exercise](Module%206%20Activity%20-%20SQL%20Server%20on%20Linux/deploy)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,7 +35,7 @@ Follow the instructions for [Deploy SQL Server on Linux Exercise](Module%206%20A
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Explore SQL Server on Linux</a></b></p>
 
-Follow the instructions for [Explore SQL Server on Linux Exercise](Module%206%20Activity%20-%20SQL%20Server%20on%20Linux/explore/readme.md)
+Follow the instructions for [Explore SQL Server on Linux Exercise](Module%206%20Activity%20-%20SQL%20Server%20on%20Linux/explore)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

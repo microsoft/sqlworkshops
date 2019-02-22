@@ -24,7 +24,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Query Tuning Assistant</a></b></p>
 
-Follow the instructions for [Query Tuning Assistant Exercise](Module%2010%20Activity%20-%20Migrating%20to%20SQL%20Server%202019/qta/readme.md)
+Follow the instructions for [Query Tuning Assistant Exercise](Module%2010%20Activity%20-%20Migrating%20to%20SQL%20Server%202019/qta)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

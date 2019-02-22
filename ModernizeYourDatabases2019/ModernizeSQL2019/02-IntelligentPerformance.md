@@ -26,7 +26,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Automatic Tuning</a></b></p>
 
-Follow the instructions for [Automatic Tuning Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/autotune/readme.md)
+Follow the instructions for [Automatic Tuning Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/autotune)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -36,7 +36,7 @@ Follow the instructions for [Automatic Tuning Exercise](Module%202%20Activity%20
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Intelligent Query Processing</a></b></p>
 
-Follow the instructions for [Intelligent Query Processing Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/iqp/readme.md)
+Follow the instructions for [Intelligent Query Processing Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/iqp)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -47,7 +47,7 @@ Follow the instructions for [Intelligent Query Processing Exercise](Module%202%2
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Lightweight Query Profiling</a></b></p>
 
-Follow the instructions for [Lightweight Query Profiling Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/lwp/readme.md)
+Follow the instructions for [Lightweight Query Profiling Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/lwp)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

@@ -25,7 +25,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Python</a></b></p>
 
-Follow the instructions for [Python Exercise](Module%205%20Activity%20-%20Modern%20Development%20Platform/python/readme.md)
+Follow the instructions for [Python Exercise](Module%205%20Activity%20-%20Modern%20Development%20Platform/python)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,7 +35,7 @@ Follow the instructions for [Python Exercise](Module%205%20Activity%20-%20Modern
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Java</a></b></p>
 
-Follow the instructions for [Java Exercise](Module%205%20Activity%20-%20Modern%20Development%20Platform/java/readme.md)
+Follow the instructions for [Java Exercise](Module%205%20Activity%20-%20Modern%20Development%20Platform/java)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
