@@ -50,15 +50,15 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
 
-  <tr><td><a href="url" target="_blank">01 - Why SQL Server 2019 </a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">02 - Intelligent Performance</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
-  <tr><td><a href="url" target="_blank">03 - New Security Capabilities</a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">04 - Mission Critical Availability</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>  
-  <tr><td><a href="url" target="_blank">05 - The Modern Development Platform </a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">06 - SQL Server on Linux</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
-  <tr><td><a href="url" target="_blank">07 - SQL Server Containers and Kubernetes </a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">08 - SQL Server Data Virtualization</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>  <tr><td><a href="url" target="_blank">09 - What Else is New </a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">10 - Migration and Next Steps</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
+  <tr><td><a href="ModernizeSQL2019/01-WhySQL2019.md" target="_blank">01 - Why SQL Server 2019 </a></td><td> TODO: Module Description</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/02-IntelligentPerformance.md" target="_blank">02 - Intelligent Performance</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
+  <tr><td><a href="ModernizeSQL2019/03-Security.md" target="_blank">03 - New Security Capabilities</a></td><td> TODO: Module Description</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/04-MissionCriticalAvailability.md" target="_blank">04 - Mission Critical Availability</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>  
+  <tr><td><a href="ModernizeSQL2019/05-ModernDevelopmentPlatform.md" target="_blank">05 - The Modern Development Platform </a></td><td> TODO: Module Description</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/06-SQLLinux.md" target="_blank">06 - SQL Server on Linux</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
+  <tr><td><a href="ModernizeSQL2019/07-SQLContainers.md" target="_blank">07 - SQL Server Containers and Kubernetes </a></td><td> TODO: Module Description</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/08-DataVirtualization.md" target="_blank">08 - SQL Server Data Virtualization</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>  <tr><td><a href="ModernizeSQL2019/09-WhatElseIsNew.md" target="_blank">09 - What Else is New </a></td><td> TODO: Module Description</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/10-MigratingAndNextSteps.md" target="_blank">10 - Migration and Next Steps</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
 
 </table>
 
