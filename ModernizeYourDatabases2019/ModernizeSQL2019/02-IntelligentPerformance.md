@@ -26,7 +26,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Automatic Tuning</a></b></p>
 
-Follow the instructions for [Automatic Tuning Exercise](Module%202%20Activity%20-%20Intelligent%20Performance\autotune\readme.md)
+Follow the instructions for [Automatic Tuning Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/autotune/readme.md)
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-1">2.1 Intelligent Query Processing</a></h2>
 
