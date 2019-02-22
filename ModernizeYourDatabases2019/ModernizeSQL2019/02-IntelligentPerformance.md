@@ -24,36 +24,36 @@ You'll cover the following topics in this Module:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Automatic Tuning</a></b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Automatic Tuning</a></b></p>
 
 Follow the instructions for [Automatic Tuning Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/autotune/readme.md)
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-1">2.1 Intelligent Query Processing</a></h2>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Intelligent Query Processing</a></b></p>
+
+Follow the instructions for [Intelligent Query Processing Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/iqp/readme.md)
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-2">2.2 Lightweight Query Profiling</h2>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Check Class Environment on AKS</a></b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Lightweight Query Profiling</a></b></p>
 
-In this lab you will check your deployment you performed in Module 01 of a SQL Server 2019 big data cluster on the Azure Kubernetes Service. 
+Follow the instructions for [Lightweight Query Profiling Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/iqp/readme.md)
 
-Using the following steps, you will evaluate your Resource Group in Azure that holds your BDC on AKS that you deployed earlier. When you complete your course you can delete this Resource Group which will stop the Azure charges for this course. 
-
-<b>Steps</b>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes" target="_blank">Log in to the Azure Portal, and locate the <i>Resource Groups</i> deployed for the AKS cluster</a>. How many do you find? What do you think their purposes are?</p>
- 
-<br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
-<br>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
-<ul>
-    <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-guidance?view=sqlallproducts-allversions" target="_blank">Official Documentation for this section</a></li>
-</ul>
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
