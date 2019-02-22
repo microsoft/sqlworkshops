@@ -29,9 +29,3 @@ Follow the instructions for [Query Tuning Assistant Exercise](Module%2010%20Acti
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
-
-Next, Continue to <a href="04%20-%20Operationalization.md" target="_blank"><i> Operationalization</i></a>.

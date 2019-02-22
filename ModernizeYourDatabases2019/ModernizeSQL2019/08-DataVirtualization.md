@@ -46,4 +46,4 @@ Follow the instructions for [SQL Server Data Hub Exercise](Module%208%20Activity
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="09-WhatElseisNew.md" target="_blank"><i>What Else is New in SQL Server 2019</i></a>.
+Next, Continue to <a href="09-WhatElseIsNew.md" target="_blank"><i>What Else is New in SQL Server 2019</i></a>.

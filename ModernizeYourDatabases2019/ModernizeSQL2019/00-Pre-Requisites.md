@@ -39,4 +39,4 @@ TODO: Enter any code typing here
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="01-WhySQL2019.md" target="_blank"><i> 01 - Why SQL Server 2019</i></a>.
+Next, Continue to <a href="01-WhySQL2019.md" target="_blank"><i>Why SQL Server 2019</i></a>.
