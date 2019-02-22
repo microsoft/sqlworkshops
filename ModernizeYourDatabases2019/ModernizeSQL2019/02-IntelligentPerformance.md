@@ -47,7 +47,7 @@ Follow the instructions for [Intelligent Query Processing Exercise](Module%202%2
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Lightweight Query Profiling</a></b></p>
 
-Follow the instructions for [Lightweight Query Profiling Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/lqp/readme.md)
+Follow the instructions for [Lightweight Query Profiling Exercise](Module%202%20Activity%20-%20Intelligent%20Performance/lwp/readme.md)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
