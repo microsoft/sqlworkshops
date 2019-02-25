@@ -8,6 +8,8 @@ ON PRIMARY
 LOG ON 
 (NAME = N'gocowboys_Log', FILENAME = 'c:\data\gocowboys_log.ldf', SIZE = 10Gb , MAXSIZE = UNLIMITED , FILEGROWTH = 65536KB)
 GO
+ALTER DATABASE gocowboys SET RECOVERY SIMPLE
+GO
 USE gocowboys
 GO
 DROP TABLE IF EXISTS howboutthemcowboys
