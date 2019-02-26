@@ -37,7 +37,7 @@ CREATE EXTERNAL TABLE oracle.accountsreceivable
 (
 arid int,
 ardate date,
-ardesc varchar(100) COLLATE Latin1_General_100_CI_AS,
+ardesc nvarchar(100) COLLATE Latin1_General_100_CI_AS,
 arref int,
 aramt decimal(10,2)
 
