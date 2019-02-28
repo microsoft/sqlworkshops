@@ -6,4 +6,4 @@ sudo docker run\
  -v sqlvolume:/var/opt/mssql\
  --name sql2019\
  -d\
- mcr.microsoft.com/mssql/rhel/server:vNext-CTP2.0
+ mcr.microsoft.com/mssql/rhel/server:2019-CTP2.2

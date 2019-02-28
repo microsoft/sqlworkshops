@@ -7,4 +7,4 @@ sudo docker run\
  --name\
  sql2017latest\
  -d\
- mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+ mcr.microsoft.com/mssql/server:2017-latest
