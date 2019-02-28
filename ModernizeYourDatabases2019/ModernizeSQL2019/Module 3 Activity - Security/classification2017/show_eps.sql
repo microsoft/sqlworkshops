@@ -33,7 +33,7 @@ FROM (SELECT EP.class,
                         FROM sys.objects o
                                INNER JOIN sys.schemas s ON s.schema_id = o.schema_id
                                INNER JOIN sys.columns c ON c.object_id = o.object_id) Target
-                       ON Target.class = EP.class AND Target.major_id = EP.major_id
+                       ON Target.class = EP.class AND Target.major_id = EP.major_id AND Target.minor_id = EP.minor_id
       WHERE EP.name IN ('sys_information_type_id', 'sys_information_type_name', 'sys_sensitivity_label_id',
                         'sys_sensitivity_label_name')) SQ
        PIVOT (MAX(value) FOR SQ.name IN ([sys_information_type_id], [sys_information_type_name], [sys_sensitivity_label_id], [sys_sensitivity_label_name])) AS PQ;
