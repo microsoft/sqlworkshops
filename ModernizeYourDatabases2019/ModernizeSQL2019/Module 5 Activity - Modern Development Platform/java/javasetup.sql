@@ -1,6 +1,6 @@
 -- Enable external scripts.
 -- No restart is required in SQL Server 2019!
-EXEC sp_configure 'ahow advanced options', 1
+EXEC sp_configure 'show advanced options', 1
 GO
 RECONFIGURE
 EXEC sp_configure 'external scripts enabled', 1
