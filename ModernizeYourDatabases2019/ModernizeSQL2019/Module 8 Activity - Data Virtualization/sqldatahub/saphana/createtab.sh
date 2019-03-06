@@ -1,0 +1,1 @@
+hdbsql -i90 -Icreatetab.sql -ubwsaphana -pCprsql2019 -dVANDELAY
