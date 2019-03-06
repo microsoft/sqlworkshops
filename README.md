@@ -29,6 +29,12 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [In Development](https://github.com/Microsoft/sqlworkshops)
 
+## Source Slide Decks and Code Examples
+
+- [Leveraging AI in SQL Server 2019 - Sample Code](https://github.com/amthomas46/SQL/tree/master/sql-cs/code)
+- [SQL Server ML Services End-to-End (Python, Wine Quality) - Sample Code](https://github.com/amthomas46/SQL/tree/master/sql-ml/code)
+
+
 ## Learning how to self-learn
 
 Many of these topics are quite deep, and take time to fully absorb. There are several phases of learning:
