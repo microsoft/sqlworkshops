@@ -33,9 +33,12 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [Leveraging AI in SQL Server 2019 - Sample Code](https://github.com/amthomas46/SQL/tree/master/sql-cs/code)
 - [SQL Server ML Services End-to-End (Python, Wine Quality) - Sample Code](https://github.com/amthomas46/SQL/tree/master/sql-ml/code)
-- [Bob Ward's Presentations - Source Slide Decks](https://onedrive.live.com/?authkey=%21ABg4T%5Fv1nZbdDbE&id=233BB03122CBD248%2120503&cid=233BB03122CBD248)
 - [Bob Ward's Demonstrations - Sample Code](http://aka.ms/bobsqldemos)
+- [SQL Server Tiger Toolbox - Sample Code](https://github.com/Microsoft/tigertoolbox)
+- [SQL Server Samples - Sample Code](https://github.com/Microsoft/sql-server-samples)
 
+
+- [Bob Ward's Presentations - Source Slide Decks](https://onedrive.live.com/?authkey=%21ABg4T%5Fv1nZbdDbE&id=233BB03122CBD248%2120503&cid=233BB03122CBD248)
 
 ## Learning how to self-learn
 
