@@ -52,6 +52,7 @@ These references deal with SQL Server in general, for many different versions an
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
   <tr><th style="background-color: #1b20a1; color: white;">Resource  </th> <th style="background-color: #2c71e7; color: white;">Description</th></tr>
 
+  <tr><td><a href="http://aka.ms/sqlworkshops" target="blank">http://aka.ms/sqlworkshops</a></td><td>In-Depth Training from the Azure Data Services Team</td></tr>
   <tr><td><a href="http://aka.ms/tigertoolbox" target="blank">http://aka.ms/tigertoolbox</a></td><td>SQL Server Tiger-Team Toolsbox</td></tr>
   <tr><td><a href="http://aka.ms/bpcheck" target="blank">http://aka.ms/bpcheck</a></td><td>Best Practices Check</td></tr>
   <tr><td><a href="http://aka.ms/sqlstandards" target="blank">http://aka.ms/sqlstandards</a></td><td>SQL Server Standards Support</td></tr>
