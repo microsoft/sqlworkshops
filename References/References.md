@@ -1,4 +1,4 @@
-![](../graphics/microsoftlogo.png)
+![](https://github.com/Microsoft/sqlworkshops/tree/master/graphics/microsoftlogo.png)
 
 # References: Microsoft SQL Server and Machine Learning in SQL Server (On-prem and Azure)
 
