@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/sqlworkshops/tree/master/graphics/solutions-microsoft-logo-small.png)
+![](..graphics/solutions-microsoft-logo-small.png)
 
 # References: Microsoft SQL Server and Machine Learning in SQL Server (On-prem and Azure)
 
@@ -6,14 +6,14 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>PowerPoint Decks, Sample Code and helpful Resources</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <h2>PowerPoint Decks, Sample Code and helpful Resources</h2>
 
 The Microsoft SQL Server organization (along with its parent, the Microsoft Azure Data Team) has several useful references we have created. While not an exhaustive list, here are a few we think you'll find useful. 
 
 *(Note: These scripts, tools and information site are a not guarenteed to work in every situation, or to be placed into production without thoroughly testing on your own. Microsoft assumes no risk associated with your use of these tools. These sites have adopted the <a href="https://opensource.microsoft.com/codeofconduct/" target="_blank">Microsoft Open Source Code of Conduct</a>. For more information see the Code of Conduct FAQ or contact opencode@microsoft.com with any additional questions or comments.)*
 
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/paperclip1.png"> <h2><a name="decks">PowerPoint Decks and other Resources</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <h2><a name="decks">PowerPoint Decks and other Resources</a></h2>
 
 These PowerPoint Decks deal with SQL Server in general, for many different versions and editions. If you find a dead link, hit up the <i>Issues</i> link above to report it.
 
