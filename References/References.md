@@ -1,4 +1,4 @@
-![](..graphics/solutions-microsoft-logo-small.png)
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/solutions-microsoft-logo-small.png">
 
 # References: Microsoft SQL Server and Machine Learning in SQL Server (On-prem and Azure)
 
@@ -27,7 +27,7 @@ These PowerPoint Decks deal with SQL Server in general, for many different versi
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2><a name="code">Sample Code from Demos and Courses</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <h2><a name="code">Sample Code from Demos and Courses</a></h2>
 
 These references deal with SQL Server code samples from our courses and other uses, for many different versions and editions. If you find a dead link, hit up the <i>Issues</i> link above to report it.
 
@@ -45,7 +45,7 @@ These references deal with SQL Server code samples from our courses and other us
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2><a name="links">General References and Resources</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <h2><a name="links">General References and Resources</a></h2>
 
 These references deal with SQL Server in general, for many different versions and editions. If you find a dead link, hit up the <i>Issues</i> link above to report it.
 
