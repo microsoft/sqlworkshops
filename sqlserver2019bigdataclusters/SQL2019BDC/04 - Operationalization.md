@@ -145,7 +145,7 @@ In this activity, you will load the sample data into your big data cluster envir
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 <ul>
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview?view=sqlallproducts-allversions" target="_blank">Official Documentation for this section</a></li>
-    <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/data-ingestion-curl?view=sqlallproducts-allversions" target="_blank">Use curl to load data into HDFS on SQL Server 2019 big data clusters</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/data-ingestion-curl?view=sqlallproducts-allversions" target="_blank">Use curl to load data into HDFS on SQL Server 2019 big data clusters</a></li> - Note: curl is available in Windows 10 build 17063 or higher. If your version does not have curl, you can find out more about it here: https://blogs.msdn.microsoft.com/commandline/2018/01/18/tar-and-curl-come-to-windows
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/train-and-create-machinelearning-models-with-spark?view=sqlallproducts-allversions" target="_blank">Train and Create machine learning models with Spark</a></li>
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-create-apps?view=sqlallproducts-allversions" target="_blank">How to deploy an app on SQL Server 2019 big data cluster</a></li>
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/notebooks-guidance?view=sqlallproducts-allversions" target="_blank">How to use notebooks in SQL Server 2019 preview</a></li>

@@ -140,6 +140,8 @@ Note: Python can install in multiple locations based on various conditions. To s
 
 (In Linux, `which Python`)
 
+In most cases, Choclaty will add Python and pip to your path. Otherwise, <a href="https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path" target="_blank">you may want to find and add it manually</a>. 
+
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 6: Install kubectl</b></p>
 
 The `kubectl` program is used to deploy, configure and manage Kubernetes Clusters. It is used in several parts of the big data clusters program.
