@@ -56,6 +56,7 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/bpcheck" target="blank">http://aka.ms/bpcheck</a></td><td>Performance and Best Practices Check</td></tr>
   <tr><td><a href="http://aka.ms/dbcompat" target="blank">http://aka.ms/dbcompat</a></td><td>Database Compatibility Levels and SQL Server Upgrades</td></tr>
   <tr><td><a href="http://aka.ms/iqp" target="blank">http://aka.ms/iqp</a></td><td>Intelligent Query Processing in SQL databases</td></tr>
+  <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/sqlconventions</a></td><td>T-SQL Conventions and Syntax</i></td></tr>
   <tr><td><a href="http://aka.ms/sqlerrors" target="blank">http://aka.ms/sqlerrors</a></td><td>Errors and Events Reference (Database Engine)</td></tr>
   <tr><td><a href="http://aka.ms/sqlfeedback" target="blank">http://aka.ms/sqlfeedback</a></td><td>Submit feedback to the SQL Server team</td></tr>
   <tr><td><a href="http://aka.ms/sqllifecycle" target="blank">http://aka.ms/sqllifecycle</a></td><td>SQL Server Lifecycle Dates</td></tr>
@@ -66,7 +67,6 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/sqlworkshops" target="blank">http://aka.ms/sqlworkshops</a></td><td>In-Depth Training from the Azure Data Services Team</td></tr>
   <tr><td><a href="http://aka.ms/tigertoolbox" target="blank">http://aka.ms/tigertoolbox</a></td><td>SQL Server Tiger Team Toolbox</td></tr>
   <tr><td><a href="http://aka.ms/traceflags" target="blank">http://aka.ms/traceflags</a></td><td>SQL Server Trace Flags</td></tr>
-  <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/sqlconventions</a></td><td>T-SQL Conventions and Syntax</i></td></tr>
 
 </table>
 
