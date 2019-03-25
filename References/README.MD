@@ -60,15 +60,13 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/sqlfeedback" target="blank">http://aka.ms/sqlfeedback</a></td><td>Submit feedback to the SQL Server team</td></tr>
   <tr><td><a href="http://aka.ms/sqllifecycle" target="blank">http://aka.ms/sqllifecycle</a></td><td>SQL Server Lifecycle Dates</td></tr>
   <tr><td><a href="http://aka.ms/sqlperfcenter" target="blank">http://aka.ms/sqlperfcenter</a></td><td>Performance Center for SQL Server Database Engine and Azure SQL Database</td></tr>
-  <tr><td><a href="http://aka.ms/sqlserverguides" target="blank">http://aka.ms/sqlserverguides</a></td><td>All official SQL Server Guide publications containing infdormation on Database Engine internals</td></tr>
+  <tr><td><a href="http://aka.ms/sqlserverguides" target="blank">http://aka.ms/sqlserverguides</a></td><td>All official SQL Server Guide publications containing information on Database Engine internals</td></tr>
   <tr><td><a href="http://aka.ms/sqlstandards" target="blank">http://aka.ms/sqlstandards</a></td><td>SQL Server Standards Support</td></tr>
   <tr><td><a href="http://aka.ms/sqlupdates" target="blank">http://aka.ms/sqlupdates</a></td><td>Latest SQL Server Builds</td></tr>
   <tr><td><a href="http://aka.ms/sqlworkshops" target="blank">http://aka.ms/sqlworkshops</a></td><td>In-Depth Training from the Azure Data Services Team</td></tr>
-  <tr><td><a href="http://aka.ms/tigertoolbox" target="blank">http://aka.ms/tigertoolbox</a></td><td>SQL Server Tiger-Team Toolbox</td></tr>
+  <tr><td><a href="http://aka.ms/tigertoolbox" target="blank">http://aka.ms/tigertoolbox</a></td><td>SQL Server Tiger Team Toolbox</td></tr>
   <tr><td><a href="http://aka.ms/traceflags" target="blank">http://aka.ms/traceflags</a></td><td>SQL Server Trace Flags</td></tr>
   <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/sqlconventions</a></td><td>T-SQL Conventions and Syntax</i></td></tr>
-  <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/sqlconventions</a></td><td>T-SQL Syntax Conventions</td></tr>
-  <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/sqlconventions</a></td><td>T-SQL Syntax Conventions</td></tr>
 
 </table>
 
