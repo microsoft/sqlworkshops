@@ -56,7 +56,7 @@ You can see these endpoints in this diagram:
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6-2">6.2 Authentication and Authorization</a></h2>
 
 When you create the cluster, a number of logins are created. Some of these logins are for services to communicate with each other, and others are for end users to access the cluster.
-End-user passwords are currently set using environment variables. These are passwords that SQL administrators and cluster administrators use to access services:
+End-user passwords are set using environment variables. These are passwords that SQL administrators and cluster administrators use to access services:
 
 <table>
 
@@ -69,7 +69,6 @@ End-user passwords are currently set using environment variables. These are pass
   
 </table>
 
-Note that in the final release, these will not be stored as environment variables but in a more secure fashion.. 
 
 Intra-cluster authentication
 Upon deployment of the cluster, a number of SQL logins are created:
@@ -88,7 +87,7 @@ In this activity, you will review the endpoints exposed on the cluster.
 
 <b>Steps</b>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-security?view=sqlallproducts-allversions" target="_blank">Open this reference, and follow the instructions you see for the <b>Service Endpoints</b> section</a>. This shows the addresses and ports exposed to the end-users.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="href" target="_blank">Open this reference, and follow the instructions you see for the <b>Service Endpoints</b> section</a>. This shows the addresses and ports exposed to the end-users.</p>
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
