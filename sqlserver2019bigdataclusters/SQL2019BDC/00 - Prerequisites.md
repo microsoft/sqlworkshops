@@ -89,14 +89,14 @@ Get-WindowsUpdate
 Install-WindowsUpdate
 </pre>
 
-*Note: If you get an error during this update process, evaluate it to see if it is fatal. You may receive certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
+*Note: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Install Chocolatey Windows package Manager</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Install Chocolaty Windows package Manager</p>
 
-Next, install the Chocolatey Windows Package manager to aid in command-line installations:
+Next, install the Chocolaty Windows Package manager to aid in command-line installations:
 
 <pre>
-write-host "Install Chocolatey" 
+write-host "Install Chocolaty" 
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco feature enable -n allowGlobalConfirmation
 </pre>
@@ -139,8 +139,6 @@ Note: Python can install in multiple locations based on various conditions. To s
 `where python`
 
 (In Linux, `which Python`)
-
-In most cases, Choclaty will add Python and pip to your path. Otherwise, <a href="https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path" target="_blank">you may want to find and add it manually</a>. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 6: Install kubectl</b></p>
 

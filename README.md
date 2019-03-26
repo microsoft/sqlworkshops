@@ -29,13 +29,6 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [In Development](https://github.com/Microsoft/sqlworkshops)
 
-## Resources, Source Slide Decks and Code Examples
-
-- [PowerPoint Decks from SQL Server Team Sessions](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#decks)
-- [Sample Code](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#code)
-- [References and Resources](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#links)
-
-
 ## Learning how to self-learn
 
 Many of these topics are quite deep, and take time to fully absorb. There are several phases of learning:
