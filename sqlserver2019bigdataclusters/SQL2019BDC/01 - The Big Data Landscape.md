@@ -10,7 +10,7 @@
 
 In this workshop you'll cover using a Process and various Platform components to create a SQL Server big data cluster solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. There's a lot here - so focus on understanding the overall system first, then come back and explore each section.
 
-(<a href="SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 You'll cover the following topics in this Module:
 
@@ -36,14 +36,14 @@ Businesses require near real-time insights from ever-larger sets of data. Large-
 
   <tr><th style="background-color: #1b20a1; color: white;">Industry Sector</th> <th style="background-color: #1b20a1; color: white;">Primary Use-Cases</th></tr>
 
-  <tr><td><b>Retail</b></td><td><a href="https://www.cardinalpath.com/forecasting-with-machine-learning-techniques/" target="_blank">Demand prediction</a></td></tr>
-  <tr><td></td><td><a href="https://www.ipsos-retailperformance.com/resources/blog/beginners-guide-store-analytics-retailers/" target="blank">In-store analytics</a></td></tr>
-  <tr><td></td><td><a href="https://www.cleverism.com/how-to-optimize-supply-chain-management-big-data/"  target="blank">Supply chain optimization</a></td></tr>
+  <tr><td><b>Retail</b></td><td>Demand prediction</td></tr>
+  <tr><td></td><td>In-store analytics</td></tr>
+  <tr><td></td><td>Supply chain optimization</td></tr>
   <tr><td></td><td>Customer retention</td></tr>
   <tr><td></td><td>Cost/Revenue analytics</td></tr>
   <tr><td></td><td>HR analytics</td></tr>
   <tr><td></td><td>Inventory control</td></tr>
-  <tr><td><b>Finance</b></td><td><a href="https://cloudblogs.microsoft.com/microsoftsecure/2018/12/03/analysis-of-cyberattack-on-u-s-think-tanks-non-profits-public-sector-by-unidentified-attackers/?wt.mc_id=AID730391_QSG_SCL_304569&ocid=AID730391_QSG_SCL_304569&utm_source=t.co&utm_medium=referral" target="_blank">Cyberattack Prevention</a></td></tr>
+  <tr><td><b>Finance</b></td><td>Cyberattack Prevention</td></tr>
   <tr><td></td><td>Fraud detection</td></tr>
   <tr><td></td><td>Customer segmentation</td></tr>
   <tr><td></td><td>Market analysis</td></tr>
@@ -80,9 +80,9 @@ While you will review the design for a complete solution in this workshop, it ex
 
 <b>Steps</b></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open a web browser and any professional notes or resources you use at work.</p>
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Spend 5 minutes looking online for the terms "Big Data" and "Machine Learning" and "Top" for your industry. For example:  <b>Hospital Big Data Machine Learning Top</b></p>
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Record your findings in your personal workshop notes.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> Open a web browser and any professional notes or resources you use at work.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> Spend 5 minutes looking online for the terms "Big Data" and "Machine Learning" and "Top" for your industry. For example:  <b>Hospital Big Data Machine Learning Top</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> Record your findings in your personal workshop notes.</p>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -138,7 +138,7 @@ Using the following steps, you will create a Resource Group in Azure that will h
 
 <p><b>Steps</b></p>
 
-<p><img style="float: left; margin:Docker Guide 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="SQL2019BDC/00%20-%20Prerequisites.md" target="_blank"> Ensure that you have completed all prerequisites</a>.</p>
+<p><img style="float: left; margin:Docker Guide 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank"> Ensure that you have completed all prerequisites</a>.</p>
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> Open a Command Prompt on your classroom system. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-guidance?view=sqlallproducts-allversions#env" target="_blank"> Read the following article, and use the SET command for the environment variables as instructed in class.</p>
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sqlallproducts-allversions" target="_blank"> Read the following article, ensuring that you carefully follow each step</a>. Stop at the section marked <b>Connect to the cluster</b>.</p>
  
@@ -215,8 +215,8 @@ The best way to learn an operating system is to install it and perform real-worl
 
   <tr><td><b><a href="https://www.howtogeek.com/117579/htg-explains-how-software-installation-package-managers-work-on-linux/" target="_blank">Distributions</a></b></td><td>Unlike Windows, which is written and controlled by Microsoft, Linux is comprised only of a small Kernel, and then all other parts of the operating system are created by commercial entities or the public, and packaged up into a <i>Distribution</i>. These Distributions have all of the complementary functions to the operating system, and in some cases a graphical interface and other files. The Distributions supported by SQL Server are RedHat, Ubuntu, and SuSE.</td></tr>
   <tr><td><b><a href="https://www.howtogeek.com/117579/htg-explains-how-software-installation-package-managers-work-on-linux/" target="_blank">Package Managers</a></b></td><td>Software installation on Linux can be done manually by copying files or compiling source code. A Package Manager is a tool that simplifies this process, and is based on the Distribution. The two package managers you will see most often in SQL Server are <b>yum</b> and <b>apt</b>.</td></tr>
-  <tr><td><b><a href="https://www.cardinalpath.com/forecasting-with-machine-learning-techniques/" target="_blank">File Systems</a></b></td><td>Like Windows, organized as a tree, but referenced by a forward-slash <b>/</b>. There are no drive letters in Linux - everything is "mounted" to what looks like a directory.</td></tr>
-  <tr><td><b><a href="https://www.cardinalpath.com/forecasting-with-machine-learning-techniques/" target="_blank">Access and Authentication</a></b></td><td>Users and Groups are stored in protected files, called <b>/etc/passwd</b> and <b>/etc/group</b>. These files and locations may be augmented or slightly different based in the distribution. By default, each user has very low privileges and must be granted access to files or directories. The <b>sudo</b> command allows you to run as a privileged user (known as root) or as another user.</td></tr>
+  <tr><td><b><a href="https://www.tecmint.com/explanation-of-everything-is-a-file-and-types-of-files-in-linux/" target="_blank">File Systems</a></b></td><td>Like Windows, organized as a tree, but referenced by a forward-slash <b>/</b>. There are no drive letters in Linux - everything is "mounted" to what looks like a directory.</td></tr>
+  <tr><td><b><a href="https://courses.cs.washington.edu/courses/cse484/11au/sections/section6.pdf" target="_blank">Access and Authentication</a></b></td><td>Users and Groups are stored in protected files, called <b>/etc/passwd</b> and <b>/etc/group</b>. These files and locations may be augmented or slightly different based in the distribution. By default, each user has very low privileges and must be granted access to files or directories. The <b>sudo</b> command allows you to run as a privileged user (known as root) or as another user.</td></tr>
 
 </table>
 
