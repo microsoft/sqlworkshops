@@ -38,10 +38,8 @@ These references deal with SQL Server code samples from our courses and other us
   <tr><td><a href="https://github.com/amthomas46/SQL/tree/master/sql-cs/code" target="blank">GitHub</a></td><td>Anna Thomas' Leveraging AI in SQL Server 2019 - Sample Code</td></tr>
   <tr><td><a href="https://github.com/amthomas46/SQL/tree/master/sql-ml/code" target="blank">GitHub</a></td><td>Anna Thomas' SQL Server ML Services End-to-End (Python, Wine Quality) - Sample Code</td></tr>
   <tr><td><a href="https://github.com/Microsoft/sql-server-samples" target="blank">GitHub</a></td><td>SQL Server Samples - Sample Code</td></tr>
-
  
 </table>
-
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
