@@ -1,7 +1,7 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Workshop: SQL Server on OpenShift
+# Workshop: SQL Server on OpenShift (Draft)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
