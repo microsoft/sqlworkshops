@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -133,6 +133,8 @@ You can read more about <a href="https://azure-scenarios-experience.azurewebsite
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Install Class Environment on AKS</a></b></p>
 
 In this lab you will deploy a SQL Server 2019 big data cluster to the Azure Kubernetes Service. You will need a client machine and a subscription to Microsoft Azure where you can create assets. This will take some time, so you'll do this now as you work through the next few modules, and then return to the installation process in a later module. 
+
+*NOTE: Your instructor may walk through these steps if the class environment does not have enough resources or time for each person to deploy. If so, they will provide you credentials to work with a pre-configured system in class.*
 
 Using the following steps, you will create a Resource Group in Azure that will hold your BDC on AKS. When you complete your lab you can delete this Resource Group which will stop the Azure charges for this course. 
 
