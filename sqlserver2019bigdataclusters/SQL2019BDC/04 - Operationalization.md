@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -10,7 +10,7 @@
 
 In this workshop you'll cover using a Process and and various Platform components to create a SQL Server big data cluster solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="00%20-%20prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 You'll cover the following topics in this Module:
 
@@ -87,7 +87,7 @@ In this activity, you will load the sample data into your big data cluster envir
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/tutorial-load-sample-data?view=sqlallproducts-allversions" target="_blank">Open this reference, and perform all of the instructions you see there</a>. This loads your data in preparattion for the next Activity.</p>
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/tutorial-query-hdfs-storage-pool?view=sqlallproducts-allversions" target="_blank">Open this reference, and perform all of the instructions you see there</a>. This step shows you how to create and query an External table.</p>
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/tutorial-query-oracle?view=sqlallproducts-allversions" target="_blank">Open this reference, and review the instructions you see there</a>. (You will not have to perform these steps, unless you wish to set up an Oracle server that your BDC can reach)</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/tutorial-query-oracle?view=sqlallproducts-allversions" target="_blank">(Optional) Open this reference, and review the instructions you see there</a>. (You You must have an Oracle server that your BDC can reach to perform these steps, although you can review them if you do not)</p>
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
