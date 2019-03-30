@@ -13,6 +13,8 @@ Welcome to this Microsoft solutions workshop on *SQL Server on OpenShift*. In th
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
+The workshop is currently built to support SQL Server on OpenShift 3.11. A future version of the course will support OpenShift 4.0
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>

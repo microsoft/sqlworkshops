@@ -1,0 +1,1 @@
+oc rsync WideWorldImporters-Full.bak <pod>:/var/opt/mssql
