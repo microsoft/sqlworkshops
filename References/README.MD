@@ -57,6 +57,7 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/dbcompat" target="blank">http://aka.ms/dbcompat</a></td><td>Database Compatibility Levels and SQL Server Upgrades</td></tr>
   <tr><td><a href="http://aka.ms/iqp" target="blank">http://aka.ms/iqp</a></td><td>Intelligent Query Processing in SQL databases</td></tr>
   <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/sqlconventions</a></td><td>T-SQL Conventions and Syntax</i></td></tr>
+  <tr><td><a href="http://aka.ms/sqleos" target="blank">http://aka.ms/sqleos</a></td><td>Landing page for SQL Server 2008 and 2008R2 End-of-Support information</td></tr>
   <tr><td><a href="http://aka.ms/sqlerrors" target="blank">http://aka.ms/sqlerrors</a></td><td>Errors and Events Reference (Database Engine)</td></tr>
   <tr><td><a href="http://aka.ms/sqlfeedback" target="blank">http://aka.ms/sqlfeedback</a></td><td>Submit feedback to the SQL Server team</td></tr>
   <tr><td><a href="http://aka.ms/sqllifecycle" target="blank">http://aka.ms/sqllifecycle</a></td><td>SQL Server Lifecycle Dates</td></tr>
