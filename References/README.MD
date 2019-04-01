@@ -52,15 +52,17 @@ These references deal with SQL Server in general, for many different versions an
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
   <tr><th style="background-color: #1b20a1; color: white;">Resource  </th> <th style="background-color: #2c71e7; color: white;">Description</th></tr>
 
-  <tr><td><a href="http://aka.ms/AID" target="blank">http://aka.ms/AID</a></td><td>Adaptive Index Defrag</td></tr>
+  <tr><td><a href="http://aka.ms/AID" target="blank">http://aka.ms/AID</a></td><td>Adaptive Index Defrag to intelligently automate indexes and statistics updates</td></tr>
   <tr><td><a href="http://aka.ms/bpcheck" target="blank">http://aka.ms/bpcheck</a></td><td>Performance and Best Practices Check</td></tr>
   <tr><td><a href="http://aka.ms/dbcompat" target="blank">http://aka.ms/dbcompat</a></td><td>Database Compatibility Levels and SQL Server Upgrades</td></tr>
   <tr><td><a href="http://aka.ms/iqp" target="blank">http://aka.ms/iqp</a></td><td>Intelligent Query Processing in SQL databases</td></tr>
   <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/sqlconventions</a></td><td>T-SQL Conventions and Syntax</i></td></tr>
+  <tr><td><a href="http://aka.ms/sqleos" target="blank">http://aka.ms/sqleos</a></td><td>Landing page for SQL Server 2008 and 2008R2 End-of-Support information</td></tr>
   <tr><td><a href="http://aka.ms/sqlerrors" target="blank">http://aka.ms/sqlerrors</a></td><td>Errors and Events Reference (Database Engine)</td></tr>
   <tr><td><a href="http://aka.ms/sqlfeedback" target="blank">http://aka.ms/sqlfeedback</a></td><td>Submit feedback to the SQL Server team</td></tr>
   <tr><td><a href="http://aka.ms/sqllifecycle" target="blank">http://aka.ms/sqllifecycle</a></td><td>SQL Server Lifecycle Dates</td></tr>
   <tr><td><a href="http://aka.ms/sqlperfcenter" target="blank">http://aka.ms/sqlperfcenter</a></td><td>Performance Center for SQL Server Database Engine and Azure SQL Database</td></tr>
+  <tr><td><a href="http://aka.ms/sqlreleases" target="blank">http://aka.ms/sqlreleases</a></td><td>SQL Server release announcements</td></tr>
   <tr><td><a href="http://aka.ms/sqlserverguides" target="blank">http://aka.ms/sqlserverguides</a></td><td>All official SQL Server Guide publications containing information on Database Engine internals</td></tr>
   <tr><td><a href="http://aka.ms/sqlstandards" target="blank">http://aka.ms/sqlstandards</a></td><td>SQL Server Standards Support</td></tr>
   <tr><td><a href="http://aka.ms/sqlupdates" target="blank">http://aka.ms/sqlupdates</a></td><td>Latest SQL Server Builds</td></tr>
