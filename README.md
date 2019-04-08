@@ -1,6 +1,7 @@
 <img style="float: right;" src="./graphics/solutions-microsoft-logo-small.png">
 
 # SQL Server Workshops
+## (https://aka.ms/sqlworkshops)
 
 This site is a map of learning content produced by and curated by the SQL Server team in Microsoft Engineering. These materials are meant to be instructor-led, but you can work through the materials on a test system on your own if desired. You can view all materials directly in this interface, or you can [view the raw github site for this content here](https://github.com/Microsoft/sqlworkshops). 
 
