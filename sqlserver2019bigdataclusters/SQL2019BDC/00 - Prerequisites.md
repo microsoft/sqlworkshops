@@ -178,8 +178,7 @@ pip uninstall mssqlctl
 REM for 2.3:
 pip uninstall -r  https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
 
-
-pip install -r  https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
+pip install -r  https://private-repo.microsoft.com/python/ctp-2.4/mssqlctl/requirements.txt
 
 </pre>
 
