@@ -104,4 +104,4 @@ A pod with a SQL Server container is now deployed and a load balancer service is
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="02-Query.md" target="_blank"><i>Connect and Query</i></a>.
+Next, Continue to <a href="02_Query.md" target="_blank"><i>Connect and Query</i></a>.
