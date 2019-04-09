@@ -54,10 +54,10 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
   <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
 
   <tr><td><a href="sqlonopenshift/01_Deploy.md" target="_blank">01 - Deploy SQL Server on OpenShift</a></td><td> Learn the fundamentals of deploying SQL Server container on OpenShift</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/02-IntelligentPerformance.md" target="_blank">02 - Connect and Query SQL Server</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn the basics of connecting and running queries to a SQL Server container on OpenShift</td></tr>
-  <tr><td><a href="ModernizeSQL2019/03-Security.md" target="_blank">03 - Performance Capabilities of SQL Server</a></td><td> Learn how to boost query performance and take advantage of intelligent query processing</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/04-MissionCriticalAvailability.md" target="_blank">04 - High Availability of SQL Server on OpenShift</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn the fundamentals of high availability for SQL Server on OpenShift</td></tr>  
-  <tr><td><a href="ModernizeSQL2019/05-ModernDevelopmentPlatform.md" target="_blank">05 - Using an Operator with SQL Server </a></td><td> Learn how to deploy, configure, and setup Always On Availability Groups with an Operator on OpenShift</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="sqlonopenshift/02_Query.md" target="_blank">02 - Connect and Query SQL Server</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn the basics of connecting and running queries to a SQL Server container on OpenShift</td></tr>
+  <tr><td><a href="sqlonopenshift/03_Performance.md" target="_blank">03 - Performance Capabilities of SQL Server</a></td><td> Learn how to boost query performance and take advantage of intelligent query processing</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="sqlonopenshift/04_HA.md" target="_blank">04 - High Availability of SQL Server on OpenShift</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn the fundamentals of high availability for SQL Server on OpenShift</td></tr>  
+  <tr><td><a href="sqlonopenshift/05_Operator.md" target="_blank">05 - Using an Operator with SQL Server </a></td><td> Learn how to deploy, configure, and setup Always On Availability Groups with an Operator on OpenShift</td></tr>
   <tr></tr>
   <tr></tr>
 
@@ -66,4 +66,4 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b>Next Steps</b></p>
-Next, Continue to <a href="ModernizeSQL2019/00-Pre-Requisites.md" target="_blank"><i> Pre-Requisites</i></a>
+Next, Continue to <a href="sqlonopenshift/00_Prereqs.md" target="_blank"><i> Pre-Requisites</i></a>
