@@ -17,8 +17,6 @@ spec:
         image: mcr.microsoft.com/mssql/rhel/server:2019-CTP2.3
         ports:
         - containerPort: 1433
-        command: ["/opt/mssql/bin/sqlservr"]
-        args: ["-T902"]
         env:
         - name: MSSQL_PID
           value: "Developer"

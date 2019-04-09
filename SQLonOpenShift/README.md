@@ -53,7 +53,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
 
-  <tr><td><a href="ModernizeSQL2019/01-WhySQL2019.md" target="_blank">01 - Deploy SQL Server on OpenShift</a></td><td> Learn the fundamentals of deploying SQL Server container on OpenShift</td></tr>
+  <tr><td><a href="sqlonopenshift/01_Deploy.md" target="_blank">01 - Deploy SQL Server on OpenShift</a></td><td> Learn the fundamentals of deploying SQL Server container on OpenShift</td></tr>
   <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/02-IntelligentPerformance.md" target="_blank">02 - Connect and Query SQL Server</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn the basics of connecting and running queries to a SQL Server container on OpenShift</td></tr>
   <tr><td><a href="ModernizeSQL2019/03-Security.md" target="_blank">03 - Performance Capabilities of SQL Server</a></td><td> Learn how to boost query performance and take advantage of intelligent query processing</td></tr>
   <tr><td style="background-color: AliceBlue; color: black;"><a href="ModernizeSQL2019/04-MissionCriticalAvailability.md" target="_blank">04 - High Availability of SQL Server on OpenShift</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn the fundamentals of high availability for SQL Server on OpenShift</td></tr>  
