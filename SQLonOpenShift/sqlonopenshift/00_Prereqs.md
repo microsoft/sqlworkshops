@@ -6,19 +6,19 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>Pre-requisites</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>Prerequisites</h2>
 
 You'll cover the following topics in this Module:
 
 <dl>
 
-  <dt><a href="#3-0">0.0 Pre-requisites</a></dt>
+  <dt><a href="#3-0">0.0 Prerequisites</a></dt>
   
 </dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">0.0 Pre-requisites</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">0.0 Prerequisites</a></h2>
 
 In this module you will learn xxxxxx
 
@@ -26,7 +26,7 @@ Proceed to the Activity to learn these deployment steps.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Pre-requsites</a></b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Prerequsites</a></b></p>
 
 Follow these steps to xxxxx
 
