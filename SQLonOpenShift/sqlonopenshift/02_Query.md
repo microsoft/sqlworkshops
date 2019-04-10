@@ -20,7 +20,7 @@ You'll cover the following topics in this Module:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">2.0 Connect to SQL Server</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2-0">2.0 Connect to SQL Server</a></h2>
 
 xxxxxxxxxx
 xxxxxxxx
@@ -33,7 +33,7 @@ Follow these steps to connect to SQL Server deployed on OpenShift:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">2.1 Restore a Database Backup</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2-1">2.1 Restore a Database Backup</a></h2>
 
 xxxxxxxxxx
 xxxxxxxx
@@ -46,7 +46,7 @@ Follow these steps to restore a database bnackup to SQL Server deployed on OpenS
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">2.2 Execute SQL Server Queries</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2-2">2.2 Execute SQL Server Queries</a></h2>
 
 xxxxxxxxxx
 xxxxxxxx
