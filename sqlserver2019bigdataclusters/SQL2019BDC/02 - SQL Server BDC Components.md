@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -10,7 +10,7 @@
 
 In this workshop you'll cover using a Process and various Platform components to create a SQL Server big data cluster solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="00%20-%20prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 You'll cover the following topics in this Module:
 
@@ -92,7 +92,7 @@ As you saw in the <i>Big Data Landscape</i> Module of this workshop, there are m
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"><b><a href="https://livy.incubator.apache.org/" target="_blank">Apache Livy</a></b></td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;">Apache Livy is used to submit Jobs to Apache Spark.</td></tr>
   <tr><td><b><a href="https://hive.apache.org/" target="_blank">Apache HIVE</a></b></td><td> A distributed storage database used for Spark meta-data.</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"><b><a href="https://grafana.com/" target="_blank">Grafana</a></b></td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Visualization and dashboard system used by the SQL Cluster Administration Portal.</td></tr>
-  <tr><td><b><a href="https://www.elastic.co/products/kibana" target="_blank">Kibana</a></b></td><td>Kibana is an open source data visualization plugin used by the SQL Cluster Administration Portal.</td></tr>
+  <tr><td><b><a href="https://www.elastic.co/products/kibana" target="_blank">Kibana</a></b></td><td>Kibana is an open source log visualization and search plugin used by the SQL Cluster Administration Portal.</td></tr>
 
 </table>
 
@@ -125,7 +125,13 @@ These components are used in the Controller of the SQL Server big data cluster:
 
 The SQL Server Master Instance is an installation of SQL Server 2019 in a Pod on a Node in the Kubernetes cluster. You access it the same way as any SQL Server Instance, and use it for high-value, OLTP, OLAP or other types of workloads. It has Machine Learning Services already configured, so you have the full range of R, Python, and Java to work with on the data in the Cluster environment. 
 
-In addition, the Master Instance stores meta-data which is outside the scope of the meta-data HIVE is storing. It also contains the PolyBase definition tables. 
+The Master Instance stores meta-data which is outside the scope of the meta-data HIVE is storing. It also contains the PolyBase definition tables, and in addition to the standard SQL Server system databases, the SQL master instance also contains the following:
+
+- A metadata database that holds HDFS-table metadata
+- A data plane shard map
+- Details of external tables that provide access to the cluster data plane.
+- PolyBase external data sources and external tables defined in user databases.
+
 
 These components are used in the Controller of the SQL Server Master Instance:
 
@@ -220,6 +226,6 @@ In this section you will review the solution tutorial you will perform in the <i
 		<li><a href = "https://www.dataonstorage.com/resource/video/msignite2018/brk4021-deep-dive-on-sql-server-and-big-data/" target="_blank">Session on Big Data at at Ignite</a></li> 
 </ul>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b> Next Steps</b></p>
 
 Next, Continue to <a href="03%20-%20Planning,%20Installation%20and%20Configuration.md" target="_blank"><i> Planning, Installation and Configuration</i></a>.
