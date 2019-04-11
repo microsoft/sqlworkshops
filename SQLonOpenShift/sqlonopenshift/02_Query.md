@@ -22,7 +22,18 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2-0">2.0 Connect to SQL Server</a></h2>
 
-xxxxxxxxxx
+SQL Server provides several tools to connect and execute queries. Applications can use a variety of languages including C++, .Net, node.js, and Java. To see examples of how to write applications to connect to SQL Server, visit https://aka.ms/sqldev.
+
+The simplest method to connect to SQL Server deployed on OpenShift is to use the command line toold sqlcmd, which is natively built for Windows, Linux, and MacOS systems.
+
+To connect to SQL Server, you need first know:
+
+- The name of the server or IP address hosting SQL Server
+- The port number (if SQL was configured to not use the default port of 1433)
+- A login name
+- A password
+
+In many production installation of SQL Server, 
 xxxxxxxx
 
 Proceed to the Activity to learn the fundamentals of connecting to SQL Server deployed on OpenShift.

@@ -50,7 +50,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     When this completes you should see the following message and be placed back at the shell prompt
 
-    **secret/mssql created**
+    <pre>secret/mssql created</pre>
 
 4. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step2_storage.sh** script found in the **01_Deploy** folder:
 

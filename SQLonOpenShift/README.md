@@ -19,6 +19,8 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>
 
+<br>
+
 - Learn the basics of deploying SQL Server on an OpenShift cluster.
 - Learn how to connect and run queries aginst SQL Server deployed on OpenShift.
 - Learn performance capabilities of SQL Server deployed on OpenShift
@@ -28,12 +30,16 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
 
+<br>
+
 - Developers looking to deploy a database container for their applications on OpenShift
 - Database Administrators looking to understand how to deploy database platforms like SQL Server in a Kubernetes cluser using OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2>Technologies used in this Workshop</h2>
+
+<br>
 
 - SQL Server
 - Containers
@@ -45,6 +51,8 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/owl.png"> <h2>Before Taking this Workshop</h2>
+
+<br>
 
 To complete this workshop you will need the following:
 
