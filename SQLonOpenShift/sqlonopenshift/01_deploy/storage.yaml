@@ -2,8 +2,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: mssql-data
-  annotations:
-    volume.beta.kubernetes.io/storage-class: azure-standard
 spec:
   accessModes:
   - ReadWriteOnce
