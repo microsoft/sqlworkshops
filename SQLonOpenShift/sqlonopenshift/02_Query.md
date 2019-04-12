@@ -209,7 +209,7 @@ You can see from the bottom of this output that there are 48 tables in this data
 
     These results contian privacty information. You can review a feature of SQL Server called Dynamic Data Masking to mask privacy information from application users. See more at https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking
 
-3. Everything in SQL Server is a query even to gather dynamic information about the running state of the SQL Server database engine. Run the following commands to see insights into running sessions, queries, and memory consumption. You can also run the script to execute these commands step6_dmv.sh.
+3. Everything in SQL Server is a query even to gather dynamic information about the running state of the SQL Server database engine. Run the following commands to see insights into running sessions, queries, and memory consumption. You can also run the script to execute these commands **step6_dmv.sh**.
 
     `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
     `PORT=31433`<br>
@@ -261,12 +261,18 @@ The first T-SQL batch provides information about what sessions are connected to 
 
     <pre>1></pre>    
 
-    You can now run T-SQL statement interactively with sqlcmd. By typing in a query and hitting Enter, you can type in the keyword ****GO and hit Enter to execute a query. Type in the keyword **exit** to leave sqlcmd.
+    You can now run T-SQL statement interactively with sqlcmd. By typing in a query and hitting Enter, you can type in the keyword **GO** and hit Enter to execute a query. Type in the keyword **exit** to leave sqlcmd.
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
+
+- [The sqlcmd utility](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility)
+- [Query Data with SQL Server](https://docs.microsoft.com/en-us/sql/lp/sql-server/query-data)
+- [Backup and Restore of SQL Server Databases](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+- [SQL Server Catalog Views](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)
+- [SQL Server Dynamic Management Views](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
