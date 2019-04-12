@@ -46,6 +46,13 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     `oc new-project mssql`
 
+    When this completes, you should see the following messages and be placed back at the shell prompt
+
+    <pre>Now using project "mssql" on server "https://[servername]".
+    You can add applications to this project with the 'new-app' command. For example, try:
+    oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
+    to build a new example application in Ruby.</pre>
+
 3. Create a secret to store the System Administrator (sa) password. For this workshop, you will be connecting as the sa login. In production SQL Server environment, you would not normally use the sa login. Use the following command or execute the **step2_create_secret.sh** script found in the **01_Deploy** folder:
 
     `oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2019isfast"`
@@ -54,7 +61,9 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     <pre>secret/mssql created</pre>
 
-4. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step2_storage.sh** script found in the **01_Deploy** folder:
+4. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step3_storage.sh** script found in the **01_Deploy** folder:
+
+    **Note**: The PersistentVolumeClaim created assumes the default StorageClass of the OpenShift cluster.
 
     `oc apply -f storage.yaml`
 
@@ -62,7 +71,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     <pre>persistentvolumeclaim/mssql-data created</pre>
 
-5. Deploy SQL Server using the following command or the **step3_deploy_sql.sh** script found in the **01_Deploy** folder:
+5. Deploy SQL Server using the following command or the **step4_deploy_sql.sh** script found in the **01_Deploy** folder:
 
     `oc apply -f sqldeployment.yaml`
 
@@ -82,11 +91,18 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     A successful deployment will render output like the following:
 
-    You can run the following command to check on the status of the pod and load balancer service
+    You can run the following command to check on the status of the pod and load balancer service:
 
     `oc get all`
 
      When the deployment is successful, the STATUS of the pod is   **Running** and the service will have a valid EXTERNAL-IP address.
+
+7. The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the ERRORLOG is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the ERRORLOG or execute the script **step5_get_errorlog.sh** found in the **01_Deploy** folder.
+
+    `POD=$(oc get pods | grep mssql | awk {'print $1'})`<br>
+`oc logs $POD`
+
+    The ERRORLOG will scroll across the screen and you can scroll up in your shell to see all the output.
 
 A pod with a SQL Server container is now deployed and a load balancer service is attached to the pod. Proceed to the next Modeule to connect and run queries against your SQL Server deployment
 
