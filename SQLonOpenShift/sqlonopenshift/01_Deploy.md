@@ -89,13 +89,11 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     When the value of **AVAILABLE** becomes 1, the deployment is successful including a Running Container. Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment could take several minutes.
 
-    A successful deployment will render output like the following:
-
     You can run the following command to check on the status of the pod and load balancer service:
 
     `oc get all`
 
-     When the deployment is successful, the STATUS of the pod is   **Running** and the service will have a valid EXTERNAL-IP address.
+     When the deployment is successful, the STATUS of the pod is **Running** and the service will have a valid EXTERNAL-IP address.
 
 7. The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the ERRORLOG is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the ERRORLOG or execute the script **step5_get_errorlog.sh** found in the **01_Deploy** folder.
 
