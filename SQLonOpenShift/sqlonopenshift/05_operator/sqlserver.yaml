@@ -5,6 +5,7 @@ metadata:
   name: mssql1
   namespace: ag1
 spec:
+  skipAgAntiAffinity: true
   acceptEula: true
   agentsContainerImage: mcr.microsoft.com/mssql/ha:2019-CTP2.1-ubuntu
   availabilityGroups: [ag1]
@@ -12,7 +13,7 @@ spec:
     accessModes: [ReadWriteOnce]
     resources:
       requests: {storage: 5Gi}
-    storageClass: azure-standard
+    storageClass: default
   saPassword:
     secretKeyRef: {key: sapassword, name: sql-secrets}
   sqlServerContainer: {image: 'mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu'}
