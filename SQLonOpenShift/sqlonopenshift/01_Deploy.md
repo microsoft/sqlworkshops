@@ -81,7 +81,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     service/mssql-service created</pre>
 
-    At this time, you have submitted a deployment. OpenShift will schedule a SQL Server container in a pod on a node on the cluster. Proceed to the next step to check on whether the deployment was successful.
+    At this time, you have submitted a deployment, which is a logical collection of objects including a pod, container, load balancer service. OpenShift will schedule a SQL Server container in a pod on a node on the cluster. Proceed to the next step to check on whether the deployment was successful.
 
 6. Verify the SQL Server deployment has succeeded by running the following command:
 
