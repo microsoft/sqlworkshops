@@ -20,7 +20,9 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">0.0 Prerequisites</a></h2>
 
-In this module you will learn xxxxxx
+In this module you will learn xxxxx
+
+TODO: Put in here in the basic skills you will need which is mainly to use a Linux bash shell.
 
 Proceed to the Activity to learn these deployment steps.
 
@@ -28,7 +30,7 @@ Proceed to the Activity to learn these deployment steps.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Prerequsites</a></b></p>
 
-Follow these steps to xxxxx
+Follow these steps to TODO: Put in instructions to login to the OpenShift cluster
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

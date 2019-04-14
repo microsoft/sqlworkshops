@@ -38,9 +38,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
 1. Open a shell prompt and change directories to the **SQLonOpenShift/sqlonopenshift/01_Deploy** folder.
 
-2. Login to the OpenShift cluster with the oc.exe program using the username and password you created or was provided by your instructor.
-
-    `oc -u <user> -p <Password>`
+2. You should have already logged into the OpenShift cluster using instructions from the Prerequisites.
 
 3. If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script.
 

@@ -41,7 +41,9 @@ Proceed to the Activity to learn the fundamentals of connecting to SQL Server de
 
 Follow these steps to connect to SQL Server deployed on OpenShift:
 
-1. The most fundamental method to connect to SQL Server is to use sqlcmd and execute the T-SQL query SELECT @@version to determine the version of SQL Server installed. Think of this as the *Hello World* test of SQL Server. Execute the following commands from your shell prompt or use the script **step1_test_sql.sh** found in the **02_query** folder:<br><br>
+1. Open a shell prompt and change to the **SQLonOpenShift/sqlonopenshift/02_query** directory.
+
+2. The most fundamental method to connect to SQL Server is to use sqlcmd and execute the T-SQL query SELECT @@version to determine the version of SQL Server installed. Think of this as the *Hello World* test of SQL Server. Execute the following commands from your shell prompt or use the script **step1_test_sql.sh** found in the **02_query** folder:<br><br>
 `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
 `PORT=31433`<br>
 `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT @@version"`
@@ -71,9 +73,11 @@ Proceed to the Activity to learn how to restore a database backup to SQL Server 
 
 Follow these steps to restore a database bnackup to SQL Server deployed on OpenShift:
 
-1. If your workshop does not already include a copy of the backup of the WideWorldImporters database, execute the script **getwwi.sh** to download the backup.
+1. Open a shell prompt and change to the **SQLonOpenShift/sqlonopenshift/02_query** directory.
 
-2. In Module 1, you deployed SQL Server on OpenShift which is running in a container. So to restore a backup of WideWorldImporters, you must copy the backup you downloaded into the filesystem of the container. In this step, you will copy the backup into the container folder /var/opt/mssql. The SQL Server database engine by default has permissions to read backup files in this folder to restore the database. Execute the following command to copy the database backup file into the container or execute the script **step2_copy_backup_into_container.sh**
+2. If your workshop does not already include a copy of the backup of the WideWorldImporters database (a file called WideWorldImporters-Full.bak) execute the script **getwwi.sh** to download the backup.
+
+3. In Module 1, you deployed SQL Server on OpenShift which is running in a container. So to restore a backup of WideWorldImporters, you must copy the backup you downloaded into the filesystem of the container. In this step, you will copy the backup into the container folder /var/opt/mssql. The SQL Server database engine by default has permissions to read backup files in this folder to restore the database. Execute the following command to copy the database backup file into the container or execute the script **step2_copy_backup_into_container.sh**
 
     `POD=$(oc get pods | grep mssql-deployment | awk {'print $1'})`<br>
     `oc cp ./WideWorldImporters-Full.bak $POD:/var/opt/mssql/WideWorldImporters-Full.bak`
@@ -82,7 +86,7 @@ Follow these steps to restore a database bnackup to SQL Server deployed on OpenS
 
     When this command completes, there is no output. You placed back a the shell prompt
 
-3. Now you will use the T-SQL **RESTORE DATABASE** command to restore the database backup. Execute the following commands using the sqlcmd tool or execute the script **step3_restore_backup.sh**:
+4. Now you will use the T-SQL **RESTORE DATABASE** command to restore the database backup. Execute the following commands using the sqlcmd tool or execute the script **step3_restore_backup.sh**:
 
     `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
     `PORT=31433`<br>
@@ -115,7 +119,9 @@ Follow these steps to execute example queries against a SQL Server deployed on O
 
     **Note**: These steps assume you have followed the previous sections of this module.
 
-1. Run the following set of commands to find out what user tables are in the WideWorldImporters database backup you restored. You can also use the script **step4_find_tables.sh**:
+1. Open a shell prompt and change to the **SQLonOpenShift/sqlonopenshift/02_query** directory.
+
+2. Run the following set of commands to find out what user tables are in the WideWorldImporters database backup you restored. You can also use the script **step4_find_tables.sh**:
 
     `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
     `PORT=31433`<br>
@@ -181,7 +187,7 @@ You can see from the bottom of this output that there are 48 tables in this data
 
 **Note**: In the above use of sqlcmd, the -Y30 parameter is used to ensure results are displayed as fixed width characters.
 
-2. Run the following commands to query data from the **People** table in the **Application** schema. In this database, the Application schema is used for tables that are used across the application and the People table holds data for any persons used across the Application for the WideWorldImporters company. You can also execute the script **step5_find_people.sh** to run these commands:
+3. Run the following commands to query data from the **People** table in the **Application** schema. In this database, the Application schema is used for tables that are used across the application and the People table holds data for any persons used across the Application for the WideWorldImporters company. You can also execute the script **step5_find_people.sh** to run these commands:
 
     `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
     `PORT=31433`<br>
@@ -209,7 +215,7 @@ You can see from the bottom of this output that there are 48 tables in this data
 
     These results contian privacty information. You can review a feature of SQL Server called Dynamic Data Masking to mask privacy information from application users. See more at https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking
 
-3. Everything in SQL Server is a query even to gather dynamic information about the running state of the SQL Server database engine. Run the following commands to see insights into running sessions, queries, and memory consumption. You can also run the script to execute these commands **step6_dmv.sh**.
+4. Everything in SQL Server is a query even to gather dynamic information about the running state of the SQL Server database engine. Run the following commands to see insights into running sessions, queries, and memory consumption. You can also run the script to execute these commands **step6_dmv.sh**.
 
     `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
     `PORT=31433`<br>
@@ -251,7 +257,7 @@ cpu_count   committed_kb
 
 The first T-SQL batch provides information about what sessions are connected to SQL Server with information about the session. The second T-SQL batch provides information about active queries agaisnt SQL Server. And the third batch provides informationa about how many CPUs SQL Server detected and how much memory the database engine has consumed. There are many Dynamic Management Views and more columns available than in the examples you used. You can read about all DMVs at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views?view=sql-server-2017
 
-4. As an optional exercise, you can connect with sqlcmd and run ad-hoc queries against SQL Server. I recommend you only run SELECT statements to read from SQL Server so you will not have issues with other Modules. Run the following commands to get a prompt to interactively use sqlcmd:
+5. As an optional exercise, you can connect with sqlcmd and run ad-hoc queries against SQL Server. I recommend you only run SELECT statements to read from SQL Server so you will not have issues with other Modules. Run the following commands to get a prompt to interactively use sqlcmd:
 
     `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
     `PORT=31433`<br>
