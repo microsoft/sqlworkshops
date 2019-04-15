@@ -214,14 +214,21 @@ You will be running a series of SQL Server T-SQL statements to observe performan
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-1">3.1 Using Query Store for Performance Analysis</a></h2>
 
-In this module you will learn xxxxxx
+In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Section 3.0 of this Module.
+
+The Query Store is built into the query processing engine, enabled using an option for each database in SQL Server. Once enabled performance statistics for queries are cached and stored in the SQL user database so they are persisted across server restarts.
+
+In addition, the Query Store comes with a series of catalog and dynamic management views to gain insight into recorded query performance.
+
+You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Using Query Store for Performance Analysis</a></b></p>
 
+The WideWorldImporters sample database that you restored in Module 02 has the Query Store enabled. Therefore, if you performed the activity in Section 3.0 of this module, the Query Store was recording performance information about each query execution.
 
-Perform the following steps for xxxxxx
+Perform the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 vs 150.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
