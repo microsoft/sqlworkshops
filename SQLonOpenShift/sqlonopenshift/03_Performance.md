@@ -13,6 +13,7 @@ You'll cover the following topics in this Module:
 <dl>
 
   <dt><a href="#3-0">3.0 SQL Server Intelligent Query Processing</a></dt>
+  <dt><a href="#3-1">3.1 Using Query Store for performance analysis</a></dt>
   
 </dl>
 
@@ -55,9 +56,9 @@ You will observe the performance of the CustomerProfits stored procedure with da
 You will be running a series of SQL Server T-SQL statements to observe performance. You have two choices to run the T-SQL statements with the Azure Data Studio tool:
 
 - Use the T-SQL scripts provided
-- Use the new SQL notebook experience which will walk you through each step.
+- Use the new SQL notebook experience which will walk you through a step by step approach.
 
-The first step  is to find the SQL Server connection information.
+    Either way, you need to find the connection details for SQL Server and connect to it with Azure Data Studio.
 
 1. To connect to the SQL Server deployed on OpenShift, run the following command to get the IP address and port of the Load Balancer service associated with the SQL Server container
 
@@ -68,7 +69,7 @@ The first step  is to find the SQL Server connection information.
     <pre>NAME            TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)           AGE
     mssql-service   LoadBalancer   172.30.166.56   168.61.45.217   31433:30738/TCP   1h</pre>
 
-    Take note of the EXTERNAL-IP and PORT. You will use these to connect to SQL Server
+    Take note of the EXTERNAL-IP and PORT. You will use these to connect to SQL Server throughout this module.
 
 2. Launch the Azure Data Studio application. Look for the icon
 
@@ -88,19 +89,57 @@ The first step  is to find the SQL Server connection information.
 
     At this point, you can complete this activity through a step by step approach with different query scripts or use a concept called SQL notebooks
 
-    To use the SQL notebook approach, use the following steps. Otherwise, skip to step 7.
+    To use the SQL notebook approach, go to the next step. Otherwise, skip to step 7.
 
-6. For SQL notebooks, use the File menu of Azure Data Studio (Open File option) to open the **03_Performance.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
+6. For SQL notebooks, use the File menu of Azure Data Studio (Open File option) to open the **03_IQP_Table_Variable.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
 
     The SQL notebook experience looks like the following:
 
-    TODO: Put in screenshot of notebook experience
+    ![03 IQP Table Variable Notebook](../graphics/03_IPQ_Table_Variable_Notebook.jpg)
 
-    If you wan to run each script in the Activity in the Query Editor to observe the performance of the stored procedure, use the following steps.
+    Read each step in the notebook and use the Play button to execute each T-SQL script. Use the scrollbar to scroll through the notebook. The rest of the steps in this section of the Module is for the experience without using a notebook. Proceed to section 4.1.
 
 7. Open the script **proc.sql** by using the File Menu/Open File option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder
 
-    This SQL script defines a stored procedure to calculate the total profits per customer for the WideWorldImporters company through a stored procedure. In this stored procedure, the logic queries data from a table, Sales.InvoiceLInes and stores it into temporary storage called a table variable. Then the procedure will join this data to tables in the database to produce the result. The T-SQL query uses aggregrate functionality to provide the count of customers and sum of profits grouped by customer.
+    The stored procedure looks like the following
+
+    ```sql
+    USE WideWorldImporters
+    GO
+    CREATE or ALTER PROCEDURE [Sales].[CustomerProfits]
+    AS
+    BEGIN
+    -- Declare the table variable
+    DECLARE @ilines TABLE
+    (	[InvoiceLineID] [int] NOT NULL primary key,
+	    [InvoiceID] [int] NOT NULL,
+	    [StockItemID] [int] NOT NULL,
+	    [Description] [nvarchar](100) NOT NULL,
+	    [PackageTypeID] [int] NOT NULL,
+	    [Quantity] [int] NOT NULL,
+	    [UnitPrice] [decimal](18, 2) NULL,
+	    [TaxRate] [decimal](18, 3) NOT NULL,
+	    [TaxAmount] [decimal](18, 2) NOT NULL,
+	    [LineProfit] [decimal](18, 2) NOT NULL,
+	    [ExtendedPrice] [decimal](18, 2) NOT NULL,
+	    [LastEditedBy] [int] NOT NULL,
+	    [LastEditedWhen] [datetime2](7) NOT NULL
+    )
+    
+    -- Insert all the rows from InvoiceLines into the table variable
+    INSERT INTO @ilines SELECT * FROM Sales.InvoiceLines
+
+    -- Find my total profile by customer
+    SELECT TOP 1 COUNT(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
+    FROM Sales.Invoices i
+    INNER JOIN @ilines il
+    ON i.InvoiceID = il.InvoiceID
+    GROUP By i.CustomerID
+    END
+    GO
+    ```
+
+    This procedure uses a table variable populated from a user table and then joins it with a user table to provide output. T-SQL functions like COUNT and SUM are often seen in analytic queries that benefit from Intelligent Query Processing. Note: In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include TOP.
 
     Click the Run button to execute the script. You will be prompted to pick the connection to execute the script. Select the connection you created in Step 4.
 
@@ -113,7 +152,6 @@ The first step  is to find the SQL Server connection information.
     Open the script **repro130.sql** by using the File Menu/Open File option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
 
     The script looks like the following
-
 
     ```sql
     USE master
@@ -129,9 +167,9 @@ The first step  is to find the SQL Server connection information.
     SET NOCOUNT OFF
     GO
     ```
-    The script will ensure the database is in a compatability mode that is less than 150 so Intelligent Query Processing will NOT be enabled. The script also turns off rowcount messages to be returned to the client to reduce network traffic for this test. Then the script executes the stored procedure. Notice the sytnax of **GO 25**. This is a client tool tip that says to run the batch 25 times (avoids having to construct a loop)
+    The script will ensure the database is in a compatibility mode that is less than 150 so Intelligent Query Processing will NOT be enabled. The script also turns off rowcount messages to be returned to the client to reduce network traffic for this test. Then the script executes the stored procedure. Notice the syntax of **GO 25**. This is a client tool tip that says to run the batch 25 times (avoids having to construct a loop)
 
-    Click the Run button to execute the script to observe the results. Choose the connection you created for the SQL Server container and click Connect.
+    Click the Run button to execute the script to observe the results. Choose the connection by clicking on the IP,PORT you created for the SQL Server container and click Connect.
 
     You will see while the query is executing in the bottom status bar the current elapsed execution time, the server connection details, a status of **Executing Query**, and number of rows being returned to the client.
 
@@ -170,7 +208,20 @@ The first step  is to find the SQL Server connection information.
     ```
     Notice this is the same script except database compatibility of 150 is used. This time, the query processor in SQL Server will enable table variable deferred compilation so a better query plan can be chosen
 
-10. Run the script and choose the SQL Server container connection. Go through the same steps as in Step 8 to analyze the results. The script should execute far faster than before. Your speeds can vary but should be 15 seconds or less. 
+10. Run the script and choose the SQL Server container connection. Go through the same steps as in Step 8 to analyze the results. The script should execute far faster than before. Your speeds can vary but should be 15 seconds or less.
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-1">3.1 Using Query Store for Performance Analysis</a></h2>
+
+In this module you will learn xxxxxx
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Using Query Store for Performance Analysis</a></b></p>
+
+
+Perform the following steps for xxxxxx
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

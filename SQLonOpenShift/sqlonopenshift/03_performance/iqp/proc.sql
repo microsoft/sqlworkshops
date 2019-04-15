@@ -24,7 +24,7 @@ DECLARE @ilines TABLE
 INSERT INTO @ilines SELECT * FROM Sales.InvoiceLines
 
 -- Find my total profile by customer
-SELECT count(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
+SELECT TOP 1 COUNT(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
 FROM Sales.Invoices i
 INNER JOIN @ilines il
 ON i.InvoiceID = il.InvoiceID

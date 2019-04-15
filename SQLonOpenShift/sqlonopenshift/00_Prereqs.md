@@ -41,6 +41,8 @@ Azure Data Studio
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Prerequsites</a></b></p>
 
+If you have cloned our repo be sure to first run git pull to get the latest version of the workshop
+
 Follow these steps to TODO: Put in instructions to login to the OpenShift cluster
 
 These instructions are based on your login as the OpenShift Cluster Administrator. You might be given different login details by your instructor.
