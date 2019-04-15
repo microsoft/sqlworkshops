@@ -95,7 +95,7 @@ You will be running a series of SQL Server T-SQL statements to observe performan
 
     The SQL notebook experience looks like the following:
 
-    ![03 IQP Table Variable Notebook](../graphics/03_IPQ_Table_Variable_Notebook.jpg)
+    ![03 IQP Table Variable Notebook](../graphics/03_IQP_Table_Variable_Notebook.jpg)
 
     Read each step in the notebook and use the Play button to execute each T-SQL script. Use the scrollbar to scroll through the notebook. The rest of the steps in this section of the Module is for the experience without using a notebook. Proceed to section 4.1.
 
@@ -230,11 +230,74 @@ The WideWorldImporters sample database that you restored in Module 02 has the Qu
 
 Perform the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 vs 150.
 
+You can complete this activity using a SQL Notebook or by running a script directly. Skip to Step 2 if you want to run the scripts directly.
+
+Use the SQL Server connection details you learned from the activity in Section 3.0
+
+1. For SQL notebooks, use the File menu of Azure Data Studio (Open File option) to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
+
+2. Open the script **querystore.sql** by using the File Menu/Open File option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
+
+    Use the SQL container connection as you have done in previous steps. The script should look like this
+
+    The T-SQL statement to use the Query Store for this activity looks like the following
+
+    ```sql
+    USE WideWorldImporters
+    GO
+    SELECT qsp.query_id, qsp.plan_id, compatibility_level, 
+    AVG(qsrs.avg_duration)/1000 as avg_duration_ms, 
+    AVG(qsrs.avg_logical_io_reads) as avg_logical_io,
+    CAST (qsp.query_plan as XML)
+    FROM sys.query_store_plan qsp
+    INNER JOIN sys.query_store_runtime_stats qsrs
+    ON qsp.plan_id = qsrs.plan_id
+    INNER JOIN sys.query_store_runtime_stats_interval qsrsi
+    ON qsrs.runtime_stats_interval_id = qsrsi.runtime_stats_interval_id
+    AND qsrsi.start_time between DATEADD(HOUR, -1, GETDATE()) and GETDATE()
+    GROUP BY qsp.query_id, qsp.plan_id, qsrs.avg_duration, qsp.compatibility_level, qsp.query_plan
+    ORDER BY avg_duration_ms DESC, qsp.query_id DESC
+    GO
+    ```
+
+    To even the seasoned SQL user this query looks daunting. This activity is not intended for you to understand every details of how the query works but as an example of how to use the Query Store Dynamic Management Views (DMV) to analyze the performance differences for the stored procedure you used in Section 3.0.
+
+    The query will look in the Query Store for the most recent queries executed over the last hour and sort them by the longest running queries by duration on average.
+
+    The results of the query should look something like the following (the values query_id and plan_id will likely be different)
+
+    ![iqp query store results](../graphics/IQP_query_store_results.jpg)
+
+    The key set of rows to look at are for query_id being the same, but the plan_id is different and the compatability_level is different.
+    
+    Notice the avg_duration_ms is much higher for the row using the plan for compatibility_level = 130. The reason? Look at the avg_logical_io which is the number of database pages read needed for the query. The number is much higher for the longer running query, typically due to an inefficient query plan.
+
+    So these results show the *same* query but two different query plans, one faster on average and more efficient than the other. The plan for compatibility_level = 150 was using table variable deferred compilation.
+
+    The last columns is the estimated query plan in XML. Reading the details of this XML is beyond the scope of this workshop but contains the details of how the query plan was built using table variable deferred compilation. In addition, in these XML details is the use of an Adaptive Join, which is another capability of Intelligent Query Processing.
+
+    If you saved the XML output as a .sqlplan file and opened up the file in SQL Server Management Studio (SSMS), you would see the following graphical plan for the query using compatibility level = 130
+
+    ![IQP query plan 130](../graphics/IQP_query_plan_130.jpg)
+
+    In this plan, the query processor chooses to use the table variable as the outer table of a Nested Loops Join which means it iterates through each row in the outer table to join to the inner table. Since the query processor estimates one row for the table variable, this is reasonable. But in reality, there are over 200,000 rows in the table variable so this ends up with many unnecessary logical reads (hence the high number of logical IO from query store)
+
+    The following output is an example for the stored procedure execution with compatibiilty level of 150
+
+    ![IQP query plan 150](../graphics/IQP_query_plan_150.jpg)
+
+    In this example SQL has recognized the table variable has more than 1 row and has chosen a different join method called a hash join. Furthermore, it has injected into the plan the concept of an **Adaptive Join** so that if there is small enough rowset in the table variable it could dynamically and automatically choose a Nested Loops Join. What is not seen from this diagram (which you can see from the properties detail in the XML plan) that is the query processor is using a third concept called batch mode processing on rowstore (rowstore is normal table as opposed to a columnstore).
+
+In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that beneift from Intelligent Query Processing
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 
-
+- [Intelligent Query Processing in SQL Server](https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing)
+- [Monitoring performance of SQL Server using the Query Store](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
+- [What is Azure Data Studio?](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
+- [How to use Notebooks in Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
