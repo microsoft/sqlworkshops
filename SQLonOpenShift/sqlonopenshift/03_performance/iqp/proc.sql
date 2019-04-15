@@ -1,6 +1,6 @@
 USE WideWorldImporters
 GO
-CREATE or ALTER PROCEDURE defercompile
+CREATE or ALTER PROCEDURE [Sales].[CustomerProfits]
 AS
 BEGIN
 -- Declare the table variable
@@ -24,11 +24,10 @@ DECLARE @ilines TABLE
 INSERT INTO @ilines SELECT * FROM Sales.InvoiceLines
 
 -- Find my total profile by customer
-SELECT i.CustomerID, SUM(il.LineProfit)
+SELECT count(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
 FROM Sales.Invoices i
 INNER JOIN @ilines il
 ON i.InvoiceID = il.InvoiceID
 GROUP By i.CustomerID
-
 END
 GO

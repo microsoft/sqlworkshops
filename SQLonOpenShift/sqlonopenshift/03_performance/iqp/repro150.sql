@@ -1,8 +1,12 @@
 USE master
 GO
 ALTER DATABASE wideworldimporters SET compatibility_level = 150
-go
+GO
 USE WideWorldImporters
-go
-EXEC defercompile
-go
+GO
+SET NOCOUNT ON
+GO
+EXEC [Sales].[CustomerProfits]
+GO 25
+SET NOCOUNT OFF
+GO

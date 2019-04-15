@@ -41,7 +41,7 @@ Proceed to the Activity to learn the fundamentals of connecting to SQL Server de
 
 Follow these steps to connect to SQL Server deployed on OpenShift:
 
-1. Open a shell prompt and change to the **SQLonOpenShift/sqlonopenshift/02_query** directory.
+1. Open a shell prompt and change to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query** directory.
 
 2. The most fundamental method to connect to SQL Server is to use sqlcmd and execute the T-SQL query SELECT @@version to determine the version of SQL Server installed. Think of this as the *Hello World* test of SQL Server. Execute the following commands from your shell prompt or use the script **step1_test_sql.sh** found in the **02_query** folder:<br><br>
 `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
@@ -73,7 +73,7 @@ Proceed to the Activity to learn how to restore a database backup to SQL Server 
 
 Follow these steps to restore a database bnackup to SQL Server deployed on OpenShift:
 
-1. Open a shell prompt and change to the **SQLonOpenShift/sqlonopenshift/02_query** directory.
+1. Open a shell prompt and change to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query** directory.
 
 2. If your workshop does not already include a copy of the backup of the WideWorldImporters database (a file called WideWorldImporters-Full.bak) execute the script **getwwi.sh** to download the backup.
 
@@ -119,7 +119,7 @@ Follow these steps to execute example queries against a SQL Server deployed on O
 
     **Note**: These steps assume you have followed the previous sections of this module.
 
-1. Open a shell prompt and change to the **SQLonOpenShift/sqlonopenshift/02_query** directory.
+1. Open a shell prompt and change to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query** directory.
 
 2. Run the following set of commands to find out what user tables are in the WideWorldImporters database backup you restored. You can also use the script **step4_find_tables.sh**:
 

@@ -36,7 +36,7 @@ Proceed to the Activity to learn these deployment steps.
 
 Follow these steps to deploy SQL Server on OpenShift:
 
-1. Open a shell prompt and change directories to the **SQLonOpenShift/sqlonopenshift/01_Deploy** folder.
+1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/01_Deploy** folder.
 
 2. You should have already logged into the OpenShift cluster using instructions from the Prerequisites.
 
@@ -58,6 +58,8 @@ Follow these steps to deploy SQL Server on OpenShift:
     When this completes you should see the following message and be placed back at the shell prompt
 
     <pre>secret/mssql created</pre>
+
+    **IMPORTANT: Take note of the value for SA_PASSWORD. You may need this in this module or other modules to connect to SQL Server.**
 
 4. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step3_storage.sh** script found in the **01_Deploy** folder:
 
