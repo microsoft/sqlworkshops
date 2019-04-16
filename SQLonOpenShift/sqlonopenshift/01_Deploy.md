@@ -102,7 +102,9 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     The ERRORLOG will scroll across the screen and you can scroll up in your shell to see all the output.
 
-A pod with a SQL Server container is now deployed and a load balancer service is attached to the pod. Proceed to the next Modeule to connect and run queries against your SQL Server deployment
+A pod with a SQL Server container is now deployed and a load balancer service is attached to the pod. 
+
+<pre>Do not proceed to the next Module until you have a valid IP address for the EXTERNAL_IP value for the service. The value will say pending while it is being created. One some OpenShift cluster systems this process can take a few minutes.</pre>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
