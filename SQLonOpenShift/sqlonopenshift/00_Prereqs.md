@@ -20,50 +20,66 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">0.0 Prerequisites</a></h2>
 
-In this module you will learn xxxxx
+In this module you will learn what the Prerequisites are for this workshop.
 
-TODO: Put in here in the basic skills you will need which is mainly to use a Linux bash shell.
+The workshop does not assume a deep working knowledge of SQL Server or OpenShift. It does have an assumption to know basics of using a Linux bash shell but all commands are provided to run the activities including scripts.
 
-Proceed to the Activity to learn these deployment steps.
+In order to go through the activities of this workshop you will need the following:
 
-Here is what is required
+**Note**: It is possible your instructor will provide you with a client environment and full access to an OpenShift cluster including login credentials.
 
-OpenShift 3.11 cluster with at leat 1 user node that has at least 8Gb RAM and capable of attaching 4 disks
-The permissions to go through the workshop are 1) cluster admin 2) A user with at minimum anyuid permissions. Note that Module 05 requires cluster admin permissions.
+- Access to an OpenShift 3.11 cluster. The workshop is currently designed for OpenShift 3.11 and has not been tested for OpenShift 4.0
+- Modules 1 through 4 require user privileges for the OpenShift cluster at **anyuid** at minimum. Module 5 currently requires cluster admin rights.
+- A client computer that has access to connect to the OpenShift cluster and has the following software installed
 
-A client computer with the following capabilities (Can be Windows, Linux, or MacOS)
-A bash shell to run shell scripts
-OpenShift CLI toosl (oc.exe)
-SQL Server tools (sqlcmd)
-Azure Data Studio
+1. A Linux bash shell
+2. The OpenShift CLI (oc.exe)
+3. Azure Data Studio - Minimum version is 1.5.2
+4. SQL Command Line Tools (sqlcmd)
+5. git client (only needed if you do not have the latest version of the workshop provided to you by the instructor)
+6. In addition, the client computer must be able to connect to the Internet to download a sample file or your instructor must provide it for you (WideWorldImporters-Full.bak)
+
+The workshop currently supports a single node OpenShift cluster. The single user node must have at least 8Gb of RAM available.
+
+Proceed to the Activity to go through the prerequisites before going to Module 01.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Prerequsites</a></b></p>
 
-If you have cloned our repo be sure to first run git pull to get the latest version of the workshop
+1. Download the latest version of the workshop from https://aka.ms/sqlworkshops. If you have used git clone to pull down the repo of the workshops, run **git pull** to get the latest version.
 
-Follow these steps to TODO: Put in instructions to login to the OpenShift cluster
+2. Login to your OpenShift cluster by using the URL provided to you for the **openshiftConsoleUrl** in a web browser
 
-These instructions are based on your login as the OpenShift Cluster Administrator. You might be given different login details by your instructor.
+3. You may get warnings from the web page saying "This site is not secure". Click Details and then "Go on to the webpage"
 
-Note: Put in a statement to ignore "This site is not secure" message from Browser when going to OpenShift Master Console. Click Details and then "Go on to the webpage". 
+4. You will be presented with a login screen like the following
 
-Type in your cluster admin user and password into the login screen
+    ![OpenShift login screen](../graphics/OpenShift_Console_Login.jpg)
 
-Copy Login option from upper right corner
+5. Tyep in the user name and password provided to you for OpenShift cluster access. Your instructor may called this **openshiftAdminUsername** and **openshiftPassword**
 
-Paste into shell
+6. You will now see a new web page like teh following
 
-Should look something like
+    ![OpenShift Master Console](../graphics/OpenShift_Master_Console.jpg)
 
-oc login https://"master node":443 --token="token string"
+7. In the upper right hand corner, click on your user name and select Copy Login Command like the following
 
-You should see the following after a successful login
+    ![copy login command](../graphics/OpenShift_Copy_Login.jpg)
 
-Logged into "https://masterdnsx5rquio6c54pu.eastus.cloudapp.azure.com:443" as "ocpadmin" using the token provided.
+8. You now have on your clipboard a complete oc login sytnax with a token. Open up a shell and paste in the copy (right click your mouse)
 
-You have access to the following projects and can switch between them with 'oc project <projectname>':
+    The command should look something like this
+
+    `oc login https://[masterconsoleaddress]:443 --token=[tokenstring]`
+
+    Hit enter
+
+    You should see results like the following and then placed back at the command prompt
+
+<pre>Logged into "https://[masterconsoleurl]:443" as "ocpadmin" using the token provided.
+
+You have access to the following projects and can switch between them with 'oc project projectname':
 
   * default
     kube-public
@@ -82,13 +98,20 @@ You have access to the following projects and can switch between them with 'oc p
     openshift-web-console
 
 Using project "default".
+</pre>
 
+You have now successfully logged into the OpenShift Cluster and can proceed with Module 01.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-
-
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
+
+- [RedHat OpenShift](https://www.openshift.com/)
+- [oc CLI downloads](https://www.okd.io/download.html)
+- [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
+- [SQL Command Line Tools for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools)
+- [SQL Command Line Tools for MacOS](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-2017#macos)
+- [SQL Command Line Tools for Windows](https://www.microsoft.com/en-us/download/details.aspx?id=53591)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
