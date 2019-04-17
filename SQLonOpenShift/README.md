@@ -9,9 +9,9 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *SQL Server on OpenShift*. In this workshop, you'll learn how deploy and use SQL Server containers on an OpenShift cluster.
+Welcome to this Microsoft solutions workshop on *SQL Server on OpenShift*. In this workshop, you'll learn how to deploy and use SQL Server containers on an OpenShift cluster.
 
-You will learn the basics of deployment, connection, executing queries, performance, high availability, operators, and Always On Availability Groups.
+You will learn the basics of deployment, connection, query execution, performance, high availability, operators, and Always On Availability Groups.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -22,10 +22,10 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>
 <br>
 - Learn the basics of deploying SQL Server on an OpenShift cluster.
-- Learn how to connect and run queries aginst SQL Server deployed on OpenShift.
+- Learn how to connect and run queries against SQL Server deployed on OpenShift.
 - Learn performance capabilities of SQL Server deployed on OpenShift
-- Learn basic High Availability capabilties of SQL Server deployed on OpenShift
-- Learn how to use an operator to deploy an Availability Group on OpenShift.
+- Learn basic High Availability capabilities of SQL Server deployed on OpenShift
+- Learn how to use an operator to deploy and manage an Always On Availability Group on OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
@@ -33,7 +33,7 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 <br>
 
 - Developers looking to deploy a database container for their applications on OpenShift
-- Database Administrators looking to understand how to deploy database platforms like SQL Server in a Kubernetes cluser using OpenShift.<br>
+- Database Administrators looking to understand how to deploy database platforms like SQL Server in a Kubernetes cluster using OpenShift.<br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2>Technologies used in this Workshop</h2>
@@ -44,19 +44,19 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
 
-  <tr><td><i>SQL Server</i></td><td>Database Platform produced and sold by Microsoft</td></tr>
+  <tr><td><i>SQL Server</i></td><td>Database Platform produced by Microsoft</td></tr>
   <tr><td><i>SQL Server 2019</i></td><td>Most current release of SQL Server currently in preview</td></tr>
   <tr><td><i>Intelligent Query Processing</i></td><td>Automated query processing enhancements in SQL Server 2019</td></tr>
  <tr><td><i>Always On Availability Group</i></td><td>SQL Server High Availability Disaster Recovery capabilities based on replicas</i></td></tr>
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
-  <tr><td><i>Docker</i></td><td>Encapsulation level for the SQL Server big data cluster architecture</td></tr>
-  <tr><td><i>Kubernetes</i></td><td>Management, control plane for Containers</td></tr>
+  <tr><td><i>Docker</i></td><td>Engine for running and manage containers</td></tr>
+  <tr><td><i>Kubernetes</i></td><td>Orchestration and Management platform for Containers</td></tr>
   <tr><td><i>OpenShift<i></td><td>Family of containerization software developed by Red Hat</td></tr>
   <tr><td><i>OpenShift Platform<i></td><td>Kubernetes based platform for containers</td></tr>
   <tr><td><i>oc</i></td><td>OpenShift CLI program. Similar to kubectl</td></tr>
   <tr><td><i>project</i></td><td>Equivalent to Kubernetes namespace</td></tr>
-  <tr><td><i>Azure Data Studio<i></td><td>Tooling for SQL Server, HDFS, Kubernetes cluster management, T-SQL, R, Python, and SparkML languages</td></tr>
-  <tr><td><i>SQL Server Command Line Tools<i></td><td>utilities to connect and query SQL Server such as sqlcmd</td></tr>
+  <tr><td><i>Azure Data Studio<i></td><td>Graphical User Interface to execute T-SQL queries and manage SQL Server</td></tr>
+  <tr><td><i>SQL Server Command Line Tools<i></td><td>Utilities to connect and query SQL Server such as sqlcmd</td></tr>
 
 </table>
 
@@ -68,16 +68,16 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 
 To complete this workshop you will need the following:
 
-- A client computer connected to the Internet that has a Linux shell and can run SQL Server command line tools.
+- A client computer connected to the Internet that has can run a Linux shell and can run SQL Server command line tools.
 - Access to a OpenShift 3.11 cluster
 - Access to all the scripts provided from this workshop from the GitHub repo.
 
-You might be taking this workshop from an instructor who will provide access to an existing OpenShift cluster.
+You might be taking this workshop from an instructor who will provide access to an OpenShift cluster.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> 
 <h3>Setup</h3>
 
-A complete Prerequisites [document](sqlonopenshift/00_Prereqs.md) exists as part of this workshop.
+A complete Prerequisites [document](sqlonopenshift/00_Prereqs.md) exists as part of this workshop. You will be guided to go through Prerequisites in the Next Steps at the bottom of this page.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -99,6 +99,7 @@ This workshop uses OpenShift, SQL Server 2019, Azure Data Studio, SQL Command Li
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
 
+- [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/rgward/ModernizeYourDatabases2019)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
