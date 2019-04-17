@@ -238,25 +238,23 @@ Follow the steps in his activity to connect, add databases, add data, and query 
 
     Your results should look like the following (your server names may be different depending on how the primary was elected when the Availability Group was deployed)
 
-    <pre>------------------------------------------------------------
-    Connected to Primary = mssql1-0
+   <pre>------------------------------------------------------------
+   Connected to Primary = mssql1-0
+   (1 rows affected)
+   Changed database context to 'testag'.
+   col1        col2
+   ----------- ------------------------------------------------------------
+        1 SQL Server 2019 is fast, secure, and highly available
+   (1 rows affected)</pre>
 
-    (1 rows affected)
-    Changed database context to 'testag'.
-    col1        col2
-        ----------- ------------------------------------------------------------
-          1 SQL Server 2019 is fast, secure, and highly available
-    (1 rows affected)</pre>
-
-    <pre>------------------------------------------------------------
-    Connected to Secondary = mssql2-0
-
-    (1 rows affected)
-    Changed database context to 'testag'.
-    col1        col2
-        ----------- ------------------------------------------------------------
-          1 SQL Server 2019 is fast, secure, and highly available
-    (1 rows affected)</pre>
+   <pre>------------------------------------------------------------
+   Connected to Secondary = mssql2-0
+   (1 rows affected)
+   Changed database context to 'testag'.
+   col1        col2
+   ----------- ------------------------------------------------------------
+         1 SQL Server 2019 is fast, secure, and highly available
+   (1 rows affected)</pre>
 
 Now that you have successfully created a database, added it to the Availability Group,and synchronized data, you an proceed to the next section to test how a failover works.
 
