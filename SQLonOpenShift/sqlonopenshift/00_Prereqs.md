@@ -20,7 +20,7 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">0.0 Prerequisites</a></h2>
 
-In this module you will learn what the Prerequisites are for this workshop.
+In this module you will learn what the prerequisites are for this workshop.
 
 The workshop does not assume a deep working knowledge of SQL Server or OpenShift. It does have an assumption to know basics of using a Linux bash shell but all commands are provided to run the activities including scripts.
 
@@ -29,7 +29,7 @@ In order to go through the activities of this workshop you will need the followi
 **Note**: It is possible your instructor will provide you with a client environment and full access to an OpenShift cluster including login credentials.
 
 - Access to an OpenShift 3.11 cluster. The workshop is currently designed for OpenShift 3.11 and has not been tested for OpenShift 4.0
-- Modules 1 through 4 require user privileges for the OpenShift cluster at **anyuid** at minimum. Module 5 currently requires cluster admin rights.
+- Modules 1 through 4 require user privileges for the OpenShift cluster for **anyuid** at minimum. Module 5 currently requires cluster admin rights.
 - A client computer that has access to connect to the OpenShift cluster and has the following software installed
 
 1. A Linux bash shell
@@ -39,9 +39,9 @@ In order to go through the activities of this workshop you will need the followi
 5. git client (only needed if you do not have the latest version of the workshop provided to you by the instructor)
 6. In addition, the client computer must be able to connect to the Internet to download a sample file or your instructor must provide it for you (WideWorldImporters-Full.bak)
 
-The workshop currently supports a single node OpenShift cluster. The single user node must have at least 8Gb of RAM available.
+The workshop currently supports a single node OpenShift cluster but can be run on a multiple cluster environment. Each user will need ~8Gb of RAM to run the containers in the workshop.
 
-Proceed to the Activity to go through the prerequisites before going to Module 01.
+Proceed to the Activity to go through the prerequisites.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -49,7 +49,7 @@ Proceed to the Activity to go through the prerequisites before going to Module 0
 
 1. Download the latest version of the workshop from https://aka.ms/sqlworkshops. If you have used git clone to pull down the repo of the workshops, run **git pull** to get the latest version.
 
-2. Login to your OpenShift cluster by using the URL provided to you for the **openshiftConsoleUrl** in a web browser
+2. Login to your OpenShift cluster by using the URL provided to you for the **openshiftConsoleUrl** in a web browser.
 
 3. You may get warnings from the web page saying "This site is not secure". Click Details and then "Go on to the webpage"
 
@@ -57,9 +57,9 @@ Proceed to the Activity to go through the prerequisites before going to Module 0
 
     ![OpenShift login screen](../graphics/OpenShift_Console_Login.jpg)
 
-5. Tyep in the user name and password provided to you for OpenShift cluster access. Your instructor may called this **openshiftAdminUsername** and **openshiftPassword**
+5. Type in the user name and password provided to you for OpenShift cluster access. Your instructor may call this **openshiftAdminUsername** and **openshiftPassword**
 
-6. You will now see a new web page like teh following
+6. You will now see a new web page like the following
 
     ![OpenShift Master Console](../graphics/OpenShift_Master_Console.jpg)
 
@@ -106,7 +106,7 @@ You have now successfully logged into the OpenShift Cluster and can proceed with
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 
-- [RedHat OpenShift](https://www.openshift.com/)
+- [Red Hat OpenShift](https://www.openshift.com/)
 - [oc CLI downloads](https://www.okd.io/download.html)
 - [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
 - [SQL Command Line Tools for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools)
