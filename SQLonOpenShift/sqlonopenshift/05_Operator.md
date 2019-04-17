@@ -225,7 +225,7 @@ Follow the steps in his activity to connect, add databases, add data, and query 
 
     In this example, you will use the -Q option of sqlcmd to run a query directly without a script file. The use of the ";" serves as a batch delimiter much like the keyword GO. In example, the built-in T-SQL function @@SERVERNAME indicates what SQL Server host the query is running on and the remaining queries select the data you have inserted. This way even though you are connected to the LoadBalancer you can see which exact replica you are being redirected to.
 
-    Execute the following commands or the script step9_queryag.sh to see the results
+    Execute the following commands or the script **step9_queryag.sh** to see the results
 
     `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
     `PORT=1433`<br>
@@ -264,19 +264,109 @@ Now that you have successfully created a database, added it to the Availability 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5-2">5.2 Testing a failover of the Availability Group</a></h2>
 
-In this section, you will learn how to connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift.
+In this section, you will learn how to simulate a failover of SQL Server in an Availability Group deployed on OpenShift.
+
+Since Availability Groups provide high availability and lower downtime due to its non-shared storage replica design, it is important to see a failover in action to understand the application experience.
+
+In previous sections of this module, you deployed an Availability Group using an operator. The operator also coordinates with *agents* in containers running in the same POD as the SQL Server replicas to detect failover conditions and if necessary trigger a failover. A failover will cause one of the synchronized secondary replicas to shift roles as a new primary replica. The previous primary replica, once it is healthy, can be synchronized and become a secondary replica.
+
+Proceed to the Activity to simulate a failover and test a new primary replica is active.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Testing a failover of the Availability Group</a></b></p>
 
-Follow the steps in his activity to connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift.
+Follow the steps in his activity to simulate a failover and see how a new secondary replica has switched roles to become a primary, yielding is almost no downtime to the application.
+
+1. From the last step in the previous section activity, the primary and secondary replicas were synchronized. Verify the replica state by running the following commands or the script **step6_check_replicas.sh**
+
+    `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+    `PORT=1433`<br>
+    `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`
+
+    Your results should look like the following
+
+    <pre>replica_server_name            role_desc                      operational_state_desc
+   ------------------------------ ------------------------------ ------------------------------
+   mssql1-0                       PRIMARY                        ONLINE
+   mssql2-0                       SECONDARY                      NULL
+   mssql3-0                       SECONDARY                      NULL</pre>
+
+ 2. If in your results, if the replica_server_name is mssql2-0 for the PRIMARY, you will need to edit the failover.yaml file. If not, you can skip to step 3.
+
+    The **failover.yaml** file declares how to manually trigger a failover to another replica but is setup so you must specify which replica to target as the new primary. The workshop was built so that mssql2-0 would be the new primary. In some rare cases, mssql2-0 might have been chosen as the original primary. If this is the case, you need to edit this part of the failover.yaml file and change the name mssql2-0 to mssql3-0
+
+    <pre>- {name: MSSQL_K8S_AG_NAME, value: ag1}
+    - {name: MSSQL_K8S_NEW_PRIMARY, value: mssql2-0}</pre>
+
+    Once you have edited and saved the changes, proceed to step 3.
+
+3. To manually trigger the failover, apply the failover.yaml file which will submit a *job* to trigger the change for a failover. Run the following command or the script **step10_failover.sh**
+
+    `oc apply -f failover.yaml`
+
+    You should see results like the following
+   
+    <pre>serviceaccount/manual-failover created
+role.rbac.authorization.k8s.io/manual-failover created
+rolebinding.rbac.authorization.k8s.io/manual-failover created
+job.batch/manual-failover created</pre>
+
+4. The failover should happen fairly quickly. You can run the following commands or script **step6_check_replicas.sh** to verify the new PRIMARY switch has occurred
+
+   `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+   `PORT=1433`<br>
+   `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`
+
+    Your results should show a new PRIMARY like the following
+
+   <pre>replica_server_name            role_desc                      operational_state_desc
+   ------------------------------ ------------------------------ ------------------------------
+   mssql1-0                       SECONDARY                      NULL
+   mssql2-0                       PRIMARY                        ONLINE
+   mssql3-0                       SECONDARY                      NULL
+   (3 rows affected)</pre>
+
+5. Now run the following commands to see your data is still synchronized and by using the LoadBalancers the application has not changed even though you are connected to a new primary and secondary
+
+    `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+    `PORT=1433`<br>
+    `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -Y60`<br>
+    `SERVERIP=$(oc get service | grep ag1-secondary | awk {'print $4'})`
+    `PORT=1433`<br>
+    `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Secondary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -K ReadOnly -Y60`
+
+    Your results should look similar to the time you ran this query from the previous section activity except the server names should be different and reflect the new primary and secondary replicas.
+
+    <pre>------------------------------------------------------------
+   Connected to Primary = mssql2-0
+   (1 rows affected)
+   Changed database context to 'testag'.
+   col1        col2
+   ----------- ------------------------------------------------------------
+        1 SQL Server 2019 is fast, secure, and highly available
+   (1 rows affected)</pre>
+
+   <pre>------------------------------------------------------------
+   Connected to Secondary = mssql1-0
+   (1 rows affected)
+   Changed database context to 'testag'.
+   col1        col2
+   ----------- ------------------------------------------------------------
+         1 SQL Server 2019 is fast, secure, and highly available
+   (1 rows affected)</pre>
+
+In this activity, you have simulated a failover for your deployed Availability Group and seen your data is still consistent, intact, and your application has connected with no changes and almost no downtime.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
+
+This is the final module of the workshop. For further study on the topics in this module, see
+
+- xxxxxxx
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
