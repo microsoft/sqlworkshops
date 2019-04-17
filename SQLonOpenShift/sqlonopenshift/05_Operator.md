@@ -142,11 +142,125 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
 In this section, you will learn how to connect, add databases, add data, and query data to replicas in an Always On Availability Group deployed in OpenShift.
 
+Once you have an Always On Availability Group deployed on OpenShift, you will want to add a database to the group, add some data, and see the changes reflected in secondary replicas.
+
+SQL Server provides T-SQL statements, such as `ALTER AVAILABILITY GROUP`, to interact and manage the Availability Group including adding one more databases. An Availability Group can have one more or databases and is the unit of failover.
+
+Once you have added your database to the availability group, you will create a database backup, which will initiate a concept called *direct seeding*. This process will send data to the secondary replicas making them in *sync*. You can now connect to the primary replica SQL Server and interact with it like any SQL Server database. You can also connect to the secondary replica(s) with a special connection option to read data. This allows you to offset read users (e.g. reporting users) from your primary SQL Server.
+
+Proceed to the activity to see how this works.
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Connect and Query a database in an Availability Group</a></b></p>
 
 Follow the steps in his activity to connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift.
+
+1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_Operator** folder.
+
+2. T-SQL provides capabilities so you can see which SQL Servers instances are currently the primary vs secondary replica.
+
+    An example of a T-SQL command to see replica status looks like the following
+
+
+   ```sql
+   SELECT ar.replica_server_name, hars.role_desc, hars.operational_state_desc
+   FROM sys.dm_hadr_availability_replica_states hars
+   JOIN sys.availability_replicas ar
+   ON hars.replica_id = ar.replica_id
+   GO
+   ```
+    Run the following command or execute the script **step6_check_replicas.sh** to see the replica status of the Availability Group deployed
+
+    `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+    `PORT=1433`<br>
+    `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`
+
+    In this example, you are using the LoadBalancer directed to the primary replica. Your results should look like the following
+
+   <pre>replica_server_name            role_desc                      operational_state_desc
+   ------------------------------ ------------------------------ ------------------------------
+   mssql1-0                       PRIMARY                        ONLINE
+   mssql2-0                       SECONDARY                      NULL
+   mssql3-0                       SECONDARY                      NULL</pre>
+
+    It is possible that the replica_server_name for your deployment is any of these replicas. In most cases, it will be mssql1-0. You will use this same command later to see that the status of the Availability Group is after a failover.
+
+3. Now it is time to create a new database,  backup the database, and then add the database to the Availability Group. Examine the contents of the script **setupag.sql** to see the T-SQL commands. Run the following command or script **step7_setupag.sh**
+
+   `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+   `PORT=1433`<br>
+   `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -isetupag.sql`
+
+    You should see results like the following
+
+   <pre>Changed database context to 'master'.
+   Changed database context to 'master'.
+   Processed 328 pages for database 'testag', file 'testag' on file 1.
+   Processed 2 pages for database 'testag', file 'testag_log' on file 1.
+   BACKUP DATABASE successfully processed 330 pages in 1.239 seconds (2.077 MB/sec).</pre>
+
+    Direct seeding should happen almost instantly because there is no user database in the database.
+
+4. It's time to create a table in the database and add in data connected to the primary replica SQL Server. SQL Server will automatically send changes to secondary replicas.
+
+    Examine the T-SQL script **testag.sql** to see the table and data that will be added. Run the following command or execute the script **test8_testag.sh**
+
+   `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+   `PORT=1433`<br>
+   `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -itestag.sql`
+
+    Your results should look the following
+
+   <pre>Changed database context to 'testag'.
+   (1 rows affected)</pre>
+
+5. Now you want to query the primary replica to see your data but also query secondary replicas to see if the changes were synchronized but also learn how to run read-only queries against secondary replicas, one of the benefits of using Availability Groups.
+
+    In order to do this, you need to know the LoadBalancer of the primary replica and secondary replica. So far, you have been using script to connect to the primary replica. You created in the previous section a LoadBalancer for the secondary replicas. But, since there are two secondary replicas, which one will be chosen. That is the benefit of the LoadBalancer service. You can have multiple users connect to the secondary replica LoadBalancer and these connections will be balanced across available replicas.
+
+    Consider the following T-SQL script you will use to query the data and to determine which SQL Server you are connected to
+
+    `SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql`
+
+    In this example, you will use the -Q option of sqlcmd to run a query directly without a script file. The use of the ";" serves as a batch delimiter much like the keyword GO. In example, the built-in T-SQL function @@SERVERNAME indicates what SQL Server host the query is running on and the remaining queries select the data you have inserted. This way even though you are connected to the LoadBalancer you can see which exact replica you are being redirected to.
+
+    Execute the following commands or the script step9_queryag.sh to see the results
+
+    `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+    `PORT=1433`<br>
+    `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -Y60`<br>
+    `SERVERIP=$(oc get service | grep ag1-secondary | awk {'print $4'})`
+    `PORT=1433`<br>
+    `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Secondary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -K ReadOnly -Y60`
+
+    The first set of commands connect to the primary replica LoadBalancer. The second set of commands to the secondary replica LoadBalancer. In the case of the secondary replica, the -K option is used to state the intention of only reading data. This is required to query a secondary replica. You can read more about how applications specify ReadOnly intent at https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover?view=sql-server-2017#ReadOnlyAppIntent.
+
+    Your results should look like the following (your server names may be different depending on how the primary was elected when the Availability Group was deployed)
+
+    <pre>------------------------------------------------------------
+    Connected to Primary = mssql1-0
+
+    (1 rows affected)
+    Changed database context to 'testag'.
+    col1        col2
+        ----------- ------------------------------------------------------------
+          1 SQL Server 2019 is fast, secure, and highly available
+    (1 rows affected)</pre>
+
+    <pre>------------------------------------------------------------
+    Connected to Secondary = mssql2-0
+
+    (1 rows affected)
+    Changed database context to 'testag'.
+    col1        col2
+        ----------- ------------------------------------------------------------
+          1 SQL Server 2019 is fast, secure, and highly available
+    (1 rows affected)</pre>
+
+Now that you have successfully created a database, added it to the Availability Group,and synchronized data, you an proceed to the next section to test how a failover works.
+
+
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
