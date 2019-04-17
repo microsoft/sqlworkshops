@@ -9,7 +9,9 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *SQL Server on OpenShift*. In this workshop, you'll learn how deploy and use SQL Server on an OpenShift cluster.
+Welcome to this Microsoft solutions workshop on *SQL Server on OpenShift*. In this workshop, you'll learn how deploy and use SQL Server containers on an OpenShift cluster.
+
+You will learn the basics of deployment, connection, executing queries, performance, high availability, operators, and Always On Availability Groups.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -18,9 +20,7 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>
-
 <br>
-
 - Learn the basics of deploying SQL Server on an OpenShift cluster.
 - Learn how to connect and run queries aginst SQL Server deployed on OpenShift.
 - Learn performance capabilities of SQL Server deployed on OpenShift
@@ -33,21 +33,33 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 <br>
 
 - Developers looking to deploy a database container for their applications on OpenShift
-- Database Administrators looking to understand how to deploy database platforms like SQL Server in a Kubernetes cluser using OpenShift.
-
+- Database Administrators looking to understand how to deploy database platforms like SQL Server in a Kubernetes cluser using OpenShift.<br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2>Technologies used in this Workshop</h2>
 
 <br>
 
-- SQL Server
-- Containers
-- Docker
-- Kubernetes
-- SQL Server Tools
-- Linux
-- OpenShift
+ <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
+
+  <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
+
+  <tr><td><i>SQL Server</i></td><td>Database Platform produced and sold by Microsoft</td></tr>
+  <tr><td><i>SQL Server 2019</i></td><td>Most current release of SQL Server currently in preview</td></tr>
+  <tr><td><i>Intelligent Query Processing</i></td><td>Automated query processing enhancements in SQL Server 2019</td></tr>
+ <tr><td><i>Always On Availability Group</i></td><td>SQL Server High Availability Disaster Recovery capabilities based on replicas</i></td></tr>
+  <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
+  <tr><td><i>Docker</i></td><td>Encapsulation level for the SQL Server big data cluster architecture</td></tr>
+  <tr><td><i>Kubernetes</i></td><td>Management, control plane for Containers</td></tr>
+  <tr><td><i>OpenShift<i></td><td>Family of containerization software developed by Red Hat</td></tr>
+  <tr><td><i>OpenShift Platform<i></td><td>Kubernetes based platform for containers</td></tr>
+  <tr><td><i>oc</i></td><td>OpenShift CLI program. Similar to kubectl</td></tr>
+  <tr><td><i>project</i></td><td>Equivalent to Kubernetes namespace</td></tr>
+  <tr><td><i>Azure Data Studio<i></td><td>Tooling for SQL Server, HDFS, Kubernetes cluster management, T-SQL, R, Python, and SparkML languages</td></tr>
+  <tr><td>SQL Server Command Line Tools</td><td>utilities to connect and query SQL Server such as sqlcmd</td></tr>
+
+</table>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/owl.png"> <h2>Before Taking this Workshop</h2>
@@ -71,6 +83,18 @@ A complete Prerequisites [document](sqlonopenshift/00_Prereqs.md) exists as part
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/education1.png"> <h2>Workshop Details</h2>
 
+This workshop uses OpenShift, SQL Server 2019, Azure Data Studio, SQL Command Line Tools, and the OpenShift CLI (oc).
+
+<table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
+
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Administrators looking to learn how to deploy, use, and manage SQL Server on OpenShift</td></tr>
+  <tr><td>Secondary Audience:</td><td> Developers, Architects, and IT Pros</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 300</td></tr>
+  <tr><td>Type:</td><td>Self-Paced or In-Person</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">2 hours (self-paced) 4 hours (In-Person)</td></tr>
+
+</table>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
@@ -80,8 +104,9 @@ A complete Prerequisites [document](sqlonopenshift/00_Prereqs.md) exists as part
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bookpencil.png"> <h2>Workshop Modules</h2>
 
-This is a modular workshop, and in each section, you'll learn concepts, technologies, and processes to help you complete the solution.
+This is a modular workshop, and in each section, you'll learn concepts, technologies, and processes to help you complete the solution. 
 
+**Proceed to Next Steps below to start the workhop.**
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
