@@ -46,10 +46,10 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     When this completes, you should see the following messages and be placed back at the shell prompt
 
-    <pre>Now using project "mssql" on server "https://[servername]".
-    You can add applications to this project with the 'new-app' command. For example, try:
-    oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
-    to build a new example application in Ruby.</pre>
+   <pre>Now using project "mssql" on server "https://[servername]".
+   You can add applications to this project with the 'new-app' command. For example, try:
+   oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
+   to build a new example application in Ruby.</pre>
 
 3. Create a secret to store the System Administrator (sa) password. For this workshop, you will be connecting as the sa login. In production SQL Server environment, you would not normally use the sa login. Use the following command or execute the **step2_create_secret.sh** script found in the **01_Deploy** folder:
 
@@ -57,7 +57,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     When this completes you should see the following message and be placed back at the shell prompt
 
-    <pre>secret/mssql created</pre>
+   <pre>secret/mssql created</pre>
 
     **IMPORTANT: Take note of the value for SA_PASSWORD. You may need this in this module or other modules to connect to SQL Server.**
 
@@ -69,7 +69,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
       When this completes you should see the following message and be placed back at the shell prompt
 
-    <pre>persistentvolumeclaim/mssql-data created</pre>
+   <pre>persistentvolumeclaim/mssql-data created</pre>
 
 5. Deploy SQL Server using the following command or the **step4_deploy_sql.sh** script found in the **01_Deploy** folder:
 
@@ -77,9 +77,8 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     When this compeletes, you should see the following messages and be placed back at the shell prompt
 
-    <pre>deployment.apps/mssql-deployment created
-
-    service/mssql-service created</pre>
+   <pre>deployment.apps/mssql-deployment created
+   service/mssql-service created</pre>
 
     At this time, you have submitted a deployment, which is a logical collection of objects including a pod, container, load balancer service. OpenShift will schedule a SQL Server container in a pod on a node on the cluster. Proceed to the next step to check on whether the deployment was successful.
 

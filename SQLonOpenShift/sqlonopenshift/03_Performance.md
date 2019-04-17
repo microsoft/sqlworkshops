@@ -61,10 +61,10 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
 
     You should see results like the following
 
-    <pre>NAME            TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)           AGE
-    mssql-service   LoadBalancer   172.30.166.56   168.61.45.217   31433:30738/TCP   1h</pre>
+   <pre>NAME            TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)           AGE
+   mssql-service   LoadBalancer   172.30.166.56   168.61.45.217   31433:30738/TCP   1h</pre>
 
-    Take note of the EXTERNAL-IP and PORT. You will use these to connect to SQL Server throughout this module.
+   Take note of the EXTERNAL-IP and PORT. You will use these to connect to SQL Server throughout this module.
 
 2. Launch the Azure Data Studio application. Look for the icon
 
@@ -86,15 +86,15 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
 
     The stored procedure looks like the following
 
-    ```sql
-    USE WideWorldImporters
-    GO
-    CREATE or ALTER PROCEDURE [Sales].[CustomerProfits]
-    AS
-    BEGIN
-    -- Declare the table variable
-    DECLARE @ilines TABLE
-    (	[InvoiceLineID] [int] NOT NULL primary key,
+   ```sql
+   USE WideWorldImporters
+   GO
+   CREATE or ALTER PROCEDURE [Sales].[CustomerProfits]
+   AS
+   BEGIN
+   -- Declare the table variable
+   DECLARE @ilines TABLE
+   ([InvoiceLineID] [int] NOT NULL primary key,
 	    [InvoiceID] [int] NOT NULL,
 	    [StockItemID] [int] NOT NULL,
 	    [Description] [nvarchar](100) NOT NULL,
@@ -107,20 +107,19 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
 	    [ExtendedPrice] [decimal](18, 2) NOT NULL,
 	    [LastEditedBy] [int] NOT NULL,
 	    [LastEditedWhen] [datetime2](7) NOT NULL
-    )
+   )
     
-    -- Insert all the rows from InvoiceLines into the table variable
-    INSERT INTO @ilines SELECT * FROM Sales.InvoiceLines
-
-    -- Find my total profile by customer
-    SELECT TOP 1 COUNT(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
-    FROM Sales.Invoices i
-    INNER JOIN @ilines il
-    ON i.InvoiceID = il.InvoiceID
-    GROUP By i.CustomerID
-    END
-    GO
-    ```
+   -- Insert all the rows from InvoiceLines into the table variable
+   INSERT INTO @ilines SELECT * FROM Sales.InvoiceLines
+   -- Find my total profile by customer
+   SELECT TOP 1 COUNT(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
+   FROM Sales.Invoices i
+   INNER JOIN @ilines il
+   ON i.InvoiceID = il.InvoiceID
+   GROUP By i.CustomerID
+   END
+   GO
+   ```
 
     This procedure uses a table variable populated from a user table and then joins it with a user table to provide output. T-SQL functions like COUNT and SUM are often seen in analytic queries that benefit from Intelligent Query Processing. Note: In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include TOP.
 
@@ -136,20 +135,20 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
 
     The script looks like the following
 
-    ```sql
-    USE master
-    GO
-    ALTER DATABASE wideworldimporters SET compatibility_level = 130
-    GO
-    USE WideWorldImporters
-    GO
-    SET NOCOUNT ON
-    GO
-    EXEC [Sales].[CustomerProfits]
-    GO 25
-    SET NOCOUNT OFF
-    GO
-    ```
+   ```sql
+   USE master
+   GO
+   ALTER DATABASE wideworldimporters SET compatibility_level = 130
+   GO
+   USE WideWorldImporters
+   GO
+   SET NOCOUNT ON
+   GO
+   EXEC [Sales].[CustomerProfits]
+   GO 25
+   SET NOCOUNT OFF
+   GO
+   ```
     The script will ensure the database is in a compatibility mode that is less than 150 so Intelligent Query Processing will NOT be enabled. The script also turns off rowcount messages to be returned to the client to reduce network traffic for this test. Then the script executes the stored procedure. Notice the syntax of **GO 25**. This is a client tool tip that says to run the batch 25 times (avoids having to construct a loop)
 
     Click the Run button to execute the script to observe the results. Choose the connection by clicking on the IP,PORT you created for the SQL Server container and click Connect.
@@ -175,20 +174,20 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
     Use the SQL container connection as you have done in previous steps. The script should look like this
 
 
-    ```sql
-    SE master
-    GO
-    ALTER DATABASE wideworldimporters SET compatibility_level = 150
-    GO
-    USE WideWorldImporters
-    GO
-    SET NOCOUNT ON
-    GO
-    EXEC [Sales].[CustomerProfits]
-    GO 25
-    SET NOCOUNT OFF
-    GO
-    ```
+   ```sql
+   USE master
+   GO
+   ALTER DATABASE wideworldimporters SET compatibility_level = 150
+   GO
+   USE WideWorldImporters
+   GO
+   SET NOCOUNT ON
+   GO
+   EXEC [Sales].[CustomerProfits]
+   GO 25
+   SET NOCOUNT OFF
+   GO
+   ```
     Notice this is the same script except database compatibility of 150 is used. This time, the query processor in SQL Server will enable table variable deferred compilation so a better query plan can be chosen
 
 9. Run the script and choose the SQL Server container connection. Go through the same steps as in Step 8 to analyze the results. The script should execute far faster than before. Your speeds can vary but should be 15 seconds or less.
@@ -230,25 +229,25 @@ Use the SQL container connection as you have done in previous steps. The script 
 The T-SQL statement to use the Query Store for this activity looks like the following
 
 
- ```sql
- USE WideWorldImporters
- GO
- SELECT qsp.query_id, qsp.plan_id, qsp.compatibility_level, AVG(qsrs.avg_duration)/1000 as avg_duration_ms, AVG(qsrs.avg_logical_io_reads) as avg_logical_io,CAST (qsp.query_plan as XML),qsqt.query_sql_text
- FROM sys.query_store_plan qsp
- INNER JOIN sys.query_store_runtime_stats qsrs
- ON qsp.plan_id = qsrs.plan_id
- INNER JOIN sys.query_store_runtime_stats_interval qsrsi
- ON qsrs.runtime_stats_interval_id = qsrsi.runtime_stats_interval_id
- AND qsrsi.start_time between DATEADD(HOUR, -1, GETDATE()) and GETDATE()
- INNER JOIN sys.query_store_query qsq
- ON qsp.query_id = qsq. query_id
- INNER JOIN sys.query_store_query_text qsqt
- ON qsq.query_text_id = qsqt.query_text_id
- AND query_sql_text LIKE '%Invoices%'
- GROUP BY qsp.query_id, qsp.plan_id, qsrs.avg_duration, qsp.compatibility_level, qsp.query_plan, query_sql_text, qsrs.last_execution_time
- ORDER BY qsrs.last_execution_time DESC, query_id DESC, qsp.plan_id DESC
- GO
- ```
+```sql
+USE WideWorldImporters
+GO
+SELECT qsp.query_id, qsp.plan_id, qsp.compatibility_level, AVG(qsrs.avg_duration)/1000 as avg_duration_ms, AVG(qsrs.avg_logical_io_reads) as avg_logical_io,CAST (qsp.query_plan as XML),qsqt.query_sql_text
+FROM sys.query_store_plan qsp
+INNER JOIN sys.query_store_runtime_stats qsrs
+ON qsp.plan_id = qsrs.plan_id
+INNER JOIN sys.query_store_runtime_stats_interval qsrsi
+ON qsrs.runtime_stats_interval_id = qsrsi.runtime_stats_interval_id
+AND qsrsi.start_time between DATEADD(HOUR, -1, GETDATE()) and GETDATE()
+INNER JOIN sys.query_store_query qsq
+ON qsp.query_id = qsq. query_id
+INNER JOIN sys.query_store_query_text qsqt
+ON qsq.query_text_id = qsqt.query_text_id
+AND query_sql_text LIKE '%Invoices%'
+GROUP BY qsp.query_id, qsp.plan_id, qsrs.avg_duration, qsp.compatibility_level, qsp.query_plan, query_sql_text, qsrs.last_execution_time
+ORDER BY qsrs.last_execution_time DESC, query_id DESC, qsp.plan_id DESC
+GO
+```
  To even the seasoned SQL user this query looks daunting. This activity is not intended for you to understand every details of how the query works but as an example of how to use the Query Store Dynamic Management Views (DMV) to analyze the performance differences for the stored procedure you used in Section 3.0.
 
  The query is designed to focus on the most recent execution of the query in the stored procedure CustomerProfits that has run faster with Intelligent Query Processing.
