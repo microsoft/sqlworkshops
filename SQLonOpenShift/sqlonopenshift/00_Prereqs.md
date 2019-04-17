@@ -100,7 +100,7 @@ You have access to the following projects and can switch between them with 'oc p
 Using project "default".
 </pre>
 
-You have now successfully logged into the OpenShift Cluster and can proceed with Module 01.
+You have now successfully logged into the OpenShift Cluster and can proceed with Next Steps below.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

@@ -364,9 +364,11 @@ In this activity, you have simulated a failover for your deployed Availability G
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 
-This is the final module of the workshop. For further study on the topics in this module, see
+This is the final module of the workshop. For further study on the topics in this module, see the following
 
-- xxxxxxx
+- [Overview of SQL Server Always On Availability Groups](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Always On Availability Groups for SQL Server Containers](https://docs.microsoft.com/en-us/sql/linux/sql-server-ag-kubernetes?view=sqlallproducts-allversions)
+- [Introducing the Operator Framework](https://blog.openshift.com/introducing-the-operator-framework/)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

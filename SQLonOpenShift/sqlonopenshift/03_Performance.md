@@ -278,7 +278,9 @@ GO
 
 As a **post workshop exercise** you can go through this activity in a SQL notebook. Uuse the File menu of Azure Data Studio (Open File option) to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
 
-In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that beneift from Intelligent Query Processing
+In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing.
+
+You can now proceed to Next Steps to learn about High Availability for SQL Server on OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

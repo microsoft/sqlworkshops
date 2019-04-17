@@ -56,7 +56,7 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
   <tr><td><i>oc</i></td><td>OpenShift CLI program. Similar to kubectl</td></tr>
   <tr><td><i>project</i></td><td>Equivalent to Kubernetes namespace</td></tr>
   <tr><td><i>Azure Data Studio<i></td><td>Tooling for SQL Server, HDFS, Kubernetes cluster management, T-SQL, R, Python, and SparkML languages</td></tr>
-  <tr><td>SQL Server Command Line Tools</td><td>utilities to connect and query SQL Server such as sqlcmd</td></tr>
+  <tr><td><i>SQL Server Command Line Tools<i></td><td>utilities to connect and query SQL Server such as sqlcmd</td></tr>
 
 </table>
 

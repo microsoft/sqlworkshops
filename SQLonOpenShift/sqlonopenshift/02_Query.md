@@ -267,6 +267,7 @@ The first T-SQL batch provides information about what sessions are connected to 
 
     You can now run T-SQL statement interactively with sqlcmd. By typing in a query and hitting Enter, you can type in the keyword **GO** and hit Enter to execute a query. Type in the keyword **exit** to leave sqlcmd.
 
+You can now proceed to Next Steps to learn more about SQL Server Performance.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

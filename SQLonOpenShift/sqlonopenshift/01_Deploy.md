@@ -105,6 +105,8 @@ A pod with a SQL Server container is now deployed and a load balancer service is
 
 <pre>Do not proceed to the next Module until you have a valid IP address for the EXTERNAL_IP value for the service. The value will say pending while it is being created. One some OpenShift cluster systems this process can take a few minutes.</pre>
 
+You can now proceed to Next Steps to Connect and Query SQL Server on OpenShift.
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 
