@@ -22,9 +22,24 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5-0">5.0 Deploy an Always On Availability Group on OpenShift with an operator</a></h2>
 
-In this module you will learn xxxxx
+In this module you will learn more about what, how, and why you would deploy and Operator that assists in deployment and management of an Always On Availability Group.
 
-Proceed to the Activity to learn these deployment steps.
+You learned in Module 04 the built-in capabilities of OpenShift to detect the health of the SQL Server container, pod, or node to provide High Availability.
+
+There are a few limitations with these capabilities:
+
+- OpenShift doesn't understand the health of the SQL Server engine
+- There is only one SQL Server instance so any restart of SQL Server within the container, in a new POD, or a new node could result in several minutes of downtime.
+
+Always On Availability Groups is the flagship HADR feature for SQL Server. It provides the fastest uptime capabilities using multiple SQL Server instances called *replicas*. You can read more about Always On Availability Groups at https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server
+
+Installing and configuring an Always On Availability Group can take some time and involve many steps, especially when it you need to configure a failover software package (such as Pacemaker) to help support automated failover capabilities. You can read more about Always On Availability Groups on Linux at https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-availability-group-overview
+
+In Module 04 your learned OpenShift has built-in high availability capabilities. SQL Server 2019 provides the necessary software to cooperate with OpenShift to provide high availability with Always On Availability Groups. In addition, SQL Server 2019 provides an *Operator* to assist in deployment of the Always On Availability Group and coordinate failover activities. Combined with LoadBalancer services, this provides a complete High Availability solution with less downtime and read capabilities on secondary replicas. The following diagram shows a visual of this design
+
+![AG on OpenShift](../graphics/AG_on_OpenShift.jpg)
+
+Proceed to the Activity to learn how to use an Operator to deploy and configure an Availability Group on OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -119,13 +134,13 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
     
     `oc get service`
 
-    You are now ready to create a database, add to the availability group, and add some data to ensure it is being synchronized to secondary replicas.
+    At this point, a SQL Server installation is complete with Always On Availability enabled and created for us. In the next module, you will learn how to add a database to the availability group, add data, and then query both the primary and secondary replicas.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5-1">5.1 Connect and Query a database in an Availability Group</a></h2>
 
-In this section, you will learn how to connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift.
+In this section, you will learn how to connect, add databases, add data, and query data to replicas in an Always On Availability Group deployed in OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
