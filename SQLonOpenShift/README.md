@@ -3,7 +3,6 @@
 
 # Workshop: SQL Server on OpenShift
 
-
 #### <i>A Microsoft Course from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
