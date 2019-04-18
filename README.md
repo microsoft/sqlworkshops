@@ -65,13 +65,13 @@ You can follow the steps below to clone individual files from a git repo using a
 
 Example:
 
-```
+<pre>
 git clone -n https://github.com/Microsoft/sqlworkshops
 cd sqlworkshops
 git config core.sparsecheckout true
 echo workshopname/*| out-file -append -encoding ascii .git/info/sparse-checkout
 git checkout
-```
+</pre>
 
 For more information about `sparse checkout please` visit [this](https://stackoverflow.com/questions/23289006/on-windows-git-error-sparse-checkout-leaves-no-entry-on-the-working-directory) stackoverflow thread.
 
