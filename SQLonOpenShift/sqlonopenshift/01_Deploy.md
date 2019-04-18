@@ -29,13 +29,13 @@ In the deployment of SQL Server on OpenShift, you will:
 - Create a PersistentVolumeClaim where SQL Server databases and files will be stored
 - Deploy a SQL Server container using a declarative .yaml file which will include a LoadBalancer service to connect to SQL Server.
 
-    Kubernetes and OpenShift are *declarative* systems. You program how to run and manage objects in OpenShift using a command line tool like oc. yaml files are used to declare how to build and manage objects through the Kubernetes API Server.
-   
-    In the activity for this module and others in the workshop you will often by *executing* yaml files using a command like
+ Kubernetes and OpenShift are *declarative* systems. You program how to run and manage objects in OpenShift using a command line tool like oc. yaml files are used to declare how to build and manage objects through the Kubernetes API Server.
 
-    `oc apply -f <file>.yaml`
+In the activity for this module and others in the workshop you will often complete exercises by *executing* yaml files using a command like
 
-    Inside each yaml file is declarations of objects to deploy or commands to execute.
+`oc apply -f <file>.yaml`
+
+Inside each yaml file is declarations of objects to deploy or commands to execute.
 
 Proceed to the Activity to learn these deployment steps.
 
@@ -89,7 +89,7 @@ Follow these steps to deploy SQL Server on OpenShift:
    <pre>deployment.apps/mssql-deployment created
    service/mssql-service created</pre>
 
-    Take a minute to browse the sqlserver.yaml file to see key pieces of how SQL Server was deployed including details of the container image, arguments, label to "tag" the deployment, what PersistentVolumeClaim to use (from the previous step) and a LoadBalancer service attached to this pod.
+    Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how SQL Server was deployed including details of the container image, arguments, label to "tag" the deployment, what PersistentVolumeClaim to use (from the previous step) and a LoadBalancer service attached to this pod.
 
     At this time, you have submitted a deployment, which is a logical collection of objects including a pod, container, and LoadBalancer service. OpenShift will schedule a SQL Server container in a pod on a node on the cluster. Proceed to the next step to check on whether the deployment was successful.
 
