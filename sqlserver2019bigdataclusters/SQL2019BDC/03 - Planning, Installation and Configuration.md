@@ -1,6 +1,6 @@
 ﻿![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -10,7 +10,7 @@
 
 In this workshop you'll cover using a Process and various Platform components to create a SQL Server big data cluster solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="00%20-%20prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 You'll cover the following topics in this Module:
 
@@ -30,11 +30,12 @@ You'll cover the following topics in this Module:
 
 <i>NOTE: The following Module is based on the Private Preview of the Microsoft SQL Server 2019 big data cluster feature. These instructions will change as the product is updated for the final release. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-guidance?view=sqlallproducts-allversions" target="_blank">The latest installation instructions are located here</a>.</i>
 
-A SQL Server big data cluster (BDC) is deployed onto a Kubernetes Cluster using the mssqlctl utility which creates the appropriate Docker Containers and other constructs. The installation uses various switches on the mssqlctl utility, and reads from several environment variables which you will define before you run the command. 
+A SQL Server big data cluster (BDC) is deployed onto a Kubernetes Cluster using the `mssqlctl` utility which creates the appropriate Docker Containers and other constructs for the system. The installation uses various switches on the `mssqlctl` utility, and reads from several environment variables which you will define before you run the command. Note that these environment variables will be replaced with a different system at General Availability (GA) release. 
 
 For planning, it is essential that you understand the SQL Server BDC components, and have a firm understanding of Kubernetes and TCP/IP networking. You should also have an understanding of how SQL Server and Apache Spark use the "Big Four"  (*CPU, I/O, Memory and Networking*). 
 
-Since the Kubernetes Cluster is often made up of Virtual Machines that host the Docker Images, they must be as large as possible. For the best possible performance, large physical machines that are tuned for optimal performance is a recommended physical architecture.
+Since the Kubernetes Cluster is often made up of Virtual Machines that host the Docker Images, they must be as large as possible. For the best possible performance, large physical machines that are tuned for optimal performance is a recommended physical architecture. The least viable production system is a Minimum of 3 Linux physical machines or virtual machines. The recommended configuration per machine is 8 CPUs, 32 GB of memory and 100GB of storage. This configuration would support only one or two users with a standard workload, and you would want to increase the system for each additional user or heavier workload. 
+
 
 You can deploy Kubernetes in three general ways:
  - In a Cloud Platform such as Azure Kubernetes Service (AKS)
@@ -47,9 +48,9 @@ Regardless of the Kubernetes target, the general steps for setting up the system
 
  - Set up Kubernetes cluster
 
- - Install the cluster configuration tool mssqlctl on the administration machine
+ - Install the cluster configuration tool `mssqlctl` on the administration machine
 
- - Deploy the SQL Server big data cluster on the Kubernetes cluster
+ - Deploy the SQL Server big data cluster onto the Kubernetes cluster
 
 In the sections that follow, you'll cover the general process for each of these deployments. The official documentation referenced above have the specific steps for each deployment, and the Activity section of this Module has the steps for deploying the BDC on AKS for the classroom enviornment.
 
@@ -107,7 +108,7 @@ With this background, you can find the <a href="https://docs.microsoft.com/en-us
 
 Minikube is a tool that simplifies creating and running Kubernetes locally. Minikube creates a single-node Kubernetes cluster inside a VM. It uses Hyper-V, VirtualBox, or other Hypervisor products to create and operate the cluster. 
 
-While SQL Server BDC can be installed on minikube, it requires at least 32GB of RAM to run, and really needs 64GB of RAM or more to perform any real testing. In any case, it is reserved only for testing or learning.
+While SQL Server BDC can be installed on minikube, it requires at least 32GB of RAM to run, and really needs 64GB of RAM or more to perform any real testing. In any case, it is reserved only for testing or training.
 
 Minikube supports the following Kubernetes features:
 
