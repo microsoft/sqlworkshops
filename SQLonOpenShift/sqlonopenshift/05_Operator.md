@@ -22,20 +22,20 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5-0">5.0 Deploy an Always On Availability Group on OpenShift with an operator</a></h2>
 
-In this module you will learn more about what, how, and why you would deploy and Operator that assists in deployment and management of an Always On Availability Group.
+In this module you will learn more about what, how, and why you would deploy an Operator that assists in deployment and management of an Always On Availability Group.
 
 You learned in Module 04 the built-in capabilities of OpenShift to detect the health of the SQL Server container, pod, or node to provide High Availability.
 
 There are a few limitations with these capabilities:
 
 - OpenShift doesn't understand the health of the SQL Server engine
-- There is only one SQL Server instance so any restart of SQL Server within the container, in a new POD, or a new node could result in several minutes of downtime.
+- There is only one SQL Server instance so any restart of SQL Server within the container, in a new pod, or a new node could result in several minutes of downtime.
 
 Always On Availability Groups is the flagship HADR feature for SQL Server. It provides the fastest uptime capabilities using multiple SQL Server instances called *replicas*. You can read more about Always On Availability Groups at https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server
 
-Installing and configuring an Always On Availability Group can take some time and involve many steps, especially when it you need to configure a failover software package (such as Pacemaker) to help support automated failover capabilities. You can read more about Always On Availability Groups on Linux at https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-availability-group-overview
+Installing and configuring an Always On Availability Group can take some time and involve many steps, especially when  you need to configure a failover software package (such as Pacemaker) to help support automated failover capabilities. You can read more about Always On Availability Groups on Linux at https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-availability-group-overview
 
-In Module 04 your learned OpenShift has built-in high availability capabilities. SQL Server 2019 provides the necessary software to cooperate with OpenShift to provide high availability with Always On Availability Groups. In addition, SQL Server 2019 provides an *Operator* to assist in deployment of the Always On Availability Group and coordinate failover activities. Combined with LoadBalancer services, this provides a complete High Availability solution with less downtime and read capabilities on secondary replicas. The following diagram shows a visual of this design
+In Module 04 your learned OpenShift has built-in high availability capabilities. SQL Server 2019 provides the necessary software to cooperate with OpenShift to provide high availability with Always On Availability Groups. In addition, SQL Server 2019 provides an *Operator* to assist in deployment of the Always On Availability Group and coordinate failover activities. This is non-shared storage solujtion as each SQL Server replic has its own storage. Combined with LoadBalancer services, this provides a complete High Availability solution with less downtime and read capabilities on secondary replicas. The following diagram shows a visual of this design
 
 ![AG on OpenShift](../graphics/AG_on_OpenShift.jpg)
 
@@ -47,13 +47,13 @@ Proceed to the Activity to learn how to use an Operator to deploy and configure 
 
 Follow these steps to deploy an Always On Availability Group on OpenShift using an operator.
 
-1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_Operator** folder.
+1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator** folder.
 
 2. First, create a project for this activity. Use the following command or execute the **step1_create_project.sh** script:
 
     `oc new-project ag1`
 
-    When this complete, you should see output like the following
+    When this completes, you should see output like the following
 
     <pre>Now using project "ag1" on server "https://masterdnsx5rquio6c54pu.eastus.cloudapp.azure.com:443".
 
@@ -80,7 +80,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
     `oc get pods`
 
-    The STATUS of the mssql-operator should be **Running**.
+    The STATUS of the mssql-operator should be **Running**. Don't proceed to the next step until the pod is running.
 
 4. Next, create a secret for the system administrator (sa) password and a password for the master key using the following command or the script **step3_generate_secret.sh**
 
@@ -90,7 +90,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
    <pre>secret/sql-secrets created</pre>
 
-5. Using the sqlserver.yaml file you will deploy the SQL Server instances for a primary and two secondary replicas. This will coordinate with the deployed operator to install a SQL Server Always On Availability Group configuration. No database will be deployed. That will be done in the next section of this Module. Run the following command or use the script **step4_apply_sqlserver.sh**
+5. Using the **sqlserver.yaml** file you will deploy the SQL Server instances for a primary and two secondary replicas. This will coordinate with the deployed operator to install a SQL Server Always On Availability Group configuration. No database will be deployed. That will be done in the next section of this Module. Run the following command or use the script **step4_apply_sqlserver.sh**
 
     `oc apply -f sqlserver.yaml --namespace ag1`
 
@@ -120,6 +120,17 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
    service/mssql3   LoadBalancer   172.30.6.212    23.96.53.245   1433:30611/TCP      4m</pre>
 
     Run the `oc get all` command until the pods and LoadBalancer services are in this state.
+   
+    Note: You will see some pods taht start with a name of mssql-initialize. You can ignore these. They are used to deploy the SQL Server Availability Group but may not be needed in the final design of the operator. 
+
+    In addition, notice that there are three objects from the oc get all output that look like this
+
+    <pre>NAME                      DESIRED   CURRENT   AGE
+   statefulset.apps/mssql1   1         1         43s
+   statefulset.apps/mssql2   1         1         40s
+   statefulset.apps/mssql3   1         1         37s</pre>
+
+    As part of the design for SQL Server Availability groups, a concept called a *statefulset* is used. A stateful set provides the capabilities to manage a set of pods that belong in a group like Availability Groups. You can read more about StatefulSets at https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/.
 
 6. Even though each SQL Server pod has a LoadBalancer service, you need to create a LoadBalancer service that will always point to the primary replica and a LoadBalancer service that will point to any secondary replicas. Execute the following command or the script **step5_apply_agservices.sh**
 
@@ -134,7 +145,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
     
     `oc get service`
 
-    At this point, a SQL Server installation is complete with Always On Availability enabled and created for us. In the next module, you will learn how to add a database to the availability group, add data, and then query both the primary and secondary replicas.
+    At this point, a SQL Server installation is complete with a Always On Availability enabled and created for use. In the next module, you will learn how to add a database to the availability group, add data, and then query both the primary and secondary replicas.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -146,7 +157,7 @@ Once you have an Always On Availability Group deployed on OpenShift, you will wa
 
 SQL Server provides T-SQL statements, such as `ALTER AVAILABILITY GROUP`, to interact and manage the Availability Group including adding one more databases. An Availability Group can have one more or databases and is the unit of failover.
 
-Once you have added your database to the availability group, you will create a database backup, which will initiate a concept called *direct seeding*. This process will send data to the secondary replicas making them in *sync*. You can now connect to the primary replica SQL Server and interact with it like any SQL Server database. You can also connect to the secondary replica(s) with a special connection option to read data. This allows you to offset read users (e.g. reporting users) from your primary SQL Server.
+Once you have added your database to the availability group, you will create a database backup, which will initiate a concept called *direct seeding*. This process will send data to the secondary replicas making them in *sync*. You can now connect to the primary replica SQL Server and interact with it like any SQL Server database. You can also connect to the secondary replica(s) with a special connection option to read data. This allows you to offload read users (e.g. reporting users) from your primary SQL Server.
 
 Proceed to the activity to see how this works.
 
@@ -156,7 +167,7 @@ Proceed to the activity to see how this works.
 
 Follow the steps in his activity to connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift.
 
-1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_Operator** folder.
+1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator** folder.
 
 2. T-SQL provides capabilities so you can see which SQL Servers instances are currently the primary vs secondary replica.
 
@@ -204,7 +215,7 @@ Follow the steps in his activity to connect, add databases, add data, and query 
 
 4. It's time to create a table in the database and add in data connected to the primary replica SQL Server. SQL Server will automatically send changes to secondary replicas.
 
-    Examine the T-SQL script **testag.sql** to see the table and data that will be added. Run the following command or execute the script **test8_testag.sh**
+    Examine the T-SQL script **testag.sql** to see the table and data that will be added. Run the following commands or execute the script **step8_testag.sh**
 
    `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
    `PORT=1433`<br>
@@ -215,9 +226,9 @@ Follow the steps in his activity to connect, add databases, add data, and query 
    <pre>Changed database context to 'testag'.
    (1 rows affected)</pre>
 
-5. Now you want to query the primary replica to see your data but also query secondary replicas to see if the changes were synchronized but also learn how to run read-only queries against secondary replicas, one of the benefits of using Availability Groups.
+5. Now you want to query the primary replica to see your data but also query secondary replicas to see if the changes were synchronized and also learn how to run read-only queries against secondary replicas, one of the benefits of using Availability Groups.
 
-    In order to do this, you need to know the LoadBalancer of the primary replica and secondary replica. So far, you have been using script to connect to the primary replica. You created in the previous section a LoadBalancer for the secondary replicas. But, since there are two secondary replicas, which one will be chosen. That is the benefit of the LoadBalancer service. You can have multiple users connect to the secondary replica LoadBalancer and these connections will be balanced across available replicas.
+    In order to do this, you need to know the LoadBalancer of the primary replica and secondary replica. So far, you have been using scripts to connect to the primary replica. You created in the previous section a LoadBalancer for the secondary replicas. But, since there are two secondary replicas, which one will be chosen?. That is the benefit of the LoadBalancer service. You can have multiple users connect to the secondary replica LoadBalancer and these connections will be balanced across available replicas.
 
     Consider the following T-SQL script you will use to query the data and to determine which SQL Server you are connected to
 
@@ -256,7 +267,7 @@ Follow the steps in his activity to connect, add databases, add data, and query 
          1 SQL Server 2019 is fast, secure, and highly available
    (1 rows affected)</pre>
 
-Now that you have successfully created a database, added it to the Availability Group,and synchronized data, you an proceed to the next section to test how a failover works.
+Now that you have successfully created a database, added it to the Availability Group, and synchronized data, you an proceed to the next section to test how a failover works.
 
 
 
@@ -268,7 +279,7 @@ In this section, you will learn how to simulate a failover of SQL Server in an A
 
 Since Availability Groups provide high availability and lower downtime due to its non-shared storage replica design, it is important to see a failover in action to understand the application experience.
 
-In previous sections of this module, you deployed an Availability Group using an operator. The operator also coordinates with *agents* in containers running in the same POD as the SQL Server replicas to detect failover conditions and if necessary trigger a failover. A failover will cause one of the synchronized secondary replicas to shift roles as a new primary replica. The previous primary replica, once it is healthy, can be synchronized and become a secondary replica.
+In previous sections of this module, you deployed an Availability Group using an operator. The operator also coordinates with *agents* in containers running in the same pod as the SQL Server replicas to detect failover conditions and if necessary trigger a failover. A failover will cause one of the synchronized secondary replicas to shift roles as a new primary replica. The previous primary replica, once it is healthy, can be synchronized and become a secondary replica.
 
 Proceed to the Activity to simulate a failover and test a new primary replica is active.
 
@@ -276,7 +287,7 @@ Proceed to the Activity to simulate a failover and test a new primary replica is
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Testing a failover of the Availability Group</a></b></p>
 
-Follow the steps in his activity to simulate a failover and see how a new secondary replica has switched roles to become a primary, yielding is almost no downtime to the application.
+Follow the steps in his activity to simulate a failover and see how a new secondary replica has switched roles to become a primary, resulting in almost no downtime to the application.
 
 1. From the last step in the previous section activity, the primary and secondary replicas were synchronized. Verify the replica state by running the following commands or the script **step6_check_replicas.sh**
 
@@ -292,7 +303,7 @@ Follow the steps in his activity to simulate a failover and see how a new second
    mssql2-0                       SECONDARY                      NULL
    mssql3-0                       SECONDARY                      NULL</pre>
 
- 2. If in your results, if the replica_server_name is mssql2-0 for the PRIMARY, you will need to edit the failover.yaml file. If not, you can skip to step 3.
+ 2. If in your results, if the replica_server_name is mssql2-0 for the PRIMARY, you will need to edit the **failover.yaml** file. If not, you can skip to step 3.
 
     The **failover.yaml** file declares how to manually trigger a failover to another replica but is setup so you must specify which replica to target as the new primary. The workshop was built so that mssql2-0 would be the new primary. In some rare cases, mssql2-0 might have been chosen as the original primary. If this is the case, you need to edit this part of the failover.yaml file and change the name mssql2-0 to mssql3-0
 
@@ -308,9 +319,9 @@ Follow the steps in his activity to simulate a failover and see how a new second
     You should see results like the following
    
     <pre>serviceaccount/manual-failover created
-role.rbac.authorization.k8s.io/manual-failover created
-rolebinding.rbac.authorization.k8s.io/manual-failover created
-job.batch/manual-failover created</pre>
+   role.rbac.authorization.k8s.io/manual-failover created
+   rolebinding.rbac.authorization.k8s.io/manual-failover created
+   job.batch/manual-failover created</pre>
 
 4. The failover should happen fairly quickly. You can run the following commands or script **step6_check_replicas.sh** to verify the new PRIMARY switch has occurred
 
@@ -327,7 +338,7 @@ job.batch/manual-failover created</pre>
    mssql3-0                       SECONDARY                      NULL
    (3 rows affected)</pre>
 
-5. Now run the following commands to see your data is still synchronized and by using the LoadBalancers the application has not changed even though you are connected to a new primary and secondary
+5. Now run the following commands or use the script **step9_queryag.sh** to see your data is still synchronized and by using the LoadBalancers the application has not changed even though you are connected to a new primary and secondary
 
     `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
     `PORT=1433`<br>
