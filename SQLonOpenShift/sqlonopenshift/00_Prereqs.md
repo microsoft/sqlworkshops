@@ -34,8 +34,8 @@ In order to go through the activities of this workshop you will need the followi
 
 1. A Linux bash shell
 2. The OpenShift CLI (oc.exe)
-3. Azure Data Studio - Minimum version is 1.5.2
-4. SQL Command Line Tools (sqlcmd)
+3. Azure Data Studio - Minimum version is 1.5.2. Install from https://docs.microsoft.com/en-us/sql/azure-data-studio/download
+4. SQL Command Line Tools (sqlcmd). Check the **For Further Study** section for links to install these tools.
 5. git client (only needed if you do not have the latest version of the workshop provided to you by the instructor)
 6. In addition, the client computer must be able to connect to the Internet to download a sample file or your instructor must provide it for you (WideWorldImporters-Full.bak)
 

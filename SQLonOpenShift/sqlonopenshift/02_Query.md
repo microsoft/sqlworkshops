@@ -24,7 +24,7 @@ You'll cover the following topics in this Module:
 
 SQL Server provides several tools to connect and execute queries. Applications can use a variety of languages including C++, .Net, node.js, and Java. To see examples of how to write applications to connect to SQL Server, visit https://aka.ms/sqldev.
 
-The simplest method to connect to SQL Server deployed on OpenShift is to use the command line toold **sqlcmd**, which is natively built for Windows, Linux, and MacOS systems. The Prerequisites for this workshop provided instructions for how to install the SQL Command Line tools including sqlcmd. In some deliveries of this workshop, sqlcmd may already be installed.
+The simplest method to connect to SQL Server deployed on OpenShift is to use the command line tool **sqlcmd**, which is natively built for Windows, Linux, and MacOS systems. The Prerequisites for this workshop provided instructions for how to install the SQL Command Line tools including sqlcmd. In some deliveries of this workshop, sqlcmd may already be installed.
 
 To connect to SQL Server, you need first know:
 
