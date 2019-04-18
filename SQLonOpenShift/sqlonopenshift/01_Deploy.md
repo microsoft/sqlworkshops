@@ -127,7 +127,7 @@ You can now proceed to Next Steps to Connect and Query SQL Server on OpenShift.
 - [Quickstart: Run SQL Server container images with Docker](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-linux-ver15&pivots=cs1-bash)
 - [Deploy a SQL Server container in Kubernetes with Azure Kubernetes Services (AKS)](https://docs.microsoft.com/en-us/sql/linux/tutorial-sql-server-containers-kubernetes?view=sql-server-2017)
 - [How Deployments Work in OpenShift](https://docs.openshift.com/online/dev_guide/deployments/how_deployments_work.html)
-- [Using a LoadBalancer in OpenShift](https://docs.openshift.com/container-platform/3.11/dev_guide/expose_service/expose_internal_ip_load_balancer.html')
+- [Using a LoadBalancer in OpenShift](https://docs.openshift.com/container-platform/3.11/dev_guide/expose_service/expose_internal_ip_load_balancer.html)
 - [Using PersistentVolumeClaims in OpenShift](https://docs.openshift.com/container-platform/3.11/dev_guide/persistent_volumes.html)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
