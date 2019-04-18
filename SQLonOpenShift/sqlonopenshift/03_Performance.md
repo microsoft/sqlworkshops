@@ -31,7 +31,7 @@ The following is a diagram showing the features of Intelligent Query Processing 
 
 ![iqp diagram](../graphics/IQP_diagram.png)
 
-You can read the documentation for a description and example of all of these features at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing
+You can read the documentation for a description and example of all of these features at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing.
 
 **Note**: One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150.
 
@@ -47,15 +47,15 @@ In this activity, you will learn how to use the built-in capabilities of Intelli
 
 You have been provided a stored procedure called **CustomerProfits** which you will deploy in the **Facts** schema of the WideWorldImporters database. The stored procedure uses a concept called a table variable to store interim results from a user table and then use that table variable to join with other data in the WideWorldImporters database. In past releases of SQL Server, this design pattern can be a problem as SQL Server would always estimate the table variable only contains 1 row of data. This can cause issues with building the optimal query plan for fast performance. 
 
-SQL Server 2019 Intelligent Query Processing includes a capability called deferred table variable compilation to improve the performance of stored procedures like these by ensuring the stored procedure is created in a database with a compatibility level of 150, which is the default for SQL Server 2019.
+SQL Server 2019 Intelligent Query Processing includes a capability called *deferred table variable compilation* to improve the performance of stored procedures like these by ensuring the stored procedure is created in a database with a compatibility level of 150, which is the default for SQL Server 2019.
 
 The WideWorldImporters database example was created with SQL Server 2016 which had a default database compatibility level of 130. When a database is restored from a previous version oF SQL Server, the compatibility level of the database is preserved to help reduce the risk of upgrades.
 
-You will observe the performance of the CustomerProfits stored procedure with database compatibility level of 130 on SQL Server 2019. You will the compare the performance of the same procedure with no changes with the database compatibility of 150 which will enable the query processor to use deferred table variable compilation.
+You will observe the performance of the CustomerProfits stored procedure with database compatibility level of 130 on SQL Server 2019. You will then compare the performance of the same procedure with no changes with a database compatibility of 150 which will enable the query processor to use deferred table variable compilation.
 
 You will be running a series of commands and SQL Server T-SQL statements to observe performance.
 
-1. To connect to the SQL Server deployed on OpenShift, run the following command to get the IP address and port of the Load Balancer service associated with the SQL Server container
+1. To connect to the SQL Server deployed on OpenShift, run the following command to get the IP address and port of the LoadBalancer service associated with the SQL Server container.
 
     `oc get service mssql-service`
 
@@ -64,7 +64,7 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
    <pre>NAME            TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)           AGE
    mssql-service   LoadBalancer   172.30.166.56   168.61.45.217   31433:30738/TCP   1h</pre>
 
-   Take note of the EXTERNAL-IP and PORT. You will use these to connect to SQL Server throughout this module.
+   Take note of the EXTERNAL-IP and PORT (the number before the ":"). You will use these to connect to SQL Server throughout this module.
 
 2. Launch the Azure Data Studio application. Look for the icon
 
@@ -121,7 +121,7 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
    GO
    ```
 
-    This procedure uses a table variable populated from a user table and then joins it with a user table to provide output. T-SQL functions like COUNT and SUM are often seen in analytic queries that benefit from Intelligent Query Processing. Note: In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include TOP.
+    This procedure uses a table variable populated from a user table and then joins it with a user table to provide output. T-SQL functions like COUNT and SUM are often seen in analytic queries that benefit from Intelligent Query Processing. **Note**: In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include TOP.
 
     Click the Run button to execute the script. You will be prompted to pick the connection to execute the script. Select the connection you created in Step 4.
 
@@ -129,7 +129,7 @@ You will be running a series of commands and SQL Server T-SQL statements to obse
 
     ![proc created results](../graphics/proc_created_results.jpg)
 
-7. You have been told this procedure executes fairly quickly with a single execution in a few seconds but over several iterations the total duration, over 20 seconds, is not acceptable to the application.
+7. You have been told this procedure executes fairly quickly with a single execution in a few seconds but over several iterations, the total duration is over 20 seconds, which is not acceptable to the application.
 
     Open the script **repro130.sql** by using the File Menu/Open File option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
 
@@ -198,7 +198,9 @@ The SQL notebook experience looks like the following:
 
 ![03 IQP Table Variable Notebook](../graphics/03_IQP_Table_Variable_Notebook.jpg)
 
-Read each step in the notebook and use the Play button to execute each T-SQL script. Use the scrollbar to scroll through the notebook. The rest of the steps in this section of the Module is for the experience without using a notebook. Proceed to section 4.1.
+Read each step in the notebook and use the Play button to execute each T-SQL script. Use the scrollbar to scroll through the notebook. 
+
+The rest of the steps in this section of the Module is for the experience without using a notebook. Proceed to section 3.1.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -206,11 +208,11 @@ Read each step in the notebook and use the Play button to execute each T-SQL scr
 
 In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Section 3.0 of this Module.
 
-The Query Store is built into the query processing engine, enabled using an option for each database in SQL Server. Once enabled performance statistics for queries are cached and stored in the SQL user database so they are persisted across server restarts.
+The Query Store is built into the query processing engine, enabled using an option for each database in SQL Server. Once enabled, performance statistics for queries are cached and stored in the SQL user database so they are persisted across server restarts.
 
 In addition, the Query Store comes with a series of catalog and dynamic management views to gain insight into recorded query performance.
 
-You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -220,13 +222,9 @@ The WideWorldImporters sample database that you restored in Module 02 has the Qu
 
 Go through the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 vs 150.
 
-Use the SQL Server connection details you learned from the activity in Section 3.0
-
 Open the script **querystore.sql** by using the File Menu/Open File option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
 
-Use the SQL container connection as you have done in previous steps. The script should look like this
-
-The T-SQL statement to use the Query Store for this activity looks like the following
+Use the SQL container connection as you have done in previous steps. The T-SQL statement to use the Query Store for this activity looks like the following
 
 
 ```sql
@@ -274,7 +272,7 @@ GO
 
  ![IQP query plan 150](../graphics/IQP_query_plan_150.jpg)
 
- In this example SQL has recognized the table variable has more than 1 row and has chosen a different join method called a hash join. Furthermore, it has injected into the plan the concept of an **Adaptive Join** so that if there is small enough rowset in the table variable it could dynamically and automatically choose a Nested Loops Join. What is not seen from this diagram (which you can see from the properties detail in the XML plan) that is the query processor is using a third concept called batch mode processing on rowstore (rowstore is normal table as opposed to a columnstore).
+ In this example SQL has recognized the table variable has more than 1 row and has chosen a different join method called a hash join. Furthermore, it has injected into the plan the concept of an **Adaptive Join** so that if there is small enough rowset in the table variable it could dynamically and automatically choose a Nested Loops Join. What is not seen from this diagram (which you can see from the properties detail in the XML plan) that is the query processor is using a third concept called **batch mode processing on rowstore** (rowstore is normal table as opposed to a columnstore).
 
 As a **post workshop exercise** you can go through this activity in a SQL notebook. Uuse the File menu of Azure Data Studio (Open File option) to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
 
