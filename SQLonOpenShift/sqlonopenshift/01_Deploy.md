@@ -68,7 +68,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
    <pre>secret/mssql created</pre>
 
-    **IMPORTANT: Take note of the value for SA_PASSWORD. The scripts in all modules use this password but you may need it to interactively work with SQL Server.**
+    **IMPORTANT: Take note of the value for SA_PASSWORD (without the quotes). The scripts in all modules use this password but you may need it to interactively work with SQL Server.**
 
 4. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step3_storage.sh** script:
 
@@ -103,7 +103,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     `oc get all`
 
-     When everything about this deployment is successful, the STATUS of the pod is **Running** and the LoadBalancer service has a valid IP address for EXTERNAL-IP.
+     It is possible for the deployment to be successful but the LoadBalancer is not created. When everything about this deployment is successful, the STATUS of the pod is **Running** and the LoadBalancer service has a valid IP address for EXTERNAL-IP.
 
 7. The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the ERRORLOG is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the ERRORLOG or execute the script **step5_get_errorlog.sh**:
 
