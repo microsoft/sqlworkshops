@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -83,7 +83,7 @@ The solution includes the following technologies - although you are not limited 
   <tr><td>Azure Kubernetes Service (AKS)</td><td>Kubernetes as a Service</td></tr>
   <tr><td><i>Apache HDFS</i></td><td>Scale-out storage subsystem</td></tr>
   <tr><td><i>Apache Knox</i></td><td>The Knox Gateway provides a single access point for all REST interactions, used for security</td></tr>
-  <tr><td><i>Apache Livy</i></td><td>Tob submission system for Apache Spark</td></tr>
+  <tr><td><i>Apache Livy</i></td><td>Job submission system for Apache Spark</td></tr>
   <tr><td><i>Apache Spark</i></td><td>In-memory large-scale, scale-out data processing architecture used by SQL Server </i></td></tr>
   <tr><td><i>Python, R, Java, SparkML</i></td><td><i>ML/AI programming languages used for Machine Learning and AI Model creation</i></td></tr>
   <tr><td>Azure Data Studio</td><td>Tooling for SQL Server, HDFS, Kubernetes cluster management, T-SQL, R, Python, and SparkML languages</td></tr>

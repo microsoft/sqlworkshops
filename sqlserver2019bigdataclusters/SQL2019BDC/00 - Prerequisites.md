@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -89,7 +89,7 @@ Get-WindowsUpdate
 Install-WindowsUpdate
 </pre>
 
-*Note: If you get an error during this update process, evaluate it to see if it is fatal. You may receive certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
+*Note: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Install Chocolatey Windows package Manager</p>
 
@@ -109,7 +109,7 @@ Your environment variables control how the cluster will be built.
 
 The variables for **name**, **password** and **e-mail** for the big data cluster is provided to you when you request access to the Early Adopter program. 
 
-*(Note that in production, you'll set these environment variables permanently using the Control Panel or by adding them with a Registry command, and may be handled by an improved installation experience)*
+*(Note that in production, you'll set these environment variables permanently using the Control Panel or by adding them with a Registry command, and will be handled by an improved and secure installation experience)*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 4: Install Azure CLI</b></p>
 
@@ -138,9 +138,7 @@ Note: Python can install in multiple locations based on various conditions. To s
 
 `where python`
 
-(In Linux, `which Python`)
-
-In most cases, Choclaty will add Python and pip to your path. Otherwise, <a href="https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path" target="_blank">you may want to find and add it manually</a>. 
+Note that the Chocolatey Package Manager should have set the Path variable for Python and pip, but if they are not in your path <a href="https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path" target="_blank">you can learn how to set that here</a>. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 6: Install kubectl</b></p>
 
@@ -160,6 +158,8 @@ the `mssqlctl` program then deploys the SQL Server big data cluster environment 
 You must delete the old version before the class. It is updated quite frequently during the preview phase.
 
 You may need to run these steps in CMD rather than PowerShell.
+
+You may have `pip3` instead of `pip` as the command. 
 </i>
 
 
@@ -172,9 +172,14 @@ choco upgrade kubernetes-cli
 
 python -m pip install --upgrade pip
 
+REM for 2.7 and lower:
 pip uninstall mssqlctl
 
-pip install --extra-index-url https://private-repo.microsoft.com/python/ctp-2.2 mssqlctl
+REM for 2.3:
+pip uninstall -r  https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
+
+pip install -r  https://private-repo.microsoft.com/python/ctp-2.4/mssqlctl/requirements.txt
+
 </pre>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 8: Install Azure Data Studio and Extensions</b></p>

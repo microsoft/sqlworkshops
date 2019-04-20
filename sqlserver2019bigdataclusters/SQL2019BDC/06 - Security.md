@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.2) 
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3) 
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -10,7 +10,7 @@
 
 In this workshop you'll cover using a Process and and various Platform components to create a SQL Server big data cluster solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="00%20-%20prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 You'll cover the following topics in this Module:
 
@@ -27,6 +27,8 @@ You'll cover the following topics in this Module:
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6-0">6.0 Managing SQL Server big data cluster Security</a></h2>
 
 Authentication is the process of verifying the identity of a user or service and ensuring they are who they are claiming to be. Authorization refers to granting or denying of access to specific resources based on the requesting user's identity. This step is performed after a user is identified through authentication.
+
+*NOTE: Security will change prior to the General Availability (GA) Release. Active Directory integration is planned for production implementations.*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -56,7 +58,7 @@ You can see these endpoints in this diagram:
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6-2">6.2 Authentication and Authorization</a></h2>
 
 When you create the cluster, a number of logins are created. Some of these logins are for services to communicate with each other, and others are for end users to access the cluster.
-End-user passwords are currently set using environment variables. These are passwords that SQL administrators and cluster administrators use to access services:
+Non-SQL Server End-user passwords currently are set using environment variables. These are passwords that cluster administrators use to access services:
 
 <table>
 
@@ -69,7 +71,6 @@ End-user passwords are currently set using environment variables. These are pass
   
 </table>
 
-Note that in the final release, these will not be stored as environment variables but in a more secure fashion.. 
 
 Intra-cluster authentication
 Upon deployment of the cluster, a number of SQL logins are created:
@@ -88,7 +89,7 @@ In this activity, you will review the endpoints exposed on the cluster.
 
 <b>Steps</b>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-security?view=sqlallproducts-allversions" target="_blank">Open this reference, and follow the instructions you see for the <b>Service Endpoints</b> section</a>. This shows the addresses and ports exposed to the end-users.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-security?view=sqlallproducts-allversions" target="_blank">Open this reference, and read the information you see for the <b>Service Endpoints</b> section</a>. This shows the addresses and ports exposed to the end-users.</p>
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>

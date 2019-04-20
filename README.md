@@ -1,10 +1,11 @@
 <img style="float: right;" src="./graphics/solutions-microsoft-logo-small.png">
 
 # SQL Server Workshops
+## (https://aka.ms/sqlworkshops)
 
 This site is a map of learning content produced by and curated by the SQL Server team in Microsoft Engineering. These materials are meant to be instructor-led, but you can work through the materials on a test system on your own if desired. You can view all materials directly in this interface, or you can [view the raw github site for this content here](https://github.com/Microsoft/sqlworkshops). 
 
-See the license information at the bottom of this README.md file.
+*See the license information at the bottom of this README.md file*
 
 Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sqlworkshops/issues) and we'll try and fix it.
 
@@ -29,12 +30,11 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [In Development](https://github.com/Microsoft/sqlworkshops)
 
-## Resources, Source Slide Decks and Code Examples
+## Presentation Materials, Code, and References
 
-- [PowerPoint Decks from SQL Server Team Sessions](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#decks)
-- [Sample Code](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#code)
-- [References and Resources](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#links)
-
+- [Presentation Materials - *(PowerPoint Decks, etc.)*](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#decks)
+- [Example Code](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#code)
+- [References and Tools from the Microsoft SQL Server Team](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#links)
 
 ## Learning how to self-learn
 
@@ -66,13 +66,13 @@ You can follow the steps below to clone individual files from a git repo using a
 
 Example:
 
-```
+<pre>
 git clone -n https://github.com/Microsoft/sqlworkshops
 cd sqlworkshops
 git config core.sparsecheckout true
 echo workshopname/*| out-file -append -encoding ascii .git/info/sparse-checkout
 git checkout
-```
+</pre>
 
 For more information about `sparse checkout please` visit [this](https://stackoverflow.com/questions/23289006/on-windows-git-error-sparse-checkout-leaves-no-entry-on-the-working-directory) stackoverflow thread.
 
