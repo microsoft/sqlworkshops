@@ -1,7 +1,7 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Workshop: SQL Server on OpenShift
+# Workshop: SQL Server 2019 on OpenShift
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -9,13 +9,19 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="graphics/textbubble.png"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *SQL Server on OpenShift*. In this workshop, you'll learn how to deploy and use SQL Server containers on an OpenShift cluster.
+Welcome to this Microsoft solutions workshop on *SQL Server 2019 on OpenShift*. In this workshop, you'll learn how to deploy and use SQL Server containers on an OpenShift cluster.
 
 You will learn the basics of deployment, connection, query execution, performance, high availability, operators, and Always On Availability Groups.
 
+This workshop does not cover the basics of OpenShift or the OpenShift architecture. You will interact with an OpenShift cluster using the OpenShift CLI program `oc` and use the concepts of projects, deployments, pods, labels, PersistentVolumeClaims, and LoadBalancer services as you deploy and use SQL Server on OpenShift. After completing the workshop, you can use the following resources to learn more about the basics of OpenShift and architecture:
+
+- [Getting Started with OpenShift](https://docs.openshift.com/container-platform/3.11/getting_started/index.html)
+- [The OpenShift Archiecture](https://docs.openshift.com/container-platform/3.11/architecture/index.html)
+- [Try OpenShift for Free with OpenShift Online](https://www.openshift.com/trial/)
+
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
-The workshop is currently built to support SQL Server on OpenShift 3.11. A future version of the course will support OpenShift 4.0
+The workshop is currently built to support SQL Server on OpenShift 3.11 and uses SQL Server 2019 Preview components. A future version of the course will support OpenShift 4.0 with updates for SQL Server 2019 when it becomes generally avaialble.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -68,11 +74,11 @@ The workshop is currently built to support SQL Server on OpenShift 3.11. A futur
 
 To complete this workshop you will need the following:
 
-- A client computer connected to the Internet that has can run a Linux shell and can run SQL Server command line tools.
+- A client computer connected to the Internet that has a Linux shell and can run SQL Server command line tools.
 - Access to a OpenShift 3.11 cluster
 - Access to all the scripts provided from this workshop from the GitHub repo.
 
-You might be taking this workshop from an instructor who will provide access to an OpenShift cluster.
+You might be taking this workshop from an instructor who will provide access to an OpenShift cluster and possibly a client workstation with all the tools and files installed.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> 
 <h3>Setup</h3>
@@ -97,9 +103,10 @@ This workshop uses OpenShift, SQL Server 2019, Azure Data Studio, SQL Command Li
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2><br>
 
 - [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/rgward/ModernizeYourDatabases2019)
+- [The OpenShift Interactive Learning Portal](https://learn.openshift.com/)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
