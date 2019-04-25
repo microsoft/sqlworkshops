@@ -18,6 +18,8 @@ You'll cover the following topics in this Module:
   
 </dl>
 
+<pre>Note: If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again. If you need to redeploy the SQL Server container and pod, go back to the Activity in Module 1, run the cleanup.sh script and follow all steps in the Module.</pre>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2-0">2.0 Connect to SQL Server</a></h2>
