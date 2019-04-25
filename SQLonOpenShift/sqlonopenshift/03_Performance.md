@@ -17,6 +17,8 @@ You'll cover the following topics in this Module:
   
 </dl>
 
+<pre>Note: If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again. If you need to redeploy the SQL Server container and pod, go back to the Activity in Module 1, run the cleanup.sh script and follow all steps in the Module. Then you will need to go through the steps in Module 2 to restore the WideWorldImporters database.</pre>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">3.0 SQL Server Intelligent Query Processing</a></h2>
