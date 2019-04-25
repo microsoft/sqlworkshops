@@ -45,6 +45,8 @@ Proceed to the Activity to learn these deployment steps.
 
 Follow these steps to deploy SQL Server on OpenShift:
 
+<pre>Note: At any point in this Module if you need to "start over", use the script cleanup.sh to delete the project and go back to Step 1.</pre>
+
 1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy** folder.
 
 2. You should have already logged into the OpenShift cluster using instructions from the Prerequisites.

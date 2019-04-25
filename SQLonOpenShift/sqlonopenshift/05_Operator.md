@@ -39,6 +39,8 @@ In Module 04 your learned OpenShift has built-in high availability capabilities.
 
 ![AG on OpenShift](../graphics/AG_on_OpenShift.jpg)
 
+<pre>**NOTE: The components used for this Module as of April 2019 are preview software and can not be used for production purposes. Once production version of these components are available the workshop will be updated.**</pre>
+
 Proceed to the Activity to learn how to use an Operator to deploy and configure an Availability Group on OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
