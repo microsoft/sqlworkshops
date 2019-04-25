@@ -45,7 +45,11 @@ Follow these steps to connect to SQL Server deployed on OpenShift:
 
 1. Open a shell prompt and change to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query** directory.
 
-2. The most fundamental method to connect to SQL Server is to use sqlcmd and execute the T-SQL query SELECT @@version to determine the version of SQL Server installed. Think of this as the *Hello World* test of SQL Server. Execute the following commands from your shell prompt or use the script **step1_test_sql.sh**:<br><br>
+2. Ensure your scripts are executable by running the following command (depending on your Linux shell and client you may need to preface this with sudo)
+
+    `chmod u+x *.sh`
+
+3. The most fundamental method to connect to SQL Server is to use sqlcmd and execute the T-SQL query SELECT @@version to determine the version of SQL Server installed. Think of this as the *Hello World* test of SQL Server. Execute the following commands from your shell prompt or use the script **step1_test_sql.sh**:<br><br>
 `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`<br>
 `PORT=31433`<br>
 `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT @@version"`

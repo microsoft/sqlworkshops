@@ -56,7 +56,11 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
 1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator** folder.
 
-2. First, create a project for this activity. Use the following command or execute the **step1_create_project.sh** script:
+2. Ensure your scripts are executable by running the following command (depending on your Linux shell and client you may need to preface this with sudo)
+
+    `chmod u+x *.sh`
+
+3. First, create a project for this activity. Use the following command or execute the **step1_create_project.sh** script:
 
     `oc new-project ag1`
 
@@ -70,7 +74,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
    to build a new example application in Ruby.</pre>
 
-3. Create the SQL Server operator by executing the following command or execute the **step2_apply_operator.sh** script:
+4. Create the SQL Server operator by executing the following command or execute the **step2_apply_operator.sh** script:
 
     `oc apply -f operator.yaml --namespace ag1`
 
@@ -89,7 +93,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
     The STATUS of the mssql-operator should be **Running**. Don't proceed to the next step until the pod is running.
 
-4. Next, create a secret for the system administrator (sa) password and a password for the master key using the following command or the script **step3_generate_secret.sh**
+5. Next, create a secret for the system administrator (sa) password and a password for the master key using the following command or the script **step3_generate_secret.sh**
 
     `oc create secret generic sql-secrets --from-literal=sapassword="Sql2019isfast" --from-literal=masterkeypassword="Sql2019isfast"  --namespace ag1`
 
@@ -97,7 +101,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
    <pre>secret/sql-secrets created</pre>
 
-5. Using the **sqlserver.yaml** file you will deploy the SQL Server instances for a primary and two secondary replicas. This will coordinate with the deployed operator to install a SQL Server Always On Availability Group configuration. No database will be deployed. That will be done in the next section of this Module. Run the following command or use the script **step4_apply_sqlserver.sh**
+6. Using the **sqlserver.yaml** file you will deploy the SQL Server instances for a primary and two secondary replicas. This will coordinate with the deployed operator to install a SQL Server Always On Availability Group configuration. No database will be deployed. That will be done in the next section of this Module. Run the following command or use the script **step4_apply_sqlserver.sh**
 
     `oc apply -f sqlserver.yaml --namespace ag1`
 
@@ -139,7 +143,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
     As part of the design for SQL Server Availability groups, a concept called a *statefulset* is used. A stateful set provides the capabilities to manage a set of pods that belong in a group like Availability Groups. You can read more about StatefulSets at https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/.
 
-6. Even though each SQL Server pod has a LoadBalancer service, you need to create a LoadBalancer service that will always point to the primary replica and a LoadBalancer service that will point to any secondary replicas. Execute the following command or the script **step5_apply_agservices.sh**
+7. Even though each SQL Server pod has a LoadBalancer service, you need to create a LoadBalancer service that will always point to the primary replica and a LoadBalancer service that will point to any secondary replicas. Execute the following command or the script **step5_apply_agservices.sh**
 
     `oc apply -f ag_services.yaml --namespace ag1`
     

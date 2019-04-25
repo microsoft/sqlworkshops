@@ -51,7 +51,11 @@ Follow these steps to deploy SQL Server on OpenShift:
 
 2. You should have already logged into the OpenShift cluster using instructions from the Prerequisites.
 
-3. If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script.
+3. Ensure your scripts are executable by running the following command (depending on your Linux shell and client you may need to preface this with sudo)
+
+    `chmod u+x *.sh`
+
+4. If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script.
 
     `oc new-project mssql`
 
@@ -62,7 +66,7 @@ Follow these steps to deploy SQL Server on OpenShift:
    oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
    to build a new example application in Ruby.</pre>
 
-3. Create a secret to store the System Administrator (sa) password. For this workshop, you will be connecting as the sa login. In production SQL Server environments, you would not normally use the sa login. Use the following command or execute the **step2_create_secret.sh** script:
+5. Create a secret to store the System Administrator (sa) password. For this workshop, you will be connecting as the sa login. In production SQL Server environments, you would not normally use the sa login. Use the following command or execute the **step2_create_secret.sh** script:
 
     `oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2019isfast"`
 
@@ -72,7 +76,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     **IMPORTANT: Take note of the value for SA_PASSWORD (without the quotes). The scripts in all modules use this password but you may need it to interactively work with SQL Server.**
 
-4. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step3_storage.sh** script:
+6. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step3_storage.sh** script:
 
     **Note**: The PersistentVolumeClaim created assumes the default StorageClass of the OpenShift cluster.
 
@@ -82,7 +86,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
    <pre>persistentvolumeclaim/mssql-data created</pre>
 
-5. Deploy SQL Server using the following command or the **step4_deploy_sql.sh** script:
+7. Deploy SQL Server using the following command or the **step4_deploy_sql.sh** script:
 
     `oc apply -f sqldeployment.yaml`
 
@@ -95,7 +99,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
     At this time, you have submitted a deployment, which is a logical collection of objects including a pod, container, and LoadBalancer service. OpenShift will schedule a SQL Server container in a pod on a node on the cluster. Proceed to the next step to check on whether the deployment was successful.
 
-6. Verify the SQL Server deployment has succeeded by running the following command:
+8. Verify the SQL Server deployment has succeeded by running the following command:
 
     `oc get deployment mssql-deployment`
 
@@ -107,7 +111,7 @@ Follow these steps to deploy SQL Server on OpenShift:
 
      It is possible for the deployment to be successful but the LoadBalancer is not created. When everything about this deployment is successful, the STATUS of the pod is **Running** and the LoadBalancer service has a valid IP address for EXTERNAL-IP.
 
-7. The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the ERRORLOG is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the ERRORLOG or execute the script **step5_get_errorlog.sh**:
+9. The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the ERRORLOG is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the ERRORLOG or execute the script **step5_get_errorlog.sh**:
 
     `POD=$(oc get pods | grep mssql | awk {'print $1'})`<br>
 `oc logs $POD`
