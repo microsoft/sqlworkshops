@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server on OpenShift
+# Workshop: SQL Server 2019 on OpenShift
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -67,7 +67,7 @@ Proceed to the Activity to go through the prerequisites.
 
     ![copy login command](../graphics/OpenShift_Copy_Login.jpg)
 
-8. You now have on your clipboard a complete oc login sytnax with a token. Open up a shell and paste in the copy (right click your mouse)
+8. You now have on your clipboard a complete oc login syntax with a token. Open up a shell and paste in the copy (right click your mouse)
 
     The command should look something like this
 

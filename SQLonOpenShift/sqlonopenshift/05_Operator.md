@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server on OpenShift
+# Workshop: SQL Server 2019 on OpenShift
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -17,6 +17,11 @@ You'll cover the following topics in this Module:
   <dt><a href="#5-2">5.2 Testing a failover of the Availability Group</a></dt>
   
 </dl>
+
+<pre>IMPORTANT: The components used for this Module as of April 2019 are preview software and can not be used for production purposes. Once production version of these components are available the workshop will be updated.</pre>
+
+
+<pre>Note: If at anytime during the Activities of this Module you need to "start over" you can execute the step11_cleanup.sh script. Then you can start again with the first activity in section 5.0</pre>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,7 +40,7 @@ Always On Availability Groups is the flagship HADR feature for SQL Server. It pr
 
 Installing and configuring an Always On Availability Group can take some time and involve many steps, especially when  you need to configure a failover software package (such as Pacemaker) to help support automated failover capabilities. You can read more about Always On Availability Groups on Linux at https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-availability-group-overview
 
-In Module 04 your learned OpenShift has built-in high availability capabilities. SQL Server 2019 provides the necessary software to cooperate with OpenShift to provide high availability with Always On Availability Groups. In addition, SQL Server 2019 provides an *Operator* to assist in deployment of the Always On Availability Group and coordinate failover activities. This is non-shared storage solujtion as each SQL Server replic has its own storage. Combined with LoadBalancer services, this provides a complete High Availability solution with less downtime and read capabilities on secondary replicas. The following diagram shows a visual of this design
+In Module 04 your learned OpenShift has built-in high availability capabilities. SQL Server 2019 provides the necessary software to cooperate with OpenShift to provide high availability with Always On Availability Groups. In addition, SQL Server 2019 provides an *Operator* to assist in deployment of the Always On Availability Group and coordinate failover activities. This is non-shared storage solution as each SQL Server replica has its own storage. Combined with LoadBalancer services, this provides a complete High Availability solution with less downtime and read capabilities on secondary replicas. The following diagram shows a visual of this design
 
 ![AG on OpenShift](../graphics/AG_on_OpenShift.jpg)
 
@@ -46,6 +51,8 @@ Proceed to the Activity to learn how to use an Operator to deploy and configure 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Deploy an Always On Availability Group on OpenShift with an operator</a></b></p>
 
 Follow these steps to deploy an Always On Availability Group on OpenShift using an operator.
+
+<pre>STOP: If you have gone through all the activities in Modules 1-4, and you are running on a single node OpenShift cluster, you may not have enough resources to do the activities in this Module if the SQL Server you deployed in Module 1 still is running. Therefore, be sure and cleanup all previous resources by executing step6_cleanup.sh in Module 04.</pre>
 
 1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator** folder.
 
@@ -121,7 +128,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
     Run the `oc get all` command until the pods and LoadBalancer services are in this state.
    
-    Note: You will see some pods taht start with a name of mssql-initialize. You can ignore these. They are used to deploy the SQL Server Availability Group but may not be needed in the final design of the operator. 
+    Note: You will see some pods that start with a name of mssql-initialize. You can ignore these. They are used to deploy the SQL Server Availability Group but may not be needed in the final design of the operator.
 
     In addition, notice that there are three objects from the oc get all output that look like this
 

@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server on OpenShift
+# Workshop: SQL Server 2019 on OpenShift
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -44,6 +44,8 @@ Proceed to the Activity to learn these deployment steps.
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Deploy SQL Server on OpenShift</a></b></p>
 
 Follow these steps to deploy SQL Server on OpenShift:
+
+<pre>Note: At any point in this Module if you need to "start over", use the script cleanup.sh to delete the project and go back to Step 1.</pre>
 
 1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy** folder.
 

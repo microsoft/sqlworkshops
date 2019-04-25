@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server on OpenShift
+# Workshop: SQL Server 2019 on OpenShift
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -17,6 +17,8 @@ You'll cover the following topics in this Module:
 <dt><a href="#2-2">2.2 Execute SQL Server Queries</a></dt>
   
 </dl>
+
+<pre>Note: If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again. If you need to redeploy the SQL Server container and pod, go back to the Activity in Module 1, run the cleanup.sh script and follow all steps in the Module.</pre>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -94,9 +96,9 @@ Follow these steps to restore a database backup to SQL Server deployed on OpenSh
     `PORT=31433`<br>
     `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -irestorewwi.sql`
 
-    In this example, you used the -i parameter for sqlcmd to execute a *script* with the RESTORE DATABASE command. You can examine the contents of the restorewwi.sql T-SQL script to see the example syntax using `cat restorewwi.sql` from the shell.
+    In this example, you used the -i parameter for sqlcmd to execute a *script* with the RESTORE DATABASE command. You can examine the contents of the **restorewwi.sql** T-SQL script to see the example syntax using `cat restorewwi.sql` from the shell.
 
-    The WideWorldImporters backup you downladed was created on SQL Server 2016 on Windows (one of the great stories about SQL Server is compatibility. A backup on Windows can be restored on Linux and vice versa). SQL Server 2019 will automatically detect the older version and upgrade the database. This is why the RESTORE command can take a few minutes to execute. When the command completes the output to the shell prompt will scroll across several lines but end with something like the following: 
+    The WideWorldImporters backup you downloaded was created on SQL Server 2016 on Windows (one of the great stories about SQL Server is compatibility. A backup on Windows can be restored on Linux and vice versa). SQL Server 2019 will automatically detect the older version and upgrade the database. This is why the RESTORE command can take a few minutes to execute. When the command completes the output to the shell prompt will scroll across several lines but end with something like the following: 
 
     <pre>Database 'WideWorldImporters' running the upgrade step from version 895 to version 896<br>Database 'WideWorldImporters' running the upgrade step from version 896 to version 897<br>RESTORE DATABASE successfully processed 58455 pages in 30.797 seconds (14.828 MB/sec).</pre>
 
