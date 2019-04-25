@@ -270,13 +270,13 @@ GO
 
  In this plan, the query processor chooses to use the table variable as the outer table of a Nested Loops Join which means it iterates through each row in the outer table to join to the inner table. Since the query processor estimates one row for the table variable, this is reasonable. But in reality, there are over 200,000 rows in the table variable so this ends up with many unnecessary logical reads (hence the high number of logical IO from query store)
 
- The following output is an example for the stored procedure execution with compatibiilty level of 150
+ The following output is an example for the stored procedure execution with compatibility level of 150
 
  ![IQP query plan 150](../graphics/IQP_query_plan_150.jpg)
 
  In this example SQL has recognized the table variable has more than 1 row and has chosen a different join method called a hash join. Furthermore, it has injected into the plan the concept of an **Adaptive Join** so that if there is small enough rowset in the table variable it could dynamically and automatically choose a Nested Loops Join. What is not seen from this diagram (which you can see from the properties detail in the XML plan) that is the query processor is using a third concept called **batch mode processing on rowstore** (rowstore is normal table as opposed to a columnstore).
 
-As a **post workshop exercise** you can go through this activity in a SQL notebook. Uuse the File menu of Azure Data Studio (Open File option) to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
+As a **post workshop exercise** you can go through this activity in a SQL notebook. Use the File menu of Azure Data Studio (Open File option) to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
 
 In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing.
 
