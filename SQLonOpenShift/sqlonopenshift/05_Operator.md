@@ -18,6 +18,8 @@ You'll cover the following topics in this Module:
   
 </dl>
 
+<pre>Note: If at anytime during the Activities of this Module you need to "start over" you can execute the step11_cleanup.sh script. Then you can start again with the first activity in section 5.0</pre>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5-0">5.0 Deploy an Always On Availability Group on OpenShift with an operator</a></h2>
@@ -48,6 +50,8 @@ Proceed to the Activity to learn how to use an Operator to deploy and configure 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Deploy an Always On Availability Group on OpenShift with an operator</a></b></p>
 
 Follow these steps to deploy an Always On Availability Group on OpenShift using an operator.
+
+<pre>STOP: If you have gone through all the activities in Modules 1-4, and you are running on a single node OpenShift cluster, you may not have enough resources to do the activities in this Module if the SQL Server you deployed in Module 1 still is running. Therefore, be sure and cleanup all previous resources by executing step6_cleanup.sh in Module 04.</pre>
 
 1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator** folder.
 
