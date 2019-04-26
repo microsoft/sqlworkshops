@@ -30,9 +30,9 @@ In this workshop you'll learn:
 - How to configure and use Machine Learning Services in SQL Server
 - How to call the predictions or classifications in SQL Server one at a time, or in a batch request mode
 
-This Workshop uses SQL Server 2019 (although the instructions work with SQL Server 2017 as well), and using Jupyter Notebooks in the 
+This Workshop uses SQL Server 2019 (although the instructions work with SQL Server 2017 as well), and uses Jupyter Notebooks in the Azure Data Studio tool to send commands in SQL, Python, R and Java to a SQL Server Instance to demonstrate an end-to-end soltuion using the Team Data Science Process.  
 
-The goal of this workshop is to train <TODO: Describe who you would train for this and why>.
+The goal of this workshop is to train data professionals to use Machine Learning in SQL Server for a secure on-premises, in-cloud, or hybrid approach to Data Science solutions.
 
 The concepts and skills taught in this workshop form the starting points for:
 
@@ -106,7 +106,7 @@ This workshop uses <TODO: enter main technologies used to solve the sceanrio>, w
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
 
- - [TODO: Enter any other workshops that help in this area](url)
+ - [Using Machine Learning Services in SQL Server with Java and Microsoft Azure Cognitive Services](https://github.com/amthomas46/SQL/tree/master/sql-cs-icc)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
