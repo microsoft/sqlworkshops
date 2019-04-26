@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: <Machine Learning with SQL Server>
+# Workshop: Machine Learning with SQL Server
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -10,9 +10,9 @@
 
 Welcome to this Microsoft solutions workshop on *Machine Learning in SQL Server*. In this workshop, you'll learn how to use SQL Server (on-premises or in a SQL Server Virtual Machine) to implement a Data Science solution using Machine Learning. You'll do this using a complete process to implement your solution. 
 
-The focus of this workshop is to understand <TODO: Describe the workshop's primay focus in one sentence>
+The focus of this workshop is to understand how to create a machine learning solution completely within SQL Server.
 
-You'll start by understanding the problem your organization wants to solve, collecting the data you need to solve problem, then creating an experiment, testing the experiment, and then operationalizing the Machine Learning model - all with a focus on how to extrapolate what you have learned to create other solutions for your organization.
+You'll start by understanding the problem your organization wants to solve, collecting the data you need to solve problem, then creating an experiment, testing the experiment, and on to operationalizing the Machine Learning model - all with a focus on how to extrapolate what you have learned to create other solutions for your organization.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -25,11 +25,12 @@ This README.MD file explains how the workshop is laid out, what you will learn, 
 In this workshop you'll learn:
 <br>
 
-- <TODO: Bullet-point on learning obective>
-- <TODO: Bullet-point on learning obective>
-- <TODO: Bullet-point on learning obective>
+- What Machine Learning is and what problems it solves
+- The process for creating a Data Science solution
+- How to configure and use Machine Learning Services in SQL Server
+- How to call the predictions or classifications in SQL Server one at a time, or in a batch request mode
 
-<TODO: Enter the text you use when you submit the description for this course to a presentation, or advertising>
+This Workshop uses SQL Server 2019 (although the instructions work with SQL Server 2017 as well), and using Jupyter Notebooks in the 
 
 The goal of this workshop is to train <TODO: Describe who you would train for this and why>.
 
