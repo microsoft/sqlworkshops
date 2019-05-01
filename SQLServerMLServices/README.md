@@ -130,4 +130,4 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b>Next Steps</b></p>
 
-Next, Continue to <a href="url" target="_blank"><i> Pre-Requisites</i></a>
+Next, Continue to <a href="https://github.com/Microsoft/sqlworkshops/blob/master/SQLServerMLServices/00-Prerequisites.md" target="_blank"><i> Pre-Requisites</i></a>

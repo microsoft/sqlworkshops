@@ -156,4 +156,4 @@ git clone https://github.com/Microsoft/sqlworkshops.git
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><b>Begin the Course using Azure Data Studio and Jupyter Notebooks</b></p>
 
-Now you can open **Azure Data Studio**, navigate using the file-icon on the left, and open the base directory for this course. Locate the **notebooks** folder and open the Jupyter Notebook called **01 - SQL Server Machine Learning Services Architecture.ipynb**
+Now you can open **Azure Data Studio**, navigate using the file-icon on the left, and open the base directory for this course. Locate the **notebooks** folder and open the Jupyter Notebook called **01-SQLServerMachineLearningServicesArchitecture.ipynb**
