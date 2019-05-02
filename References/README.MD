@@ -35,8 +35,7 @@ These references deal with SQL Server code samples from our courses and other us
   <tr><th style="background-color: #2c9004; color: white;">Code Sample Location  </th> <th style="background-color: #a0bc5d ; color: white;"> Description</th></tr>
 
   <tr><td><a href="http://aka.ms/bobsqldemos" target="blank">http://aka.ms/bobsqldemos</a></td><td>Bob Ward's Demonstrations - Sample Code</td></tr>
-  <tr><td><a href="https://github.com/amthomas46/SQL/tree/master/sql-cs/code" target="blank">GitHub</a></td><td>Anna Thomas' Leveraging AI in SQL Server 2019 - Sample Code</td></tr>
-  <tr><td><a href="https://github.com/amthomas46/SQL/tree/master/sql-ml/code" target="blank">GitHub</a></td><td>Anna Thomas' SQL Server ML Services End-to-End (Python, Wine Quality) - Sample Code</td></tr>
+  <tr><td><a href="http://aka.ms/annalytics" target="blank">http://aka.ms/annalytics</a></td><td>Anna Thomas' Demonstrations and Resources</td></tr>
   <tr><td><a href="https://github.com/Microsoft/sql-server-samples" target="blank">GitHub</a></td><td>SQL Server Samples - Sample Code</td></tr>
 
 </table>
