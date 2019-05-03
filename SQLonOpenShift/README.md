@@ -9,21 +9,21 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="graphics/textbubble.png"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *SQL Server 2019 on OpenShift*. In this workshop, you'll learn how to deploy and use SQL Server containers on an OpenShift cluster.
+Welcome to this Microsoft solutions workshop on *SQL Server 2019 on OpenShift*. 
 
-In this course you will learn the basics of deployment, connection, query execution, performance, high availability, operators, and Always On Availability Groups in SQL Server 2019.
+In this course you will learn the basics of deployment, connection, query execution, performance, high availability, operators, and Always On Availability Groups in SQL Server 2019 with OpenShift.
 
 You will interact with an OpenShift cluster using the OpenShift CLI program `oc` and use the concepts of projects, deployments, pods, labels, PersistentVolumeClaims, and LoadBalancer services as you deploy and use SQL Server on OpenShift. 
 
-This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
+This README.MD file explains how the workshop is structured, what you will learn, and the technologies you will use in this solution.
 
-The workshop is currently built to support SQL Server on OpenShift 3.11 and uses SQL Server 2019 Preview components. A future version of the course will support OpenShift 4.0 with updates for SQL Server 2019 when it becomes generally avaialble.
+The workshop is currently built to support SQL Server on OpenShift 3.11 and uses SQL Server 2019 Preview components. A future version of the course will support OpenShift 4.0 with updates for SQL Server 2019 when it becomes generally available.
 
 **NOTE**: *You're able to complete this workshop without having a prior knowledge of OpenShift, but if you would like to learn more about 
 its features, architecture and management, these materials are available*:
 
 - [Getting Started with OpenShift](https://docs.openshift.com/container-platform/3.11/getting_started/index.html)
-- [The OpenShift Archiecture](https://docs.openshift.com/container-platform/3.11/architecture/index.html)
+- [The OpenShift Architecture](https://docs.openshift.com/container-platform/3.11/architecture/index.html)
 - [Try OpenShift for Free with OpenShift Online](https://www.openshift.com/trial/)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

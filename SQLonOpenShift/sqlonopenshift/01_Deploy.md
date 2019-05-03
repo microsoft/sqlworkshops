@@ -29,9 +29,9 @@ In the deployment of SQL Server on OpenShift, you will:
 - Create a PersistentVolumeClaim where SQL Server databases and files will be stored
 - Deploy a SQL Server container using a declarative .yaml file which will include a LoadBalancer service to connect to SQL Server.
 
- Kubernetes and OpenShift are *declarative* systems. You program how to run and manage objects in OpenShift using a command line tool like oc. yaml files are used to declare how to build and manage objects through the Kubernetes API Server.
+ Kubernetes and OpenShift are *declarative* systems. You program how to run and manage objects in OpenShift using a command line tool like `oc`. Yaml files are used to declare how to build and manage objects through the Kubernetes API Server.
 
-In the activity for this module and others in the workshop you will often complete exercises by *executing* `yaml` files using a command similar to this format:
+In the activity for this module, and others in the workshop, you will often complete exercises by *executing* `yaml` files using a command similar to this format:
 
 `oc apply -f <file>.yaml`
 
@@ -54,6 +54,7 @@ Open a shell and use the `cd` command.
 **NOTE**: *You must nto the OpenShift cluster first, using instructions from the Prerequisites*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Ensure your scripts are executable</p>
+
 Run the following command (depending on your Linux shell and client you may need to preface this with `sudo`):
 
 `chmod u+x *.sh`
@@ -117,7 +118,7 @@ Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how
 
 You have now submitted a deployment, which is a logical collection of objects including a *pod*, a *container*, and **LoadBalancer** service. OpenShift will schedule a SQL Server container in a *pod* on a *node* on the cluster. 
 
-Now Proceed to the next step to check whether the deployment was successful.
+Proceed to the next step to check whether the deployment was successful.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Verify the SQL Server deployment</p>
 
@@ -125,9 +126,9 @@ Check to see if the deployment succeeded by running the following command:
 
 `oc get deployment mssql-deployment`
 
-When the value of **AVAILABLE** value shows **1**, the deployment succeeded - including having a Running Container. 
+When the value of **AVAILABLE** becomes **1**, the deployment was successful and your container is running. 
 
-**NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes.
+**NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes.*
 
 You can run the following command to check on the status of the pod and LoadBalancer service:
 
@@ -137,13 +138,11 @@ You can run the following command to check on the status of the pod and LoadBala
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Check the SQL Server logs</p>
 
-The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the **ERRORLOG** is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the **ERRORLOG** or execute the script **step5_get_errorlog.sh**:
+The SQL Server database engine produces a file called the ERRORLOG when it starts. The ERRORLOG file can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the **ERRORLOG** is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the **ERRORLOG** or execute the script **step5_get_errorlog.sh**:
 
-`POD=$(oc get pods | grep mssql | awk {'print $1'})`
-
+`POD=$(oc get pods | grep mssql | awk {'print $1'}`
 <br>
-
-`oc logs $POD`
+`oc logs $POD`<br>
 
 The ERRORLOG will scroll across the screen and you can scroll up in your shell to see all the output, or pipe the command to the `less` or `more` command in Linux.
 

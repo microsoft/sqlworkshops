@@ -26,7 +26,7 @@ The workshop does not assume a deep working knowledge of SQL Server or OpenShift
 
 In order to go through the activities of this workshop you will need the following:
 
-- Access to an OpenShift 3.11 cluster. The workshop is currently designed for OpenShift 3.11 and has not been tested for OpenShift 4.0
+- Access to an OpenShift 3.11 cluster. The workshop is currently designed for OpenShift 3.11 and has not been tested for OpenShift 4.0.
 - Modules 1 through 4 require user privileges for the OpenShift cluster for **anyuid** at minimum. Module 5 currently requires cluster admin rights.
 - A client computer that has access to connect to the OpenShift cluster with the following software installed and configured:
   - A Linux bash shell
@@ -40,7 +40,7 @@ The workshop currently supports a single node OpenShift cluster but can be run o
 
 **Note**: *If you are attending this course in-person, the instructor may provide you with a client environment and full access to an OpenShift cluster including login credentials.*
 
-With the above environment configured, you can now proceed to the first Acitivity for the course.
+With the above environment configured, you can now proceed to the first Activity for the course.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -56,9 +56,9 @@ Navigate to your home directory `~` and enter the following command:
 
 **NOTE**: *If you have used `git clone` to pull down the repo of the workshops in the past, run `git pull` in the sqlworkshops directory to get the latest version.*
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Login to your OpenShift cluster by using the URL provided to you for the <b>openshiftConsoleUrl</b> in a web browser.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Login to your OpenShift cluster, via a web browser, using the URL provided to you for the <b>openshiftConsoleUrl</b> in a web browser.</p>
 
-**NOTE**: *You may get warnings from the web page saying "This site is not secure". Click Details and then "Go on to the webpage"*
+**NOTE**: *You may get warnings from the web page saying "This site is not secure". Click Details and then "Go on to the webpage".*
 
 You will be presented with a login screen:
 
@@ -66,7 +66,7 @@ You will be presented with a login screen:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Type in the user name and password provided to you for OpenShift cluster access</p>
 
-Note: In-class, your instructor may call this **openshiftAdminUsername** and **openshiftPassword**
+**NOTE**: *In-class, your instructor may call this **openshiftAdminUsername** and **openshiftPassword**.*
 
 You will now see a new web page:
 

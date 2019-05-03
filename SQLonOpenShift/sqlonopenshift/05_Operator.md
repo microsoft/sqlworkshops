@@ -62,7 +62,9 @@ Run the following command (depending on your Linux shell and client you may need
 
 `chmod u+x *.sh`
 
-3. First, create a project for this activity. Use the following command or execute the **step1_create_project.sh** script:
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create a project</p>
+
+Create a project for this activity. Use the following command or execute the **step1_create_project.sh** script:
 
 `oc new-project ag1`
 
@@ -134,17 +136,17 @@ To proceed to the rest of the activity, you need to ensure the deployment of all
 
 When the deployment is successful, these pods should be in a **STATUS** of **Running**:
 <pre>
-   pod/mssql1-0                          2/2       Running     0          4m
-   pod/mssql2-0                          2/2       Running     0          4m
-   pod/mssql3-0                          2/2       Running     0          4m
+pod/mssql1-0                          2/2       Running     0          4m
+pod/mssql2-0                          2/2       Running     0          4m
+pod/mssql3-0                          2/2       Running     0          4m
 </pre>
 
 And these **LoadBalancer** services should have a valid **EXTERNAL-IP** address:
 
 <pre>
-   service/mssql1   LoadBalancer   172.30.217.34   23.96.27.207   1433:32145/TCP      4m
-   service/mssql2   LoadBalancer   172.30.242.37   23.96.58.167   1433:31976/TCP      4m
-   service/mssql3   LoadBalancer   172.30.6.212    23.96.53.245   1433:30611/TCP      4m
+service/mssql1   LoadBalancer   172.30.217.34   23.96.27.207   1433:32145/TCP      4m
+service/mssql2   LoadBalancer   172.30.242.37   23.96.58.167   1433:31976/TCP      4m
+service/mssql3   LoadBalancer   172.30.6.212    23.96.53.245   1433:30611/TCP      4m
 </pre>
 
  Run the `oc get all` command until the pods and LoadBalancer services are in this state.
@@ -154,10 +156,10 @@ And these **LoadBalancer** services should have a valid **EXTERNAL-IP** address:
 In addition, notice that there are three objects from the oc get all output:
 
 <pre>
-   NAME                      DESIRED   CURRENT   AGE
-   statefulset.apps/mssql1   1         1         43s
-   statefulset.apps/mssql2   1         1         40s
-   statefulset.apps/mssql3   1         1         37s
+NAME                      DESIRED   CURRENT   AGE
+statefulset.apps/mssql1   1         1         43s
+statefulset.apps/mssql2   1         1         40s
+statefulset.apps/mssql3   1         1         37s
 </pre>
 
  As part of the design for SQL Server Availability groups, a concept called a *statefulset* is used. A stateful set provides the capabilities to manage a set of pods that belong in a group like Availability Groups. You can read more about **StatefulSets** at https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/.
@@ -199,7 +201,7 @@ Proceed to the activity to see how this works.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Connect and Query a database in an Availability Group</a></b></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift</p>
+In this activity you will learn how to connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open a shell prompt and change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator</b> folder</p>
 
@@ -208,46 +210,47 @@ T-SQL provides capabilities so you can see which SQL Servers instances are curre
 An example of a T-SQL command to see replica status looks like the following
 
 
-<pre>
-   SELECT ar.replica_server_name, hars.role_desc, hars.operational_state_desc
-   FROM sys.dm_hadr_availability_replica_states hars
-   JOIN sys.availability_replicas ar
-   ON hars.replica_id = ar.replica_id
-   GO
-</pre>
+```sql
+SELECT ar.replica_server_name, hars.role_desc, hars.operational_state_desc
+FROM sys.dm_hadr_availability_replica_states hars
+JOIN sys.availability_replicas ar
+ON hars.replica_id = ar.replica_id
+GO
+```
+
 
 Run the following command or execute the script **step6_check_replicas.sh** to see the replica status of the Availability Group deployed:
 
-`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`
+`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`<br>
 
 In this example, you are using the LoadBalancer directed to the primary replica. Your results should look similar to the following message:
 
 <pre>
-   replica_server_name            role_desc                      operational_state_desc
-   ------------------------------ ------------------------------ ------------------------------
-   mssql1-0                       PRIMARY                        ONLINE
-   mssql2-0                       SECONDARY                      NULL
-   mssql3-0                       SECONDARY                      NULL
+replica_server_name            role_desc                      operational_state_desc
+------------------------------ ------------------------------ ------------------------------
+mssql1-0                       PRIMARY                        ONLINE
+mssql2-0                       SECONDARY                      NULL
+mssql3-0                       SECONDARY                      NULL
 </pre>
 
 It is possible that the replica_server_name for your deployment is any of these replicas. In most cases, it will be **mssql1-0**. You will use this same command later to see that the status of the Availability Group is after a failover.
 
 Now it is time to create a new database,  backup the database, and then add the database to the Availability Group. Examine the contents of the script **setupag.sql** to see the T-SQL commands. Run the following command or script **step7_setupag.sh**:
 
-`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -isetupag.sql`
+`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -isetupag.sql`<br>
 
 You should see results similar to the following message:
 
 <pre>
-   Changed database context to 'master'.
-   Changed database context to 'master'.
-   Processed 328 pages for database 'testag', file 'testag' on file 1.
-   Processed 2 pages for database 'testag', file 'testag_log' on file 1.
-   BACKUP DATABASE successfully processed 330 pages in 1.239 seconds (2.077 MB/sec).
+Changed database context to 'master'.
+Changed database context to 'master'.
+Processed 328 pages for database 'testag', file 'testag' on file 1.
+Processed 2 pages for database 'testag', file 'testag_log' on file 1.
+BACKUP DATABASE successfully processed 330 pages in 1.239 seconds (2.077 MB/sec).
 </pre>
 
 Direct seeding should happen almost instantly because there is no user database in the database.
@@ -258,15 +261,16 @@ It's time to create a table in the database and add in data connected to the pri
 
 Examine the T-SQL script **testag.sql** to see the table and data that will be added. Run the following commands or execute the script **step8_testag.sh**:
 
-`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -itestag.sql`
+`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -itestag.sql`<br>
 
 Your results should look similar to the following message:
 
 <pre>
 Changed database context to 'testag'.
-   (1 rows affected)
+
+(1 rows affected)
 </pre>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Query the Replica</p>
@@ -277,41 +281,45 @@ In order to do this, you need to know the LoadBalancer of the primary replica an
 
 Consider the following T-SQL script you will use to query the data and to determine which SQL Server you are connected to:
 
-`SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql`
+```sql
+SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql
+```
 
-In this example, you will use the `-Q` option of sqlcmd to run a query directly without a script file. The use of the "`;`" serves as a batch delimiter much like the keyword `GO`. In example, the built-in T-SQL function `@@SERVERNAME` indicates what SQL Server host the query is running on and the remaining queries select the data you have inserted. This way even though you are connected to the LoadBalancer you can see which exact replica you are being redirected to.
+In this example, you will use the `-Q` option of **sqlcmd** to run a query directly without a script file. The use of the "`;`" serves as a batch delimiter much like the keyword `GO`. In example, the built-in T-SQL function `@@SERVERNAME` indicates what SQL Server host the query is running on and the remaining queries select the data you have inserted. This way even though you are connected to the LoadBalancer you can see which exact replica you are being redirected to.
 
  Execute the following commands or the script **step9_queryag.sh** to see the results:
 
-`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -Y60`
-`SERVERIP=$(oc get service | grep ag1-secondary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Secondary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -K ReadOnly -Y60`
+`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -Y60`<br>
+`SERVERIP=$(oc get service | grep ag1-secondary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Secondary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -K ReadOnly -Y60`<br>
 
 The first set of commands connect to the primary replica **LoadBalancer**. The second set of commands to the secondary replica **LoadBalancer**. In the case of the secondary replica, the -K option is used to state the intention of only reading data. This is required to query a secondary replica. You can read more about how applications specify ReadOnly intent at https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover?view=sql-server-2017#ReadOnlyAppIntent.
 
 Your results should look like the following message, although your server names may be different depending on how the primary was elected when the Availability Group was deployed:
 
 <pre>
-   Connected to Primary = mssql1-0
-   (1 rows affected)
-   Changed database context to 'testag'.
-   col1        col2
+Connected to Primary = mssql1-0
+
+(1 rows affected)
+Changed database context to 'testag'.
+col1        col2
  
-   1 SQL Server 2019 is fast, secure, and highly available
-   (1 rows affected)
+1 SQL Server 2019 is fast, secure, and highly available
 
+(1 rows affected)
 
-   Connected to Secondary = mssql2-0
-   (1 rows affected)
-   Changed database context to 'testag'.
-   col1        col2
+Connected to Secondary = mssql2-0
 
-    1 SQL Server 2019 is fast, secure, and highly available
-   (1 rows affected)
+(1 rows affected)
+Changed database context to 'testag'.
+col1        col2
 
+1 SQL Server 2019 is fast, secure, and highly available
+
+(1 rows affected)
 </pre>
 
 Now that you have successfully created a database, added it to the Availability Group, and synchronized data, you an proceed to the next section to test how a failover works.
@@ -338,20 +346,18 @@ Follow the steps in his activity to simulate a failover and see how a new second
 
 From the last step in the previous section activity, the primary and secondary replicas were synchronized. Verify the replica state by running the following commands or the script **step6_check_replicas.sh**:
 
-`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`
+`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`<br>
 
 Your results should look similar to the following message:
 
 <pre>
-
-   replica_server_name            role_desc                      operational_state_desc
-   ------------------------------ ------------------------------ ------------------------------
-   mssql1-0                       PRIMARY                        ONLINE
-   mssql2-0                       SECONDARY                      NULL
-   mssql3-0                       SECONDARY                      NULL
-
+replica_server_name            role_desc                      operational_state_desc
+------------------------------ ------------------------------ ------------------------------
+mssql1-0                       PRIMARY                        ONLINE
+mssql2-0                       SECONDARY                      NULL
+mssql3-0                       SECONDARY                      NULL
 </pre>
 
 If in your results, if the replica_server_name is mssql2-0 for the PRIMARY, you will need to edit the **failover.yaml** file. If not, you can skip to the next step.
@@ -359,8 +365,8 @@ If in your results, if the replica_server_name is mssql2-0 for the PRIMARY, you 
 The **failover.yaml** file declares how to manually trigger a failover to another replica but is setup so you must specify which replica to target as the new primary. The workshop was built so that **mssql2-0** would be the new primary. In some rare cases, **mssql2-0** might have been chosen as the original primary. If this is the case, you need to edit this part of the **failover.yaml** file and change the name **mssql2-0** to **mssql3-0**
 
 <pre>
-    - {name: MSSQL_K8S_AG_NAME, value: ag1}
-    - {name: MSSQL_K8S_NEW_PRIMARY, value: mssql2-0}
+- {name: MSSQL_K8S_AG_NAME, value: ag1}
+- {name: MSSQL_K8S_NEW_PRIMARY, value: mssql2-0}
 </pre>
 
 Once you have edited and saved the changes, proceed to the next step.
@@ -374,10 +380,10 @@ To manually trigger the failover, apply the failover.yaml file which will submit
 You should see results similar to the following message:
    
 <pre>
-   serviceaccount/manual-failover created
-   role.rbac.authorization.k8s.io/manual-failover created
-   rolebinding.rbac.authorization.k8s.io/manual-failover created
-   job.batch/manual-failover created
+serviceaccount/manual-failover created
+role.rbac.authorization.k8s.io/manual-failover created
+rolebinding.rbac.authorization.k8s.io/manual-failover created
+job.batch/manual-failover created
 </pre>
 
 
@@ -385,51 +391,56 @@ You should see results similar to the following message:
 
 The failover should happen fairly quickly. You can run the following commands or script **step6_check_replicas.sh** to verify the new PRIMARY switch has occurred
 
-`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`
+`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -icheckreplicas.sql -Y30`<br>
 
 Your results should show a new PRIMARY similar to the following message:
 
 <pre>
-   replica_server_name            role_desc                      operational_state_desc
-   ------------------------------ ------------------------------ ------------------------------
-   mssql1-0                       SECONDARY                      NULL
-   mssql2-0                       PRIMARY                        ONLINE
-   mssql3-0                       SECONDARY                      NULL
-   (3 rows affected)
+replica_server_name            role_desc                      operational_state_desc
+------------------------------ ------------------------------ ------------------------------
+mssql1-0                       SECONDARY                      NULL
+mssql2-0                       PRIMARY                        ONLINE
+mssql3-0                       SECONDARY                      NULL
+
+(3 rows affected)
 </pre>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Verify the Data</p>
 
 Now run the following commands or use the script **step9_queryag.sh** to verify that your data is still synchronized and by using the LoadBalancers the application has not changed even though you are connected to a new primary and secondary:
 
-`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -Y60`
-`SERVERIP=$(oc get service | grep ag1-secondary | awk {'print $4'})`
-`PORT=1433`
-`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Secondary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -K ReadOnly -Y60`
+`SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Primary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -Y60`<br>
+`SERVERIP=$(oc get service | grep ag1-secondary | awk {'print $4'})`<br>
+`PORT=1433`<br>
+`sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -Q"SELECT 'Connected to Secondary = '+@@SERVERNAME;USE testag;SELECT * FROM ilovesql" -K ReadOnly -Y60`<br>
 
 Your results should look similar to the time you ran this query from the previous section activity except the server names should be different and reflect the new primary and secondary replicas:
 
 <pre>
-   Connected to Primary = mssql2-0
-   (1 rows affected)
-   Changed database context to 'testag'.
-   col1        col2
-   ----------- ------------------------------------------------------------
-        1 SQL Server 2019 is fast, secure, and highly available
-   (1 rows affected)
+Connected to Primary = mssql2-0
+
+(1 rows affected)
+Changed database context to 'testag'.
+col1        col2
+----------- ------------------------------------------------------------
+1 SQL Server 2019 is fast, secure, and highly available
+
+(1 rows affected)
 
 
-   Connected to Secondary = mssql1-0
-   (1 rows affected)
-   Changed database context to 'testag'.
-   col1        col2
-   ----------- ------------------------------------------------------------
-         1 SQL Server 2019 is fast, secure, and highly available
-   (1 rows affected)
+Connected to Secondary = mssql1-0
+
+(1 rows affected)
+Changed database context to 'testag'.
+col1        col2
+----------- ------------------------------------------------------------
+1 SQL Server 2019 is fast, secure, and highly available
+
+(1 rows affected)
 </pre>
 
 In this activity, you have simulated a failover for your deployed Availability Group and seen your data is still consistent, intact, and your application has connected with no changes and almost no downtime.

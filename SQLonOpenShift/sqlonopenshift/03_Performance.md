@@ -29,7 +29,7 @@ Intelligent Query processing is a suite of features built into the query process
 
 You can read more about database compatibility at https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-2017#compatibility-levels-and-sql-server-upgrades.
 
-The following is a diagram showing the features of Intelligent Query Processing including capabilities from SQL Server 2017
+The following is a diagram showing the features of Intelligent Query Processing including capabilities from SQL Server 2017:
 
 ![iqp diagram](../graphics/IQP_diagram.png)
 
@@ -64,7 +64,7 @@ To connect to the SQL Server deployed on OpenShift, run the following command to
 
 `oc get service mssql-service`
 
-You should see results similar to the follwiong:
+You should see results similar to the following:
 
 <pre>
 NAME            TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)           AGE
@@ -93,48 +93,47 @@ A successful connection looks similar to this:
 
 ![Azure Data Studio Successful Connection](../graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Opne T-SQL Script</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open T-SQL Script</p>
 
 Open the script **proc.sql** by using the **File | Open File** option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
 
 The stored procedure looks similar to this:
 
-<pre>
-   USE WideWorldImporters
-   GO
-   CREATE or ALTER PROCEDURE [Sales].[CustomerProfits]
-   AS
-   BEGIN
-   -- Declare the table variable
-   DECLARE @ilines TABLE
-   ([InvoiceLineID] [int] NOT NULL primary key,
-	    [InvoiceID] [int] NOT NULL,
-	    [StockItemID] [int] NOT NULL,
-	    [Description] [nvarchar](100) NOT NULL,
-	    [PackageTypeID] [int] NOT NULL,
-	    [Quantity] [int] NOT NULL,
-	    [UnitPrice] [decimal](18, 2) NULL,
-	    [TaxRate] [decimal](18, 3) NOT NULL,
-	    [TaxAmount] [decimal](18, 2) NOT NULL,
-	    [LineProfit] [decimal](18, 2) NOT NULL,
-	    [ExtendedPrice] [decimal](18, 2) NOT NULL,
-	    [LastEditedBy] [int] NOT NULL,
-	    [LastEditedWhen] [datetime2](7) NOT NULL
-   )
+
+```sql
+USE WideWorldImporters
+GO
+CREATE or ALTER PROCEDURE [Sales].[CustomerProfits]
+AS
+BEGIN
+-- Declare the table variable
+DECLARE @ilines TABLE
+([InvoiceLineID] [int] NOT NULL primary key,
+ [InvoiceID] [int] NOT NULL,
+ [StockItemID] [int] NOT NULL,
+ [Description] [nvarchar](100) NOT NULL,
+ [PackageTypeID] [int] NOT NULL,
+ [Quantity] [int] NOT NULL,
+ [UnitPrice] [decimal](18, 2) NULL,
+ [TaxRate] [decimal](18, 3) NOT NULL,
+ [TaxAmount] [decimal](18, 2) NOT NULL,
+ [LineProfit] [decimal](18, 2) NOT NULL,
+ [ExtendedPrice] [decimal](18, 2) NOT NULL,
+ [LastEditedBy] [int] NOT NULL,
+ [LastEditedWhen] [datetime2](7) NOT NULL
+)
     
-   -- Insert all the rows from InvoiceLines into the table variable
-   INSERT INTO @ilines SELECT * FROM Sales.InvoiceLines
-   -- Find my total profile by customer
-   SELECT TOP 1 COUNT(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
-   FROM Sales.Invoices i
-   INNER JOIN @ilines il
-   ON i.InvoiceID = il.InvoiceID
-   GROUP By i.CustomerID
-   END
-   GO
-
-</pre>
-
+-- Insert all the rows from InvoiceLines into the table variable
+INSERT INTO @ilines SELECT * FROM Sales.InvoiceLines
+-- Find my total profile by customer
+SELECT TOP 1 COUNT(i.CustomerID) as customer_count, SUM(il.LineProfit) as total_profit
+FROM Sales.Invoices i
+INNER JOIN @ilines il
+ON i.InvoiceID = il.InvoiceID
+GROUP By i.CustomerID
+END
+GO
+```
 This procedure uses a table variable populated from a user table and then joins it with a user table to provide output. T-SQL functions such as `COUNT` and `SUM` are often seen in analytic queries that benefit from Intelligent Query Processing. 
 
 **NOTE**: *In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include `TOP`.*
@@ -153,23 +152,24 @@ Open the script **repro130.sql** by using the File Menu/Open File option of Azur
 
 The script looks similar to the following
 
-<pre> 
 
-   USE master
-   GO
-   ALTER DATABASE wideworldimporters SET compatibility_level = 130
-   GO
-   USE WideWorldImporters
-   GO
-   SET NOCOUNT ON
-   GO
-   EXEC [Sales].[CustomerProfits]
-   GO 25
-   SET NOCOUNT OFF
-   GO
-</pre>
+```sql
+USE master
+GO
+ALTER DATABASE wideworldimporters SET compatibility_level = 130
+GO
+USE WideWorldImporters
+GO
+SET NOCOUNT ON
+GO
+EXEC [Sales].[CustomerProfits]
+GO 25
+SET NOCOUNT OFF
+GO
+```
 
-The script will ensure the database is in a compatibility mode that is less than 150 so Intelligent Query Processing will NOT be enabled. The script also turns off rowcount messages to be returned to the client to reduce network traffic for this test. Then the script executes the stored procedure. Notice the syntax of **GO 25**. This is a client tool tip that says to run the batch 25 times (avoids having to construct a loop)
+
+The script will ensure the database is in a compatibility mode that is less than 150 so Intelligent Query Processing will NOT be enabled. The script also turns off rowcount messages to be returned to the client to reduce network traffic for this test. Then the script executes the stored procedure. Notice the syntax of **GO 25**. This is a client tool tip that says to run the batch 25 times (avoids having to construct a loop).
 
 Click the **Run** button to execute the script to observe the results. Choose the connection by clicking on the **IP,PORT** you created for the SQL Server container and click **Connect**.
 
@@ -193,23 +193,22 @@ You will now run the same code, but with database compatibility of 150 which use
 
 Open the script **repro150.sql** by using the **File | Open File** option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
 
- Use the SQL container connection as you have done in previous steps. The script should look similar to this:
+Use the SQL container connection as you have done in previous steps. The script should look similar to this:
 
-<pre>
-
-   USE master
-   GO
-   ALTER DATABASE wideworldimporters SET compatibility_level = 150
-   GO
-   USE WideWorldImporters
-   GO
-   SET NOCOUNT ON
-   GO
-   EXEC [Sales].[CustomerProfits]
-   GO 25
-   SET NOCOUNT OFF
-   GO
-</pre>
+```sql
+USE master
+GO
+ALTER DATABASE wideworldimporters SET compatibility_level = 150
+GO
+USE WideWorldImporters
+GO
+SET NOCOUNT ON
+GO
+EXEC [Sales].[CustomerProfits]
+GO 25
+SET NOCOUNT OFF
+GO
+```
 
 Notice this is the same script, except database compatibility of 150 is used. This time, the query processor in SQL Server will enable table variable deferred compilation to use a better query plan.
 
@@ -251,10 +250,10 @@ Open the script **querystore.sql** by using the **File | Open File** option of A
 
 Use the SQL container connection as you have done in previous steps. The T-SQL statement to use the Query Store for this activity looks similar to the following:
 
-<pre>
+
+```sql
 USE WideWorldImporters
 GO
-
 SELECT qsp.query_id
 , qsp.plan_id
 , qsp.compatibility_level
@@ -275,7 +274,8 @@ FROM sys.query_store_plan qsp
 GROUP BY qsp.query_id, qsp.plan_id, qsrs.avg_duration, qsp.compatibility_level, qsp.query_plan, query_sql_text, qsrs.last_execution_time
 ORDER BY qsrs.last_execution_time DESC, query_id DESC, qsp.plan_id DESC
 GO
-</pre>
+```
+
 
 **NOTE**: *This activity is not intended for you to understand every detail of the query, but as an example of how to use the Query Store Dynamic Management Views (DMV) to analyze the performance differences for the stored procedure you used in Section 3.0.*
 
@@ -293,13 +293,13 @@ These results show the *same* query but two different query plans, one faster on
 
 One of the columns on the right is the estimated query plan in XML. Reading the details of this XML is beyond the scope of this workshop but contains the details of how the query plan was built using table variable deferred compilation. In addition, in these XML details is the use of an Adaptive Join, which is another capability of Intelligent Query Processing.
 
-If you saved the XML output as a `.sqlplan` file and opened up the file in SQL Server Management Studio (SSMS), you would see the following graphical plan for the query using compatibility` level = 130`:
+If you saved the XML output as a `.sqlplan` file and opened up the file in SQL Server Management Studio (SSMS), you would see the following graphical plan for the query using `compatibility_level = 130`:
 
 ![IQP query plan 130](../graphics/IQP_query_plan_130.jpg)
 
 In this plan, the query processor chooses to use the table variable as the outer table of a **Nested Loops Join** which means it iterates through each row in the outer table to join to the inner table. Since the query processor estimates one row for the table variable, this is reasonable. But in reality, there are over 200,000 rows in the table variable so this ends up with many unnecessary logical reads (hence the high number of logical IO from query store)
 
-The following output is an example for the stored procedure execution with compatibility level of 150:
+The following output is an example for the stored procedure execution with `compatibility_level = 150`:
 
 ![IQP query plan 150](../graphics/IQP_query_plan_150.jpg)
 
