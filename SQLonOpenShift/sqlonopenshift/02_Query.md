@@ -121,9 +121,7 @@ Next you will use the T-SQL **RESTORE DATABASE** command to restore the database
 Execute the following commands using the sqlcmd tool or execute the script **step3_restore_backup.sh**:
 
 `SERVERIP=$(oc get service | grep mssql-service | awk {'print $4'})`
-
-`PORT=31433`
-
+`PORT=31433`<br>
 `sqlcmd -Usa -PSql2019isfast -S$SERVERIP,$PORT -irestorewwi.sql`
 
 In this example, you used the `-i` parameter for **sqlcmd** to execute a *script* with the `RESTORE DATABASE` command. You can examine the contents of the **restorewwi.sql** T-SQL script to see the example syntax using `cat restorewwi.sql` from the shell.
