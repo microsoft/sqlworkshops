@@ -48,7 +48,7 @@ With the above environment configured, you can now proceed to the first Acitivit
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Download the latest version of the workshop from [https://aka.ms/sqlworkshops](https://aka.ms/sqlworkshops)</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Download the latest version of the workshop from https://aka.ms/sqlworkshops</p>
 
 Navigate to your home directory `~` and enter the following command:
 
