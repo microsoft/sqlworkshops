@@ -1,7 +1,7 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 on OpenShift
+# Workshop: SQL Server 2019 on OpenShift (CTP 2.5))
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -11,27 +11,33 @@
 
 Welcome to this Microsoft solutions workshop on *SQL Server 2019 on OpenShift*. In this workshop, you'll learn how to deploy and use SQL Server containers on an OpenShift cluster.
 
-You will learn the basics of deployment, connection, query execution, performance, high availability, operators, and Always On Availability Groups.
+In this course you will learn the basics of deployment, connection, query execution, performance, high availability, operators, and Always On Availability Groups in SQL Server 2019.
 
-This workshop does not cover the basics of OpenShift or the OpenShift architecture. You will interact with an OpenShift cluster using the OpenShift CLI program `oc` and use the concepts of projects, deployments, pods, labels, PersistentVolumeClaims, and LoadBalancer services as you deploy and use SQL Server on OpenShift. After completing the workshop, you can use the following resources to learn more about the basics of OpenShift and architecture:
-
-- [Getting Started with OpenShift](https://docs.openshift.com/container-platform/3.11/getting_started/index.html)
-- [The OpenShift Archiecture](https://docs.openshift.com/container-platform/3.11/architecture/index.html)
-- [Try OpenShift for Free with OpenShift Online](https://www.openshift.com/trial/)
+You will interact with an OpenShift cluster using the OpenShift CLI program `oc` and use the concepts of projects, deployments, pods, labels, PersistentVolumeClaims, and LoadBalancer services as you deploy and use SQL Server on OpenShift. 
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
 The workshop is currently built to support SQL Server on OpenShift 3.11 and uses SQL Server 2019 Preview components. A future version of the course will support OpenShift 4.0 with updates for SQL Server 2019 when it becomes generally avaialble.
 
+**NOTE**: *You're able to complete this workshop without having a prior knowledge of OpenShift, but if you would like to learn more about 
+its features, architecture and management, these materials are available*:
+
+- [Getting Started with OpenShift](https://docs.openshift.com/container-platform/3.11/getting_started/index.html)
+- [The OpenShift Archiecture](https://docs.openshift.com/container-platform/3.11/architecture/index.html)
+- [Try OpenShift for Free with OpenShift Online](https://www.openshift.com/trial/)
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>
 <br>
-- Learn the basics of deploying SQL Server on an OpenShift cluster.
-- Learn how to connect and run queries against SQL Server deployed on OpenShift.
-- Learn performance capabilities of SQL Server deployed on OpenShift
-- Learn basic High Availability capabilities of SQL Server deployed on OpenShift
-- Learn how to use an operator to deploy and manage an Always On Availability Group on OpenShift.
+
+When you complete this course, you will be able to:
+
+- Understand the basics of deploying SQL Server on an OpenShift cluster.
+- Connect and run queries against SQL Server deployed on OpenShift.
+- Understand performance capabilities of SQL Server deployed on OpenShift
+- Implement High Availability capabilities of SQL Server deployed on OpenShift
+- Use an operator to deploy and manage an Always On Availability Group on OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
@@ -40,6 +46,7 @@ The workshop is currently built to support SQL Server on OpenShift 3.11 and uses
 
 - Developers looking to deploy a database container for their applications on OpenShift
 - Database Administrators looking to understand how to deploy database platforms like SQL Server in a Kubernetes cluster using OpenShift.<br>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2>Technologies used in this Workshop</h2>
@@ -58,8 +65,8 @@ The workshop is currently built to support SQL Server on OpenShift 3.11 and uses
   <tr><td><i>Docker</i></td><td>Engine for running and manage containers</td></tr>
   <tr><td><i>Kubernetes</i></td><td>Orchestration and Management platform for Containers</td></tr>
   <tr><td><i>OpenShift<i></td><td>Family of containerization software developed by Red Hat</td></tr>
-  <tr><td><i>OpenShift Platform<i></td><td>Kubernetes based platform for containers</td></tr>
-  <tr><td><i>oc</i></td><td>OpenShift CLI program. Similar to kubectl</td></tr>
+  <tr><td><i>OpenShift Platform<i></td><td>Kubernetes-based platform for containers</td></tr>
+  <tr><td><i>oc</i></td><td>OpenShift CLI program. (Similar to the kubectl command)</td></tr>
   <tr><td><i>project</i></td><td>Equivalent to Kubernetes namespace</td></tr>
   <tr><td><i>Azure Data Studio<i></td><td>Graphical User Interface to execute T-SQL queries and manage SQL Server</td></tr>
   <tr><td><i>SQL Server Command Line Tools<i></td><td>Utilities to connect and query SQL Server such as sqlcmd</td></tr>
@@ -107,6 +114,8 @@ This workshop uses OpenShift, SQL Server 2019, Azure Data Studio, SQL Command Li
 
 - [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/rgward/ModernizeYourDatabases2019)
 - [The OpenShift Interactive Learning Portal](https://learn.openshift.com/)
+
+<br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

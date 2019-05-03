@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 on OpenShift
+# Workshop: SQL Server 2019 on OpenShift (CTP 2.5)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -31,13 +31,13 @@ In the deployment of SQL Server on OpenShift, you will:
 
  Kubernetes and OpenShift are *declarative* systems. You program how to run and manage objects in OpenShift using a command line tool like oc. yaml files are used to declare how to build and manage objects through the Kubernetes API Server.
 
-In the activity for this module and others in the workshop you will often complete exercises by *executing* yaml files using a command like
+In the activity for this module and others in the workshop you will often complete exercises by *executing* `yaml` files using a command similar to this format:
 
 `oc apply -f <file>.yaml`
 
-Inside each yaml file is declarations of objects to deploy or commands to execute.
+Inside each `yaml` file is declarations of objects to deploy or commands to execute.
 
-Proceed to the Activity to learn these deployment steps.
+Proceed to the **Activity** below to learn these deployment steps.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -47,86 +47,113 @@ Follow these steps to deploy SQL Server on OpenShift:
 
 <pre>Note: At any point in this Module if you need to "start over", use the script cleanup.sh to delete the project and go back to Step 1.</pre>
 
-1. Open a shell prompt and change directories to the **sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy** folder.
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy</b> folder.</p>
 
-2. You should have already logged into the OpenShift cluster using instructions from the Prerequisites.
+Open a shell and use the `cd` command.
 
-3. Ensure your scripts are executable by running the following command (depending on your Linux shell and client you may need to preface this with sudo)
+**NOTE**: *You must nto the OpenShift cluster first, using instructions from the Prerequisites*
 
-    `chmod u+x *.sh`
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Ensure your scripts are executable</p>
+Run the following command (depending on your Linux shell and client you may need to preface this with `sudo`):
 
-4. If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script.
+`chmod u+x *.sh`
 
-    `oc new-project mssql`
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create a new Project</p>
 
-    When this completes, you should see the following messages and be placed back at the shell prompt
+If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script.
 
-   <pre>Now using project "mssql" on server "https://[servername]".
+`oc new-project mssql`
+
+When this completes, you should see the following messages and be placed back at the shell prompt.
+
+   <pre>Using project "mssql" on server "https://[servername]".
    You can add applications to this project with the 'new-app' command. For example, try:
    oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
    to build a new example application in Ruby.</pre>
 
-5. Create a secret to store the System Administrator (sa) password. For this workshop, you will be connecting as the sa login. In production SQL Server environments, you would not normally use the sa login. Use the following command or execute the **step2_create_secret.sh** script:
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create credentials</p>
 
-    `oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2019isfast"`
+Next you'll create a `secret` to store the System Administrator (**sa**) password. For this workshop, you will be connecting as the **sa** login. 
 
-    When this completes you should see the following message and be placed back at the shell prompt
+**NOTE**: *In production SQL Server environments, you would not use the **sa** login.* 
 
-   <pre>secret/mssql created</pre>
+Use the following command or execute the **step2_create_secret.sh** script:
 
-    **IMPORTANT: Take note of the value for SA_PASSWORD (without the quotes). The scripts in all modules use this password but you may need it to interactively work with SQL Server.**
+`oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2019isfast"`
 
-6. Create a PersistentVolumeClaim to store SQL Server databases and files. Use the following command or execute the **step3_storage.sh** script:
+When this completes you should see the following message and be placed back at the shell prompt:
 
-    **Note**: The PersistentVolumeClaim created assumes the default StorageClass of the OpenShift cluster.
+<pre>secret/mssql created</pre>
 
-    `oc apply -f storage.yaml`
+**IMPORTANT**: *Take note of the value for **SA_PASSWORD** (without the quotes). The scripts in all modules use this password and you may need it to interactively work with SQL Server.*
 
-      When this completes you should see the following message and be placed back at the shell prompt
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create a <b>PersistentVolumeClaim</b> to store SQL Server databases and files</p>
 
-   <pre>persistentvolumeclaim/mssql-data created</pre>
+Use the following command or execute the **step3_storage.sh** script:
 
-7. Deploy SQL Server using the following command or the **step4_deploy_sql.sh** script:
+`oc apply -f storage.yaml`
 
-    `oc apply -f sqldeployment.yaml`
+When this completes you should see the following message and be placed back at the shell prompt:
 
-    When this completes, you should see the following messages and be placed back at the shell prompt
+<pre>persistentvolumeclaim/mssql-data created</pre>
 
-   <pre>deployment.apps/mssql-deployment created
-   service/mssql-service created</pre>
+**Note**: *The **PersistentVolumeClaim** created assumes the default **StorageClass** of the OpenShift cluster.*
 
-    Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how SQL Server was deployed including details of the container image, arguments, label to "tag" the deployment, what PersistentVolumeClaim to use (from the previous step) and a LoadBalancer service attached to this pod.
 
-    At this time, you have submitted a deployment, which is a logical collection of objects including a pod, container, and LoadBalancer service. OpenShift will schedule a SQL Server container in a pod on a node on the cluster. Proceed to the next step to check on whether the deployment was successful.
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Deploy SQL Server</p>
 
-8. Verify the SQL Server deployment has succeeded by running the following command:
+Use the following command or execute the **step4_deploy_sql.sh** script to deploy SQL Server:
 
-    `oc get deployment mssql-deployment`
+`oc apply -f sqldeployment.yaml`
 
-    When the value of **AVAILABLE** becomes 1, the deployment is successful including a Running Container. Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment could take several minutes.
+When this completes, you should see the following messages and be placed back at the shell prompt:
 
-    You can run the following command to check on the status of the pod and LoadBalancer service:
+<pre>
+deployment.apps/mssql-deployment created
+ervice/mssql-service created
+</pre>
 
-    `oc get all`
+Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how SQL Server were deployed, including details of the container image, arguments, label to "tag" the deployment, which **PersistentVolumeClaim** to use (from the previous step) and the **LoadBalancer** service that is attached to this pod.
 
-     It is possible for the deployment to be successful but the LoadBalancer is not created. When everything about this deployment is successful, the STATUS of the pod is **Running** and the LoadBalancer service has a valid IP address for EXTERNAL-IP.
+You have now submitted a deployment, which is a logical collection of objects including a *pod*, a *container*, and **LoadBalancer** service. OpenShift will schedule a SQL Server container in a *pod* on a *node* on the cluster. 
 
-9. The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the ERRORLOG is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the ERRORLOG or execute the script **step5_get_errorlog.sh**:
+Now Proceed to the next step to check whether the deployment was successful.
 
-    `POD=$(oc get pods | grep mssql | awk {'print $1'})`<br>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Verify the SQL Server deployment</p>
+
+Check to see if the deployment succeeded by running the following command:
+
+`oc get deployment mssql-deployment`
+
+When the value of **AVAILABLE** value shows **1**, the deployment succeeded - including having a Running Container. 
+
+**NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes.
+
+You can run the following command to check on the status of the pod and LoadBalancer service:
+
+`oc get all`
+
+**NOTE**: *It is possible for the deployment to be successful but the LoadBalancer is not created. When everything about this deployment is successful, the STATUS of the pod is **Running** and the **LoadBalancer** service has a valid IP address for **EXTERNAL-IP**.*
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Check the SQL Server logs</p>
+
+The SQL Server database engine produces a file called the ERRORLOG file when it starts and can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the **ERRORLOG** is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the **ERRORLOG** or execute the script **step5_get_errorlog.sh**:
+
+`POD=$(oc get pods | grep mssql | awk {'print $1'})`
+
+<br>
+
 `oc logs $POD`
 
-    The ERRORLOG will scroll across the screen and you can scroll up in your shell to see all the output.
+The ERRORLOG will scroll across the screen and you can scroll up in your shell to see all the output, or pipe the command to the `less` or `more` command in Linux.
 
-A pod with a SQL Server container is now deployed and a LoadBalancer service is attached to the pod. The LoadBalancer will be a key component to connecting to SQL Server no matter where the pod is running in the cluster.
+A *pod* with a SQL Server container is now deployed and a **LoadBalancer** service is attached to the pod. The LoadBalancer will be a key component to connecting to SQL Server no matter where the pod is running in the cluster.
 
-<pre>Do not proceed to the next Module until you have a valid IP address for the EXTERNAL-IP value for the LoadBalancer service. The value will say pending while it is being created. One some OpenShift cluster systems this process can take a few minutes.</pre>
+**NOTE**: *Do not proceed to the next Module until you have a valid IP address for the **EXTERNAL-IP** value for the **LoadBalancer** service. The value will say pending while it is being created. One some OpenShift cluster systems this process can take a few minutes.*
 
-You can now proceed to Next Steps to Connect and Query SQL Server on OpenShift.
+You can now proceed to **Next Steps** to Connect and Query SQL Server on OpenShift.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
-
-
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 
