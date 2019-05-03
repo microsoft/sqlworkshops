@@ -164,7 +164,7 @@ statefulset.apps/mssql3   1         1         37s
 
  As part of the design for SQL Server Availability groups, a concept called a *statefulset* is used. A stateful set provides the capabilities to manage a set of pods that belong in a group like Availability Groups. You can read more about **StatefulSets** at https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create a **LoadBalancer** Service</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create a <b>LoadBalancer</b> Service</p>
 
 Even though each SQL Server pod has a **LoadBalancer** service, you need to create a **LoadBalancer** service that will always point to the primary replica and a LoadBalancer service that will point to any secondary replicas. Execute the following command or the script **step5_apply_agservices.sh**:
 

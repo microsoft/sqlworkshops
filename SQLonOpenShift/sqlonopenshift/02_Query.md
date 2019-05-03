@@ -104,9 +104,8 @@ In this step, you will copy the backup into the container running SQL Server 201
 
 Execute the following command to copy the database backup file into the container or execute the script **step2_copy_backup_into_container.sh**:
 
-`POD=$(oc get pods | grep mssql-deployment | awk {'print $1'})`
-
-`oc cp ./WideWorldImporters-Full.bak $POD:/var/opt/mssql/WideWorldImporters-Full.bak`
+`POD=$(oc get pods | grep mssql-deployment | awk {'print $1'})`<br>
+`oc cp ./WideWorldImporters-Full.bak $POD:/var/opt/mssql/WideWorldImporters-Full.bak`<br>
 
 Depending on the speed of the connectivity of your computer, the process to copy the file into the container could take several minutes.
 
@@ -218,6 +217,7 @@ SystemParameters               Application
 TransactionTypes               Application
 TransactionTypes_Archive       Application
 VehicleTemperatures            Warehouse
+
 (48 rows affected)
 </pre>
 
@@ -235,6 +235,7 @@ Your results should look similar to the following:
 
 <pre>
 Changed database context to 'WideWorldImporters'.
+
 FullName                       PhoneNumber          EmailAddress
 ------------------------------ -------------------- ------------------------------
 ahlada Thota                   (215) 555-0100      aahlada@tailspintoys.com
@@ -246,7 +247,8 @@ Abel Pirvu                     (216) 555-0100      abel@wingtiptoys.com
 Abel Spirlea                   (218) 555-0100      abel@example.com
 Abel Tatarescu                 (217) 555-0100      abel@example.com
 Abhaya Rambhatla               (231) 555-0100      abhaya@wingtiptoys.com
-Abhoy Prabhupda                (423) 555-0100       abhoy@tailspintoys.com
+Abhoy Prabhupda                (423) 555-0100      abhoy@tailspintoys.com
+
 (10 rows affected)
 </pre>
 
@@ -282,17 +284,17 @@ GO
 The output should look something similar to this:
 
 <pre>session_id login_time              host_name                                                                                                                   program_name                                                                                                                     reads                writes               cpu_time
-    ---------- ----------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------- -----------
-        51 2019-04-12 15:04:50.513 mssql-deploymen                                                                                                                  SQLServerCEIP                                                                                                                                       0                    0          50
-        52 2019-04-12 15:08:21.147 troyryanwin10                                                                                                                    SQLCMD                                                                                                                                              0                    0           0
-    (2 rows affected)
-    session_id start_time              status                         command
-    ---------- ----------------------- ------------------------------ --------------------------------
-        52 2019-04-12 15:08:21.317 running                        SELECT
-    (1 rows affected)
-    cpu_count   committed_kb
-    ----------- --------------------
-          2               405008
+ ---------- ----------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------- -----------
+ 51 2019-04-12 15:04:50.513 mssql-deploymen                                                                                                                  SQLServerCEIP                                                                                                                                       0                    0          50
+ 52 2019-04-12 15:08:21.147 troyryanwin10                                                                                                                    SQLCMD                                                                                                                                              0                    0           0
+ (2 rows affected)
+ session_id start_time              status                         command
+ ---------- ----------------------- ------------------------------ --------------------------------
+ 52 2019-04-12 15:08:21.317 running                        SELECT
+ (1 rows affected)
+ cpu_count   committed_kb
+ ----------- --------------------
+ 2               405008
 </pre>
 
 The first T-SQL batch provides information about the sessions connected to SQL Server with information about the session. The second T-SQL batch provides information about active queries against SQL Server. The third batch provides information about how many CPUs SQL Server detected and how much memory the database engine has consumed. There are many Dynamic Management Views and more columns available than in the examples you used. You can read about all DMVs at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views.
