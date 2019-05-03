@@ -1,10 +1,11 @@
 <img style="float: right;" src="./graphics/solutions-microsoft-logo-small.png">
 
 # SQL Server Workshops
+## (https://aka.ms/sqlworkshops)
 
 This site is a map of learning content produced by and curated by the SQL Server team in Microsoft Engineering. These materials are meant to be instructor-led, but you can work through the materials on a test system on your own if desired. You can view all materials directly in this interface, or you can [view the raw github site for this content here](https://github.com/Microsoft/sqlworkshops). 
 
-See the license information at the bottom of this README.md file.
+*See the license information at the bottom of this README.md file*
 
 Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sqlworkshops/issues) and we'll try and fix it.
 
@@ -12,18 +13,17 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 - [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/master/ModernizeYourDatabases2019)
+- [SQL Server 2019 on OpenShift](https://github.com/Microsoft/sqlworkshops/tree/master/SQLonOpenShift)
 
 ## SQL Server Programming
 
-- [Python for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/Python%20for%20Data%20Professionals)
-- [R for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/R%20For%20Data%20Professionals)
+- [Python for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/PythonForDataProfessionals)
+- [R for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/RForDataProfessionals)
 
 ## SQL Server Machine Learning and AI
 
-- [Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/ML%20Services%20for%20SQL%20Server)
-- [Hybrid Architectures for Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/Hybrid%20ML%20for%20SQL%20Server)
-- [Machine Learning Using R for the Data Professional](https://github.com/Microsoft/sqlworkshops/tree/master/ML%20Services%20for%20SQL%20Server)
-
+- [Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/SQLServerMLServices)
+- [Hybrid Architectures for Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/SQLServerAndAzureMachineLearning)
 
 ## SQL Server Business Analytics and Advanced Analytics
 
@@ -65,13 +65,13 @@ You can follow the steps below to clone individual files from a git repo using a
 
 Example:
 
-```
+<pre>
 git clone -n https://github.com/Microsoft/sqlworkshops
 cd sqlworkshops
 git config core.sparsecheckout true
 echo workshopname/*| out-file -append -encoding ascii .git/info/sparse-checkout
 git checkout
-```
+</pre>
 
 For more information about `sparse checkout please` visit [this](https://stackoverflow.com/questions/23289006/on-windows-git-error-sparse-checkout-leaves-no-entry-on-the-working-directory) stackoverflow thread.
 

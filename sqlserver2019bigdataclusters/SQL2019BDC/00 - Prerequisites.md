@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.3)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.5)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -63,13 +63,13 @@ As of this writing, the SQL Server big data cluster feature is enabled for previ
 
 https://aka.ms/eapsignup 
 
-When you access that site, put the words **Purpose: SQL Bits 2019 Workshop** in the *Please describe the specific application or workload that you will be testing with SQL Server 2019?* box. You will be automatically approved. For the *Platform*, select **Azure Kubernetes Service (AKS)**.
+When you access that site, put the words **Purpose: SQL Server 2019 BDC Workshop** in the *Please describe the specific application or workload that you will be testing with SQL Server 2019?* box. You will be automatically approved. For the *Platform*, select **Azure Kubernetes Service (AKS)**.
 
 You will use these credentials in a subsequent step. It can take up to a week to receive your code. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 3: Prepare Your Workstation</b></p>
 <br>
-The instructions that follow are the same for either a "base metal" workstation or laptop, or a Virtual Machine. It's best to have at least 4MB or RAM on the management system, and these instructions assume that you are not planning to run the database server or any Containers on the workstation. It's also assumed that you are using a current version of Windows, either desktop or server.
+The instructions that follow are the same for either a "base metal" workstation or laptop, or a Virtual Machine. It's best to have at least 4MB of RAM on the management system, and these instructions assume that you are not planning to run the database server or any Containers on the workstation. It's also assumed that you are using a current version of Windows, either desktop or server.
 <br>
 
 *(You can copy and paste all of the commands that follow in a PowerShell window that you run as the system Administrator)*
@@ -117,10 +117,8 @@ The Azure Command Line Utility is used to set up and control Azure resources. Ru
 
 <pre>
 write-host "Install Azure CLI"
-start "https://aka.ms/installazurecliwindows"
+choco install azure-cli
 </pre>
-
-You'll need to click the MSI file once it downloads, and take all defaults. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 5: Install Python 3 and git</b></p>
 
@@ -163,7 +161,6 @@ You may have `pip3` instead of `pip` as the command.
 </i>
 
 
-
 <pre>
 REM If Python does not run in your path, try:
 REM setx path "%path%;C:\Users\<replace with your login name>\AppData\Roaming\Python\Python37\Scripts"
@@ -178,8 +175,9 @@ pip uninstall mssqlctl
 REM for 2.3:
 pip uninstall -r  https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
 
+REM All Versions after uninstall: 
 
-pip install -r  https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
+pip3 install -r  https://private-repo.microsoft.com/python/ctp-2.5/mssqlctl/requirements.txt
 
 </pre>
 
@@ -189,7 +187,7 @@ The primary management tool for working with SQL Server big data clusters is Azu
 
 <pre>
 write-host "Install Azure Data Studio" 
-start "https://go.microsoft.com/fwlink/?linkid=2038320"
+choco install azure-data-studio
 </pre>
 
 Once again, download the MSI and run it from there. It's always a good idea after this many installations to run Windows Update again:
