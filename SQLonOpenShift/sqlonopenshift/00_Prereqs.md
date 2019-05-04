@@ -58,7 +58,7 @@ Navigate to your home directory `~` and enter the following command:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Login to your OpenShift cluster, via a web browser, using the URL provided to you for the <b>openshiftConsoleUrl</b>.</p>
 
-**NOTE**: *You may get warnings from the web page saying "This site is not secure". Click Details and then "Go on to the webpage".*
+**NOTE**: *You may get warnings from the web page saying "This site is not secure". Click Details or Advanced and then "Go on to the webpage" or "Proceed to ...".*
 
 You will be presented with a login screen:
 
@@ -86,7 +86,7 @@ Open up a shell and paste in the token you copied using the right-click of your 
 
 `oc login https://[masterconsoleaddress]:443 --token=[tokenstring]`
 
-Press the `Enter` key
+Press the `Enter` key. If you are promoted for "Use insecure connections? (y/n)" type in `y`
 
 You should see results similar to the following. You are then placed back at the command prompt:
 

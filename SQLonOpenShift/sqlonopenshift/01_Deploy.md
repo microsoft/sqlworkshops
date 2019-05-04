@@ -47,9 +47,11 @@ Follow these steps to deploy SQL Server on OpenShift:
 
 **NOTE**: *At any point in this Module if you need to "start over", use the script **cleanup.sh** to delete the project and go back the first step of the Activity.*
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy</b> folder.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change directories for the scripts for this module</p>
 
-Open a shell and use the `cd` command.
+Run the following command from the shell:
+
+`cd ~/sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy`
 
 **NOTE**: *You must log into the OpenShift cluster first, using instructions from the Prerequisites*
 
@@ -134,7 +136,7 @@ Check to see if the deployment succeeded by running the following command:
 
 When the value of **AVAILABLE** becomes **1**, the deployment was successful and your container is running. 
 
-**NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes.*
+**NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes. The first time you deploy SQL Server on a cluster requires the docker iamge to be pulled from the Microsoft container registry.*
 
 Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how SQL Server was deployed, including details of the container image, arguments, label to "tag" the deployment, which **PersistentVolumeClaim** to use (from the previous step) and the **LoadBalancer** service that is attached to this pod.
 
@@ -142,14 +144,17 @@ You can run the following command to check on the status of the pod and LoadBala
 
 `oc get all`
 
+You can also run the following command to track events in the cluster
+
+`oc get event`
+
 **NOTE**: *It is possible for the deployment to be successful but the LoadBalancer is not created. When everything about this deployment is successful, the STATUS of the pod is **Running** and the **LoadBalancer** service has a valid IP address for **EXTERNAL-IP**.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Check the SQL Server logs</p>
 
 The SQL Server database engine produces a file called the ERRORLOG when it starts. The ERRORLOG file can be used to gather interesting information about SQL Server or be used for troubleshooting. Since the output of the **ERRORLOG** is sent to stdout as part of running SQL Server as a container you can view these logs using OpenShift commands. Run the following commands to view the **ERRORLOG** or execute the script **step5_get_errorlog.sh**:
 
-`POD=$(oc get pods | grep mssql | awk {'print $1'}`
-<br>
+`POD=$(oc get pods | grep mssql | awk {'print $1'})`<br>
 `oc logs $POD`<br>
 
 The ERRORLOG will scroll across the screen and you can scroll up in your shell to see all the output, or pipe the command to the `less` or `more` command in Linux.
