@@ -29,7 +29,7 @@ Intelligent Query processing is a suite of features built into the query process
 
 You can read more about database compatibility at https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-2017#compatibility-levels-and-sql-server-upgrades.
 
-The following is a diagram showing the features of Intelligent Query Processing including capabilities from SQL Server 2017:
+The following is a diagram showing the features of Intelligent Query Processing including capabilities from SQL Server 2017 and SQL Server 2019:
 
 ![iqp diagram](../graphics/IQP_diagram.png)
 
@@ -83,7 +83,7 @@ The first time you launch Azure Data Studio, you may see the following choices. 
     
 <p><img style="margin: 0px 30px 15x 0px;" src="../graphics/ADS_initial_prompts.jpg" width="250" height="150">
 
-You will now be presented with the following screen to enter in your connection details for SQL Server. For Server, put in the values for **EXTERNAL IP, PORT** from step 1 above. Change the **Authentication** type to **SQL Login**, Put in a user name of **sa** with the Password you used for the **secret** in Module 01 when you deployed SQL Server (the default password for this workshop is Sql2019isfast). Click the checkbox for **Remember Password** so you will not have to enter this information again for future connections. 
+You will now be presented with the following screen to enter in your connection details for SQL Server. For Server, put in the values for **EXTERNAL IP, PORT** from the previous step in this activity. Change the **Authentication** type to **SQL Login**, Put in a user name of **sa** with the Password you used for the **secret** in Module 01 when you deployed SQL Server (the default password for this workshop is Sql2019isfast). Click the checkbox for **Remember Password** so you will not have to enter this information again for future connections. 
 
 Now click the **Connect** button to connect. An example of a connection looks similar to this graphic:
 
@@ -281,6 +281,8 @@ GO
 
 The query is designed to focus on the most recent execution of the query in the stored procedure CustomerProfits that has run faster with Intelligent Query Processing.
 
+Now click the **Run** button to execute the script. You will be prompted to pick the connection to execute the script. Select the connection you created in previous steps of this Activity.
+
 The results of the query should look something similar to the following (the values query_id and plan_id will likely be different):
 
 ![iqp query store results](../graphics/IQP_query_store_results.jpg)
@@ -308,6 +310,8 @@ The following output is an example for the stored procedure execution with `comp
 As a **post workshop exercise** you can go through this activity in a SQL notebook. Use the **File | Open** menu in Azure Data Studio to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/03_performance/iqp** folder. Follow the steps provided in the notebook to complete the activity.
 
 In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing.
+
+You can now close the Azure Data Studio application.
 
 You can now proceed to Next Steps to learn about High Availability for SQL Server on OpenShift.
 

@@ -54,7 +54,11 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
 **CAUTION: If you have gone through all the activities in Modules 1-4, and you are running on a single node OpenShift cluster, you may not have enough resources to do the activities in this Module if the SQL Server you deployed in Module 1 still is running. Therefore, be sure and cleanup all previous resources by executing *step6_cleanup.sh* in Module 04.**
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open a shell prompt and change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator</b> folder</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change directories for the scripts for this module</p>
+
+Run the following command from the shell:
+
+`cd ~/sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator`
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Ensure your scripts are executable</p>
 
@@ -218,8 +222,6 @@ ON hars.replica_id = ar.replica_id
 GO
 ```
 
-Open a shell prompt and change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator</b> folder
-
 Run the following command or execute the script **step6_check_replicas.sh** to see the replica status of the Availability Group deployed:
 
 `SERVERIP=$(oc get service | grep ag1-primary | awk {'print $4'})`<br>
@@ -365,7 +367,7 @@ mssql3-0                       SECONDARY                      NULL
 
 If in your results, if the replica_server_name is mssql2-0 for the PRIMARY, you will need to edit the **failover.yaml** file. If not, you can skip to the next step.
 
-The **failover.yaml** file declares how to manually trigger a failover to another replica but is setup so you must specify which replica to target as the new primary. The workshop was built so that **mssql2-0** would be the new primary. In some rare cases, **mssql2-0** might have been chosen as the original primary. If this is the case, you need to edit this part of the **failover.yaml** file and change the name **mssql2-0** to **mssql3-0**
+The **failover.yaml** file declares how to manually trigger a failover to another replica but is setup so you must specify which replica to target as the new primary. The workshop was built so that **mssql2-0** would be the new primary. In some rare cases, **mssql2-0** might have been chosen as the original primary. If this is the case, you need to edit this part of the **failover.yaml** file and change the name **mssql2-0** to **mssql3-0**. This section is near the bottom of the failover.yaml file.
 
 <pre>
 - {name: MSSQL_K8S_AG_NAME, value: ag1}
@@ -447,6 +449,8 @@ col1        col2
 </pre>
 
 In this activity, you have simulated a failover for your deployed Availability Group and seen your data is still consistent, intact, and your application has connected with no changes and almost no downtime.
+
+You can now run **step11_cleanup.sh** if you would like to repeat this Module or repeat any of the other Modules in the workshop.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
