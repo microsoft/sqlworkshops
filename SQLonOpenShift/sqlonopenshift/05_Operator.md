@@ -307,8 +307,9 @@ Connected to Primary = mssql1-0
 (1 rows affected)
 Changed database context to 'testag'.
 col1        col2
+----------- ------------------------------------------------------
  
-1 SQL Server 2019 is fast, secure, and highly available
+1            SQL Server 2019 is fast, secure, and highly available
 
 (1 rows affected)
 
@@ -317,8 +318,9 @@ Connected to Secondary = mssql2-0
 (1 rows affected)
 Changed database context to 'testag'.
 col1        col2
+----------- -------------------------------------------------------
 
-1 SQL Server 2019 is fast, secure, and highly available
+1            SQL Server 2019 is fast, secure, and highly available
 
 (1 rows affected)
 </pre>
@@ -428,7 +430,7 @@ Connected to Primary = mssql2-0
 Changed database context to 'testag'.
 col1        col2
 ----------- ------------------------------------------------------------
-1 SQL Server 2019 is fast, secure, and highly available
+1            SQL Server 2019 is fast, secure, and highly available
 
 (1 rows affected)
 
@@ -439,7 +441,7 @@ Connected to Secondary = mssql1-0
 Changed database context to 'testag'.
 col1        col2
 ----------- ------------------------------------------------------------
-1 SQL Server 2019 is fast, secure, and highly available
+1            SQL Server 2019 is fast, secure, and highly available
 
 (1 rows affected)
 </pre>
