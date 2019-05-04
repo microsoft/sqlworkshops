@@ -43,7 +43,11 @@ Proceed to the next Activity to learn the fundamentals of connecting to SQL Serv
 
 Follow these steps to connect to SQL Server deployed on OpenShift:
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open a shell prompt and change to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query</b> directory</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change directories for the scripts for this module</p>
+
+Run the following command from the shell:
+
+`cd ~/sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query`
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Ensure your scripts are executable</p>
 
@@ -67,8 +71,8 @@ In this example, the IP address and the port of the Load Balancer service is use
 The output of this command will look similar to the following:
 
 <pre>
-Microsoft SQL Server 2019 (CTP2.4) - 15.0.1400.75 (X64)
-Mar 16 2019 11:53:26
+Microsoft SQL Server 2019 (CTP2.2) - 15.0.1200.24 (X64)
+Dec 5 2018 16:51:26
 Copyright (C) 2019 Microsoft Corporation
 Developer Edition (64-bit) on Linux (Red Hat Enterprise Linux Server 7.6 (Maipo)) X64                       
 (1 rows affected)
@@ -89,8 +93,6 @@ Proceed to the next Activity to learn how to restore a database backup to SQL Se
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Restore a SQL Database Backup</a></b></p>
 
 Follow these steps to restore a database backup to SQL Server deployed on OpenShift:
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open a shell prompt and change to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query</b> directory</p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Locate the Database Backup</p>
 
@@ -150,8 +152,6 @@ Proceed to the Activity to learn how to run queries against a SQL Server deploye
 Follow these steps to execute example queries against a SQL Server deployed on OpenShift: 
 
 **NOTE**: *These steps assume you have followed the previous sections of this module.*
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open a shell prompt and change to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/02_query</b> directory</p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Explore database tables</p>
 
@@ -320,7 +320,9 @@ You will be presented with a prompt:
 1>
 </pre>    
 
-You can now run T-SQL statement interactively with **sqlcmd**. By typing in a query and hitting Enter, you can type in the keyword **GO** and press the ENTER key to execute a query. Type in the keyword **exit** to leave **sqlcmd**.
+You can now run T-SQL statement interactively with **sqlcmd**. By typing in a query and hitting ENTER, you can type in the keyword **GO** and press the ENTER key to execute a query. The command `:help` displays commands specific to the sqlcmd utility. The complete T-SQL reference can be found at https://docs.microsoft.com/en-us/sql/t-sql/language-reference.
+
+Type in the keyword **exit** to leave **sqlcmd**.
 
 You can now proceed to **Next Steps** to learn more about SQL Server Performance.
 
