@@ -9,7 +9,15 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="graphics/textbubble.png"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *SQL Server 2019 on OpenShift*. 
+Welcome to this Microsoft solutions workshop on *SQL Server 2019 on OpenShift*.
+
+Red Hat OpenShift Container Platform brings together Docker and Kubernetes, and provides an API to manage these services. OpenShift Container Platform allows you to create and manage containers. From a perspective of SQL Server, OpenShift provides:
+
+- A scalable architecture to deploy containerized applications and data platforms such as SQL Server
+- Persistent storage for stateful containers like SQL Server
+- Built-in load balancers to abstract application connections to SQL Server
+- Built-in high availability for stateful containers like SQL Server
+- An ecosystem for Operators to simplify application deployment and manage high availability
 
 In this course you will learn the basics of deployment, connection, query execution, performance, high availability, operators, and Always On Availability Groups in SQL Server 2019 with OpenShift.
 
@@ -85,6 +93,8 @@ To complete this workshop you will need the following:
 - Access to a OpenShift 3.11 cluster
 - Access to all the scripts provided from this workshop from the GitHub repo.
 
+The Prerequisites module in this workshop provides all the details of tools and software required to take this workshop.
+
 You might be taking this workshop from an instructor who will provide access to an OpenShift cluster and possibly a client workstation with all the tools and files installed.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> 
@@ -112,7 +122,7 @@ This workshop uses OpenShift, SQL Server 2019, Azure Data Studio, SQL Command Li
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2><br>
 
-- [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/rgward/ModernizeYourDatabases2019)
+- [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/master/ModernizeYourDatabases2019)
 - [The OpenShift Interactive Learning Portal](https://learn.openshift.com/)
 
 <br>

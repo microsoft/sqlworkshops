@@ -58,7 +58,7 @@ Follow these steps to deploy an Always On Availability Group on OpenShift using 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Ensure your scripts are executable</p>
 
-Run the following command (depending on your Linux shell and client you may need to preface this with sudo)
+Run the following command (depending on your Linux shell and client you may need to preface this with `sudo`)
 
 `chmod u+x *.sh`
 
@@ -151,7 +151,7 @@ service/mssql3   LoadBalancer   172.30.6.212    23.96.53.245   1433:30611/TCP   
 
  Run the `oc get all` command until the pods and LoadBalancer services are in this state.
    
-**NOTE**: *You will see some pods that start with a name of mssql-initialize. You can ignore these. They are used to deploy the SQL Server Availability Group but may not be needed in the final design of the operator.*
+**NOTE**: *You will see some pods that start with a name of mssql-initialize. You can ignore these. They are used to deploy the SQL Server Availability Group but may not be needed in the final design of the operator for SQL Server 2019.*
 
 In addition, notice that there are three objects from the oc get all output:
 
@@ -203,7 +203,7 @@ Proceed to the activity to see how this works.
 
 In this activity you will learn how to connect, add databases, add data, and query data to replicas in an availability group deployed in OpenShift.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Open a shell prompt and change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator</b> folder</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Check Replica Status</p>
 
 T-SQL provides capabilities so you can see which SQL Servers instances are currently the primary vs secondary replica.
 
@@ -218,6 +218,7 @@ ON hars.replica_id = ar.replica_id
 GO
 ```
 
+Open a shell prompt and change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/05_operator</b> folder
 
 Run the following command or execute the script **step6_check_replicas.sh** to see the replica status of the Availability Group deployed:
 
@@ -235,7 +236,7 @@ mssql2-0                       SECONDARY                      NULL
 mssql3-0                       SECONDARY                      NULL
 </pre>
 
-It is possible that the replica_server_name for your deployment is any of these replicas. In most cases, it will be **mssql1-0**. You will use this same command later to see that the status of the Availability Group is after a failover.
+It is possible that the replica_server_name for your deployment is any of these replicas. In most cases, it will be **mssql1-0**. You will use this same command later to see that the status of the Availability Group after a failover.
 
 Now it is time to create a new database,  backup the database, and then add the database to the Availability Group. Examine the contents of the script **setupag.sql** to see the T-SQL commands. Run the following command or script **step7_setupag.sh**:
 
@@ -253,7 +254,7 @@ Processed 2 pages for database 'testag', file 'testag_log' on file 1.
 BACKUP DATABASE successfully processed 330 pages in 1.239 seconds (2.077 MB/sec).
 </pre>
 
-Direct seeding should happen almost instantly because there is no user database in the database.
+Direct seeding should happen almost instantly because there is no user data in the database.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create Data for Replication</p>
 
@@ -322,7 +323,7 @@ col1        col2
 (1 rows affected)
 </pre>
 
-Now that you have successfully created a database, added it to the Availability Group, and synchronized data, you an proceed to the next section to test how a failover works.
+Now that you have successfully created a database, added it to the Availability Group, and synchronized data, you can proceed to the next section to test how a failover works.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

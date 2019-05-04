@@ -23,7 +23,7 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">3.0 SQL Server Intelligent Query Processing</a></h2>
 
-In this module you will learn about the Intelligent Query processing capabilities in SQL Server 2019. You will use various Activities to understand these concepts using the SQL Server container you deployed in OpenShift. This demonstrates the compatibility of the database engine in SQL Server 2019 running on Windows, Linux, and uin containers.
+In this module you will learn about the Intelligent Query processing capabilities in SQL Server 2019. You will use various Activities to understand these concepts using the SQL Server container you deployed in OpenShift. This demonstrates the compatibility of the database engine in SQL Server 2019 running on Windows, Linux, and Containers.
 
 Intelligent Query processing is a suite of features built into the query processor for SQL Server 2019 allowing developers and data professionals to accelerate database performance automatically without any application changes. T-SQL queries simply need to be run with a database compatibility level of 150 to take advantage of these enhancements.
 
@@ -83,7 +83,7 @@ The first time you launch Azure Data Studio, you may see the following choices. 
     
 <p><img style="margin: 0px 30px 15x 0px;" src="../graphics/ADS_initial_prompts.jpg" width="250" height="150">
 
-You will now be presented with the following screen to enter in your connection details for SQL Server. For Server, put in the values for **EXTERNAL IP, PORT** from step 1 above. Change the **Authentication** type to **SQL Login**, Put in a user name of **sa** with the Password you used for the **secret** in Module 01 when you deployed SQL Server. Click the checkbox for **Remember Password** so you will not have to enter this information again for future connections. 
+You will now be presented with the following screen to enter in your connection details for SQL Server. For Server, put in the values for **EXTERNAL IP, PORT** from step 1 above. Change the **Authentication** type to **SQL Login**, Put in a user name of **sa** with the Password you used for the **secret** in Module 01 when you deployed SQL Server (the default password for this workshop is Sql2019isfast). Click the checkbox for **Remember Password** so you will not have to enter this information again for future connections. 
 
 Now click the **Connect** button to connect. An example of a connection looks similar to this graphic:
 
@@ -138,7 +138,7 @@ This procedure uses a table variable populated from a user table and then joins 
 
 **NOTE**: *In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include `TOP`.*
 
-Now click the **Run** button to execute the script. You will be prompted to pick the connection to execute the script. Select the connection you created in Step 4.
+Now click the **Run** button to execute the script. You will be prompted to pick the connection to execute the script. Select the connection you created in previous steps of this Activity.
 
 When you execute this script the results should look similar to this graphic:
 
@@ -146,11 +146,11 @@ When you execute this script the results should look similar to this graphic:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change the Compatibility Level to see the previous performance</p>
 
-You observe that this Stored Procedure executes quickly with a single execution but over several iterations the total duration increases to over 20 seconds, which is not acceptable.
+You observe that this Stored Procedure executes quickly with a single execution but over several iterations the total duration increases to over 20 seconds, which is not acceptable for the needs of the WideWorldImporters company.
 
 Open the script **repro130.sql** by using the File Menu/Open File option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
 
-The script looks similar to the following
+The script looks similar to the following:
 
 
 ```sql
@@ -171,7 +171,7 @@ GO
 
 The script will ensure the database is in a compatibility mode that is less than 150 so Intelligent Query Processing will NOT be enabled. The script also turns off rowcount messages to be returned to the client to reduce network traffic for this test. Then the script executes the stored procedure. Notice the syntax of **GO 25**. This is a client tool tip that says to run the batch 25 times (avoids having to construct a loop).
 
-Click the **Run** button to execute the script to observe the results. Choose the connection by clicking on the **IP,PORT** you created for the SQL Server container and click **Connect**.
+Click the **Run** button to execute the script to observe the results. Choose the connection by clicking on the **IP, PORT** you created for the SQL Server container and click **Connect**.
 
 You will see while the query is executing in the bottom status bar the current elapsed execution time, the server connection details, a status of **Executing Query**, and number of rows being returned to the client.
 
@@ -189,7 +189,7 @@ You can scroll in the **RESULTS** or **MESSAGES** pane. If you scroll down to th
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change the Compatibility Level to see the performance improvements in SQL Server 2019</p>
 
-You will now run the same code, but with database compatibility of 150 which uses the features in SQL Server 2019. 
+You will now run the same code, but with database compatibility of 150, which enables Intelligent Query Processing. 
 
 Open the script **repro150.sql** by using the **File | Open File** option of Azure Data Studio. The file can be found in the **sqlworkshops/SQLonOpenShift/sqlonopenshift/03_performance/iqp** folder.
 
@@ -210,13 +210,13 @@ SET NOCOUNT OFF
 GO
 ```
 
-Notice this is the same script, except database compatibility of 150 is used. This time, the query processor in SQL Server will enable table variable deferred compilation to use a better query plan.
+Notice this is the same script, except database compatibility of 150 is used. This time, the query processor in SQL Server will enable table variable deferred compilation which allows for a possible improved query plan choice.
 
-Run the script and choose the SQL Server container connection. Go through the same steps as in Step 8 to analyze the results. The script should execute far faster than before. Your speeds can vary but should be 15 seconds or less.
+Run the script and choose the SQL Server container connection. Go through the same process as in previous steps to analyze the results. The script should execute far faster than before. Your speeds can vary but should be 15 seconds or less.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Post-Workshop example</p>
 
-As a **post workshop exercise** you can go through this activity in a Jupyter Notebook in Azure Data Studio, which contains a SQL Kernel. Use the **File** menu of Azure Data Studio (**Open File** option) to open the **03_IQP_Table_Variable.ipynb** Jupyter Notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
+As a **post workshop exercise** you can go through this activity in a Jupyter Notebook in Azure Data Studio, which contains a SQL Kernel. Use the **File** menu of Azure Data Studio (**Open File** option) to open the **03_IQP_Table_Variable.ipynb** Jupyter Notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/03_performance/iqp** folder. Follow the steps provided in the notebook to complete the activity.
 
 The SQL notebook experience looks similar to the following:
 
@@ -305,7 +305,7 @@ The following output is an example for the stored procedure execution with `comp
 
  In this example SQL has recognized the table variable has more than 1 row and has chosen a different join method called a hash join. Furthermore, it has injected into the plan the concept of an **Adaptive Join** so that if there is small enough rowset in the table variable it could dynamically and automatically choose a **Nested Loops Join**. What is not obvious from this diagram (which you can see from the *properties* detail in the XML plan) that is the query processor is using a third concept called **batch mode processing on rowstore** (rowstore is normal table as opposed to a columnstore).
 
-As a **post workshop exercise** you can go through this activity in a SQL notebook. Use the **File | Open** menu in Azure Data Studio to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/iqp/03_performance** folder. Follow the steps provided in the notebook to complete the activity.
+As a **post workshop exercise** you can go through this activity in a SQL notebook. Use the **File | Open** menu in Azure Data Studio to open the **03_Query_Store.ipynb** notebook in the **sqlworkshops/SQLOnOpenShift/sqlonopenshift/03_performance/iqp** folder. Follow the steps provided in the notebook to complete the activity.
 
 In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing.
 

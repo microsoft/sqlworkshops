@@ -33,10 +33,10 @@ In order to go through the activities of this workshop you will need the followi
   - The OpenShift CLI (oc.exe)
   - Azure Data Studio (Minimum version is 1.5.2). Install from https://docs.microsoft.com/en-us/sql/azure-data-studio/download
   - SQL Command Line Tools (sqlcmd). Check the **For Further Study** section for links to install these tools.
-  - git client (only needed if you do not have the latest version of the workshop provided to you by the instructor)
+  - **git** client (only needed if you do not have the latest version of the workshop provided to you by the instructor)
   - In addition, the client computer must be able to connect to the Internet to download a sample file or your instructor must provide it for you (WideWorldImporters-Full.bak)
 
-The workshop currently supports a single node OpenShift cluster but can be run on a multiple cluster environment. Each user will need ~8Gb of RAM to run the containers in the workshop.
+The workshop currently supports a single node OpenShift cluster but can be run on a multiple cluster environment. For cluster administrators building a cluster for this workshop, each user will need ~8Gb of RAM to run the containers in the workshop.
 
 **Note**: *If you are attending this course in-person, the instructor may provide you with a client environment and full access to an OpenShift cluster including login credentials.*
 
@@ -56,7 +56,7 @@ Navigate to your home directory `~` and enter the following command:
 
 **NOTE**: *If you have used `git clone` to pull down the repo of the workshops in the past, run `git pull` in the sqlworkshops directory to get the latest version.*
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Login to your OpenShift cluster, via a web browser, using the URL provided to you for the <b>openshiftConsoleUrl</b> in a web browser.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Login to your OpenShift cluster, via a web browser, using the URL provided to you for the <b>openshiftConsoleUrl</b>.</p>
 
 **NOTE**: *You may get warnings from the web page saying "This site is not secure". Click Details and then "Go on to the webpage".*
 

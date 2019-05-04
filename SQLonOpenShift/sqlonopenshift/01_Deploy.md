@@ -45,13 +45,13 @@ Proceed to the **Activity** below to learn these deployment steps.
 
 Follow these steps to deploy SQL Server on OpenShift:
 
-<pre>Note: At any point in this Module if you need to "start over", use the script cleanup.sh to delete the project and go back to Step 1.</pre>
+**NOTE**: *At any point in this Module if you need to "start over", use the script **cleanup.sh** to delete the project and go back the first step of the Activity.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change directories to the <b>sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy</b> folder.</p>
 
 Open a shell and use the `cd` command.
 
-**NOTE**: *You must nto the OpenShift cluster first, using instructions from the Prerequisites*
+**NOTE**: *You must log into the OpenShift cluster first, using instructions from the Prerequisites*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Ensure your scripts are executable</p>
 
@@ -61,7 +61,9 @@ Run the following command (depending on your Linux shell and client you may need
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create a new Project</p>
 
-If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script.
+If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script:
+
+**NOTE**: *This activity assumes a project named called mssql so if a cluster administrator will create a project for workshop users it must be called mssql.*
 
 `oc new-project mssql`
 
@@ -82,6 +84,8 @@ Use the following command or execute the **step2_create_secret.sh** script:
 
 `oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2019isfast"`
 
+**NOTE**: *If you choose a different sa password then what is supplied in this activity, you will need to make changes to future steps which assume the password used in this step.*
+
 When this completes you should see the following message and be placed back at the shell prompt:
 
 <pre>secret/mssql created</pre>
@@ -89,6 +93,8 @@ When this completes you should see the following message and be placed back at t
 **IMPORTANT**: *Take note of the value for **SA_PASSWORD** (without the quotes). The scripts in all modules use this password and you may need it to interactively work with SQL Server.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Create a <b>PersistentVolumeClaim</b> to store SQL Server databases and files</p>
+
+A PersistentVolumeClaim allows you to persist SQL Server database files even if the container for SQL Server is stopped or moved by OpenShift.
 
 Use the following command or execute the **step3_storage.sh** script:
 
@@ -114,7 +120,7 @@ deployment.apps/mssql-deployment created
 ervice/mssql-service created
 </pre>
 
-Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how SQL Server were deployed, including details of the container image, arguments, label to "tag" the deployment, which **PersistentVolumeClaim** to use (from the previous step) and the **LoadBalancer** service that is attached to this pod.
+Deployment is an asynchronous operation. A complete of this command does not mean the deployment is complete.
 
 You have now submitted a deployment, which is a logical collection of objects including a *pod*, a *container*, and **LoadBalancer** service. OpenShift will schedule a SQL Server container in a *pod* on a *node* on the cluster. 
 
@@ -129,6 +135,8 @@ Check to see if the deployment succeeded by running the following command:
 When the value of **AVAILABLE** becomes **1**, the deployment was successful and your container is running. 
 
 **NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes.*
+
+Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how SQL Server was deployed, including details of the container image, arguments, label to "tag" the deployment, which **PersistentVolumeClaim** to use (from the previous step) and the **LoadBalancer** service that is attached to this pod.
 
 You can run the following command to check on the status of the pod and LoadBalancer service:
 

@@ -26,7 +26,7 @@ You'll cover the following topics in this Module:
 
 SQL Server provides several tools to connect and execute queries. Applications can use a variety of languages including C++, .Net, node.js, and Java. To see examples of how to write applications to connect to SQL Server, visit https://aka.ms/sqldev.
 
-The simplest method to connect to SQL Server deployed on OpenShift is to use the command line tool **sqlcmd**, which is works in the Windows, Linux, and MacOS Operating Systems. The *Prerequisites* for this workshop provides instructions for installing the SQL Command Line tools including **sqlcmd**. In some deliveries of this workshop, **sqlcmd** may already be installed.
+The simplest method to connect to SQL Server deployed on OpenShift is to use the command line tool **sqlcmd**, which available on Windows, Linux, and MacOS Operating Systems. The *Prerequisites* for this workshop provides instructions for installing the SQL Command Line tools including **sqlcmd**. In some deliveries of this workshop, **sqlcmd** may already be installed.
 
 To connect to SQL Server, you need:
 
@@ -94,7 +94,7 @@ Follow these steps to restore a database backup to SQL Server deployed on OpenSh
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Locate the Database Backup</p>
 
-If your workshop does not already include a copy of the backup of the WideWorldImporters database (a file called **WideWorldImporters-Full.bak**) execute the script **getwwi.sh** to download the backup.
+If your workshop does not already include a copy of the backup of the WideWorldImporters database (a file called **WideWorldImporters-Full.bak**) execute the script **getwwi.sh** to download the backup. This script assumes connectivity to the internet.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Copy the Database Backup to the SQL Server 2019 Container</p>
 
@@ -123,13 +123,13 @@ Execute the following commands using the sqlcmd tool or execute the script **ste
 
 In this example, you used the `-i` parameter for **sqlcmd** to execute a *script* with the `RESTORE DATABASE` command. You can examine the contents of the **restorewwi.sql** T-SQL script to see the example syntax using `cat restorewwi.sql` from the shell.
 
-The WideWorldImporters backup you downloaded was created on SQL Server 2016 on Windows. One of the advantages for  SQL Server is compatibility. A backup on Windows can be restored on Linux and vice versa). SQL Server 2019 will automatically detect the older version and upgrade the database. This is why the RESTORE command can take a few minutes to execute. When the command completes the output to the shell prompt will scroll across several lines but end with something similar to the following: 
+The WideWorldImporters backup you downloaded was created on SQL Server 2016 on Windows. One of the great stories for SQL Server is compatibility across operating systems. Database backups are interoperable between SQL Server on Windows and Linux. SQL Server 2019 will automatically detect the older version and upgrade the database. This is why the RESTORE command can take a few minutes to execute. When the command completes the output to the shell prompt will scroll across several lines but end with something similar to the following: 
 
 <pre>
 Database 'WideWorldImporters' running the upgrade step from version 895 to version 896<br>Database 'WideWorldImporters' running the upgrade step from version 896 to version 897<br>RESTORE DATABASE successfully processed 58455 pages in 30.797 seconds (14.828 MB/sec).
 </pre>
 
-Notice the end of the restore command displays how many database pages were restored (SQL Server stores data in 8K pages) and the duration  it took to restore the database. The database has been restored, brought online, and is available to run queries.
+Notice the end of the restore command displays how many database pages were restored (SQL Server stores data in 8K pages) and the duration it took to restore the database. The database has now been restored, brought online, and is available to run queries.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -139,7 +139,7 @@ The T-SQL language allows all types of queries to be executed against your data 
 
 If you are given a database backup to restore, one of the first things you want to do is explore what is in the database. SQL Server provides a rich set of metadata about the database through *catalog views*. This allows you to find out what tables, columns, and other objects exist in a database.
 
-In addition, to find out what data exists within tables in the database, you will use the most often used T-SQL command SELECT against tables you have permissions to query.
+In addition, to find out what data exists within tables in the database, you will use the most often used T-SQL command **SELECT** against tables you have permissions to query.
 
 SQL Server also provides a robust set of *dynamic management views* (DMV) through SELECT statements to query the state of the database engine.
 
@@ -252,7 +252,7 @@ Abhoy Prabhupda                (423) 555-0100      abhoy@tailspintoys.com
 (10 rows affected)
 </pre>
 
-In this example, you used the `TOP 10` option of a `SELECT` statement to only retrieve the first 10 rows in the People table and the `ORDER BY` clause to sort the results by name (default ascending)).
+In this example, you used the `TOP 10` option of a `SELECT` statement to only retrieve the first 10 rows in the People table and the `ORDER BY` clause to sort the results by name (default ascending).
 
 These results contain privacy information. You can review a feature of SQL Server called Dynamic Data Masking to mask privacy information from application users. See more at [https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking](https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking).
 
@@ -283,15 +283,18 @@ GO
 
 The output should look something similar to this:
 
-<pre>session_id login_time              host_name                                                                                                                   program_name                                                                                                                     reads                writes               cpu_time
+<pre>
+session_id login_time              host_name                                                                                                                   program_name                                                                                                                     reads                writes               cpu_time
  ---------- ----------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------- -----------
  51 2019-04-12 15:04:50.513 mssql-deploymen                                                                                                                  SQLServerCEIP                                                                                                                                       0                    0          50
  52 2019-04-12 15:08:21.147 troyryanwin10                                                                                                                    SQLCMD                                                                                                                                              0                    0           0
  (2 rows affected)
+
  session_id start_time              status                         command
  ---------- ----------------------- ------------------------------ --------------------------------
  52 2019-04-12 15:08:21.317 running                        SELECT
  (1 rows affected)
+
  cpu_count   committed_kb
  ----------- --------------------
  2               405008
