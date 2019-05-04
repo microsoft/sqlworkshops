@@ -283,21 +283,21 @@ GO
 
 The output should look something similar to this:
 
-<pre>
-session_id login_time              host_name                                                                                                                   program_name                                                                                                                     reads                writes               cpu_time
+<pre>session_id login_time    host_name                                                                                                                   program_name                                                                                                                     reads                writes               cpu_time
  ---------- ----------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------- -----------
- 51 2019-04-12 15:04:50.513 mssql-deploymen                                                                                                                  SQLServerCEIP                                                                                                                                       0                    0          50
- 52 2019-04-12 15:08:21.147 troyryanwin10                                                                                                                    SQLCMD                                                                                                                                              0                    0           0
+ 51 2019-04-12 15:04:50.513     mssql-deploymen                                                                                                                  SQLServerCEIP                                                                                                                                       0                    0          50
+ 52 2019-04-12 15:08:21.147     troyryanwin10                                                                                                                    SQLCMD                                                                                                                                              0                    0           0
  (2 rows affected)
 
- session_id start_time              status                         command
+ session_id start_time    status                         command
  ---------- ----------------------- ------------------------------ --------------------------------
- 52 2019-04-12 15:08:21.317 running                        SELECT
+ 52 2019-04-12 15:08:21.317    running                        SELECT
+
  (1 rows affected)
 
  cpu_count   committed_kb
  ----------- --------------------
- 2               405008
+ 2           405008
 </pre>
 
 The first T-SQL batch provides information about the sessions connected to SQL Server with information about the session. The second T-SQL batch provides information about active queries against SQL Server. The third batch provides information about how many CPUs SQL Server detected and how much memory the database engine has consumed. There are many Dynamic Management Views and more columns available than in the examples you used. You can read about all DMVs at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views.
