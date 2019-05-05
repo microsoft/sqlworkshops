@@ -17,7 +17,7 @@ You'll cover the following topics in this Module:
   
 </dl>
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again. If you need to redeploy the SQL Server container and pod, go back to the Activity in Module 1, run the **cleanup.sh** script and follow all steps in the Module. Then you will need to go through the steps in Module 2 to restore the WideWorldImporters database.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again. If you need to redeploy the SQL Server container and pod, go back to the Activity in Module 1, run the **cleanup.sh** script and follow all steps in the Module. Then you will need to go through the steps in Module 2 to restore the WideWorldImporters database.*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,7 +35,7 @@ The following is a diagram showing the features of Intelligent Query Processing 
 
 You can read the documentation for a description and example of all of these features at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing.
 
-**NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
+>**NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
 
 Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes.
 
@@ -45,7 +45,7 @@ Now proceed to the Activity to learn an example of how Intelligent Query Process
 
 Follow these steps to learn more about SQL Server Intelligent Query Processing.
 
-**NOTE**: *This module assumes you have completed all the steps in Module 01 and 02*
+>**NOTE**: *This module assumes you have completed all the steps in Module 01 and 02*
 
 In this activity, you will learn how to use the built-in capabilities of Intelligent Query Processing in SQL Server 2019 simply by changing the database compatibility of WideWorldImporters to version 150 with no application changes.
 
@@ -136,7 +136,7 @@ GO
 ```
 This procedure uses a table variable populated from a user table and then joins it with a user table to provide output. T-SQL functions such as `COUNT` and `SUM` are often seen in analytic queries that benefit from Intelligent Query Processing. 
 
-**NOTE**: *In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include `TOP`.*
+>**NOTE**: *In this example the TOP 1 T-SQL syntax is used so that the procedure only produces 1 row. This is only done to make the output easier to read using this workshop and demo since this procedure will be executed multiple times. Normal execution of this procedure may not include `TOP`.*
 
 Now click the **Run** button to execute the script. You will be prompted to pick the connection to execute the script. Select the connection you created in previous steps of this Activity.
 
@@ -277,7 +277,7 @@ GO
 ```
 
 
-**NOTE**: *This activity is not intended for you to understand every detail of the query, but as an example of how to use the Query Store Dynamic Management Views (DMV) to analyze the performance differences for the stored procedure you used in Section 3.0.*
+>**NOTE**: *This activity is not intended for you to understand every detail of the query, but as an example of how to use the Query Store Dynamic Management Views (DMV) to analyze the performance differences for the stored procedure you used in Section 3.0.*
 
 The query is designed to focus on the most recent execution of the query in the stored procedure CustomerProfits that has run faster with Intelligent Query Processing.
 
