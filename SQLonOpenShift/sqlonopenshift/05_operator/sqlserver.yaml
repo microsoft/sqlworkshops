@@ -7,7 +7,7 @@ metadata:
 spec:
   skipAgAntiAffinity: true
   acceptEula: true
-  agentsContainerImage: tigervin/ospvin
+  agentsContainerImage: mcr.microsoft.com/mssql/ha:2019-CTP2.1-ubuntu
   availabilityGroups: [ag1]
   instanceRootVolumeClaimTemplate:
     accessModes: [ReadWriteOnce]
@@ -35,7 +35,7 @@ metadata:
   namespace: ag1
 spec:
   skipAgAntiAffinity: true
-  agentsContainerImage: tigervin/ospvin
+  agentsContainerImage: mcr.microsoft.com/mssql/ha:2019-CTP2.1-ubuntu
   acceptEula: true
   availabilityGroups: [ag1]
   instanceRootVolumeClaimTemplate:
@@ -64,7 +64,7 @@ metadata:
   namespace: ag1
 spec:
   skipAgAntiAffinity: true
-  agentsContainerImage: tigervin/ospvin
+  agentsContainerImage: mcr.microsoft.com/mssql/ha:2019-CTP2.1-ubuntu
   acceptEula: true
   availabilityGroups: [ag1]
   instanceRootVolumeClaimTemplate:
