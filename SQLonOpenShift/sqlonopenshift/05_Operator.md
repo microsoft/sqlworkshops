@@ -21,7 +21,7 @@ You'll cover the following topics in this Module:
 <pre>IMPORTANT: The components used for this Module as of April 2019 are preview software and can not be used for production purposes. Once production version of these components are available the workshop will be updated.</pre>
 
 
-**NOTE:**: *If at anytime during the Activities of this Module you need to "start over" you can execute the **step11_cleanup.sh** script. Then you can start again with the first activity in section 5.0*
+>**NOTE:**: *If at anytime during the Activities of this Module you need to "start over" you can execute the **step11_cleanup.sh** script. Then you can start again with the first activity in section 5.0*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -155,7 +155,7 @@ service/mssql3   LoadBalancer   172.30.6.212    23.96.53.245   1433:30611/TCP   
 
  Run the `oc get all` command until the pods and LoadBalancer services are in this state.
    
-**NOTE**: *You will see some pods that start with a name of mssql-initialize. You can ignore these. They are used to deploy the SQL Server Availability Group but may not be needed in the final design of the operator for SQL Server 2019.*
+>**NOTE**: *You will see some pods that start with a name of mssql-initialize. You can ignore these. They are used to deploy the SQL Server Availability Group but may not be needed in the final design of the operator for SQL Server 2019.*
 
 In addition, notice that there are three objects from the oc get all output:
 

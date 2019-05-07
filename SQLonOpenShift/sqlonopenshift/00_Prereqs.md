@@ -38,7 +38,7 @@ In order to go through the activities of this workshop you will need the followi
 
 The workshop currently supports a single node OpenShift cluster but can be run on a multiple cluster environment. For cluster administrators building a cluster for this workshop, each user will need ~8Gb of RAM to run the containers in the workshop.
 
-**Note**: *If you are attending this course in-person, the instructor may provide you with a client environment and full access to an OpenShift cluster including login credentials.*
+>**Note**: *If you are attending this course in-person, the instructor may provide you with a client environment and full access to an OpenShift cluster including login credentials.*
 
 With the above environment configured, you can now proceed to the first Activity for the course.
 
@@ -54,11 +54,11 @@ Navigate to your home directory `~` and enter the following command:
 
 `git clone https://github.com/Microsoft/sqlworkshops.git`
 
-**NOTE**: *If you have used `git clone` to pull down the repo of the workshops in the past, run `git pull` in the sqlworkshops directory to get the latest version.*
+>**Note**: *If you have used `git clone` to pull down the repo of the workshops in the past, run `git pull` in the sqlworkshops directory to get the latest version.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Login to your OpenShift cluster, via a web browser, using the URL provided to you for the <b>openshiftConsoleUrl</b>.</p>
 
-**NOTE**: *You may get warnings from the web page saying "This site is not secure". Click Details or Advanced and then "Go on to the webpage" or "Proceed to ...".*
+>**Note**: *You may get warnings from the web page saying "This site is not secure". Click Details or Advanced and then "Go on to the webpage" or "Proceed to ...".*
 
 You will be presented with a login screen:
 
@@ -66,7 +66,7 @@ You will be presented with a login screen:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Type in the user name and password provided to you for OpenShift cluster access</p>
 
-**NOTE**: *In-class, your instructor may call this **openshiftAdminUsername** and **openshiftPassword**.*
+>**Note**: *In-class, your instructor may call this **openshiftAdminUsername** and **openshiftPassword**.*
 
 You will now see a new web page:
 

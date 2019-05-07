@@ -18,7 +18,7 @@ You'll cover the following topics in this Module:
   
 </dl>
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again. If you need to redeploy the SQL Server container and pod, go back to the Activity in Module 1, run the **cleanup.sh** script and follow all steps in the Module.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again. If you need to redeploy the SQL Server container and pod, go back to the Activity in Module 1, run the **cleanup.sh** script and follow all steps in the Module.*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -151,7 +151,7 @@ Proceed to the Activity to learn how to run queries against a SQL Server deploye
 
 Follow these steps to execute example queries against a SQL Server deployed on OpenShift: 
 
-**NOTE**: *These steps assume you have followed the previous sections of this module.*
+>**NOTE**: *These steps assume you have followed the previous sections of this module.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Explore database tables</p>
 
@@ -223,7 +223,7 @@ VehicleTemperatures            Warehouse
 
 You can see from the bottom of this output that there are 48 tables in this database. The output includes two columns, one is for the name of the table, and other is for the *schema* of the table. A schema allows you to organize objects in a group for applications, provide isolation of objects at a group (e.g. there can be the same table name in two different schemas), and security permissions at a group level. In order to query data from a table you need to know the name of the schema and have permissions for that schema.
 
-**NOTE**: *In the above use of **sqlcmd**, the `-Y30` parameter is used to ensure results are displayed as fixed width characters no longer than 30 characters for readability.*
+>**NOTE**: *In the above use of **sqlcmd**, the `-Y30` parameter is used to ensure results are displayed as fixed width characters no longer than 30 characters for readability.*
 
 Now run the following commands to query data from the **People** table in the **Application** schema. In this database, the Application schema is used for tables that are used across the application and the People table holds data for any persons used across the Application for the WideWorldImporters company. You can also execute the script **step5_find_people.sh** to run these commands:
 

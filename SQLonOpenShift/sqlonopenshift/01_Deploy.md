@@ -45,7 +45,7 @@ Proceed to the **Activity** below to learn these deployment steps.
 
 Follow these steps to deploy SQL Server on OpenShift:
 
-**NOTE**: *At any point in this Module if you need to "start over", use the script **cleanup.sh** to delete the project and go back the first step of the Activity.*
+>**NOTE**: *At any point in this Module if you need to "start over", use the script **cleanup.sh** to delete the project and go back the first step of the Activity.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Change directories for the scripts for this module</p>
 
@@ -53,7 +53,7 @@ Run the following command from the shell:
 
 `cd ~/sqlworkshops/SQLonOpenShift/sqlonopenshift/01_deploy`
 
-**NOTE**: *You must log into the OpenShift cluster first, using instructions from the Prerequisites*
+>**NOTE**: *You must log into the OpenShift cluster first, using instructions from the Prerequisites*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Ensure your scripts are executable</p>
 
@@ -65,7 +65,7 @@ Run the following command (depending on your Linux shell and client you may need
 
 If you are running this workshop as a cluster admin and the instructor did not create a new project, then create a new project called **mssql** with the following command or execute the **step1_create_project.sh** script:
 
-**NOTE**: *This activity assumes a project named called mssql so if a cluster administrator will create a project for workshop users it must be called mssql.*
+>**NOTE**: *This activity assumes a project named called mssql so if a cluster administrator will create a project for workshop users it must be called mssql.*
 
 `oc new-project mssql`
 
@@ -80,13 +80,13 @@ When this completes, you should see the following messages and be placed back at
 
 Next you'll create a `secret` to store the System Administrator (**sa**) password. For this workshop, you will be connecting as the **sa** login. 
 
-**NOTE**: *In production SQL Server environments, you would not use the **sa** login.* 
+>**NOTE**: *In production SQL Server environments, you would not use the **sa** login.* 
 
 Use the following command or execute the **step2_create_secret.sh** script:
 
 `oc create secret generic mssql --from-literal=SA_PASSWORD="Sql2019isfast"`
 
-**NOTE**: *If you choose a different sa password then what is supplied in this activity, you will need to make changes to future steps which assume the password used in this step.*
+>**NOTE**: *If you choose a different sa password then what is supplied in this activity, you will need to make changes to future steps which assume the password used in this step.*
 
 When this completes you should see the following message and be placed back at the shell prompt:
 
@@ -106,7 +106,7 @@ When this completes you should see the following message and be placed back at t
 
 <pre>persistentvolumeclaim/mssql-data created</pre>
 
-**Note**: *The **PersistentVolumeClaim** created assumes the default **StorageClass** of the OpenShift cluster.*
+>**NOTE**: *The **PersistentVolumeClaim** created assumes the default **StorageClass** of the OpenShift cluster.*
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Deploy SQL Server</p>
@@ -136,7 +136,7 @@ Check to see if the deployment succeeded by running the following command:
 
 When the value of **AVAILABLE** becomes **1**, the deployment was successful and your container is running. 
 
-**NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes. The first time you deploy SQL Server on a cluster requires the docker iamge to be pulled from the Microsoft container registry.*
+>**NOTE**: *Depending on the load of your cluster and whether the container image of SQL Server is already present, the deployment may take several minutes. The first time you deploy SQL Server on a cluster requires the docker iamge to be pulled from the Microsoft container registry.*
 
 Take a minute to browse the **sqldeployment.yaml** file to see key pieces of how SQL Server was deployed, including details of the container image, arguments, label to "tag" the deployment, which **PersistentVolumeClaim** to use (from the previous step) and the **LoadBalancer** service that is attached to this pod.
 
@@ -148,7 +148,7 @@ You can also run the following command to track events in the cluster
 
 `oc get event`
 
-**NOTE**: *It is possible for the deployment to be successful but the LoadBalancer is not created. When everything about this deployment is successful, the STATUS of the pod is **Running** and the **LoadBalancer** service has a valid IP address for **EXTERNAL-IP**.*
+>**NOTE**: *It is possible for the deployment to be successful but the LoadBalancer is not created. When everything about this deployment is successful, the STATUS of the pod is **Running** and the **LoadBalancer** service has a valid IP address for **EXTERNAL-IP**.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Check the SQL Server logs</p>
 
@@ -161,7 +161,7 @@ The ERRORLOG will scroll across the screen and you can scroll up in your shell t
 
 A *pod* with a SQL Server container is now deployed and a **LoadBalancer** service is attached to the pod. The LoadBalancer will be a key component to connecting to SQL Server no matter where the pod is running in the cluster.
 
-**NOTE**: *Do not proceed to the next Module until you have a valid IP address for the **EXTERNAL-IP** value for the **LoadBalancer** service. The value will say pending while it is being created. One some OpenShift cluster systems this process can take a few minutes.*
+>**NOTE**: *Do not proceed to the next Module until you have a valid IP address for the **EXTERNAL-IP** value for the **LoadBalancer** service. The value will say pending while it is being created. One some OpenShift cluster systems this process can take a few minutes.*
 
 You can now proceed to **Next Steps** to Connect and Query SQL Server on OpenShift.
 
