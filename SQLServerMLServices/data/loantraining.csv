@@ -1,5 +1,4 @@
-applicantId,state,education,age,marital_status,occupation,Credit_score,income,debts,loan_type,loan_decision_type
-004NZMX60E,CA,Primary,36,Married,Government,710,9371.333333,2000,Personal,Approved
+004NZMX60E,CA,Primary,36,",",Government,710,9371.333333,2000,Personal,Approved
 004NZMX60E,CA,Primary,36,Married,Government,720,9371.333333,3013.82,Auto,Approved
 017STAOLDV,OH,Secondary,34,Married,Technology,720,9010.25,1000,Credit,Approved
 017WEFEN7S,OH,Primary,48,Married,Accounting,670,6538,2099,Home,Approved
