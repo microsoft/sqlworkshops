@@ -1,14 +1,17 @@
-![](graphics/microsoftlogo.png)
+<img src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/solutions-microsoft-logo-small.png?raw=true" alt="Microsoft">
+<br>
 
-# Workshop: Machine Learning with SQL Server
+# Workshop: Microsoft SQL Server Machine Learning Services
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
+## 01 - SQL Server Machine Learning Services
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>About this Workshop</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *Machine Learning in SQL Server*. In this workshop, you'll learn how to use SQL Server (on-premises or in a SQL Server Virtual Machine) to implement a Data Science solution using Machine Learning. You'll do this using a complete process to implement your solution. 
+Welcome to this Microsoft solutions workshop on *Machine Learning in SQL Server*. In this workshop, you'll learn how to use SQL Server (Version 2019 or higher) to implement a complete Data Science solution using Machine Learning. You'll do this using a team-based process to implement your solution. 
 
 The focus of this workshop is to understand how to create a machine learning solution completely within SQL Server.
 
@@ -20,7 +23,7 @@ This README.MD file explains how the workshop is laid out, what you will learn, 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Learning Objectives</h3>
 
 In this workshop you'll learn:
 <br>
@@ -42,7 +45,7 @@ The concepts and skills taught in this workshop form the starting points for:
     <TODO: Job Description and level of person who is the third-level of who might want to attend and the reason>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"> <h2>Business Applications of this Workshop</h2>
 
 Businesses require <TODO: Describe the reason the student's business or organization would be interested in the information. Be detailed about the solutions it addresses> 
 
@@ -50,7 +53,7 @@ Some industry examples of <TODO: Workshop Topic> are <TODO: Enter Sectors and us
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2>Technologies used in this Workshop</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/listcheck.png?raw=true"> <h2>Technologies used in this Workshop</h2>
 
 The solution includes the following technologies - although you are not limited to these, they form the basis of the workshop. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
 
@@ -65,7 +68,7 @@ The solution includes the following technologies - although you are not limited 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/owl.png"> <h2>Before Taking this Workshop</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"> <h2>Before Taking this Workshop</h2>
 
 You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
 
@@ -82,13 +85,13 @@ If you are new to these, here are a few references you can complete prior to cla
 -  [Reference Name](https://url)
 
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> <h3>Setup</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Setup</h3>
 
 <a href="url" target="_blank">A full pre-requisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/education1.png"> <h2>Workshop Details</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"> <h2>Workshop Details</h2>
 
 This workshop uses <TODO: enter main technologies used to solve the sceanrio>, with a focus on <TODO: architecture and implementation, development and use, etc>.
 
@@ -104,13 +107,13 @@ This workshop uses <TODO: enter main technologies used to solve the sceanrio>, w
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"> <h2>Related Workshops</h2>
 
  - [Using Machine Learning Services in SQL Server with Java and Microsoft Azure Cognitive Services](https://github.com/amthomas46/SQL/tree/master/sql-cs-icc)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bookpencil.png"> <h2>Workshop Modules</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/bookpencil.png?raw=true"> <h2>Workshop Modules</h2>
 
 This is a modular workshop, and in each section, you'll learn concepts, technologies and processes to help you complete the solution.
 
@@ -128,6 +131,6 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b>Next Steps</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>Next Steps</b></p>
 
 Next, Continue to <a href="https://github.com/Microsoft/sqlworkshops/blob/master/SQLServerMLServices/00-Prerequisites.md" target="_blank"><i> Pre-Requisites</i></a>
