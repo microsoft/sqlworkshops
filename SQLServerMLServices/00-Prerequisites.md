@@ -1,4 +1,5 @@
-![](./graphics/microsoftlogo.png)
+<img src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/solutions-microsoft-logo-small.png?raw=true" alt="Microsoft">
+<br>
 
 # Workshop: Microsoft SQL Server Machine Learning Services
 
@@ -6,7 +7,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>00 prerequisites</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=TRUE"> <h2>00 prerequisites</h2>
 
 The "Microsoft SQL Server Machine Learning Services" workshop is taught using the following components, which you will install and configure in the sections that follow. 
 
@@ -32,7 +33,7 @@ The instructions that follow are the same for either a "base metal" workstation 
 
 *(Copy and paste each of the commands that follow in a PowerShell window that you run as the system Administrator. You may need to reboot your system in between installation steps.)*
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkbox.png"><b>Activity 1: Update Your Workstation</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Activity 1: Update Your Workstation</b></p>
 
 First, ensure all of your updates are current. You can use the following commands to do that in an Administrator-level PowerShell session:
 
@@ -49,7 +50,7 @@ Install-WindowsUpdate
 
 *Note: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkbox.png"><b>Activity 2: Install the Chocolatey Windows package Manager</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Activity 2: Install the Chocolatey Windows package Manager</b></p>
 
 The Chocolatey Windows Package manager aids in simple, command-line installations. In your elevated PowerShell window, enter the following commands:
 
@@ -59,9 +60,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 choco feature enable -n allowGlobalConfirmation
 </pre>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkbox.png"><b>Activity 3: Install Java</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Activity 3 (Optional): Install Java</b></p>
 
-Java is required for this course, and you can install it using these commands: 
+Java is not required for this course, but if you want to experiment with more Machine Learning Services you can install it using these commands: 
 
 <pre>
 write-host "Install the latest Java Runtime environment" 
@@ -69,7 +70,7 @@ choco install javaruntime
 </pre> 
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkbox.png"><b>Activity 4: Install Azure Data Studio</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Activity 4: Install Azure Data Studio</b></p>
 
 The primary management tool we will use in this workshop is Jupyter Notebooks in the Azure Data Studio. You will also use this tool in your production environment.
 
@@ -78,7 +79,7 @@ write-host "Install Azure Data Studio"
 choco install azure-data-studio
 </pre>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkbox.png"><b>Activity 5: Install git</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Activity 5: Install git</b></p>
 
 The `git` program and environment is used for code check-in and check-out control. It also provides a `bash` shell that you can use for some of the exercises in this course. It is not a requirement for SQL Server, but it is useful for this course. 
 
@@ -87,7 +88,7 @@ write-host "Install git"
 choco install git
 </pre>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkbox.png"><b>Activity 6: Install SQL Server 2019 Developer Edition</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Activity 6: Install SQL Server 2019 Developer Edition</b></p>
 
 You're now ready to install SQL Server with Machine Learning Services. You won't use the Choclatey package manager for this step, since it's important that you understand the installation process. 
 
@@ -118,7 +119,16 @@ write-host "Install SSMS"
 choco install sql-server-management-studio 
 </pre>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Activity 9: Update and Reboot system</p>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Activity 9: Restore the Database</b></p>
+
+- The dataset used in this course is hosted in a few SQL Server tables.The tables contain data from various systems on-premises over a period of time. You should have already downloaded this file during the pre-requisites phase, but if not, do so now - <a href="https://cs7a9736a9346a1x44c6xb00.blob.core.windows.net/backups/Analysis.bak" target="_blank">The backup (.bak) file is located here - note that it may take some time to download, so do this before you arrive to class if taking this course in-person.</a> 
+- Copy that file to this location on your Instance: `C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup`.
+
+During the course, you will restore this backup to your system.
+
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Activity 10: Update and Reboot system</p>
 
 It's always a good idea after this many installations to run Windows Update again and reboot your system:
 
@@ -132,14 +142,18 @@ Install-WindowsUpdate
 
 *Note 2: If you are using a Virtual Machine in Azure, power off the Virtual Machine using the Azure Portal every time you are done with it. Turning off the VM using just the Windows power off in the VM only stops it running, but you are still charged for the VM if you do not stop it from the Portal. Stop the VM from the Portal unless you are actively using it.*
 
-<p><img style="margin: 0px 15px 15px 0px;" src="./graphics/owl.png"><b>For Further Study</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/thinking.jpg?raw=true"><b>For Further Study</b></p>
+
+<br>
+<br>
+
 <ul>
     <li><a href="https://docs.microsoft.com/en-us/sql/advanced-analytics/install/sql-machine-learning-services-windows-install?view=sql-server-ver15" target="_blank">Official Documentation for setting up Machine Learning Services in SQL Server 2019</a></li>
 </ul>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b >In-Class Steps</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"><b >In-Class Steps</b></p>
 
-When all of the above is complete and you are in class, you'll download a zip file of the entire set of SQL Server workshops to your local environment, open the Notebooks in Azure Data Studio, and continue through the course. 
+When all of the above is complete and you are in class, you'll download a zip file of the entire set of SQL Server workshops to your local environment, open the Notebooks in Azure Data Studio, and continue through the course. If you are taking this course self-paced, continue with the next steps.
 
 **NOTE:** *If you are taking this course self-paced, continue with these instructions, if you are going to take the course in-class, you can stop here.*
 

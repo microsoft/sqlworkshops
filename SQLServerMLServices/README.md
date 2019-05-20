@@ -11,7 +11,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *Machine Learning in SQL Server*. In this workshop, you'll learn how to use SQL Server (Version 2019 or higher) to implement a complete Data Science solution using Machine Learning. You'll do this using a team-based process to implement your solution. 
+Welcome to this Microsoft solutions workshop on *Machine Learning in SQL Server*. In this workshop, you'll learn how to use SQL Server (Version 2019 or higher) to implement a complete Data Science solution using Machine Learning. You'll do this using a team-based process to implement your solution, and we provide a complete set of steps, project documents and more. This course can be used as a template for a production-ready project.
 
 The focus of this workshop is to understand how to create a machine learning solution completely within SQL Server.
 
@@ -39,17 +39,14 @@ The goal of this workshop is to train data professionals to use Machine Learning
 
 The concepts and skills taught in this workshop form the starting points for:
 
-    <TODO: Job Description and level of person who is the primary that should attend and the reason>.
-    For instance: Solution Architects and Developers, to understand how to put together an end to end solution.
-    <TODO: Job Description and level of person who is the secondary that should attend and the reason>.
-    <TODO: Job Description and level of person who is the third-level of who might want to attend and the reason>.
+    - Data Professionals who need to learn about Machine Learning, and implementing Data Science projects in SQL Server
+    - Data Engineers who are or will be part of the Data Science Team
+    - Data Scientists who need to learn about working with Machine Learning, Deep Learning, and AI projects in a secure SQL Server platform
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"> <h2>Business Applications of this Workshop</h2>
 
-Businesses require <TODO: Describe the reason the student's business or organization would be interested in the information. Be detailed about the solutions it addresses> 
-
-Some industry examples of <TODO: Workshop Topic> are <TODO: Enter Sectors and use briefly>, to name just a few.
+Businesses require deep information about their customer's behavior, and how they can leverage classification and predictive algorithms to maximize their value to the customer.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -61,8 +58,8 @@ The solution includes the following technologies - although you are not limited 
 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
 
-  <tr><td><i>TODO: Technology name not owned by Microsoft that you will cover</i></td><td>TODO: Reason the student needs to learn it</td></tr>
-  <tr><td>TODO: Technology name owned by Microsoft that you will cover</td><td>TODO: Reason the student needs to learn it</td></tr>
+  <tr><td>R</td><td>For Machine Learning, several lanugages are available for SQL Server. This course will focus on the data language called R, which is used for deep analysis, Machine Learning., and more</td></tr>
+  <tr><td>SQL Server Machine Learning Services</td><td>Microsoft's SQL Server provides a complete data platform from sourcing, ingesting, processing and learning from data at scale, all with the highest levels of security and integration.</td></tr>
 
 </table>
 
@@ -72,36 +69,30 @@ The solution includes the following technologies - although you are not limited 
 
 You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
 
-You must have a Microsoft Azure account with the ability to create assets.
-
-This workshop expects that you understand <TODO: Enter a brief solution for what a student should know before taking the workshop>.
+This workshop expects that you understand Relational Database systems (RDBMS) and the basics of working with data and datatypes.
 
 If you are new to these, here are a few references you can complete prior to class:
 
-<TODO: Enter some pre-work courses or books or whatever that the student could use to prep>
--  [Reference Name](https://url)
--  [Reference Name](https://url)
--  [Reference Name](https://url)
--  [Reference Name](https://url)
-
+-  [The Microsoft SQL Server Platform](https://www.microsoft.com/en-us/learning/sql-training.aspx)
+-  [R for Machine Learning](https://www.edx.org/course/introduction-to-r-for-data-science-2)
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Setup</h3>
 
-<a href="url" target="_blank">A full pre-requisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
+A full pre-requisites document is located below in the <b>Next Steps</b> area. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"> <h2>Workshop Details</h2>
 
-This workshop uses <TODO: enter main technologies used to solve the sceanrio>, with a focus on <TODO: architecture and implementation, development and use, etc>.
+This workshop uses Machine Learning with R in SQL Server, with a focus on a clustering algorithm to solve a real-world problem.
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">TODO: Enter the technical people who will take the workshop> tasked with TODO: Enter what they are tasked to do</td></tr>
-  <tr><td>Secondary Audience:</td><td> TODO: Secondary Audience</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> TODO: 100, 200, 300, 400 </td></tr>
-  <tr><td>Type:</td><td>TODO: In-Person, On-Line, or from github</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">TODO: Number of hours</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"> Data Professionals tasked with Data Science Projects</td></tr>
+  <tr><td>Secondary Audience:</td><td> Data Scientists interested in a single platform for Data Science and a complete project/phase approach</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 200 </td></tr>
+  <tr><td>Type:</td><td>In-Person, On-Line, or from github</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"> 4 hours or less</td></tr>
 
 </table>
 
@@ -113,24 +104,6 @@ This workshop uses <TODO: enter main technologies used to solve the sceanrio>, w
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/bookpencil.png?raw=true"> <h2>Workshop Modules</h2>
-
-This is a modular workshop, and in each section, you'll learn concepts, technologies and processes to help you complete the solution.
-
-<table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
-
-  <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
-
-  <tr><td><a href="url" target="_blank">TODO: 01 - Module Name </a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 02 - Module 2</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
-  <tr><td><a href="url" target="_blank">TODO: 03 - Module Name </a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 04 - Module 2</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>  <tr><td><a href="url" target="_blank">TODO: 05 - Module Name </a></td><td> TODO: Module Description</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 06 - Module 2</a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
-
-</table>
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>Next Steps</b></p>
 
-Next, Continue to <a href="https://github.com/Microsoft/sqlworkshops/blob/master/SQLServerMLServices/00-Prerequisites.md" target="_blank"><i> Pre-Requisites</i></a>
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLServerMLServices/00-Prerequisites.md" target="_blank"><i> Pre-Requisites</i></a>
