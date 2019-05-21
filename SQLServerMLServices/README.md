@@ -11,7 +11,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on *Machine Learning in SQL Server*. In this workshop, you'll learn how to use SQL Server (Version 2019 or higher) to implement a complete Data Science solution using Machine Learning. You'll do this using a team-based process to implement your solution, and we provide a complete set of steps, project documents and more. This course can be used as a template for a production-ready project.
+Welcome to this Microsoft solutions workshop on *Machine Learning in SQL Server*. In this workshop, you'll learn how to use SQL Server to implement a complete Data Science solution using Machine Learning. You'll do this using a team-based process to implement your solution, and we provide a complete set of steps, project documents and more for this process. This course can be used as a template for a production-ready project.
 
 The focus of this workshop is to understand how to create a machine learning solution completely within SQL Server.
 
@@ -28,8 +28,10 @@ This README.MD file explains how the workshop is laid out, what you will learn, 
 In this workshop you'll learn:
 <br>
 
+- The SQL Server Machine Learning Architecture
 - What Machine Learning is and what problems it solves
-- The process for creating a Data Science solution
+- The process for creating a Data Science project
+- A team process consisting of phases to create a prediction or classification
 - How to configure and use Machine Learning Services in SQL Server
 - How to call the predictions or classifications in SQL Server one at a time, or in a batch request mode
 
@@ -46,7 +48,7 @@ The concepts and skills taught in this workshop form the starting points for:
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"> <h2>Business Applications of this Workshop</h2>
 
-Businesses require deep information about their customer's behavior, and how they can leverage classification and predictive algorithms to maximize their value to the customer.  
+Businesses require deep information about their customer's behavior, and how they can leverage classification and predictive algorithms to maximize their value to the customer.  Using Machine Learning algorithms over the data they already collect in an RDBMS, they can make more intelligent decisions about their actions.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -58,7 +60,7 @@ The solution includes the following technologies - although you are not limited 
 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
 
-  <tr><td>R</td><td>For Machine Learning, several lanugages are available for SQL Server. This course will focus on the data language called R, which is used for deep analysis, Machine Learning., and more</td></tr>
+  <tr><td>R</td><td>For Machine Learning, several lanugages are available for SQL Server. This course will focus on the data language called `R`, which is used for deep analysis, Machine Learning, and much more.</td></tr>
   <tr><td>SQL Server Machine Learning Services</td><td>Microsoft's SQL Server provides a complete data platform from sourcing, ingesting, processing and learning from data at scale, all with the highest levels of security and integration.</td></tr>
 
 </table>
@@ -67,11 +69,11 @@ The solution includes the following technologies - although you are not limited 
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"> <h2>Before Taking this Workshop</h2>
 
-You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
+You'll need a local system that you are able to install software on. The workshop exercises use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution. If you plan to simply audit the course, the files have the results of the exercises already completed for you.
 
 This workshop expects that you understand Relational Database systems (RDBMS) and the basics of working with data and datatypes.
 
-If you are new to these, here are a few references you can complete prior to class:
+If you are new to any of these topics, here are a few references you can complete prior to class:
 
 -  [The Microsoft SQL Server Platform](https://www.microsoft.com/en-us/learning/sql-training.aspx)
 -  [R for Machine Learning](https://www.edx.org/course/introduction-to-r-for-data-science-2)

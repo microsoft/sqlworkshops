@@ -19,7 +19,7 @@ The other requirements are:
 
 - **Choclatey**: The *Chocolatey* tool allows you to install most of these components simply and quickly from the command-line. 
 - **Windows System Updates**: Your workstation needs to be at the latest service packs and patches. 
-- **Java**: Used in pre-processing Machine Learning for SQL Server, you'll need to install the latest Java language Runtime. 
+- **Java** (Optional): Used in pre-processing Machine Learning for SQL Server, you'll need to install the latest Java language Runtime. We will not be using Java in this course, but the solution could work with Java if you desire to explore more on ML Services in SQL Server. 
 - **git**: The `git` program allows you to copy this course (called a *clone*) and provides other utilities you will use during the class. 
 - **Azure Data Studio**: The *Azure Data Studio*, along with various Extensions, is used for both the query and management of SQL Server Machine Learning Services. In addition, you will use this tool to participate in the workshop using Jupyter Notebooks.
 - **Microsoft SQL Server**: This workshop uses the *Developer Edition* of SQL Server 2019 (or higher). You will install SQL Server to a system where you have administration rights, so a Virtual Machine may be a better environment for you.
@@ -28,7 +28,7 @@ The other requirements are:
 *Note that all following activities must be completed prior to class - there will not be time to perform these operations during the workshop.*
 
 <br>
-The instructions that follow are the same for either a "base metal" workstation or laptop, or a Virtual Machine. It's best to have at least 8MB of RAM on the system, and these instructions assume that you are able to install and configure software on the system. It's also assumed that you are using a current version of Windows, either desktop or server.
+The instructions that follow are the same for either a "bare metal" workstation or laptop, or a Virtual Machine. It's best to have at least 8MB of RAM on the system, and these instructions assume that you are able to install and configure software on the system. It's also assumed that you are using a current version of Windows, either desktop or server.
 <br>
 
 *(Copy and paste each of the commands that follow in a PowerShell window that you run as the system Administrator. You may need to reboot your system in between installation steps.)*
@@ -94,12 +94,12 @@ You're now ready to install SQL Server with Machine Learning Services. You won't
 
 <a href="https://www.microsoft.com/en-us/sql-server/sql-server-2019" target="_blank">Open this link, Click the **Download Now** Button and follow the instructions you see there</a>, with these instructions: 
 
- - Use **Windows** 
+ - Use **Windows** as teh Operating System
  - Select the **Developer** Edition 
  - Take all defaults 
- - Select all **SQL Server** components (but not the *Stand-Alone Machine Learning Services* ones)
-- Use the "Mixed" authentication method
-- Assign the `sa` account a strong password
+ - Select all **SQL Server Machine Learning** components and languages (but not the *Stand-Alone Machine Learning Services* ones)
+- Use the **Mixed** authentication method
+- Assign the `sa` account a strong password and remember it
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Activity 7: Set Environment Variables for SQL Server Machine Learning Services</p>
 
@@ -120,13 +120,12 @@ choco install sql-server-management-studio
 </pre>
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Activity 9: Restore the Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Activity 9: Copy the Course Database</b></p>
 
-- The dataset used in this course is hosted in a few SQL Server tables.The tables contain data from various systems on-premises over a period of time. You should have already downloaded this file during the pre-requisites phase, but if not, do so now - <a href="https://cs7a9736a9346a1x44c6xb00.blob.core.windows.net/backups/Analysis.bak" target="_blank">The backup (.bak) file is located here - note that it may take some time to download, so do this before you arrive to class if taking this course in-person.</a> 
+- The dataset used in this course is contained in a few SQL Server tables.The tables contain data from various systems on-premises over a period of time. <a href="https://cs7a9736a9346a1x44c6xb00.blob.core.windows.net/backups/Analysis.bak" target="_blank">The backup (.bak) file is located here - note that it may take some time to download, so do this before you arrive to class if taking this course in-person.</a> 
 - Copy that file to this location on your Instance: `C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup`.
 
-During the course, you will restore this backup to your system.
-
+During the course, you will restore this backup to your system. You do not need to do that now. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Activity 10: Update and Reboot system</p>
 
@@ -160,9 +159,9 @@ When all of the above is complete and you are in class, you'll download a zip fi
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><b>Get the Course Files</b></p>
 
 <br>
-<a href="https://github.com/Microsoft/sqlworkshops/archive/master.zip" target="_blank">Open this link</a> and open the file, and un-zip the files into your workstation's **Documents** directory. The base directory we will use for this class is called **SQLServerMLServices**. 
+<a href="https://github.com/Microsoft/sqlworkshops/archive/master.zip" target="_blank">Open this link</a> and open the file, and un-zip the files into your workstation's **Documents** directory. The base directory we will use for this class is called **SQLServerMLServices**. Even if you did this prior to class, do this again so that you have the latest versions.
 
-*Note: You can use git to clone the workshop if you like with the following commands, typed in a command shell in your "Documents" directory*: 
+*Note: You can use `git` to clone the workshop if you like with the following commands, typed in a command shell in your "Documents" directory*: 
 
 <pre>
 git clone https://github.com/Microsoft/sqlworkshops.git

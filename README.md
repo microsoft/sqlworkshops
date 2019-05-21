@@ -23,7 +23,6 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 ## SQL Server Machine Learning and AI
 
 - [Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/SQLServerMLServices)
-- [Hybrid Architectures for Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/SQLServerAndAzureMachineLearning)
 
 ## SQL Server Business Analytics and Advanced Analytics
 
