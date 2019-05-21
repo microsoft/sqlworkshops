@@ -19,7 +19,7 @@ You'll start by understanding the problem your organization wants to solve, coll
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
-(You can view all of the [source files for this workshop on this github site, along with other workshops as well. Open this link in a new tab to find out more.](https://aka.ms/sqlworkshops)
+>You can view all of the [source files for this workshop on this GitHub site, along with other workshops as well. Open this link in a new tab to find out more.](https://aka.ms/sqlworkshops)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,7 +35,7 @@ In this workshop you'll learn:
 - How to configure and use Machine Learning Services in SQL Server
 - How to call the predictions or classifications in SQL Server one at a time, or in a batch request mode
 
-This Workshop uses SQL Server 2019 (although the instructions work with SQL Server 2017 as well), and uses Jupyter Notebooks in the Azure Data Studio tool to send commands in SQL, Python, R and Java to a SQL Server Instance to demonstrate an end-to-end soltuion using the Team Data Science Process.  
+This Workshop uses SQL Server 2019 (although the instructions work with SQL Server 2017 as well), and uses the Notebook feature in Azure Data Studio to send commands in SQL, Python, R and Java to a SQL Server Instance to demonstrate an end-to-end solution using the Team Data Science Process.  
 
 The goal of this workshop is to train data professionals to use Machine Learning in SQL Server for a secure on-premises, in-cloud, or hybrid approach to Data Science solutions.
 
@@ -48,7 +48,7 @@ The concepts and skills taught in this workshop form the starting points for:
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"> <h2>Business Applications of this Workshop</h2>
 
-Businesses require deep information about their customer's behavior, and how they can leverage classification and predictive algorithms to maximize their value to the customer.  Using Machine Learning algorithms over the data they already collect in an RDBMS, they can make more intelligent decisions about their actions.
+Businesses require deep information about their customers' behavior, and how they can leverage classification and predictive algorithms to maximize their value to the customer.  Using Machine Learning algorithms over the data they already collect in an RDBMS, they can make more intelligent decisions about their actions.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -60,7 +60,7 @@ The solution includes the following technologies - although you are not limited 
 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
 
-  <tr><td>R</td><td>For Machine Learning, several lanugages are available for SQL Server. This course will focus on the data language called `R`, which is used for deep analysis, Machine Learning, and much more.</td></tr>
+  <tr><td>R</td><td>For Machine Learning, several languages are available for SQL Server. This course will focus on the data language called `R`, which is used for deep analysis, Machine Learning, and much more.</td></tr>
   <tr><td>SQL Server Machine Learning Services</td><td>Microsoft's SQL Server provides a complete data platform from sourcing, ingesting, processing and learning from data at scale, all with the highest levels of security and integration.</td></tr>
 
 </table>
@@ -93,7 +93,7 @@ This workshop uses Machine Learning with R in SQL Server, with a focus on a clus
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"> Data Professionals tasked with Data Science Projects</td></tr>
   <tr><td>Secondary Audience:</td><td> Data Scientists interested in a single platform for Data Science and a complete project/phase approach</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 200 </td></tr>
-  <tr><td>Type:</td><td>In-Person, On-Line, or from github</td></tr>
+  <tr><td>Type:</td><td>In-Person, Online, or from GitHub</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"> 4 hours or less</td></tr>
 
 </table>
