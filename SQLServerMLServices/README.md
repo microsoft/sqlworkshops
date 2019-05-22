@@ -19,7 +19,7 @@ You'll start by understanding the problem your organization wants to solve, coll
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
->You can view all of the [source files for this workshop on this GitHub site, along with other workshops as well. Open this link in a new tab to find out more.](https://aka.ms/sqlworkshops)
+You can view all of the [source files for this workshop on this GitHub site, along with other workshops as well. Open this link in a new tab to find out more.](https://aka.ms/sqlworkshops)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -100,9 +100,10 @@ This workshop uses Machine Learning with R in SQL Server, with a focus on a clus
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"> <h2>Related Workshops</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"> <h2>Related Workshops and Tutorials</h2>
 
  - [Using Machine Learning Services in SQL Server with Java and Microsoft Azure Cognitive Services](https://github.com/amthomas46/SQL/tree/master/sql-cs-icc)
+ - [Microsoft R in SQL Server for Developers](https://docs.microsoft.com/en-us/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers?view=sql-server-2017)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
