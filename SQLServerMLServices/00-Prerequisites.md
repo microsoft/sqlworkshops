@@ -159,7 +159,7 @@ When all of the above is complete and you are in class, you'll download a zip fi
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><b>Get the Course Files</b></p>
 
 <br>
-<a href="https://github.com/Microsoft/sqlworkshops/archive/master.zip" target="_blank">Open this link</a> and open the file, and un-zip the files into your workstation's **Documents** directory. The base directory we will use for this class is called **SQLServerMLServices**. Even if you did this prior to class, do this again so that you have the latest versions.
+<a href="https://github.com/Microsoft/sqlworkshops/archive/master.zip" target="_blank">Open this link</a> and open the file, and un-zip the files into your workstation's <b>Documents</b> directory. The base directory we will use for this class is called <b>SQLServerMLServices</b>. Even if you did this prior to class, do this again so that you have the latest versions.
 
 *Note: You can use `git` to clone the workshop if you like with the following commands, typed in a command shell in your "Documents" directory*: 
 
