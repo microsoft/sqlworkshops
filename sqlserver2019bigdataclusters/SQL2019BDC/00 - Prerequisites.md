@@ -172,13 +172,8 @@ python -m pip install --upgrade pip
 REM for 2.7 and lower:
 pip uninstall mssqlctl
 
-REM for 2.3:
-pip uninstall -r  https://private-repo.microsoft.com/python/ctp-2.3/mssqlctl/requirements.txt
-
-REM All Versions after uninstall: 
-
-pip3 install -r  https://private-repo.microsoft.com/python/ctp-2.5/mssqlctl/requirements.txt
-
+REM for 2.5:
+pip3 uninstall -r  https://private-repo.microsoft.com/python/ctp-2.5/mssqlctl/requirements.txt
 </pre>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 8: Install Azure Data Studio and Extensions</b></p>
