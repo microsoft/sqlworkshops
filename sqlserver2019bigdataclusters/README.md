@@ -1,12 +1,12 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.5)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<dl style="text-align: right;">
+<dl style="text-align: left;">
 
   <dt><a href="#about">About this Workshop</a></dt>
   <dt><a href="#businessapplications">Business Applications of this Workshop</a></dt>
@@ -93,6 +93,11 @@ The solution includes the following technologies - although you are not limited 
   <tr><td><i>Security</i></td><td>RBAC, Keys, Secrets, VNETs and Compliance for the solution</td></tr>
 
 </table>
+
+<p style="background:#ccc; color:#000;padding: 25px 25px 25px 25px;">
+<b>Shorter Tutorial:</b>
+If you have already completed the pre-requisites for this course and are familiar with the technologies listed above, <a href="https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters/SQL2019BDC/notebooks" target="_blank">you can jump to a Jupyter Notebooks-based tutorial located here</a>. Load these with Azure Data Studio, starting with <b>bdc_tutorial_00.ipynb</b>.
+</p>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
