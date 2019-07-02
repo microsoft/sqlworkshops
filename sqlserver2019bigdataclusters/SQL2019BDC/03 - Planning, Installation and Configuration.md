@@ -1,6 +1,6 @@
 ﻿![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.5)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 

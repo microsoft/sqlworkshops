@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.5)
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -17,7 +17,7 @@ You'll cover the following topics in this Module:
 <dl>
   <dt><a href="#4-0">4.0 End-To-End Solution for big data clusters</a></dt>
   <dt><a href="#4-1">4.1 Data Virtualization</a></dt>
-  <dt><a href="#4-2">4.2 Creating a Data Mart using big data clusters</a></dt>
+  <dt><a href="#4-2">4.2 Creating a Distributed Data solution using big data clusters</a></dt>
   <dt><a href="#4-3">4.3 Querying HDFS Data using big data clusters</a></dt>
 </dl>
 
@@ -93,9 +93,9 @@ In this activity, you will load the sample data into your big data cluster envir
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <br>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4-2">4.2 Creating a Data Mart using big data cluster - <i>Challenge 3: Deep Analytics</i></a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4-2">4.2 Creating a Distributed Data solution using big data cluster - <i>Challenge 3: Deep Analytics</i></a></h2>
 
-Ad-hoc queries are very useful for many scenarios. There are times when you would like to bring the data into storage, so that you can create denormalized representations of datasets, aggregated data, and other purpose-specific data tasks. Storing data in this fashion is called a "Data Mart". 
+Ad-hoc queries are very useful for many scenarios. There are times when you would like to bring the data into storage, so that you can create denormalized representations of datasets, aggregated data, and other purpose-specific data tasks. 
 
 <br>
 <img style="height: 250; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="../graphics/bdcsolution3.png">

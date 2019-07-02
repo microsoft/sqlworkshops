@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.5) 
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1) 
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -49,7 +49,7 @@ There are three endpoints for entry points to the big data cluster:
 You can see these endpoints in this diagram:
 
 <br>
-<img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://docs.microsoft.com/en-us/sql/big-data-cluster/media/concept-security/cluster_endpoints.png">
+<img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="../graphics/bdc-security-1.png">
 <br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

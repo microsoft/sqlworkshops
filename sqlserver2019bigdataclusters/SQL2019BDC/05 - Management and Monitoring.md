@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 2.5) 
+# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1) 
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -19,7 +19,7 @@ You'll cover the following topics in this Module:
   <dt><a href="#5-0">5.0 Managing and Monitoring Your Solution</a></dt>
   <dt><a href="#5-1">5.1 Using kubectl commands</a></dt>
   <dt><a href="#5-2">5.2 Using mssqlctl commands</a></dt>
-  <dt><a href="#5-3">5.3 Using the big data cluster Portal</a></dt>
+  <dt><a href="#5-3">5.3 Using Grafana and Kibana</a></dt>
 
 </dl>
 
@@ -85,8 +85,7 @@ In this activity, you will Get the IP Address of the Master Instance in your Clu
 
 The **mssqlctl** utility enables cluster administrators to bootstrap and manage big data clusters via the REST APIs exposed by the Controller service. The controller is deployed and hosted in the same Kubernetes namespace where the customer wants to build out a big data cluster. The Controller is responsible for core logic for deploying and managing a big data cluster.
 
-The <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-controller?view=sqlallproducts-allversions 
-" target="_blank">Controller service is installed by a Kubernetes administrator during cluster bootstrap</a>, using the mssqlctl command-line utility.
+The <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-controller?view=sqlallproducts-allversions" target="_blank">Controller service is installed by a Kubernetes administrator during cluster bootstrap</a>, using the mssqlctl command-line utility.
 
 You can find a list of the switches and commands by typing:
 
@@ -94,18 +93,24 @@ You can find a list of the switches and commands by typing:
 mssqlctl --h
 </pre> 
 
-You used the mssqlctl commands to deploy your cluster. 
+You used the mssqlctl commands to deploy your cluster, and you can use it to get information about your bdc deployment as well. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/reference-mssqlctl?view=sqlallproducts-allversions" target="_blank">You should review the documentation for this command here</a>.
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <br>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5-3">5.3 Using the big data cluster Portal</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5-3">5.3 Using Grafana and Kibana</a></h2>
 
-Using Grafana and Kibana systems as you learned about in Module 01, Microsoft created a single portal you can use to interact with both the SQL Server-specific and Kubernetes portions of the BDC. 
+You learned about  Grafana and Kibana systems in Module 01, Microsoft has created various views within each that you can use to interact with both the SQL Server-specific and Kubernetes portions of the BDC. The Azure Data Studio big data clusters management panel shows the TCP/IP addresses for each of these systems. 
 
 <br>
-<p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="../graphics/bdcportal.png"></p> 	 	
+<p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="../graphics/ADS-5.png"></p> 	 	
+<br>
+<br>
+<p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="../graphics/grafana.png"></p> 	 	
+<br>
+<br>
+<p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="../graphics/kibana.png"></p> 	 	
 <br>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Start dashboard when cluster is running in AKS
