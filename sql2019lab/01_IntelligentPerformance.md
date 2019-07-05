@@ -37,7 +37,7 @@ You can read the documentation for a description and example of all of these fea
 
 **NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
 
-Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes. All scripts for this activity can be found in the **sql2019workshop\sql2019workshopmini\01_IntelligentPerformance** folder.
+Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes. All scripts for this activity can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -59,11 +59,11 @@ Follow these steps to observe deferred table variable compilation
 
 **Step 1**: Restore the WideWorldImporters backup
 
-Execute the T-SQL script **restorewwi.sql** to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
+Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\01_IntelligentPerformance\iqp** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
 
 **Step 2**: Use a T-SQL notebook to complete the rest of the activity.
 
-T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019workshop\sql2019workshopmini\01_IntelligentPerformance\iqp** folder.
+T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
 **Note**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
