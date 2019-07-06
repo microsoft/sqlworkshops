@@ -1,22 +1,19 @@
+-- Step 1: Create a master key to encrypt the database credential
 USE [WideWorldImporters]
 GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
 GO
-/*  specify credentials to external data source
-*  IDENTITY: user name for external source.  
-*  SECRET: password for external source.
-*/
-DROP DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials
-GO
+
+-- Step 2: Create a database credential that stores the login and password to the Azure SQL Server Database
+-- IDENTITY = login
+-- SECRET = password
 CREATE DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials   
-WITH IDENTITY = 'thewandog', Secret = '$cprsqlserver2019'
+WITH IDENTITY = 'thewandog', SECRET = '$Sql2019isfast'
 GO
-/*  LOCATION: Location string should be of format '<vendor>://<server>[:<port>]'.
-*  PUSHDOWN: specify whether computation should be pushed down to the source. ON by default.
-*  CREDENTIAL: the database scoped credential, created above.
-*/  
-DROP EXTERNAL DATA SOURCE AzureSQLDatabase
-GO
+
+-- Step 3: Create an external data source
+-- sqlserver is a keyword meaning the data source is a SQL Server, Azure SQL Database, or Azure SQL Data Warehouse
+-- The name after :// is the Azure SQL Server Database server. Your SQL Server must be on the same vnet as the Azure SQL Server Database or must pass through its firewall rules
 CREATE EXTERNAL DATA SOURCE AzureSQLDatabase
 WITH ( 
 LOCATION = 'sqlserver://bwazuredb.database.windows.net',
@@ -24,15 +21,15 @@ PUSHDOWN = ON,
 CREDENTIAL = AzureSQLDatabaseCredentials
 )
 GO
-DROP SCHEMA azuresqldb
-go
+
+-- Step 4: Create a schema in the WideWorldImporters for the external table
 CREATE SCHEMA azuresqldb
 GO
--- WWI was created with Latin1_General_100_CI_AS collation so I need to make my columns that
--- if I want to support UNION.
---
-DROP EXTERNAL TABLE azuresqldb.ModernStockItems
-GO
+
+-- Step 5: Create the EXTERNAL TABLE
+-- Each column must match the column in the remote table
+-- Notice the character columns use a collation that is compatible with the target table
+-- The WITH clause includes the name of the remote [database].[schema].[table] and the external database source
 CREATE EXTERNAL TABLE azuresqldb.ModernStockItems
 (
 	[StockItemID] [int] NOT NULL,
@@ -51,12 +48,6 @@ CREATE EXTERNAL TABLE azuresqldb.ModernStockItems
 	[UnitPrice] [decimal](18, 2) NOT NULL,
 	[RecommendedRetailPrice] [decimal](18, 2) NULL,
 	[TypicalWeightPerUnit] [decimal](18, 3) NOT NULL,
-	--[MarketingComments] [nvarchar](max) NULL,
-	--[InternalComments] [nvarchar](max) NULL,
-	--[Photo] [varbinary](max) NULL,
-	--[CustomFields] [nvarchar](max) NULL,
-	--[Tags]  AS (json_query([CustomFields],N'$.Tags')),
-	--[SearchDetails]  AS (concat([StockItemName],N' ',[MarketingComments])),
 	[LastEditedBy] [int] NOT NULL
 )
  WITH (
@@ -64,18 +55,20 @@ CREATE EXTERNAL TABLE azuresqldb.ModernStockItems
  DATA_SOURCE=AzureSQLDatabase
 )
 GO
+
+-- Step 6: Create local statistics on columns you will use for filters
 CREATE STATISTICS ModernStockItemsStats ON azuresqldb.ModernStockItems ([StockItemID]) WITH FULLSCAN
 GO
--- Let's scan the table first to make sure it works
---
+
+-- Step 7: Just try to scan the remote table
 SELECT * FROM azuresqldb.ModernStockItems
 GO
--- Now try to filter on just the stockitemid
---
+
+-- Step 8: Try to find just a specific StockItemID
 SELECT * FROM azuresqldb.ModernStockItems WHERE StockItemID = 100000
 GO
--- Find all stockitems from the Graphic Design Institute supplier
---
+
+-- Step 9: Use a UNION to find all stockitems for a specific supplier both locally and in the Azure table
 SELECT msi.StockItemName, msi.Brand, c.ColorName
 FROM azuresqldb.ModernStockItems msi
 JOIN [Purchasing].[Suppliers] s
