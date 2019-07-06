@@ -199,4 +199,4 @@ In this activity you have seen how to use the Query Store for performance insigh
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04_HA.md" target="_blank"><i>xxxxxxxxxxxx</i></a>.
+Next, Continue to <a href="02_Security.md" target="_blank"><i>Security</i></a>.
