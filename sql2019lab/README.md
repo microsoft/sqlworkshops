@@ -113,7 +113,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
   <tr><td><a href="./01_IntelligentPerformance.md" target="_blank">01 - Intelligent Performance</a></td><td> Learn the how SQL Server can boost your performance with no application changes</td></tr>
   <tr><td style="background-color: AliceBlue; color: black;"><a href="./02_Security.md" target="_blank">02 - Security</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn new security features of SQL Server 2019 such as Data Classification and Auditing</td></tr>
   <tr><td><a href="./03_Availability.md" target="_blank">03 - Availability</a></td><td> Learn new capabilities to make your SQL Server more available such as Accelerated Database Recovery</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="./04_DataVirtualization.md" target="_blank">04 - Data Virtualization (Under Construction)</a> </td><td td style="background-color: AliceBlue; color: black;">Learn how to use SQL Server as a data hub and reduce data movement using Polybase++ </td></tr> 
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="./04_DataVirtualization.md" target="_blank">04 - Data Virtualization</a> </td><td td style="background-color: AliceBlue; color: black;">Learn how to use SQL Server as a data hub and reduce data movement using Polybase++ </td></tr> 
   <tr><td><a href="./05_Linux_and_Containers.md" target="_blank">04 - Linux and Containers (Under Construction)</a></td><td>Learn new enhancements for SQL Server on Linux and Containers</td></tr>
   <tr></tr>
   <tr></tr>
