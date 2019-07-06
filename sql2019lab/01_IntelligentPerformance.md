@@ -1,12 +1,22 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab CTP 3.0
+# Workshop: SQL Server 2019 Lab CTP 3.1
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>SQL Server Intelligent Performance</h2>
+
+SQL Server 2019 includes new capabilities designed to enhance your performance with no application changes. These enhancements include:
+
+- Intelligent Query Processing
+- Lightweight Query Profiling
+- Sequential Key Insert Performance
+- In-Memory Databases
+    - Hybrid Buffer Pool
+    - Memory Optimized Tempdb Metadata
+    - Persistent Memory Support
 
 You'll cover the following topics in this Module:
 
@@ -25,10 +35,9 @@ You'll cover the following topics in this Module:
 
 In this module you will learn about the Intelligent Query processing capabilities in SQL Server 2019. 
 
-Intelligent Query processing is a suite of features built into the query processor for SQL Server 2019 allowing developers and data professionals to accelerate database performance automatically **without any application changes**. T-SQL queries simply need to be run with a database compatibility level of 150 to take advantage of these enhancements.
+Intelligent Query processing is a suite of features built into the query processor for SQL Server 2019 allowing developers and data professionals to accelerate database performance automatically **without application changes**. T-SQL queries simply need to be run with a database compatibility level of 150 to take advantage of these enhancements.
 
-You can read more about database compatibility at https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-2017#compatibility-levels-and-sql-server-upgrades.
-
+You can read more about database compatibility at https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#compatibility-levels-and-sql-server-upgrades.
 The following is a diagram showing the features of Intelligent Query Processing including capabilities from SQL Server 2017 and SQL Server 2019:
 
 ![iqp diagram](./graphics/IQP_diagram.png)
@@ -67,7 +76,7 @@ T-SQL notebooks provide a very nice method to execute T-SQL code with documentat
 
 **Note**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
-T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **iqp_tablevariabledeferred.pynb** notebook and go through all the steps. When you are done proceed to the **Summary** section for the Activity below.
+T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. When you are done proceed to the **ActivitySummary** section for the Activity below.
 
 If you have never opened a T-SQL notebook with Azure Data Studio, use the following instructions:
 
@@ -89,7 +98,7 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-Use the File menu to open up the **iqp_tablevariabledeferred.pynb** notebook and go through all the steps. There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. When you are done proceed to the **Summary** section for the Activity below.
+Use the File menu to open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. When you are done proceed to the **Activity Summary** section for the Activity below.
 
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
@@ -193,6 +202,7 @@ In this activity you have seen how to use the Query Store for performance insigh
 - [Q&A about Intelligent Query Processing](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Intelligent-Query-Processing-Q-amp-A/ba-p/446657)
 - [Monitoring performance of SQL Server using the Query Store](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 - [What is Azure Data Studio?](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
+
 - [How to use Notebooks in Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

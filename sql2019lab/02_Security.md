@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab CTP 3.0
+# Workshop: SQL Server 2019 Lab CTP 3.1
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>SQL Server 2019 Security</h2>
 
-SQL Server 2019 includes new security enhancements including:
+SQL Server 2019 has new security enhancements including:
 
 - Always Encrypted with Secure Enclaves
 - Data Classification and Auditing
@@ -282,7 +282,7 @@ ADD (SELECT ON Application.People BY public )
 WITH (STATE = ON) 
 GO
 ```
-This module will not give into the details of how SQL Server Audit works. You can get more information on SQL Server Audit at https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine.
+This module will not go into the details of how SQL Server Audit works. You can get more information on SQL Server Audit at https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine.
 
 **Step 3**: Check audit for a table scan for all columns
 
@@ -335,7 +335,7 @@ Your results should now look like the following:
 
 ![Audit of SELECT of one column](./graphics/audit_select_one_column.png)
 
-The third row is for the new audit and the data_sensitivity_information contains an XML record of data classification for only one column.
+The third row is for the new SELECT statement and the data_sensitivity_information contains an XML record of data classification for only one column.
 
 **Step 5**: Audit a query with a data classification in the WHERE clause
 
@@ -379,4 +379,4 @@ In this activity you have seen how SQL Server Audit uses the new property **data
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="04_HA.md" target="_blank"><i>xxxxxxxxxxxx</i></a>.
+Next, Continue to <a href="03_Availability.md" target="_blank"><i>Availability</i></a>.
