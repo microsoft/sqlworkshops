@@ -225,7 +225,7 @@ Let's use an activity to see how audit and classification work together.
 
 Work through the following steps to enable SQL Server Audit and view auditing details when a user attempts to view columns that are associated with data classification.
 
-All scripts can be found in the **sql2019lab\02_Security\dataclassification** directory.
+All scripts can be found in the **sql2019lab\02_Security\dataclassification** directory. You can use any T-SQL tool to run these scripts such as SQL Server Management Studio (SSMS) or Azure Data Studio.
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
@@ -360,6 +360,48 @@ Your results should now look like the following:
 ![Audit of SELECT WHERE clause](./graphics/audit_select_where_clause.png)
 
 Notice in this results for the new row the data_sensitivity_information columns is NULL. This is because auditing for data classification only apply where columns are listed in the SELECT "list" of a query.
+
+**Step 6**: Cleanup audits and classifications
+
+Use the script **cleanup.sql** to disable and drop audits and delete classifications
+
+
+```sql
+USE WideWorldImporters
+GO
+IF EXISTS (SELECT * FROM sys.database_audit_specifications WHERE name = 'People_Audit')
+BEGIN
+	ALTER DATABASE AUDIT SPECIFICATION People_Audit 
+	WITH (STATE = OFF)
+	DROP DATABASE AUDIT SPECIFICATION People_Audit
+END
+GO
+USE master
+GO
+IF EXISTS (SELECT * FROM sys.server_audits WHERE name = 'GDPR_Audit')
+BEGIN
+	ALTER SERVER AUDIT GDPR_Audit
+	WITH (STATE = OFF)
+	DROP SERVER AUDIT GDPR_Audit
+END
+GO
+
+-- Remove the .audit files from default or your path
+-- del C:\program files\microsoft sql server\mssql15.mssqlserver\mssql\data\GDPR*.audit
+
+ALTER DATABASE WideWorldImporters SET COMPATIBILITY_LEVEL = 130
+GO
+
+USE WideWorldImporters
+GO
+IF EXISTS (SELECT * FROM sys.sensitivity_classifications sc WHERE object_id('[Application].[PaymentMethods]') = sc.major_id)
+	DROP SENSITIVITY CLASSIFICATION FROM [Application].[PaymentMethods].[PaymentMethodName]
+GO
+IF EXISTS (SELECT * FROM sys.sensitivity_classifications sc WHERE object_id('[Application].[People]') = sc.major_id)
+	DROP SENSITIVITY CLASSIFICATION FROM [Application].[People].[FullName]
+	DROP SENSITIVITY CLASSIFICATION FROM [Application].[People].[EmailAddress]
+GO
+```
 
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
