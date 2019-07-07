@@ -95,7 +95,7 @@ If you have restored the WideWorldImporters database backup in previous modules,
 
 Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Security\dataclassification** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. Your instructor may have provided this backup for you but if necessary you can download it from <https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.>
 
-**STEP2: Clean up any previous execution**
+**STEP 2: Clean up any previous execution**
 
 Use the T-SQL script cleanup.sql to clean up any previous execution of this activity
 

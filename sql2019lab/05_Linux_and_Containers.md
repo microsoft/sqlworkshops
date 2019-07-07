@@ -66,8 +66,6 @@ In this activity, you will learn how to deploy a SQL Server replication solution
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 5.0 and run through all the steps again.*
 
-<p><b><a name="howsolutionworks">How the Solution Works</a></b></p>
-
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
 All scripts for this activity can be found in the **sql2019lab\05_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
