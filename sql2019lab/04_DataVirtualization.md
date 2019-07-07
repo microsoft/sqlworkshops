@@ -76,24 +76,26 @@ In this activity, you will learn how to build an external data source and table 
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 4.0 and run through all the steps again.*
 
-All scripts for this activity can be found in the **sql2019lab\04_DataVirtualization\sqldatahub\azuredb** folder.
-
 **NOTE**: *There are example scripts in **sql2019lab\04_DataVirtualization** for other data sources for you to use at a later time for Hadoop, Oracle, CosmosDB (through MongoDB), SQL Server 2008R2, and SAP HANA. For these examples, you will need to create or use your own external data source. The scripts or directions to create table definitions, data, and external tables are included.*
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
+
+Go through the following steps to learn how to query tables in Azure SQL Database using Polybase.
+
+All scripts for this activity can be found in the **sql2019lab\04_DataVirtualization\sqldatahub\azuredb** folder.
 
 **IMPORTANT**: This activity assumes the following:
 
 - You have installed and enabled Polybase (stand-alone is acceptable) per the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-installation?view=sqlallproducts-allversions.
 - You have access to an Azure SQL Database database or Managed Instance. The T-SQL script **createazuredbtable.sql** as found in the sql2019lab\04_DataVirtualization\sqldatahub\azuredb directory. The scripts in the activity have a specific Azure SQL Database connection stringl login password, and database name (wwiazure). You may need to modify the scripts to match your Azure SQL Database connection, login, password, and db name.
 
-**STEP 1**: Restore the WideWorldImporters backup.
+**STEP 1: Restore the WideWorldImporters backup.**
 
 If you have restored the WideWorldImporters database backup in previous modules, you can skip this step.
 
 Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Security\dataclassification** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. Your instructor may have provided this backup for you but if necessary you can download it from <https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.>
 
-**STEP 2**: Use a T-SQL notebook to complete the rest of the activity.
+**STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 4.0 can be found in the T-SQL notebook **azuredbexternaltable.ipynb** which can be found in the **sql2019lab\04_DataVirtualization\sqldatahub\azuredb** folder.
 
@@ -129,7 +131,7 @@ When you are done proceed to the **Activity Summary** section for the Activity b
 
 In this activity you have learned how Polybase in SQL Server 2019 allows you to connect and query data from external data sources without moving data using ETL applications. In the Activity you learned how to create an EXTERNAL DATA SOURCE and EXTERNAL TABLE mapped to an Azure SQL Database table.
 
-Proceed to the next module to learn about enhancements to SQL Server Linux and Containers in SQL Server 2019.
+Proceed to the next module to learn about enhancements to **SQL Server Linux and Containers** in SQL Server 2019.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

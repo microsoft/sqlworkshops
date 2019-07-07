@@ -68,11 +68,11 @@ Proceed to the Activity to learn an example of how to use Data Classification wi
 
 In this activity, you will learn how to use SQL Server Management Studio (SSMS) and T-SQL to classify columns of tables in a database. You will use the **WideWorldImporters** sample database to classify specific columns in tables of that database.
 
+**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
+
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
 Follow these steps to classify certain columns in the WideWorldImporters database using SSMS and T-SQL. All scripts for this activity can be found in the **sql2019lab\02_Security\dataclassification** folder.
-
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
 **NOTE**: *SSMS 18.1 includes a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, this activity includes instructions to change the dbcompat of WideWorldImporters to 150 (and revert it back when done). SSMS 18.2 is scheduled to have this problem fixed and this lab will be modified when that is verified.*
 
@@ -229,15 +229,17 @@ Let's use an activity to see how audit and classification work together.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="aks">Activity: Using SQL Server Audit with Data Classification</a></b></p>
 
+In this activity you will learn how to audit users trying to view columns that were marked for data classification.
+
 **IMPORTANT**: *This activity assumes you have completed the steps in the Activity for Module 2.0.*
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
+<p><b><a name="activitysteps">Activity Steps</a></b></p>
+
 Work through the following steps to enable SQL Server Audit and view auditing details when a user attempts to view columns that are associated with data classification.
 
 All scripts can be found in the **sql2019lab\02_Security\dataclassification** directory. You can use any T-SQL tool to run these scripts such as SQL Server Management Studio (SSMS) or Azure Data Studio.
-
-<p><b><a name="activitysteps">Activity Steps</a></b></p>
 
 **STEP 1: Cleanup any previous examples**
 
@@ -415,6 +417,8 @@ GO
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
 In this activity you have seen how SQL Server Audit uses the new property **data_sensitivity_information** to track users who list columns associated with data classifications in a SELECT query. However, audit does not apply to all "usage" of a column that is marked for classification.
+
+Proceed to the next module learn about new mission critical **availability** features in SQL Server 2019.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

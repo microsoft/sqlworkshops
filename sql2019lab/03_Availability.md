@@ -89,17 +89,15 @@ In this activity, you will see how Accelerated Database Recovery affects log tru
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
 
-All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder.
-
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
-The database will be created as part of this activity. There is no need to restore a separate database.
+All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database.
 
-**Step 1**: Use a T-SQL notebook to complete the rest of the activity.
+**STEP 1: Use a T-SQL notebook to complete the rest of the activity.**
 
-T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **adr.ipynb** which can be found in the **sql2019lab\03_Availability\adr** folder.
+T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 3.0 can be found in the T-SQL notebook **adr.ipynb** which can be found in the **sql2019lab\03_Availability\adr** folder.
 
-**Note**: *A T-SQL script **adr.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
+**NOTE**: *A T-SQL script **adr.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
 T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **adr.ipynb** notebook and go through all the steps. When you are done proceed to the **Activity Summary** section for the Activity below.
 

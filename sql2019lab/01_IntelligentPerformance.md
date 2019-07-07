@@ -140,9 +140,9 @@ The **WideWorldImporters** sample database that you restored in Module 1.0 has t
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
-Work through the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 versus 150.
-
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
+
+Work through the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 versus 150.
 
 **STEP 1: Find Query Store Reports**
 
@@ -211,6 +211,8 @@ In this example, the query processor used three different Intelligent Query Proc
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
 In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing. You observed the SQL Server query processor using multiple techniques to make your queries faster with no changes to the stored procedure or application.
+
+Proceed to the next module to learn about new **security** capabilities in SQL Server 2019.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
