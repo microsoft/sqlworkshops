@@ -15,6 +15,8 @@ SQL Server 2019 includes new capabilities to keep your database and application 
 - Availability Groups on Kubernetes
 - Accelerated Database Recovery
 
+You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
+
 You'll cover the following topics in this Module:
 
 <dl>
@@ -23,8 +25,6 @@ You'll cover the following topics in this Module:
    
 </dl>
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
-
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="3-0">3.0 Accelerated Database Recovery</a></h2>
@@ -32,6 +32,8 @@ You'll cover the following topics in this Module:
 In this module you will learn about a new capability in SQL Server 2019 to solve problems caused by long running transactions. This enhancement to SQL Server 2019 is called Accelerated Database Recovery.
 
 Accelerated Database Recovery started years ago as a project within Microsoft called Constant Time Recovery (CTR). The idea was to enhance the database engine so that the time it took to recovery a database was constant instead of based on the length of the oldest active transaction as recorded in the transaction log. You can read more about the project in this detailed paper at https://www.microsoft.com/en-us/research/publication/constant-time-recovery-in-azure-sql-database.
+
+<p><b><a name="challenge">The Challenge</a></b></p>
 
 Long running transactions can take the following forms:
 
@@ -43,6 +45,8 @@ Both of these scenarios can lead to the following problems:
 - A **long** time to **recover** the database should it be taken offline or SQL Server shutdown while a long running transaction is active.
 - **Transaction rollback** these long running transactions take a **long time** holding locks.
 - The **transaction log** may grow unexpectedly because it **cannot be truncated** due to an active transactions.
+
+<p><b><a name="solution">The Solution</a></b></p>
 
 Accelerated Database Recovery attempts to solve all of these problems by using a concept called the **Persistent Version Store (PVS)**. This is not the same version store that is kept in tempdb for snapshot isolation.The PVS is stored in the user database inside the rows of a page or in an off-row store internal table. Because it is persistent (i.e. survives restarts) it can be used for recovery purposes.
 
@@ -83,9 +87,13 @@ Proceed to the Activity to learn an example of how Accelerated Database Recovery
 
 In this activity, you will see how Accelerated Database Recovery affects log truncation and the speed of rollback.
 
+**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
+
 All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder.
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
+
+The database will be created as part of this activity. There is no need to restore a separate database.
 
 **Step 1**: Use a T-SQL notebook to complete the rest of the activity.
 

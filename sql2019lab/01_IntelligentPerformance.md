@@ -52,7 +52,7 @@ You can read the documentation for a description and example of all of these fea
 
 **NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
 
-Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes. All scripts for this activity can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
+Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -72,17 +72,19 @@ You will observe the performance of the **CustomerProfits** stored procedure wit
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
-Follow these steps to observe deferred table variable compilation
+All scripts for this activity can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
-**Step 1**: Restore the WideWorldImporters backup
+Follow these steps to observe performance differences with deferred table variable compilation
+
+**STEP 1: Restore the WideWorldImporters backup**
 
 Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\01_IntelligentPerformance\iqp** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
 
-**Step 2**: Use a T-SQL notebook to complete the rest of the activity.
+**STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
-**Note**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
+**NOTE**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
 T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. When you are done proceed to the **ActivitySummary** section for the Activity below.
 
@@ -142,7 +144,7 @@ Work through the following steps to use the Query Store to examine the query per
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
-**Step 1: Find Query Store Reports**
+**STEP 1: Find Query Store Reports**
 
 Open SQL Server Management Studio (18.0). Using Object Explorer, navigate to the WideWorldImporters database. Find the Query Store folder and select the **Top Resource Consuming Queries** report.
 
@@ -150,7 +152,7 @@ Your screen should look similar to the following
 
 ![Query Store Reports](./graphics/Query_Store_Reports.png)
 
-**Step 2: Find the query from the CustomerProfits procedure**
+**STEP 2: Find the query from the CustomerProfits procedure**
 
 There could be other queries in the Query Store. Click on the bars in the graph starting from left to right until you find the query for the query text
 
@@ -168,7 +170,7 @@ When you find this query your screen should look similar to the following with t
 
 The "higher" the dot in the chart, the longer the average duration is for that query plan. Query store knows how to store changes in query plans for the same query text. In the example you executed, you ran the same stored procedure but with different dbcompat levels. A different query plan was generated when you switched to dbcompat 150 but didn't change the stored procedure. This is because the query processor used the table variable deferred compilation technique when building the new plan.
 
-**Step 3: Observe query duration and plan differences**
+**STEP 3: Observe query duration and plan differences**
 
 Click on the higher dot in the chart. Observe the plan in the lower hand window showing a Clustered Index Scan for the table variable. This is the query plan with dbcompat of 130. Move your cursor over the higher dot to show the query execution numbers for this plan.
 
@@ -182,7 +184,7 @@ In the query plan window move your cursor over the Clustered Index Scan operator
 
 ![Table Variable Estimates Slow Plan](./graphics/table_variable_estimate_slow_plan.png)
 
-**Step 4: Observe plan and stats for the faster plan using table variable deferred compilation**
+**STEP 4: Observe plan and stats for the faster plan using table variable deferred compilation**
 
 Repeat the same process for the lower dot which represents the query plan that is faster using dbcompat of 150.
 
