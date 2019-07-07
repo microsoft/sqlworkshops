@@ -18,6 +18,8 @@ SQL Server 2019 includes new capabilities designed to enhance your performance w
     - Memory Optimized Tempdb Metadata
     - Persistent Memory Support
 
+You can learn more about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
+
 You'll cover the following topics in this Module:
 
 <dl>
@@ -27,13 +29,17 @@ You'll cover the following topics in this Module:
   
 </dl>
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
-
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="1-0">1.0 SQL Server Intelligent Query Processing</a></h2>
 
-In this module you will learn about the Intelligent Query processing capabilities in SQL Server 2019. 
+In this module you will learn about the Intelligent Query processing capabilities in SQL Server 2019.
+
+<p><b><a name="challenge">The Challenge</a></b></p>
+
+Application developers and DBAs want to gain performance for queries without making application changes. Query tuning can be an expensive undertaking so they want the query processor to adapt to their workload needs vs having to use options and flags to gain performance.
+
+<p><b><a name="solution">The Solution</a></b></p>
 
 Intelligent Query processing is a suite of features built into the query processor for SQL Server 2019 allowing developers and data professionals to accelerate database performance automatically **without application changes**. T-SQL queries simply need to be run with a database compatibility level of 150 to take advantage of these enhancements.
 
@@ -53,6 +59,8 @@ Now proceed to the Activity to learn an example of how Intelligent Query Process
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="activityiqp">Activity: SQL Server Intelligent Query Processing</a></b></p>
 
 In this activity, you will learn how to use the built-in capabilities of Intelligent Query Processing in SQL Server 2019 simply by changing the database compatibility of WideWorldImporters to version 150 with no application changes.
+
+**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
 You have been provided a stored procedure called **CustomerProfits** which you will deploy in the **Facts** schema of the **WideWorldImporters** database. The stored procedure uses a *table variable* to store interim results from a user table and then uses that table variable to join with other data in the **WideWorldImporters** database. In previous releases of SQL Server, this design pattern could cause an issue, since SQL Server would always estimate that the table variable only contains 1 row of data. This can cause issues with building the optimal query plan for the best performance.
 
@@ -108,19 +116,27 @@ In this activity you have learned the powerful capabilities of Intelligent Query
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="1-1">1.1 Using Query Store for Performance Analysis</a></h2>
 
-In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Module 1.0.
+In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Module 1.0. Even though query store is not new to SQL Server 2019, it is an excellent feature to help analyze performance differences with Intelligent Query Processing.
+
+<p><b><a name="challenge">The Challenge</a></b></p>
+
+Developers and DBA need to track query performance execution over time without having to "pool" Dynamic Management Views and save it to permanent storage. Data professionals need to easily be able to compare query execution for different query plans associated with the same query text.
+
+<p><b><a name="solution">The Solution</a></b></p>
 
 The Query Store is built into the query processing engine, enabled using an option for each database in SQL Server. Once enabled, performance statistics for queries are cached and stored in the SQL user database so they are persisted across server restarts.
 
-In addition, the Query Store comes with a series of catalog and dynamic management views to gain insight into recorded query performance.
+In addition, the Query Store comes with a series of catalog and dynamic management views to gain insight into recorded query performance, including the ability to view execution details for different query plans over time associated with the same query.
 
-You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store.
+You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store. In addition, there were enhancements in Query Store for SQL Server 2019 for "capture policy" which you can read at https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sqlallproducts-allversions.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="aks">Activity: Using Query Store for Performance Analysis</a></b></p>
 
 The **WideWorldImporters** sample database that you restored in Module 1.0 has the Query Store feature enabled. If you performed the Activities in Module 1.0, the Query Store recorded performance information about each query execution.
+
+**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
 Work through the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 versus 150.
 
