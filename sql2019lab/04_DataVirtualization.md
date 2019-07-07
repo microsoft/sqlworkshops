@@ -49,7 +49,7 @@ That in a nutshell is what Polybase provides in SQL Server 2019 through a concep
 
 External tables are just like SQL Server tables except SQL Server only stores the metadata of the table definition. The data stays where it lives from the external data source. Think of an external table like a view on top of a data source outside of SQL Server. Since an external table is like a table, you can use SQL Server securables to control access to external data sources like you would a local table.
 
-Polybase uses ODBC drivers to connect to sources such as Oracle, Teradata, MongoDB, and SQL Server. And the driver to connect to other SQL Server data sources can be used to connect to Azure SQL Server Database and Azure SQL Data Warehouse. With SQL Server 2019 on Windows, you can "bring your own driver" and connect to almost any ODBC data source in your environment. Polybase is integrated with the SQL Server engine so the query processor can make smart decisions to "push-down" query predicates instead of streaming back an entire remote table and filtering it locally.
+Polybase uses ODBC drivers to connect to sources such as Oracle, Teradata, MongoDB, and SQL Server. And the driver to connect to other SQL Server data sources can be used to connect to Azure SQL Database and Azure SQL Data Warehouse. With SQL Server 2019 on Windows, you can "bring your own driver" and connect to almost any ODBC data source in your environment. Polybase is integrated with the SQL Server engine so the query processor can make smart decisions to "push-down" query predicates instead of streaming back an entire remote table and filtering it locally.
 
 Consider this simple diagram for how external tables work
 
@@ -72,7 +72,7 @@ Proceed to the Activity to learn an example of how to use Polybase with SQL Serv
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="activityadr">Activity: Using Polybase with Azure SQL Server Database</a></b></p>
 
-In this activity, you will learn how to build an external data source and table to query a table in Azure SQL Server Database without connecting directly yourself.
+In this activity, you will learn how to build an external data source and table to query a table in Azure SQL Database without connecting directly yourself.
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 4.0 and run through all the steps again.*
 
@@ -95,7 +95,25 @@ If you have restored the WideWorldImporters database backup in previous modules,
 
 Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Security\dataclassification** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. Your instructor may have provided this backup for you but if necessary you can download it from <https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.>
 
-**STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
+**STEP2: Clean up any previous execution**
+
+Use the T-SQL script cleanup.sql to clean up any previous execution of this activity
+
+```sql
+USE [WideWorldImporters]
+GO
+DROP EXTERNAL TABLE azuresqldb.ModernStockItems
+GO
+DROP SCHEMA azuresqldb
+GO
+DROP EXTERNAL DATA SOURCE AzureSQLDatabase
+GO
+DROP DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials
+GO
+DROP MASTER KEY
+GO
+```
+**STEP 3: Use a T-SQL notebook to complete the rest of the activity.**
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 4.0 can be found in the T-SQL notebook **azuredbexternaltable.ipynb** which can be found in the **sql2019lab\04_DataVirtualization\sqldatahub\azuredb** folder.
 
