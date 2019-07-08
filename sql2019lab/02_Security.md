@@ -299,7 +299,7 @@ This module will not go into the details of how SQL Server Audit works. You can 
 
 **STEP 3: Check audit for a table scan for all columns**
 
-Use the script **findpeople.sql** and run ONLY Step 1 and Step 2 in the T-SQL script. Note it may take a few seconds for the audit results to appear.
+Use the script **findpeople.sql** and run **ONLY Step 1 and Step 2** in the T-SQL script. Note it may take a few seconds for the audit results to appear.
 
 ```sql
 -- Step 1: Scan the table and see if the sensitivity columns were audited
@@ -327,7 +327,7 @@ The first row is a record that the audit has started. The second row is an audit
 
 **STEP 4: Check audit for a SELECT on specific columns**
 
-Use the script **findpeople.sql** and run ONLY Step 3 and Step 4 in the T-SQL script. Note it may take a few seconds for the audit results to appear.
+Use the script **findpeople.sql** and run **ONLY Step 3 and Step 4** in the T-SQL script. Note it may take a few seconds for the audit results to appear.
 
 ```sql
 -- Step 3: What if I access just one of the columns directly?

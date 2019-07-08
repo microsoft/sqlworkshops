@@ -132,7 +132,7 @@ Connect to localhost,2500 (or `<`server`>`,2500) for the SQL Server publisher.
 
 Now navigate using SSMS to check the status of the replication snapshot. Use the figure below as a guide on how to navigate Object Explorer to check this status
 
-![Replication Spapshot Status](./graphics/repl_snapshot_status.png)
+![Replication Snapshot Status](./graphics/repl_snapshot_status.png)
 
 Now connect to the subscriber (port 2600) to check that the new table, customers in the Sales database, and data are present. Use the following figure as a guide to navigate and check the table and data.
 

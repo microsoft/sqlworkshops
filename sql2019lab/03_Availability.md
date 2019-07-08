@@ -37,7 +37,7 @@ Accelerated Database Recovery started years ago as a project within Microsoft ca
 
 Long running transactions can take the following forms:
 
-- A transaction that does not make alot of mmodifications but is held open for a long period of time
+- A transaction that does not make alot of modifications but is held open for a long period of time
 - A transaction that makes alot of data modifications (think deleting all rows in a 1 billion row table)
 
 Both of these scenarios can lead to the following problems:

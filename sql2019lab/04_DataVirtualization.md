@@ -60,7 +60,7 @@ An application runs a T-SQL query against an EXTERNAL TABLE. The EXTERNAL TABLE 
 Polybase has advantages over features like linked servers such as:
 
 - External tables are defined in the database so are naturally part of an Availability Group
-- External tables allow you to define your table and column names per your organization standard vs using object names from the exteranl data source
+- External tables allow you to define your table and column names per your organization standard vs using object names from the external data source
 - Polybase has built-in scalability through a concept called a scale-out group.
 - Polybase has built-in client driver support for Hadoop, Oracle, Teradata, and MongoDB.
 
