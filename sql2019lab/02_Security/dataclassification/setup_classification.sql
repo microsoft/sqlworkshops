@@ -1,5 +1,5 @@
 -- Step 1: Change WideWorldImporters to dbcompat = 150
--- TODO: We may remove this depending on dev investigation
+-- TODO: Remove this when bug in SSMS fixed
 ALTER DATABASE WideWorldImporters SET COMPATIBILITY_LEVEL = 150
 GO
 

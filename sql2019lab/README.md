@@ -30,7 +30,7 @@ SQL Server 2019 provides many new capabilities including:
 
 In this course you will learn some of the concepts and how to solve modern data challenges using a hands-on lab approach.
 
-This course is intended to be taken as a self-paced lab in 1 to 2 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects. Supplement slide decks are available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder.
+This course is intended to be taken as a self-paced lab in 1 to 2 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects. Supplement slide decks are available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/rgward/sql2019lab/slides) folder.
 
 This course is designed for data professionals who have a basic working knowledge of SQL Server and the T-SQL language.
 
@@ -45,7 +45,7 @@ When you complete this course, you will be able to:
 
 - Understand and use **Intelligent Performance** features to boost query performance with application changes
 - Understand and use **Data Classification and Auditing** to meet the needs of compliance and regulation standards.
-- Understand and use **Accelerated Database Recovery** and increase database availability.
+- Understand and use **Accelerated Database Recovery** to increase database availability.
 - Understand and use **Polybase** to connect and query other data sources with no data movement.
 - Understand and use **Docker containers** to deploy **SQL Server Replication on Linux**.
 
@@ -80,7 +80,7 @@ When you complete this course, you will be able to:
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
   <tr><td><i>Docker</i></td><td>Engine for running and manage containers</td></tr>
 <tr><td><i>SQL Server Management Studio (SSMS)</i></td><td>Graphical User Interface Management and Query Tool</td></tr>
-    <tr><td><i>Azure Data Studio<i></td><td>Graphical User Interface to execute T-SQL queries and manage SQL Server</td></tr>
+    <tr><td><i>Azure Data Studio<i></td><td>Graphical User Interface to execute T-SQL queries, notebooks, and manage SQL Server</td></tr>
 
 </table>
 
@@ -112,6 +112,8 @@ In order to complete this workshop you need to install the following software:
 - Access to an **Azure SQL Database** is required for **Module 4**.
 
 This workshop was built and designed for a server or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. You may be able to run this lab with less compute resources.
+
+**NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 5, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

@@ -31,7 +31,7 @@ You'll cover the following topics in this Module:
 
 In this module you will learn about a new capability in SQL Server 2019 to solve problems caused by long running transactions. This enhancement to SQL Server 2019 is called Accelerated Database Recovery.
 
-Accelerated Database Recovery started years ago as a project within Microsoft called Constant Time Recovery (CTR). The idea was to enhance the database engine so that the time it took to recovery a database was constant instead of based on the length of the oldest active transaction as recorded in the transaction log. You can read more about the project in this detailed paper at https://www.microsoft.com/en-us/research/publication/constant-time-recovery-in-azure-sql-database.
+Accelerated Database Recovery started years ago as a project within Microsoft called Constant Time Recovery (CTR). The idea was to enhance the database engine so that the time it took to recover a database was constant instead of based on the length of the oldest active transaction as recorded in the transaction log. You can read more about the project in this detailed paper at https://www.microsoft.com/en-us/research/publication/constant-time-recovery-in-azure-sql-database.
 
 <p><b><a name="challenge">The Challenge</a></b></p>
 
@@ -43,14 +43,14 @@ Long running transactions can take the following forms:
 Both of these scenarios can lead to the following problems:
 
 - A **long** time to **recover** the database should it be taken offline or SQL Server shutdown while a long running transaction is active.
-- **Transaction rollback** these long running transactions take a **long time** holding locks.
+- **Transaction rollback** for queries with alot of modifications can take a **long time** holding locks.
 - The **transaction log** may grow unexpectedly because it **cannot be truncated** due to an active transactions.
 
 <p><b><a name="solution">The Solution</a></b></p>
 
-Accelerated Database Recovery attempts to solve all of these problems by using a concept called the **Persistent Version Store (PVS)**. This is not the same version store that is kept in tempdb for snapshot isolation.The PVS is stored in the user database inside the rows of a page or in an off-row store internal table. Because it is persistent (i.e. survives restarts) it can be used for recovery purposes.
+Accelerated Database Recovery (ADR) attempts to solve these problems by using a concept called the **Persistent Version Store (PVS)**. This is not the same version store that is kept in tempdb for snapshot isolation. The PVS is stored in the user database inside the rows of a page or in an off-row store internal table. Because it is persistent (i.e. survives restarts) it can be used for recovery purposes.
 
-Now the **redo** and **undo** phases of recovery can be significantly faster (hence the term accelerated) because versions can be used to determine the state of a transaction (vs having to logically undo non-committed transactions).
+Now the **redo** and **undo** phases of recovery can be significantly faster (hence the term accelerated) because versions can be used to determine the state of a transaction (vs having to logically undo uncommitted transactions).
 
 These diagrams from the documentation show the recovery process with and without ADR.
 
@@ -129,11 +129,11 @@ When you are done proceed to the **Activity Summary** section for the Activity b
 
 In this activity you have learned Accelerated Database recovery can speed up transaction rollback significantly. You have also learned how transaction log truncation is no longer affected by long running transactions.
 
-Armed with this knowledge, proceed to the next activity to learn how **data virtualization** makes SQL Server 2019 the new "data hub".
-
 <p><b><a name="bonusactivity">Bonus Activity</a></b></p>
 
 If you have time use the T-SQL notebook **adr_recovery.ipynb** or T-SQL script **adr_recovery.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery.
+
+Armed with this knowledge, proceed to the next activity to learn how **data virtualization** makes SQL Server 2019 the new "data hub".
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

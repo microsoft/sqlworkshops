@@ -64,17 +64,17 @@ In this activity, you will learn how to use the built-in capabilities of Intelli
 
 You have been provided a stored procedure called **CustomerProfits** which you will deploy in the **Facts** schema of the **WideWorldImporters** database. The stored procedure uses a *table variable* to store interim results from a user table and then uses that table variable to join with other data in the **WideWorldImporters** database. In previous releases of SQL Server, this design pattern could cause an issue, since SQL Server would always estimate that the table variable only contains 1 row of data. This can cause issues with building the optimal query plan for the best performance.
 
-SQL Server 2019 Intelligent Query Processing includes a capability called *table variable deferred compilation* to improve the performance of stored procedures like these by ensuring the stored procedure is created in a database with a compatibility level of 150, which is the default for SQL Server 2019.
+SQL Server 2019 Intelligent Query Processing includes a capability called *table variable deferred compilation* to improve the performance of T-SQL code that uses table variables. The application simply needs to change the database compatibility level to 150, which is the default for SQL Server 2019, and execute the T-SQL statements with table variables to see a gain in performance.
 
 The **WideWorldImporters** database example was created using SQL Server 2016 which has a default database compatibility level of 130. When a database is restored from a previous version oF SQL Server, the compatibility level of the database is preserved to help reduce the risk of upgrades.
 
-You will observe the performance of the **CustomerProfits** stored procedure with database compatibility level of 130 on SQL Server 2019. You will then compare the performance of the same procedure with no changes with a database compatibility of 150 which will enable the query processor to use deferred table variable compilation.
+You will observe the performance of the **CustomerProfits** stored procedure with database compatibility level of 130 on SQL Server 2019. You will then compare the performance of the same procedure with no changes with a database compatibility of 150 which will enable the query processor to use  table variable deferred compilation.
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
 All scripts for this activity can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
-Follow these steps to observe performance differences with deferred table variable compilation
+Follow these steps to observe performance differences with table variable deferred compilation.
 
 **STEP 1: Restore the WideWorldImporters backup**
 
@@ -94,7 +94,7 @@ Launch the Azure Data Studio application. Look for the icon similar to this one:
 
 <p><img style="margin: 0px 30px 15x 0px;" src="./graphics/azure_data_studio_icon.png" width="50" height="50">
 
-The first time you launch Azure Data Studio, you may see the following choices. For the purposes of this workshop, select No to not load the preview feature and use x to close out the 2nd choice to collect usage data.
+The first time you launch Azure Data Studio, you may see the following choices. For the purposes of this workshop, You can select No to loading 2019 preview extensions and click X to not read the usage data statement.
     
 <p><img style="margin: 0px 30px 15x 0px;" src="./graphics/ADS_initial_prompts.jpg" width="250" height="150">
 
@@ -112,7 +112,7 @@ Use the File menu to open up the **iqp_tablevariabledeferred.ipynb** notebook an
 
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
-In this activity you have learned the powerful capabilities of Intelligent Query Processing by looking at an example where no application changes were required to boost performance. All that was required was to simply change the database compatibility level to 150 for the database. This exmple used a concept called table variable deferred compilation. You can read more about this capability at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation.
+In this activity you have learned the powerful capabilities of Intelligent Query Processing by looking at an example where no application changes were required to boost performance. All that was required was to simply change the database compatibility level to 150 for the database. This example used a concept called table variable deferred compilation. You can read more about this capability at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -122,7 +122,7 @@ In this module you will learn how to use the Query Store, a built-in performance
 
 <p><b><a name="challenge">The Challenge</a></b></p>
 
-Developers and DBA need to track query performance execution over time without having to "pool" Dynamic Management Views and save it to permanent storage. Data professionals need to easily be able to compare query execution for different query plans associated with the same query text.
+Developers and DBA need to track query performance execution over time without having to "poll" Dynamic Management Views and save it to permanent storage. Data professionals need to easily be able to compare query execution for different query plans associated with the same query text.
 
 <p><b><a name="solution">The Solution</a></b></p>
 
@@ -146,7 +146,7 @@ Work through the following steps to use the Query Store to examine the query per
 
 **STEP 1: Find Query Store Reports**
 
-Open SQL Server Management Studio (18.0). Using Object Explorer, navigate to the WideWorldImporters database. Find the Query Store folder and select the **Top Resource Consuming Queries** report.
+Open SQL Server Management Studio (SSMS). Using Object Explorer, navigate to the WideWorldImporters database. Find the Query Store folder and select the **Top Resource Consuming Queries** report.
 
 Your screen should look similar to the following
 
@@ -174,7 +174,7 @@ The "higher" the dot in the chart, the longer the average duration is for that q
 
 Click on the higher dot in the chart. Observe the plan in the lower hand window showing a Clustered Index Scan for the table variable. This is the query plan with dbcompat of 130. Move your cursor over the higher dot to show the query execution numbers for this plan.
 
-Notice the average duration is less than 1 second but the total duration for all executions is ~13 seconds (your times may vary depending on compute resources for SQL Server). This doesn't seem bad for the business needs require this query to run faster.
+Notice the average duration is less than 1 second but the total duration for all executions is ~13 seconds (your times may vary depending on compute resources for SQL Server). This may not seem all that bad but the business requires faster query execution.
 
 ![Query Stats for Slower Plan](./graphics/query_stats_for_slower_plan.png)
 
@@ -196,7 +196,7 @@ Click on the dot and observe the new query plan.
 
 ![Query Plan Faster](./graphics/query_plan_faster.png)
 
-You will notice a clustered index scan is still used but this time with a Hash Join. Additionally, the query processor has used a concept called and Adaptive Join, which was introduced in SQL Server 2017. An adaptive join allows the query processor to choose the join method at execution time based on the number of rows from input of the operator. In this case, a Hash Join is the better choice. You can read more about Adaptive Joins at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing.
+You will notice a clustered index scan is still used but this time with a Hash Join. Additionally, the query processor has used a concept called an Adaptive Join, which was introduced in SQL Server 2017. An adaptive join allows the query processor to choose the join method at execution time based on the number of rows from input of the operator. In this case, a Hash Join is the better choice. You can read more about Adaptive Joins at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing.
 
 Move your cursor over the Clustered Index Scan for the table variable. Notice the estimated rows is more accurate and the query processor has also chosen batch mode for rowstore processing. This is another Intelligent Query Processing feature in SQL Server 2019 to make queries faster with no application changes.
 

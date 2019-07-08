@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>SQL Server 2019 Linux and Containers</h2>
 
-SQL Server 2017 introduced the world to SQL Server on Linux and Containers. SQL Server on Linux is completely compatible with SQL Server on Windows due to the unique design of the SQL Platform Abstraction Layer (SQLPAL)The core engine features of SQL Server on Linux work exactly was SQL Server on Windows because the engine codebase is the same on both platforms. 
+SQL Server 2017 introduced the world to SQL Server on Linux and Containers. SQL Server on Linux is completely compatible with SQL Server on Windows due to the unique design of the SQL Platform Abstraction Layer (SQLPAL). The core engine features of SQL Server on Linux work exactly as SQL Server on Windows because the engine codebase is the same on both platforms.
 
 However, there were some features that come with SQL Server that were not included in SQL Server 2017 on Linux. SQL Server 2019 shores up these gaps by including the following new enhancements for Linux:
 
@@ -50,11 +50,9 @@ In addition, SQL Server 2017 released SQL Server on containers only based on Ubu
 
 SQL Server 2019 on Linux now supports Replication. Since SQL Server supports containers on Linux, it is possible to create a SQL Server replication solution using containers. In addition. SQL Server 2019 now supports container images based on Red Hat Enterprise Linux (RHEL). These forces can be combined to build a solution using Docker. Anywhere Docker runs (Windows, Linux, MacOS, Kubernetes), you can build a SQL Server Replication solution with a publisher, distributor, and subscriber all with docker containers.
 
-SQL Server container images include SQL Server "pre-installed" with the SQL Server Engine, SQL Server Agent, and tools.
+SQL Server container images include SQL Server "pre-installed" with the SQL Server Engine, SQL Server Agent, and tools. You can customize the SQL Server container image to include your own files. One scenario would be to include in the customized container images scripts to create database objects. Since Replication can all be deployed using T-SQL, you can use a customized solution to deploy replication across multiple containers. This customized solution is called the "Vin Yu" method named after the lead program manager within the SQL Server team. You can then bring in a tool like **docker-compose** to deploy this solution all with a single command.
 
-You can customize the SQL Server container image to include your own files. One scenario would be to include in the customized container images scripts to create database objects. Since Replication can all be deployed using T-SQL, you can use a customized solution to deploy replication across multiple containers. This customized solution is called the "Vin Yu" method named after the lead program manager within the SQL Server team. You can then bring in a tool like **docker-compose** to deploy this solution all with a single command.
-
-The Further Reading section at the end of this module provides reference information about SQL Server 2019 on Linux, Docker containers, and replication on Linux.
+The Further Reading section at the end of this module provides reference information about SQL Server 2019 on Linux, Docker containers, and Replication on Linux.
 
 Proceed to the activity to explore how this method can allow you to deploy SQL Server 2019 on Linux with Replication with a single command.
 
@@ -85,14 +83,14 @@ In the **sql2019lab\05_Linux_and_Containers\replication** folder there are two d
 
 - **db1** - Scripts and files to build a custom container image for the publisher and distributor.
 - **db2** - Scripts and files to build a customer container for the subscriber.
-- **docker-compose.yml** - A text file that describes how docker-compose should build and containers for the solution. Notice in this file are specifics for running the container including the SA password and enabling SQL Agent (which is required for replication)
+- **docker-compose.yml** - A text file that describes how docker-compose should build and run containers for the solution. Notice in this file are specifics for running the container including the SA password and enabling SQL Agent (which is required for replication)
 
 When docker-compose is run it will use the docker-compose.yml file to build two container images and run them based on files in the db1 and db2 directories.
 
 In each **db1** and **db2** directory are the following files:
 
 - **Dockerfile** - This tells docker how to build a custom image based on the SQL Server 2019 RHEL image
-- **entrypoint.sh** - This is a Linux shell script included in the custom image which will be the main "program" for the container. This script will run a script called db-init.sh and then run the sqlservr program
+- **entrypoint.sh** - This is a Linux shell script included in the custom image which will be the main "program" for the container. This script will run a script called **db-init.sh** and then run the sqlservr program
 - **db-init.sh** - This shell script will sleep for a period of time waiting for sqlservr to start up. Then it will use sqlcmd inside the container to run a T-SQL script called **db-init.sql**
 - **db-init.sql** - This could be any set of T-SQL statements to run after sqlservr has started. For the db1 directory this will create a database, a table, insert data, and then run T-SQL scripts to configure a publisher, distributor, subscriber, publication, article, and agents to run a snapshot. This script for the db2 directory only creates an empty database to hold the table in the publication.
 
@@ -110,7 +108,7 @@ To run the solution, simple type the following from the command line (you must b
 
 `docker-compose up`
 
-When you run this you will see alot of information scroll by on the command line. Since docker containers run sqlservr from the command line part of the output is the ERRORLOG from each server startup being written to stdout.
+When you run this you will see alot of information scroll by on the command line. Since docker containers run sqlservr from the command line, part of the output is the ERRORLOG from each server startup being written to stdout.
 
 You will also see output of the db-init.sql execution mostly from the db1 directory. If you have not previously pulled the images for SQL Server 2019 CTP 3.1 for RHEL, that will be done first and you will see that output.
 
@@ -119,7 +117,7 @@ The replication solution should be ready to go when you see this output from the
 <pre>db1    | Creating Snapshot...
 db1    | Job 'db1-Sales-SnapshotRepl-DB2-1' started successfully.</pre>
 
-Once you see this output leave the command line alone. If you attempt `<`Ctrl`>`+`<`C`>` or exit the command line it would stop the 2 containers.
+The command line will appear to "hang" at this point. This is normal as both programs are running. Once you see this output leave the command line alone. If you attempt `<`Ctrl`>`+`<`C`>` or exit the command line it would stop the 2 containers.
 
 **NOTE**: *You can use add the **-d** parameter to docker-compose -up to run the containers in the background. But then you would need to monitor SQL Sever replication to see when the snapshot has been applied.*
 
@@ -130,9 +128,9 @@ The docker-compose.yml file contains key information to connect to both SQL Serv
 - port 2500 is mapped to the publisher
 - port 2600 is mapped to the subscriber
 
-Connect to localhost,2500 (or `<`server`>`,2500) on the machine where you are running the containers.
+Connect to localhost,2500 (or `<`server`>`,2500) for the SQL Server publisher.
 
-Now navigate using SSMS to check the status of the replication snapshot. Use the figur below as a guide on how to navigate Object Explorer to check this status
+Now navigate using SSMS to check the status of the replication snapshot. Use the figure below as a guide on how to navigate Object Explorer to check this status
 
 ![Replication Spapshot Status](./graphics/repl_snapshot_status.png)
 
@@ -158,7 +156,7 @@ When you are done proceed to the **Activity Summary** section for the Activity b
 
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
-In this activity, you learned how to deploy a SQL Server replication topology with a single command. You use SQL Server 2019 on Linux combined with containers to easily deploy a publisher, distributor, and subscriber. You learned some of the details behind how to build custom images and add your own T-SQL scripts when a SQL Server container is started.
+In this activity, you learned how to deploy a SQL Server replication topology with a single command. You learned that SQL Server on Linux is completely compatible with SQL Server Replication on Windows. You used SQL Server 2019 on Linux combined with containers to easily deploy a publisher, distributor, and subscriber. You learned some of the details behind how to build custom images and add your own T-SQL scripts when a SQL Server container is started.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

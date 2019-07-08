@@ -38,9 +38,9 @@ Many organization face the challenge of classifying their data and auditing acce
 
 <p><b><a name="solution">The Solution</a></b></p>
 
-In SQL Server 2017, SQL Server Management Studio (SSMS) was enhanced to include the ability to classify data based on *tags* you could associate with columns in a table. This solution was built into the SSMS tool.
+In SQL Server 2017, SQL Server Management Studio (SSMS) was enhanced to include the ability to classify data based on *labels* and *types* you could associate with columns in a table. This solution was built into the SSMS tool.
 
-SQL Server 2019 includes data classification capabilities built-in to the SQL Server Engine through the new T-SQL command
+SQL Server 2019 includes data classification capabilities built-in to the SQL Server Engine through the new T-SQL statement
 
 ```sql
 ADD SENSITIVITY CLASSIFICATION
@@ -50,11 +50,11 @@ Now classification information is stored directly with columns in metadata in sy
 
 **label** - This represents the sensitivity of data but can be any string you choose. An example of a label would be *GDPR*.
 
-**information_type** - This represents the type of data that is being classified. This can be any string you choose. An example of an informatino_type would be *Financial*
+**information_type** - This represents the type of data that is being classified. This can be any string you choose. An example of an information_type would be *Financial*
 
 The added benefit of built-in classification is that now auditing of data classification is included. SSMS starting with version 18.1 has been enhanced to take advantage of this new T-SQL feature.
 
-**NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance. It is up to a business or organization to use these tools to meet their requirements or regulations.*
+**NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance standards. It is up to a business or organization to use these tools to meet their requirements or regulations.*
 
 You can read the documentation for data discovery and classification for SQL Server, Azure SQL Database, and Azure SQL Data Warehouse at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification.
 
@@ -74,7 +74,7 @@ In this activity, you will learn how to use SQL Server Management Studio (SSMS) 
 
 Follow these steps to classify certain columns in the WideWorldImporters database using SSMS and T-SQL. All scripts for this activity can be found in the **sql2019lab\02_Security\dataclassification** folder.
 
-**NOTE**: *SSMS 18.1 includes a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, this activity includes instructions to change the dbcompat of WideWorldImporters to 150 (and revert it back when done). SSMS 18.2 is scheduled to have this problem fixed and this lab will be modified when that is verified.*
+**NOTE**: *SSMS 18.1 has a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, this activity includes instructions to change the dbcompat of WideWorldImporters to 150 (and revert it back when done). SSMS 18.2 is scheduled to have this problem fixed and this lab will be modified when that is verified.*
 
 **STEP 1: Restore the WideWorldImporters backup.**
 
@@ -88,7 +88,7 @@ Open up the script **setup_classification.sql** in SQL Server Management Studio 
 
 ```sql
 -- Step 1: Change WideWorldImporters to dbcompat = 150
--- TODO: We may remove this depending on dev investigation
+-- TODO: Remove this after bug in SSMS fixed
 ALTER DATABASE WideWorldImporters SET COMPATIBILITY_LEVEL = 150
 GO
 
@@ -106,6 +106,8 @@ GO
 
 **STEP 3: Add classifications using the wizard in SSMS**
 
+**NOTE**: *SSMS still supports using Data Discover and Classification against older versions of SQL Server but will use the older technique built into the tool. Auditing will not be available for these scenarios.*
+
 - Launch SSMS and select the Data Discovery and Classification option as a Task from WideWorldImporters in Object Explorer
 
 ![Launch Data Classification](./graphics/launch_data_classification.png)
@@ -114,7 +116,7 @@ GO
 
 SSMS analyzes column names in the database and creates recommendations for data classification for labels and information_type.
 
-Select click to view in the gray bar to see the recommendations for WideWorldImporters
+Select "click to view" in the gray bar to see the recommendations for WideWorldImporters
 
 ![Choose Classification Recommendations](./graphics/choose_classification_recommendations.png)
 
@@ -127,7 +129,7 @@ The recommendations provided by the tool are fixed and cannot be customized (you
 
 - Save the recommendations
 
-The tool shows you the recommendations you accepted. You can delete these and choose others at this point.
+The tool shows you the recommendations you accepted. You could delete these and choose others at this point (do not do this for this lab). Notice there are 2 less recommendations.
 
 Click the save button to save your recommendations. The tool will run the corresponding ADD SENSITIVITY CLASSIFICATION T-SQL statements when you click Save.
 
@@ -198,8 +200,7 @@ Your results from the catalog view query should look like the following
 
 ![Classification Results](./graphics/classification_results.png)
 
-Notice the results have columns for information_type_id and label_id. These are GUID values that you can use instead of just string values. Your organization's data catalog system may require a unique ID for tracking classification metadata. Remember the NEWID() T-SQL function can be used to generate unique GUID values.
-
+Notice the results have columns for information_type_id and label_id. These are GUID values that you can use instead of just string values. Your organization's data catalog system may require a unique ID for tracking classification metadata. Remember the NEWID() T-SQL function can be used to generate unique GUID values. The SSMS tool generates information_type_id and label_id values.
 
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
@@ -298,8 +299,7 @@ This module will not go into the details of how SQL Server Audit works. You can 
 
 **STEP 3: Check audit for a table scan for all columns**
 
-Use the script **findpeople.sql** and run ONLY Step 1 and Step 2 in the T-SQL script.
-
+Use the script **findpeople.sql** and run ONLY Step 1 and Step 2 in the T-SQL script. Note it may take a few seconds for the audit results to appear.
 
 ```sql
 -- Step 1: Scan the table and see if the sensitivity columns were audited
@@ -327,7 +327,7 @@ The first row is a record that the audit has started. The second row is an audit
 
 **STEP 4: Check audit for a SELECT on specific columns**
 
-Use the script **findpeople.sql** and run ONLY Step 3 and Step 4 in the T-SQL script.
+Use the script **findpeople.sql** and run ONLY Step 3 and Step 4 in the T-SQL script. Note it may take a few seconds for the audit results to appear.
 
 ```sql
 -- Step 3: What if I access just one of the columns directly?

@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>SQL Server 2019 Data Virtualization</h2>
 
-SQL Server 2019 includes new capabilities for data virtualization by extending the Polybase (I call it Polybase++) feature introduced in SQL Server 2016 with the ability to connect to other data sources with **client drivers installed**:
+SQL Server 2019 includes new capabilities for data virtualization by extending the Polybase (nicknamed it Polybase++) feature introduced in SQL Server 2016 with the ability to connect to other data sources with **client drivers installed**:
 
 - SQL Server
 - Oracle
@@ -41,11 +41,11 @@ Consider all the data sources facing a company like WideWorldImporters
 
 ![WWI Data Sources](./graphics/wwi_data_sources.png)
 
-Traditionally, WideWorldImporters would have to write ETL jobs to move data from all these sources into SQL Server. While that solution still may be best for this company, what if SQL Server could act as a "data hub" for all of these sources. What if you could develop T-SQL queries and execute them against SQL Server 2019, and SQL Server would query the external data sources to bring back the results. Imagine if you could join local SQL Server tables with external data sources or perhaps join all of these together!
+Traditionally, WideWorldImporters would have to write ETL jobs to move data from all these sources into SQL Server. While that solution still may be best for this company, what if SQL Server could act as a "data hub" for all of these sources? What if you could develop T-SQL queries and execute them against SQL Server 2019, and SQL Server would query the external data sources to bring back the results? Imagine if you could join local SQL Server tables with external data sources or perhaps join all of these together!
 
 <p><b><a name="solution">The Solution</a></b></p>
 
-That in a nutshell is what Polybase provides in SQL Server 2019 through a concept called an **EXTERNAL TABLE**.
+The questions just asked are in a nutshell what Polybase provides in SQL Server 2019 through a concept called an **EXTERNAL TABLE**.
 
 External tables are just like SQL Server tables except SQL Server only stores the metadata of the table definition. The data stays where it lives from the external data source. Think of an external table like a view on top of a data source outside of SQL Server. Since an external table is like a table, you can use SQL Server securables to control access to external data sources like you would a local table.
 
@@ -76,7 +76,7 @@ In this activity, you will learn how to build an external data source and table 
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 4.0 and run through all the steps again.*
 
-**NOTE**: *There are example scripts in **sql2019lab\04_DataVirtualization** for other data sources for you to use at a later time for Hadoop, Oracle, CosmosDB (through MongoDB), SQL Server 2008R2, and SAP HANA. For these examples, you will need to create or use your own external data source. The scripts or directions to create table definitions, data, and external tables are included.*
+**NOTE**: *There are example scripts in **sql2019lab\04_DataVirtualization** for other data sources for you to use at a later time for Hadoop, Oracle, CosmosDB (through MongoDB), SQL Server 2008R2, and SAP HANA. For these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.*
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
@@ -86,8 +86,8 @@ All scripts for this activity can be found in the **sql2019lab\04_DataVirtualiza
 
 **IMPORTANT**: This activity assumes the following:
 
-- You have installed and enabled Polybase (stand-alone is acceptable) per the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-installation?view=sqlallproducts-allversions.
-- You have access to an Azure SQL Database database or Managed Instance. The T-SQL script **createazuredbtable.sql** as found in the sql2019lab\04_DataVirtualization\sqldatahub\azuredb directory. The scripts in the activity have a specific Azure SQL Database connection stringl login password, and database name (wwiazure). You may need to modify the scripts to match your Azure SQL Database connection, login, password, and db name.
+- You have installed and enabled Polybase (stand-alone is acceptable) per the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-installation?view=sqlallproducts-allversions or for Linux at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-linux-setup.
+- You have access to an Azure SQL Database database or Managed Instance. The T-SQL script **createazuredbtable.sql** as found in the sql2019lab\04_DataVirtualization\sqldatahub\azuredb directory contains the target schema and data. The scripts in the activity have a specific Azure SQL Database connection string, login, password, and database name (wwiazure). You may need to modify the scripts to match your Azure SQL Database connection, login, password, and db name.
 
 **STEP 1: Restore the WideWorldImporters backup.**
 
@@ -147,7 +147,7 @@ When you are done proceed to the **Activity Summary** section for the Activity b
 
 <p><b><a name="activitysummary">Activity Summary</a></b></p>
 
-In this activity you have learned how Polybase in SQL Server 2019 allows you to connect and query data from external data sources without moving data using ETL applications. In the Activity you learned how to create an EXTERNAL DATA SOURCE and EXTERNAL TABLE mapped to an Azure SQL Database table.
+In this activity you have learned how Polybase in SQL Server 2019 allows you to connect and query data from external data sources without moving data using ETL applications. In the Activity you learned how to create and query an EXTERNAL DATA SOURCE and EXTERNAL TABLE mapped to an Azure SQL Database table.
 
 Proceed to the next module to learn about enhancements to **SQL Server Linux and Containers** in SQL Server 2019.
 
