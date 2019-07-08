@@ -141,7 +141,7 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-Use the File menu to open up the **azuredbexternaltable.ipynb** notebook and go through all the steps. There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. 
+Use the File menu to open up the **azuredbexternaltable.ipynb** notebook and go through all the steps. If you have exited Azure Data Studio when you attempt to use a notebook you may have to use the **Select Connection** or **Add New Connection** for **Attach To**. Choose the same connection you used when first launching Azure Data Studio. There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. 
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 

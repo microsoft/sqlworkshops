@@ -145,6 +145,8 @@ On the window where you clicked the Save button, click the View Report button. A
 
 The report shows details of what is marked for classification and a total of how many columns and tables are marked with classifications based on totals in the database.
 
+Click the **+** in the table on the Application schema to see all columns marked for classification.
+
 You will notice in the report that tables are columns for *Archive* tables are listed. This is because you saved classification on tables that have temporal tables in WideWorldImporters. Any classification added to a table with temporal tables automatically has columns in those temporal tables marked for classification. You don't need to take any action, this happens behind the scenes (When you drop a classification any classification for associated temporal tables is also dropped).
 
 **STEP 4: View classifications using system catalog views.**
@@ -297,18 +299,24 @@ GO
 ```
 This module will not go into the details of how SQL Server Audit works. You can get more information on SQL Server Audit at https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine.
 
-**STEP 3: Check audit for a table scan for all columns**
+**STEP 3: Scan all columns of the table**
 
-Use the script **findpeople.sql** and run **ONLY Step 1 and Step 2** in the T-SQL script. Note it may take a few seconds for the audit results to appear.
+Use the script **findpeoplescan.sql** to scan all columns for all rows.
 
 ```sql
--- Step 1: Scan the table and see if the sensitivity columns were audited
+-- Scan the table and see if the sensitivity columns were audited
 USE WideWorldImporters
 GO
 SELECT * FROM [Application].[People]
 GO
+```
 
--- Step 2: Check the audit
+**STEP 4: Check the audit**
+
+Use the script **checkaudit.sql** to see the if anything was audited.
+
+```sql
+-- Check the audit
 -- The audit may now show up EXACTLY right after the query but within a few seconds.
 SELECT event_time, session_id, server_principal_name,
 database_name, object_name, 
@@ -325,16 +333,21 @@ Your results should look like the following:
 
 The first row is a record that the audit has started. The second row is an audit of the SELECT statement. The data_sensitivity_information column contains an XML record of the label and information_type values associated with columns that have data classifications. This includes the information to look up what columns are affected through the **sys.sensitivity_columns** catalog view.
 
-**STEP 4: Check audit for a SELECT on specific columns**
+**STEP 5: SELECT one column from the table**
 
-Use the script **findpeople.sql** and run **ONLY Step 3 and Step 4** in the T-SQL script. Note it may take a few seconds for the audit results to appear.
+Use the script **findpeopleonecolumn.sql** to query only one column that is marked for classification.
 
 ```sql
--- Step 3: What if I access just one of the columns directly?
+-- What if I access just one of the columns directly?
 SELECT FullName FROM [Application].[People]
 GO
+```
+**STEP 6: Check the audit again**
 
--- Step 4: Check the audit
+Use the script **checkaudit.sql** to see the if anything was audited.
+
+```sql
+-- Check the audit
 -- The audit may now show up EXACTLY right after the query but within a few seconds.
 SELECT event_time, session_id, server_principal_name,
 database_name, object_name, 
@@ -349,16 +362,24 @@ Your results should now look like the following:
 
 The third row is for the new SELECT statement and the data_sensitivity_information contains an XML record of data classification for only one column.
 
-**STEP 5: Audit a query with a data classification in the WHERE clause**
+**STEP 7: Use a column marked for classification in a WHERE clause**
 
-Auditing for columns with data classification only apply to queries where columns are in the SELECT "list" of the query. Run Step 5 and 6 from **findpeople.sql** to see a query where a column with data classification is in the WHERE clause of the query
+Use the script **findpeoplewhereclause.sql** to query only one column that is marked for classification.
 
 ```sql
--- Step 5: What if I reference a classified column in the WHERE clause only?
+-- What if I reference a classified column in the WHERE clause only?
 SELECT PreferredName FROM [Application].[People]
 WHERE EmailAddress LIKE '%microsoft%'
 GO
--- Step 6: Check the audit
+```
+This query should return no rows.
+
+**STEP 8: Check the audit again**
+
+Auditing for columns with data classification only apply to queries where columns are in the SELECT "list" of the query. Use the script **checkaudit.sql** to see the if anything was audited.
+
+```sql
+-- Check the audit
 -- The audit may now show up EXACTLY right after the query but within a few seconds.
 SELECT event_time, session_id, server_principal_name,
 database_name, object_name, 
@@ -373,7 +394,7 @@ Your results should now look like the following:
 
 Notice in this results for the new row the data_sensitivity_information columns is NULL. This is because auditing for data classification only apply where columns are listed in the SELECT "list" of a query.
 
-**STEP 6: Cleanup audits and classifications**
+**STEP 9: Cleanup audits and classifications**
 
 Use the script **cleanup.sql** to disable and drop audits and delete classifications.
 
