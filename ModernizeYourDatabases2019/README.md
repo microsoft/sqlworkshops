@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: Modernize Your Database with SQL Server 2019
+# Workshop: Modernize Your Database with SQL Server 2019 (CTP 2.3)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 

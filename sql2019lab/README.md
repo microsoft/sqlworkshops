@@ -11,11 +11,30 @@
 
 Welcome to this Microsoft solutions workshop on *SQL Server 2019 Lab*.
 
-TODO: Add more here about SQL Server 2019
+SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server. Consider today's modern data challenges for a company called WideWorldImporters
 
-This course is intended to be taken as a self-paced lab in 1 to 2 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects.
+![Modern Data Challenges](./graphics/modern_data_challenges.png)
 
-This README.MD file explains how the workshop is structured, what you will learn, and the technologies you will use in this solution.
+SQL Server 2019 includes new capabilities that can solve these challenges. Consider the following infographic
+
+![SQL Server 2019 Solves Modern Data Challenges](./graphics/2019_solve_data_challenges.png)
+
+SQL Server 2019 provides many new capabilities including:
+
+- Data Virtualization with Polybase and Big Data Clusters to reduce the need for data movement
+- Intelligent Performance to boost query performance with no application changes
+- Security enhancements such as Always Encrypted and Data Classification
+- Mission Critical Availability including Availability Groups on Kubernetes and Accelerated Database Recovery
+- Modern Development capabilities including Machine Learning Services and Extensibility with Java and the language of your choice
+- SQL Server on the platform of your choice with compatibility including Windows, Linux, Docker, Kubernetes, and Arm64 (Azure SQL Database Edge)
+
+In this course you will learn some of the concepts and how to solve modern data challenges using a hands-on lab approach.
+
+This course is intended to be taken as a self-paced lab in 1 to 2 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects. Supplement slide decks are available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder.
+
+This course is designed for data professionals who have a basic working knowledge of SQL Server and the T-SQL language.
+
+This **README.MD** file explains how the workshop is structured, what you will learn, and the technologies you will use in this solution.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -24,16 +43,22 @@ This README.MD file explains how the workshop is structured, what you will learn
 
 When you complete this course, you will be able to:
 
-- xxxxxxxxxxxxx
-- xxxxxxxxxxxxx
+- Understand and use **Intelligent Performance** features to boost query performance with application changes
+- Understand and use **Data Classification and Auditing** to meet the needs of compliance and regulation standards.
+- Understand and use **Accelerated Database Recovery** and increase database availability.
+- Understand and use **Polybase** to connect and query other data sources with no data movement.
+- Understand and use **Docker containers** to deploy **SQL Server Replication on Linux**.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
 
 <br>
 
-- xxxxxxxxxxxxxxx
-- xxxxxxxxxxxxxxx<br>
+- Boosting Database Performance with no application changes
+- Classifying data for industry or regulatory compliance
+- Ensuring data is highly available
+- Reducing costs of expensive data movement applications
+- Choosing different platforms for SQL Server and taking advantage of containerized applications.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -48,12 +73,14 @@ When you complete this course, you will be able to:
   <tr><td><i>SQL Server</i></td><td>Database Platform produced by Microsoft</td></tr>
   <tr><td><i>SQL Server 2019</i></td><td>Most current release of SQL Server currently in preview</td></tr>
   <tr><td><i>Intelligent Query Processing</i></td><td>Automated query processing enhancements in SQL Server 2019</td></tr>
- SQL Server High Availability Disaster Recovery capabilities based on replicas</i></td></tr>
+ <tr><td><i>Query Store</i></td><td>Built-in query performance execution statistics stored in a user database</td></tr>
+ <tr><td><i>Data Classification</i></td><td>Built-in data information classification with SQL Server with auditing</td></tr>
+<tr><td><i>Accelerated Database Recovery</i></td><td>Constant Time Recovery, fast rollback, and aggressive transaction log truncation</td></tr>
+<tr><td><i>Polybase</i></td><td>Data Virtualization through external tables</td></tr>
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
   <tr><td><i>Docker</i></td><td>Engine for running and manage containers</td></tr>
-  
-  <tr><td><i>Azure Data Studio<i></td><td>Graphical User Interface to execute T-SQL queries and manage SQL Server</td></tr>
-  <tr><td><i>SQL Server Command Line Tools<i></td><td>Utilities to connect and query SQL Server such as sqlcmd</td></tr>
+<tr><td><i>SQL Server Management Studio (SSMS)</i></td><td>Graphical User Interface Management and Query Tool</td></tr>
+    <tr><td><i>Azure Data Studio<i></td><td>Graphical User Interface to execute T-SQL queries and manage SQL Server</td></tr>
 
 </table>
 
@@ -65,21 +92,32 @@ When you complete this course, you will be able to:
 
 To complete this workshop you will need the following:
 
-- xxxxxxxxxx
-- Access to all the scripts provided from this workshop from the GitHub repo.
+- Clone the workshop using git from https://github.com/microsoft/sqlworkshops.git. All the scripts and files in the labs are found in the **sql2019** folder.
+- Install the software as listed in the **Setup** section below
 
-
+Each module of this workshop can be studied and used independently of each other or taken all as a single lab. The Modules are designed in a sequence but you can use each of them one at a time at your own pace.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> 
 <h3>Setup</h3>
 
-TODO: Put in all the prereqs here
+In order to complete this workshop you need to install the following software:
+
+- SQL Server 2019 CTP 3.1 or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
+    - For **Modules 1, 2, and 3** you only need the database engine installed
+    - **Module 4** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.)
+- Install SQL Server Management Studio (SSMS) 18.1 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
+- Install Azure Data Studio June 2019 or higher from https://docs.microsoft.com/en-us/sql/azure-data-studio/download. T-SQL notebooks are used extensively in this course.
+- **Docker is required only for Module 5**. You can use Docker for Windows, Linux, or MacOS.
+- The WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
+- Access to an **Azure SQL Database** is required for **Module 4**.
+
+This workshop was built and designed for a server or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. You may be able to run this lab with less compute resources.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/education1.png"> <h2>Workshop Details</h2>
 
-This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Studio, Docker containers, and Azure SQL Database to learn how you can solve modern data challenges with SQL Server 2019.
+This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Studio, Docker containers, and Azure SQL Database for you to learn how you can solve modern data challenges with SQL Server 2019.
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
@@ -96,6 +134,8 @@ This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Stu
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2><br>
 
 - [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/master/ModernizeYourDatabases2019)
+- [SQL Server Big Data Clusters Architecture](https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
+- [SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops/tree/master/SQLonOpenShift)
 
 <br>
 
@@ -114,7 +154,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
   <tr><td style="background-color: AliceBlue; color: black;"><a href="./02_Security.md" target="_blank">02 - Security</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn new security features of SQL Server 2019 such as Data Classification and Auditing</td></tr>
   <tr><td><a href="./03_Availability.md" target="_blank">03 - Availability</a></td><td> Learn new capabilities to make your SQL Server more available such as Accelerated Database Recovery</td></tr>
   <tr><td style="background-color: AliceBlue; color: black;"><a href="./04_DataVirtualization.md" target="_blank">04 - Data Virtualization</a> </td><td td style="background-color: AliceBlue; color: black;">Learn how to use SQL Server as a data hub and reduce data movement using Polybase++ </td></tr> 
-  <tr><td><a href="./05_Linux_and_Containers.md" target="_blank">04 - Linux and Containers</a></td><td>Learn new enhancements for SQL Server on Linux and Containers</td></tr>
+  <tr><td><a href="./05_Linux_and_Containers.md" target="_blank">04 - Linux and Containers</a></td><td>Learn how to use Docker containers to deploy SQL Server Replication on Linux.</td></tr>
   <tr></tr>
   <tr></tr>
 </table>
