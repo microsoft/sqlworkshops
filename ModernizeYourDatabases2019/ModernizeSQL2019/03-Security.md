@@ -13,6 +13,8 @@ You'll cover the following topics in this Module:
 <dl>
 
   <dt><a href="#3-0">3.0 Static Data Masking</a></dt>
+
+REMOVED FROM RELEASE
   
 </dl>
 
@@ -24,7 +26,7 @@ You'll cover the following topics in this Module:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Static Data Masking</a></b></p>
 
-Follow the instructions for [Static Data Masking Exercise](Module%203%20Activity%20-%20Security/staticmask)
+REMOVED FROM RELEASE
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
