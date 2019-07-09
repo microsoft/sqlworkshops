@@ -110,6 +110,10 @@ To run the solution, simple type the following from the command line (you must b
 
 When you run this you will see alot of information scroll by on the command line. Since docker containers run sqlservr from the command line, part of the output is the ERRORLOG from each server startup being written to stdout.
 
+You may also see the following firewall pop-up from Windows Defender if you are running this lab on Windows. Please click Allow Access. vpnkit is a gateway used by Docker on Windows or MacOS to communicate with the VM hosting Linux containers.
+
+![firewall docker compose](./graphics/firewall_rule_docker_compose.jpg)
+
 You will also see output of the db-init.sql execution mostly from the db1 directory. If you have not previously pulled the images for SQL Server 2019 CTP 3.1 for RHEL, that will be done first and you will see that output.
 
 The replication solution should be ready to go when you see this output from the command line

@@ -93,6 +93,10 @@ When you complete this course, you will be able to:
 To complete this workshop you will need the following:
 
 - Clone the workshop using git from https://github.com/microsoft/sqlworkshops.git. All the scripts and files in the labs are found in the **sql2019** folder.
+- On Windows systems, you should use the following git syntax
+
+    `git clone --config core.autocrlf=false https://github.com/microsoft/sqlworkshops.git`
+
 - Install the software as listed in the **Setup** section below
 
 Each module of this workshop can be studied and used independently of each other or taken all as a single lab. The Modules are designed in a sequence but you can use each of them one at a time at your own pace.
