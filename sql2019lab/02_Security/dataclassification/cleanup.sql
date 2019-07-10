@@ -18,6 +18,7 @@ END
 GO
 
 -- Remove the .audit files from default or your path
+-- Remember for Linux installations, the default path is /var/opt/mssql/data.
 -- del C:\program files\microsoft sql server\mssql15.mssqlserver\mssql\data\GDPR*.audit
 
 ALTER DATABASE WideWorldImporters SET COMPATIBILITY_LEVEL = 130

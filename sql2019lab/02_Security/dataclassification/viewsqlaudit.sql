@@ -1,3 +1,4 @@
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 SELECT event_time, session_id, server_principal_name,
 database_name, object_name, 
 cast(data_sensitivity_information as XML) as data_sensitivity_information, 

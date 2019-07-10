@@ -1,6 +1,7 @@
 USE master
 GO  
 -- Create the server audit.   
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 CREATE SERVER AUDIT GDPR_Audit
     TO FILE (FILEPATH = 'C:\program files\microsoft sql server\mssql15.mssqlserver\mssql\data')
 GO  

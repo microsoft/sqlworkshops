@@ -93,6 +93,8 @@ In this activity, you will see how Accelerated Database Recovery affects log tru
 
 All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database.
 
+**Note**: *For Linux installations change the path to /var/opt/mssql/data in the T-SQL notebook and T-SQL scripts.*
+
 **STEP 1: Use a T-SQL notebook to complete the rest of the activity.**
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 3.0 can be found in the T-SQL notebook **adr.ipynb** which can be found in the **sql2019lab\03_Availability\adr** folder.

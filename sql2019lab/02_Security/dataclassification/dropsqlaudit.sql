@@ -19,4 +19,5 @@ END
 GO
 
 -- Step 2: Remove the .audit files from default or your path
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 -- del C:\program files\microsoft sql server\mssql15.mssqlserver\mssql\data\GDPR*.audit

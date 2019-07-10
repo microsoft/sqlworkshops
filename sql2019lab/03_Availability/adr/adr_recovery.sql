@@ -1,4 +1,5 @@
 -- Step 1: Setup the database
+-- Note: For Linux installations the default path to use is /var/opt/mssql
 USE master
 GO
 DROP DATABASE IF EXISTS gocowboys

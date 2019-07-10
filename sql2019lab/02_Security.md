@@ -80,7 +80,7 @@ Follow these steps to classify certain columns in the WideWorldImporters databas
 
 If you have restored the WideWorldImporters database backup in Module 01, you can skip this step.
 
-Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Security\dataclassification** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
+Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Security\dataclassification** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
 
 **STEP 2: Setup the activity**
 
@@ -248,6 +248,7 @@ All scripts can be found in the **sql2019lab\02_Security\dataclassification** di
 
 If you have never run this module activity on your SQL Server, you can skip this step. Otherwise, execute all the steps in the script **dropsqlaudit.sql**
 
+**Note**: *For Linux installations you will need to change the path when deleting past audits to /var/opt/mssql/data.*
 
 ```sql
 -- Step 1: Disable the audits and drop them
@@ -271,16 +272,20 @@ END
 GO
 
 -- Step 2: Remove the .audit files from default or your path
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 -- del C:\program files\microsoft sql server\mssql15.mssqlserver\mssql\data\GDPR*.audit
 ```
 **STEP 2: Setup an audit to track SELECT statements against the table**
 
 Use the T-SQL script **setupsqlaudit.sql** to create and enable a new SQL Audit to track SELECT statements against the **[Application].[People]** table in the **WideWorldImporters** database
 
+**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+
 ```sql
 USE master
 GO  
 -- Create the server audit.   
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 CREATE SERVER AUDIT GDPR_Audit
     TO FILE (FILEPATH = 'C:\program files\microsoft sql server\mssql15.mssqlserver\mssql\data')
 GO  
@@ -315,9 +320,12 @@ GO
 
 Use the script **checkaudit.sql** to see the if anything was audited.
 
+**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+
 ```sql
 -- Check the audit
 -- The audit may now show up EXACTLY right after the query but within a few seconds.
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 SELECT event_time, session_id, server_principal_name,
 database_name, object_name, 
 cast(data_sensitivity_information as XML) as data_sensitivity_information, 
@@ -346,9 +354,12 @@ GO
 
 Use the script **checkaudit.sql** to see the if anything was audited.
 
+**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+
 ```sql
 -- Check the audit
 -- The audit may now show up EXACTLY right after the query but within a few seconds.
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 SELECT event_time, session_id, server_principal_name,
 database_name, object_name, 
 cast(data_sensitivity_information as XML) as data_sensitivity_information, 
@@ -378,9 +389,12 @@ This query should return no rows.
 
 Auditing for columns with data classification only apply to queries where columns are in the SELECT "list" of the query. Use the script **checkaudit.sql** to see the if anything was audited.
 
+**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+
 ```sql
 -- Check the audit
 -- The audit may now show up EXACTLY right after the query but within a few seconds.
+-- Note: Remember for Linux installations, the default path is /var/opt/mssql/data
 SELECT event_time, session_id, server_principal_name,
 database_name, object_name, 
 cast(data_sensitivity_information as XML) as data_sensitivity_information, 
@@ -397,6 +411,8 @@ Notice in this results for the new row the data_sensitivity_information columns 
 **STEP 9: Cleanup audits and classifications**
 
 Use the script **cleanup.sql** to disable and drop audits and delete classifications.
+
+**Note**: *For Linux installations change the path in the script to delete audit files to /var/opt/mssql/data*
 
 ```sql
 USE WideWorldImporters
@@ -419,6 +435,7 @@ END
 GO
 
 -- Remove the .audit files from default or your path
+-- Remember for Linux installations, the default path is /var/opt/mssql/data.
 -- del C:\program files\microsoft sql server\mssql15.mssqlserver\mssql\data\GDPR*.audit
 
 ALTER DATABASE WideWorldImporters SET COMPATIBILITY_LEVEL = 130
