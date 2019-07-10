@@ -33,7 +33,7 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="1-0">1.0 SQL Server Intelligent Query Processing</a></h2>
 
-In this module you will learn about the Intelligent Query processing capabilities in SQL Server 2019.
+In this module you will learn about the Intelligent Query Processing capabilities in SQL Server 2019.
 
 <p><b><a name="challenge">The Challenge</a></b></p>
 
@@ -66,7 +66,7 @@ You have been provided a stored procedure called **CustomerProfits** which you w
 
 SQL Server 2019 Intelligent Query Processing includes a capability called *table variable deferred compilation* to improve the performance of T-SQL code that uses table variables. The application simply needs to change the database compatibility level to 150, which is the default for SQL Server 2019, and execute the T-SQL statements with table variables to see a gain in performance.
 
-The **WideWorldImporters** database example was created using SQL Server 2016 which has a default database compatibility level of 130. When a database is restored from a previous version oF SQL Server, the compatibility level of the database is preserved to help reduce the risk of upgrades.
+The **WideWorldImporters** database example was created using SQL Server 2016 which has a default database compatibility level of 130. When a database is restored from a previous version of SQL Server, the compatibility level of the database is preserved to help reduce the risk of upgrades.
 
 You will observe the performance of the **CustomerProfits** stored procedure with database compatibility level of 130 on SQL Server 2019. You will then compare the performance of the same procedure with no changes with a database compatibility of 150 which will enable the query processor to use  table variable deferred compilation.
 
