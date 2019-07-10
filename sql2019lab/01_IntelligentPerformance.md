@@ -114,7 +114,7 @@ Use the power of Azure Data Studio Explorer to open up any file including notebo
 
 When you start using a notebook and use the "Play" button of a cell, you may get prompted for the connection. Choose the connection you used when you first opened up Azure Data Studio.
 
-![Run a cell in ADS](./graphics/Run_Cell_in_Notebook_ADS.jpg)
+![Run a cell in ADS](./graphics/Run_Cell_in_Notebook.jpg)
 
 There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. When you are done proceed to the **Activity Summary** section for the Activity below.
 
