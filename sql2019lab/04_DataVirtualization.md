@@ -141,7 +141,16 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-Use the File menu to open up the **azuredbexternaltable.ipynb** notebook and go through all the steps. If you have exited Azure Data Studio when you attempt to use a notebook you may have to use the **Select Connection** or **Add New Connection** for **Attach To**. Choose the same connection you used when first launching Azure Data Studio. There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. 
+If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019lab** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **04_DataVirtualization\sqldatahub\azuredb** folder, open up the **azuredbexternaltable.ipynb** notebook and go through all the steps. You can now use Azure Data Studio explorer to open up a notebook or script without exiting the tool.
+
+![Azure Data Studio Explorer](./graphics/Azure_Data_Studio_Explorer.jpg)
+
+When you start using a notebook and use the "Play" button of a cell, you may get prompted for the connection. Choose the connection you used when you first opened up Azure Data Studio.
+
+![Run a cell in ADS](./graphics/Run_Cell_in_Notebook_ADS.jpg)
+
+
+There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. 
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
