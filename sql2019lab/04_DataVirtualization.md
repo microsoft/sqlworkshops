@@ -147,7 +147,7 @@ If you haven't already used Explorer in Azure Data Studio, it can be used to exp
 
 When you start using a notebook and use the "Play" button of a cell, you may get prompted for the connection. Choose the connection you used when you first opened up Azure Data Studio.
 
-![Run a cell in ADS](./graphics/Run_Cell_in_Notebook.jpg)
+![Play cell in Notebook](./graphics/Play_Cell_Notebook.jpg)
 
 There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. 
 
