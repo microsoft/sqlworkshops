@@ -56,7 +56,7 @@ The added benefit of built-in classification is that now auditing of data classi
 
 **NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance standards. It is up to a business or organization to use these tools to meet their requirements or regulations.*
 
-You can read the documentation for data discovery and classification for SQL Server, Azure SQL Database, and Azure SQL Data Warehouse at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification.
+Data Classification and Auditing is a feature that exists for both SQL Server 2019 and Azure SQL Database. You can read the documentation for data discovery and classification for SQL Server, Azure SQL Database, and Azure SQL Data Warehouse at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification.
 
 The best way to see how data classification and auditing can help an organization is to see it in action.
 

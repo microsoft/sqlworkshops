@@ -79,6 +79,8 @@ It will be larger than without ADR. However, it may not grow extremely large due
 
 As with any feature performance impact will vary. However, extremely "write-heavy" applications may see some effect. Typically those applications don't use long running transactions so they may not benefit from ADR. The paper has testing observations using benchmarks derived from TPC.
 
+Accelerated Database Recovery is a feature that exists for both SQL Server 2019 and Azure SQL Database.
+
 Proceed to the Activity to learn an example of how Accelerated Database Recovery works in SQL Server 2019.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

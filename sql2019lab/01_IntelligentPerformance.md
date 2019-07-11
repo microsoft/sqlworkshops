@@ -48,7 +48,7 @@ The following is a diagram showing the features of Intelligent Query Processing 
 
 ![iqp diagram](./graphics/IQP_diagram.png)
 
-You can read the documentation for a description and example of all of these features at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing.
+Intelligent Query Processing is a feature that exists for both SQL Server 2019 and Azure SQL Database. You can read the documentation for a description and example of all of these features at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing.
 
 **NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
 
