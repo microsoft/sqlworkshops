@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: Modernize Your Database with SQL Server 2019
+# Workshop: Modernize Your Database with SQL Server 2019 (CTP 2.3)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -9,6 +9,8 @@
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>About this Workshop</h2>
 
 Welcome to this Microsoft solutions workshop on *Modernizing Your Database with SQL Server 2019*. In this workshop, you'll learn how SQL Server 2017 and SQL Server 2019 can help you to modernizing your database workloads.
+
+**UPDATE**: *This workshop contains demo scripts and slides as it applied to SQL Server 2019 CTP 2.3. This workshop will be deprecated once the full SQL 2019 workshop has been created. In the meantime, for the latest SQL Serer 2019 workshop materials, you can look at the sql2019 lab on https://aka.ms/sqlworkshops.*
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
