@@ -30,7 +30,7 @@ SQL Server 2019 provides many new capabilities including:
 
 In this course you will learn some of the concepts and how to solve modern data challenges using a hands-on lab approach.
 
-This course is intended to be taken as a self-paced lab in 1 to 2 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects. Supplement slide decks are available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/rgward/sql2019lab/slides) folder.
+This course is intended to be taken as a self-paced lab in 1 to 2 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects. Supplement slide decks are available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder.
 
 This course is designed for data professionals who have a basic working knowledge of SQL Server and the T-SQL language.
 
@@ -48,6 +48,16 @@ When you complete this course, you will be able to:
 - Understand and use **Accelerated Database Recovery** to increase database availability.
 - Understand and use **Polybase** to connect and query other data sources with no data movement.
 - Understand and use **Docker containers** to deploy **SQL Server Replication on Linux**.
+
+As part of taking this lab you are also learning about new capabilities in **Azure SQL Database**.
+
+The following features in this lab also exist in Azure SQL Database:
+
+- Intelligent Query Processing
+- Data Classification and Auditing
+- Accelerated Database Recovery
+
+In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Azure SQL Data Warehouse, and Azure CosmosDB.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>

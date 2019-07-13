@@ -110,7 +110,7 @@ To run the solution, simple type the following from the command line (you must b
 
 When you run this you will see alot of information scroll by on the command line. Since docker containers run sqlservr from the command line, part of the output is the ERRORLOG from each server startup being written to stdout.
 
-You may also see the following firewall pop-up from Windows Defender if you are running this lab on Windows. Please click Allow Access. vpnkit is a gateway used by Docker on Windows or MacOS to communicate with the VM hosting Linux containers.
+If you are using Docker for Windows, you may also see the following firewall pop-up from Windows Defender if you are running this lab on Windows. Please click Allow Access. vpnkit is a gateway used by Docker on Windows to communicate with the VM hosting Linux containers.
 
 ![firewall docker compose](./graphics/firewall_rule_docker_compose.jpg)
 
@@ -132,13 +132,13 @@ The docker-compose.yml file contains key information to connect to both SQL Serv
 - port 2500 is mapped to the publisher
 - port 2600 is mapped to the subscriber
 
-Connect to localhost,2500 (or `<`server`>`,2500) for the SQL Server publisher.
+Connect to localhost,2500 (or `<`server`>`,2500) for the SQL Server publisher. The sa password can be found in the **docker-compose.yml** file.
 
 Now navigate using SSMS to check the status of the replication snapshot. Use the figure below as a guide on how to navigate Object Explorer to check this status
 
 ![Replication Snapshot Status](./graphics/repl_snapshot_status.png)
 
-Now connect to the subscriber (port 2600) to check that the new table, customers in the Sales database, and data are present. Use the following figure as a guide to navigate and check the table and data.
+Now connect to the subscriber (port 2600) to check that the new table, customers in the Sales database, and data are present. Use the following figure as a guide to navigate and check the table and data. The sa password can be found in the **docker-compose.yml** file.
 
 ![Check table and data](./graphics/check_table_and_data.png)
 
