@@ -1,5 +1,5 @@
 #wait for the SQL Server to come up
-sleep 25s
+sleep 45s
 
 mkdir /var/opt/mssql/ReplData/
 chown mssql /var/opt/mssql/ReplData/
