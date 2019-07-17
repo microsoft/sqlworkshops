@@ -13,7 +13,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [Lab: SQL Server 2019](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab)
 - [Workshop: SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
-- [Workshop[: Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/master/ModernizeYourDatabases2019)
+- [Workshop: Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/master/ModernizeYourDatabases2019)
 - [Workshop: SQL Server 2019 on OpenShift](https://github.com/Microsoft/sqlworkshops/tree/master/SQLonOpenShift)
 
 ## SQL Server Programming
