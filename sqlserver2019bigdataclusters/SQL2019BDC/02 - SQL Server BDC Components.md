@@ -198,7 +198,7 @@ These components are used in the Storage Pool of the SQL Server big data cluster
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"><b><a href="https://kubernetes.io/docs/concepts/overview/components/" target="_blank">HDFS</a></b></td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">The distributed data storage system used by SQL Server and Apache Spark.</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"><b><a href="https://www.hdfstutorial.com/hdfs-tutorial-guide/" target="_blank">HDFS</a></b></td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">The distributed data storage system used by SQL Server and Apache Spark.</td></tr>
   <tr><td><b><a href="https://spark.apache.org/" target="_blank">Apache Spark</a></b></td><td>Apache Spark is an analytics engine for processing large-scale data. It can be used with data stored in HDFS, and has connectors to work with data in SQL Server as well.</td></tr>
 
 </table>
