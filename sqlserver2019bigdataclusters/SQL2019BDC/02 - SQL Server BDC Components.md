@@ -91,8 +91,8 @@ As you saw in the <i>Big Data Landscape</i> Module of this workshop, there are m
   <tr><td><b><a href="https://knox.apache.org/" target="_blank">Apache Knox</a></b></td><td>The Apache Knox Gateway is an Application Gateway for interacting with the REST APIs and UIs of the cluster. The Knox Gateway provides a single access point for all REST interactions in BDC's.</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"><b><a href="https://livy.incubator.apache.org/" target="_blank">Apache Livy</a></b></td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;">Apache Livy is used to submit Jobs to Apache Spark.</td></tr>
   <tr><td><b><a href="https://hive.apache.org/" target="_blank">Apache HIVE</a></b></td><td> A distributed storage database used for Spark meta-data.</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"><b><a href="https://grafana.com/" target="_blank">Grafana</a></b></td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Visualization and dashboard system used by the SQL Cluster Administration Portal.</td></tr>
-  <tr><td><b><a href="https://www.elastic.co/products/kibana" target="_blank">Kibana</a></b></td><td>Kibana is an open source log visualization and search plugin used by the SQL Cluster Administration Portal.</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;"><b><a href="https://grafana.com/" target="_blank">Grafana</a></b></td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Visualization and metrics dashboard system.</td></tr>
+  <tr><td><b><a href="https://www.elastic.co/products/kibana" target="_blank">Kibana</a></b></td><td>Kibana is an open source log visualization and search plugin.</td></tr>
 
 </table>
 
@@ -111,7 +111,7 @@ The controller service provides the following core functionality:
  - Manage the workflow of upgrades so that they are implemented safely
  - Manage high availability and DR for statefull services in the cluster
 
-You have two ways of working with the Controller service: the mssqlctl utility, and the <i>Cluster Adminnstration Portal</i>. All communication to the controller service is conducted via a REST API over HTTPS. A self-signed certificate will be automatically generated for you at bootstrap time. Authentication to the controller service endpoint is based on username and password. These credentials are provisioned at cluster bootstrap time using the input for environment variables <i>CONTROLLER_USERNAME</i> and <i>CONTROLLER_PASSWORD</i>.
+You have two ways of working with the Controller service: the mssqlctl utility, and the <i>Azure Data Studio</i> tool. All communication to the controller service is conducted via a REST API over HTTPS. A self-signed certificate will be automatically generated for you at bootstrap time. Authentication to the controller service endpoint is based on username and password. These credentials are provisioned at cluster bootstrap time using the input for environment variables <i>CONTROLLER_USERNAME</i> and <i>CONTROLLER_PASSWORD</i>.
 
 These components are used in the Controller of the SQL Server big data cluster:
 
