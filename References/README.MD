@@ -57,6 +57,7 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/SQLConventions</a></td><td>T-SQL Conventions and Syntax</i></td></tr>
   <tr><td><a href="http://aka.ms/sqlerrors" target="blank">http://aka.ms/SQLErrors</a></td><td>Errors and Events Reference (Database Engine)</td></tr>
   <tr><td><a href="http://aka.ms/sqlfeedback" target="blank">http://aka.ms/SQLFeedback</a></td><td>Submit feedback to the SQL Server team</td></tr>
+  <tr><td><a href="http://aka.ms/sqliaasperf" target="blank">http://aka.ms/SQLIaaSPerf</a></td><td>Performance guidelines for SQL Server in Azure Virtual Machines</td></tr>  
   <tr><td><a href="http://aka.ms/sqllifecycle" target="blank">http://aka.ms/SQLLifecycle</a></td><td>SQL Server Lifecycle Dates</td></tr>
   <tr><td><a href="http://aka.ms/sqloperators" target="blank">http://aka.ms/SQLOperators</a></td><td>Showplan Logical and Physical Operators Reference</td></tr>  
   <tr><td><a href="http://aka.ms/sqlperfcenter" target="blank">http://aka.ms/SQLPerfCenter</a></td><td>Performance Center for SQL Server Database Engine and Azure SQL Database</td></tr>
