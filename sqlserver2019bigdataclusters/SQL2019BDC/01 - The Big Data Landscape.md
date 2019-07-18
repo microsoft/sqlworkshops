@@ -175,7 +175,7 @@ In general, Linux treats almost everything as a file system or a process. For ge
     <li><a href="https://www.tecmint.com/fdisk-commands-to-manage-linux-disk-partitions/" target="_blank">Working with the fdisk utility</a></li>
 </ul>
 
-<h3>Processing</h3>
+<h3>Processor</h3>
 
 Both Windows and Linux (in the x86 architecture) are Symmetric Multiprocessing systems, which means that all processors are addressed as a single unit. In general, distributed processing systems should have larger, and more, processors at the "head" node. General Purpose (GP) processors are normally used in these systems, but for certain uses such as Deep Learning or Artificial Intelligence, Purpose-Built processors such as Graphics Processing Unit (GPU's) are used within the environment, and in some cases,  Advanced RISC Machines (ARM) chips can be brought into play for specific tasks. For the purposes of this workshop, you will not need these latter two technologies, although both Windows and Linux support them.
 
