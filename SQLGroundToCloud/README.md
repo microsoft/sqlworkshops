@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on SQL Server in both on-premise, in-cloud and hybrid solutions. In this one-day workshop, you'll gain a deep understanding on the latest SQL Server engine and how you can use it to solve real-world challenges. 
+Welcome to this Microsoft solutions workshop on SQL Server in on-premise, in-cloud and hybrid solutions. In this one-day workshop, you'll gain a deep understanding on the latest SQL Server engine and how you can use it to solve real-world challenges. 
 
 The modules in this workshop lead you through conceptual and hands-on topics ranging from the newest technical features in SQL Server to its implementation in all platforms it runs on. You'll learn not only specific  
 
@@ -133,13 +133,36 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
   <tr><td><a href="url" target="_blank">TODO: 01 -Introduction and Workshop Methodology </a></td><td> TODO: Module Description</td></tr>
   
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: 		○ Intelligent Performance
+		○ What's New in Security
+		○ Mission Critical Availability
+		○ Data Virtualization
+		○ SQL Server Linux and Containers
+		○ Deep Dives
+			• Performance
+			• containers
+			• K8s
+Migration</td></tr>
 
   <tr><td><a href="url" target="_blank">TODO: 03 -Working with Big Data and Data Science (Big Data Clusters for SQL Server 2019) </a></td><td> TODO: Module Description</td></tr>
 
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 04 - SQL Server on the Microsoft Azure Platform </a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>  
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 04 - SQL Server on the Microsoft Azure Platform </a> </td><td td style="background-color: AliceBlue; color: black;"> TODO:		○ Azure SQL VMs
+		○ Azure SQL Database - Single database
+		○ Azure SQL Database - Single instance
+		○ Azure SQL Database - Elastic pools
+		○ Migrations 
+			§ Azure Migrate
+			§ DMA
+			§ DEA
+			§ DMS
+		○ Networking
+		○ Security
+		○ Performance
+		○ Scale
+HADR</td></tr>  
 
-  <tr><td><a href="url" target="_blank">TODO: 05 - What to use When </a></td><td> TODO: Module Description</td></tr>
+  <tr><td><a href="url" target="_blank">TODO: 05 - What to use When </a></td><td> TODO: 		○ Deployment options and scenarios, then tiers
+</td></tr>
 
   <tr><td style="background-color: AliceBlue; color: black;"><a href="url" target="_blank">TODO: 06 - Review and Application </a> </td><td td style="background-color: AliceBlue; color: black;"> TODO: Module Description</td></tr>
 
