@@ -178,9 +178,9 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
   <tr><td style="background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/04-SQLServerOnTheMicrosoftAzurePlatform.md" target="_blank">04 - SQL Server on the Microsoft Azure Platform </a> </td><td td style="background-color: AliceBlue; color: black;"> Covers the multiple ways to use SQL Server technologies on the Microsoft Azure Platform, from Managed Instance to Azure SQL DB, and also migration strategies and tools you can use to move on-cloud or hybrid workloads.</td></tr>  
 
-  <tr><td><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-NetworkingAndSecurityForTheDataProfessional.md" target="_blank"> 05 - Networking and Security for the Data Professional </a></td><td> Explains the basics of Networking and Security for the data professional, especially as it relates to the Microsoft Azure platform.</td></tr>
+  <tr><td><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-WhatToUseWhen.md" target="_blank"> 05 - What to use When </a></td><td> Covers the decision process and provides tools for deciding on the proper technologies on-premises and in-cloud for a solution based on requirements and constraints.</td></tr>
 
-  <tr><td style="background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/06-WhatToUseWhen.md" target="_blank"> 06 - What to use When </a> </td><td td style="background-color: AliceBlue; color: black;"> Covers teh decision process and provides tools for deciding on the proper technologies on-premises and in-cloud for a solution based on requirements and constraints.</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/06-ReviewAndApplication.md" target="_blank"> 06 - Review and Application </a> </td><td td style="background-color: AliceBlue; color: black;"> Reviewing what you have learned in the course and a capstone discussion on how to apply it to your organization's needs.</td></tr>
 
 </table>
 
