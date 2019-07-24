@@ -62,7 +62,7 @@ You will use these credentials in a subsequent step. It can take up to a week to
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 3: Prepare Your Workstation</b></p>
 <br>
-The instructions that follow are the same for either a "base metal" workstation or laptop, or a Virtual Machine. It's best to have at least 4GB of RAM on the management system, and these instructions assume that you are not planning to run the database server or any Containers on the workstation. It's also assumed that you are using a current version of Windows, either desktop or server.
+The instructions that follow are the same for either a "base metal" workstation or laptop, or a Virtual Machine. It's best to have at least 4MB of RAM on the management system, and these instructions assume that you are not planning to run the database server or any Containers on the workstation. It's also assumed that you are using a current version of Windows, either desktop or server.
 <br>
 
 *(You can copy and paste all of the commands that follow in a PowerShell window that you run as the system Administrator)*
@@ -146,7 +146,9 @@ the `mssqlctl` program then deploys the SQL Server big data cluster environment 
 
 <i>Notes: 
 
-You must delete the old version before the class. It is updated quite frequently during the preview phase.
+You must delete the old version before the class. It is updated quite frequently during the preview phase. 
+
+Be sure that you use the requirements.txt from https://private-repo.microsoft.com/python/ to get the matching version of mssqlctl set in the `DOCKER_IMAGE_TAG` variable in the [python deploymet script](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/aks/deploy-sql-big-data-aks.py).
 
 You may need to run these steps in CMD rather than PowerShell.
 
@@ -162,6 +164,10 @@ choco upgrade kubernetes-cli
 
 python -m pip install --upgrade pip
 
+REM Ensure that you reference the correct path to the mssqlctl binaries
+pip3 install -r https://private-repo.microsoft.com/python/ctp3.1/mssqlctl/requirements.txt
+
+#REM Uninstall syntax
 REM for 2.7 and lower:
 pip uninstall mssqlctl
 
