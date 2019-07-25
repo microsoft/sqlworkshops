@@ -43,7 +43,7 @@ This Lab expects that you understand data structures and working with SQL Server
 
   <tr><td><a href="https://github.com/microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/notebooks/bdc_tutorial_04.ipynb" target="_blank">bdc_tutorial_04.ipynb</a></td><td> In this tutorial you will learn how to work with Spark Jobs in a SQL Server big data cluster.</td></tr>
 
-  <tr><td><a href="https://github.com/microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/notebooks/bdc_tutorial_05.ipynb" target="_blank">bdc_tutorial_05.ipynb</a></td><td> In this tutorial you will learn how to work with Spark MAchine Learning Jobs in a SQL Server big data cluster.</td></tr>
+  <tr><td><a href="https://github.com/microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/notebooks/bdc_tutorial_05.ipynb" target="_blank">bdc_tutorial_05.ipynb</a></td><td> In this tutorial you will learn how to work with Spark Machine Learning Jobs in a SQL Server big data cluster.</td></tr>
 
 </table>
 
