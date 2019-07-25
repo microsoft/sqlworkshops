@@ -20,7 +20,7 @@ In this Lab you'll learn how to create external tables over other data sources t
 
 This Lab expects that you understand data structures and working with SQL Server and computer networks. This Lab does not expect you to have any prior data science knowledge, but a basic knowledge of statistics and data science is helpful in the Data Science sections. Knowledge of SQL Server, Azure Data and AI services, Python, and Jupyter Notebooks is recommended. AI techniques are implemented in Python packages. Solution templates are implemented using Azure services, development tools, and SDKs. You should have a basic understanding of working with the Microsoft Azure Platform.
 
-<b>▶</b> You need to have all of the <a href="SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">prerequisites completed</a> before taking this Lab. 
+<b>▶</b> You need to have all of the <a href="https://github.com/microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">prerequisites completed</a> before taking this Lab. 
 
 <b>▶</b> You need a full Big Data Cluster for SQL Server up and running, and have identified the connection endpoints, with all security parameters. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-guidance?view=sqlallproducts-allversions" target="_blank">You find out how to do that here</a>.
 
