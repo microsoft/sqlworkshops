@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/Microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2><a name="about">About this Lab</a></h2>
 
-Welcome to this Microsoft solutions Lab  on the architecture on *Big Data Clusters for SQL Server*. As part of <a href="https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters" target=_"blank">a larger complete Workshop</a>, you'll experiment with Big Data Clusters for SQL Server (BDC), and how you can use it to implement large-scale data processing and machine learning.
+Welcome to this Microsoft solutions Lab  on the architecture on Big Data Clusters for SQL Server. As part of <a href="https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters" target="_blank">a larger complete Workshop</a>, you'll experiment with Big Data Clusters for SQL Server (BDC), and how you can use it to implement large-scale data processing and machine learning.
 
 This Lab assumes you have a full understanding the concepts of big data analytics, the technologies (such as containers, Kubernetes, Spark and HDFS, machine learning, and other technologies) that you will use throughout the Lab, the architecture of a BDC. <a href="https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters" target="_blank">If you are familiar with these topics, you can take a complete course here</a>.
 
