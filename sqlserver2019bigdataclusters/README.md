@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1)
+# Workshop: Big Data Clusters for SQL Server - Architecture (CTP 3.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -21,11 +21,11 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2><a name="about">About this Workshop</a></h2>
 
-Welcome to this Microsoft solutions workshop on *Microsoft SQL Server big data clusters Architecture*. In this workshop, you'll learn how SQL Server big data clusters implements large-scale data processing and machine learning, and how to select and plan for the proper architecture to enable machine learning to train your models using Python, R, Java or SparkML to operationalize these models, and how to deploy your intelligent apps side-by-side with their data.
+Welcome to this Microsoft solutions workshop on the architecture on *Big Data Clusters for SQL Server*. In this workshop, you'll learn how Big Data Clusters for SQL Server (BDC) implements large-scale data processing and machine learning, and how to select and plan for the proper architecture to enable machine learning to train your models using Python, R, Java or SparkML to operationalize these models, and how to deploy your intelligent apps side-by-side with their data.
 
 The focus of this workshop is to understand how to deploy an on-premise, hybrid or local environment of a big data cluster, and understand the components of the big data solution architecture.
 
-You'll start by understanding the concepts of big data analytics, and you'll get an overview of the technologies (such as containers, Kubernetes, Spark and HDFS, machine learning, and other technologies) that you will use throughout the workshop. Next, you'll understand the architecture of SQL Server big data clusters. You'll learn how to create external tables over other data sources to unify your data, and how to use Spark to run big queries over your data in HDFS or do data preparation. You'll review a complete solution for an end-to-end scenario, with a focus on how to extrapolate what you have learned to create other solutions for your organization.
+You'll start by understanding the concepts of big data analytics, and you'll get an overview of the technologies (such as containers, Kubernetes, Spark and HDFS, machine learning, and other technologies) that you will use throughout the workshop. Next, you'll understand the architecture of a BDC. You'll learn how to create external tables over other data sources to unify your data, and how to use Spark to run big queries over your data in HDFS or do data preparation. You'll review a complete solution for an end-to-end scenario, with a focus on how to extrapolate what you have learned to create other solutions for your organization.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -45,9 +45,9 @@ In this workshop you'll learn:
 - How to install SQL Server big data clusters on-premises and in the Azure Kubernetes Service (AKS)
 - How to work with Apache Spark
 - The Data Science Process to create an end-to-end solution
-- How to work with the tooling for SQL Server big data clusters (Azure Data Studio)
-- Monitoring and managing SQL Server big data clusters
-- Security considerations for SQL Server big data clusters
+- How to work with the tooling for BDC (Azure Data Studio)
+- Monitoring and managing the BDC
+- Security considerations
 
 Starting in SQL Server 2019, big data clusters allows for large-scale, near real-time processing of data over the HDFS file system and other data sources. It also leverages the Apache Spark framework which is integrated into one environment for management, monitoring, and security of your environment. This means that organizations can implement everything from queries to analysis to Machine Learning and Artificial Intelligence within SQL Server, over large-scale, heterogeneous data. SQL Server big data clusters can be implemented fully on-premises, in the cloud using a Kubernetes service such as Azure's AKS, and in a hybrid fashion. This allows for full, partial, and mixed security and control as desired.
 
@@ -95,7 +95,8 @@ The solution includes the following technologies - although you are not limited 
 </table>
 
 <p style="background:#ccc; color:#000;padding: 25px 25px 25px 25px;">
-<b>Shorter Tutorial:</b>
+
+<b>Condensed Lab:</b>
 If you have already completed the pre-requisites for this course and are familiar with the technologies listed above, <a href="https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters/SQL2019BDC/notebooks" target="_blank">you can jump to a Jupyter Notebooks-based tutorial located here</a>. Load these with Azure Data Studio, starting with <b>bdc_tutorial_00.ipynb</b>.
 </p>
 

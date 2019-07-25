@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1)
+# Workshop: Big Data Clusters for SQL Server - Architecture (CTP 3.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h1>The Big Data Landscape</h1>
 
-In this workshop you'll cover using a Process and various Platform components to create a SQL Server big data cluster solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. There's a lot here - so focus on understanding the overall system first, then come back and explore each section.
+In this workshop you'll cover using a Process and various Platform components to create a Big Data Cluster for SQL Server (BDC) solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. There's a lot here - so focus on understanding the overall system first, then come back and explore each section.
 
 (<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
@@ -94,7 +94,7 @@ This solution uses an example of a retail organization that has multiple data so
 
 Wide World Importeres (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. They have a great training program for new employees, that focuses on connecting with their customers and providing great face-to-face customer service. This strong focus on customer relationships has helped set WWI apart from their competitors. 
 
-WWI has now added web and mobile commerce to their platform, which has generated a significant amount of additional data, and data formats. These new platforms were added without integrating into the OLTP system data or Business Intelligence infrastructures. As a result, "silos" of data stores have developed.
+WWI has now added web and mobile commerce to their platform, which has generated a significant amount of additional data, and data formats. These new platforms have been added without integrating into the OLTP system data or Business Intelligence infrastructures. As a result, "silos" of data stores have developed.
 
 <img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="../graphics/WWI-001.png">
 
@@ -132,7 +132,7 @@ You can read more about <a href="https://azure-scenarios-experience.azurewebsite
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Install Class Environment on AKS</a></b></p>
 
-In this lab you will deploy a SQL Server 2019 big data cluster to the Azure Kubernetes Service. You will need a client machine and a subscription to Microsoft Azure where you can create assets. This will take some time, so you'll do this now as you work through the next few modules, and then return to the installation process in a later module. 
+In this lab you will deploy a BDC to the Azure Kubernetes Service. You will need a client machine and a subscription to Microsoft Azure where you can create assets. This will take some time, so you'll do this now as you work through the next few modules, and then return to the installation process in a later module. 
 
 *NOTE: Your instructor may walk through these steps if the class environment does not have enough resources or time for each person to deploy. If so, they will provide you credentials to work with a pre-configured system in class.*
 
@@ -140,9 +140,10 @@ Using the following steps, you will create a Resource Group in Azure that will h
 
 <p><b>Steps</b></p>
 
-<p><img style="float: left; margin:Docker Guide 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank"> Ensure that you have completed all prerequisites</a>.</p>
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sqlallproducts-allversions" target="_blank"> Read the following article to install the big data cluster Tools, ensuring that you carefully follow each step</a>.</p>
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> Open a Command Prompt on your classroom system. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-guidance?view=sqlallproducts-allversions#env" target="_blank"> Read the following article, and use the SET command for the environment variables as instructed in class.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">  Ensure that you have completed all prerequisites</a>.</p>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sqlallproducts-allversions" target="_blank"> Read the following article to install the big data cluster Tools, ensuring that you carefully follow each step</a>. Note that if you followed the pre-requisites properly, you will already have <i>Python</i>, <i>kubectl</i>, and <i>Azure Data Studio</i> installed, so those may be skipped. Follow all other instructions.</p>
+
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sqlallproducts-allversions" target="_blank"> Read the following article to deploy the bdc to AKS, ensuring that you carefully follow each step</a>. Stop at the section marked <b>Connect to the cluster</b>.</p>
  
 <p style="border-bottom: 1px solid lightgrey;"></p>
@@ -157,7 +158,7 @@ When working with large-scale, distributed data processing systems, there are tw
 
 <h3>Storage</h3>
 
-The general rules for storage in a distributed data processing environment are that the disks should be as fast as possible, you should optimize for the best number of nodes that will store and process the data, and that the abstraction system (in the case of SQL Server BDC, this is HDFS in many cases) be at the latest version and optimized settings.
+The general rules for storage in a distributed data processing environment are that the disks should be as fast as possible, you should optimize for the best number of nodes that will store and process the data, and that the abstraction system (in the case of BDC, this includes HDFS and relational storage) be at the latest version and optimized settings.
 
 For general concepts for Windows storage see the following resources:
 
@@ -188,10 +189,10 @@ Both Windows and Linux (in the x86 architecture) are Symmetric Multiprocessing s
 
 <h3>Memory</h3>
 
-Storage Nodes in a distributed processing system need a nominal amount of memory, and the processing nodes in the framework (Spark) included with SQL Server BDC need more.
+Storage Nodes in a distributed processing system need a nominal amount of memory, and the processing nodes in the framework (Spark) included with BDC need more.
 Both Linux and Windows support large amounts of memory (most often as much as the system can hold) natively, and no special configuration for memory is needed.
 
-Modern operating systems use a temporary area on storage to act as memory for light caching and also as being able to extend RAM memory. This should be avoided at all costs in both Windows and Linux.
+Modern operating systems use a temporary area on storage to act as memory for light caching and also as being able to extend RAM memory. This should be avoided as much as possible in both Windows and Linux.
 
 While technically a Processor system, NUMA (Non-Uniform Memory Access) systems allow for special memory configurations to be mixed in a single server by a processor set. Both Linux and Windows support NUMA access.
 
@@ -204,7 +205,7 @@ While technically a Processor system, NUMA (Non-Uniform Memory Access) systems a
 
 The general guidance for large-scale distributed processing systems is that the network between them be as fast and collision-free (in the case of TCP/IP) as possible. The networking stacks in both Windows and Linux require no special settings within the operating system, but you should thoroughly understand the driver settings as they apply to each NIC installed in your system, that each setting is best optimized for your networking hardware and topology and that the drivers are at the latest tested versions.
 
-Although a full discussion of the TCP/IP protocol is beyond the scope of this workshop, it's important that you have a good understanding of how it works, since it permeates every part of the SQL Server BDC architecture. <a href="https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics" target="_blank">You can get a quick overview of TCP/IP here</a>.
+Although a full discussion of the TCP/IP protocol is beyond the scope of this workshop, it's important that you have a good understanding of how it works, since it permeates every part of the BDC architecture. <a href="https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics" target="_blank">You can get a quick overview of TCP/IP here</a>.
 
 The other rule you should keep in mind is that in general you should have only the presentation of the data handled by the workstation or device that accesses the solution. Do not move large amounts of data back and forth over the network to have the data processed locally. That being said, there are times (such as certain IoT scenarios) where subsets of data should be moved to the client, but you will not face those scenarios in this workshop. 
 
@@ -326,13 +327,13 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 
 You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Kubernetes here</a>. We're using the Azure Kubernetes Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great tutorial here</a>.
 
-In SQL Server big data clusters, Kubernetes is responsible for the state of the SQL Server big data clusters; Kubernetes builds and configures the cluster nodes, assigns pods to nodes, and monitors the health of the cluster.
+In Big Data Clusters for SQL Server, Kubernetes is responsible for the state of the BDC; Kubernetes builds and configures the cluster Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage) and manages the operation of the cluster.
 
-(You'll cover the storage aspects of Kubernetes clusters in a moment.)
+(You'll cover the storage aspects of Kubernetes clusters in more detail in a moment.)
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Familiarize Yourself with Kubernetes using minikube</b></p>
 
-To practice with Kubernetes, you will use an online emulator to work with the minikube platform. 
+To practice with Kubernetes, you will use an online emulator to work with the `minikube` platform. 
 
 <p><b>Steps</b></p>
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/ 
@@ -374,7 +375,7 @@ There are two primary storage concepts you will work with in SQL Server Big Data
 There are three primary tools and utilities you will use to control the SQL Server big data cluster:
 
  - kubectl
- - mssqlctl
+ - azdata
  - Azure Data Studio
 
 <h3>Managing the Kubernetes Cluster<i>(kubectl)</i></h3>
@@ -386,14 +387,14 @@ A <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/" target="_bl
  
 You'll explore further operations with these tools in the <i>Management and Monitoring</i> module.
 
-<h3>Managing and Monitoring the SQL Server big data cluster <i>(mssqlctl)</i></h3>
+<h3>Managing and Monitoring the SQL Server big data cluster <i>(azdata)</i></h3>
 
-The **mssqlctl** command-line utility is written in Python and can be installed on your workstation using the **pip** command in Python. You will see how to install this utility in the *Planning, Installation and Configuration* module.
+The **azdata** command-line utility is written in Python and can be installed on your workstation using the **pip** command in Python. You will see how to install this utility in the *Planning, Installation and Configuration* module.
 
-The **mssqlctl** utility enables cluster administrators to bootstrap and manage big data clusters via the REST APIs exposed by the Controller service. The controller is deployed and hosted in the same Kubernetes namespace where the customer wants to build out a big data cluster. The Controller is responsible for core logic for deploying and managing a big data cluster.
+The **azdata** utility enables cluster administrators to bootstrap and manage big data clusters via the REST APIs exposed by the Controller service. The controller is deployed and hosted in the same Kubernetes namespace where the customer wants to build out a big data cluster. The Controller is responsible for core logic for deploying and managing a big data cluster.
 
 The <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-controller?view=sqlallproducts-allversions 
-" target="_blank">Controller service is installed by a Kubernetes administrator during cluster bootstrap</a>, using the mssqlctl command-line utility. 
+" target="_blank">Controller service is installed by a Kubernetes administrator during cluster bootstrap</a>, using the azdata command-line utility. 
 
 You'll explore further operations with these tools in the <i>Management and Monitoring</i> module.
 
@@ -443,13 +444,13 @@ You'll explore further operations with the Azure Data Studio in the <i>Operation
 
 In any large data system, you will need a way to bring the data in. In some cases, you will edit the data either on the way in, or after it is staged using a process called "Extract, Transform and Load" (ETL) or leave the data "pure" and unaltered (common in Data Science projects), using a process called "Extract, Load and Transform" (ELT). 
 
-In SQL Server big data clusters, you'll learn about three ways that the system interacts with large sets of data:
+In exploring the BDC architecture, you'll learn about three ways that the system interacts with large sets of data:
 
  - "Virtualize" the data by pushing down the query to the source system (no data is ingested in this scenario)
  - Ingesting data into SQL Server Tables, using the PolyBase feature or into standard SQL Server constructs
  - Loading data into HDFS
 
-In Data Virtualization, no data is brought into storage - it is queried from it's source. It's important to think about the network bandwidth per query in this scenario. The next two scenarios do bring data into the system, either into SQL Server tables within the big data cluster or into the HDFS mount points.
+In Data Virtualization, no data is brought into storage - it is queried directly from it's source. It's important to think about the network bandwidth per query in this scenario. The next two scenarios do bring data into the system, either into SQL Server tables within the big data cluster or into the HDFS mount points.
 
 In both cases, the first considerations for loading data are source-data locality and network bandwidth, utilization, and predictability of the path to the SQL Server BDC destination. Depending on where the data originates, network bandwidth will play a major part in your loading performance. For source data residing on premises, network throughput performance and predictability can be enhanced with a service such as a dedicated network path or "hot potato routing". You must consider the current average bandwidth, utilization, predictability, and maximum capabilities of your current public Internet-facing, source-to-destination route, regardless of the method you are using.
 

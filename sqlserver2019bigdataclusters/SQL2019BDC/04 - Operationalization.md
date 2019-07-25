@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Microsoft SQL Server big data clusters Architecture (CTP 3.1)
+# Workshop: Big Data Clusters for SQL Server - Architecture (CTP 3.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>Operationalization</h2>
 
-In this workshop you'll cover using a Process and various Platform components to create a SQL Server big data cluster solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
+In this workshop you'll cover using a Process and various Platform components to create a Big Data Clusters for SQL Server (BDC) solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
 (<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
@@ -25,7 +25,7 @@ You'll cover the following topics in this Module:
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <br>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4-0">4.0 End-To-End Solution for big data clusters</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4-0">4.0 End-To-End Solution for BDC</a></h2>
 
 Recall from <i>The Big Data Landscape</i> module that you learned about the Wide World Importers company. <a href="https://azure-scenarios-experience.azurewebsites.net/big-data.html" target="_blank">Wide World Importers </a> (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. They have a traditional N-tier application that uses a front-end (mobile, web and installed) that interacts with a scale-out middle-tier software product, which in turn stores data in a large SQL Server database that has been scaled-up to meet demand.  
 
@@ -55,7 +55,7 @@ This presented the following four challenges - the IT team at WWI needs to:
 
 <h3>Solution - <i>Challenge 1: Scale Data System</i></h3>
 
-To meet these challenges, the following solution is proposed. Using the SQL Server 2019 big data cluster platform you learned about in the <i>02 - SQL Server BDC Components</i> Module, the solution allows the company to keep it's current codebase, while enabling a flexible scale-out architecture. This answers the first challenge of working with a scale-out system for larger data environments.
+To meet these challenges, the following solution is proposed. Using the BDC platform you learned about in the <i>02 - BDC Components</i> Module, the solution allows the company to keep it's current codebase, while enabling a flexible scale-out architecture. This answers the first challenge of working with a scale-out system for larger data environments.
 
 The following diagram illustrates the complete solution that you can use to brief your audience with: 
 
@@ -101,7 +101,7 @@ Ad-hoc queries are very useful for many scenarios. There are times when you woul
 <img style="height: 250; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="../graphics/bdcsolution3.png">
 <br>
 
-Using the Data Virtualization capability you saw in the <i>02 - SQL Server BDC Components</i> Module, the IT team creates External Tables using PolyBase statements. These External Table definitions are stored in the database on the SQL Server Master Instance within the cluster. When queried by the user, the queries are engaged from the SQL Server Master Instance through the Compute Pool in the SQL Server BDC, which holds Kubernetes Nodes containing the Pods running SQL Server Instances. These Instances send the query to the PolyBase Connector at the target data system, which processes the query based on the type of target system. The results are processed and returned through the PolyBase Connector to the Compute Pool and then on to the Master Instance, and the PolyBase statements can specify the target of the Data Pool. The SQL Server Instances in the Data Pool store the data in a distributed fashion across multiple databases, called <i>Shards</i>.
+Using the Data Virtualization capability you saw in the <i>02 - BDC Components</i> Module, the IT team creates External Tables using PolyBase statements. These External Table definitions are stored in the database on the SQL Server Master Instance within the cluster. When queried by the user, the queries are engaged from the SQL Server Master Instance through the Compute Pool in the SQL Server BDC, which holds Kubernetes Nodes containing the Pods running SQL Server Instances. These Instances send the query to the PolyBase Connector at the target data system, which processes the query based on the type of target system. The results are processed and returned through the PolyBase Connector to the Compute Pool and then on to the Master Instance, and the PolyBase statements can specify the target of the Data Pool. The SQL Server Instances in the Data Pool store the data in a distributed fashion across multiple databases, called <i>Shards</i>.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Load and query data into the Data Pool</b></p>
 
@@ -147,7 +147,7 @@ In this activity, you will load the sample data into your big data cluster envir
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview?view=sqlallproducts-allversions" target="_blank">Official Documentation for this section</a></li>
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/data-ingestion-curl?view=sqlallproducts-allversions" target="_blank">Use curl to load data into HDFS on SQL Server 2019 big data clusters</a></li>
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/train-and-create-machinelearning-models-with-spark?view=sqlallproducts-allversions" target="_blank">Train and Create machine learning models with Spark</a></li>
-    <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-create-apps?view=sqlallproducts-allversions" target="_blank">How to deploy an app on SQL Server 2019 big data cluster</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-create-apps?view=sqlallproducts-allversions" target="_blank">How to deploy an app on BDC</a></li>
     <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/notebooks-guidance?view=sqlallproducts-allversions" target="_blank">How to use notebooks in SQL Server 2019 preview</a></li>
 </ul>
 
