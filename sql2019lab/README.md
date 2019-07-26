@@ -7,7 +7,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="graphics/textbubble.png"> <h2>About this Workshop</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="graphics/textbubble.png"> <h2>About this Lab</h2>
 
 Welcome to this Microsoft solutions workshop on *SQL Server 2019 Lab*.
 
