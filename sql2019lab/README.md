@@ -1,7 +1,7 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (CTP 3.1)
+# Lab: SQL Server 2019 (CTP 3.1)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
