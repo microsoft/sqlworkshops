@@ -61,29 +61,19 @@ In addition to traditional Online Transaction Processing (OLTP) and Online Analy
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2><a name="technologies">Technologies used in this Workshop</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2><a name="technologies">Technologies and Topics covered in this Workshop</a></h2>
 
-The solution includes the following technologies - although you are not limited to these, they form the basis of the workshop. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
+The information coverecd in this workshop includes the following technologies and topics - although you are not limited to these, they form the basis of the workshop. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
 
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
-
-  <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
-  <tr><td><i>Docker</i></td><td>Encapsulation level for the SQL Server big data cluster architecture</td></tr>
-  <tr><td><i>Kubernetes</i></td><td>Management, control plane for Containers</td></tr>
-  <tr><td>Microsoft Azure</td><td>Cloud environment for services</td></tr>
-  <tr><td>Azure Kubernetes Service (AKS)</td><td>Kubernetes as a Service</td></tr>
-  <tr><td><i>Apache HDFS</i></td><td>Scale-out storage subsystem</td></tr>
-  <tr><td><i>Apache Knox</i></td><td>The Knox Gateway provides a single access point for all REST interactions, used for security</td></tr>
-  <tr><td><i>Apache Livy</i></td><td>Job submission system for Apache Spark</td></tr>
-  <tr><td><i>Apache Spark</i></td><td>In-memory large-scale, scale-out data processing architecture used by SQL Server </i></td></tr>
-  <tr><td><i>Python, R, Java, SparkML</i></td><td><i>ML/AI programming languages used for Machine Learning and AI Model creation</i></td></tr>
-  <tr><td>Azure Data Studio</td><td>Tooling for SQL Server, HDFS, Kubernetes cluster management, T-SQL, R, Python, and SparkML languages</td></tr>
-  <tr><td>SQL Server Machine Learning Services</td><td>R, Python and Java extensions for SQL Server</td></tr>
-  <tr><td>Microsoft Data Science Process (TDSP)</td><td>Project, Development, Control and Management framework</td></tr>
-  <tr><td><i>Monitoring and Management</i></td><td>Dashboards, logs, API's and other constructs to manage and monitor the solution</td></tr>
-  <tr><td><i>Security</i></td><td>RBAC, Keys, Secrets, VNETs and Compliance for the solution</td></tr>
+  <tr><td style="vertical-align: top">SQL Server 2019 improvements (on-prem and in-cloud)</i></td><td style="vertical-align: top">SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
+  <tr><td style="vertical-align: top">Big Data Clusters for SQL Server (on-prem and in-cloud)</i></td><td style="vertical-align: top">Big Data Clusters for SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
+  <tr><td style="vertical-align: top">SQL Server Virtual Machines in Microsoft Azure </i></td><td style="vertical-align: top">SQL Server Virtual Machines on the Microsoft Azure platform </td></tr>
+  <tr><td style="vertical-align: top"Microsoft Azure Security for SQL Server Installations </i></td><td style="vertical-align: top">Networking and Securituy for Microsoft Azure as it relates to SQL Server installations </td></tr>
+  <tr><td style="vertical-align: top">Migrating SQL Server installations to Microsoft Azure </i></td><td style="vertical-align: top">Tools and processes to migrate on-premises SQL Server installations to the Microsoft Azure platform </td></tr>
+  <tr><td style="vertical-align: top">"What to Use When" </i></td><td style="vertical-align: top">Tools and processes to determine the best architecture for a given customer requirement on the Microsoft Azure platform </td></tr>
 
 </table>
 
