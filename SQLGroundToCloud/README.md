@@ -67,13 +67,13 @@ The information coverecd in this workshop includes the following technologies an
 
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
 
-  <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
-  <tr><td style="vertical-align: top">SQL Server 2019 improvements (on-prem and in-cloud)</i></td><td style="vertical-align: top">SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
-  <tr><td style="vertical-align: top">Big Data Clusters for SQL Server (on-prem and in-cloud)</i></td><td style="vertical-align: top">Big Data Clusters for SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
-  <tr><td style="vertical-align: top">SQL Server Virtual Machines in Microsoft Azure </i></td><td style="vertical-align: top">SQL Server Virtual Machines on the Microsoft Azure platform </td></tr>
-  <tr><td style="vertical-align: top"Microsoft Azure Security for SQL Server Installations </i></td><td style="vertical-align: top">Networking and Securituy for Microsoft Azure as it relates to SQL Server installations </td></tr>
-  <tr><td style="vertical-align: top">Migrating SQL Server installations to Microsoft Azure </i></td><td style="vertical-align: top">Tools and processes to migrate on-premises SQL Server installations to the Microsoft Azure platform </td></tr>
-  <tr><td style="vertical-align: top">"What to Use When" </i></td><td style="vertical-align: top">Tools and processes to determine the best architecture for a given customer requirement on the Microsoft Azure platform </td></tr>
+  <tr><th style="background-color: #1b20a1; color: white;">Technology/Concept</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
+  <tr><td style="vertical-align: top">SQL Server 2019 improvements (on-prem and in-cloud)</i></td><td style="vertical-align: top">Covers the updates and improvements in security, resiliency, containers and other technologies  in SQL Server 2019 in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
+  <tr><td style="vertical-align: top">Big Data Clusters for SQL Server (on-prem and in-cloud)</i></td><td style="vertical-align: top">Explains the architecture for Big Data Clusters for SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
+  <tr><td style="vertical-align: top">SQL Server Virtual Machines in Microsoft Azure </i></td><td style="vertical-align: top">Covers the tools, processes and procedures for SQL Server Virtual Machines on the Microsoft Azure platform </td></tr>
+  <tr><td style="vertical-align: top"Microsoft Azure Security for SQL Server Installations </i></td><td style="vertical-align: top">Details networking and securituy considerations for Microsoft Azure as it relates to SQL Server installations </td></tr>
+  <tr><td style="vertical-align: top">Migrating SQL Server installations to Microsoft Azure </i></td><td style="vertical-align: top">Explains teh tools and processes to migrate on-premises SQL Server installations to the Microsoft Azure platform </td></tr>
+  <tr><td style="vertical-align: top">"What to Use When" </i></td><td style="vertical-align: top">Teaches a complete set of tools and processes used to determine the best architecture for a given customer scenario on the Microsoft Azure platform </td></tr>
 
 </table>
 
@@ -139,7 +139,7 @@ This workshop uses Azure Data Studio, Microsoft Azure AKS, and SQL Server (2019 
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
 
- - [TODO: Enter any other workshops that help in this area](url)
+ - [TODO: ](url)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
