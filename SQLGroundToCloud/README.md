@@ -16,7 +16,7 @@ You'll start by learning about the latest improvements to SQL Server, move on to
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
-(You can view all of the [source files for this workshop on this github site, along with other workshops as well. Open this link in a new tab to find out more.](https://github.com/BuckWoody/workshops))
+(You can view all of the [source files for this workshop on this GitHub site, along with other workshops as well. Open this link in a new tab to find out more.](https://github.com/BuckWoody/workshops))
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -48,14 +48,14 @@ In this day-long, hands-on workshop you’ll learn how to:
 The concepts and skills taught in this workshop form the starting points for:
 
 - Solution Architects and Developers, to understand how to put together an end to end solution.
-- Data Professionals and DevOps teams, to implement and operate a SQL Server systems on premises and in the cloud.
+- Data Professionals and DevOps teams, to implement and operate SQL Server systems on premises and in the cloud.
 - Solution Architects and Developers, to understand how to put together an end-to-end solution.
 - Data Scientists, to understand the environment used to analyze and solve specific predictive problems.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
 
-Businesses require near real-time insights from ever-larger sets of data from a variety of sources. Many have not explored teh improvements made in the latest versions of SQL Server, and some are only now exploring the cloud as a computing platform. As time has progressed, a more dramatic upgrade process may be required.
+Businesses require near real-time insights from ever-larger sets of data from a variety of sources. Many have not explored the improvements made in the latest versions of SQL Server, and some are only now exploring the cloud as a computing platform. As time has progressed, a more dramatic upgrade process may be required.
 
 In addition to traditional Online Transaction Processing (OLTP) and Online Analytic Processing (OLAP) workloads, some industry examples of data processing from multiple sources of data at scale are in Retail (Demand Prediction, Market-Basket Analysis), Finance (Fraud detection, customer segmentation), Healthcare (Fiscal control analytics, Disease Prevention prediction and classification, Clinical Trials optimization), Public Sector (Revenue prediction, Education effectiveness analysis), Manufacturing (Predictive Maintenance, Anomaly Detection) and Agriculture (Food Safety analysis, Crop forecasting) to name just a few.
 
@@ -63,7 +63,7 @@ In addition to traditional Online Transaction Processing (OLTP) and Online Analy
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2><a name="technologies">Technologies and Topics covered in this Workshop</a></h2>
 
-The information coverecd in this workshop includes the following technologies and topics - although you are not limited to these, they form the basis of the workshop. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
+The information covered in this workshop includes the following technologies and topics - although you are not limited to these, they form the basis of the workshop. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
 
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
 
@@ -71,8 +71,8 @@ The information coverecd in this workshop includes the following technologies an
   <tr><td style="vertical-align: top">SQL Server 2019 improvements (on-prem and in-cloud)</i></td><td style="vertical-align: top">Covers the updates and improvements in security, resiliency, containers and other technologies  in SQL Server 2019 in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
   <tr><td style="vertical-align: top">Big Data Clusters for SQL Server (on-prem and in-cloud)</i></td><td style="vertical-align: top">Explains the architecture for Big Data Clusters for SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
   <tr><td style="vertical-align: top">SQL Server Virtual Machines in Microsoft Azure </i></td><td style="vertical-align: top">Covers the tools, processes and procedures for SQL Server Virtual Machines on the Microsoft Azure platform </td></tr>
-  <tr><td style="vertical-align: top"Microsoft Azure Security for SQL Server Installations </i></td><td style="vertical-align: top">Details networking and securituy considerations for Microsoft Azure as it relates to SQL Server installations </td></tr>
-  <tr><td style="vertical-align: top">Migrating SQL Server installations to Microsoft Azure </i></td><td style="vertical-align: top">Explains teh tools and processes to migrate on-premises SQL Server installations to the Microsoft Azure platform </td></tr>
+  <tr><td style="vertical-align: top"Microsoft Azure Security for SQL Server Installations </i></td><td style="vertical-align: top">Details networking and security considerations for Microsoft Azure as it relates to SQL Server installations </td></tr>
+  <tr><td style="vertical-align: top">Migrating SQL Server installations to Microsoft Azure </i></td><td style="vertical-align: top">Explains the tools and processes to migrate on-premises SQL Server installations to the Microsoft Azure platform </td></tr>
   <tr><td style="vertical-align: top">"What to Use When" </i></td><td style="vertical-align: top">Teaches a complete set of tools and processes used to determine the best architecture for a given customer scenario on the Microsoft Azure platform </td></tr>
 
 </table>
