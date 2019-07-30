@@ -132,11 +132,13 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
-  <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td>
+  <td style="background-color: AliceBlue; color: black;"><b>Time</b></td>
+  <td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
 
-  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/01-IntroductionAndWorkshopMethodology.md" target="_blank">01 - Introduction and Workshop Methodology </a></td><td> Workshop introduction, logistics, setup check </td></tr>
+  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/01-IntroductionAndWorkshopMethodology.md" target="_blank">01 - Introduction and Workshop Methodology </a></td><td>9:00AM-9:15AM</td><td> Workshop introduction, logistics, setup check </td></tr>
   
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> This module covers the improvements made to the latest version of SQL Server, and has information on: 
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">9:15AM-11:15AM</td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> This module covers the improvements made to the latest version of SQL Server, and has information on: 
     <ul style="list-style-type:disc;">
         <li>Intelligent Performance</li>
         <li>What's New in Security</li>
@@ -147,9 +149,9 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
     </ul>
   </td></tr>
 
-  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/03-WorkingWithBigDataAndDataScienceBigDataClustersForSQLServer2019.md" target="_blank"> 03 - Working with Big Data and Data Science (Big Data Clusters for SQL Server 2019) </a></td><td style="vertical-align: top;"> Abstraction levels, frameworks, architectures and components within SQL Server big data clusters</td></tr>
+  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/03-WorkingWithBigDataAndDataScienceBigDataClustersForSQLServer2019.md" target="_blank"> 03 - Working with Big Data and Data Science (Big Data Clusters for SQL Server 2019) </a></td><td>11:30AM-12:30PM</td><td style="vertical-align: top;"> Abstraction levels, frameworks, architectures and components within SQL Server big data clusters</td></tr>
 
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/04-SQLServerOnTheMicrosoftAzurePlatform.md" target="_blank">04 - SQL Server on the Microsoft Azure Platform </a> </td><td td style="background-color: AliceBlue; color: black;"> Covers the multiple ways to use SQL Server technologies on the Microsoft Azure Platform, along with the fundamentals of SQL in Azure with additional deeper resources provided. Topics covered include:
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/04-SQLServerOnTheMicrosoftAzurePlatform.md" target="_blank">04 - SQL Server on the Microsoft Azure Platform </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">1:30PM-2:45PM<td td style="background-color: AliceBlue; color: black;"> Covers the multiple ways to use SQL Server technologies on the Microsoft Azure Platform, along with the fundamentals of SQL in Azure with additional deeper resources provided. Topics covered include:
       <ul style="list-style-type:disc;">
         <li>Azure SQL: SQL VMs, Single instance, Single database, Elastic pools</li>
         <ul><li>Deployment options, service tiers</ul></li>
@@ -161,7 +163,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
     </ul>
   </td></tr>  
 
-  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-WhatToUseWhen.md" target="_blank"> 05 - Migrating to Azure SQL </a></td><td style="vertical-align: top;"> Covers the decision process and provides tools for assessing, planning, and migrating SQL workloads to Azure that meets the business requirements. Some of the tools and topics (not exhaustive) covered are:
+  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-WhatToUseWhen.md" target="_blank"> 05 - Migrating to Azure SQL </a></td><td>3:00PM-3:45PM</td><td style="vertical-align: top;"> Covers the decision process and provides tools for assessing, planning, and migrating SQL workloads to Azure that meets the business requirements. Some of the tools and topics (not exhaustive) covered are:
         <ul style="list-style-type:disc;">
         <li>Azure Migrate</li>
         <li>Data Migration Assistant</li>
@@ -172,7 +174,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
     </ul>
   </td></tr>
 
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/06-ReviewAndApplication.md" target="_blank"> 06 - What to use When </a> </td><td td style="background-color: AliceBlue; color: black;"> Covers the decision process and provides tools for deciding on the proper technologies on-premises and in-cloud for a solution based on requirements and constraints.</td></tr>
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/06-ReviewAndApplication.md" target="_blank"> 06 - What to use When </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">3:45PM-5:00PM<td td style="background-color: AliceBlue; color: black;"> Covers the decision process and provides tools for deciding on the proper technologies on-premises and in-cloud for a solution based on requirements and constraints.</td></tr>
 
 </table>
 
