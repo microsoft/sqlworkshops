@@ -72,4 +72,6 @@ TODO: Enter activity steps description with checkbox
     <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study</a></li>
 </ul>
 
-Congratulations! You have completed this workshop on <TODO: Enter workshop name>. You now have the tools, assets, and processes you need to extrapolate this information into other applications.
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
+
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/03-WorkingWithBigDataAndDataScienceBigDataClustersForSQLServer2019.md" target="_blank"><i> 03 - Working with Big Data Clusters on SQL Server 2019</i></a>.

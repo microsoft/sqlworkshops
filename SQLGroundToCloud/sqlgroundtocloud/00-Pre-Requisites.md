@@ -1,18 +1,18 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: <TODO: Enter workshop name>
+# Workshop: SQL Ground-to-Cloud
 
-#### <i>A Microsoft Course from the SQL Server team</i>
+#### <i>A Microsoft Workshop from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>00 Pre-Requisites</h2>
 
-The "<TODO: Enter workshop name>" workshop is taught using the following components, which you will install and configure in the sections that follow. 
+The *Workshop: SQL Ground-to-Cloud* workshop is taught using the following components, which you will install and configure in the sections that follow. 
 
 *(Note: TODO: Any notes you want.)*
 
-For this workshop, you will use Microsoft Windows as the base workstation, altough Apple and Linux operating systems can be used in production. You can <a href="https://developer.microsoft.com/en-us/windows/downloads/virtual-machines" target="_blank">download a Windows 10 Workstation Image for VirtualBox, Hyper-V, VMWare, or Parallels for free here</a>. 
+For this workshop, you will use Microsoft Windows as the base workstation, although Apple and Linux operating systems can be used in production. You can <a href="https://developer.microsoft.com/en-us/windows/downloads/virtual-machines" target="_blank">download a Windows 10 Workstation Image for VirtualBox, Hyper-V, VMWare, or Parallels for free here to use in teh course</a>. 
 
 The other requirements are:
 
@@ -24,7 +24,7 @@ The other requirements are:
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 1: Set up a Microsoft Azure Account</b></p>
 
-You have multiple options for setting up Microsoft Azure account to complete this workshop. You can use a free account, a Microsoft Developer Network (MSDN) account, a personal or corporate account, or in some cases a pass may be provided by the instructor. (Note: for most classes, the MSDN account is best)
+You have multiple options for setting up Microsoft Azure account to complete this workshop. You can [use a free account](https://azure.microsoft.com/en-us/free/), a Microsoft Developer Network (MSDN) account, a personal or corporate account, or in some cases a pass may be provided by the instructor. (Note: for most classes, the MSDN account is best)
 
 **Unless you are explicitly told you will be provided an account by the instructor in the invitation to this workshop, you must have your Microsoft Azure account and Data Science Virutal Machine set up before you arrive at class.**
 
@@ -81,4 +81,4 @@ TODO: Enter any code typing here
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="url" target="_blank"><i> 01 - Module</i></a>.
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/01-IntroductionAndWorkshopMethodology.md" target="_blank"><i> 01 - Introduction and Workshop Methodology</i></a>.
