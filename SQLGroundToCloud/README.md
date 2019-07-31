@@ -100,7 +100,11 @@ If you are new to these, here are a few references you can complete prior to cla
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/education1.png"> <h2><a name="details">Workshop Details</a></h2>
 
-This workshop uses Azure Data Studio, Microsoft Azure, and SQL Server (2019 and higher) with a focus on architecture and implementation.
+This workshop uses SQL Server Management Studio, Azure Data Studio, Microsoft Azure, and SQL Server (2019 and higher) with a focus on architecture and implementation.
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> <h3>Intended Audience</h3>
+
+<p>The following roles will find this workshop useful. Others may also attend, as described in the Secondary Audience section.</p>
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
@@ -120,15 +124,9 @@ This workshop uses Azure Data Studio, Microsoft Azure, and SQL Server (2019 and 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bookpencil.png"> <h3>Workshop Modules and In-Class Agenda</h3>
 
- - [Other SQL Workshops by Microsoft](https://aka.ms/sqlworkshops)
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bookpencil.png"> <h2>Workshop Modules and Agenda</h2>
-
-This is a modular workshop, and in each section, you'll learn concepts, technologies and processes to help you complete the solution.
+This is a modular workshop, and in each section, you'll learn concepts, technologies and processes to help you complete the solution. The times shown below are for an instructor-led course, you may also take the modules in a self-paced fashion.
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
@@ -180,6 +178,12 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b>Next Steps</b></p>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
+
+ - [Other SQL Workshops by Microsoft](https://aka.ms/sqlworkshops)
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png">Next Steps</h2>
 
 Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank"><i> Prerequisites</i></a>
