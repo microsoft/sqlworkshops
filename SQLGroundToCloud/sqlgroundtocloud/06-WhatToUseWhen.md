@@ -6,7 +6,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2> 06 - What to Use When </h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> 06 - What to Use When </h2>
 
 In this workshop you'll cover using SQL Server, in on-premises and in-cloud, as well as hybrid applications as a solution for data processing. 
 
@@ -28,25 +28,25 @@ Thing
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png">6.1 Understand the Problem Space</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">6.1 Understand the Problem Space</h2>
 
 TODO: Topic Description
 
 <br>
 
-<img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://timenerdworld.files.wordpress.com/2012/08/microsoftlogos.jpg?w=753">
+<img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://timenerdworld.files.wordpress.com/2012/08/microsoftlogos.jpg?w=150">
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: TODO: Activity Name</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Review Business Scenarios</b></p>
 
-TODO: Activity Description and tasks
+In this activity you will review three business scenarios, and pick one to focus on for the rest of this module.  
 
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
+<p><img style="height: 50; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/graphics/AdventureWorksLogo.png?raw=true"><b>AdventureWorks</b></p>
 
 TODO: Enter activity description with checkbox
 
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
+<p><img style="height: 50; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/graphics/ContosoLogo.png?raw=true"><b>Contoso</b></p>
 
 TODO: Enter activity steps description with checkbox
 

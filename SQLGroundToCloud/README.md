@@ -1,4 +1,4 @@
-![](graphics/microsoftlogo.png)
+![](graphics/microsoftlogo.png?raw=true)
 
 # Workshop: SQL Ground-to-Cloud
 
@@ -6,7 +6,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>About this Workshop</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>About this Workshop</h2>
 
 Welcome to this Microsoft solutions workshop on SQL Server in on-premises, in-cloud and hybrid solutions. In this one-day workshop, you'll gain a deep understanding on the latest SQL Server engine and how you can use it to solve real-world challenges. 
 
@@ -20,7 +20,7 @@ This README.MD file explains how the workshop is laid out, what you will learn, 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Abstract</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Abstract</h3>
 
 Many organizations are faced with an aging or under-engineered data platform strategy. You need a plan for how to decide if, when, and how you should upgrade your systems, when to extend them to the cloud, what to keep on and what can work in a hybrid fashion.
 
@@ -28,7 +28,7 @@ Members from the Azure Data Product Group will lead you through the data estate 
 
 This course contains lecture and hands on lab work, and is particularly useful for Solution Architects, Data Architects, Application Architects, Technical Sellers, and Application Developers. BYOD and experience with SQL is considered a prerequisite.
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Learning Objectives</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Learning Objectives</h3>
 
 In this day-long, hands-on workshop you’ll learn how to:
 
@@ -43,7 +43,7 @@ In this day-long, hands-on workshop you’ll learn how to:
  - Understand what services are available to migrate and modernize your entire SQL Server stack
  - Make informed decisions about how your business or customers should modernize their data estate
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkmark.png"> <h3>Role Applications</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Role Applications</h3>
 
 The concepts and skills taught in this workshop form the starting points for:
 
@@ -52,7 +52,7 @@ The concepts and skills taught in this workshop form the starting points for:
 - Data Scientists, to understand the environment used to analyze and solve specific predictive problems.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/building1.png"> <h2>Business Applications of this Workshop</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"> <h2>Business Applications of this Workshop</h2>
 
 Businesses require near real-time insights from ever-larger sets of data from a variety of sources. Many have not explored the improvements made in the latest versions of SQL Server, and some are only now exploring the cloud as a computing platform. As time has progressed, a more dramatic upgrade process may be required.
 
@@ -60,7 +60,7 @@ In addition to traditional Online Transaction Processing (OLTP) and Online Analy
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/listcheck.png"> <h2><a name="technologies">Technologies and Topics covered in this Workshop</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/listcheck.png?raw=true"> <h2><a name="technologies">Technologies and Topics covered in this Workshop</a></h2>
 
 The information covered in this workshop includes the following technologies and topics - although you are not limited to these, they form the basis of the workshop. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
 
@@ -78,7 +78,7 @@ The information covered in this workshop includes the following technologies and
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/owl.png"> <h2><a name="prereqs">Before Taking this Workshop</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"> <h2><a name="prereqs">Before Taking this Workshop</a></h2>
 
 You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
 
@@ -92,17 +92,17 @@ If you are new to these, here are a few references you can complete prior to cla
 -  [Microsoft Azure](https://docs.microsoft.com/en-us/learn/paths/azure-fundamentals/)
 
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> <h3>Setup</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Setup</h3>
 
 <a href="SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/education1.png"> <h2><a name="details">Workshop Details</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"> <h2><a name="details">Workshop Details</a></h2>
 
 This workshop uses SQL Server Management Studio, Azure Data Studio, Microsoft Azure, and SQL Server (2019 and higher) with a focus on architecture and implementation.
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> <h3>Intended Audience</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Intended Audience</h3>
 
 <p>The following roles will find this workshop useful. Others may also attend, as described in the Secondary Audience section.</p>
 
@@ -118,13 +118,13 @@ This workshop uses SQL Server Management Studio, Azure Data Studio, Microsoft Az
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bulletlist.png"> <h3>Setup</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Setup</h3>
 
 <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/bookpencil.png"> <h3>Workshop Modules and In-Class Agenda</h3>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bookpencil.png?raw=true"> <h3>Workshop Modules and In-Class Agenda</h3>
 
 This is a modular workshop, and in each section, you'll learn concepts, technologies and processes to help you complete the solution. The times shown below are for an instructor-led course, you may also take the modules in a self-paced fashion.
 
@@ -178,12 +178,12 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pinmap.png"> <h2>Related Workshops</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"> <h2>Related Workshops</h2>
 
  - [Other SQL Workshops by Microsoft](https://aka.ms/sqlworkshops)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png">Next Steps</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true">Next Steps</h2>
 
 Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank"><i> Prerequisites</i></a>
