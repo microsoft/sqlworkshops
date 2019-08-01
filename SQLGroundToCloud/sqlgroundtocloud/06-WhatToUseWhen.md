@@ -46,7 +46,7 @@ In this activity you will review three business scenarios, and pick one to focus
 
 TODO: Enter activity description with checkbox
 
-<p><img style="height: 50; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/ContosoLogo.png?raw=true"><b>Contoso</b></p>
+<p><img style="height: 50; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/contosologo.png?raw=true"><b>Contoso</b></p>
 
 TODO: Enter activity steps description with checkbox
 
