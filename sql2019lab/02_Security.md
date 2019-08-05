@@ -52,7 +52,7 @@ Now classification information is stored directly with columns in metadata in sy
 
 **information_type** - This represents the type of data that is being classified. This can be any string you choose. An example of an information_type would be *Financial*
 
-The added benefit of built-in classification is that now auditing of data classification is included. SSMS starting with version 18.1 has been enhanced to take advantage of this new T-SQL feature.
+The added benefit of built-in classification is that now auditing of data classification is included. SSMS starting with version 18 (you should use 18.2 or greater) has been enhanced to take advantage of this new T-SQL feature.
 
 **NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance standards. It is up to a business or organization to use these tools to meet their requirements or regulations.*
 
@@ -74,7 +74,7 @@ In this activity, you will learn how to use SQL Server Management Studio (SSMS) 
 
 Follow these steps to classify certain columns in the WideWorldImporters database using SSMS and T-SQL. All scripts for this activity can be found in the **sql2019lab\02_Security\dataclassification** folder.
 
-**NOTE**: *SSMS 18.1 has a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, this activity includes instructions to change the dbcompat of WideWorldImporters to 150 (and revert it back when done). SSMS 18.2 is scheduled to have this problem fixed and this lab will be modified when that is verified.*
+**NOTE**: *SSMS 18.1 has a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, you must have SSMS 18.2 (or greater) to go through this activity or set the dbcompat of WideWorldImporters to 150 if using a version < SSMS 18.2.*
 
 **STEP 1: Restore the WideWorldImporters backup.**
 
@@ -87,12 +87,7 @@ Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Secu
 Open up the script **setup_classification.sql** in SQL Server Management Studio (SSMS) and execute each step in the script or copy and paste these T-SQL commands to execute them
 
 ```sql
--- Step 1: Change WideWorldImporters to dbcompat = 150
--- TODO: Remove this after bug in SSMS fixed
-ALTER DATABASE WideWorldImporters SET COMPATIBILITY_LEVEL = 150
-GO
-
--- Step 2: In case you have run these demos before drop existing classifications
+-- Step 1: In case you have run these demos before drop existing classifications
 USE WideWorldImporters
 GO
 IF EXISTS (SELECT * FROM sys.sensitivity_classifications sc WHERE object_id('[Application].[PaymentMethods]') = sc.major_id)

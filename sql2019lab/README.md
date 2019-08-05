@@ -118,8 +118,9 @@ In order to complete this workshop you need to install the following software:
 
 - SQL Server 2019 CTP 3.1 or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
     - For **Modules 1, 2, and 3** you only need the database engine installed
+    - **Module 3** requires disk space to hold a database with a 10Gb data and 10Gb log file.
     - **Module 4** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.)
-- Install SQL Server Management Studio (SSMS) 18.1 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
+- Install SQL Server Management Studio (SSMS) 18.2 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
 - Install Azure Data Studio June 2019 or higher from https://docs.microsoft.com/en-us/sql/azure-data-studio/download. T-SQL notebooks are used extensively in this course.
 - **Docker is required only for Module 5**. You can use Docker for Windows, Linux, or MacOS.
 - The WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
