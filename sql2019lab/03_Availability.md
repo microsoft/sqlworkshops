@@ -93,7 +93,7 @@ In this activity, you will see how Accelerated Database Recovery affects log tru
 
 <p><b><a name="activitysteps">Activity Steps</a></b></p>
 
-All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database.
+All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database. The scripts will create a database with a data file of 10Gb and transaction log of 10Gb so there is plenty of space for the activity.
 
 **Note**: *For Linux installations change the path to /var/opt/mssql/data in the T-SQL notebook and T-SQL scripts.*
 
@@ -125,7 +125,11 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019lab** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **03_Availability\adr** folder, open up the **adr.ipynb** notebook and go through all the steps. You can now use Azure Data Studio explorer to open up a notebook or script without exiting the tool.
+If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019lab** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **03_Availability\adr** folder, open up the **adr.ipynb** notebook and go through all the steps. 
+
+**NOTE**: Be sure to only run one notebook cell at a time for the lab.
+
+You can now use Azure Data Studio explorer to open up a notebook or script without exiting the tool.
 
 ![Azure Data Studio Explorer](./graphics/Azure_Data_Studio_Explorer.jpg)
 
@@ -143,7 +147,9 @@ In this activity you have learned Accelerated Database recovery can speed up tra
 
 <p><b><a name="bonusactivity">Bonus Activity</a></b></p>
 
-If you have time use the T-SQL notebook **adr_recovery.ipynb** or T-SQL script **adr_recovery.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery.
+**NOTE**: Close out any outstanding scripts or notebooks before running this bonus activity.
+
+If you have time use the T-SQL notebook **adr_recovery.ipynb** or T-SQL script **adr_recovery.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery. The scripts will create a database with a data file of 10Gb and transaction log of 10Gb so there is plenty of space for the activity.
 
 Armed with this knowledge, proceed to the next activity to learn how **data virtualization** makes SQL Server 2019 the new "data hub".
 
