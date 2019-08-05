@@ -8,44 +8,78 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>03 - Working with Big Data and Data Science - Big Data Clusters for SQL Server 2019</h2>
 
-In this workshop you'll cover using <TODO: Enter a brief description of the workshop>. 
+In this workshop you'll cover using SQL Server, in on-premises and in-cloud, as well as hybrid applications as a solution for data processing. In each section you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. The end of this module contains several helpful references you can use in this course and in production.
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
 (<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 
-<p style="border-bottom: 1px solid lightgrey;"></p>
+Some industry examples of big data processing are in Retail (*Demand Prediction, Market-Basket Analysis*), Finance (*Fraud detection, customer segmentation*), Healthcare (*Fiscal control analytics, Disease Prevention prediction and classification, Clinical Trials optimization*), Public Sector (*Revenue prediction, Education effectiveness analysis*), Manufacturing (*Predictive Maintenance, Anomaly Detection*) and Agriculture (*Food Safety analysis, Crop forecasting*) to name just a few.
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">3.1 TODO: Topic Name</h2>
+In this module you'll cover working with Data Science workloads with a focus on larger sets of data. Starting in SQL Server 2019, big data clusters allows for large-scale, near real-time processing of data over the HDFS file system and other data sources. It also leverages the Apache Spark framework which is integrated into one environment for management, monitoring, and security of your environment. This means that organizations can implement everything from queries to analysis to Machine Learning and Artificial Intelligence within SQL Server, over large-scale, heterogeneous data. SQL Server big data clusters can be implemented fully on-premises, in the cloud using a Kubernetes service such as Azure's AKS, and in a hybrid fashion. This allows for full, partial, and mixed security and control as desired.
 
-TODO: Topic Description
-
-<br>
-
-<img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://docs.microsoft.com/en-us/sql/big-data-cluster/media/concept-security/cluster_endpoints.png?raw=true">
-
-<br>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: TODO: Activity Name</b></p>
-
-TODO: Activity Description and tasks
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Description</b></p>
-
-TODO: Enter activity description with checkbox
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-TODO: Enter activity steps description with checkbox
+<b>NOTE:</b> A <a href="https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters
+" target="_blank">complete workshop on this tpic is located here</a>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">1.2 TODO: Topic Name</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">3.1 Data Science and Big Data Processing</h2>
 
-TODO: Topic Description
+Businesses require near real-time insights from ever-larger sets of data from a variety of sources. Large-scale data ingestion requires scale-out storage and processing in ways that allow fast response times. In addition to simply querying this data, organizations want full analysis and even predictive capabilities over their data. Machine Learning, Artificial Intelligence, and Deep Learning techniques all require large sets of data for training their models to be effective. Two technologies have emerged as the primary methods for processing large sets of data, using a scale-out paradigm - Hadoop and Spark. 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: TODO: Activity Name</b></p>
+Hadoop uses a set of computing nodes that position the workload over distributed data nodes.
+
+<p><img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/hdfs.png?raw=true"></p> 	 	
+
+Spark is a technology that uses various libraries to make this distributed processing more efficient and faster.
+
+<br>
+<p><img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/spark3.png?raw=true"></p> 	 	
+<br>
+
+Both of these technologies assumes many nodes (computers), and since you only need the computation elements (not all the drivers and other components of a full computer or Virtual Machine), Container technologies work well for this solution.
+
+<br>
+<img style="height: 150;" src="https://docs.docker.com/images/Container%402x.png"> 
+<br>
+
+To control containers, a technology called <i>Kubernetes</i> is used for deployment, management and storage of a grouping of containers, called a <i>Cluster</i>.
+
+<br> 
+<p><img style="height: 200; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/KubernetesCluster.png?raw=true"></p> 		
+<br> 
+<p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="../graphics/KubernetesCluster.png"></p> 	 	
+<br>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">3.2 SQL Server 2019 Big Data Clusters Architecture</h2>
+
+Using the technologies described above, SQL Server uses a Kubernetes Cluster to deploy multiple components for SQL Server processing, distributed queries using PolyBase, Spark, and Storage on HDFS for a complete environment to work with large sets of data, and includes Machine Learning, Artificial Intelligence and Deep Learning capabilities. 
+
+<br>
+<img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bdc.png?raw=true">
+<br>
+
+A SQL Server Big Data Cluster BDC can be deployed to three environments:
+
+ - Locally for Testing (using minikube)
+ - In a Cloud Service (Such as the Azure Kubernetes Service or AKS)
+ - On premises (using KubeADM)
+
+These architectures are not mutually exclusive - you can install some components on-premises, and others as a service. Your connections can interconnect across these environments.
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">3.3 SQL Server 2019 Big Data Clusters Programming</h2>
+
+Businesses
+
+
+<br>
+
+
+
+<br>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Jupyter Notebooks For SQL Server Big Data Clusters Review</b></p>
 
 TODO: Activity Description and tasks
 
@@ -61,7 +95,13 @@ TODO: Enter activity steps description with checkbox
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>For Further Study</b></p>
 <ul>
-    <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study</a></li>
+    <li><a href = "https://www.simplilearn.com/data-science-vs-big-data-vs-data-analytics-article" target="_blank">Understanding the Big Data Landscape</a></li>
+    <li><a href = "http://www.admin-magazine.com/Articles/Linux-Essentials-for-Windows-Admins-Part-1" target="_blank">Linux for the Windows Admin</a></li>
+    <li><a href = "https://docs.docker.com/v17.09/engine/userguide/" target="_blank">Docker Guide</a></li>
+    <li><a href = "https://www.youtube.com/playlist?list=PLLasX02E8BPCrIhFrc_ZiINhbRkYMKdPT" target="_blank">Video introduction to Kubernetes</a></li>
+    <li><a href = "https://github.com/vlele/k8onazure" target="_blank">Complete course on Azure Kubernetes Service (AKS)</a></li>
+     <li><a href = "https://www.kdnuggets.com/2019/01/practical-apache-spark-10-minutes.html" target="_blank">Working with Spark</a></li>
+    <li><a href="https://realpython.com/jupyter-notebook-introduction/" target="_blank">Full tutorial on Jupyter Notebooks</a></li>
 </ul>
 
 

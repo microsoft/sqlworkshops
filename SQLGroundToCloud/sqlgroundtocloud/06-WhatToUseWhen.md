@@ -6,26 +6,30 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> 06 - What to Use When </h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> 06 - What to Use When: Designing a Solution </h2>
 
-In this workshop you'll cover using SQL Server, in on-premises and in-cloud, as well as hybrid applications as a solution for data processing. 
+In this workshop you'll cover using SQL Server, in on-premises and in-cloud, as well as hybrid applications as a solution for data processing. In each section you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. The end of this module contains several helpful references you can use in this course and in production.
 
-In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
+This module can be used stand-alone, and does not require any <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Pre-Requisites</a> other than a laptop and some sort of design software - although you may also just use a whiteboard or paper for your design. 
 
-<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. 
-You'll need all of the items detailed there completed before you can proceed with the workshop.
+There are many elements in a single solution, and in this module you'll learn how to take the business scenario and determine the best resources and processes to use to satisfy the requirements while considering the constraints within the scenario. 
 
-Thing
-Thing
-Thing
+In production, there are normally 6 phases to create  a solution: 
 
 <dl>
 
-  <dt>01 - <TODO: Enter Module Name</dt>
-  <dt>01 - <TODO: Enter Module Name</dt>
-  <dt>01 - <TODO: Enter Module Name</dt>
+  <dt>01 - <b><i>Discovery</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>02 - <b><i>Envisioning</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>03 - <b><i>Architecture Design Session (ADS)</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>04 - <b><i>Proof-Of-Concept (POC)</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>05 - <b><i>Implementation</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>06 - <b><i>Discovery</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
 
 </dl>
+
+Throughout this module, you can use various templates, icons, stencils and other assets to assist you with each phase and the exercises. These assets can also be used in your production workloads: <a href="https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources" target="_blank">https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources</a>
+
+For this module, you'll focus on the <i>Discovery</i> and the <i>Architecture Design Session</i> phases only. If you wish to develop your solution further after the course, you can use the assets above to complete all phases.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -35,13 +39,15 @@ TODO: Topic Description
 
 <br>
 
-<img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://timenerdworld.files.wordpress.com/2012/08/microsoftlogos.jpg?w=150">
+TODO: Thing
 
 <br>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Review Business Scenarios</b></p>
 
 In this activity you will review three business scenarios, and pick one to focus on for the rest of this module.  
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/AdventureWorksLogo.png?raw=true"><b>AdventureWorks</b></p>
 
@@ -62,6 +68,8 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 
 - B2B should be pull
 
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/contosologo.png?raw=true"><b>Contoso</b></p>
 
 [The Contoso company](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-overview) is The Contoso Corporation is a multi-national business with headquarters in Paris, France. It is a conglomerate manufacturing, sales, and support organization with over 100,000 products. They are embarking on a multi-year process of migrating from company-owned datacenters to a cloud provider. They have narrowed the list of potential vendors to three, including Microsoft. They have [high security](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-info-protect) and [interoperability with mobile device](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-mdm) concerns. 
@@ -81,6 +89,7 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 
 TODO: https://docs.microsoft.com/en-us/azure/migrate/contoso-migration-overview
 
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/WideWorldImportersLogo.png?raw=true"><b>Wide World Importers</b></p>
 
