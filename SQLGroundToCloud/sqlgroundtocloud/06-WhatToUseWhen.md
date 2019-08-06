@@ -145,21 +145,20 @@ In this activity you will list out all of the options you have for your problem 
  
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">6.3 Create a Decision Matrix</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">6.3 The Decision Matrix</h2>
 
 TODO: Topic Description
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: TODO: Activity Name</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: TCreate a Decision Matrix</b></p>
 
 TODO: Activity Description and tasks
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Description</b></p>
-
-TODO: Enter activity description with checkbox
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-TODO: Enter activity steps description with checkbox
+- [Open this reference and read through it](https://www.smartsheet.com/decision-matrix-templates). 
+- Create a spreadsheet for your Decision Matrix, or download one of the samples from the reference.
+- Fill out the Decision Matrix based on the problem requirements and constraints using the technologies and processes you developed in the previous steps
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
