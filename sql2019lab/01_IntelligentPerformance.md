@@ -146,7 +146,7 @@ You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><p><h2><b><a name="aks">     Activity: Using Query Store for Performance Analysis</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="aks">     Activity: Using Query Store for Performance Analysis</a></b></h2>
 
 The **WideWorldImporters** sample database that you restored in Module 1.0 has the Query Store feature enabled. If you performed the Activities in Module 1.0, the Query Store recorded performance information about each query execution.
 
