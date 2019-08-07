@@ -159,9 +159,8 @@ This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Stu
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bookpencil.png?raw=true"><h2>Workshop Modules</h2>
 
-This is a modular workshop, and in each section, you'll learn concepts, technologies, and processes to help you complete the solution. 
+This is a modular workshop, and in each section, you'll learn concepts, technologies, and processes to help you complete the solution. This table is provided for you to see the list of modules in the workshop. You can use any module in any order you like but the preferred method is to **proceed to Next Steps below to start the workshop.**
 
-**Proceed to Next Steps below to start the workshop.**
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Module</b></td><td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
@@ -177,5 +176,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>Next Steps</b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true">Next Steps</h2>
+
 Next, Continue to <a href="./01_IntelligentPerformance.md" target="_blank"><i>Intelligent Performance</i></a>
+
