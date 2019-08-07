@@ -67,7 +67,7 @@ The information covered in this workshop includes the following technologies and
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
 
   <tr><th style="background-color: #1b20a1; color: white;">Technology/Concept</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
-  <tr><td style="vertical-align: top">SQL Server 2019 improvements (on-prem and in-cloud)</i></td><td style="vertical-align: top">Covers the updates and improvements in security, resiliency, containers and other technologies  in SQL Server 2019 in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
+  <tr><td style="vertical-align: top">SQL Server 2019 improvements (on-prem and in-cloud)</i></td><td style="vertical-align: top">Covers challenges and solutions in performance, security, availability, data virtualization, and Linux and containers in SQL Server 2019 spanning on-premise, containers, Kubernetes, and cloud platforms.</td></tr>
   <tr><td style="vertical-align: top">Big Data Clusters for SQL Server (on-prem and in-cloud)</i></td><td style="vertical-align: top">Explains the architecture for Big Data Clusters for SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
   <tr><td style="vertical-align: top">SQL Server Virtual Machines in Microsoft Azure </i></td><td style="vertical-align: top">Covers the tools, processes and procedures for SQL Server Virtual Machines on the Microsoft Azure platform </td></tr>
   <tr><td style="vertical-align: top">Azure SQL Database </i></td><td style="vertical-align: top">Covers the tools, processes and procedures for Azure SQL Database (Managed Instance, Singleton, and Elastic Pools)</td></tr>
@@ -136,14 +136,15 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
   <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/01-IntroductionAndWorkshopMethodology.md" target="_blank">01 - Introduction and Workshop Methodology </a></td><td>9:00AM-9:15AM</td><td> Workshop introduction, logistics, setup check </td></tr>
   
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">9:15AM-11:15AM</td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> This module covers the improvements made to the latest version of SQL Server, and has information on: 
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">9:15AM-11:15AM</td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> This module covers challenges and solutions using the latest version of SQL Server including: 
     <ul style="list-style-type:disc;">
+        <li>Overall SQL Server 2019</li> 
         <li>Intelligent Performance</li>
         <li>What's New in Security</li>
         <li>Mission Critical Availability</li>
         <li>Data Virtualization</li>
         <li>SQL Server Linux and Containers</li>
-        <li>Migration</li>
+        <li>Migration and Next Steps</li>
     </ul>
   </td></tr>
 
