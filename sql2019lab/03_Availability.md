@@ -1,12 +1,12 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab CTP 3.1
+# Workshop: SQL Server 2019 Lab CTP 3.2
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>SQL Server 2019 Mission Critical Availability</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     SQL Server 2019 Mission Critical Availability</b></h2>
 
 SQL Server 2019 includes new capabilities to keep your database and application highly available:
 
@@ -27,13 +27,13 @@ You'll cover the following topics in this Module:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="3-0">3.0 Accelerated Database Recovery</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="3-0">     3.0 Accelerated Database Recovery</a></b></h2>
 
 In this module you will learn about a new capability in SQL Server 2019 to solve problems caused by long running transactions. This enhancement to SQL Server 2019 is called Accelerated Database Recovery.
 
 Accelerated Database Recovery started years ago as a project within Microsoft called Constant Time Recovery (CTR). The idea was to enhance the database engine so that the time it took to recover a database was constant instead of based on the length of the oldest active transaction as recorded in the transaction log. You can read more about the project in this detailed paper at https://www.microsoft.com/en-us/research/publication/constant-time-recovery-in-azure-sql-database.
 
-<p><b><a name="challenge">The Challenge</a></b></p>
+<h3><b><a name="challenge">The Challenge</a></b></h3>
 
 Long running transactions can take the following forms:
 
@@ -46,7 +46,7 @@ Both of these scenarios can lead to the following problems:
 - **Transaction rollback** for queries with alot of modifications can take a **long time** holding locks.
 - The **transaction log** may grow unexpectedly because it **cannot be truncated** due to an active transactions.
 
-<p><b><a name="solution">The Solution</a></b></p>
+<h3><b><a name="solution">The Solution</a></b></h3>
 
 Accelerated Database Recovery (ADR) attempts to solve these problems by using a concept called the **Persistent Version Store (PVS)**. This is not the same version store that is kept in tempdb for snapshot isolation. The PVS is stored in the user database inside the rows of a page or in an off-row store internal table. Because it is persistent (i.e. survives restarts) it can be used for recovery purposes.
 
@@ -85,13 +85,13 @@ Proceed to the Activity to learn an example of how Accelerated Database Recovery
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="activityadr">Activity: Accelerated Database Recovery</a></b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityadr">     Activity: Accelerated Database Recovery</a></b></h2>
 
 In this activity, you will see how Accelerated Database Recovery affects log truncation and the speed of rollback.
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
 
-<p><b><a name="activitysteps">Activity Steps</a></b></p>
+<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
 All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database. The scripts will create a database with a data file of 10Gb and transaction log of 10Gb so there is plenty of space for the activity.
 
@@ -141,11 +141,11 @@ There is additional documentation on how to use SQL notebooks at https://docs.mi
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
-<p><b><a name="activitysummary">Activity Summary</a></b></p>
+<h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
 In this activity you have learned Accelerated Database recovery can speed up transaction rollback significantly. You have also learned how transaction log truncation is no longer affected by long running transactions.
 
-<p><b><a name="bonusactivity">Bonus Activity</a></b></p>
+<h3><b><a name="bonusactivity">Bonus Activity</a></b></h3>
 
 **NOTE**: Close out any outstanding scripts or notebooks before running this bonus activity.
 
@@ -155,7 +155,7 @@ Armed with this knowledge, proceed to the next activity to learn how **data virt
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="margin: 0px 15px 15px 0px;" src="./graphics/owl.png"><b>For Further Study</b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     For Further Study</b></h2>
 
 - [Accelerated Databased Recovery](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-accelerated-database-recovery)
 
@@ -167,6 +167,6 @@ Armed with this knowledge, proceed to the next activity to learn how **data virt
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b >Next Steps</b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
 
 Next, Continue to <a href="04_DataVirtualization.md" target="_blank"><i>Data Virtualization</i></a>.
