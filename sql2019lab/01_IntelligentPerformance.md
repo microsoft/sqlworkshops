@@ -6,7 +6,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><p><h2><b>SQL Server Intelligent Performance</b></h2></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>SQL Server Intelligent Performance</b></h2>
 
 SQL Server 2019 includes new capabilities designed to enhance your performance with no application changes. These enhancements include:
 
