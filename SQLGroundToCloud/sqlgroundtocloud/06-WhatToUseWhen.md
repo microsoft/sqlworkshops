@@ -1,4 +1,4 @@
-![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png)
+![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png?raw=true)
 
 # Workshop: SQL Ground-to-Cloud
 
@@ -18,12 +18,12 @@ In production, there are normally 6 phases to create  a solution:
 
 <dl>
 
-  <dt>01 - <b><i>Discovery</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>02 - <b><i>Envisioning</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>03 - <b><i>Architecture Design Session (ADS)</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>04 - <b><i>Proof-Of-Concept (POC)</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>05 - <b><i>Implementation</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>06 - <b><i>Discovery</i></b>: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>01 - Discovery: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>02 - Envisioning: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>03 - Architecture Design Session (ADS): The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>04 - Proof-Of-Concept (POC): The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>05 - Implementation: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
+  <dt>06 - Discovery: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
 
 </dl>
 
@@ -98,9 +98,9 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 - High Security and Auditing capabilities
 - International Compliance
 - Access Tracking
- 
+- Must be user-friendly on mobile devices 
 
-TODO: https://docs.microsoft.com/en-us/azure/migrate/contoso-migration-overview
+<!-- TODO https://docs.microsoft.com/en-us/azure/migrate/contoso-migration-overview -->
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -147,12 +147,27 @@ In this activity you will list out all of the options you have for your problem 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">6.3 The Decision Matrix</h2>
 
-TODO: Topic Description
+Following the process, you now knwo the problems you want to solve, the desired outcomes for the solution, and several tools and technique options that you can use to achieve your goals. In most situations, there are several ways to solve a given problem. Sometimes the "best" solution is too costly, inconvenient or unworkable due to the requirements or constraints the customer puts on the solution.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: TCreate a Decision Matrix</b></p>
+Because most solutions are fairly complex, and there are mutliple technology and process choices, considerations and requirements, a *Decision Matrix* that lists these elements is useful. It contains columns for the technology and process options you have, and the requirements and constraints as rows. Each column gets a score you assign from a low number (does not meet this requirement) to a higher one (does meet the requirement). These numbers are summed at the end of each row, per requirement. The highest number is usually the best technology for that aspect of the solution. 
 
-TODO: Activity Description and tasks
+As an example, assume you have an application that is written using T-SQL statements, and you want to store data that has high security requirements and is available online: 
 
+<table>
+	<tr><td>Requirement/Constraint</td><td>SQL Server in Azure VM</td><td>Azure SQL DB</td><td>Postgres as a Service</td></tr>
+	<tr><td>Low Cost</td><td>2</td><td>3</td><td>3</td></tr>
+	<tr><td>Easy to Manage</td><td>2</td><td>3</td><td>3</td></tr>
+	<tr><td>Highly Securable</td><td>3</td><td>3</td><td>2</td></tr>
+	<tr><td>Fully Supports T-SQL</td><td>3</td><td>3</td><td>0</td></tr>
+	<tr><td></td><td></td><td></td><td></td></tr>
+	<tr><td>Score: </td><td>10</td><td>12</td><td>8</td></tr>
+</table>
+
+In this simple example, Azure SQL DB is a high candidate for your solution. (In production, there would be far more requirements and constraints, and you may need to use a 1-5 scale rather than 1-3)
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create a Decision Matrix</b></p>
+
+In this activity you will use the scenario you selected from above and create a Decision Matrix using a spreadsheet.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -180,12 +195,19 @@ TODO: Enter activity steps description with checkbox
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>For Further Study</b></p>
+<h2><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true">References</h2>
 
-    <u>
-        <li><a href="http://www.ceptara.com/blog/how-to-write-problem-statement" target="_blank">How to Write a Problem Statement</a> - Article on writing effective problem statements</li>
-    </ul>
-    
+<ul>
+    <li><a href="http://www.ceptara.com/blog/how-to-write-problem-statement" target="_blank">How to Write a Problem Statement</a> - Article on writing effective problem statements</li>
+    <li><a href="https://www.mindtools.com/pages/article/newTED_03.htm" target="_blank">Decision Matrix Analysis</a> - Article on creating a Decision Matrix</li>
+    <li><a href="https://azure.microsoft.com/en-us/pricing/calculator/" target="_blank">Azure Pricing Calulator</a> - Create a cost analysis of your solution</li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/data-guide/" target="_blank">Azure Data Architecture Guide</a> - This guide presents a structured approach for designing data-centric solutions on Microsoft Azure. It is based on proven practices derived from customer engagements</li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/" target="_blank">Azure Reference Architectures</a> - Recommended practices, along with considerations for scalability, availability, manageability, and security</li>
+    <li><a href="http://www.ceptara.com/blog/how-to-write-problem-statement" target="_blank">Microsoft Cloud Adoption Framework for Azure</a> - Article on writing effective problem statements</li>
+
+</ul>
+
+<!-- 
 https://www.quickbase.com/blog/decision-matrix-make-the-best-business-decisions-possible
 
 https://www.bing.com/search?q=decision+matrix+template+excel&FORM=QSRE7
@@ -201,7 +223,7 @@ https://www.designorate.com/decision-matrix-decision-making/
 http://www.criticaltosuccess.com/use-an-excel-based-decision-matrix-for-critical-decisions/ 
 
 https://www.launchexcel.com/resources/decision-matrix/ 
-
+-->
 
 
 Congratulations! You have completed this workshop on "SQL Ground-to-Cloud". You now have the tools, assets, and processes you need to extrapolate this information into other applications.
