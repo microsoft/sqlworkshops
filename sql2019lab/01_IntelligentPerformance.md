@@ -6,7 +6,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2>SQL Server Intelligent Performance</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><h2><b>SQL Server Intelligent Performance</h2></b>
 
 SQL Server 2019 includes new capabilities designed to enhance your performance with no application changes. These enhancements include:
 
@@ -31,15 +31,15 @@ You'll cover the following topics in this Module:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="1-0">1.0 SQL Server Intelligent Query Processing</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><h2><b><a name="1-0">1.0 SQL Server Intelligent Query Processing</a></b></h2>
 
 In this module you will learn about the Intelligent Query Processing capabilities in SQL Server 2019.
 
-<p><b><a name="challenge">The Challenge</a></b></p>
+<h3><b><a name="challenge">The Challenge</a></b></h3>
 
 Application developers and DBAs want to gain performance for queries without making application changes. Query tuning can be an expensive undertaking so they want the query processor to adapt to their workload needs vs having to use options and flags to gain performance.
 
-<p><b><a name="solution">The Solution</a></b></p>
+<h3><b><a name="solution">The Solution</a></b></h3>
 
 Intelligent Query processing is a suite of features built into the query processor for SQL Server 2019 allowing developers and data professionals to accelerate database performance automatically **without application changes**. T-SQL queries simply need to be run with a database compatibility level of 150 to take advantage of these enhancements.
 
@@ -56,7 +56,7 @@ Now proceed to the Activity to learn an example of how Intelligent Query Process
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="activityiqp">Activity: SQL Server Intelligent Query Processing</a></b></p>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><h2><b><a name="activityiqp">Activity: SQL Server Intelligent Query Processing</a></b></h2>
 
 In this activity, you will learn how to use the built-in capabilities of Intelligent Query Processing in SQL Server 2019 simply by changing the database compatibility of WideWorldImporters to version 150 with no application changes.
 
@@ -70,7 +70,7 @@ The **WideWorldImporters** database example was created using SQL Server 2016 wh
 
 You will observe the performance of the **CustomerProfits** stored procedure with database compatibility level of 130 on SQL Server 2019. You will then compare the performance of the same procedure with no changes with a database compatibility of 150 which will enable the query processor to use  table variable deferred compilation.
 
-<p><b><a name="activitysteps">Activity Steps</a></b></p>
+<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
 All scripts for this activity can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
@@ -122,21 +122,21 @@ When you start using a notebook and use the "Play" button of a cell, you may get
 
 There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. When you are done proceed to the **Activity Summary** section for the Activity below.
 
-<p><b><a name="activitysummary">Activity Summary</a></b></p>
+<h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
 In this activity you have learned the powerful capabilities of Intelligent Query Processing by looking at an example where no application changes were required to boost performance. All that was required was to simply change the database compatibility level to 150 for the database. This example used a concept called table variable deferred compilation. You can read more about this capability at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/pencil2.png"><a name="1-1">1.1 Using Query Store for Performance Analysis</a></h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><h2><b><a name="1-1">1.1 Using Query Store for Performance Analysis</a></b></h2>
 
 In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Module 1.0. Even though query store is not new to SQL Server 2019, it is an excellent feature to help analyze performance differences with Intelligent Query Processing.
 
-<p><b><a name="challenge">The Challenge</a></b></p>
+<h3><b><a name="challenge">The Challenge</a></b></h3>
 
 Developers and DBA need to track query performance execution over time without having to "poll" Dynamic Management Views and save it to permanent storage. Data professionals need to easily be able to compare query execution for different query plans associated with the same query text.
 
-<p><b><a name="solution">The Solution</a></b></p>
+<h3><b><a name="solution">The Solution</a></b></h3>
 
 The Query Store is built into the query processing engine, enabled using an option for each database in SQL Server. Once enabled, performance statistics for queries are cached and stored in the SQL user database so they are persisted across server restarts.
 
@@ -146,13 +146,13 @@ You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/point1.png"><b><a name="aks">Activity: Using Query Store for Performance Analysis</a></b></p>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><h2><b><a name="aks">Activity: Using Query Store for Performance Analysis</a></b></h2>
 
 The **WideWorldImporters** sample database that you restored in Module 1.0 has the Query Store feature enabled. If you performed the Activities in Module 1.0, the Query Store recorded performance information about each query execution.
 
 **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
-<p><b><a name="activitysteps">Activity Steps</a></b></p>
+<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
 Work through the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 versus 150.
 
@@ -220,7 +220,7 @@ In this example, the query processor used three different Intelligent Query Proc
 - Adaptive Join
 - Batch mode for rowstore
 
-<p><b><a name="activitysummary">Activity Summary</a></b></p>
+<h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
 In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing. You observed the SQL Server query processor using multiple techniques to make your queries faster with no changes to the stored procedure or application.
 
@@ -228,7 +228,7 @@ Proceed to the next module to learn about new **security** capabilities in SQL S
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="margin: 0px 15px 15px 0px;" src="./graphics/owl.png"><b>For Further Study</b></p>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><h2>For Further Study</h2></p>
 
 - [Intelligent Query Processing in SQL Server](https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing)
 - [Q&A about Intelligent Query Processing](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Intelligent-Query-Processing-Q-amp-A/ba-p/446657)
@@ -239,6 +239,6 @@ Proceed to the next module to learn about new **security** capabilities in SQL S
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/geopin.png"><b >Next Steps</b></p>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true">Next Steps</h2>
 
 Next, Continue to <a href="02_Security.md" target="_blank"><i>Security</i></a>.
