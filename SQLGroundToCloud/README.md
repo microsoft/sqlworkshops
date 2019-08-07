@@ -136,7 +136,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
   <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/01-IntroductionAndWorkshopMethodology.md" target="_blank">01 - Introduction and Workshop Methodology </a></td><td>9:00AM-9:15AM</td><td> Workshop introduction, logistics, setup check </td></tr>
   
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">9:15AM-11:15AM</td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> This module covers challenges and solutions using the latest version of SQL Server including: 
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">9:15AM-11:15AM</td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> This module covers challenges and solutions using the latest version of SQL Server including:<br>
     <ul style="list-style-type:disc;">
         <li>Overall SQL Server 2019</li> 
         <li>Intelligent Performance</li>
