@@ -53,6 +53,16 @@ If you are using this module self-paced, read and go through all the activities 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Data Classification and Auditing</b></h2>
 
+Proceed directly to the following Activities from **Module 02 SQL Server 2019 Security of the SQL Server 2019 Lab** for a hands-on exercise about Data Classification and Auditing. When are you done with these activities come back to go to the next section as guided by your instructor.
+
+<dl>
+
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/02_Security.md#activitydataclassification">Activity: Data Classification</a></dt>
+
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/02_Security.md#activityauditing">Activity: Auditing classified data</a></dt>
+  
+</dl>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.3 SQL Server 2019 Mission Critical Availability</b></h2>
