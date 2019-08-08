@@ -14,6 +14,7 @@ SQL Server 2019 has new security enhancements including:
 - Data Classification and Auditing
 - Transparent Data Encryption (TDE) Suspend and Resume
 - Improved Certificate Management
+- Feature Restrictions
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
 
@@ -64,7 +65,7 @@ Proceed to the Activity to learn an example of how to use Data Classification wi
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityiqp">     Activity: Data Classification</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitydataclassification">     Activity: Data Classification</a></b></h2>
 
 In this activity, you will learn how to use SQL Server Management Studio (SSMS) and T-SQL to classify columns of tables in a database. You will use the **WideWorldImporters** sample database to classify specific columns in tables of that database.
 

@@ -10,7 +10,7 @@
 
 SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server.
 
-Instructor led workshops will review the overall new capabilities of SQL Server 2019 using the **Module 2.0 Introduction Section** from the deck https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx
+Instructor led workshops will review the overall new capabilities of SQL Server 2019 using the **Module 2.0 Introduction Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
 (<a href="file:///url" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
@@ -23,30 +23,33 @@ https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md and c
 
 SQL Server 2019 includes new capabilities designed to enhance your performance with no application changes including Intelligent Query Processing and more.
 
-Instructor led workshops will review the overall new capabilities of SQL Server 2019 using the **Module 2.1 Intelligent Performance Section** from the deck https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL Server 2019 Modern Data Platform.pptx.
+Instructor led workshops will review the overall new capabilities of SQL Server 2019 using the **Module 2.1 Intelligent Performance Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
-If you are using this module self-paced, read through details of SQL Server Intelligent Performance at  
-https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md and come back to this point to continue. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this module.
+Your instructor will guide to proceed to the Activity below for hands-on exercises for SQL Server Intelligent Performance.
+
+If you are using this module self-paced, read and go through all the activities of SQL Server Intelligent Performance from <a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md">Module 01 SQL Server Intelligent Performance of the SQL Server 2019 Lab</a> and proceed to Module 2.2 of this workshop SQL Server 2019 Security. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: SQL Server Intelligent Performance</b></h2>
 
-Proceed directly to the following Activities for a hands-on exercise about Intelligent Query Processing and how to use Query Store for Performance Analysis.
+Proceed directly to the following Activities from **Module 01 SQL Server Intelligent Performance of the SQL Server 2019 Lab** for a hands-on exercise about Intelligent Query Processing and how to use Query Store for Performance Analysis. When are you done with these activities come back to go to the next section as guided by your instructor.
 
 <dl>
 
-  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md#activityiqp">Activity: Intelligent Query Performance</a></dt>
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md#activityiqp">Activity: Intelligent Query Processing</a></dt>
 
   <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md#activityquerystore">Activity: Using Query Store for Performance Analysis</a></dt>
   
 </dl>
 
-
-
-
-
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.2 SQL Server 2019 Security</b></h2>
+
+SQL Server 2019 has new security enhancements including Data Classification with Auditing and more.
+
+Instructor led workshops will review the overall new capabilities of SQL Server 2019 using the **Module 2.2 New Security Capabilities Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
+
+If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/02_Security.md">Module 02 SQL Server 2019 Security of the SQL Server 2019 Lab</a> and proceed to Module 2.3 of this workshop SQL Server Mission Critical Availability. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Data Classification and Auditing</b></h2>
 
