@@ -12,9 +12,9 @@ SQL Server 2019 is a modern data platform designed to tackle the challenges of t
 
 Instructor led workshops will review the overall capabilities and value of SQL Server 2019 using the **Module 2.0 Introduction Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
-(<a href="file:///url" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="file:///url" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop. Instructor led workshops may have provided for you all the prerequisites.)
 
-SELF-PACED USERS ONLY: If you are using this module self-paced, read the overview of SQL Server 2019 from <a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md">SQL Server 2019 of the SQL Server 2019 Lab</a> and proceed to Module 2.1 of this workshop SQL Server 2019 Intelligent Performance. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+SELF-PACED USERS ONLY: If you are using this module self-paced, read the overview of SQL Server 2019 from <a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md">SQL Server 2019 of the SQL Server 2019 Lab</a> and then proceed to Module 2.1 of this workshop SQL Server 2019 Intelligent Performance. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -26,15 +26,15 @@ Instructor led workshops will review Intelligent Performance in SQL Server 2019 
 
 Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server Intelligent Performance.
 
-SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server Intelligent Performance from <a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md">Module 01 SQL Server Intelligent Performance of the SQL Server 2019 Lab</a> and proceed to Module 2.2 of this workshop SQL Server 2019 Security. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server Intelligent Performance from <a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md">Module 01 SQL Server Intelligent Performance of the SQL Server 2019 Lab</a> and then proceed to Module 2.2 of this workshop SQL Server 2019 Security. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: SQL Server Intelligent Performance</b></h2>
 
-Proceed directly to the following Activities from **Module 01 SQL Server Intelligent Performance of the SQL Server 2019 Lab** for a hands-on exercise about Intelligent Query Processing and how to use Query Store for Performance Analysis. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module SQL Server Intelligent Performance of the SQL Server 2019 Lab** for a hands-on exercise about Intelligent Query Processing and how to use Query Store for Performance Analysis. When are you done with these activities come back here for the next section as guided by your instructor.
 
 <dl>
 
-  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md#activityiqp">Activity: Intelligent Query Processing</a></dt>
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md#activityiqp">Activity: SQL Server Intelligent Query Processing</a></dt>
 
   <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md#activityquerystore">Activity: Using Query Store for Performance Analysis</a></dt>
   
@@ -50,17 +50,17 @@ Instructor led workshops will review new security capabilities of SQL Server 201
 
 Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Security.
 
-SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/02_Security.md">Module 02 SQL Server 2019 Security of the SQL Server 2019 Lab</a> and proceed to Module 2.3 of this workshop SQL Server Mission Critical Availability. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/02_Security.md">Module SQL Server 2019 Security of the SQL Server 2019 Lab</a> and then proceed to Module 2.3 of this workshop SQL Server Mission Critical Availability. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those. Come back to the next section of this workshop after you are done with the lab module.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Data Classification and Auditing</b></h2>
 
-Proceed directly to the following Activities from **Module 02 SQL Server 2019 Security of the SQL Server 2019 Lab** for a hands-on exercise about Data Classification and Auditing. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module SQL Server 2019 Security of the SQL Server 2019 Lab** for a hands-on exercise about Data Classification and Auditing. When are you done with these activities come back here for the next section as guided by your instructor.
 
 <dl>
 
   <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/02_Security.md#activitydataclassification">Activity: Data Classification</a></dt>
 
-  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/02_Security.md#activityauditing">Activity: Auditing classified data</a></dt>
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/02_Security.md#activityauditing">Activity: Using SQL Server Audit with Data Classification</a></dt>
   
 </dl>
 
@@ -74,11 +74,11 @@ Instructor led workshops will review new mission critical availability capabilit
 
 Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Mission Critical Availability.
 
-SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/03_Availability.md">Module 03 SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab</a> and proceed to Module 2.4 of this workshop SQL Server Data Virtualization. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Mission Critical Availability from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/03_Availability.md">Module SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab</a> and then proceed to Module 2.4 of this workshop SQL Server Data Virtualization. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Accelerated Database Recovery</b></h2>
 
-Proceed directly to the following Activities from **Module 03 SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab** for a hands-on exercise about Accelerated Database Recovery. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab** for a hands-on exercise about Accelerated Database Recovery. When are you done with these activities come back to go to the next section as guided by your instructor.
 
 <dl>
 
@@ -96,11 +96,11 @@ Instructor led workshops will review data virtualization in SQL Server 2019 usin
 
 Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Data Virtualization.
 
-SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/04_DataVirtualization.md">Module 04 Data Virtualization of the SQL Server 2019 Lab</a> and proceed to Module 2.5 of this workshop SQL Server Linux and Containers. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Data Virtualization from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/04_DataVirtualization.md">Module Data Virtualization of the SQL Server 2019 Lab</a> and then proceed to Module 2.5 of this workshop SQL Server Linux and Containers. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Polybase in SQL Server 2019</b></h2>
 
-Proceed directly to the following Activities from **Module 04 Data Virtualization of the SQL Server 2019 Lab** for a hands-on exercise about Polybase in SQL Server 2019. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module Data Virtualization of the SQL Server 2019 Lab** for a hands-on exercise about Polybase in SQL Server 2019. When are you done with these activities come back to go to the next section as guided by your instructor.
 
 <dl>
 
@@ -118,11 +118,11 @@ Instructor led workshops will review SQL Server on Linux and Containers in SQL S
 
 Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Linux and Containers.
 
-SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server on Linux and Containers in SQL Server 2019 from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/05_Linux_and_Containers.md">Module 05 SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab</a> and proceed to Module 2.6 of this workshop What Else, Migration, and Next Steps. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+SELF-PACED USERS ONLY: If you are using this module self-paced, read and go through all the activities of SQL Server on Linux and Containers in SQL Server 2019 from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/05_Linux_and_Containers.md">Module SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab</a> and proceed to Module 2.6 of this workshop What Else, Migration, and Next Steps. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Replication in SQL Server on Linux using Containers</b></h2>
 
-Proceed directly to the following Activities from **Module 05 SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab** for a hands-on exercise to deploy Replication on Linux using Containers. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab** for a hands-on exercise to deploy Replication on Linux using Containers. When are you done with these activities come back to go to the next section as guided by your instructor.
 
 <dl>
 
