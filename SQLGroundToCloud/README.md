@@ -150,30 +150,24 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
   <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/03-WorkingWithBigDataAndDataScienceBigDataClustersForSQLServer2019.md" target="_blank"> 03 - Working with Big Data and Data Science (Big Data Clusters for SQL Server 2019) </a></td><td>11:30AM-12:30PM</td><td style="vertical-align: top;"> Abstraction levels, frameworks, architectures and components within SQL Server big data clusters</td></tr>
 
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/04-SQLServerOnTheMicrosoftAzurePlatform.md" target="_blank">04 - SQL Server on the Microsoft Azure Platform </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">1:30PM-2:45PM<td td style="background-color: AliceBlue; color: black;"> Covers the multiple ways to use SQL Server technologies on the Microsoft Azure Platform, along with the fundamentals of SQL in Azure with additional deeper resources provided. Topics covered include:
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/04-SQLServerOnTheMicrosoftAzurePlatform.md" target="_blank">04 - SQL Server on the Microsoft Azure Platform </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">1:30PM-2:30PM<td td style="background-color: AliceBlue; color: black;"> Covers the multiple ways to use SQL Server technologies on the Microsoft Azure Platform, along with the fundamentals of SQL in Azure with additional deeper resources provided. Topics covered include:
       <ul style="list-style-type:disc;">
         <li>Azure SQL: SQL VMs, Single instance, Single database, Elastic pools</li>
-        <ul><li>Deployment options, service tiers</ul></li>
         <li>Fundamentals of SQL in Azure</li>
-        <ul><li>Networking and security</ul></li>
-        <ul><li>Business continuity (availability) and disaster recovery</ul></li>
-        <ul><li>Performance</ul></li>
-        <ul><li>Scale</ul></li>
+        <li>Migration process</li>
     </ul>
   </td></tr>  
 
-  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-WhatToUseWhen.md" target="_blank"> 05 - Migrating SQL Serverto Azure </a></td><td>3:00PM-3:45PM</td><td style="vertical-align: top;"> Covers the decision process and provides tools for assessing, planning, and migrating SQL workloads to Azure that meets the business requirements. Some of the tools and topics (not exhaustive) covered are:
+  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-MigratingSQLSServer.md" target="_blank"> 05 - Migrating SQL Server to Azure </a></td><td>2:45PM-3:45PM</td><td style="vertical-align: top;"> Covers the migration workflow and tools for assessing, planning, and migrating SQL workloads to Azure that meets the business requirements. Some of the tools and topics (not exhaustive) covered are:
         <ul style="list-style-type:disc;">
         <li>Azure Migrate</li>
         <li>Data Migration Assistant</li>
         <li>Azure Database Migration Service</li>
-        <li>Azure Migrate Program</li>
-        <li>Azure Hybrid Benefits</li>
-        <li>Resource Provider</li>
+        <li>Post-migration operations</li>
     </ul>
   </td></tr>
 
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/06-ReviewAndApplication.md" target="_blank"> 06 - What to use When </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">3:45PM-5:00PM<td td style="background-color: AliceBlue; color: black;"> Covers the decision process and provides tools for deciding on the proper technologies on-premises and in-cloud for a solution based on requirements and constraints.</td></tr>
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/06-WhatToUseWhen.md" target="_blank"> 06 - What to use When </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">3:45PM-5:00PM<td td style="background-color: AliceBlue; color: black;"> Covers the decision process and provides tools for deciding on the proper technologies on-premises and in-cloud for a solution based on requirements and constraints.</td></tr>
 
 </table>
 
