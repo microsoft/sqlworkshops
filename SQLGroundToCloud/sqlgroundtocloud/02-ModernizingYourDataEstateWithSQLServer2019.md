@@ -136,7 +136,7 @@ Proceed directly to the following Activities from **Module 05 SQL Server 2019 Li
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.6 What Else, Migration, and Next Steps</b></h2>
 
-SQL Server 2019 meets other challenges faced by data professionals and developers including SQL Server Machine Learning Services, T-SQL Extensibility, and a series of supportability and engine performance enhancements.
+SQL Server 2019 meets other challenges faced by data professionals and developers with solutions like SQL Server Machine Learning Services, T-SQL Extensibility, and a series of supportability and engine performance enhancements.
 
 Microsoft also provides a series of tools to assist with migration to SQL Server 2019 including the Database Migration Assistant (DMA), Database Experimentation Assistant (DEA), Query Tuning Assistant (QTA), and SQL Server Migration Assistant (SSMA).
 
