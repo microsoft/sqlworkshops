@@ -23,7 +23,7 @@ https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md and c
 
 SQL Server 2019 includes new capabilities designed to enhance your performance with no application changes including Intelligent Query Processing and more.
 
-Instructor led workshops will review the overall new capabilities of SQL Server 2019 using the **Module 2.1 Intelligent Performance Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
+Instructor led workshops will review Intelligent Performance in SQL Server 2019 using the **Module 2.1 Intelligent Performance Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
 Your instructor will guide to proceed to the Activity below for hands-on exercises for SQL Server Intelligent Performance.
 
@@ -47,7 +47,7 @@ Proceed directly to the following Activities from **Module 01 SQL Server Intelli
 
 SQL Server 2019 has new security enhancements including Data Classification with Auditing and more.
 
-Instructor led workshops will review the overall new capabilities of SQL Server 2019 using the **Module 2.2 New Security Capabilities Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
+Instructor led workshops will review new security capabilities of SQL Server 2019 using the **Module 2.2 New Security Capabilities Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
 If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/02_Security.md">Module 02 SQL Server 2019 Security of the SQL Server 2019 Lab</a> and proceed to Module 2.3 of this workshop SQL Server Mission Critical Availability. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
@@ -67,31 +67,85 @@ Proceed directly to the following Activities from **Module 02 SQL Server 2019 Se
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.3 SQL Server 2019 Mission Critical Availability</b></h2>
 
+SQL Server 2019 meets the challenges of keeping your data and application highly available with capabilities like Accelerated Database Recovery and more.
+
+Instructor led workshops will review new mission critical availability capabilities of SQL Server 2019 using the **Module 2.3 Mission Critical Availability Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
+
+If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/03_Availability.md">Module 03 SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab</a> and proceed to Module 2.4 of this workshop SQL Server Data Virtualization. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Accelerated Database Recovery</b></h2>
+
+Proceed directly to the following Activities from **Module 03 SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab** for a hands-on exercise about Accelerated Database Recovery. When are you done with these activities come back to go to the next section as guided by your instructor.
+
+<dl>
+
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/03_Availability.md#activityadr">Activity: Accelerated Database Recovery</a></dt>
+
+</dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.4 Data Virtualization</b></h2>
 
+SQL Server 2019 includes new capabilities for data virtualization by extending the Polybase (nicknamed it Polybase++) feature introduced in SQL Server 2016 with the ability to connect to other data sources like Oracle with **client drivers installed**
+
+Instructor led workshops will review data virtualization in SQL Server 2019 using the **Module 2.4 Data Virtualization Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
+
+If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/04_DataVirtualization.md">Module 04 Data Virtualization of the SQL Server 2019 Lab</a> and proceed to Module 2.5 of this workshop SQL Server Linux and Containers. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Polybase in SQL Server 2019</b></h2>
+
+Proceed directly to the following Activities from **Module 04 Data Virtualization of the SQL Server 2019 Lab** for a hands-on exercise about Polybase in SQL Server 2019. When are you done with these activities come back to go to the next section as guided by your instructor.
+
+<dl>
+
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/04_DataVirtualization.md#activitypolybase">Activity: Using Polybase with Azure SQL Server Database</a></dt>
+
+</dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.5 SQL Server on Linux and Containers</b></h2>
 
+SQL Server 2017 introduced the world to SQL Server on Linux and Containers. SQL Server on Linux is completely compatible with SQL Server on Windows due to the unique design of the SQL Platform Abstraction Layer (SQLPAL). The core engine features of SQL Server on Linux work exactly as SQL Server on Windows because the engine codebase is the same on both platforms.
+
+However, there were some features that come with SQL Server that were not included in SQL Server 2017 on Linux. SQL Server 2019 shores up these gaps by including features like Replication.
+
+Instructor led workshops will review SQL Server on Linux and Containers in SQL Server 2019 using the **Module 2.5 SQL Server on Linux and Containers** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
+
+If you are using this module self-paced, read and go through all the activities of SQL Server on Linux and Containers in SQL Server 2019 from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/05_Linux_and_Containers.md">Module 05 SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab</a> and proceed to Module 2.6 of this workshop What Else, Migration, and Next Steps. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
+
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Replication in SQL Server on Linux using Containers</b></h2>
+
+Proceed directly to the following Activities from **Module 05 SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab** for a hands-on exercise to deploy Replication on Linux using Containers. When are you done with these activities come back to go to the next section as guided by your instructor.
+
+<dl>
+
+  <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/05_Linux_And_Containers.md#activitylinuxrepl">Activity: Replication on Linux using Containers</a></dt>
+
+</dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.6 What Else, Migration, and Next Steps</b></h2>
 
+SQL Server 2019 meets other challenges faced by data professionals and developers including SQL Server Machine Learning Services, T-SQL Extensibility, and a series of supportability and engine performance enhancements. 
+
+Microsoft also provides a series of tools to assist with migration to SQL Server 2019 including the Database Migration Assistant (DMA), Database Experimentation Assistant (DEA), Query Tuning Assistant (QTA), and SQL Server Migration Assistant (SSMA).
+
+Your instructor will discuss these topics and your next steps to be successful with SQL Server 2019 using using the **Module 2.6 What else, migrations, and next steps section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
+
+Students using this workshop self-paced can also review these slides for more information on this topic.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     For Further Study</b></h2>
 
 <ul>
-    <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15" target="_blank">What's new in SQL Server 2019</a></li>
+    <li><a href="https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab" target="_blank">The SQL Server 2019 Lab</a></li>
+    <li><a href="https://aka.ms/ss19
+" target="_blank">Download and try SQL Server 2019</a></li>
 </ul>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

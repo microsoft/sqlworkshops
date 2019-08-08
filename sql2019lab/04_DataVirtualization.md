@@ -70,7 +70,7 @@ Proceed to the Activity to learn an example of how to use Polybase with SQL Serv
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityadr">     Activity: Using Polybase with Azure SQL Server Database</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitypolybase">     Activity: Using Polybase with Azure SQL Server Database</a></b></h2>
 
 In this activity, you will learn how to build an external data source and table to query a table in Azure SQL Database without connecting directly yourself.
 

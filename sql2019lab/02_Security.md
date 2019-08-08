@@ -226,7 +226,7 @@ Let's use an activity to see how audit and classification work together.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="aks">     Activity: Using SQL Server Audit with Data Classification</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityauditing">     Activity: Using SQL Server Audit with Data Classification</a></b></h2>
 
 In this activity you will learn how to audit users trying to view columns that were marked for data classification.
 
