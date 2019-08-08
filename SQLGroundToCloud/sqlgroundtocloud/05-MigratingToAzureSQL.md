@@ -47,27 +47,27 @@ In this task, you will create a new SMB network share on the SqlServer2008 VM. T
 
 1. On the SqlServer2008 VM, open **Windows Explorer** by selecting its icon on the Windows Task bar.
 
-    ![The Windows Explorer icon is highlighted in the Windows Task Bar.](media/windows-task-bar.png "Windows Task Bar")
+    ![The Windows Explorer icon is highlighted in the Windows Task Bar.](../graphics/media/windows-task-bar.png "Windows Task Bar")
 
 2. In the Windows Explorer window, expand **Computer** in the tree view, select **Windows (C:)**, and then select **New folder** in the top menu.
 
-    ![In Windows Explorer, Windows (C:) is selected under Computer in the left-hand tree view, and New folder is highlighted in the top menu.](media/windows-explorer-new-folder.png "Windows Explorer")
+    ![In Windows Explorer, Windows (C:) is selected under Computer in the left-hand tree view, and New folder is highlighted in the top menu.](../graphics/media/windows-explorer-new-folder.png "Windows Explorer")
 
 3. Name the new folder **dms-backups**, then right-click the folder and select **Share with** and **Specific people** in the context menu.
 
-    ![In Windows Explorer, the context menu for the dms-backups folder is displayed, with Share with and Specific people highlighted.](media/windows-explorer-folder-share-with.png "Windows Explorer")
+    ![In Windows Explorer, the context menu for the dms-backups folder is displayed, with Share with and Specific people highlighted.](../graphics/media/windows-explorer-folder-share-with.png "Windows Explorer")
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
-    ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](media/file-sharing.png "File Sharing")
+    ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](../graphics/media/file-sharing.png "File Sharing")
 
 5. In the **Network discovery and file sharing** dialog, select the default value of **No, make the network that I am connected to a private network**.
 
-    ![In the Network discovery and file sharing dialog, No, make the network that I am connected to a private network is highlighted.](media/network-discovery-and-file-sharing.png "Network discovery and file sharing")
+    ![In the Network discovery and file sharing dialog, No, make the network that I am connected to a private network is highlighted.](../graphics/media/network-discovery-and-file-sharing.png "Network discovery and file sharing")
 
 6. Back on the File Sharing dialog, note the path of the shared folder, `\\SQLSERVER2008\dms-backups`, and select **Done** to complete the sharing process.
 
-    ![The Done button is highlighted on the File Sharing dialog.](media/file-sharing-done.png "File Sharing")
+    ![The Done button is highlighted on the File Sharing dialog.](../graphics/media/file-sharing-done.png "File Sharing")
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: TODO: Change MSSQLSERVER service to run under sqlmiuser account</b></p>
@@ -80,30 +80,30 @@ In this task, you will use the SQL Server Configuration Manager to update the se
 
 1. On your SqlServer2008 VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Managed** from the search results.
 
-    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
+    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](../graphics/media/windows-start-sql-configuration-manager.png "Windows search")
 
     > **Note**: Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which will not work for the installed SQL Server 2008 R2 database.
 
 2. In the SQL Server Configuration Managed dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu.
 
-    ![SQL Server Services is selected and highlighted in the tree view of SQL Server Configuration Manager. In the Services pane, SQL Server (MSSQLSERVER) is selected and highlighted. Properties is highlighted in the context menu.](media/sql-server-configuration-manager-services.png "SQL Server Configuration Manager")
+    ![SQL Server Services is selected and highlighted in the tree view of SQL Server Configuration Manager. In the Services pane, SQL Server (MSSQLSERVER) is selected and highlighted. Properties is highlighted in the context menu.](../graphics/media/sql-server-configuration-manager-services.png "SQL Server Configuration Manager")
 
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
     - **Account name**: sqlmiuser
     - **Password**: Password.1234567890
 
-    ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
+    ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered.](../graphics/media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
 
 4. Select **OK**.
 
 5. Select **Yes** in the Confirm Account Change dialog.
 
-    ![The Yes button is highlighted in the Confirm Account Change dialog.](media/confirm-account-change.png "Confirm Account Change")
+    ![The Yes button is highlighted in the Confirm Account Change dialog.](../graphics/media/confirm-account-change.png "Confirm Account Change")
 
 6. You will now see the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
-    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
+    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](../graphics/media/sql-server-service.png "SQL Server Services")
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: TODO: Create a backup of TailspinToys database</b></p>
@@ -114,31 +114,31 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
 1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
-    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
+    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](../graphics/media/start-menu-ssms-17.png "Windows start menu search")
 
 2. In the SSMS **Connect to Server** dialog, enter **SQLSERVER2008** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
-    ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
+    ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](../graphics/media/sql-server-connect-to-server.png "Connect to Server")
 
 3. Once connected, expand **Databases** under SQLSERVER2008 in the Object Explorer, and then right-click the **TailspinToys** database. In the context menu, select **Tasks** and then **Back Up**.
 
-    ![In the SSMS Object Explorer, the context menu for the TailspinToys database is displayed, with Tasks and Back Up... highlighted.](media/ssms-backup.png "SSMS Backup")
+    ![In the SSMS Object Explorer, the context menu for the TailspinToys database is displayed, with Tasks and Back Up... highlighted.](../graphics/media/ssms-backup.png "SSMS Backup")
 
 4. In the Back UP Database dialog, you will see `C:\TailspinToys.bak` listed in the Destinations box. This is no longer needed, so select it, and then select **Remove**.
 
-    ![In the General tab of the Back Up Database dialog, C:\TailspinToys.bak is selected and the Remove button is highlighted under destinations.](media/ssms-back-up-database-general-remove.png)
+    ![In the General tab of the Back Up Database dialog, C:\TailspinToys.bak is selected and the Remove button is highlighted under destinations.](../graphics/media/ssms-back-up-database-general-remove.png)
 
 5. Next, select **Add** to add the SMB network share as a backup destination.
 
-    ![In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations.](media/ssms-back-up-database-general.png "Back Up Database")
+    ![In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations.](../graphics/media/ssms-back-up-database-general.png "Back Up Database")
 
 6. In the Select Backup Destination dialog, select the Browse (...) button.
 
-    ![The Browse button is highlighted in the Select Backup Destination dialog.](media/ssms-select-backup-destination.png "Select Backup Destination")
+    ![The Browse button is highlighted in the Select Backup Destination dialog.](../graphics/media/ssms-select-backup-destination.png "Select Backup Destination")
 
 7. In the Location Database Files dialog, select the `C:\dma-backups` folder, enter `TailspinToys.bak` into the File name field, and then select **OK**.
 
-    ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field.](media/ssms-locate-database-files.png "Location Database Files")
+    ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field.](../graphics/media/ssms-locate-database-files.png "Location Database Files")
 
 8. Select **OK** to close the Select Backup Destination dialog.
 
@@ -147,13 +147,13 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
     - Select **Back up to the existing media set** and then select **Overwrite all existing backup sets**
     - Under Reliability, check the box for **Perform checksum before writing to media**. This is require by DMS when using the backup to restore the database to SQL MI.
 
-    ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options.png "Back Up Database")
+    ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](../graphics/media/ssms-back-up-database-media-options.png "Back Up Database")
 
 10. Select **OK** to perform the backup.
 
 11. You will receive a message when the backup is complete. Select **OK**.
 
-    ![Dialog displayed a message that the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
+    ![Dialog displayed a message that the database backup was completed successfully.](../graphics/media/ssms-backup-complete.png "Backup complete")
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: TODO: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information</b></p>
@@ -165,21 +165,21 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
 1. In the [Azure portal](https://portal.azure.com), select the Azure Cloud Shell icon from the top menu.
 
-    ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
+    ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](../graphics/media/cloud-shell-icon.png "Azure Cloud Shell")
 
 2. In the Cloud Shell window that opens at the bottom of your browser window, select **PowerShell**.
 
-    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
+    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](../graphics/media/cloud-shell-select-powershell.png "Azure Cloud Shell")
 
 3. If prompted that you have no storage mounted, select the subscription you are using for this hands-on lab and select **Create storage**.
 
-    ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](media/cloud-shell-create-storage.png "Azure Cloud Shell")
+    ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](../graphics/media/cloud-shell-create-storage.png "Azure Cloud Shell")
 
     > **Note**: If creation fails, you may need to select **Advanced settings** and specify the subscription, region and resource group for the new storage account.
 
 4. After a moment, you will receive a message that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.
 
-    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
+    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](../graphics/media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
 5. At the prompt, you will retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing SUFFIX** with your unique identifier:
 
@@ -189,7 +189,7 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
 6. Within the output of the above command, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
-    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
+    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](../graphics/media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
 7. Next, you will enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which you will use to connect to the database on that server. Enter the following PowerShell command, **replacing SUFFIX** with your unique identifier:
 
@@ -199,7 +199,7 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
 8. Within the output of the command above, locate and copy the value of the `ipAddress` property within the `publicIpAddresses` object. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
-    ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the publicIpAddress for the SqlServer2008 VM is highlighted.](media/cloud-shell-az-vm-list-ip-addresses.png "Azure Cloud Shell")
+    ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the publicIpAddress for the SqlServer2008 VM is highlighted.](../graphics/media/cloud-shell-az-vm-list-ip-addresses.png "Azure Cloud Shell")
 
 9. Leave the Azure Cloud Shell open for the next task.
 
@@ -231,7 +231,7 @@ In this task, you will use the Azure Cloud Shell to create an Azure Active Direc
     az ad sp create-for-rbac -n "tailspin-toys" --role owner --scopes subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}
     ```
 
-    ![The az ad sp create-for-rbac command is entered into the Cloud Shell, and the output of the command is displayed.](media/azure-cli-create-sp.png "Azure CLI")
+    ![The az ad sp create-for-rbac command is entered into the Cloud Shell, and the output of the command is displayed.](../graphics/media/azure-cli-create-sp.png "Azure CLI")
 
 5. Copy the output from the command into a text editor, as you will need the `appId` and `password` in the next task. The output should be similar to:
 
@@ -247,7 +247,7 @@ In this task, you will use the Azure Cloud Shell to create an Azure Active Direc
 
 6. To verify the role assignment, select **Access control (IAM)** from the left-hand menu of the **hands-on-lab-SUFFIX** resource group blade, and then select the **Role assignments** tab and locate **tailspin-toys** under the OWNER role.
 
-    ![The Role assignments tab is displayed, with tailspin-toys highlighted under OWNER in the list.](media/rg-hands-on-lab-role-assignments.png "Role assignments")
+    ![The Role assignments tab is displayed, with tailspin-toys highlighted under OWNER in the list.](../graphics/media/rg-hands-on-lab-role-assignments.png "Role assignments")
 
 7. Next, you will issue another command to grant the CONTRIBUTOR role at the subscription level to the newly created service principal. At the Cloud Shell prompt, run the following command:
 
@@ -265,11 +265,11 @@ In this task, you will create a new online data migration project in DMS for the
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **tailspin-dms** Azure Database Migration Service in the list of resources.
 
-    ![The tailspin-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-dms-resource.png "Resources")
+    ![The tailspin-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](../graphics/media/resource-group-dms-resource.png "Resources")
 
 2. On the Azure Database Migration Service blade, select **+New Migration Project**.
 
-    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](media/dms-add-new-migration-project.png "Azure Database Migration Service New Project")
+    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](../graphics/media/dms-add-new-migration-project.png "Azure Database Migration Service New Project")
 
 3. On the New migration project blade, enter the following:
 
@@ -278,7 +278,7 @@ In this task, you will create a new online data migration project in DMS for the
     - **Target server type**: Select Azure SQL Database Managed Instance.
     - **Choose type of activity**: Select **Online data migration** and select **Save**.
 
-    ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
+    ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-new-migration-project-blade.png "New migration project")
 
 4. Select **Create and run activity**.
 
@@ -290,7 +290,7 @@ In this task, you will create a new online data migration project in DMS for the
     - **Password**: Enter **Password.1234567890**.
     - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
-    ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
+    ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
 
 6. Select **Save**.
 
@@ -303,13 +303,13 @@ In this task, you will create a new online data migration project in DMS for the
     - **SQL Username**: Enter **sqlmiuser**
     - **Password**: Enter **Password.1234567890**
 
-    ![The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
+    ![The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
 
 8. Select **Save**.
 
 9. On the Migration Wizard **Select databases** blade, select `TailspinToys`.
 
-    ![The Migration Wizard Select databases blade is displayed, with the TailspinToys database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
+    ![The Migration Wizard Select databases blade is displayed, with the TailspinToys database selected.](../graphics/media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
 
 10. Select **Save**.
 
@@ -321,7 +321,7 @@ In this task, you will create a new online data migration project in DMS for the
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the sqlmistoreUNIQUEID storage account.
 
-    ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-configure-migration-settings.png "Migration Wizard Configure migration settings")
+    ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-migration-wizard-configure-migration-settings.png "Migration Wizard Configure migration settings")
 
 12. Select **Save** on the **Configure migration setting** blade.
 
@@ -329,17 +329,17 @@ In this task, you will create a new online data migration project in DMS for the
 
     - **Activity name**: Enter TailspinToysMigration.
 
-    ![The Migration Wizard summary blade is displayed, Sql2008ToSqlDatabase is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected.](media/dms-migration-wizard-migration-summary.png "Migration Wizard Summary")
+    ![The Migration Wizard summary blade is displayed, Sql2008ToSqlDatabase is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected.](../graphics/media/dms-migration-wizard-migration-summary.png "Migration Wizard Summary")
 
 14. Select **Run migration**.
 
 15. Monitor the migration on the status screen that appears. Select the refresh icon in the toolbar to retrieve the latest status.
 
-    ![On the Migration job blade, the Refresh button is highlighted, and a status of Full backup uploading is displayed and highlighted.](media/dms-migration-wizard-status-running.png "Migration status")
+    ![On the Migration job blade, the Refresh button is highlighted, and a status of Full backup uploading is displayed and highlighted.](../graphics/media/dms-migration-wizard-status-running.png "Migration status")
 
 16. Continue selecting **Refresh** every 5-10 seconds, until you see the status change to **Log files uploading**. When that status appears, move on to the next task.
 
-    ![In the migration monitoring window, a status of Log files uploading is highlighted.](media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
+    ![In the migration monitoring window, a status of Log files uploading is highlighted.](../graphics/media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 7: TODO: Perform migration cutover</b></p>
 
@@ -350,17 +350,17 @@ Since you performed the migration as an "online data migration," the migration w
 
 1. In the migration status window in the Azure portal and select **TailspinToys** under database name to view further details about the database migration.
 
-    ![The TailspinToys database name is highlighted in the migration status window.](media/dms-migration-wizard-database-name.png "Migration status")
+    ![The TailspinToys database name is highlighted in the migration status window.](../graphics/media/dms-migration-wizard-database-name.png "Migration status")
 
 2. On the TailspinToys screen you will see a status of **Restored** for the `TailspinToys.bak` file.
 
-    ![On the TailspinToys blade, a status of Restored is highlighted next to the TailspinToys.bak file in the list of active backup files.](media/dms-migration-wizard-database-restored.png "Migration Wizard")
+    ![On the TailspinToys blade, a status of Restored is highlighted next to the TailspinToys.bak file in the list of active backup files.](../graphics/media/dms-migration-wizard-database-restored.png "Migration Wizard")
 
 3. To demonstrate log shipping and how transactions made on the source database during the migration process will be added to the target SQL MI database, you will add a record to one of the database tables.
 
 4. Return to SSMS on your SqlServer2008 VM and select **New Query** from the toolbar.
 
-    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+    ![The New Query button is highlighted in the SSMS toolbar.](../graphics/media/ssms-new-query.png "SSMS Toolbar")
 
 5. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
@@ -374,7 +374,7 @@ Since you performed the migration as an "online data migration," the migration w
 
 6. Execute the query by selecting **Execute** in the SSMS toolbar.
 
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+    ![The Execute button is highlighted in the SSMS toolbar.](../graphics/media/ssms-execute.png "SSMS Toolbar")
 
 7. With the new record added to the `Games` table, you will now backup the transaction logs, which will be shipped to DMS. Select **New Query** again in the toolbar, and paste the following script into the new query window:
 
@@ -392,29 +392,29 @@ Since you performed the migration as an "online data migration," the migration w
 
 9. Return to the migration status page in the Azure portal. On the TailspinToys screen, select **Refresh** you should see the **TailspinToysLog.trn** file appear, with a status of **Uploaded**.
 
-    ![On the TailspinToys blade, the Refresh button is highlighted. A status of Uploaded is highlighted next to the TailspinToysLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-uploaded.png "Migration Wizard")
+    ![On the TailspinToys blade, the Refresh button is highlighted. A status of Uploaded is highlighted next to the TailspinToysLog.trn file in the list of active backup files.](../graphics/media/dms-migration-wizard-transaction-log-uploaded.png "Migration Wizard")
 
     >**Note**: If you don't see it the transaction logs entry, continue selecting Refresh every few seconds until it appears.
 
 10. Once the transaction logs are uploaded, they need to be restored to the database. Select **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
 
-    ![A status of Restored is highlighted next to the TailspinToysLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-restored.png "Migration Wizard")
+    ![A status of Restored is highlighted next to the TailspinToysLog.trn file in the list of active backup files.](../graphics/media/dms-migration-wizard-transaction-log-restored.png "Migration Wizard")
 
 11. After verifying the transaction log status of **Restored**, select **Start Cutover**.
 
-    ![The Start Cutover button is displayed.](media/dms-migration-wizard-start-cutover.png "DMS Migration Wizard")
+    ![The Start Cutover button is displayed.](../graphics/media/dms-migration-wizard-start-cutover.png "DMS Migration Wizard")
 
 12. On the Complete cutover dialog, verify pending log backups is `0`, check Confirm, and select **Apply**.
 
-    ![In the Complete cutover dialog, a value of 0 is highlighted next to Pending log backups and the Confirm checkbox is checked.](media/dms-migration-wizard-complete-cutover-apply.png "Migration Wizard")
+    ![In the Complete cutover dialog, a value of 0 is highlighted next to Pending log backups and the Confirm checkbox is checked.](../graphics/media/dms-migration-wizard-complete-cutover-apply.png "Migration Wizard")
 
 13. You will be given a progress bar below the Apply button in the Complete cutover dialog. When the migration is complete, you will see the status as **Completed**.
 
-    ![A status of Completed is displayed in the Complete cutover dialog.](media/dms-migration-wizard-complete-cutover-completed.png "Migration Wizard")
+    ![A status of Completed is displayed in the Complete cutover dialog.](../graphics/media/dms-migration-wizard-complete-cutover-completed.png "Migration Wizard")
 
 14. Close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the TailspinToys blade. This will return you to the TailspinToysMigration blade. Select **Refresh**, and you should see a status of **Completed** from the TailspinToys database.
 
-    ![On the Migration job blade, the status of Completed is highlighted](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
+    ![On the Migration job blade, the status of Completed is highlighted](../graphics/media/dms-migration-wizard-status-complete.png "Migration with Completed status")
 
 15. You have now successfully migrated the `TailspinToys` database to Azure SQL Managed Instance.
 
@@ -428,7 +428,7 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
 
 1. Return to SSMS on your SqlServer2008 VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
 
-    ![In the SSMS Object Explorer, Connect is highlighted in the menu and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
+    ![In the SSMS Object Explorer, Connect is highlighted in the menu and Database Engine is highlighted in the Connect context menu.](../graphics/media/ssms-object-explorer-connect.png "SSMS Connect")
 
 2. In the Connect to Server dialog, enter the following:
 
@@ -438,13 +438,13 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
     - **Password**: Enter Password.1234567890
     - Check the **Remember password** box.
 
-    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-connect-to-server-sql-mi.png "Connect to Server")
+    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](../graphics/media/ssms-connect-to-server-sql-mi.png "Connect to Server")
 
 3. Select **Connect**.
 
 4. You will see you SQL MI connection appear below the SQLSERVER2008 connection. Expand Databases the SQL MI connection and select the `TailspinToys` database.
 
-    ![In the SSMS Object Explorer, the SQL MI connection is expanded and the TailspinToys database is highlighted and selected.](media/ssms-sql-mi-tailspintoys-database.png "SSMS Object Explorer")
+    ![In the SSMS Object Explorer, the SQL MI connection is expanded and the TailspinToys database is highlighted and selected.](../graphics/media/ssms-sql-mi-tailspintoys-database.png "SSMS Object Explorer")
 
 5. With the `TailspinToys` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
@@ -456,7 +456,7 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
 
 7. Select **Execute** on the SSMS toolbar to run the query. You will see the records contained in the `Game` table displayed, including the new `Space Adventure` you added after initiating the migration process.
 
-    ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
+    ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](../graphics/media/ssms-query-game-table.png "SSMS Query")
 
 8. You are now done using the SqlServer2008 VM. Close any open windows and log off of the VM. You will use the JumpBox VM for the remaining tasks of this hands-on lab.
 
@@ -468,7 +468,7 @@ With the `TailspinToys` database now running on SQL MI in Azure, the next step i
 
 >**Note**: SQL Managed Instance has private IP address in its own VNet, so to connect an application you need to configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
-### Task 1: Deploy the web app to Azure [AT] 2:18-2:30
+### Task 1: Run the web application [AT] 2:18-2:30
 
 In this task, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, deploy the `TailspinToysWeb` application into the App Service in Azure.  
 
@@ -477,76 +477,76 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** in the Azure navigation pane, and select the **hands-on-lab-SUFFIX** resource group from the list.
 
-    ![Resource groups is selected in the Azure navigation pane and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+    ![Resource groups is selected in the Azure navigation pane and the "hands-on-lab-SUFFIX" resource group is highlighted.](../graphics/media/resource-groups.png "Resource groups list")
 
 2. In the list of resources for your resource group, select the JumpBox VM.
 
-    ![The list of resources in the hands-on-lab-SUFFIX resource group are displayed, and JumpBox is highlighted.](./media/resource-group-resources-jumpbox.png "JumpBox in resource group list")
+    ![The list of resources in the hands-on-lab-SUFFIX resource group are displayed, and JumpBox is highlighted.](../graphics/media/resource-group-resources-jumpbox.png "JumpBox in resource group list")
 
 3. On your JumpBox VM blade, select **Connect** from the top menu.
 
-    ![The JumpBox VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-jumpbox.png "Connect to JumpBox VM")
+    ![The JumpBox VM blade is displayed, with the Connect button highlighted in the top menu.](../graphics/media/connect-jumpbox.png "Connect to JumpBox VM")
 
 4. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
 
-    ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine.png "Connect to virtual machine")
+    ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](../graphics/media/connect-to-virtual-machine.png "Connect to virtual machine")
 
 5. Select **Connect** on the Remote Desktop Connection dialog.
 
-    ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection.png "Remote Desktop Connection dialog")
+    ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](../graphics/media/remote-desktop-connection.png "Remote Desktop Connection dialog")
 
 6. Enter the following credentials when prompted, and then select **OK**:
 
     - **Username**: sqlmiuser
     - **Password**: Password.1234567890
 
-    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
+    ![The credentials specified above are entered into the Enter your credentials dialog.](../graphics/media/rdc-credentials.png "Enter your credentials")
 
 7. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
 
-    ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
+    ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](../graphics/media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
 8. Once logged in, download the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/Migrating-SQL-databases-to-Azure/archive/master.zip).
 
 9. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the browser window, and then select **Internet options** from the context menu.
 
-    ![The Tools icon is highlighted in the Internet Explorer toolbar, and Internet Options is highlighted in the context menu.](media/ie-tools-context-menu.png "Internet Explorer")
+    ![The Tools icon is highlighted in the Internet Explorer toolbar, and Internet Options is highlighted in the context menu.](../graphics/media/ie-tools-context-menu.png "Internet Explorer")
 
 10. In the **Internet Options** dialog, select **Custom level** in the Security level for this zone box.
 
-    ![The Custom level button is highlighted in the Internet Options dialog.](media/ie-internet-options.png "Internet Options")
+    ![The Custom level button is highlighted in the Internet Options dialog.](../graphics/media/ie-internet-options.png "Internet Options")
 
 11. In the Security Settings - Internet Zone dialog, locate the **Downloads** settings and choose **Enable**, then select **OK**.
 
-    ![The Downloads property is highlighted in the Security Settings dialog, and Enable is selected.](media/ie-security-settings-internet-zone.png "Security Settings")
+    ![The Downloads property is highlighted in the Security Settings dialog, and Enable is selected.](../graphics/media/ie-security-settings-internet-zone.png "Security Settings")
 
 12. Select **OK** on the Internet Options dialog, and then attempt the download again.
 
 13. When prompted, choose to save the file and then select Open folder.
 
-    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](media/ie-download-open-folder.png "Internet Explorer")
+    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](../graphics/media/ie-download-open-folder.png "Internet Explorer")
 
 14. And once it is download, extract the ZIP file to `C:\hands-on-lab`.
 
-    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
+    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](../graphics/media/extract-compressed-zip.png "Extract Compressed Zip")
 
     > **IMPORTANT**: Ensure to use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a log file path.
 
 15. Open the `C:\hands-on-lab` folder, and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio.
 
-    ![The folder at the path specified above is displayed, and TailspinToys.sln is highlighted.](media/windows-explorer-tailspintoysweb.png "Windows Explorer")
+    ![The folder at the path specified above is displayed, and TailspinToys.sln is highlighted.](../graphics/media/windows-explorer-tailspintoysweb.png "Windows Explorer")
 
 16. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
 
-    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/visual-studio-version-selector.png "Visual Studio")
+    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](../graphics/media/visual-studio-version-selector.png "Visual Studio")
 
 17. Select **Sign in** and enter your Azure account credentials when prompted.
 
-    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/visual-studio-sign-in.png "Visual Studio")
+    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](../graphics/media/visual-studio-sign-in.png "Visual Studio")
 
 18. At the security warning prompt, uncheck Ask me for every project in this solution, and then select **OK**.
 
-    ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
+    ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](../graphics/media/visual-studio-security-warning.png "Visual Studio")
 
 
 [AT] New altered instructions from here:
@@ -590,15 +590,15 @@ In this task, you will enable ADS for all databases on the Managed Instance.
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the left-hand menu, select the **hands-on-lab-SUFFIX** resource group, and then select the **TailspinToys** Managed database resource from the list.
 
-    ![The TailspinToys Managed Database is highlighted in the resources list.](media/resources-sql-mi-database.png "Resources")
+    ![The TailspinToys Managed Database is highlighted in the resources list.](../graphics/media/resources-sql-mi-database.png "Resources")
 
 2. On the TailspinToys Managed database blade, select **Advanced Data Security** from the left-hand menu, under Security, and then select **Enable Advanced Data Security on the managed instance**.
 
-    ![In the Advanced Data Security blade of the Managed database, the Enable Advanced Data Security on the managed instance button is highlighted.](media/managed-database-ads.png "Advanced Data Security")
+    ![In the Advanced Data Security blade of the Managed database, the Enable Advanced Data Security on the managed instance button is highlighted.](../graphics/media/managed-database-ads.png "Advanced Data Security")
 
 3. Within a few minutes, ADS will be enabled for all databases on the Managed Instance. You will see the three tiles on the Advanced Data Security blade become enabled when it has been enabled.
 
-    ![The enabled tiles on the Advance Data Security blade are displayed.](media/ads-panels.png "Advanced Data Security")
+    ![The enabled tiles on the Advance Data Security blade are displayed.](../graphics/media/ads-panels.png "Advanced Data Security")
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: TODO: Configure SQL Data Discover and Classification</b></p>
@@ -612,23 +612,23 @@ In this task, you will look at the [SQL Data Discovery and Classification](https
 
 1. On the Advanced Data Security blade, select the **Data Discovery & Classification** tile.
 
-    ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Advanced Data Security")
+    ![The Data Discovery & Classification tile is displayed.](../graphics/media/ads-data-discovery-and-classification-pane.png "Advanced Data Security")
 
 2. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 40 columns with classification recommendations**.
 
-    ![The recommendations link on the Data Discovery & Classification blade is highlighted.](media/ads-data-discovery-and-classification-recommendations-link.png "Data Discovery & Classification")
+    ![The recommendations link on the Data Discovery & Classification blade is highlighted.](../graphics/media/ads-data-discovery-and-classification-recommendations-link.png "Data Discovery & Classification")
 
 3. Look over the list of recommendations to get a better understanding of the types of data and classifications are assigned, based on the built-in classification settings. In the list of classification recommendations, select the recommendation for the **Sales - CreditCard - CardNumber** field.
 
-    ![The CreditCard number recommendation is highlighted in the recommendations list.](media/ads-data-discovery-and-classification-recommendations-credit-card.png "Data Discovery & Classification")
+    ![The CreditCard number recommendation is highlighted in the recommendations list.](../graphics/media/ads-data-discovery-and-classification-recommendations-credit-card.png "Data Discovery & Classification")
 
 4. Due to the risk of exposing credit card information, Tailspin Toys would like a way to classify it as highly confidential, not just **Confidential**, as the recommendation suggests. To correct this, select **+ Add classification** at the top of the Data Discovery & Classification blade.
 
-    ![The +Add classification button is highlighted in the toolbar.](media/ads-data-discovery-and-classification-add-classification-button.png "Data Discovery & Classification")
+    ![The +Add classification button is highlighted in the toolbar.](../graphics/media/ads-data-discovery-and-classification-add-classification-button.png "Data Discovery & Classification")
 
 5. Quickly expand the **Sensitivity label** field, and review the various built-in labels you can choose from. You can also add your own labels, should you desire.
 
-    ![The list of built-in Sensitivity labels is displayed.](media/ads-data-discovery-and-classification-sensitivity-labels.png "Data Discovery & Classification")
+    ![The list of built-in Sensitivity labels is displayed.](../graphics/media/ads-data-discovery-and-classification-sensitivity-labels.png "Data Discovery & Classification")
 
 6. In the Add classification dialog, enter the following:
 
@@ -638,7 +638,7 @@ In this task, you will look at the [SQL Data Discovery and Classification](https
     - **Information type**: Select Credit Card.
     - **Sensitivity level**: Select Highly Confidential.
 
-    ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
+    ![The values specified above are entered into the Add classification dialog.](../graphics/media/ads-data-discovery-and-classification-add-classification.png "Add classification")
 
 7. Select **Add classification**.
 
@@ -646,21 +646,21 @@ In this task, you will look at the [SQL Data Discovery and Classification](https
 
 9. Other recommendations you can review are the **HumanResources - Employee** fields for **NationIDNumber** and **BirthDate**. Note that these have been flagged by the recommendation service as **Confidential - GDPR**. As Tailspin Toys maintains data about gamers from around the world, including Europe, having a tool which helps them discover data which may be relevant to GDPR compliance will be very helpful.
 
-    ![GDPR information is highlighted in the list of recommendations](media/ads-data-discovery-and-classification-recommendations-gdpr.png "Data Discovery & Classification")
+    ![GDPR information is highlighted in the list of recommendations](../graphics/media/ads-data-discovery-and-classification-recommendations-gdpr.png "Data Discovery & Classification")
 
 10. Check the **Select all** check box at the top of the list to select all the remaining recommended classifications, and then select **Accept selected recommendations**.
 
-    ![All the recommended classifications are checked and the Accept selected recommendations button is highlighted.](media/ads-data-discovery-and-classification-accept-recommendations.png "Data Discovery & Classification")
+    ![All the recommended classifications are checked and the Accept selected recommendations button is highlighted.](../graphics/media/ads-data-discovery-and-classification-accept-recommendations.png "Data Discovery & Classification")
 
 11. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
-    ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save.png "Save")
+    ![Save the updates to the classified columns list.](../graphics/media/ads-data-discovery-and-classification-save.png "Save")
     
     >**Note**: This feature is still in preview.  If you receive an error when saving, try returning to the Advanced Data Security blade, and selecting the Data Discovery & Classification tile again to see the results.
 
 12. When the save completes, select the **Overview** tab on the Data Discovery & Classification blade to view a report with a full summary of the database classification state.
 
-    ![The View Report button is highlighted on the toolbar.](media/ads-data-discovery-and-classification-overview-report.png "View report")
+    ![The View Report button is highlighted on the toolbar.](../graphics/media/ads-data-discovery-and-classification-overview-report.png "View report")
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: TODO: Review Advanced Data Security Vulnerability Assessment</b></p>
@@ -674,25 +674,25 @@ In this task, you will review an assessment report generated by ADS for the `Tai
 
 1. Return to the **Advanced Data Security** blade for the `TailspinToys` Managed database and then select the **Vulnerability Assessment** tile.
 
-    ![The Vulnerability tile is displayed.](media/ads-vulnerability-assessment-tile.png "Advanced Data Security")
+    ![The Vulnerability tile is displayed.](../graphics/media/ads-vulnerability-assessment-tile.png "Advanced Data Security")
 
 2. On the Vulnerability Assessment blade, select **Scan** on the toolbar.
 
-    ![Vulnerability assessment scan button.](media/vulnerability-assessment-scan.png "Scan")
+    ![Vulnerability assessment scan button.](../graphics/media/vulnerability-assessment-scan.png "Scan")
 
 3. When the scan completes, you will see a dashboard, displaying the number of failing checks, passing checks, and a breakdown of the risk summary by severity level.
 
-    ![The Vulnerability Assessment dashboard is displayed.](media/sql-mi-vulnerability-assessment-dashboard.png "Vulnerability Assessment dashboard")
+    ![The Vulnerability Assessment dashboard is displayed.](../graphics/media/sql-mi-vulnerability-assessment-dashboard.png "Vulnerability Assessment dashboard")
 
     >**Note**: Scans are run on a schedule, so if you see a message that no vulnerabilities are found your database may not have been scanned yet. You will need to run a scan manually. To do this, select the **Scan** button on the toolbar, and follow any prompts to start a scan. This will take a minute or so to complete.
 
 4. In the scan results, take a few minutes to browse both the Failed and Passed checks, and review the types of checks that are performed. In the **Failed** the list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
 
-    ![The VA1219 finding for Transparent data encryption is highlighted.](media/sql-mi-vulnerability-assessment-failed-va1219.png "Vulnerability assessment")
+    ![The VA1219 finding for Transparent data encryption is highlighted.](../graphics/media/sql-mi-vulnerability-assessment-failed-va1219.png "Vulnerability assessment")
 
 5. Select the **VA1219** finding to view the detailed description.
 
-    ![The details of the VA1219 - Transparent data encryption should be enabled finding are displayed with the description, impact, and remediation fields highlighted.](media/sql-mi-vulnerability-assessment-failed-va1219-details.png "Vulnerability Assessment")
+    ![The details of the VA1219 - Transparent data encryption should be enabled finding are displayed with the description, impact, and remediation fields highlighted.](../graphics/media/sql-mi-vulnerability-assessment-failed-va1219-details.png "Vulnerability Assessment")
 
     > The details for each finding provide more insight into the reason for the finding. Of note are the fields describing the finding, the impact of the recommended settings, and details on remediation for the finding.
 
@@ -708,7 +708,7 @@ In this task, you will review an assessment report generated by ADS for the `Tai
     - **Password**: Enter Password.1234567890
     - Check the **Remember password** box.
 
-    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-18-connect-to-server.png "Connect to Server")
+    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](../graphics/media/ssms-18-connect-to-server.png "Connect to Server")
 
 8. In SSMS, select **New Query** from the toolbar, paste the following SQL script into the new query window.
 
@@ -716,13 +716,13 @@ In this task, you will review an assessment report generated by ADS for the `Tai
     ALTER DATABASE [TailspinToys] SET ENCRYPTION ON
     ```
 
-    ![A new query window is displayed, with the script above pasted into it.](media/ssms-sql-mi-enable-tde.png "New query")
+    ![A new query window is displayed, with the script above pasted into it.](../graphics/media/ssms-sql-mi-enable-tde.png "New query")
 
     > You turn transparent data encryption on and off on the database level. To enable transparent data encryption on a database in Azure SQL Managed Instance use must use T-SQL.
 
 9. Select **Execute** from the SSMS toolbar. After a few seconds, you will see a message that the "Commands completed successfully."
 
-    ![The Execute button is highlighted on the SSMS toolbar, and the Commands completed successfully message is highlighted in the output window.](media/ssms-sql-mi-enable-tde-success.png "Execute")
+    ![The Execute button is highlighted on the SSMS toolbar, and the Commands completed successfully message is highlighted in the output window.](../graphics/media/ssms-sql-mi-enable-tde-success.png "Execute")
 
 10. You can verify the encryption state and view information the associated encryption keys by using the [sys.dm_database_encryption_keys view](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql). Select **New Query** on the SSMS toolbar again, and paste the following query into the new query window:
 
@@ -730,25 +730,25 @@ In this task, you will review an assessment report generated by ADS for the `Tai
     SELECT * FROM sys.dm_database_encryption_keys
     ```
 
-    ![The query above is pasted into a new query window in SSMS.](media/ssms-sql-mi-database-encryption-keys.png "New query")
+    ![The query above is pasted into a new query window in SSMS.](../graphics/media/ssms-sql-mi-database-encryption-keys.png "New query")
 
 11. Select **Execute** from the SSMS toolbar. You will see two records in the Results window, which provide information about the encryption state and keys used for encryption.
 
-    ![The Execute button on the SSMS toolbar is highlighted, and in the Results pane the two records about the encryption state and keys for the TailspinToys database are highlighted.](media/ssms-sql-mi-database-encryption-keys-results.png "Results")
+    ![The Execute button on the SSMS toolbar is highlighted, and in the Results pane the two records about the encryption state and keys for the TailspinToys database are highlighted.](../graphics/media/ssms-sql-mi-database-encryption-keys-results.png "Results")
 
     > By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.
 
 12. Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the `TailspinToys` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
 
-    ![Vulnerability assessment scan button.](media/vulnerability-assessment-scan.png "Scan")
+    ![Vulnerability assessment scan button.](../graphics/media/vulnerability-assessment-scan.png "Scan")
 
 13. When the scan completes, select the **Failed** tab, enter **VA1219** into the search filter box, and observe that the previous failure is no longer in the Failed list.
 
-    ![The Failed tab is highlighted and VA1219 is entered into the search filter. The list displays no results.](media/sql-mi-vulnerability-assessment-failed-filter-va1219.png "Failed")
+    ![The Failed tab is highlighted and VA1219 is entered into the search filter. The list displays no results.](../graphics/media/sql-mi-vulnerability-assessment-failed-filter-va1219.png "Failed")
 
 14. Now, select the **Passed** tab, and observe the **VA1219** check is listed with a status of **PASS**.
 
-    ![The Passed tab is highlighted and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/sql-mi-vulnerability-assessment-passed-va1219.png "Passed")
+    ![The Passed tab is highlighted and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](../graphics/media/sql-mi-vulnerability-assessment-passed-va1219.png "Passed")
 
     > Using the SQL Vulnerability Assessment, it is simple to identify and remediate potential database vulnerabilities, allowing you to proactively improve your database security.
 
@@ -780,19 +780,19 @@ In this task, you will open a web report using the web application you deployed 
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the left-hand menu, and then select the resource group named **hands-on-lab-SUFFIX**.
 
-   ![The hands-on-lab-SUFFIX resource group is selected.](media/resource-groups.png "Resource groups")
+   ![The hands-on-lab-SUFFIX resource group is selected.](../graphics/media/resource-groups.png "Resource groups")
 
 2. In the hands-on-lab-SUFFIX resource group, select the **tailspintoysUNIQUEID** App Service from the list of resources.
 
-   ![The App Service resource is selected from the list of resources in the hands-on-lab-SUFFIX resource group.](media/rg-app-service.png "hands-on-lab-SUFFIX resource group")
+   ![The App Service resource is selected from the list of resources in the hands-on-lab-SUFFIX resource group.](../graphics/media/rg-app-service.png "hands-on-lab-SUFFIX resource group")
 
 3. On the App Service overview blade, select the **URL** to open the web application in a browser window.
 
-   ![The App service URL is highlighted.](media/app-service-url.png "App service URL")
+   ![The App service URL is highlighted.](../graphics/media/app-service-url.png "App service URL")
 
 4. In the TailspinToys web app, select **Leaderboard** from the menu.
 
-   ![READ_WRITE is highlighted on the Leaderboard page.](media/tailspin-toys-leaderboard-read-write.png "TailspinToys Web App")
+   ![READ_WRITE is highlighted on the Leaderboard page.](../graphics/media/tailspin-toys-leaderboard-read-write.png "TailspinToys Web App")
 
    > Note the `READ_WRITE` string on the page. This is the output from reading the `Updateability` property associated with the `ApplicationIntent` option on the target database. This can be retrieved using the SQL query `SELECT DATABASEPROPERTYEX(DB_NAME(), "Updateability")`.
 
@@ -806,11 +806,11 @@ In this task, you will enable Read Scale-Out for the `TailspinToys`database, usi
 
 1. Return to the App Service blade in the Azure portal and select **Configuration** under Settings on the left-hand side.
 
-   ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
+   ![The Configuration item is selected under Settings.](../graphics/media/app-service-configuration-menu.png "Configuration")
 
 2. On the Configuration blade, scroll down and locate the connection string named `TailspinToysReadOnlyContext` within the **Connection strings** section, and select the Pencil (edit) icon on the right.
 
-   ![The edit icon next to the read-only connection string is highlighted.](media/app-service-configuration-connection-strings-read-only.png "Connection strings")
+   ![The edit icon next to the read-only connection string is highlighted.](../graphics/media/app-service-configuration-connection-strings-read-only.png "Connection strings")
 
 3. In the Add/Edit connection string dialog, select the **Value** for the `TailspinToysReadOnlyContext` and paste the following parameter to end of the connection string.
 
@@ -828,7 +828,7 @@ In this task, you will enable Read Scale-Out for the `TailspinToys`database, usi
 
 6. Select **Save** at the top of the Configuration blade.
 
-   ![The save button on the Application settings blade is highlighted.](media/app-service-configuration-save.png "Save")
+   ![The save button on the Application settings blade is highlighted.](../graphics/media/app-service-configuration-save.png "Save")
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: TODO: Reload leaderboard report in the Tailspin Toys web application</b></p>
@@ -840,12 +840,10 @@ In this task, you will refresh the Leaderboard report in the Tailspin Toys web a
 
 1. Return to the TailspinToys gamer information website you opened previously, and refresh the **Leaderboard** page. The page should now look similar to the following:
 
-    ![READ_ONLY is highlighted on the Reports page.](media/tailspin-toys-leaderboard-read-only.png "TailspinToys Web App")
+    ![READ_ONLY is highlighted on the Reports page.](../graphics/media/tailspin-toys-leaderboard-read-only.png "TailspinToys Web App")
 
     > Notice the `updateability` option is now displaying as `READ_ONLY`. With a simple addition to your database connection string, you are able to send read-only queries to the online secondary of your SQL MI Business critical database, allowing you to load-balance read-only workloads using the capacity of one read-only replica. The SQL MI Business Critical cluster has built-in Read Scale-Out capability that provides free-of charge built-in read-only node that can be used to run read-only queries that should not affect performance of your primary workload.
 
-
-<img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://docs.microsoft.com/en-us/sql/big-data-cluster/media/concept-security/cluster_endpoints.png?raw=true">
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
