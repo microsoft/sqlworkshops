@@ -96,25 +96,14 @@ Scaling the migration to other workloads
 
 TODO: Topic Description
 
-Topic 4: Lab and scenario overview plus database discovery and assessment (15 minutes)  
-Overview of scenario  
-Overview of labs  
-In the next activities we'll demo Database Discovery and Assessment. Due to time constraints we'll only demo these sections, but all instructions are provided for you to try outside of class or if you are doing this self-study  
-Activity 1 (Demo): Set up Azure Migrate  
-Activity 2 (Demo): Restore TailspinToys on the SQLServer2008 VM  
-Activity 3 (Demo): Perform assessment for migration to Azure SQL Database  
-Activity 4 (Demo): Upload and review with Azure Migrate  
 
+## Overview 
 
-# Migrating SQL databases to Azure hands-on lab step-by-step
+In this series of hands-on labs (throughout Modules 4 and 5), you will implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Database Managed Instance (SQL MI). You will perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You will then migrate the customer's on-premises gamer information, web application and database into Azure, with minimal to no down-time. Finally, you will enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer's application.
 
-## Abstract and learning objectives
+At the end of these hands-on labs, you will be better able to implement a cloud migration solution for business-critical applications and databases.
 
-In this hands-on lab, you will implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Database Managed Instance (SQL MI). You will perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You will then migrate the customer's on-premises gamer information web application and database into Azure, with minimal to no down-time. Finally, you will enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer's application.
-
-At the end of this hands-on lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.
-
-## Overview
+## Scenario: Tailspin Toys Gaming
 
 Tailspin Toys is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
 
@@ -134,9 +123,13 @@ The web app is deployed to an Azure App Service Web App using Visual Studio 2019
 
 In SQL MI, several features of Azure SQL Database are examined. Advanced Data Security (ADS) is enabled and Data Discovery and Classification is used to better understand the data and potential compliance issues with data in the database. The ADS Vulnerability Assessment is used to identify potential security vulnerabilities and issues in the database, and those finding are used to mitigate one finding by enabling Transparent Data Encryption in the database. Dynamic Data Masking (DDM) is used to prevent sensitive data from appearing when querying the database. Finally, Read Scale-out is used to point reports on the Tailspin Toys web app to a read-only secondary, allowing reporting to occur without impacting the performance of the primary database.  
 
-
+> **Important Note!**  
+> If you are attending this lab as part of a day-long workshop, all of the activities below **except** Activity 2 should be created. **You must complete Activity 2** prior to moving to the next module.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 1: TODO: Set up Azure Migrate</b></p>
+
+> **Important Note!**  
+> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
 
 TODO: Activity Description and tasks
 
@@ -145,6 +138,11 @@ TODO: Activity Description and tasks
 TODO: Enter activity steps description with checkbox
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: TODO: Restore TailspinToys on the SQLServer2008 VM</b></p>
+
+> **Important Note!**  
+> If you are attending this lab as part of a day-long workshop, you **must complete this activity prior to moving to the next module**. The rest of the activities in this lab can be skipped, they were demoed earlier.
+
+TODO: Can we make it so this part is done on each VM for each user ahead of the labs?
 
 Before you begin the assessments, you need to restore a copy of the `TailspinToys` database in your SQL Server 2008 R2 instance. In this task, you will create an RDP connection to the SqlServer2008 VM and then restore the `TailspinToys` database onto the SQL Server 2008 R2 instance using a backup provided by Tailspin Toys.
 
@@ -271,9 +269,14 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: TODO: Perform assessment for migration to Azure SQL Database</b></p>
 
-TODO: Activity Description and tasks
+> **Important Note!**  
+> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
 
 In this task, you will use the Microsoft Data Migration Assistant (DMA) to perform an assessment of the `TailspinToys` database against Azure SQL Database (Azure SQL DB). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+
 
 1. On the SqlServer2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
 
@@ -325,11 +328,14 @@ In this task, you will use the Microsoft Data Migration Assistant (DMA) to perfo
 
     > The DMA assessment for a migrating the `TailspinToys` database to a target platform of Azure SQL DB shows two features in use which are not supported. These features, cross-database references and Service broker, will prevent TailspinToys from being able to migrate to the Azure SQL DB PaaS offering without first making changes to their database.
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-TODO: Enter activity steps description with checkbox  
+
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: TODO: Perform assessment for migration to Azure SQL Database Managed Instance</b></p>
+
+> **Important Note!**  
+> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
+
 
 With one PaaS offering ruled out due to feature parity, you will now perform a second assessment. In this task, you will use DMA to perform an assessment of the `TailspinToys` database against Azure SQL Database Managed Instance (SQL MI). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
@@ -386,6 +392,12 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 10. The database, including the cross-database references and Service broker features, can be migrated as is, providing the opportunity for TailspinToys to have a fully managed PaaS database running in Azure. Previously, their options for migrating a database using features, such as Service Broker, incompatible with Azure SQL Database, were to deploy the database to a virtual machine running in Azure (IaaS) or modify their database and applications to not use the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with near 100% compatibility, including the features that prevented them from using Azure SQL Database.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: TODO: Upload and review with Azure Migrate</b></p>
+
+
+> **Important Note!**  
+> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.  
+
+
 
 [AT] Then upload to Azure Migrate 8:48-8:54
 TODO: Activity Description and tasks

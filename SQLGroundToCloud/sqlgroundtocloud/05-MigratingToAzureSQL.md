@@ -12,18 +12,11 @@ In this workshop you'll cover using <TODO: Enter a brief description of the work
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.) If you're doing Module 4 and 5 in isolation, TODO
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.) If you're doing Module 4 and 5 in isolation, TODO
 
-
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">5.1 Migrate the database to SQL Managed instance (30 minutes)</h2>
-
-TODO: Topic Description
-
-Module on Migration
-
+In this module, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. At the end of the module, you'll also explore some of the security and performance features available. The activities in this module include:  
+  
+  TODO ADD LINKS TO SUBSECTIONS  
 Topic 1: Migrate the database to SQL Managed instance (30 minutes)  
 Activity 1: Create an SMB network share on the SQLServer2008VM  
 Activity 2: Change MSSQLSERVER service to run under sqlmiuser account  
@@ -33,10 +26,25 @@ Activity 5: Create and run an online data migration project
 Activity 6: Perform migration cutover  
 Activity 7: Verify database and transaction log migration  
 Activity 8: Update the application  
+Topic 2: Improve database security with Advanced Data Security (15 minutes)  
+Activity 1: Enable Advanced Data Security  
+Activity 2: Configure SQL Data Discover and Classification  
+Activity 3: Review Advanced Data Security Vulnerability Assessment  
+Topic 3: Use online secondary for read-only queries (15 minutes)  
+Activity 1: View Leaderboard report in Tailspin Toys web application  
+Activity 2: Update read only connection string  
+Activity 3: Reload leaderboard report in the Tailspin Toys web application  
 
-In this module, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).
 
-> The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">5.1 Migrate the database to SQL Managed instance (30 minutes)</h2>
+
+In this section, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
+
+> The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
+
+
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 1: TODO: Create an SMB network share on the SQLServer2008VM</b></p>
 
@@ -44,6 +52,27 @@ In this task, you will create a new SMB network share on the SqlServer2008 VM. T
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
+
+1. In the [Azure portal](https://portal.azure.com), navigate to your **SqlServer2008** VM by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the **SqlServer2008** VM from the list of resources. On the SqlServer2008 Virtual Machine's **Overview** blade, select **Connect** on the top menu.
+
+    ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](../graphics/media/connect-sqlserver2008.png "Connect to SqlServer2008 VM")
+
+2. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
+
+3. Select **Connect** on the Remote Desktop Connection dialog.
+
+    ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](../graphics/media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
+
+4. Enter the following credentials when prompted, and then select **OK**:
+
+    - **Username**: sqlmiuser
+    - **Password**: Password.1234567890
+
+    ![The credentials specified above are entered into the Enter your credentials dialog.](../graphics/media/rdc-credentials-sql-2008.png "Enter your credentials")
+
+5. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
+
+    ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](../graphics/media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
 1. On the SqlServer2008 VM, open **Windows Explorer** by selecting its icon on the Windows Task bar.
 
@@ -204,13 +233,13 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 9. Leave the Azure Cloud Shell open for the next task.
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: TODO: Create aa service principal</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: TODO: Create a service principal</b></p>
 
 In this task, you will use the Azure Cloud Shell to create an Azure Active Directory (Azure AD) application and service principal (SP) that will provide DMS access to Azure SQL MI. You will grant the SP permissions to the hands-on-lab-SUFFIX resource group.
 
-> **IMPORTANT**: You must have rights within your Azure AD tenant to create applications and assign roles to complete this task.
+> **Important Note!** You must have rights within your Azure AD tenant to create applications and assign roles to complete this task. If you are blocked by this, but still want to do a migration with Azure Database Migration Services, you can perform an offline migration. In Activity 6, select offline instead of online migration in Step 3, and instead of Step 7, you can refer to [this section of a migrating to Azure SQL Database Managed Instance offline tutorial](https://docs.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-managed-instance#specify-target-details).
 
-> NOTE TODO: If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but there is nothing you need to do. Please refer to instructor guidance.
+> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but there is nothing you need to do. Please refer to instructor guidance.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -286,7 +315,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     - **Source SQL Server instance name**: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, `13.66.228.107`.
     - **Authentication type**: Select SQL Authentication.
-    - **Username**: Enter **WorkshopUser**. [AT] should be sqlmiuser for target
+    - **Username**: Enter **WorkshopUser**.  
     - **Password**: Enter **Password.1234567890**.
     - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
@@ -468,7 +497,7 @@ With the `TailspinToys` database now running on SQL MI in Azure, the next step i
 
 >**Note**: SQL Managed Instance has private IP address in its own VNet, so to connect an application you need to configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
-### Task 1: Run the web application [AT] 2:18-2:30
+### Task 1: Run the web application
 
 In this task, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, deploy the `TailspinToysWeb` application into the App Service in Azure.  
 
@@ -565,7 +594,7 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
 23. Now, in order to have the app run with the MI, update appsettings.json by replace the SQL 2008 VM IP with the fully qualified domain name for your MI.
 24. Run the application (IIS Express button)
 
-> Note: If you want to complete an extension of this lab where you deploy the web app to Azure and integrate the App Service within the virtual network using point-to-site and VNet integration, see exercises 3 and 4 in the non-abbreviated lab [**TODO link needed**]
+> Note: If you want to complete an extension of this lab where you deploy the web app to Azure and integrate the App Service within the virtual network using point-to-site and VNet integration, see exercises 3 and 4 in the non-abbreviated lab [here](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md).
 
 
 <br>
