@@ -24,7 +24,7 @@ SQL Server 2019 includes new capabilities designed to enhance your performance w
 
 Instructor led workshops will review Intelligent Performance in SQL Server 2019 using the **Module 2.1 Intelligent Performance Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
-Your instructor will guide to proceed to the Activity below for hands-on exercises for SQL Server Intelligent Performance.
+Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server Intelligent Performance.
 
 If you are using this module self-paced, read and go through all the activities of SQL Server Intelligent Performance from <a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/01_IntelligentPerformance.md">Module 01 SQL Server Intelligent Performance of the SQL Server 2019 Lab</a> and proceed to Module 2.2 of this workshop SQL Server 2019 Security. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
@@ -48,7 +48,7 @@ SQL Server 2019 has new security enhancements including Data Classification with
 
 Instructor led workshops will review new security capabilities of SQL Server 2019 using the **Module 2.2 New Security Capabilities Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
-Your instructor will guide to proceed to the Activity below for hands-on exercises for SQL Server 2019 Security.
+Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Security.
 
 If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/02_Security.md">Module 02 SQL Server 2019 Security of the SQL Server 2019 Lab</a> and proceed to Module 2.3 of this workshop SQL Server Mission Critical Availability. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
@@ -72,7 +72,7 @@ SQL Server 2019 meets the challenges of keeping your data and application highly
 
 Instructor led workshops will review new mission critical availability capabilities of SQL Server 2019 using the **Module 2.3 Mission Critical Availability Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
-Your instructor will guide to proceed to the Activity below for hands-on exercises for SQL Server 2019 Mission Critical Availability.
+Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Mission Critical Availability.
 
 If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/03_Availability.md">Module 03 SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab</a> and proceed to Module 2.4 of this workshop SQL Server Data Virtualization. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
@@ -94,7 +94,7 @@ SQL Server 2019 includes new capabilities for data virtualization by extending t
 
 Instructor led workshops will review data virtualization in SQL Server 2019 using the **Module 2.4 Data Virtualization Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
-Your instructor will guide to proceed to the Activity below for hands-on exercises for SQL Server 2019 Data Virtualization.
+Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Data Virtualization.
 
 If you are using this module self-paced, read and go through all the activities of SQL Server 2019 Security from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/04_DataVirtualization.md">Module 04 Data Virtualization of the SQL Server 2019 Lab</a> and proceed to Module 2.5 of this workshop SQL Server Linux and Containers. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
@@ -118,7 +118,7 @@ However, there were some features that come with SQL Server that were not includ
 
 Instructor led workshops will review SQL Server on Linux and Containers in SQL Server 2019 using the **Module 2.5 SQL Server on Linux and Containers** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
-Your instructor will guide to proceed to the Activity below for hands-on exercises for SQL Server 2019 Linux and Containers.
+Your instructor will guide you to proceed to the Activity below for hands-on exercises for SQL Server 2019 Linux and Containers.
 
 If you are using this module self-paced, read and go through all the activities of SQL Server on Linux and Containers in SQL Server 2019 from <a href="https://github.com/microsoft/sqlworkshops/blob/rgward/sql2019lab/05_Linux_and_Containers.md">Module 05 SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab</a> and proceed to Module 2.6 of this workshop What Else, Migration, and Next Steps. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 
@@ -136,7 +136,7 @@ Proceed directly to the following Activities from **Module 05 SQL Server 2019 Li
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b>    2.6 What Else, Migration, and Next Steps</b></h2>
 
-SQL Server 2019 meets other challenges faced by data professionals and developers including SQL Server Machine Learning Services, T-SQL Extensibility, and a series of supportability and engine performance enhancements. 
+SQL Server 2019 meets other challenges faced by data professionals and developers including SQL Server Machine Learning Services, T-SQL Extensibility, and a series of supportability and engine performance enhancements.
 
 Microsoft also provides a series of tools to assist with migration to SQL Server 2019 including the Database Migration Assistant (DMA), Database Experimentation Assistant (DEA), Query Tuning Assistant (QTA), and SQL Server Migration Assistant (SSMA).
 
