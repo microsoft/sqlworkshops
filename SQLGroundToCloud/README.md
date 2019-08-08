@@ -144,7 +144,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
         <li>Mission Critical Availability</li>
         <li>Data Virtualization</li>
         <li>SQL Server Linux and Containers</li>
-        <li>Migration and Next Steps</li>
+        <li>What Else, Migration and Next Steps</li>
     </ul>
   </td></tr>
 
