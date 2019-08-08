@@ -78,7 +78,7 @@ SELF-PACED USERS ONLY: If you are using this module self-paced, read and go thro
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Accelerated Database Recovery</b></h2>
 
-Proceed directly to the following Activities from **Module SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab** for a hands-on exercise about Accelerated Database Recovery. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab** for a hands-on exercise about Accelerated Database Recovery. When are you done with these activities come back here for the next section as guided by your instructor.
 
 <dl>
 
@@ -100,7 +100,7 @@ SELF-PACED USERS ONLY: If you are using this module self-paced, read and go thro
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Polybase in SQL Server 2019</b></h2>
 
-Proceed directly to the following Activities from **Module Data Virtualization of the SQL Server 2019 Lab** for a hands-on exercise about Polybase in SQL Server 2019. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module Data Virtualization of the SQL Server 2019 Lab** for a hands-on exercise about Polybase in SQL Server 2019. When are you done with these activities come back here for the next section as guided by your instructor.
 
 <dl>
 
@@ -122,7 +122,7 @@ SELF-PACED USERS ONLY: If you are using this module self-paced, read and go thro
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Replication in SQL Server on Linux using Containers</b></h2>
 
-Proceed directly to the following Activities from **Module SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab** for a hands-on exercise to deploy Replication on Linux using Containers. When are you done with these activities come back to go to the next section as guided by your instructor.
+Proceed directly to the following Activities from **Module SQL Server 2019 Linux and Containers of the SQL Server 2019 Lab** for a hands-on exercise to deploy Replication on Linux using Containers. When are you done with these activities come back here for the next section as guided by your instructor.
 
 <dl>
 
@@ -136,7 +136,7 @@ Proceed directly to the following Activities from **Module SQL Server 2019 Linux
 
 SQL Server 2019 meets other challenges faced by data professionals and developers with solutions like SQL Server Machine Learning Services, T-SQL Extensibility, and a series of supportability and engine performance enhancements.
 
-Microsoft also provides a series of tools to assist with migration to SQL Server 2019 including the Database Migration Assistant (DMA), Database Experimentation Assistant (DEA), Query Tuning Assistant (QTA), and SQL Server Migration Assistant (SSMA).
+Microsoft also provides a set of tools to assist with migration to SQL Server 2019 including the Database Migration Assistant (DMA), Database Experimentation Assistant (DEA), Query Tuning Assistant (QTA), and SQL Server Migration Assistant (SSMA).
 
 Your instructor will discuss these topics and your next steps to be successful with SQL Server 2019 using using the **Module 2.6 What else, migrations, and next steps section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
