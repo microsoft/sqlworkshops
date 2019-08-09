@@ -8,24 +8,24 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> 05 - Migrate to Azure SQL </h2>
 
-In this workshop you'll cover using <TODO: Enter a brief description of the workshop>. 
+In the previous module, you learned about Azure SQL, the benefits, the options, and how to get there. You reviewed how to assess your on-premises estate, and in this module you'll actually migrate to [Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance).  
 
-In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.) If you're doing Module 4 and 5 in isolation, TODO
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 In this module, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. At the end of the module, you'll also explore some of the security and performance features available. The activities in this module include:  
   
   TODO ADD LINKS TO SUBSECTIONS  
-Topic 1: Migrate the database to SQL Managed instance (30 minutes)  
-Activity 1: Create an SMB network share on the SQLServer2008VM  
-Activity 2: Change MSSQLSERVER service to run under sqlmiuser account  
-Activity 3: Create a backup of TailspinToys database  
-Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information  
-Activity 5: Create and run an online data migration project  
-Activity 6: Perform migration cutover  
-Activity 7: Verify database and transaction log migration  
-Activity 8: Update the application  
+[5.1](#5.1): Migrate the database to SQL Managed instance (30 minutes)  
+[Activity 1](#5.1.1): Create an SMB network share on the SQLServer2008VM  
+[Activity 2](#5.1.2): Change MSSQLSERVER service to run under sqlmiuser account  
+[Activity 3](#5.1.3): Create a backup of TailspinToys database  
+[Activity 4](#5.1.4): Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information  
+[Activity 5](#5.1.5): Create a service principal
+[Activity 6](#5.1.6): Create and run an online data migration project  
+[Activity 7](#5.1.7): Perform migration cutover  
+[Activity 8](#5.1.8): Verify database and transaction log migration  
+[Activity 9](#5.1.9): Update the application  
 Topic 2: Improve database security with Advanced Data Security (15 minutes)  
 Activity 1: Enable Advanced Data Security  
 Activity 2: Configure SQL Data Discover and Classification  
@@ -35,10 +35,12 @@ Activity 1: View Leaderboard report in Tailspin Toys web application
 Activity 2: Update read only connection string  
 Activity 3: Reload leaderboard report in the Tailspin Toys web application  
 
+SELF-PACED USERS ONLY: If you are using this module self-paced, carefully read through Module 4 of this workshop, complete the assessment lab in Module 4.4 first. Then, read carefully and complete the labs in this module.  
+
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">5.1 Migrate the database to SQL Managed instance (30 minutes)</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.1">5.1 Migrate the database to SQL Managed instance (30 minutes)</h2></a>
 
 In this section, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
 
@@ -46,7 +48,7 @@ In this section, you will use the [Azure Database Migration Service](https://azu
 
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 1: Create an SMB network share on the SQLServer2008VM</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.1">Activity 1: Create an SMB network share on the SQLServer2008VM</b></p></a>
 
 In this task, you will create a new SMB network share on the SqlServer2008 VM. This will be the folder used by DMS for retrieving backups of the `TailspinToys` database during the database migration process.
 
@@ -99,7 +101,7 @@ In this task, you will create a new SMB network share on the SqlServer2008 VM. T
     ![The Done button is highlighted on the File Sharing dialog.](../graphics/media/file-sharing-done.png "File Sharing")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Change MSSQLSERVER service to run under sqlmiuser account</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.2">Activity 2: Change MSSQLSERVER service to run under sqlmiuser account</b></p></a>
 
 In this task, you will use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) to the `sqlmiuser` account. This is done to ensure the SQL Server service has the appropriate permissions to write backups to the shared folder.
 
@@ -135,7 +137,7 @@ In this task, you will use the SQL Server Configuration Manager to update the se
     ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](../graphics/media/sql-server-service.png "SQL Server Services")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Create a backup of TailspinToys database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.3">Activity 3: Create a backup of TailspinToys database</b></p></a>
 
 To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you will create a backup of the `TailspinToys` database using SSMS, and write it to the SMB network share you created in the previous task. The backup file needs to include a checksum, so you will add that during the backup steps.
 
@@ -185,7 +187,7 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
     ![Dialog displayed a message that the database backup was completed successfully.](../graphics/media/ssms-backup-complete.png "Backup complete")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.4">Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information</b></p></a>
 
 In this task, you will use the Azure Cloud shell to retrieve the information necessary to connect to your SQL MI and SqlServer2008 VM from DMS.
 
@@ -233,7 +235,7 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 9. Leave the Azure Cloud Shell open for the next task.
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: Create a service principal</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.5">Activity 5: Create a service principal</b></p></a>
 
 > **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but there is nothing you need to do. Please refer to instructor guidance.  
 
@@ -287,7 +289,7 @@ In this task, you will use the Azure Cloud Shell to create an Azure Active Direc
     ```
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 6: Create and run an online data migration project </b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.6">Activity 6: Create and run an online data migration project </b></p></a>
 
 In this task, you will create a new online data migration project in DMS for the `TailspinToys` database.
 
@@ -372,7 +374,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     ![In the migration monitoring window, a status of Log files uploading is highlighted.](../graphics/media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 7: Perform migration cutover</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.7">Activity 7: Perform migration cutover</b></p></a>
 
 Since you performed the migration as an "online data migration," the migration wizard will continue to monitor the SMB network share for newly added log files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you will add a record to one of the database tables, backup the logs, and complete the migration of the `TailspinToys` database by cutting over to the SQL MI database.
 
@@ -450,7 +452,7 @@ Since you performed the migration as an "online data migration," the migration w
 15. You have now successfully migrated the `TailspinToys` database to Azure SQL Managed Instance.
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 8: Verify database and transaction log migration</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.8">Activity 8: Verify database and transaction log migration</b></p></a>
 
 In this task, you will connect to the SQL MI database using SSMS, and quickly verify the migration.
 
@@ -492,7 +494,7 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
 8. You are now done using the SqlServer2008 VM. Close any open windows and log off of the VM. You will use the JumpBox VM for the remaining tasks of this hands-on lab.
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 8: Update the application</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.9">Activity 9: Update the application</b></p></a>
 
 
 With the `TailspinToys` database now running on SQL MI in Azure, the next step is to make the required modifications to the TailspinToys gamer information web application.
@@ -580,14 +582,12 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](../graphics/media/visual-studio-security-warning.png "Visual Studio")
 
 
-[AT] New altered instructions from here:  
 19. Open `appsettings.json` and enter your SQL 2008 VM information in the Connection strings section
 ```
 "ConnectionStrings": {
     "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=Workshopuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
     "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
   }
-
 ```
 20. Save the file.  
 ![Save the Visual Studio web application after adding the keys](../graphics/media/vs-save-file.png "Visual Studio")
