@@ -179,19 +179,18 @@ In this activity you will use the scenario you selected from above and create a 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">6.4 Explain the Solution</h2>
 
-TODO: Topic Description
+The architecture design session above is most oftem conducted by the technical staff with representation from the business. After the design session is complete, the findings should be condensed into an instrument (slides, notes or other graphics tool) that allow the team to explain the proposal along with a set of options. At the end of the presentation, your team should also include a description of the project, timelines, and responsibilities. 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: TODO: Activity Name</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create a Solution Presentation</b></p>
 
-TODO: Activity Description and tasks
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Description</b></p>
-
-TODO: Enter activity description with checkbox
+In this activity your team will create a solution briefing with options and timelines.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-TODO: Enter activity steps description with checkbox
+- Open this reference: <a href="https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources" target="_blank">https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources</a>
+- You may use the PowerPoint template provided (6 - Handoff.pptx) or create your own briefing tool, using anything you like. 
+- Make sure you include at least one alternative option and explain why you chose your original one.
+- If time permits, review the schedule documents in the Resources area and assign reasonable timelines to your soluition. 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
