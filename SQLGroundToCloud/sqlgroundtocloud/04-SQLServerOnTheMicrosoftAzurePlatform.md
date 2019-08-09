@@ -15,7 +15,7 @@ In this workshop you'll cover using <TODO: Enter a brief description of the work
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.) You'll need all of the items loaded there before you can proceed with the workshop.) If you're doing Module 4 and 5 in isolation, TODO
 
 
 
@@ -26,17 +26,17 @@ In each module you'll get more references, which you should follow up on to lear
 TODO: Topic Description
 
 Topic 1: Overview of Azure SQL, deployment options, tiers, scenarios (15 minutes)  
-	- Shift to the cloud - why  
-	- Azure SQL deployment options  
-		- VMs, scenario  
-		- Single instance, scenario  
-		- Elastic pools, scenario  
-	- Azure SQL Database service tiers  
-		- General Purpose  
-			- General Purpose, scenario  
-			- Serverless, scenario  
-		- Business Critical, scenario  
-        - Hyperscale, scenario  
+* Shift to the cloud - why  
+* Azure SQL deployment options  
+	* VMs, scenario  
+	* Single instance, scenario  
+	* Elastic pools, scenario  
+* Azure SQL Database service tiers  
+	* General Purpose  
+		* General Purpose, scenario  
+		* Serverless, scenario  
+	* Business Critical, scenario  
+    * Hyperscale, scenario  
 
 <br>
 
@@ -64,27 +64,22 @@ Topic 2:  Fundamentals overview and links to more resources (15 minutes)
 
 TODO: Topic Description
 
+TODO: content  
 Topic 3: Migration process (15 minutes)  
-	- Discover, Assess   
-        - DMA, SKU Recommender  
-		- Other tools: MAP Toolkit, Data workload assessment   model/tool, Bulk database creation with PowerShell, bulk schema deployment with MSSQL-scripter and PowerShell, utility to move on-prem SQL Server logins to Azure SQL MI  
-		- Conclude some to SQL VM and some to MI  
-
-         
-	- Migrate  
-		- DMS  
-		- Data sync  
-		- Cutover  
-		- Migrating SSxS guidance  
-
-
-	- Post-migration  
-		- Remediate apps  
-		- Testing  
-		- Optimizing  
-
-
-Scaling the migration to other workloads  
+* Discover, Assess   
+    * DMA, SKU Recommender  
+	    * Other tools: MAP Toolkit, Data workload assessment   model/tool, Bulk database creation with PowerShell, bulk schema deployment with MSSQL-scripter and PowerShell, utility to move on-prem SQL Server logins to Azure SQL MI  
+	* Conclude some to SQL VM and some to MI  
+* Migrate  
+	* DMS  
+	* Data sync, etc.  
+	* Cutover  
+	* Migrating SSxS guidance  
+* Post-migration  
+	* Remediate apps  
+	* Testing  
+	* Optimizing  
+* Scaling the migration to other workloads  
  
 
 <br>
@@ -98,6 +93,7 @@ TODO: Topic Description
 
 
 ## Overview 
+
 
 In this series of hands-on labs (throughout Modules 4 and 5), you will implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Database Managed Instance (SQL MI). You will perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You will then migrate the customer's on-premises gamer information, web application and database into Azure, with minimal to no down-time. Finally, you will enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer's application.
 
@@ -115,6 +111,7 @@ Tailspin Toys is hoping that migrating their services from on-premises to the cl
 
 Below is a diagram of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
 
+TODO Need to update the architecture to show the app running locally. May need to connect with Bob on the ideas around this...   
 ![This solution diagram includes a virtual network containing SQL MI in a isolated subnet, along with a JumpBox VM and Database Migration Service in a management subnet. The MI Subnet displays both the primary managed instance, along with a read-only replica, which is accessed by reports from the web app. The web app connects to SQL MI via a subnet gateway and point-to-site VPN. The web app is published to App Services using Visual Studio 2019. An online data migration is conducted from the on-premises SQL Server to SQL MI using the Azure Database Migration Service, which reads backup files from an SMB network share.](../graphics/media/preferred-solution-architecture.png "Preferred Solution diagram")
 
 The solution begins with using the Microsoft Data Migration Assistant to perform assessments of feature parity and compatibility of the on-premises SQL Server 2008 R2 database against both Azure SQL Database (Azure SQL DB) and Azure SQL Database Managed Instance (SQL MI), with the goal of migrating the `TailspinToys` database into an Azure PaaS offering with minimal or no changes. After completing the assessments and reviewing the findings, the SQL Server 2008 R2 database is migrated into SQL MI using the Azure Database Migration Service's online data migration option. This allows the database to be migrated with little to no downtime, by using a backup and transaction logs stored in an SMB network share.
@@ -137,7 +134,7 @@ TODO: Activity Description and tasks
 
 TODO: Enter activity steps description with checkbox
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: TODO: Restore TailspinToys on the SQLServer2008 VM</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Restore TailspinToys on the SQLServer2008 VM</b></p>
 
 > **Important Note!**  
 > If you are attending this lab as part of a day-long workshop, you **must complete this activity prior to moving to the next module**. The rest of the activities in this lab can be skipped, they were demoed earlier.
@@ -170,7 +167,6 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
 
     ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](../graphics/media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-> [AT] Could Step 6 be done ahead of time?
 6. Once logged into the SqlServer2008 VM, download a [backup of the TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
 
 7. Next, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
@@ -267,7 +263,7 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
     ![The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service.](../graphics/media/ssms-restart-service.png "Restart MSSQLSERVER service")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: TODO: Perform assessment for migration to Azure SQL Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Perform assessment for migration to Azure SQL Database</b></p>
 
 > **Important Note!**  
 > If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
@@ -331,7 +327,7 @@ In this task, you will use the Microsoft Data Migration Assistant (DMA) to perfo
 
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: TODO: Perform assessment for migration to Azure SQL Database Managed Instance</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Perform assessment for migration to Azure SQL Database Managed Instance</b></p>
 
 > **Important Note!**  
 > If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
@@ -383,15 +379,16 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 
     ![Start assessment](../graphics/media/dma-start-assessment-to-sql-mi.png "Start assessment")
 
+TODO Need to update screenshots here with Azure Migrate  
 9. Review the assessment of ability to migrate to Azure SQL Database Managed Instance.
 
-    ![For a target platform of Azure SQL Database Managed Instance, feature parity with PowerShell job step is listed.](../graphics/media/dma-feature-parity-sql-mi.png "Database feature parity")
+![For a target platform of Azure SQL Database Managed Instance, feature parity with PowerShell job step is listed.](../graphics/media/dma-feature-parity-sql-mi.png "Database feature parity")
 
-    >**Note**: The assessment report for a migrating the `TailspinToys` database to a target platform of Azure SQL Database Managed Instance shows feature parity only with a PowerShell job step. The step listed is associated with a built-in SQL Server Agent Job, and it will not impact the migration of the `TailspinToys` database to SQL MI.
+>**Note**: The assessment report for a migrating the `TailspinToys` database to a target platform of Azure SQL Database Managed Instance shows feature parity only with a PowerShell job step. The step listed is associated with a built-in SQL Server Agent Job, and it will not impact the migration of the `TailspinToys` database to SQL MI.
 
 10. The database, including the cross-database references and Service broker features, can be migrated as is, providing the opportunity for TailspinToys to have a fully managed PaaS database running in Azure. Previously, their options for migrating a database using features, such as Service Broker, incompatible with Azure SQL Database, were to deploy the database to a virtual machine running in Azure (IaaS) or modify their database and applications to not use the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with near 100% compatibility, including the features that prevented them from using Azure SQL Database.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: TODO: Upload and review with Azure Migrate</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: Upload and review with Azure Migrate</b></p>
 
 
 > **Important Note!**  
