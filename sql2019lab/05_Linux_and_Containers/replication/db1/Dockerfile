@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/mssql/rhel/server:2019-CTP3.1
+FROM mcr.microsoft.com/mssql/rhel/server:2019-latest
 COPY . /
 
 RUN chmod +x /db-init.sh
