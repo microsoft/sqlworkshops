@@ -19,7 +19,10 @@ In the previous modules, you learned about SQL Server 2019, big data, and more. 
 &ensp;&ensp;&ensp;[Activity 3](#4.4.3): Perform assessment for migration to Azure SQL Database  
 &ensp;&ensp;&ensp;[Activity 4](#4.4.4): Perform assessment for migration to Azure SQL Database Managed Instance  
 
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)  
+
+SELF-PACED USERS ONLY: If you are using this module self-paced, carefully read through Module 4 of this workshop and the references provided before completing the lab in Module 4.4 Then continue to Module 5.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
