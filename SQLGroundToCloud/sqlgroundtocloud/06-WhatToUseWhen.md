@@ -14,20 +14,16 @@ This module can be used stand-alone, and does not require any <a href="https://g
 
 There are many elements in a single solution, and in this module you'll learn how to take the business scenario and determine the best resources and processes to use to satisfy the requirements while considering the constraints within the scenario. 
 
-In production, there are normally 6 phases to create  a solution: 
+In production, there are normally 6 phases to create  a solution = these can be done in-person, or through recorded documents: 
 
-<dl>
-
-  <dt>01 - Discovery: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>02 - Envisioning: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>03 - Architecture Design Session (ADS): The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>04 - Proof-Of-Concept (POC): The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>05 - Implementation: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-  <dt>06 - Discovery: The original statement of the problem from the customer. This may be in the form of a printed request, or a meeting.</dt>
-
-</dl>
-
-Throughout this module, you can use various templates, icons, stencils and other assets to assist you with each phase and the exercises. These assets can also be used in your production workloads: <a href="https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources" target="_blank">https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources</a>
+ - 01 **Discovery**: The original statement of the problem from the customer 
+ - 02 **Envisioning**: A "blue-sky" description of what success in the project would look like. Often phrased as *"I can..."* statements
+ - 03 **Architecture Design Session** (ADS): An initial layout of the technology options and choices for a preliminary solution
+ - 04 **Proof-Of-Concept** (POC): After the optimal solution technologies and processes are selected, a POC is set up wiht a small representeative example of what a solution might look like, as much as possible. If available, a currently-running solution in a prallel example can be used
+ - 05 **Implementation**: Implementing a phased-in rollout of the completed solution basedd on findings from the previous phases
+ - 06 **Handoff**: A post-mortem on the project with a discussion of future enhancements
+ 
+Throughout this module, you can use various templates, icons, stencils and other assets to assist you with each phase and also use these with your exercises. These assets can also be used in your production workloads: <a href="https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources" target="_blank">https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources</a>
 
 For this module, you'll focus on the <i>Discovery</i> and the <i>Architecture Design Session</i> phases only. If you wish to develop your solution further after the course, you can use the assets above to complete all phases.
 
@@ -37,19 +33,17 @@ For this module, you'll focus on the <i>Discovery</i> and the <i>Architecture De
 
 The first step in any project is to fully understand the problem the company needs to solve, and any requirements and constraints they have on those goals. This is often in the form of a "Problem Statement", which is a formal set of paragraphs clearly defining the circumstances, present condition, and desired outcomes for a solution. At this point you want to avoid exploring how to solve the problem, and focus on what you want to solve. 
 
-Begin with a complete examination of the company and organization as you can. Gather information from as many sources as possible, and simplify the descriptions to have specific measurements and depictions of the environment.
+Begin with as complete an examination of the company and organization as you can. Gather information from as many sources as possible, and simplify the descriptions to have specific measurements and depictions of the environment.
 
 From there, lay out the problem, and then review that with all stakeholders. 
 
-After everyone agrees on the problem statement, pull out as many requirments (goals) for the project as you can find, and then lay in any constraints the solution has. At this point, it's acceptable to have unrealistic constraints - later you can pull those back after showing a cost/benefit ratio on each requirement and constraint. 
+After everyone agrees on the problem statement, pull out as many requirments (*goals*) for the project as you can find, and then lay in any constraints the solution has. At this point, it's acceptable to have unrealistic constraints - later you can pull those back after showing a cost/benefit ratio on each requirement and constraint. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Review Business Scenarios</b></p>
 
 In this activity you will review three business scenarios, and pick one to focus on for the rest of this module. The company descritpions, project goals, and constraints have already been laid out for you. 
 
-Are there sub-goals that have been left out? Any other constraints you can think of?
-
-After you make your choice, note any changes or additions you want to make to the scenario. Feel free to adapt it to have more information where you want clarity - you can make assumptions about any part of the scenario.
+After you make your choice, copy the problem statement into your working documents (see the [Resources](https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources) for examples) and make any changes or additions you want to make to the scenario. Feel free to adapt it to have more information where you want clarity - you can make assumptions about any part of the scenario. Are there sub-goals that have been left out? Any other constraints you can think of?
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -66,6 +60,7 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 <b>Project Goals</b>
 
 - Modernize to a newer SQL version
+- Move to Cloud whereever possible
 - Cloud Integration
 - Increase Performance
 - Publish Product Catalog to the Web
@@ -73,7 +68,7 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 
 <b>Project Constraints</b>
 
-- Some systems must stay online
+- Some systems must stay on-premises
 - In some cases, no code change is possible
 - The B2B system should be a "Pull" from partners
 
@@ -88,16 +83,16 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 
 <b>Project Goals</b>
 
-- Move to Cloud
-- Multi-Cloud
+- Move everything to Cloud
+- Multi-Cloud strategy desired - standards-based
 - All client apps should be avaialable worldwide
 - Server-side should be API's by default
 
 <b>Project Constraints</b>
 
-- High Security and Auditing capabilities
-- International Compliance
-- Access Tracking
+- High Security and Auditing capabilities required
+- International Compliance required
+- Access Tracking required
 - Must be user-friendly on mobile devices 
 
 <!-- TODO https://docs.microsoft.com/en-us/azure/migrate/contoso-migration-overview -->
@@ -120,6 +115,7 @@ Recently WWI started to sell a variety of edible novelties such as chilli chocol
 
 - Enable Big Data processing
 - Enable Machine Learning and Artificial Intelligence prediction capabilities
+- Cloud platform desired, but may need to consider on-premises options
 
 <b>Project Constraints</b>
 
@@ -139,7 +135,7 @@ In this activity you will list out all of the options you have for your problem 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-- Open a note and detail all technologies you have studied in this workshop, and list them out. (Order is not important during this step)
+- Open your ADS document and detail all technologies you have studied in this workshop, and list them out. (Order is not important during this step)
 - Next, write the problem element next to each technology that it could solve
 - Document any processes you should follow when using each technology
  
@@ -147,7 +143,7 @@ In this activity you will list out all of the options you have for your problem 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">6.3 The Decision Matrix</h2>
 
-Following the process, you now knwo the problems you want to solve, the desired outcomes for the solution, and several tools and technique options that you can use to achieve your goals. In most situations, there are several ways to solve a given problem. Sometimes the "best" solution is too costly, inconvenient or unworkable due to the requirements or constraints the customer puts on the solution.
+Following the process, you now know the problems you want to solve, the desired outcomes for the solution, and several tools and technique options that you can use to achieve your goals. In most situations, there are several ways to solve a given problem. Sometimes the "best" solution is too costly, inconvenient or unworkable due to the requirements or constraints the customer puts on the solution.
 
 Because most solutions are fairly complex, and there are mutliple technology and process choices, considerations and requirements, a *Decision Matrix* that lists these elements is useful. It contains columns for the technology and process options you have, and the requirements and constraints as rows. Each column gets a score you assign from a low number (does not meet this requirement) to a higher one (does meet the requirement). These numbers are summed at the end of each row, per requirement. The highest number is usually the best technology for that aspect of the solution. 
 
@@ -203,6 +199,8 @@ In this activity your team will create a solution briefing with options and time
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/data-guide/" target="_blank">Azure Data Architecture Guide</a> - This guide presents a structured approach for designing data-centric solutions on Microsoft Azure. It is based on proven practices derived from customer engagements</li>
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/" target="_blank">Azure Reference Architectures</a> - Recommended practices, along with considerations for scalability, availability, manageability, and security</li>
     <li><a href="http://www.ceptara.com/blog/how-to-write-problem-statement" target="_blank">Microsoft Cloud Adoption Framework for Azure</a> - Article on writing effective problem statements</li>
+	<li><a href="https://azure.microsoft.com/en-us/overview/trusted-cloud/" target="_blank">Microsoft Azure Trust Center</a> - Full reference site for Azure security, privacy and compliance</li>
+	
 
 </ul>
 
