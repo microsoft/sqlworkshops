@@ -1,5 +1,3 @@
-[AT] Update the links and table of contents
-
 ![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png?raw=true)
 
 # Workshop: SQL Ground-to-Cloud
@@ -234,7 +232,7 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
 
     ![The New Query button is highlighted in the SSMS toolbar.](../graphics/media/ssms-new-query.png "SSMS Toolbar")
 
-17. Copy and paste the SQL script below into the new query window (replacing `<YourPasswordHere>` with your password):
+17. Copy and paste the SQL script below into the new query window (replacing `<YourPasswordHere>` with the same password as the SQL Server 2008 VM):
 
     ```sql
     USE master;
