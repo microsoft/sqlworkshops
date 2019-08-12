@@ -33,7 +33,7 @@ In this module, you will use the [Azure Database Migration Service](https://azur
 &ensp;&ensp;&ensp;[Activity 1](#5.3.1): View Leaderboard report in Tailspin Toys web application  
 &ensp;&ensp;&ensp;[Activity 2](#5.3.2): Update read only connection string  
 &ensp;&ensp;&ensp;[Activity 3](#5.3.3): Reload leaderboard report in the Tailspin Toys web application  
-[5.4](#5.4): TODO Summary & next steps
+[5.4](#5.4): After the Migration
 
 SELF-PACED USERS ONLY: If you are using this module self-paced, carefully read through Module 4 of this workshop, complete the assessment lab in Module 4.4 first. Then, read carefully and complete the labs in this module.  
 
@@ -67,8 +67,9 @@ In this task, you will create a new SMB network share on the SqlServer2008 VM. T
 
 4. Enter the following credentials when prompted, and then select **OK**:
 
-    - **Username**: sqlmiuser
-    - **Password**: Password.1234567890
+    - **Username**: sqlmiuser  
+
+    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](../graphics/media/rdc-credentials-sql-2008.png "Enter your credentials")
 
@@ -122,7 +123,8 @@ In this task, you will use the SQL Server Configuration Manager to update the se
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
     - **Account name**: sqlmiuser
-    - **Password**: Password.1234567890
+    
+    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
 
     ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered.](../graphics/media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
 
@@ -320,8 +322,10 @@ In this task, you will create a new online data migration project in DMS for the
     - **Source SQL Server instance name**: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, `13.66.228.107`.
     - **Authentication type**: Select SQL Authentication.
     - **Username**: Enter **WorkshopUser**.  
-    - **Password**: Enter **Password.1234567890**.
+    - **Password**: Enter your password.
     - **Connection properties**: Check both Encrypt connection and Trust server certificate.
+
+    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.  
 
     ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
 
@@ -336,7 +340,7 @@ In this task, you will create a new online data migration project in DMS for the
     - **Subscription**: Select the subscription you are using for this hand-on lab.
     - **Target Azure SQL Managed Instance**: Select the sqlmi-UNIQUEID instance.
     - **SQL Username**: Enter **sqlmiuser**
-    - **Password**: Enter **Password.1234567890**
+    - **Password**: Enter your password.
 
     ![The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
 
@@ -352,7 +356,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     - **Network share location**: Enter `\\SQLSERVER2008\dms-backups`. This is the path of the SMB network share you created during the before the hands-on lab exercises.
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQLSERVER2008\sqlmiuser`
-    - **Password**: Enter Password.1234567890
+    - **Password**: Enter your password.
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the sqlmistoreUNIQUEID storage account.
 
@@ -470,7 +474,7 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
     - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
     - **Authentication**: Select SQL Server Authentication.
     - **Login**: Enter sqlmiuser
-    - **Password**: Enter Password.1234567890
+    - **Password**: Enter your password.
     - Check the **Remember password** box.
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](../graphics/media/ssms-connect-to-server-sql-mi.png "Connect to Server")
@@ -506,7 +510,7 @@ With the `TailspinToys` database now running on SQL MI in Azure, the next step i
 >**Note**: The architecture diagram from Module 4 explains a web app being deployed to Azure. Due to time restraints, the lab will deal with switching the app running on the VM locally to using SQL MI (not the deployment to Azure or integrating the App Service with the Virtual Network). In the [extended version of these labs](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md#exercise-3-update-the-web-application-to-use-the-new-sql-mi-database), or if you have time at the end of the day, you can do that.
 
 
-In this acitivity, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, run the `TailspinToysWeb` application on the VM.  
+In this activity, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, run the `TailspinToysWeb` application on the VM.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -534,7 +538,6 @@ In this acitivity, you will create an RDP connection to the JumpBox VM, and then
 6. Enter the following credentials when prompted, and then select **OK**:
 
     - **Username**: sqlmiuser
-    - **Password**: Password.1234567890
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](../graphics/media/rdc-credentials.png "Enter your credentials")
 
@@ -566,11 +569,11 @@ git clone https://github.com/microsoft/sqlworkshops.git
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](../graphics/media/visual-studio-security-warning.png "Visual Studio")
 
 
-19. Open `appsettings.json` and enter your SQL 2008 VM information in the Connection strings section
-```
+19. Open `appsettings.json` and enter your SQL 2008 VM information and password in the Connection strings section
+```c
 "ConnectionStrings": {
-    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=Workshopuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
-    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
+    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=Workshopuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
+    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
   }
 ```
 20. Save the file.  
@@ -730,7 +733,7 @@ The details for each finding provide more insight into the reason for the findin
     - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
     - **Authentication**: Select SQL Server Authentication.
     - **Login**: Enter sqlmiuser
-    - **Password**: Enter Password.1234567890
+    - **Password**: Enter your password.
     - Check the **Remember password** box.
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](../graphics/media/ssms-18-connect-to-server.png "Connect to Server")
@@ -819,7 +822,7 @@ In this task, you will enable Read Scale-Out for the `TailspinToys` database, us
 4. The `TailspinToysReadOnlyContext` connection string should now look something like the following:
 
    ```sql
-   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
+   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```  
 
 
@@ -843,14 +846,13 @@ In this task, you will refresh the Leaderboard report in the Tailspin Toys web a
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.4">5.4 TODO Summary & next steps</a></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.4">5.4 After the Migration</a></h2>
 
-TODO: Topic Description
+In this module, you used the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. You then updated the web application to use the SQL MI created, and enabled [advanced security features](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security). Finally, you set up your application to leverage the [online secondary replica](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) to handle heavy read workloads.  
 
-Topic 4:  
-Post migration activities  
-Scaling a migration
+Now that Tailspin Toys has completed a migration for their gaming database. They'll want to leverage the [post-migration validation and optimization guide](https://docs.microsoft.com/en-us/sql/relational-databases/post-migration-validation-and-optimization-guide?view=sql-server-2017) to ensure data completeness and uncover and resolve performance issues.  
 
+If and when Tailspin Toys chooses to scale their migration to other instances and databases, they can leverage the same process you've seen in Modules 4 and 5, but should also refer to the guidance Microsoft provides on [scaling a migration to Azure](https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale). 
 
 <br>
 
@@ -870,6 +872,15 @@ Scaling a migration
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure
     " target="_blank">How to Deploy an Azure Infrastructure</a> and <a href="(https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-networking
     " target="_blank">Best Practices for setting up networking</a> are also two very useful resources when moving to Azure.</li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-costs
+    " target="_blank">Best practices for costing and sizing workloads migrated to Azure</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-security-management
+    " target="_blank">Best practices for securing and managing workloads migrated to Azure</a></li>
+
+    
+
+
+    
 
     
 
