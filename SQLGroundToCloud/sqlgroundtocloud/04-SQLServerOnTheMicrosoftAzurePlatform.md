@@ -104,7 +104,7 @@ Topic 3: Migration process (15 minutes)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.4">4.4 Lab and scenario overview plus database discovery and assessment</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.4">4.4 Database discovery and assessment</h2></a>
 
 
 
@@ -114,7 +114,7 @@ At the end of these hands-on labs, you will be better able to implement a cloud 
 
 > **Important Note!** These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
 
-## Scenario: Tailspin Toys Gaming
+## Scenario Review: Tailspin Toys Gaming
 
 Tailspin Toys is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
 
