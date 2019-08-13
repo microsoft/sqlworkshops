@@ -80,41 +80,10 @@ This is a modular set of Labs, and in each section, you'll learn concepts, techn
   <td style="background-color: AliceBlue; color: black;"><b>Time</b></td>
   <td style="background-color: AliceBlue; color: black;"><b>Topics</b></td></tr>
 
-  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/01-IntroductionAndWorkshopMethodology.md" target="_blank">01 - Introduction and Workshop Methodology </a></td><td>9:00AM-9:15AM</td><td> Workshop introduction, logistics, setup check </td></tr>
+  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLOnAzureLabs/Lab-DatabaseDiscoveryAndAssessementForMigratingToAzure.md" target="_blank"> Lab: Database Discovery and Assessment for Migrating to the Microsoft Azure SQL Platform </a></td><td>30 Minutes</td><td style="vertical-align: top;"> In this hands-on Lab, you will set up your environment with SQL Server 2008 R2 and Azure SQL, and perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. At the end of of this Lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.</td></tr>
   
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">02 - Modernizing Your Data Estate with SQL Server 2019 </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">9:15AM-11:15AM</td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> This module covers challenges and solutions using the latest version of SQL Server including:<br>
-    <ul style="list-style-type:disc;">
-        <li>Overall SQL Server 2019</li> 
-        <li>Intelligent Performance</li>
-        <li>What's New in Security</li>
-        <li>Mission Critical Availability</li>
-        <li>Data Virtualization</li>
-        <li>SQL Server Linux and Containers</li>
-        <li>What Else, Migration and Next Steps</li>
-    </ul>
+  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/02-ModernizingYourDataEstateWithSQLServer2019.md" target="_blank">Lab: Migrating to Microsoft Azure SQL Managed Instance </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">1.5 Hours</td><td style="vertical-align: top;background-color: AliceBlue; color: black;"> In this hands-on Lab, you will use the <a href="https://azure.microsoft.com/services/database-migration/" target="_blank">Azure Database Migration Service</a> (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. At the end of the Lab, you'll also explore some of the security and performance features available.
   </td></tr>
-
-  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/03-WorkingWithBigDataAndDataScienceBigDataClustersForSQLServer2019.md" target="_blank"> 03 - Working with Big Data and Data Science (Big Data Clusters for SQL Server 2019) </a></td><td>11:30AM-12:30PM</td><td style="vertical-align: top;"> Abstraction levels, frameworks, architectures and components within SQL Server big data clusters</td></tr>
-
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/04-SQLServerOnTheMicrosoftAzurePlatform.md" target="_blank">04 - SQL Server on the Microsoft Azure Platform </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">1:30PM-2:30PM<td td style="background-color: AliceBlue; color: black;"> Covers the multiple ways to use SQL Server technologies on the Microsoft Azure Platform, along with the fundamentals of SQL in Azure with additional deeper resources provided. Topics covered include:
-      <ul style="list-style-type:disc;">
-        <li>Azure SQL: SQL VMs, Single instance, Single database, Elastic pools</li>
-        <li>Fundamentals of SQL in Azure</li>
-        <li>Migration process</li>
-    </ul>
-  </td></tr>  
-
-  <tr><td style="vertical-align: top;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-MigratingToAzureSQL.md
-" target="_blank"> 05 - Migrating SQL Server to Azure </a></td><td>2:45PM-3:45PM</td><td style="vertical-align: top;"> Covers the migration workflow and tools for assessing, planning, and migrating SQL workloads to Azure that meets the business requirements. Some of the tools and topics (not exhaustive) covered are:
-        <ul style="list-style-type:disc;">
-        <li>Azure Migrate</li>
-        <li>Data Migration Assistant</li>
-        <li>Azure Database Migration Service</li>
-        <li>Post-migration operations</li>
-    </ul>
-  </td></tr>
-
-  <tr><td style="vertical-align: top;background-color: AliceBlue; color: black;"><a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/06-WhatToUseWhen.md" target="_blank"> 06 - What to use When </a> </td><td style="vertical-align: top;background-color: AliceBlue; color: black;">3:45PM-5:00PM<td td style="background-color: AliceBlue; color: black;"> Covers the decision process and provides tools for deciding on the proper technologies on-premises and in-cloud for a solution based on requirements and constraints.</td></tr>
 
 </table>
 
