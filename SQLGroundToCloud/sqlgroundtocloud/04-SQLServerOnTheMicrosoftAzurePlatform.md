@@ -10,10 +10,10 @@
 
 In the previous modules, you learned about SQL Server 2019, big data, and more. In this module, you'll learn more about Azure SQL, including the benefits, the options, and how to get there. Near the end of the module, you'll learn how to assess your on-premises estate (via Tailspin Toys) with tools like [Azure Migrate](https://docs.microsoft.com/en-us/azure/migrate/migrate-services-overview) and [Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-2017). The activities in this module include:  
 
-[4.1](#4.1): Introduction to Azure SQL (15 minutes)  
-[4.2](#4.2): Fundamentals of Azure SQL (15 minutes)  
-[4.3](#4.3): Migrating to Azure SQL (15 minutes)  
-[4.4](#4.4): Database Discovery and Assessment (15 minutes)  
+[4.1](#4.1): Introduction to Azure SQL   
+[4.2](#4.2): Fundamentals of Azure SQL  
+[4.3](#4.3): Migrating to Azure SQL   
+[4.4](#4.4): Database Discovery and Assessment   
 &ensp;&ensp;&ensp;[Activity 1](#4.4.1): Set up Azure Migrate  
 &ensp;&ensp;&ensp;[Activity 2](#4.4.2): Restore TailspinToys on the SQLServer2008 VM  
 &ensp;&ensp;&ensp;[Activity 3](#4.4.3): Perform assessment for migration to Azure SQL Database  
@@ -26,7 +26,7 @@ SELF-PACED USERS ONLY: If you are using this module self-paced, carefully read t
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.1">4.1 Azure SQL (15 minutes)</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.1">4.1 Azure SQL</h2></a>
 
 ### Scenario Review: Tailspin Toys Gaming
 
@@ -49,7 +49,7 @@ Every business is going to have unique requirements that make some options bette
 * [Allscripts](https://customers.microsoft.com/en-us/story/allscripts-partner-professional-services-azure): Allscripts is a leading healthcare software manufacturer, serving physician practices, hospitals, health plans, and Big Pharma. To transform its applications frequently and host them securely and reliably, Allscripts wanted to move to Azure, quickly. In just three weeks, the company lifted and shifted dozens of acquired applications running on 1,000 virtual machines to Azure with [Azure Site Recovery](https://azure.microsoft.com/en-us/services/site-recovery/). After the migration, Allscripts began to evaluate and test Azure SQL Managed Instance, and started to move some workloads there. 
 * [Komatsu](https://customers.microsoft.com/en-us/story/komatsu-australia-manufacturing-azure): Komatsu is a manufacturing company that procudes and sells heavy equipment for construction. They had multiple mainframe applications for different types of data, which they wanted to consolidate to get a holistic view. Additionally, they wanted a way reduce overhead. Because of the large SQL Server surface area, they were able to move about 1.5 terabytes of data smoothly to Azure SQL Managed Instance, and [start enjoying benefits like automatic patching and version updates, automated backups, high availability, and reduced management overhead](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview). After migrating, they reported ~49% cost reduction and ~25-30% performance gains.  
 * [AccuWeather](https://customers.microsoft.com/en-us/story/accuweather-partner-professional-services-azure): AccuWeather has been analyzing and predicting the weather for more than 55 years. They wanted access to the rich and rapidly advanced platform of Azure that includes big data, machine learning, and AI capaiblities. They want to focus on building new models and applications, not managing databases. They selected Azure SQL Database (single database) to use with other services, like [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/) and [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/service/), to quickly and easily deploy new internal applications to make sales and customer predictions.  
-* [Paychex](https://customers.microsoft.com/en-us/story/paychex-azure-sql-database-us): Paychex is a human capital management firm that serves more than 650,000 businesses across the US and Europe. They needed a way to separately manage the time and pay management for each of their businesses, and any saved costs is more money in their pockets. They opted for [elastic pools](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-pool), which allowed them to simplify the management and enable resource sharing between separate databases to lower costs.  
+* [Paychex](https://customers.microsoft.com/en-us/story/paychex-azure-sql-database-us): Paychex is a human capital management firm that serves more than 650,000 businesses across the US and Europe. They needed a way to separately manage the time and pay management for each of their businesses, and cut costs. They opted for [elastic pools](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-pool), which allowed them to simplify the management and enable resource sharing between separate databases to lower costs.  
 
 If you want to dive deeper into the deployment options and how to choose, check out the following resources:  
 * [Microsoft Customer Stories](https://customers.microsoft.com/en-us/home?sq=&ff=&p=0) for many more stories similar to the ones above. You can use this to explore various use cases, industries, and solutions.  
@@ -96,7 +96,7 @@ For a deeper explanation between the three tiers (including scenarios), you can 
 *Decision 3: Provisioned or serverless compute?*  
 If you choose **General Purpose within Single databases**, you have an additional decision to make regarding the compute that you pay for:
 * **Provisioned compute** is meant for more regular usage patterns with higher average compute utilization over time, or multiple databases using elastic pools. 
-* **Serverless compute** is meant for intermittent, unpredictable usage with lower average compute utilization over time.  
+* **Serverless compute** is meant for intermittent, unpredictable usage with lower average compute utilization over time. Serverless has auto-pause and resume capabilities (with a time delay you set), meaning when your database is paused, you only pay for storage.  
 
 For a deeper explanation between the two compute options (including scenarios), you can refer to the detailed [comparison in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-serverless#comparison-with-provisioned-compute-tier).  
 
@@ -107,10 +107,10 @@ The vCore model lets you choose the generation of hardware:
 * **Gen4**: Up to 24 logical CPUs based on Intel E5-2673 v3 (Haswell) 2.4-GHz processors, vCore = 1 PP (physical core), 7 GB per core, attached SSD
 * **Gen5**: Up to 80 logical CPUs based on Intel E5-2673 v4 (Broadwell) 2.3-GHz processors, vCore = 1 LP (hyper-thread), 5.1 GB per core, fast eNVM SSD  
 
-Basically, Gen4 hardware offers substantially more memory per vCore. However, Gen5 hardware allows you to scale up compute resources much higher. The only exception is the serverless compute tier is only available with Gen5 harware.  
+Basically, Gen4 hardware offers substantially more memory per vCore. However, Gen5 hardware allows you to scale up compute resources much higher. The only exception is the serverless compute tier is only available with Gen5 hardware.  
 
 *Summary*  
-As you've hopefully noticed, while there are a lot of options, Azure is able to provide flexibility so you get exactly what you need, nothing less. A summary of the options with some additional considerations is included below, but be sure to check out [pricing information](https://azure.microsoft.com/en-us/pricing/details/sql-database/managed/) for latest.
+As you've hopefully noticed, while there are a lot of options, Azure is able to provide flexibility so you get exactly what you need, nothing less. A summary of the options with some additional considerations is included below, but be sure to check out [pricing information](https://azure.microsoft.com/en-us/pricing/details/sql-database/managed/) for the latest details.
 
 ![Azure SQL tiers](../graphics/media/service-tiers-summary.png)
 
@@ -123,7 +123,7 @@ As you've hopefully noticed, while there are a lot of options, Azure is able to 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.2">4.2 Fundamentals of Azure SQL (15 minutes)</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.2">4.2 Fundamentals of Azure SQL</h2></a>
 
 There is not enough time in this workshop to review all of the fundamentals at a deep level here. You'll receive pointers and an overview of Azure SQL platform benefits. Then, basic networking for Azure SQL will be covered. This section will go quickly in the workshop, but it's recommended to spend some time reviewing the many resources provided in this section.    
 
@@ -135,11 +135,11 @@ Azure SQL Database (including single databases, elastic pools, and managed insta
 * [Automated backups](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automated-backups) are created and use Azure read-access geo-redundant storage (RA-GRS) to provide geo-redundancy.
 * [Long term backup retention](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-long-term-retention) enables you to store specific full databases for up to 10 years.
 * [Geo-replication](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview) by creating readable replicas of your database in the same or different data center (region).
-* [Scale](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources) by easily adding more resources (CPU, memory, storage) without long provisioning
+* [Scale](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources) by easily adding more resources (CPU, memory, storage) without long provisioning.
 * [Advanced security](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-index) detects threats and vulnerabilities in your databases and enables you to secure your data.
 * [Automatic tuning](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning) analyzes your workload and provides you the recommendations that can optimize performance of your applications by adding indexes, removing unused indexes, and automatically fixing the query plan issues.
 * [Built-in monitoring](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) capabilities enable you to get the insights into performance of your databases and workload, and troubleshoot the performance issues.
-* [Built-in intelligence](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-intelligent-insights) automatically identifies the potential issues in your workload and provides you the recommendations that can help you to fix the problems.
+* [Built-in intelligence](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-intelligent-insights) automatically identifies the potential issues in your workload and provides you the recommendations that can [help you to fix the problems](https://azure.microsoft.com/en-us/blog/ai-helped-troubleshoot-an-intermittent-sql-database-performance-issue-in-one-day/). 
 
 In addition to the resources linked to above, several [slide decks](TODO) are available (with notes and animations) that you can review to learn more. You can also check out the [Core Cloud Services - Azure architecture and service guarantees](https://docs.microsoft.com/en-us/learn/modules/explore-azure-infrastructure/) module from Microsoft Learn.  
 
@@ -149,14 +149,14 @@ In addition to the resources linked to above, several [slide decks](TODO) are av
 
 Networking is a crucial part to moving to Azure. You'll want to work closely with networking and infrastructure individuals in order to make sure your deployment to Azure is secure, performant, and scalable. While you may not need to be the expert, having a foundational knowledge is very important. You'll see a few explanations and links to additional courses and information to learn more.  
 
-#### What is a *virtual network*?  
+#### What is a virtual network?  
 
 A virtual network is a logically isolated network on Azure. Azure virtual networks will be familiar to you if you've set up networks on Hyper-V, VMware, or even on other public clouds. A virtual network allows Azure resources to securely communicate with each other, the internet, and on-premises networks. A virtual network is scoped to a single region; however, multiple virtual networks from different regions can be connected together using [virtual network peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview).
 Virtual networks can be segmented into one or more subnets. Subnets help you organize and secure your resources in discrete sections.  
 
 For example, a web, application, and data tier architecture may each have a single VM or service. All three are in the same virtual network but are in separate subnets. Users interact with the web tier directly, so that VM has a public IP address along with a private IP address. Users don't interact with the application or data tiers, so these VMs/services each have a private IP address only.  
 
-You can also keep your service or data tiers in your on-premises network, placing your web tier into the cloud, but keeping tight control over other aspects of your application. A [VPN gateway (or virtual network gateway)](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways), enables this scenario. It can provide a secure connection between an Azure Virtual Network and an on-premises location over the internet.  
+You can also keep your service or data tiers in your on-premises network, placing your web tier into the cloud, but keeping tight control over other aspects of your application. A [VPN gateway (or virtual network gateway)](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways), enables this hybrid scenario. It can provide a secure connection between an Azure Virtual Network and an on-premises location over the internet.  
 
 Azure manages the physical hardware for you. You configure virtual networks and gateways through software, which enables you to treat a virtual network just like your own network. You choose which networks your virtual network can reach, whether that's the public internet or other networks in the private IP address space.  
 
@@ -196,7 +196,7 @@ There are three options for the connection policy setting of a SQL Database serv
 
 #### Connectivity architecture for managed instances  
 
-At a high level, a managed instance is a set of service components. These components are hosted on a dedicated set of isolated virtual machines that run inside the customer's virtual network subnet. These machines form a virtual cluster.  
+At a high level, a managed instance is a set of service components. These components are hosted on a dedicated set of isolated virtual machines that run inside the customer's virtual network subnet. These machines form a **virtual cluster**.  
 
 A virtual cluster can host multiple managed instances. If needed, the cluster automatically expands or contracts when the customer changes the number of provisioned instances in the subnet.  
 
@@ -213,33 +213,53 @@ Deeper dive into connectivity architecture for managed instances can be found [h
 
 
 > If you want to dive deeper into networking for Azure SQL, check out the following resources:  
-> * 
-<!--TODO: Add list of other resources related to networking and Azure SQL DB, VM, MI-->
+> * [The ultimate guide for creating and configuring Azure SQL Managed Instance environment](https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01)
+> * [Azure SQL Database and Data Warehouse network access controls](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-networkaccess-overview)
+> * [Azure SQL Network Security](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-overview#network-security)
+> * [Create a virtual network of Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-create-vnet-subnet)
+> * [Video: VNET Azure SQL Database](https://www.youtube.com/watch?v=jAeAjOlkxAU&t=188s)
 
 <br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.3">4.3 Migration process (15 minutes)</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.3">4.3 Migration process</h2></a>
 
-TODO: Topic Description
+Tailspin Toys has spent some time with you learning more about the benefits of Azure SQL and the Azure platform overall. They're also feeling more comfortable with the networking and security aspects. Based on their research, they've decided to migrate the Tailspin Toys database to Azure as a PoC for migrating larger workloads.  
 
-TODO: content  
-Topic 3: Migration process (15 minutes)  
-* Discover, Assess   
-    * DMA, SKU Recommender  
-	    * Other tools: MAP Toolkit, Data workload assessment   model/tool, Bulk database creation with PowerShell, bulk schema deployment with MSSQL-scripter and PowerShell, utility to move on-prem SQL Server logins to Azure SQL MI  
-	* Conclude some to SQL VM and some to MI  
-* Migrate  
-	* DMS  
-	* Data sync, etc.  
-	* Cutover  
-	* Migrating SSxS guidance  
-* Post-migration  
-	* Remediate apps  
-	* Testing  
-	* Optimizing  
-* Scaling the migration to other workloads  
+The general process for migrating assets to Azure (whether it's apps, infrastructure, or data) is as follows:  
+* **Assess**: Evaluate an existing asset and establish a plan for migration of the asset.
+* **Migrate**: Replicate the functionality of an asset in the cloud.
+* **Optimize**: Balance the performance, cost, access, and operational capacity of a cloud asset.
+* **Secure and manage**: Ensure a cloud asset is ready for ongoing operations.
+
+
+In guiding Tailspin Toys through the *data* migration journey, it's helpful to leverage the following process that is specific to data:  
+![Data migration process](../graphics/media/data-migration-process.png)  
+
+Let's take a closer look at the steps in this three-phase process. There are also some references to learn more.    
+
+| STAGE          | PHASE                             | DESCRIPTION                                                                                                                | RESOURCES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|----------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Pre-migration  | Discover                          | Inventory database assets, and application stack discovery.                                                                | <li>[Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) for managing the whole migration process</li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|                | Assess                            | Assess workloads and fix recommendations.                                                                                  | <li>[MAP Toolkit for inventory, assessment, and reporting](https://www.microsoft.com/en-us/download/details.aspx?id=7826) </li> <li>[Data workload assessment model and tool](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)</li> <li>[Database Experimentation Assistant (DEA)](https://www.microsoft.com/en-us/download/details.aspx?id=54090) for upgrades</li>   <li>[DMA SKU Recommender](https://docs.microsoft.com/en-us/sql/dma/dma-sku-recommend-sql-db?view=sql-server-2017)  for Azure SQL </li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|                | Convert                           | Convert the source schema to work in the target environment. This is only relevant for heterogeneous migrations.           | <li>[SQL Server Migration Assistant](https://docs.microsoft.com/en-us/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)</li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Migration      | Migrate schema, data, and objects | Migrate the source schema, and then migrate the source data to the target.                                                 | <li>[Migrate with Azure Database Migration Services](https://docs.microsoft.com/en-us/azure/dms/) (pull model) </li><li>[Migrate to Azure with DMA](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsqltosqldb?view=sql-server-2017) (push model) </li><li>[Migrate SSIS](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) packages to Azure  </li><li>[Online migrations](https://docs.microsoft.com/azure/dms/tutorial-sql-server-managed-instance-online#register-the-microsoftdatamigration-resource-provider) with DMS </li><li>[Offline migrations](https://docs.microsoft.com/azure/dms/tutorial-sql-server-managed-instance-online#register-the-microsoftdatamigration-resource-provider) with DMS  </li><li>[Utility](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)  to move on-premises SQL Server logins to Azure SQL MI </li><li> [Bulk database creation](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Database%20Creation%20with%20PowerShell)  with PowerShell  </li><li>[Bulk schema deployment](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Schema%20Deployment%20with%20MSSQL-Scripter%20&%20PowerShell) with MSSQL-Scripter and PowerShell  </li><li> SSRS  can be deployed using SQL Server on an Azure VM or rewritten in Power BI  </li><li> Migrating [SSAS to Azure Analysis Services](https://azure.microsoft.com/en-us/resources/videos/azure-analysis-services-moving-models/)</li>|
+|                | Sync data                         | Sync your target schema and data with the source. This is only relevant for minimal-downtime migrations.                   | <li>[Azure Data Sync](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-sync-data) for syncing data bi-directionally on-prem and in Azure  </li><li>[Transactional replication](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-transactional-replication) for migrations by continuously publishing the changes  </li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|                | Cutover                           | Cut over from the source to the target environment. This is only relevant for minimal-downtime migrations.                 | <li>[Cutover with DMS](https://docs.microsoft.com/en-us/azure/dms/tutorial-sql-server-managed-instance-online#performing-migration-cutover)</li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Post-migration | Remediate applications            | Iteratively make any necessary changes to your applications.                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|                | Perform tests                     | Iteratively run functional and performance tests.                                                                          | <li>[Data Quality Solution available from the partner QuerySurge](http://www.querysurge.com/company/partners/microsoft) </li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|                | Optimize                          | Based on the tests you performed, address any performance issues, and then retest to confirm the performance improvements. | <li>[Post-migration Validation and Optimization Guide](https://docs.microsoft.com/en-us/sql/relational-databases/post-migration-validation-and-optimization-guide)  </li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+
+Above is a survey of some of the resources and tips available for going through the migration journey to Azure (you can find a [full list of tools based on phase and target here](https://docs.microsoft.com/en-us/azure/dms/dms-tools-matrix)).  
+
+Don't get overwhelmed, the number of resources shows the dedication Microsoft and partners have to helping you move successfully to the cloud. We recommend using the [Data migration guide](https://datamigration.microsoft.com/) which allows you to pick your source and target, and then guides you step-by-step through your specific migration journey.  
+
+Additionally, you can check out the [Azure migration center](https://azure.microsoft.com/en-us/migration/) which includes detailed information about the migration journey, the AMP program where you can get support, migration partners, webinars, and more.  
+
+Once the Tailspin Toys Gaming division has migrated to Azure, the overall corporation may choose to scale the migration to Azure. In that case, [refer to guidance here](https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale
+).
  
 
 <br>
@@ -261,9 +281,8 @@ At the end of these hands-on labs, you will be better able to implement a cloud 
 
 ## Solution architecture
 
-Below is a diagram of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
+Below is a diagram of the solution architecture that Tailspin Toys decided to go with, and what you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
 
-<!--TODO Need to update the architecture to show the app running locally. May need to connect with Bob on the ideas around this... -->  
 ![This solution diagram includes a virtual network containing SQL MI in a isolated subnet, along with a JumpBox VM and Database Migration Service in a management subnet. The MI Subnet displays both the primary managed instance, along with a read-only replica, which is accessed by reports from the web app. The web app connects to SQL MI via a subnet gateway and point-to-site VPN. The web app is published to App Services using Visual Studio 2019. An online data migration is conducted from the on-premises SQL Server to SQL MI using the Azure Database Migration Service, which reads backup files from an SMB network share.](../graphics/media/preferred-solution-architecture.png "Preferred Solution diagram")
 
 Throughout the solution, you can use [Azure Migrate](https://docs.microsoft.com/en-us/azure/migrate/migrate-services-overview) as the central hub to track the discovery, assessment, and migration of Tailspin Toys. The solution begins with using the Microsoft Data Migration Assistant to perform assessments of feature parity and compatibility of the on-premises SQL Server 2008 R2 database against both Azure SQL Database (Azure SQL DB) and Azure SQL Database Managed Instance (SQL MI), with the goal of migrating the `TailspinToys` database into an Azure PaaS offering with minimal or no changes. After completing the assessments and reviewing the findings, the SQL Server 2008 R2 database is migrated into SQL MI using the Azure Database Migration Service's online data migration option. This allows the database to be migrated with little to no downtime, by using a backup and transaction logs stored in an SMB network share.
