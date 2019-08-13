@@ -8,37 +8,39 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> 05 - Migrate to Azure SQL </h2>
 
-In this workshop you'll cover using <TODO: Enter a brief description of the workshop>. 
+In the previous module, you learned about Azure SQL, the benefits, the options, and how to get there. You reviewed how to assess your on-premises estate, and in this module you'll actually migrate to [Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance).  
 
-In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.) If you're doing Module 4 and 5 in isolation, TODO
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 In this module, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. At the end of the module, you'll also explore some of the security and performance features available. The activities in this module include:  
   
-  TODO ADD LINKS TO SUBSECTIONS  
-Topic 1: Migrate the database to SQL Managed instance (30 minutes)  
-Activity 1: Create an SMB network share on the SQLServer2008VM  
-Activity 2: Change MSSQLSERVER service to run under sqlmiuser account  
-Activity 3: Create a backup of TailspinToys database  
-Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information  
-Activity 5: Create and run an online data migration project  
-Activity 6: Perform migration cutover  
-Activity 7: Verify database and transaction log migration  
-Activity 8: Update the application  
-Topic 2: Improve database security with Advanced Data Security (15 minutes)  
-Activity 1: Enable Advanced Data Security  
-Activity 2: Configure SQL Data Discover and Classification  
-Activity 3: Review Advanced Data Security Vulnerability Assessment  
-Topic 3: Use online secondary for read-only queries (15 minutes)  
-Activity 1: View Leaderboard report in Tailspin Toys web application  
-Activity 2: Update read only connection string  
-Activity 3: Reload leaderboard report in the Tailspin Toys web application  
+[5.1](#5.1): Migrate the database to SQL Managed instance (30 minutes)  
+&ensp;&ensp;&ensp;[Activity 1](#5.1.1): Create an SMB network share on the SQLServer2008VM  
+&ensp;&ensp;&ensp;[Activity 2](#5.1.2): Change MSSQLSERVER service to run under sqlmiuser account  
+&ensp;&ensp;&ensp;[Activity 3](#5.1.3): Create a backup of TailspinToys database  
+&ensp;&ensp;&ensp;[Activity 4](#5.1.4): Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information  
+&ensp;&ensp;&ensp;[Activity 5](#5.1.5): Create a service principal  
+&ensp;&ensp;&ensp;[Activity 6](#5.1.6): Create and run an online data migration project  
+&ensp;&ensp;&ensp;[Activity 7](#5.1.7): Perform migration cutover  
+&ensp;&ensp;&ensp;[Activity 8](#5.1.8): Verify database and transaction log migration  
+&ensp;&ensp;&ensp;[Activity 9](#5.1.9): Update the application  
+[5.2](#5.2): Improve database security with Advanced Data Security (15 minutes)  
+&ensp;&ensp;&ensp;[Activity 1](#5.2.1): Enable Advanced Data Security  
+&ensp;&ensp;&ensp;[Activity 2](#5.2.2): Configure SQL Data Discover and Classification  
+&ensp;&ensp;&ensp;[Activity 3](#5.2.3): Review Advanced Data Security Vulnerability Assessment  
+[5.3](#5.3): Use online secondary for read-only queries (15 minutes)  
+&ensp;&ensp;&ensp;[Activity 1](#5.3.1): View Leaderboard report in Tailspin Toys web application  
+&ensp;&ensp;&ensp;[Activity 2](#5.3.2): Update read only connection string  
+&ensp;&ensp;&ensp;[Activity 3](#5.3.3): Reload leaderboard report in the Tailspin Toys web application  
+[5.4](#5.4): After the Migration
+
+SELF-PACED USERS ONLY: If you are using this module self-paced, carefully read through Module 4 of this workshop, complete the assessment lab in Module 4.4 first. Then, read carefully and complete the labs in this module.  
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">5.1 Migrate the database to SQL Managed instance (30 minutes)</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.1">5.1 Migrate the database to SQL Managed instance (30 minutes)</h2></a>
 
 In this section, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
 
@@ -46,7 +48,7 @@ In this section, you will use the [Azure Database Migration Service](https://azu
 
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 1: Create an SMB network share on the SQLServer2008VM</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.1">Activity 1: Create an SMB network share on the SQLServer2008VM</b></p></a>
 
 In this task, you will create a new SMB network share on the SqlServer2008 VM. This will be the folder used by DMS for retrieving backups of the `TailspinToys` database during the database migration process.
 
@@ -65,8 +67,9 @@ In this task, you will create a new SMB network share on the SqlServer2008 VM. T
 
 4. Enter the following credentials when prompted, and then select **OK**:
 
-    - **Username**: sqlmiuser
-    - **Password**: Password.1234567890
+    - **Username**: sqlmiuser  
+
+    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](../graphics/media/rdc-credentials-sql-2008.png "Enter your credentials")
 
@@ -99,7 +102,7 @@ In this task, you will create a new SMB network share on the SqlServer2008 VM. T
     ![The Done button is highlighted on the File Sharing dialog.](../graphics/media/file-sharing-done.png "File Sharing")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Change MSSQLSERVER service to run under sqlmiuser account</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.2">Activity 2: Change MSSQLSERVER service to run under sqlmiuser account</b></p></a>
 
 In this task, you will use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) to the `sqlmiuser` account. This is done to ensure the SQL Server service has the appropriate permissions to write backups to the shared folder.
 
@@ -120,7 +123,8 @@ In this task, you will use the SQL Server Configuration Manager to update the se
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
     - **Account name**: sqlmiuser
-    - **Password**: Password.1234567890
+    
+    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
 
     ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered.](../graphics/media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
 
@@ -135,7 +139,7 @@ In this task, you will use the SQL Server Configuration Manager to update the se
     ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](../graphics/media/sql-server-service.png "SQL Server Services")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Create a backup of TailspinToys database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.3">Activity 3: Create a backup of TailspinToys database</b></p></a>
 
 To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you will create a backup of the `TailspinToys` database using SSMS, and write it to the SMB network share you created in the previous task. The backup file needs to include a checksum, so you will add that during the backup steps.
 
@@ -185,7 +189,7 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
     ![Dialog displayed a message that the database backup was completed successfully.](../graphics/media/ssms-backup-complete.png "Backup complete")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.4">Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information</b></p></a>
 
 In this task, you will use the Azure Cloud shell to retrieve the information necessary to connect to your SQL MI and SqlServer2008 VM from DMS.
 
@@ -233,7 +237,7 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 9. Leave the Azure Cloud Shell open for the next task.
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: Create a service principal</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.5">Activity 5: Create a service principal</b></p></a>
 
 > **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but there is nothing you need to do. Please refer to instructor guidance.  
 
@@ -245,7 +249,7 @@ In this task, you will use the Azure Cloud Shell to create an Azure Active Direc
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-
+> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but there is nothing you need to do. Please refer to instructor guidance.  
 1. Next, you will issue a command to create a service principal named **tailspin-toys** and assign it contributor permissions to your **hands-on-lab-SUFFIX** resource group.
 
 2. First, you need to retrieve your subscription ID. Enter the following at the Cloud Shell prompt:
@@ -287,7 +291,7 @@ In this task, you will use the Azure Cloud Shell to create an Azure Active Direc
     ```
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 6: Create and run an online data migration project </b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.6">Activity 6: Create and run an online data migration project </b></p></a>
 
 In this task, you will create a new online data migration project in DMS for the `TailspinToys` database.
 
@@ -318,8 +322,10 @@ In this task, you will create a new online data migration project in DMS for the
     - **Source SQL Server instance name**: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, `13.66.228.107`.
     - **Authentication type**: Select SQL Authentication.
     - **Username**: Enter **WorkshopUser**.  
-    - **Password**: Enter **Password.1234567890**.
+    - **Password**: Enter your password.
     - **Connection properties**: Check both Encrypt connection and Trust server certificate.
+
+    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.  
 
     ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
 
@@ -329,10 +335,12 @@ In this task, you will create a new online data migration project in DMS for the
 
     - **Application ID**: Enter the `appId` value from the output of the `az ad sp create-for-rbac' command you executed in the last task.
     - **Key**: Enter the `password` value from the output of the `az ad sp create-for-rbac' command you executed in the last task.
+    > **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your application ID and key.
+    <!-- TODO Add guidance on how to do this -->
     - **Subscription**: Select the subscription you are using for this hand-on lab.
     - **Target Azure SQL Managed Instance**: Select the sqlmi-UNIQUEID instance.
     - **SQL Username**: Enter **sqlmiuser**
-    - **Password**: Enter **Password.1234567890**
+    - **Password**: Enter your password.
 
     ![The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields.](../graphics/media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
 
@@ -348,7 +356,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     - **Network share location**: Enter `\\SQLSERVER2008\dms-backups`. This is the path of the SMB network share you created during the before the hands-on lab exercises.
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQLSERVER2008\sqlmiuser`
-    - **Password**: Enter Password.1234567890
+    - **Password**: Enter your password.
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the sqlmistoreUNIQUEID storage account.
 
@@ -372,7 +380,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     ![In the migration monitoring window, a status of Log files uploading is highlighted.](../graphics/media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 7: Perform migration cutover</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.7">Activity 7: Perform migration cutover</b></p></a>
 
 Since you performed the migration as an "online data migration," the migration wizard will continue to monitor the SMB network share for newly added log files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you will add a record to one of the database tables, backup the logs, and complete the migration of the `TailspinToys` database by cutting over to the SQL MI database.
 
@@ -450,7 +458,7 @@ Since you performed the migration as an "online data migration," the migration w
 15. You have now successfully migrated the `TailspinToys` database to Azure SQL Managed Instance.
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 8: Verify database and transaction log migration</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.8">Activity 8: Verify database and transaction log migration</b></p></a>
 
 In this task, you will connect to the SQL MI database using SSMS, and quickly verify the migration.
 
@@ -466,7 +474,7 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
     - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
     - **Authentication**: Select SQL Server Authentication.
     - **Login**: Enter sqlmiuser
-    - **Password**: Enter Password.1234567890
+    - **Password**: Enter your password.
     - Check the **Remember password** box.
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](../graphics/media/ssms-connect-to-server-sql-mi.png "Connect to Server")
@@ -489,19 +497,20 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](../graphics/media/ssms-query-game-table.png "SSMS Query")
 
-8. You are now done using the SqlServer2008 VM. Close any open windows and log off of the VM. You will use the JumpBox VM for the remaining tasks of this hands-on lab.
+8. You are now done using the SqlServer2008 VM. Close any open windows and log off of the VM. You will use the JumpBox VM for the remaining tasks of this hands-on-lab.
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 8: Update the application</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.1.9">Activity 9: Update the application</b></p></a>
 
 
 With the `TailspinToys` database now running on SQL MI in Azure, the next step is to make the required modifications to the TailspinToys gamer information web application.
 
->**Note**: SQL Managed Instance has private IP address in its own VNet, so to connect an application you need to configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+>**Note**: SQL Managed Instance has a private IP address in its own VNet, so to connect an application you need to configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
-### Task 1: Run the web application
+>**Note**: The architecture diagram from Module 4 explains a web app being deployed to Azure. Due to time restraints, the lab will deal with switching the app running on the VM locally to using SQL MI (not the deployment to Azure or integrating the App Service with the Virtual Network). In the [extended version of these labs](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md#exercise-3-update-the-web-application-to-use-the-new-sql-mi-database), or if you have time at the end of the day, you can do that.
 
-In this task, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, run the `TailspinToysWeb` application on the VM.  
+
+In this activity, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, run the `TailspinToysWeb` application on the VM.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -529,7 +538,6 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
 6. Enter the following credentials when prompted, and then select **OK**:
 
     - **Username**: sqlmiuser
-    - **Password**: Password.1234567890
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](../graphics/media/rdc-credentials.png "Enter your credentials")
 
@@ -537,33 +545,13 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
 
     ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](../graphics/media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
-8. Once logged in, download the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/Migrating-SQL-databases-to-Azure/archive/master.zip).
+8. Once logged in, the repository containing all of these files can be cloned to `C:/users/`[username]`/sqlworkshops/SQLGroundtoCloud` by opening the command prompt and running the following command:
+```cmd
+git clone https://github.com/microsoft/sqlworkshops.git
+```
+> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, or you have already cloned the repository earlier in the workshop, you do not need to clone the workshop again.
 
-9. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the browser window, and then select **Internet options** from the context menu.
-
-    ![The Tools icon is highlighted in the Internet Explorer toolbar, and Internet Options is highlighted in the context menu.](../graphics/media/ie-tools-context-menu.png "Internet Explorer")
-
-10. In the **Internet Options** dialog, select **Custom level** in the Security level for this zone box.
-
-    ![The Custom level button is highlighted in the Internet Options dialog.](../graphics/media/ie-internet-options.png "Internet Options")
-
-11. In the Security Settings - Internet Zone dialog, locate the **Downloads** settings and choose **Enable**, then select **OK**.
-
-    ![The Downloads property is highlighted in the Security Settings dialog, and Enable is selected.](../graphics/media/ie-security-settings-internet-zone.png "Security Settings")
-
-12. Select **OK** on the Internet Options dialog, and then attempt the download again.
-
-13. When prompted, choose to save the file and then select Open folder.
-
-    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](../graphics/media/ie-download-open-folder.png "Internet Explorer")
-
-14. And once it is download, extract the ZIP file to `C:\hands-on-lab`.
-
-    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](../graphics/media/extract-compressed-zip.png "Extract Compressed Zip")
-
-    > **IMPORTANT**: Ensure to use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a log file path.
-
-15. Open the `C:\hands-on-lab` folder, and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio.
+15. Open the `C:/users/`[username]`/sqlworkshops/SQLGroundtoCloud` folder. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio.
 
     ![The folder at the path specified above is displayed, and TailspinToys.sln is highlighted.](../graphics/media/windows-explorer-tailspintoysweb.png "Windows Explorer")
 
@@ -571,23 +559,22 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
 
     ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](../graphics/media/visual-studio-version-selector.png "Visual Studio")
 
-17. Select **Sign in** and enter your Azure account credentials when prompted.
+17. Select **Sign in** and enter your Azure account credentials when prompted.  
+> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, please use the Azure account credentials provided to you.
 
-    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](../graphics/media/visual-studio-sign-in.png "Visual Studio")
+![On the Visual Studio welcome screen, the Sign in button is highlighted.](../graphics/media/visual-studio-sign-in.png) 
 
 18. At the security warning prompt, uncheck Ask me for every project in this solution, and then select **OK**.
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](../graphics/media/visual-studio-security-warning.png "Visual Studio")
 
 
-[AT] New altered instructions from here:  
-19. Open `appsettings.json` and enter your SQL 2008 VM information in the Connection strings section
-```
+19. Open `appsettings.json` and enter your SQL 2008 VM information and password in the Connection strings section
+```c
 "ConnectionStrings": {
-    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=Workshopuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
-    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
+    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=Workshopuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
+    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
   }
-
 ```
 20. Save the file.  
 ![Save the Visual Studio web application after adding the keys](../graphics/media/vs-save-file.png "Visual Studio")
@@ -611,25 +598,22 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
 
 ![View the leaderboard of the Tailspin Toys application running locally](../graphics/media/web-app-leaderboard.png "Tailspin Toys")  
 
-> Note: If you want to complete an extension of this lab where you deploy the web app to Azure and integrate the App Service within the virtual network using point-to-site and VNet integration, see exercises 3 and 4 in the non-abbreviated lab [here](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md).
+> **Note**: If you want to complete an extension of this lab where you deploy the web app to Azure and integrate the App Service within the virtual network using point-to-site and VNet integration, see exercises 3 and 4 in the non-abbreviated lab [here](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md).
 
 
 <br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">5.2 Improve database security with Advanced Data Security (15 minutes)</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.2">5.2 Improve database security with Advanced Data Security</h2></a>
 
-TODO: Topic Description
+[Advanced Data Security](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security) is a unified package for advanced SQL security capabilities. It includes functionality for discovering and classifying sensitive data, surfacing and mitigating potential database vulnerabilities, and detecting anomalous activities that could indicate a threat to your database. It provides a single go-to location for enabling and managing these capabilities.  
 
-Topic 2: Improve database security with Advanced Data Security (15 minutes)  
-Activity 1: Enable Advanced Data Security  
-Activity 2: Configure SQL Data Discover and Classification  
-Activity 3: Review Advanced Data Security Vulnerability Assessment  
+In this exercise, you'll enable Advanced Data Security, configure Data Discovery and Classification, and review the Vulnerability Assessment. At the end, you'll also receive a pointer to a Dynamic Data Masking lab extension.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 1: Enable Advanced Data Security</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.2.1">Activity 1: Enable Advanced Data Security</b></p></a>
 
-In this task, you will enable ADS for all databases on the Managed Instance.
+In this task, you will enable Advanced Data Security (ADS) for all databases on the Managed Instance.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -647,7 +631,7 @@ In this task, you will enable ADS for all databases on the Managed Instance.
     ![The enabled tiles on the Advance Data Security blade are displayed.](../graphics/media/ads-panels.png "Advanced Data Security")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Configure SQL Data Discover and Classification</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.2.2">Activity 2: Configure SQL Data Discovery and Classification</b></p></a>
 
 In this task, you will look at the [SQL Data Discovery and Classification](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification?view=sql-server-2017) feature of Advanced Data Security. Data Discovery & Classification introduces a new tool for discovering, classifying, labeling & reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (business, financial, healthcare, etc.) can play a pivotal role in your organizational information protection stature.
 
@@ -709,9 +693,7 @@ In this task, you will look at the [SQL Data Discovery and Classification](https
     ![The View Report button is highlighted on the toolbar.](../graphics/media/ads-data-discovery-and-classification-overview-report.png "View report")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Review Advanced Data Security Vulnerability Assessment</b></p>
-
-[AT] 8:23-8:26 - then needed to download ssms 18. 8:59-9:03
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.2.3">Activity 3: Review Advanced Data Security Vulnerability Assessment</b></p></a>
 
 In this task, you will review an assessment report generated by ADS for the `TailspinToys` database and take action to remediate one of the findings in the `TailspinToys` database. The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is a service that provides visibility into your security state, and includes actionable steps to resolve security issues, and enhance your database security.
 
@@ -740,7 +722,7 @@ In this task, you will review an assessment report generated by ADS for the `Tai
 
     ![The details of the VA1219 - Transparent data encryption should be enabled finding are displayed with the description, impact, and remediation fields highlighted.](../graphics/media/sql-mi-vulnerability-assessment-failed-va1219-details.png "Vulnerability Assessment")
 
-    > The details for each finding provide more insight into the reason for the finding. Of note are the fields describing the finding, the impact of the recommended settings, and details on remediation for the finding.
+The details for each finding provide more insight into the reason for the finding. Of note are the fields describing the finding, the impact of the recommended settings, and details on remediation for the finding.
 
 6. You will now act on the recommendation remediation steps for the finding, and enable [Transparent Data Encryption](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) for the `TailspinToys` database. To accomplish this, you will switch over to using SSMS on your JumpBox VM for the next few steps.
 
@@ -751,7 +733,7 @@ In this task, you will review an assessment report generated by ADS for the `Tai
     - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
     - **Authentication**: Select SQL Server Authentication.
     - **Login**: Enter sqlmiuser
-    - **Password**: Enter Password.1234567890
+    - **Password**: Enter your password.
     - Check the **Remember password** box.
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](../graphics/media/ssms-18-connect-to-server.png "Connect to Server")
@@ -782,7 +764,7 @@ In this task, you will review an assessment report generated by ADS for the `Tai
 
     ![The Execute button on the SSMS toolbar is highlighted, and in the Results pane the two records about the encryption state and keys for the TailspinToys database are highlighted.](../graphics/media/ssms-sql-mi-database-encryption-keys-results.png "Results")
 
-    > By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.
+By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.
 
 12. Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the `TailspinToys` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
 
@@ -796,28 +778,21 @@ In this task, you will review an assessment report generated by ADS for the `Tai
 
     ![The Passed tab is highlighted and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](../graphics/media/sql-mi-vulnerability-assessment-passed-va1219.png "Passed")
 
-    > Using the SQL Vulnerability Assessment, it is simple to identify and remediate potential database vulnerabilities, allowing you to proactively improve your database security.
+Using the SQL Vulnerability Assessment, it is simple to identify and remediate potential database vulnerabilities, allowing you to proactively improve your database security.
 
 
-> Note: If you want to complete an extension of this lab where you  also explore the capabilities of [Dynamic Data Masking](https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017), see exercise 6 and 4 in the non-abbreviated lab [here](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md).
+> **Note**: If you want to complete an extension of this lab where you  also explore the capabilities of [Dynamic Data Masking](https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017), see exercise 6 and 4 in the non-abbreviated lab [here](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md).
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">5.3 Use online secondary for read-only queries (15 minutes)</h2>
-
-TODO: Topic Description
-
-Topic 3: Use online secondary for read-only queries (15 minutes)  
-Activity 1: View Leaderboard report in Tailspin Toys web application  
-Activity 2: Update read only connection string  
-Activity 3: Reload leaderboard report in the Tailspin Toys web application  
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.3">5.3 Use online secondary for read-only queries (15 minutes)</h2></a>
 
 In this exercise, you will look at how you can use the automatically created online secondary for reporting, without feeling the impacts of a heavy transactional load on the primary database. Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. Using [**Read Scale-Out**](https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out) allows you to load balance Azure SQL Database read-only workloads using the capacity of one read-only replica.
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 1: View Leaderboard report in Tailspin Toys web application</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.3.1">Activity 1: View Leaderboard report in Tailspin Toys web application</b></p></a>
 
 In this task, you will open a web report using the web application you deployed to your App Service.
 
@@ -833,9 +808,7 @@ In this task, you will open a web report using the web application you deployed 
 
    > Note the `READ_WRITE` string on the page. This is the output from reading the `Updateability` property associated with the `ApplicationIntent` option on the target database. This can be retrieved using the SQL query `SELECT DATABASEPROPERTYEX(DB_NAME(), "Updateability")`.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Update read only connection string</b></p>
-
-[AT] This is a 5 minute lab but requires updating the default application setting to be set to ReadWrite instead of ReadOnly and then here they run it locally and then change to ReadOnly to see update. May want to add some explanation as well for what is happening.
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.3.2">Activity 2: Update read only connection string</b></p></a>
 
 In this task, you will enable Read Scale-Out for the `TailspinToys` database, using the `ApplicationIntent` option in the connection string. This option dictates whether the connection is routed to the write replica or to a read-only replica. Specifically, if the `ApplicationIntent` value is `ReadWrite` (the default value), the connection will be directed to the database’s read-write replica. If the `ApplicationIntent` value is `ReadOnly`, the connection is routed to a read-only replica.
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
@@ -849,13 +822,13 @@ In this task, you will enable Read Scale-Out for the `TailspinToys` database, us
 4. The `TailspinToysReadOnlyContext` connection string should now look something like the following:
 
    ```sql
-   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
+   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```  
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Reload leaderboard report in the Tailspin Toys web application</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="5.3.3">Activity 3: Reload leaderboard report in the Tailspin Toys web application</b></p></a>
 
-In this task, you will refresh the Leaderboard report in the Tailspin Toys web app, and observe the result.
+In this task, you will refresh the Leaderboard report in the Tailspin Toys web app, and observe the results.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -873,15 +846,13 @@ In this task, you will refresh the Leaderboard report in the Tailspin Toys web a
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">5.4 TODO Summary & next steps (30 minutes)</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.4">5.4 After the Migration</a></h2>
 
-TODO: Topic Description
+In this module, you used the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. You then updated the web application to use the SQL MI created, and enabled [advanced security features](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security). Finally, you set up your application to leverage the [online secondary replica](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) to handle heavy read workloads.  
 
-Topic 4:  
-Summary of other labs available based on this lab / deeper dives from the MCW  
-Include references to the relevant handsonlabs, handsondemos, and mslearn sites  
-Include references to other deeper content that we have anywhere
+Now that Tailspin Toys has completed a migration for their gaming database. They'll want to leverage the [post-migration validation and optimization guide](https://docs.microsoft.com/en-us/sql/relational-databases/post-migration-validation-and-optimization-guide?view=sql-server-2017) to ensure data completeness and uncover and resolve performance issues.  
 
+If and when Tailspin Toys chooses to scale their migration to other instances and databases, they can leverage the same process you've seen in Modules 4 and 5, but should also refer to the guidance Microsoft provides on [scaling a migration to Azure](https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale). 
 
 <br>
 
@@ -890,7 +861,31 @@ Include references to other deeper content that we have anywhere
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>For Further Study</b></p>
 <ul>
-    <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study.</a></li>
+    <li><a href="https://www.microsoft.com/handsonlabs" target="_blank">Microsoft Hands On Labs</a> offers free self-paced lab environments as well as a request form for instructor led lab environments. As of last update, there are about eight labs available around Azure SQL (assessment, migration, app innovation, row level security, managed instance, and more).</li>
+    <li><a href="https://www.microsoft.com/handsondemos" target="_blank">Microsoft Hands On Demos</a> is similar to Hands On Labs, but offers easy to set up demos that are free for certain internals and partners. As of last update, there are about seven demos available around Azure SQL.</li>
+    <li><a href="https://datamigration.microsoft.com/
+    " target="_blank">Azure Database Migration Guide</a> contains lots of resources that will help in guiding and supporting database migrations to Azure.</li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview
+    " target="_blank">The Azure Architecture Documentation</a> contains many migration patterns as well as full code samples, scenarios, and guidance about how to migrate on-prem estates. There are useful, detailed scenarios about rehosting to SQL MI and SQL VMs, as well as guidance of how to scale a migration, after you've done a PoC.</li>
+    <li><a href="https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure
+    " target="_blank">MCW: Migrating SQL Databases to Azure</a> contains extended labs from what you've seen in Modules 4 and 5. There is an opportunity to see how the networking was configured, and deeper dives around the network and setup. </li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure
+    " target="_blank">How to Deploy an Azure Infrastructure</a> and <a href="(https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-networking
+    " target="_blank">Best Practices for setting up networking</a> are also two very useful resources when moving to Azure.</li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-costs
+    " target="_blank">Best practices for costing and sizing workloads migrated to Azure</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-security-management
+    " target="_blank">Best practices for securing and managing workloads migrated to Azure</a></li>
+
+    
+
+
+    
+
+    
+
+
+    
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
