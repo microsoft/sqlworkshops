@@ -12,7 +12,7 @@ SQL Server 2017 introduced the world to SQL Server on Linux and Containers. SQL 
 
 However, there were some features that come with SQL Server that were not included in SQL Server 2017 on Linux. SQL Server 2019 shores up these gaps by including the following new enhancements for Linux:
 
-- Replication
+- Replication and Change Data Capture (CDC)
 - Distributed Transactions
 - Machine Learning Services and Extensibility
 - Polybase
@@ -70,7 +70,7 @@ All scripts for this activity can be found in the **sql2019lab\05_Linux_and_Cont
 
 **NOTE**: This activity assumes the following:
 
-- **Docker** is installed. You can use Docker on Windows, Linux, or MacOS to run this activity.
+- **Docker** is installed. You can use Docker Desktop for Windows or macOS or Docker for Linux to run this activity.
 - You have the **docker-compose** tool installed. In many docker installations, docker-compose comes with the install.
 - You have internet access to pull SQL Server images from mcr.microsoft.com
 - You have **SQL Server Management Studio** (SSMS) 18.1 or higher installed to use as a client. If you are running this example on Linux or MacOS you can still view the results of the replication setup using T-SQL commands. SSMS provides graphical navigation that is not currently available in other tools.
@@ -114,7 +114,7 @@ If you are using Docker for Windows, you may also see the following firewall pop
 
 ![firewall docker compose](./graphics/firewall_rule_docker_compose.jpg)
 
-You will also see output of the db-init.sql execution mostly from the db1 directory. If you have not previously pulled the images for SQL Server 2019 CTP 3.1 for RHEL, that will be done first and you will see that output.
+You will also see output of the db-init.sql execution mostly from the db1 directory. If you have not previously pulled the images for SQL Server 2019 for RHEL, that will be done first and you will see that output.
 
 The replication solution should be ready to go when you see this output from the command line
 
