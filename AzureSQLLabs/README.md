@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png?raw=true)
 
-# Labs: SQL on the Microsoft Azure Platform
+# Labs: Microsoft Azure SQL Labs 
 
 #### <i>A Microsoft Lab from the SQL Server team</i>
 
@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>About these  Labs</h2>
 
-Welcome to these Microsoft solutions Labs on SQL using the Microsoft Azure Platform. Using these Labs, you'll gain a deep understanding on options for the latest SQL Server engine in Microsoft Azure and how you can use it to solve real-world challenges. 
+Welcome to these Microsoft solutions Labs on using the Microsoft Azure SQL Platform. Using these Labs, you'll gain a deep understanding on options for the latest SQL Server engine in Microsoft Azure and how you can use it to solve real-world challenges. 
 
 This README.MD file explains how the Labs are laid out, what you will learn, and the technologies you will use to get hands-on experience.
 
@@ -18,7 +18,7 @@ This README.MD file explains how the Labs are laid out, what you will learn, and
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/listcheck.png?raw=true"> <h2><a name="technologies">Technologies and Topics covered in these Labs</a></h2>
 
-The information covered in this workshop includes the following technologies and topics - although you are not limited to these, they form the basis of the workshop. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
+The information covered in this workshop includes the following technologies and topics - although you are not limited to these, they form the basis of the Labs. At the end of the workshop you will learn how to extrapolate these components into other solutions. You will cover these at an overview level, with references to much deeper training provided.
 
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
 
