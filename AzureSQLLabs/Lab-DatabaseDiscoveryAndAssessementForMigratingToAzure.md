@@ -138,7 +138,7 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
 
 16. Next, you will execute a script in SSMS, which will reset the `sa` password, enable mixed mode authentication, enable Service broker, create the `WorkshopUser` account, and change the database recovery model to FULL. 
 
-    To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+    To create the script, open a new query window in SSMS by selecting **New Query** in the *SSMS toolbar*.
 
     ![The New Query button is highlighted in the SSMS toolbar.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-new-query.png?raw=true "SSMS Toolbar")
 
@@ -185,74 +185,73 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
     GO
     ```
 
-18. To run the script, select **Execute** from the SSMS toolbar.
+18. To run the script, select **Execute** from the *SSMS toolbar*.
 
     ![The Execute button is highlighted in the SSMS toolbar.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-execute.png?raw=true "SSMS Toolbar")
 
-19. For Mixed Mode Authentication and the new `sa` password to take effect, you must restart the SQL Server (MSSQLSERVER) Service on the SqlServer2008 VM. To do this, you can use SSMS. Right-click the SQLSERVER2008 instance in the SSMS Object Explorer, and then select **Restart** from the context menu.
+19. For Mixed Mode Authentication and the new `sa` password to take effect, you must restart the *SQL Server (MSSQLSERVER) Service* on the SqlServer2008 VM. To do this, you can use SSMS. Right-click the *SQLSERVER2008* instance in the *SSMS Object Explorer*, and then select **Restart** from the context menu.
 
-    ![In the SSMS Object Explorer, the context menu for the SQLSERVER2008 instance is displayed, and Restart is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-object-explorer-restart-sqlserver2008.png?raw=true "Object Explorer")
+    ![In the *SSMS Object Explorer*, the context menu for the *SQLSERVER2008* instance is displayed, and Restart is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-object-explorer-restart-sqlserver2008.png?raw=true "Object Explorer")
 
-20. When prompted about restarting the MSSQLSERVER service, select **Yes**. The service will take a few seconds to restart.
+20. When prompted about restarting the *MSSQLSERVER* service, select **Yes**. The service will take a few seconds to restart.
 
     ![The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-restart-service.png?raw=true "Restart MSSQLSERVER service")
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-3">Activity 3: Perform assessment for migration to Azure SQL Database</b></p></a>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="Activity-3"><h3>Activity 3: Perform assessment for migration to Azure SQL Database</h3></p></a>
 
-> **Important Note!**  
+> Note:  
 > If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
 
-In this task, you will use the Microsoft Data Migration Assistant (DMA) to perform an assessment of the `TailspinToys` database against Azure SQL Database (Azure SQL DB). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
+In this task, you will use the *Microsoft Data Migration Assistant* (DMA) to perform an assessment of the `TailspinToys` database against Azure SQL Database (Azure SQL DB). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
 
-
-1. On the SqlServer2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. On the SqlServer2008 VM, launch DMA from the *Windows Start menu* by typing **data migration** into the *search bar*, and then selecting **Microsoft Data Migration Assistant** in the search results.
 
     ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/windows-start-menu-dma.png?raw=true "Data Migration Assistant")
 
-2. In the DMA dialog, select **+** from the left-hand menu to create a new project.
+2. In the *DMA dialog*, select **+** from the left-hand menu to create a new project.
 
     ![The new project icon is highlighted in DMA.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-new.png?raw=true "New DMA project")
 
-3. In the New project pane, set the following:
+3. In the *New project* pane, set the following:
 
-    - **Project type**: Select Assessment.
-    - **Project name**: Enter ToAzureSqlDb.
-    - **Source server type**: Select SQL Server.
-    - **Target server type**: Select Azure SQL Database.
+    - *Project type*: Select **Assessment**
+    - *Project name*: Enter **ToAzureSqlDb**
+    - *Source server type*: Select **SQL Server**
+    - *Target server type*: Select **Azure SQL Database**
 
     ![New project settings for doing an assessment of a migration from SQL Server to Azure SQL Database.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-new-project-to-azure-sql-db.png?raw=true "New project settings")
 
 > Note: There's also an option to select "Migration" within DMA. You could use this option if you have restrictions around pushing versus pulling the data to Azure. Using DMA to migrate would be pushing data from the SQL Server 2008 VM into Azure. In this workshop, we'll instead pull data from the SQL Server 2008 VM. You can learn more about migrating to Azure using DMA [here](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsqltosqldb?view=sql-server-2017).
-4. Select **Create**.
+4. Select **Create**
 
-5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**.
+5. On the *Options* screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**:
 
     ![Check database compatibility and check feature parity are checked on the Options screen.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-options.png?raw=true "DMA options")
 
-6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
+6. On the *Sources* screen, enter the following into the *Connect to a server* dialog that appears on the right-hand side:
 
-    - **Server name**: Enter **SQLSERVER2008**.
-    - **Authentication type**: Select **SQL Server Authentication**.
-    - **Username**: Enter **WorkshopUser**
-    - **Password**: Enter your password.  
-    - **Encrypt connection**: Check this box.
-    - **Trust server certificate**: Check this box.
+    - *Server name*: Enter **SQLSERVER2008**
+    - *Authentication type*: Select **SQL Server Authentication**
+    - *Username*: Enter **WorkshopUser**
+    - *Password*: Enter your password  
+    - *Encrypt connection*: Check this box
+    - *Trust server certificate*: Check this box
 
     > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.  
 
     ![In the Connect to a server dialog, the values specified above are entered into the appropriate fields.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-connect-to-a-server.png?raw=true "Connect to a server")
 
-7. Select **Connect**.
+7. Select **Connect**
 
-8. On the **Add sources** dialog that appears next, check the box for **TailspinToys** and select **Add**.
+8. On the *Add sources* dialog that appears next, check the box for **TailspinToys** and select **Add**:
 
     ![The TailspinToys box is checked on the Add sources dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-add-sources.png?raw=true "Add sources")
 
-9. Select **Start Assessment**.
+9. Select **Start Assessment**:
 
     ![Start assessment](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-start-assessment-to-azure-sql-db.png?raw=true "Start assessment")
 
@@ -262,11 +261,11 @@ In this task, you will use the Microsoft Data Migration Assistant (DMA) to perfo
 
     > The DMA assessment for a migrating the `TailspinToys` database to a target platform of Azure SQL DB shows two features in use which are not supported. These features, cross-database references and Service broker, will prevent TailspinToys from being able to migrate to the Azure SQL DB PaaS offering without first making changes to their database.
 
-11. In the bottom right (see above), select "Upload to Azure Migrate". You'll be prompted to sign in (use the credentials you're using for this workshop). Then, select the subscription and Azure Migrate Project created earlier. Select "Upload".  
+11. In the bottom right (see above), select **Upload to Azure Migrate**. You'll be prompted to sign in (use the credentials you're using for this workshop). Then, select the subscription and **Azure Migrate Project** created earlier. Select **Upload**:  
 
     ![Start assessment](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-upload-azure-migrate.png?raw=true "Start assessment")
 
-12. When it's done, you'll see the following message:  
+12. When it completes, you'll see the following message:  
     ![Start assessment](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-assessment-uploaded.png?raw=true "Start assessment")  
 
 
@@ -282,50 +281,50 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
 
-1. To get started, select **+** on the left-hand menu in DMA to create another new project.
+1. To get started, select **+** on the left-hand menu in DMA to create another new project:.
 
     ![The new project icon is highlighted in DMA.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-new.png?raw=true "New DMA project")
 
-2. In the New project pane, set the following:
+2. In the *New project* pane, set the following:
 
-    - **Project type**: Select Assessment.
-    - **Project name**: Enter ToSqlMi.
-    - **Source server type**: Select SQL Server.
-    - **Target server type**: Select Azure SQL Database Managed Instance.
+    - *Project type*: Select **Assessment**
+    - *Project name*: Enter **ToSqlMi**
+    - *Source server type*: Select **SQL Server**
+    - *Target server type*: Select **Azure SQL Database Managed Instance**
 
     ![New project settings for doing an assessment of a migration from SQL Server to Azure SQL Database Managed Instance.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-new-project-to-sql-mi.png?raw=true "New project settings")
 
-3. Select **Create**.
+3. Select **Create**
 
-4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**.
+4. On the *Options* screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**:
 
     ![Check database compatibility and check feature parity are checked on the Options screen.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-options.png?raw=true "DMA options")
 
-5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
+5. On the *Sources* screen, enter the following into the *Connect to a server* dialog that appears on the right-hand side:
 
-    - **Server name**: Enter **SQLSERVER2008**.
-    - **Authentication type**: Select **SQL Server Authentication**.
-    - **Username**: Enter **WorkshopUser**.
-    - **Password**: Enter your password.
-    - **Encrypt connection**: Check this box.
-    - **Trust server certificate**: Check this box.
+    - *Server name*: Enter **SQLSERVER2008**
+    - *Authentication type*: Select **SQL Server Authentication**
+    - *Username*: Enter **WorkshopUser**
+    - *Password*: Enter your password
+    - *Encrypt connection*: Check this box
+    - *Trust server certificate*: Check this box
 
     > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
 
     ![In the Connect to a server dialog, the values specified above are entered into the appropriate fields.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-connect-to-a-server.png?raw=true "Connect to a server")
 
-6. Select **Connect**.
+6. Select **Connect**
 
-7. On the **Add sources** dialog that appears next, check the box for **TailspinToys** and select **Add**.
+7. On the *Add sources* dialog that appears next, check the box for *TailspinToys* and select **Add**:
 
     ![The TailspinToys box is checked on the Add sources dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-add-sources.png?raw=true "Add sources")
 
-8. Select **Start Assessment**.
+8. Select **Start Assessment**:
 
     ![Start assessment](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-start-assessment-to-sql-mi.png?raw=true "Start assessment")
 
 
-9. Review the assessment of ability to migrate to Azure SQL Database Managed Instance, then upload to Azure Migrate, as in the previous activity.
+9. Review the assessment of ability to migrate to Azure SQL Database Managed Instance, then upload to Azure Migrate, as in the previous activity:
 
     ![For a target platform of Azure SQL Database Managed Instance, feature parity with PowerShell job step is listed.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dma-to-sql-mi.png?raw=true "Database feature parity")
 
@@ -338,12 +337,12 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
     ![Azure Migrate consolidated view](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-migrate-databases.png?raw=true "Azure Migrate")
   
 
-12. You can click into **Assessed databases > TailspinToys** to see additional details and recommendations.  
+12. You can click into **Assessed databases > TailspinToys** to see additional details and recommendations:  
     ![Azure Migrate Tailspin Toys details](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-migrate-tailspin.png?raw=true "Azure Migrate")
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>For Further Study</b></p>
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><h2>For Further Study</h2></p>
 <ul>
     <li><a href="https://datamigration.microsoft.com/
     " target="_blank">Azure Database Migration Guide</a> contains lots of resources that will help in guiding and supporting database migrations to Azure.</li>
@@ -357,4 +356,4 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
 
-You can use this assessment to move the database to Azure SQL Database or an Azure SQL Managed Instance. If you would like to complete a lab on that topic, navigate to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-MigratingtoAzureSQL.md" target="_blank"><i> Lab - Migrating to Azure SQL Managed Instance</i></a>.
+You can use this assessment to move the database to Azure SQL Database or an Azure SQL Managed Instance. If you would like to complete a lab on that topic, navigate to <a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md" target="_blank"><i> Lab - Migrating to Azure SQL Managed Instance</i></a>.
