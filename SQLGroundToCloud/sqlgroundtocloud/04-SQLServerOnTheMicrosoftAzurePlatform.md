@@ -164,7 +164,7 @@ Networking is a crucial part to moving to Azure. You'll want to work closely wit
 *Glossary of basic networking terms*  
 | **Term**  | **Description** |
 |-----------|-----------------|
-| [Azure Virtual Network (VNet)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) | Logically isolated network on Azure <br> Allows resources to securely communicate with each other, the internet, and on-prem networks <br>Scoped to a single region <br> Segmented into one or more subnets  |
+| [Azure Virtual Network (VNet)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) | Logically isolated network on Azure  Allows resources to securely communicate with each other, the internet, and on-prem networks Scoped to a single region  Segmented into one or more subnets  |
 | [Subnets](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-subnet) | Segmentation of VNets to organize and secure resources in discrete sections  |
 | [VNet Peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)   | Used to connected multiple virtual networks (can be different regions)|| [VPN Gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Provides secure connection between Azure VNet and on-prem over the internet|
 | [ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/) | Provides secure and private connection between Azure and on-prem |
