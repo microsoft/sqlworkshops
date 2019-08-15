@@ -27,7 +27,7 @@ In this module, you will use the [Azure Database Migration Service](https://azur
 &ensp;&ensp;&ensp;[Activity 9](#5.1.9): Update the application  
 [5.2](#5.2): Improve database security with Advanced Data Security (15 minutes)  
 &ensp;&ensp;&ensp;[Activity 1](#5.2.1): Enable Advanced Data Security  
-&ensp;&ensp;&ensp;[Activity 2](#5.2.2): Configure SQL Data Discover and Classification  
+&ensp;&ensp;&ensp;[Activity 2](#5.2.2): Configure SQL Data Discovery and Classification  
 &ensp;&ensp;&ensp;[Activity 3](#5.2.3): Review Advanced Data Security Vulnerability Assessment  
 [5.3](#5.3): Use online secondary for read-only queries (15 minutes)  
 &ensp;&ensp;&ensp;[Activity 1](#5.3.1): View Leaderboard report in Tailspin Toys web application  
