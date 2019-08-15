@@ -42,7 +42,7 @@ This module is mainly guided labs. Before attempting the labs, read through this
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.1">5.1 Migrate the database to SQL Managed instance</h2></a>
 
-In this section, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
+In this section, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-business-critical).  
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
 
@@ -125,7 +125,7 @@ If and when Tailspin Toys chooses to scale their migration to other instances an
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>For Further Study</b></p>
 <ul>
     <li><a href="https://www.microsoft.com/handsonlabs" target="_blank">Microsoft Hands On Labs</a> offers free self-paced lab environments as well as a request form for instructor led lab environments. As of last update, there are about eight labs available around Azure SQL (assessment, migration, app innovation, row level security, managed instance, and more).</li>
-    <li><a href="https://www.microsoft.com/handsondemos" target="_blank">Microsoft Hands On Demos</a> is similar to Hands On Labs, but offers easy to set up demos that are free for certain internals and partners. As of last update, there are about seven demos available around Azure SQL.</li>
+    <li><a href="https://www.microsoft.com/handsondemos" target="_blank">Microsoft Demos</a> is similar to Hands On Labs, but offers easy to set up demos that are free for certain internals and partners. As of last update, there are about seven demos available around Azure SQL.</li>
     <li><a href="https://datamigration.microsoft.com/
     " target="_blank">Azure Database Migration Guide</a> contains lots of resources that will help in guiding and supporting database migrations to Azure.</li>
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview

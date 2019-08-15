@@ -83,7 +83,7 @@ For Azure SQL Database, which is the focus of this module, there are several opt
 There are a few main decisions to be made, which will be explored next.    
 
 *Decision 1: Choose the purchasing model*  
-You have two options, [virtual core (vCore)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) (recommended) or [Database transaction unit (DTU)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-purchase-models
+You have two options, [virtual core (vCore)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) (recommended) or [Database transaction unit (DTU)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-dtu
 ). For the purposes of this workshop, we'll focus on the vCore purchasing model (recommended), but you can [compare vCores and DTUs here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-purchase-models
 ).  
 
@@ -359,7 +359,7 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
     " target="_blank">Azure Database Migration Guide</a> contains lots of resources that will help in guiding and supporting database migrations to Azure.</li>
     <li><a href="https://docs.microsoft.com/en-us/azure/migrate/migrate-services-overview
     " target="_blank">Azure Migrate Documentation</a> contains more information, guidance, and pointers on how to migrate your entire on-premises estate to Azure.</li>
-    <li><a href="https://docs.microsoft.com/en-us/azure/migrate/migrate-services-overview
+    <li><a href="https://docs.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-2017
     " target="_blank">Data Migration Assistant Documentation</a> contains more information and best practices around the DMA tool explored in this module.</li>
     <li><a href="https://azure.microsoft.com/mediahandler/files/resourcefiles/choosing-your-database-migration-path-to-azure/Choosing_your_database_migration_path_to_Azure.pdf
     " target="_blank">Choosing your database migration path to Azure</a> is a white paper created by Microsoft for deeper understanding of how to modernize and migrate on-premises SQL Server to Azure.</li>
