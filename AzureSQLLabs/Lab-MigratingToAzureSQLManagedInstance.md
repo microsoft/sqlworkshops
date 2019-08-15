@@ -894,7 +894,7 @@ If and when Tailspin Toys chooses to scale their migration to other instances an
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview
     " target="_blank">The Azure Architecture Documentation</a> contains many migration patterns as well as full code samples, scenarios, and guidance about how to migrate on-prem estates. There are useful, detailed scenarios about rehosting to SQL MI and SQL VMs, as well as guidance of how to scale a migration, after you've done a PoC.</li>
     <li><a href="https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure
-    " target="_blank">MCW: Migrating SQL Databases to Azure</a> contains extended labs from what you've seen in Labs 4 and LabExercise- There is an opportunity to see how the networking was configured, and deeper dives around the network and setup. </li>
+    " target="_blank">MCW: Migrating SQL Databases to Azure</a> contains extended labs from what you've seen in these exercises. There is an opportunity to see how the networking was configured, and deeper dives around the network and setup. </li>
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure
     " target="_blank">How to Deploy an Azure Infrastructure</a> and <a href="(https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-networking
     " target="_blank">Best Practices for setting up networking</a> are also two very useful resources when moving to Azure.</li>

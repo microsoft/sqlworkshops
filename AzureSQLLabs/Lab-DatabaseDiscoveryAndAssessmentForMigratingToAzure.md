@@ -1,6 +1,6 @@
 ![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png?raw=true)
 
-# Lab: Database Discovery and Assessement for Migrating to Azure
+# Lab: Database Discovery and Assessment for Migrating to Azure
 
 #### <i>A Microsoft Lab from the SQL Server team</i>
 
@@ -10,7 +10,7 @@
 
 In this hands-on lab, you will implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Database Managed Instance (SQL MI) or Azure SQL Database. You will start your process by performing assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. 
 
-At the end of of this Lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.  
+At the end of this lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.  
 
 > **Important Note!** These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
 
