@@ -161,7 +161,7 @@ In addition to the resources linked to above, several [slide decks](https://aka.
 
 Networking is a crucial part to moving to Azure. You'll want to work closely with networking and infrastructure individuals to make sure your deployment to Azure is secure, performant, and scalable. While you may not need to be the expert, having a foundational knowledge is very important. You'll see a few explanations and links to additional courses and information to learn more.  
 
-*Glossary of basic networking terms*
+*Glossary of basic networking terms*  
 |                                                                                                     |                                                                                                         | 
 |-----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------| 
 | **Term**                                                                                                | **Description**                                                                                             | 
@@ -170,7 +170,7 @@ Networking is a crucial part to moving to Azure. You'll want to work closely wit
 | [VNet Peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)                                                                                        | Used to connected multiple virtual networks (can be different regions)                                  | 
 | [VPN Gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways)                                                                                         | Provides secure connection between Azure VNet and on-prem over the internet                             | 
 | [ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/)                                                                                        | Provides secure and private connection between Azure and on-prem                                        | 
-| [Network security group (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/)                                                                        | Allows or denies inbound traffic to your Azure resources (like a cloud-level firewall for your network) | 
+| [Network security group (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/)                                                                        | Allows or denies inbound traffic to your Azure resources (like a cloud-level firewall for your network) |  
 
 
 #### What is a virtual network?  
