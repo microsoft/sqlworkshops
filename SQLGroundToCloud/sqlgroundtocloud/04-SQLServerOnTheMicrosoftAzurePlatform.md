@@ -369,4 +369,4 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
 
-Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/anna/SQLGroundToCloud/sqlgroundtocloud/05-MigratingToAzureSQL.md" target="_blank"><i> 05 - Migrating to Azure SQL</i></a>.
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-MigratingToAzureSQL.md" target="_blank"><i> 05 - Migrating to Azure SQL</i></a>.
