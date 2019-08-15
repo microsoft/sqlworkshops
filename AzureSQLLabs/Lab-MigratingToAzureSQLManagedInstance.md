@@ -129,7 +129,7 @@ In this task, you will use the SQL Server Configuration Manager to update the se
 
     ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-server-service-properties.png?raw=true "SQL Server (MSSQLSERVER) Properties")
 
-4. Select **OK**.
+4. Select **OK**
 
 5. Select **Yes** in the *Confirm Account Change dialog*:
 
@@ -173,7 +173,7 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
     ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-locate-database-files.png?raw=true "Location Database Files")
 
-8. Select **OK** to close the Select Backup Destination dialog.
+8. Select **OK** to close the Select Backup Destination dialog
 
 9. In the *Back Up Database* dialog, select the **Media Options** in the *Select a page* pane, and then set the following:
 
@@ -182,13 +182,11 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
     ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-back-up-database-media-options.png?raw=true "Back Up Database")
 
-10. Select **OK** to perform the backup.
+10. Select **OK** to perform the backup
 
 11. You will receive a message when the backup is complete. Select **OK**:
 
     ![Dialog displayed a message that the database backup was completed successfully.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-backup-complete.png?raw=true "Backup complete")
-
-
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-4">Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information</b></p></a>
 
@@ -290,7 +288,6 @@ In this task, you will use the Azure Cloud Shell to create an Azure Active Direc
     ```powershell
     az role assignment create --assignee http://tailspin-toys --role contributor
     ```
-
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-6">Activity 6: Create and run an online data migration project </b></p></a>
 
@@ -457,7 +454,6 @@ Since you performed the migration as an "online data migration," the migration w
     ![On the Migration job blade, the status of Completed is highlighted](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-status-complete.png?raw=true "Migration with Completed status")
 
 15. You have now successfully migrated the `TailspinToys` database to Azure SQL Managed Instance.
-
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-8">Activity 8: Verify database and transaction log migration</b></p></a>
 
@@ -650,7 +646,7 @@ In this task, you will enable Advanced Data Security (ADS) for all databases on 
 
 In this task, you will look at the [SQL Data Discovery and Classification](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification?view=sql-server-2017) feature of Advanced Data Security. Data Discovery and Classification introduces a new tool for discovering, classifying, labeling & reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (business, financial, healthcare, etc.) can play a pivotal role in your organizational information protection stature.
 
->**Note**: This functionality is currently available *in Preview* for SQL MI through the Azure portal.
+> **Note**: This functionality is currently available *in Preview* for SQL MI through the Azure portal.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -693,20 +689,17 @@ In this task, you will look at the [SQL Data Discovery and Classification](https
 
     ![GDPR information is highlighted in the list of recommendations](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ads-data-discovery-and-classification-recommendations-gdpr.png?raw=true "Data Discovery & Classification")
 
-
-	TODO: Current
-
-10. Check the **Select all** check box at the top of the list to select all the remaining recommended classifications, and then select **Accept selected recommendations**.
+10. Check the **Select all** check box at the top of the list to select all the remaining recommended classifications, and then select **Accept selected recommendations**:
 
     ![All the recommended classifications are checked and the Accept selected recommendations button is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ads-data-discovery-and-classification-accept-recommendations.png?raw=true "Data Discovery & Classification")
 
-11. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
+11. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete:
 
     ![Save the updates to the classified columns list.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ads-data-discovery-and-classification-save.png?raw=true "Save")
     
     >**Note**: This feature is still in preview.  If you receive an error when saving, try returning to the Advanced Data Security blade, and selecting the Data Discovery & Classification tile again to see the results.
 
-12. When the save completes, select the **Overview** tab on the Data Discovery & Classification blade to view a report with a full summary of the database classification state.
+12. When the save completes, select the **Overview** tab on the *Data Discovery and Classification* blade to view a report with a full summary of the database classification state:
 
     ![The View Report button is highlighted on the toolbar.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ads-data-discovery-and-classification-overview-report.png?raw=true "View report")
 
@@ -717,46 +710,45 @@ In this task, you will review an assessment report generated by ADS for the `Tai
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-
-1. Return to the **Advanced Data Security** blade for the `TailspinToys` Managed database and then select the **Vulnerability Assessment** tile.
+1. Return to the **Advanced Data Security** blade for the `TailspinToys` Managed database and then select the **Vulnerability Assessment** tile:
 
     ![The Vulnerability tile is displayed.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ads-vulnerability-assessment-tile.png?raw=true "Advanced Data Security")
 
-2. On the Vulnerability Assessment blade, select **Scan** on the toolbar.
+2. On the *Vulnerability Assessment* blade, select **Scan** on the toolbar:
 
     ![Vulnerability assessment scan button.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/vulnerability-assessment-scan.png?raw=true "Scan")
 
-3. When the scan completes, you will see a dashboard, displaying the number of failing checks, passing checks, and a breakdown of the risk summary by severity level.
+3. When the scan completes, you will see a dashboard, displaying the number of failing checks, passing checks, and a breakdown of the risk summary by severity level:
 
     ![The Vulnerability Assessment dashboard is displayed.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-mi-vulnerability-assessment-dashboard.png?raw=true "Vulnerability Assessment dashboard")
 
     >**Note**: Scans are run on a schedule, so if you see a message that no vulnerabilities are found your database may not have been scanned yet. You will need to run a scan manually. To do this, select the **Scan** button on the toolbar, and follow any prompts to start a scan. This will take a minute or so to complete.
 
-4. In the scan results, take a few minutes to browse both the Failed and Passed checks, and review the types of checks that are performed. In the **Failed** the list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
+4. In the scan results, take a few minutes to browse both the *Failed* and *Passed* checks, and review the types of checks that are performed. In the *Failed* list, locate the security check for *Transparent data encryption*. This check has an ID of *VA1219*:
 
     ![The VA1219 finding for Transparent data encryption is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-mi-vulnerability-assessment-failed-va1219.png?raw=true "Vulnerability assessment")
 
-5. Select the **VA1219** finding to view the detailed description.
+5. Select the **VA1219** finding to view the detailed description:
 
     ![The details of the VA1219 - Transparent data encryption should be enabled finding are displayed with the description, impact, and remediation fields highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-mi-vulnerability-assessment-failed-va1219-details.png?raw=true "Vulnerability Assessment")
 
-The details for each finding provide more insight into the reason for the finding. Of note are the fields describing the finding, the impact of the recommended settings, and details on remediation for the finding.
+The details for each finding provide more insight into the reason. Note the fields describing the finding, the impact of the recommended settings, and details on remediation for the finding.
 
 6. You will now act on the recommendation remediation steps for the finding, and enable [Transparent Data Encryption](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) for the `TailspinToys` database. To accomplish this, you will switch over to using SSMS on your JumpBox VM for the next few steps.
 
     >**Note**: Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
 
-7. On your JumpBox VM, open Microsoft SQL Server Management Studio 18 from the Start menu, and enter the following information in the **Connect to Server** dialog.
+7. On your JumpBox VM, open Microsoft SQL Server Management Studio 18 from the Start menu, and enter the following information in the *Connect to Server* dialog.
 
-    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
-    - **Authentication**: Select SQL Server Authentication.
-    - **Login**: Enter sqlmiuser
-    - **Password**: Enter your password.
-    - Check the **Remember password** box.
+    - *Server name*: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task
+    - *Authentication*: Select **SQL Server Authentication**
+    - *Login*: Enter **sqlmiuser**
+    - *Password*: Enter your password
+    - Check the **Remember password** box
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-18-connect-to-server.png?raw=true "Connect to Server")
 
-8. In SSMS, select **New Query** from the toolbar, paste the following SQL script into the new query window.
+8. In SSMS, select **New Query** from the toolbar, paste the following SQL script into the new query window:
 
     ```sql
     ALTER DATABASE [TailspinToys] SET ENCRYPTION ON
@@ -766,7 +758,7 @@ The details for each finding provide more insight into the reason for the findin
 
     > You turn transparent data encryption on and off on the database level. To enable transparent data encryption on a database in Azure SQL Managed Instance use must use T-SQL.
 
-9. Select **Execute** from the SSMS toolbar. After a few seconds, you will see a message that the "Commands completed successfully."
+9. Select **Execute** from the SSMS toolbar. After a few seconds, you will see a message that the "Commands completed successfully":
 
     ![The Execute button is highlighted on the SSMS toolbar, and the Commands completed successfully message is highlighted in the output window.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-sql-mi-enable-tde-success.png?raw=true "Execute")
 
@@ -778,21 +770,21 @@ The details for each finding provide more insight into the reason for the findin
 
     ![The query above is pasted into a new query window in SSMS.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-sql-mi-database-encryption-keys.png?raw=true "New query")
 
-11. Select **Execute** from the SSMS toolbar. You will see two records in the Results window, which provide information about the encryption state and keys used for encryption.
+11. Select **Execute** from the SSMS toolbar. You will see two records in the Results window, which provide information about the encryption state and keys used for encryption:
 
     ![The Execute button on the SSMS toolbar is highlighted, and in the Results pane the two records about the encryption state and keys for the TailspinToys database are highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-sql-mi-database-encryption-keys-results.png?raw=true "Results")
 
 By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.
 
-12. Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the `TailspinToys` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
+12. Return to the *Azure portal* and the *Advanced Data Security - Vulnerability Assessment* blade of the `TailspinToys` managed database. On the toolbar, select **Scan** to start a new assessment of the database:
 
     ![Vulnerability assessment scan button.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/vulnerability-assessment-scan.png?raw=true "Scan")
 
-13. When the scan completes, select the **Failed** tab, enter **VA1219** into the search filter box, and observe that the previous failure is no longer in the Failed list.
+13. When the scan completes, select the **Failed** tab, enter **VA1219** into the search filter box, and observe that the previous failure is no longer in the Failed list:
 
     ![The Failed tab is highlighted and VA1219 is entered into the search filter. The list displays no results.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-mi-vulnerability-assessment-failed-filter-va1219.png?raw=true "Failed")
 
-14. Now, select the **Passed** tab, and observe the **VA1219** check is listed with a status of **PASS**.
+14. Now, select the **Passed** tab, and observe the **VA1219** check is listed with a status of *PASS*:
 
     ![The Passed tab is highlighted and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-mi-vulnerability-assessment-passed-va1219.png?raw=true "Passed")
 
@@ -816,11 +808,11 @@ In this task, you will open a web report using the web application you deployed 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-1. Return to your JumpBox VM, and run the web application.  
+1. Return to your JumpBox VM, and run the web application:  
 ![Run the Visual Studio web application locally](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/vs-run-app.png?raw=true "Visual Studio")  
 
 
-4. In the TailspinToys web app, select **Leaderboard** from the menu.
+4. In the *TailspinToys web app*, select **Leaderboard** from the menu:
 
    ![READ_WRITE is highlighted on the Leaderboard page.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/tailspin-toys-leaderboard-read-write.png?raw=true "TailspinToys Web App")
 
@@ -831,8 +823,9 @@ In this task, you will open a web report using the web application you deployed 
 In this task, you will enable Read Scale-Out for the `TailspinToys` database, using the `ApplicationIntent` option in the connection string. This option dictates whether the connection is routed to the write replica or to a read-only replica. Specifically, if the `ApplicationIntent` value is `ReadWrite` (the default value), the connection will be directed to the database’s read-write replica. If the `ApplicationIntent` value is `ReadOnly`, the connection is routed to a read-only replica.
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-1. Stop the application by closing the browser.  
-2. Now, in order to have the app connect to the read-only replica, open `appsettings.json`. In the `TailspinToysReadOnlyContext` line, paste the following parameter to end the line.
+1. Stop the application by closing the browser
+ 
+2. In order to have the app connect to the read-only replica, open `appsettings.json`. In the `TailspinToysReadOnlyContext` line, paste the following parameter to end the line:
 
    ```sql
    ApplicationIntent=ReadOnly;
@@ -850,11 +843,15 @@ In this task, you will refresh the Leaderboard report in the Tailspin Toys web a
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-3. Save the `appsettings.json` file in Visual Studio.  
+3. Save the `appsettings.json` file in Visual Studio:
+  
 ![Save the Visual Studio web application after adding the keys](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/vs-save-file.png?raw=true "Visual Studio")
-4. Run the application (IIS Express button).  
+
+4. Run the application (IIS Express button):
+
 ![Run the Visual Studio web application locally](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/vs-run-app.png?raw=true "Visual Studio")  
-1. Return to the TailspinToys gamer information website you opened previously, on the **Leaderboard** page. The page should now look similar to the following:
+
+5. Return to the TailspinToys gamer information website you opened previously, on the **Leaderboard** page. The page should now look similar to the following:
 
     ![READ_ONLY is highlighted on the Reports page.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/tailspin-toys-leaderboard-read-only.png?raw=true "TailspinToys Web App")
 
@@ -873,7 +870,6 @@ Now that Tailspin Toys has completed a migration for their gaming database. They
 If and when Tailspin Toys chooses to scale their migration to other instances and databases, they can leverage the same process you've seen in Labs 4 and 5, but should also refer to the guidance Microsoft provides on [scaling a migration to Azure](https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale). 
 
 <br>
-
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
