@@ -162,6 +162,7 @@ In addition to the resources linked to above, several [slide decks](https://aka.
 Networking is a crucial part to moving to Azure. You'll want to work closely with networking and infrastructure individuals to make sure your deployment to Azure is secure, performant, and scalable. While you may not need to be the expert, having a foundational knowledge is very important. You'll see a few explanations and links to additional courses and information to learn more.  
 
 *Glossary of basic networking terms*  
+
 | **Term**  | **Description** |  
 |-----------|-----------------|  
 | [Azure Virtual Network (VNet)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) | Logically isolated network on Azure <br> Allows resources to securely communicate with each other, the internet, and on-prem networks <br>Scoped to a single region <br> Segmented into one or more subnets  |  
