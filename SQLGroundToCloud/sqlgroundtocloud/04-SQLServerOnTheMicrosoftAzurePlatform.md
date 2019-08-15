@@ -14,10 +14,10 @@ In the previous modules, you learned about SQL Server 2019, big data, and more. 
 [4.2](#4.2): Fundamentals of Azure SQL  
 [4.3](#4.3): Migrating to Azure SQL   
 [4.4](#4.4): Database Discovery and Assessment   
-&ensp;&ensp;&ensp;[Activity 1](#4.4.1): Set up Azure Migrate  
-&ensp;&ensp;&ensp;[Activity 2](#4.4.2): Restore TailspinToys on the SQLServer2008 VM  
-&ensp;&ensp;&ensp;[Activity 3](#4.4.3): Perform assessment for migration to Azure SQL Database  
-&ensp;&ensp;&ensp;[Activity 4](#4.4.4): Perform assessment for migration to Azure SQL Database Managed Instance  
+&ensp;&ensp;&ensp;[Activity 1](#4.4.1): Prepare: Set up Azure Migrate  
+&ensp;&ensp;&ensp;[Activity 2](#4.4.2): Prepare: Restore TailspinToys on the SQLServer2008 VM  
+&ensp;&ensp;&ensp;[Activity 3](#4.4.3): Assess: Perform assessment for migration to Azure SQL Database  
+&ensp;&ensp;&ensp;[Activity 4](#4.4.4): Assess: Perform assessment for migration to Azure SQL Database Managed Instance  
 
 
 (<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)  
@@ -320,301 +320,35 @@ The web app is deployed to an Azure App Service Web App using Visual Studio 2019
 
 In SQL MI, several features of Azure SQL Database are examined. [Advanced Data Security (ADS)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security?view=sql-server-2017) is enabled and [Data Discovery and Classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification?view=sql-server-2017) is used to better understand the data and potential compliance issues with data in the database. The ADS [Vulnerability Assessment](https://docs.microsoft.com/en-us/azure/sql-database/sql-vulnerability-assessment?view=sql-server-2017) is used to identify potential security vulnerabilities and issues in the database, and those finding are used to mitigate one finding by enabling [Transparent Data Encryption](https://docs.microsoft.com/en-us/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-2017) in the database. [Dynamic Data Masking (DDM)](https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017) is used to prevent sensitive data from appearing when querying the database. Finally, [Read Scale-out](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) is used to point reports on the Tailspin Toys web app to a read-only secondary, allowing reporting to occur without impacting the performance of the primary database.  
 
-> **Important Note!**  
-> If you are attending this lab as part of a day-long workshop, all of the activities below **except** Activity 2 should be skipped. **You must complete Activity 2** prior to moving to the next module.
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="4.4.1">Activity 1: Set up Azure Migrate</b></p></a>
-
-> **Important Note!**  
-> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
+<h2><p>Activities</h2></p>
 
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+Proceed directly to the following Activities from **Lab: Database Discovery and Assessment for Migrating to Azure** for the hands-on exercises for Tailspin Toys Gaming. When are you done with these activities come back here for the next section as guided by your instructor.  
 
-1. Log in to the Azure portal (with the account you're using for this workshop), and search for Azure Migrate.  
-    ![Search for Azure Migrate.](../graphics/media/azure-migrate-search.png "Search in Azure portal")  
-2. As you can see, Azure Migrate can be used to migrate more than just databases. For now, select "Assess and migrate databases".  
-    ![Azure Migrate home.](../graphics/media/azure-migrate-home.png "Azure Migrate")  
-3. Select "Add tool(s)" under Assessment tools section.  
-![Azure Migrate home.](../graphics/media/azure-migrate-add-tool.png "Azure Migrate")  
-4. In "Migrate project" select the subscription and resource group you're using for the workshops. Then, supply a Migration project name "MigrateTailspinToys" and region. Select "Next".
-    ![Azure Migrate project.](../graphics/media/azure-migrate-add-project.png "Azure Migrate")  
-    > Note: for region, select the one closest to you. The geography specified for the project is only used to store the metadata gathered from on-premises VMs. You can select any target region for the actual migration.
-5. For assessment tools, select **Azure Migrate: Database Assessment**, then select "Add tool".  
-5. For migration tools, select **Azure Migrate: Database Migration**, and then select "Add tool". Azure Migrate is now set up for you to use. In the next activity, you'll use some of the tools you added to assess and migrate Tailspin Toys to Azure.  
+> **Note:**  
+> If you are attending this lab as part of a day-long workshop, all of the activities below **except** Activity 2 should be skipped (they will be demoed in class). **You must complete Activity 2** prior to moving to the next module.
 
+<h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessementForMigratingToAzure.md#Activity-1">Activity 1: Set up Azure Migrate</p></a></h3>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="4.4.2">Activity 2: Restore TailspinToys on the SQLServer2008 VM</b></p></a>
+In this activity, you'll set up Azure Migrate, and explore some of the new integrations between Microsoft's Data Migration Assistant (DMA) and Azure Database Migration Services (DMS).  
 
-> **Important Note!**  
+<h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.2"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessementForMigratingToAzure.md#Activity-2">Activity 2: Restore TailspinToys on the SQLServer2008 VM</h3></p></a>
+
 > If you are attending this lab as part of a day-long workshop, you **must complete this activity prior to moving to the next module**. The rest of the activities in this lab can be skipped, they were demoed earlier.
 
 <!--TODO: Can we make it so this part is done on each VM for each user ahead of the labs?-->
 
 Before you begin the assessments, you need to restore a copy of the `TailspinToys` database in your SQL Server 2008 R2 instance. In this task, you will create an RDP connection to the SqlServer2008 VM and then restore the `TailspinToys` database onto the SQL Server 2008 R2 instance using a backup provided by Tailspin Toys.
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+<h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.3"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessementForMigratingToAzure.md#Activity-3">Activity 3: Perform assessment for migration to Azure SQL Database</h3></p></a>
 
+In this task, you will use the Microsoft Data Migration Assistant (DMA) to perform an assessment of the `TailspinToys` database against Azure SQL Database (Azure SQL DB). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.  
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your **SqlServer2008** VM by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the **SqlServer2008** VM from the list of resources. On the SqlServer2008 Virtual Machine's **Overview** blade, select **Connect** on the top menu.
-
-    ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](../graphics/media/connect-sqlserver2008.png "Connect to SqlServer2008 VM")
-
-2. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
-
-3. Select **Connect** on the Remote Desktop Connection dialog.
-
-    ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](../graphics/media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
-
-4. Enter the following credentials when prompted, and then select **OK**:
-
-    - **Username**: sqlmiuser
-    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
-
-    ![The credentials specified above are entered into the Enter your credentials dialog.](../graphics/media/rdc-credentials-sql-2008.png "Enter your credentials")
-
-5. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
-
-    ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](../graphics/media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
-
-6. Once logged into the SqlServer2008 VM, download a [backup of the TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
-
-7. Next, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
-
-    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](../graphics/media/start-menu-ssms-17.png "Windows start menu search")
-
-8. In the SSMS **Connect to Server** dialog, enter **SQLSERVER2008** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
-
-    ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](../graphics/media/sql-server-connect-to-server.png "Connect to Server")
-
-9. Once connected, right-click **Databases** under SQLSERVER2008 in the Object Explorer, and then select **Restore Database** from the context menu.
-
-    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](../graphics/media/ssms-databases-restore.png "SSMS Object Explorer")
-
-10. You will now restore the `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (...) button to the right of the Device box.
-
-    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](../graphics/media/ssms-restore-database-source.png "Restore Database source")
-
-11. In the **Select backup devices** dialog that appears, select **Add**.
-
-    ![In the Select backup devices dialog, the Add button is highlighted.](../graphics/media/ssms-restore-database-select-devices.png "Select backup devices")
-
-12. In the **Locate Backup File** dialog, browse to the location you saved the downloaded `TailspinToys.bak` file, select that file, and then select **OK**.
-
-    ![In the Location Backup File dialog, the TailspinToys.bak file is selected and highlighted.](../graphics/media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
-
-13. Select **OK** on the **Select backup devices** dialog. This will return you to the Restore Database dialog. The dialog will now contain the information required to restore the `TailspinToys` database.
-
-    ![The completed Restore Database dialog is displayed, with the TailSpinToys database specified as the target.](../graphics/media/ssms-restore-database.png "Restore Database")
-
-14. Select **OK** to start the restore.
-
-15. Select **OK** in the dialog when the database restore is complete.
-
-    ![A dialog is displayed with a message that the database TailspinToys was restored successfully.](../graphics/media/ssms-restore-database-success.png "Restored successfully")
-
-16. Next, you will execute a script in SSMS, which will reset the `sa` password, enable mixed mode authentication, enable Service broker, create the `WorkshopUser` account, and change the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
-
-    ![The New Query button is highlighted in the SSMS toolbar.](../graphics/media/ssms-new-query.png "SSMS Toolbar")
-
-17. Copy and paste the SQL script below into the new query window (replacing `<YourPasswordHere>` with the same password as the SQL Server 2008 VM):
-
-    ```sql
-    USE master;
-    GO
-
-    -- SET the sa password
-    ALTER LOGIN [sa] WITH PASSWORD=N'<YourPasswordHere>';
-    GO
-
-    -- Enable Service Broker on the database
-    ALTER DATABASE TailspinToys SET ENABLE_BROKER WITH ROLLBACK immediate;
-    GO
-
-    -- Enable Mixed Mode Authentication
-    EXEC xp_instance_regwrite N'HKEY_LOCAL_MACHINE',
-    N'Software\Microsoft\MSSQLServer\MSSQLServer', N'LoginMode', REG_DWORD, 2;
-    GO
-
-    -- Create a login and user named WorkshopUser
-    CREATE LOGIN WorkshopUser WITH PASSWORD = N'<YourPasswordHere>';
-    GO
-
-    EXEC sp_addsrvrolemember
-        @loginame = N'WorkshopUser',
-        @rolename = N'sysadmin';
-    GO
-
-    USE TailspinToys;
-    GO
-
-    IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
-    BEGIN
-        CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
-        EXEC sp_addrolemember N'db_datareader', N'WorkshopUser'
-    END;
-    GO
-
-    -- Update the recovery model of the database to FULL
-    ALTER DATABASE TailspinToys SET RECOVERY FULL;
-    GO
-    ```
-
-18. To run the script, select **Execute** from the SSMS toolbar.
-
-    ![The Execute button is highlighted in the SSMS toolbar.](../graphics/media/ssms-execute.png "SSMS Toolbar")
-
-19. For Mixed Mode Authentication and the new `sa` password to take effect, you must restart the SQL Server (MSSQLSERVER) Service on the SqlServer2008 VM. To do this, you can use SSMS. Right-click the SQLSERVER2008 instance in the SSMS Object Explorer, and then select **Restart** from the context menu.
-
-    ![In the SSMS Object Explorer, the context menu for the SQLSERVER2008 instance is displayed, and Restart is highlighted.](../graphics/media/ssms-object-explorer-restart-sqlserver2008.png "Object Explorer")
-
-20. When prompted about restarting the MSSQLSERVER service, select **Yes**. The service will take a few seconds to restart.
-
-    ![The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service.](../graphics/media/ssms-restart-service.png "Restart MSSQLSERVER service")
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="4.4.3">Activity 3: Perform assessment for migration to Azure SQL Database</b></p></a>
-
-> **Important Note!**  
-> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
-
-In this task, you will use the Microsoft Data Migration Assistant (DMA) to perform an assessment of the `TailspinToys` database against Azure SQL Database (Azure SQL DB). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-
-
-1. On the SqlServer2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
-
-    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](../graphics/media/windows-start-menu-dma.png "Data Migration Assistant")
-
-2. In the DMA dialog, select **+** from the left-hand menu to create a new project.
-
-    ![The new project icon is highlighted in DMA.](../graphics/media/dma-new.png "New DMA project")
-
-3. In the New project pane, set the following:
-
-    - **Project type**: Select Assessment.
-    - **Project name**: Enter ToAzureSqlDb.
-    - **Source server type**: Select SQL Server.
-    - **Target server type**: Select Azure SQL Database.
-
-    ![New project settings for doing an assessment of a migration from SQL Server to Azure SQL Database.](../graphics/media/dma-new-project-to-azure-sql-db.png "New project settings")
-
-> Note: There's also an option to select "Migration" within DMA. You could use this option if you have restrictions around pushing versus pulling the data to Azure. Using DMA to migrate would be pushing data from the SQL Server 2008 VM into Azure. In this workshop, we'll instead pull data from the SQL Server 2008 VM. You can learn more about migrating to Azure using DMA [here](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsqltosqldb?view=sql-server-2017).
-4. Select **Create**.
-
-5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**.
-
-    ![Check database compatibility and check feature parity are checked on the Options screen.](../graphics/media/dma-options.png "DMA options")
-
-6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
-
-    - **Server name**: Enter **SQLSERVER2008**.
-    - **Authentication type**: Select **SQL Server Authentication**.
-    - **Username**: Enter **WorkshopUser**
-    - **Password**: Enter your password.  
-    - **Encrypt connection**: Check this box.
-    - **Trust server certificate**: Check this box.
-
-    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.  
-
-    ![In the Connect to a server dialog, the values specified above are entered into the appropriate fields.](../graphics/media/dma-connect-to-a-server.png "Connect to a server")
-
-7. Select **Connect**.
-
-8. On the **Add sources** dialog that appears next, check the box for **TailspinToys** and select **Add**.
-
-    ![The TailspinToys box is checked on the Add sources dialog.](../graphics/media/dma-add-sources.png "Add sources")
-
-9. Select **Start Assessment**.
-
-    ![Start assessment](../graphics/media/dma-start-assessment-to-azure-sql-db.png "Start assessment")
-
-10. Review the assessment of ability to migrate to Azure SQL DB.
-
-    ![For a target platform of Azure SQL DB, feature parity shows two features which are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](../graphics/media/dma-service-broker.png "Database feature parity")
-
-    > The DMA assessment for a migrating the `TailspinToys` database to a target platform of Azure SQL DB shows two features in use which are not supported. These features, cross-database references and Service broker, will prevent TailspinToys from being able to migrate to the Azure SQL DB PaaS offering without first making changes to their database.
-
-11. In the bottom right (see above), select "Upload to Azure Migrate". You'll be prompted to sign in (use the credentials you're using for this workshop). Then, select the subscription and Azure Migrate Project created earlier. Select "Upload".  
-
-    ![Start assessment](../graphics/media/dma-upload-azure-migrate.png "Start assessment")
-
-12. When it's done, you'll see the following message:  
-    ![Start assessment](../graphics/media/dma-assessment-uploaded.png "Start assessment")  
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="4.4.4">Activity 4: Perform assessment for migration to Azure SQL Database Managed Instance</b></p></a>
-
-> **Important Note!**  
-> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
-
+<h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.4"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessementForMigratingToAzure.md#Activity-4">Activity 4: Perform assessment for migration to Azure SQL Database Managed Instance</h3></p></a>
 
 With one PaaS offering ruled out due to feature parity, you will now perform a second assessment. In this task, you will use DMA to perform an assessment of the `TailspinToys` database against Azure SQL Database Managed Instance (SQL MI). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-
-1. To get started, select **+** on the left-hand menu in DMA to create another new project.
-
-    ![The new project icon is highlighted in DMA.](../graphics/media/dma-new.png "New DMA project")
-
-2. In the New project pane, set the following:
-
-    - **Project type**: Select Assessment.
-    - **Project name**: Enter ToSqlMi.
-    - **Source server type**: Select SQL Server.
-    - **Target server type**: Select Azure SQL Database Managed Instance.
-
-    ![New project settings for doing an assessment of a migration from SQL Server to Azure SQL Database Managed Instance.](../graphics/media/dma-new-project-to-sql-mi.png "New project settings")
-
-3. Select **Create**.
-
-4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**.
-
-    ![Check database compatibility and check feature parity are checked on the Options screen.](../graphics/media/dma-options.png "DMA options")
-
-5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
-
-    - **Server name**: Enter **SQLSERVER2008**.
-    - **Authentication type**: Select **SQL Server Authentication**.
-    - **Username**: Enter **WorkshopUser**.
-    - **Password**: Enter your password.
-    - **Encrypt connection**: Check this box.
-    - **Trust server certificate**: Check this box.
-
-    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
-
-    ![In the Connect to a server dialog, the values specified above are entered into the appropriate fields.](../graphics/media/dma-connect-to-a-server.png "Connect to a server")
-
-6. Select **Connect**.
-
-7. On the **Add sources** dialog that appears next, check the box for **TailspinToys** and select **Add**.
-
-    ![The TailspinToys box is checked on the Add sources dialog.](../graphics/media/dma-add-sources.png "Add sources")
-
-8. Select **Start Assessment**.
-
-    ![Start assessment](../graphics/media/dma-start-assessment-to-sql-mi.png "Start assessment")
-
-
-9. Review the assessment of ability to migrate to Azure SQL Database Managed Instance, then upload to Azure Migrate, as in the previous activity.
-
-    ![For a target platform of Azure SQL Database Managed Instance, feature parity with PowerShell job step is listed.](../graphics/media/dma-to-sql-mi.png "Database feature parity")
-
->**Note**: The assessment report for a migrating the `TailspinToys` database to a target platform of Azure SQL Database Managed Instance shows feature parity only with a PowerShell job step. The step listed is associated with a built-in SQL Server Agent Job, and it will not impact the migration of the `TailspinToys` database to SQL MI.
-
-10. The database, including the cross-database references and Service broker features, can be migrated as is, providing the opportunity for TailspinToys to have a fully managed PaaS database running in Azure. Previously, their options for migrating a database using features, such as Service Broker, incompatible with Azure SQL Database, were to deploy the database to a virtual machine running in Azure (IaaS) or modify their database and applications to not use the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with near 100% compatibility, including the features that prevented them from using Azure SQL Database.  
-
-11. Open the Azure portal, and navigate back to Azure Migrate. Under "Databases", you should now see the results from the DMA scans. This will bring all of the databases and servers you scan and upload using DMA together, and provide a consolidated view.
-
-    ![Azure Migrate consolidated view](../graphics/media/azure-migrate-databases.png "Azure Migrate")
-  
-
-12. You can click into **Assessed databases > TailspinToys** to see additional details and recommendations.  
-    ![Azure Migrate Tailspin Toys details](../graphics/media/azure-migrate-tailspin.png "Azure Migrate")
 
 
 
