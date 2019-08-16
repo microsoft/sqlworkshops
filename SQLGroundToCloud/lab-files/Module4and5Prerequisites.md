@@ -40,7 +40,7 @@ In this task, you will create an Azure resource group which will serve as a cont
     - **Resource group**: Enter hands-on-lab-SUFFIX.
     - **Region**: Select the region you would like to use for resources in this hands-on lab. Remember this location so you can use it for the other resources you'll provision throughout this lab.
 
-    ![Add Resource group Resource groups is highlighted in the navigation pane of the Azure portal, +Add is highlighted in the Resource groups blade, and "hands-on-labs" is entered into the Resource group name box on the Create an empty resource group blade.](./media/create-resource-group.png "Create resource group")
+    ![Add Resource group Resource groups is highlighted in the navigation pane of the Azure portal, +Add is highlighted in the Resource groups blade, and "hands-on-labs" is entered into the Resource group name box on the Create an empty resource group blade.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/create-resource-group.png?raw=true "Create resource group")
 
 2. Select **Review + Create**.
 
@@ -52,15 +52,15 @@ In this task, you will register the `Microsoft.DataMigration` resource provider 
 
 1. In the [Azure portal](https://portal.azure.com), select **All services** from the Azure navigation pane, and then select **Subscriptions**.
 
-    ![All services is highlighted in the Azure navigation pane, and Subscriptions is highlighted in the All services blade.](media/azure-portal-all-services-subscriptions.png "Azure All services blade")
+    ![All services is highlighted in the Azure navigation pane, and Subscriptions is highlighted in the All services blade.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-portal-all-services-subscriptions.png?raw=true  "Azure All services blade")
 
 2. Select the subscription you are using for this hands-on lab from the list, select **Resource providers**, enter "migration" into the filter box, and then select **Register** next to **Microsoft.DataMigration**.
 
-    ![The Subscription blade is displayed, with Resource providers selected and highlighted under Settings. On the Resource providers blade, migration is entered into the filter box, and Register is highlighted next to Microsoft.DataMigration.](media/azure-portal-subscriptions-resource-providers-register-microsoft-datamigration.png "Resource provider registration")
+    ![The Subscription blade is displayed, with Resource providers selected and highlighted under Settings. On the Resource providers blade, migration is entered into the filter box, and Register is highlighted next to Microsoft.DataMigration.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-portal-subscriptions-resource-providers-register-microsoft-datamigration.png?raw=true   "Resource provider registration")
 
 3. It can take a couple of minutes for the registration to complete. Make sure you see a status of **Registered** before moving on.
 
-    ![Registered is highlighted next to the Microsoft.DataMigration resource provider.](media/resource-providers-datamigration-registered.png "Microsoft DataMigration Resource Provider")
+    ![Registered is highlighted next to the Microsoft.DataMigration resource provider.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/resource-providers-datamigration-registered.png?raw=true  "Microsoft DataMigration Resource Provider")
 
 ### Task 3: Run ARM template to provision lab resources
 
@@ -76,19 +76,19 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
 - Azure App Service Plan and App Service (Web App)
 - Azure Blob Storage account
 
->**Note**: You can review the steps to manually provision the lab resources in [Appendix A](./Appendix-A).
+>**Note**: You can review the steps to manually provision the lab resources in [Appendix A](https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/lab-files/Appendix-A.md).
 
 1. Before running the ARM template, it is beneficial to quickly verify that you will be able to provision SQL MI in your subscription. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "sql managed instance" into the Search the Marketplace box, and then select **Azure SQL Managed Instance** from the results.
 
-    ![+Create a resource is selected in the Azure navigation pane, and "sql managed instance" is entered into the Search the Marketplace box. Azure SQL Managed Instance is selected in the results.](media/create-resource-sql-mi.png "Create SQL Managed Instance")
+    ![+Create a resource is selected in the Azure navigation pane, and "sql managed instance" is entered into the Search the Marketplace box. Azure SQL Managed Instance is selected in the results.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/create-resource-sql-mi.png?raw=true   "Create SQL Managed Instance")
 
 2. Select **Create** on the Azure SQL Managed Instance blade.
 
-    ![The Create button is highlighted on the Azure SQL Managed Instance blade.](media/sql-mi-create.png "Create Azure SQL Managed Instance")
+    ![The Create button is highlighted on the Azure SQL Managed Instance blade.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-mi-create.png?raw=true   "Create Azure SQL Managed Instance")
 
 3. On the SQL managed instance blade, look for a message stating that "Managed instance creation is not available for the chosen subscription type...", which will be displayed near the bottom of the SQL managed instance blade.
 
-    ![A message is displayed stating that SQL MI creation not available in the selected subscription.](media/sql-mi-creation-not-available.png "SQL MI creation not available")
+    ![A message is displayed stating that SQL MI creation not available in the selected subscription.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-mi-creation-not-available.png?raw=true   "SQL MI creation not available")
 
     > **Note**: If you see the message stating that Managed Instance creation is not available for the chosen subscription type, follow the instructions for [obtaining a larger quota for SQL Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance) before proceeding with the following steps.
 
@@ -111,7 +111,7 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
     - **Storage Size in GB**: Accept the default value, **32**.
     - Check the box to agree to the Azure Marketplace terms and conditions.
 
-    ![The Custom deployment blade displays, and the information above is entered on the Custom deployment blade.](media/azure-custom-deployment.png "Custom deployment blade")
+    ![The Custom deployment blade displays, and the information above is entered on the Custom deployment blade.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-custom-deployment.png?raw=true   "Custom deployment blade")
 
 6. Select **Purchase** to start provisioning the JumpBox VM and SQL Managed Instance.
 
@@ -119,7 +119,7 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
 
 7. You can monitor the progress of the deployment by navigating to the hands-on-lab-SUFFIX resource group in the Azure portal, and then selecting **Deployments** from the left-hand menu. The deployment will be named **Microsoft.Template**. Select that to view the progress of each item in the template.
 
-    ![The Deployments menu item is selected in the left-hand menu of the hands-on-lab-SUFFIX resource group and the Microsoft.Template deployment is highlighted.](media/resource-group-deployments.png "Resource group deployments")
+    ![The Deployments menu item is selected in the left-hand menu of the hands-on-lab-SUFFIX resource group and the Microsoft.Template deployment is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/resource-group-deployments.png?raw=true   "Resource group deployments")
 
 > You have now completed the before the hands-on lab. Check back in a few hours to monitor the progress of your SQL MI provisioning. If the provisioning goes on for longer than 7 hours, you may need to issue a support ticket in the Azure portal to request the provisioning process be unblocked by Microsoft support.
 
