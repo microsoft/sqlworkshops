@@ -8,14 +8,14 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> Migrate to Azure SQL Managed Instance</h2>
 
-In this Lab you'll use the results of an assessment to migrate a database to a [Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance).  
+In this lab you'll use the results of an assessment to migrate a database to a [Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance).  
 
 
 (<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
-In this Lab you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from an on-premises SQL 2008 R2 database to SQL MI. At the end of the Lab, you'll also explore some of the security and performance features available. 
+In this lab you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from an on-premises SQL 2008 R2 database to SQL MI. At the end of the Lab, you'll also explore some of the security and performance features available. 
 
-The activities in this Lab include:  
+The activities in this lab include:  
   
 [Lab Exercise 1](#LabExercise-1): Migrate the database to SQL Managed instance (30 minutes)  
 &ensp;&ensp;&ensp;[Activity 1](#Activity-1): Create a SMB network share on the SQLServer2008VM  
@@ -40,7 +40,7 @@ The activities in this Lab include:
 
 [Lab Exercise 4](#LabExercise-4): After the Migration
 
-SELF-PACED USERS ONLY: If you are using this Lab self-paced, carefully read through Lab 4 of this workshop, complete the assessment lab in Lab 4.4 first. Then, read carefully and complete the labs in this Lab.  
+
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -69,9 +69,10 @@ In this task, you will create a new SMB network share on the SqlServer2008 VM. T
 
 4. Enter the following credentials when prompted, and then select **OK**:
 
-    - *Username*: *sqlmiuser**
+    - *Username*: **sqlmiuser**
 
-    > Note: Password should be consistent among all labs. Your instructor will provide the password for in-class Labs.
+    > **Note:**  
+    > Password should be consistent among all labs. Your instructor will provide the password for in-class Labs.  
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/rdc-credentials-sql-2008.png?raw=true "Enter your credentials")
 
@@ -115,7 +116,8 @@ In this task, you will use the SQL Server Configuration Manager to update the se
 
     ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/windows-start-sql-configuration-manager.png?raw=true "Windows search")
 
-    > **Note**: Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which will not work for the installed SQL Server 2008 R2 database.
+    > **Note**:  
+    > Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which will not work for the installed SQL Server 2008 R2 database.  
 
 2. In the *SQL Server Configuration Manager* dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu:
 
@@ -125,7 +127,8 @@ In this task, you will use the SQL Server Configuration Manager to update the se
 
     - *Account name*: **sqlmiuser**
     
-    > Note: Password should be consistent among all labs, ask your instructor if you don't know what your password is.
+    > **Note:**  
+    > Password should be consistent among all labs, ask your instructor if you don't know what your password is.
 
     ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/sql-server-service-properties.png?raw=true "SQL Server (MSSQLSERVER) Properties")
 
@@ -207,7 +210,8 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
     ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/cloud-shell-create-storage.png?raw=true "Azure Cloud Shell")
 
-    > **Note**: If creation fails, you may need to select **Advanced settings** and specify the subscription, region and resource group for the new storage account.
+    > **Note**:  
+    > If creation fails, you may need to select **Advanced settings** and specify the subscription, region and resource group for the new storage account.
 
 4. After a moment, you will receive a message that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt:
 
@@ -238,16 +242,19 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-5">Activity 5: Create a service principal</b></p></a>
 
-> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but there is nothing you need to do. Please refer to instructor guidance.  
+> **Note**:  
+> If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but **there is nothing you need to do**. Please refer to instructor guidance.  
 
 In this task, you will use the Azure Cloud Shell to create an Azure Active Directory (Azure AD) application and service principal (SP) that will provide DMS access to Azure SQL MI. You will grant the SP permissions to the hands-on-lab-SUFFIX resource group.
 
-> **Important Note!** You must have rights within your Azure AD tenant to create applications and assign roles to complete this task. If you are blocked by this, but still want to do a migration with Azure Database Migration Services, you can perform an offline migration. In Activity 6, select offline instead of online migration in Step 3, and instead of Step 7, you can refer to [this section of a migrating to Azure SQL Database Managed Instance offline tutorial](https://docs.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-managed-instance#specify-target-details).
+> **Note**:  
+> You must have rights within your Azure AD tenant to create applications and assign roles to complete this task. If you are blocked by this, but still want to do a migration with Azure Database Migration Services, you can perform an offline migration. In Activity 6, select offline instead of online migration in Step 3, and instead of Step 7, you can refer to [this section of a migrating to Azure SQL Database Managed Instance offline tutorial](https://docs.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-managed-instance#specify-target-details).
 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but there is nothing you need to do. Please refer to instructor guidance.  
+> **Note**:  
+> If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but **there is nothing you need to do**. Please refer to instructor guidance.  
 
 1. Next, you will issue a command to create a service principal named **tailspin-toys** and assign it contributor permissions to your *hands-on-lab-SUFFIX* resource group.
 
@@ -322,7 +329,8 @@ In this task, you will create a new online data migration project in DMS for the
     - *Password*: Enter your password
     - *Connection properties**: Check both **Encrypt connection** and **Trust server certificate**
 
-    > Note: The Password should be consistent among all labs. Your instructor will provide the password if you are taking this Lab in person.  
+    > **Note**:  
+    > The Password should be consistent among all labs. Your instructor will provide the password if you are taking this Lab in person.  
 
     ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-select-source.png?raw=true "Migration Wizard Select source")
 
@@ -332,7 +340,8 @@ In this task, you will create a new online data migration project in DMS for the
 
     - *Application ID*: Enter the `appId` value from the output of the `az ad sp create-for-rbac' command you executed in the last task
     - *Key*: Enter the `password` value from the output of the `az ad sp create-for-rbac' command you executed in the last task
-    > **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your application ID and key.
+    > **Note**:  
+    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your application ID and key.
     <!-- TODO Add guidance on how to do this -->
     - *Subscription*: Select the subscription you are using for this hand-on lab
     - *Target Azure SQL Managed Instance*: Select the **sqlmi-UNIQUEID** instance
@@ -494,7 +503,7 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-query-game-table.png?raw=true "SSMS Query")
 
-8. You are now done using the SqlServer2008 VM. Close any open windows and log off of the VM. You will use this "JumpBox" VM for the remaining tasks of this hands-on-lab.
+8. You are now done using the SqlServer2008 VM. Close any open windows and log off of the VM. You will use the "JumpBox" VM for the remaining tasks of this hands-on-lab.
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-9">Activity 9: Update the application</b></p></a>
@@ -504,7 +513,7 @@ With the `TailspinToys` database now running on SQL MI in Azure, the next step i
 
 >**Note**: SQL Managed Instance has a private IP address in its own VNet, so to connect an application you need to configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
->**Note**: The architecture diagram from Lab 4 explains a web app being deployed to Azure. Due to time restraints, the lab will deal with switching the app running on the VM locally to using SQL MI (not the deployment to Azure or integrating the App Service with the Virtual Network). In the [extended version of these labs](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md#exercise-3-update-the-web-application-to-use-the-new-sql-mi-database), or if you have time at the end of the day, you can do that.
+>**Note**: The architecture diagram from Lab 4 explains a web app being deployed to Azure. Due to time constraints, the lab will deal with switching the app running on the VM locally to using SQL MI (not the deployment to Azure or integrating the App Service with the Virtual Network). In the [extended version of these labs](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md#exercise-3-update-the-web-application-to-use-the-new-sql-mi-database), or if you have time at the end of the lab, you can do that.
 
 
 In this activity, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, run the `TailspinToysWeb` application on the VM.  
@@ -548,7 +557,8 @@ In this activity, you will create an RDP connection to the JumpBox VM, and then 
 git clone https://github.com/microsoft/sqlworkshops.git
 ```
 
-> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, or you have already cloned the repository earlier in the workshop, you do not need to clone the workshop again.
+> **Note**:  
+> If you're doing this lab as part of a workshop and were provided an environment to use, or you have already cloned the repository earlier in the workshop, you do not need to clone the workshop again.
 
 9. Open the `C:/users/`[username]`/sqlworkshops/SQLGroundtoCloud` folder. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio:
 
@@ -560,7 +570,8 @@ git clone https://github.com/microsoft/sqlworkshops.git
 
 11. Select **Sign in** and enter your Azure account credentials when prompted:
 
-> **Important Note!** If you're doing this lab as part of a workshop and were provided an environment to use, please use the Azure account credentials provided to you.
+> **Note**:  
+> If you're doing this lab as part of a workshop and were provided an environment to use, please use the Azure account credentials provided to you.
 
 ![On the Visual Studio welcome screen, the Sign in button is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/visual-studio-sign-in.png?raw=true) 
 
@@ -637,7 +648,7 @@ In this task, you will enable Advanced Data Security (ADS) for all databases on 
 
     ![In the Advanced Data Security blade of the Managed database, the Enable Advanced Data Security on the managed instance button is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/managed-database-ads.png?raw=true "Advanced Data Security")
 
-3. Within a few minutes, ADS will be enabled for all databases on the Managed Instance. You will see the three tiles on the Advanced Data Security blade become enabled when it has been enabled:
+3. Within a few minutes, ADS will be enabled for all databases on the Managed Instance. You will see the three tiles on the *Advanced Data Security* blade become enabled when it has been enabled:
 
     ![The enabled tiles on the Advance Data Security blade are displayed.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ads-panels.png?raw=true "Advanced Data Security")
 
@@ -685,7 +696,7 @@ In this task, you will look at the [SQL Data Discovery and Classification](https
 
 8. You will see the *Sales - CreditCard - CardNumber* field disappear from the recommendations list, and the number of recommendations drop by 1
 
-9. Other recommendations you can review are the *HumanResources - Employee* fields for *NationIDNumber* and *BirthDate*. Note that these have been flagged by the recommendation service as *Confidential - GDPR*. As Tailspin Toys maintains data about gamers from around the world, including Europe, having a tool which helps them discover data which may be relevant to GDPR compliance will be very helpful:
+9. Other recommendations you can review are the *HumanResources - Employee* fields for *NationalIDNumber* and *BirthDate*. Note that these have been flagged by the recommendation service as *Confidential - GDPR*. As Tailspin Toys maintains data about gamers from around the world, including Europe, having a tool which helps them discover data which may be relevant to GDPR compliance will be very helpful:
 
     ![GDPR information is highlighted in the list of recommendations](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ads-data-discovery-and-classification-recommendations-gdpr.png?raw=true "Data Discovery & Classification")
 
@@ -736,7 +747,8 @@ The details for each finding provide more insight into the reason. Note the fiel
 
 6. You will now act on the recommendation remediation steps for the finding, and enable [Transparent Data Encryption](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) for the `TailspinToys` database. To accomplish this, you will switch over to using SSMS on your JumpBox VM for the next few steps.
 
-    >**Note**: Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
+    >**Note**:  
+    > Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
 
 7. On your JumpBox VM, open Microsoft SQL Server Management Studio 18 from the Start menu, and enter the following information in the *Connect to Server* dialog.
 
@@ -882,7 +894,7 @@ If and when Tailspin Toys chooses to scale their migration to other instances an
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview
     " target="_blank">The Azure Architecture Documentation</a> contains many migration patterns as well as full code samples, scenarios, and guidance about how to migrate on-prem estates. There are useful, detailed scenarios about rehosting to SQL MI and SQL VMs, as well as guidance of how to scale a migration, after you've done a PoC.</li>
     <li><a href="https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure
-    " target="_blank">MCW: Migrating SQL Databases to Azure</a> contains extended labs from what you've seen in Labs 4 and LabExercise- There is an opportunity to see how the networking was configured, and deeper dives around the network and setup. </li>
+    " target="_blank">MCW: Migrating SQL Databases to Azure</a> contains extended labs from what you've seen in these exercises. There is an opportunity to see how the networking was configured, and deeper dives around the network and setup. </li>
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure
     " target="_blank">How to Deploy an Azure Infrastructure</a> and <a href="(https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-networking
     " target="_blank">Best Practices for setting up networking</a> are also two very useful resources when moving to Azure.</li>
