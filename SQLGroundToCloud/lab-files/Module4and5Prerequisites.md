@@ -76,7 +76,7 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
 - Azure App Service Plan and App Service (Web App)
 - Azure Blob Storage account
 
->**Note**: You can review the steps to manually provision the lab resources in [Appendix A](./Appendix-A).
+>**Note**: You can review the steps to manually provision the lab resources in [Appendix A](https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/lab-files/Appendix-A.md).
 
 1. Before running the ARM template, it is beneficial to quickly verify that you will be able to provision SQL MI in your subscription. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "sql managed instance" into the Search the Marketplace box, and then select **Azure SQL Managed Instance** from the results.
 
