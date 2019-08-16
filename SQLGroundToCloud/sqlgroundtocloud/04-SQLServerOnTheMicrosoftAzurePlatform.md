@@ -215,7 +215,7 @@ There are three options for the connection policy setting of a SQL Database serv
 * **Proxy**: In this mode, all connections are proxied via the Azure SQL Database gateways. Choosing this mode can result in higher latency and lower throughput, depending on nature of the workload.  
 * **Default**: This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either *Proxy* or *Redirect*. The effective policy depends on whether connections originate from within Azure (*Redirect*) or outside of Azure (*Proxy*).
 
-> For more information, including scripts to change connection settings, refer to the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connectivity-architecture).  
+> For more information, including scripts to change connection settings, refer to the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connectivity-architecture) and a [video explanation from the SQL team](https://www.youtube.com/watch?v=e0tWC0XmOgc).  
 
 #### Connectivity architecture for managed instances  
 
