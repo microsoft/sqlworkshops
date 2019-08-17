@@ -117,9 +117,6 @@ Now that Tailspin Toys has completed a migration for their gaming database. They
 
 If and when Tailspin Toys chooses to scale their migration to other instances and databases, they can leverage the same process you've seen in Modules 4 and 5, but should also refer to the guidance Microsoft provides on [scaling a migration to Azure](https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale). 
 
-<br>
-
-
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>For Further Study</b></p>
