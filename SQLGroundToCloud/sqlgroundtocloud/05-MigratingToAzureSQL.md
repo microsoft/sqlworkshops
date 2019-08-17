@@ -71,7 +71,6 @@ Complete actitivies 1-9 by following the links below. Once you're in Activity 1,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.1.9"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-9">Activity 9</a>: Update the application  
  
 
-<br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -108,7 +107,6 @@ Complete actitivies 1-3 by following the links below. Once you're in Activity 1,
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.3.3"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-3-3">Activity 3</a>: Reload leaderboard report in the Tailspin Toys web application  
 
-<br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="5.4">5.4 After the Migration</a></h2>
