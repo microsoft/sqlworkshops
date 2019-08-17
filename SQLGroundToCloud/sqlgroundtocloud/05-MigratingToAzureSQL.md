@@ -32,7 +32,7 @@ In this section, you will use the [Azure Database Migration Service](https://azu
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
 
-This is the longest exercise in the module, so take your time (estimate about thirty minutes).  
+This is the longest exercise in the module, so take your time (estimate about 30-45 minutes).  
 
 First, you will create a new SMB network share on the SqlServer2008 VM. This will be the folder used by DMS for retrieving backups of the `TailspinToys` database during the database migration process. Next, you will use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) to the `sqlmiuser` account. This is done to ensure the SQL Server service has the appropriate permissions to write backups to the shared folder.  
 
