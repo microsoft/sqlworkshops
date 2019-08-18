@@ -360,7 +360,7 @@ In this task, you will create a new online data migration project in DMS for the
 
 11. On the *Migration Wizard* | *Configure migration settings* blade, enter the following configuration:
 
-    - *Network share location*: Enter **\\SQLSERVER2008\dms-backups**. This is the path of the SMB network share you created during the before the hands-on lab exercises
+    - *Network share location*: Enter **\\\SQLSERVER2008\dms-backups**. This is the path of the SMB network share you created during the before the hands-on lab exercises
     - *Windows User Azure Database Migration Service impersonates to upload files to Azure Storage*: Enter **SQLSERVER2008\sqlmiuser**
     - *Password*: Enter your password
     - *Subscription containing storage account*: Select the subscription you are using for this hands-on lab
@@ -400,7 +400,7 @@ Since you performed the migration as an "online data migration," the migration w
 
 2. On the *TailspinToys* screen you will see a status of *Restored* for the `TailspinToys.bak` file:
 
-    ![On the TailspinToys blade, a status of Restored is highlighted next to the TailspinToys.bak file in the list of active backup files.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-database-restored.png?raw=true "Migration Wizard")
+    ![On the TailspinToys blade, a status of Restored is highlighted next to the TailspinToys.bak file in the list of active backup files.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-database-restored.png?raw=true "Migration Wizard")  
 
 3. To demonstrate log shipping and how transactions made on the source database during the migration process will be added to the target SQL MI database, you will add a record to one of the database tables.
 
@@ -456,9 +456,12 @@ Since you performed the migration as an "online data migration," the migration w
 
 13. You will be given a progress bar below the *Apply* button in the *Complete cutover* dialog. When the migration is complete, you will see the status as *Completed*:
 
-    ![A status of Completed is displayed in the Complete cutover dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-complete-cutover-completed.png?raw=true "Migration Wizard")
+    ![A status of Completed is displayed in the Complete cutover dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-complete-cutover-completed.png?raw=true "Migration Wizard")  
 
-14. Close the *Complete cutover* dialog by selecting the **X** in the upper right corner of the dialog, and do the same thing for the *TailspinToys* blade. This will return you to the *TailspinToysMigration** blade. Select **Refresh**, and you should see a status of *Completed* from the *TailspinToys* database.
+    > **Note**:  
+    > This will take between 15-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress is delayed, you can select **Refresh** to update manually.  
+
+14. Close the *Complete cutover* dialog by selecting the **X** in the upper right corner of the dialog, and do the same thing for the *TailspinToys* blade. This will return you to the *TailspinToysMigration* blade. Select **Refresh**, and you should see a status of *Completed* from the *TailspinToys* database.
 
     ![On the Migration job blade, the status of Completed is highlighted](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-status-complete.png?raw=true "Migration with Completed status")
 
@@ -605,7 +608,7 @@ git clone https://github.com/microsoft/sqlworkshops.git
 
 17. Stop the application by closing the browser.  
 
-18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing the SQL 2008 VM IP with the fully qualified domain name for your MI (something like `sqlmi.fdsor39943LabExercise-234j3oj4.database.windows.net`).  
+18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing the SQL 2008 VM IP with the fully qualified domain name for your MI (something like `sqlmi.fdsor39943LabExercise-234j3oj4.database.windows.net`). Then, replace `WorkshopUser` with `sqlmiuser`.   
 
 19. Save the file:
 
