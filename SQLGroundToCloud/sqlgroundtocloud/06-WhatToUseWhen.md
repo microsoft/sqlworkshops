@@ -10,7 +10,7 @@
 
 In this workshop you'll cover using SQL Server both on-premises and in-cloud configurations, as well as hybrid applications as a solution for data processing. In each section you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. The end of this module contains several helpful references you can use in this course and in production.
 
-This module can be used stand-alone, and does not require any <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisite.md" target="_blank">prerequisite</a> other than a laptop and some sort of design software - although you may also just use a whiteboard or paper for your design. 
+This module can be used stand-alone, and does not require any <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">prerequisite</a> other than a laptop and some sort of design software - although you may also just use a whiteboard or paper for your design. 
 
 There are many elements in a single solution, and in this module you'll learn how to take the business scenario and determine the best resources and processes to use to satisfy the requirements while considering the constraints within the scenario. 
 

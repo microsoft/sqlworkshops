@@ -13,7 +13,7 @@ SQL Server 2019 is a modern data platform designed to tackle the challenges of t
 Instructor led workshops will review the overall capabilities and value of SQL Server 2019 using the **Module 2.0 Introduction Section** from the deck <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 
 
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisite.md" target="_blank">Make sure you check out the <b>prerequisite</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">Make sure you check out the <b>prerequisite</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 SELF-PACED USERS ONLY: If you are using this module self-paced, read the overview of SQL Server 2019 from <a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md">SQL Server 2019 of the SQL Server 2019 Lab</a> and then proceed to Module 2.1 of this workshop SQL Server 2019 Intelligent Performance. **Note**: The SQL Server 2019 lab has Next Steps. Do not follow those but read the introduction and come back to the next section of this workshop.
 

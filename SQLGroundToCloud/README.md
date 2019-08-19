@@ -26,7 +26,7 @@ Many organizations are faced with an aging or under-engineered data platform str
 
 Members from the Azure Data Product Group will lead you through the data estate options from Microsoft, from on-premises SQL Server (including some of the new features in SQL Server) to Relational Database options in Azure. You'll how to evaluate the benefits/costs of each technology option, and give you multiple tools that you can take home to inventory, evaluate, and migrate your current data platform environment to the best configuration.
 
-This course contains lecture and hands on lab work, and is particularly useful for Solution Architects, Data Architects, Application Architects, Technical Sellers, and Application Developers. BYOD and experience with SQL is considered a prerequisite.
+This course contains lecture and hands on lab work, and is particularly useful for Solution Architects, Data Architects, Application Architects, Technical Sellers, and Application Developers. A laptop, Microsoft Azure account, and experience with SQL is considered a prerequisite.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Learning Objectives</h3>
 
@@ -34,14 +34,15 @@ In this day-long, hands-on workshop you’ll learn how to:
 
 <br>
 
- - Articulate the key differentiators between SQL Server on-prem, in Azure VM, in Azure SQL DB, and hybrid
+ - Articulate the key differentiators between SQL Server on-prem, in Azure VM, in Azure SQL DB, and hybrid configurations
  - Explain the different service tiers within Azure SQL DB, and what to choose when
  - Understand how Azure SQL DB is secured and address security concerns
- - Learn what hybrid entails for Azure SQL DB and SQL Server in some common examples
- - Get hands on with some of the features in SQL Server and Azure SQL DB
- - Understand "other" Azure platform features 
+ - Explain hybrid configurations for Azure SQL DB and SQL Server in common examples
+ - Experiment with various features of SQL Server and Azure SQL DB
+ - Understand additional Azure platform features for data pipelines and security
  - Understand what services are available to migrate and modernize your entire SQL Server stack
  - Make informed decisions about how your business or customers should modernize their data estate
+ - Use Big Data solutions
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Role Applications</h3>
 
@@ -94,7 +95,7 @@ If you are new to these, here are a few references you can complete prior to cla
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Setup</h3>
 
-<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisite.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
+<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -120,7 +121,7 @@ This workshop uses SQL Server Management Studio, Azure Data Studio, Microsoft Az
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Setup</h3>
 
-<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisite.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
+<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -182,4 +183,4 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true">Next Steps</h2>
 
-Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisite.md" target="_blank"><i> Prerequisites</i></a>
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank"><i> Prerequisites</i></a>
