@@ -6,11 +6,11 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>00 prerequisite</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>00 Prerequisites</h2>
 
 The *Workshop: SQL Ground-to-Cloud* workshop is taught using the following components, which you will install and configure in the sections that follow. 
 
-> NOTE: If you take this Workshop in person, you may be provided with a complete environment, or have different instructions. The invitation where you registered for the Workshop will contain details for that environment, otherwise assume that you need to complete all of the following steps to complete the Workshop. The Labs in this Workshop are optional, all screenshots and Notebooks are provided for you to follow along if you cannot meet these requirements. 
+> NOTE: If you take this Workshop in person, you may be provided with a complete environment, or have different instructions. The invitation where you registered for the Workshop will be followed up with details for that environment, otherwise assume that you need to complete all of the following steps to complete the Workshop. The Labs in this Workshop are optional, all screenshots and Notebooks are provided for you to follow along if you cannot meet these requirements. 
 
 For this workshop, you will use Microsoft Windows as the base workstation, although Apple and Linux operating systems can be used in production. You can <a href="https://developer.microsoft.com/en-us/windows/downloads/virtual-machines" target="_blank">download a Windows 10 Workstation Image for VirtualBox, Hyper-V, VMWare, or Parallels for free here to use in the course</a>. You must be able to install software on the system you will use for the course, so a Virtual Machine is often a good choice. This Workshop was built and designed for a server or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. 
 
