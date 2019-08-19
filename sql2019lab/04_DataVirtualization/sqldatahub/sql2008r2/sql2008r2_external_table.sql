@@ -1,39 +1,30 @@
+-- Step 1: Create a master key to encrypt the database scoped credentials if they don't exist
 USE [WideWorldImporters]
 GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
 GO
-/*  specify credentials to external data source
-*  IDENTITY: user name for external source.  
-*  SECRET: password for external source.
-*/
-DROP DATABASE SCOPED CREDENTIAL SqlServerCredentials
-GO
+
+-- Step 2: Create the database scoped credentials with the SQL 2008 R2 login and password
 CREATE DATABASE SCOPED CREDENTIAL SqlServerCredentials   
-WITH IDENTITY = 'sqluser', Secret = '$cprsqlserver2019'
+WITH IDENTITY = '<login>', Secret = '<password>'
 GO
-/*  LOCATION: Location string should be of format '<vendor>://<server>[:<port>]'.
-*  PUSHDOWN: specify whether computation should be pushed down to the source. ON by default.
-*  CREDENTIAL: the database scoped credential, created above.
-*/  
-DROP EXTERNAL DATA SOURCE SQLServerInstance
-GO
+
+-- Step 3: Create a data source for the name of the SQL Server 2008 R2 server
 CREATE EXTERNAL DATA SOURCE SQLServerInstance
 WITH ( 
-LOCATION = 'sqlserver://bwsql2008r2',
+LOCATION = 'sqlserver://<sql server name>',
 PUSHDOWN = ON,
 CREDENTIAL = SQLServerCredentials,
 CONNECTION_OPTIONS = 'UseDefaultEncryptionOptions=false' -- This is a workaround for a bug in SQL 2019 CTP 2.3 under investigation.
 )
 GO
-DROP SCHEMA sqlserver
-go
+
+-- Step 4: Create the schema to hold the external table
 CREATE SCHEMA sqlserver
 GO
-/*  LOCATION: sql server table/view in 'database_name.schema_name.object_name' format
-*  DATA_SOURCE: the external data source, created above.
-*/
-DROP EXTERNAL TABLE sqlserver.suppliers
-GO
+
+-- Step 5: Create the external table to match the SQL Server 2008 R2 table
+-- For LOCATION, put in the fully qualified table name.
 CREATE EXTERNAL TABLE sqlserver.suppliers
 (
 	[SupplierID] [int] NOT NULL,
@@ -67,19 +58,20 @@ CREATE EXTERNAL TABLE sqlserver.suppliers
  DATA_SOURCE=SqlServerInstance
 )
 GO
+
+-- Step 6: Create local statistics
 CREATE STATISTICS SupplierNameStatistics ON sqlserver.suppliers ([SupplierName]) WITH FULLSCAN
 GO
--- Scan the table to make sure it works
---
+
+-- Step 7: Scan the table to make sure it works
 SELECT * FROM sqlserver.suppliers
 GO
 
--- Find a specific supplier
---
+-- Step 8: Find a specific supplier
 SELECT * FROM sqlserver.suppliers where SupplierName = 'Brooks Brothers'
 GO
---
--- Find all former clothing suppliers and their city
+
+-- Step 9: Find all former clothing suppliers and their city
 SELECT s.SupplierName, s.SupplierReference, c.cityname
 FROM sqlserver.suppliers s
 JOIN [Purchasing].[SupplierCategories] sc

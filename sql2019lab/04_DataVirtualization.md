@@ -119,6 +119,22 @@ T-SQL notebooks provide a very nice method to execute T-SQL code with documentat
 
 **NOTE**: *A T-SQL script **azuredbexternaltable.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
+**IMPORTANT**: For instructor led courses, your instructor will provide you the details of the following authentication and Azure SQL Database Server details
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials   
+WITH IDENTITY = '<login>', SECRET = '<password>'
+GO
+
+CREATE EXTERNAL DATA SOURCE AzureSQLDatabase
+WITH ( 
+LOCATION = 'sqlserver://<azure sql database server URI>',
+PUSHDOWN = ON,
+CREDENTIAL = AzureSQLDatabaseCredentials
+)
+GO
+```
+
 T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **azuredbexternaltable.ipynb** notebook and go through all the steps. When you are done proceed to the **Activity Summary** section for the Activity below.
 
 If you have never opened a T-SQL notebook with Azure Data Studio, use the following instructions:
