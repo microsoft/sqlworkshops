@@ -1,6 +1,6 @@
 ﻿![](../graphics/microsoftlogo.png)
 
-# Workshop: Big Data Clusters for SQL Server - Architecture (CTP 3.2)
+# Workshop: SQL Server Big Data Clusters - Architecture (CTP 3.2)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -19,7 +19,6 @@ You'll cover the following topics in this Module:
   <dt><a href="#3-0">3.0 Planning your Installation</a></dt>
   <dt><a href="#3-1">3.1 Installing on Azure Kubernetes Service</a></dt>
   <dt><a href="#3-2">3.2 Installing locally using KubeADM</a></dt>
-  <dt><a href="#3-3">3.3 Installing locally using minikube</a></dt>
   <dt><a href="#aks">Install Class Environment on AKS</a></dt>
 
 </dl>
@@ -37,13 +36,11 @@ For planning, it is essential that you understand the SQL Server BDC components,
 Since the Kubernetes Cluster is often made up of Virtual Machines that host the Docker Images, they must be as large as possible. For the best possible performance, large physical machines that are tuned for optimal performance is a recommended physical architecture. The least viable production system is a Minimum of 3 Linux physical machines or virtual machines. The recommended configuration per machine is 8 CPUs, 32 GB of memory and 100GB of storage. This configuration would support only one or two users with a standard workload, and you would want to increase the system for each additional user or heavier workload. 
 
 
-You can deploy Kubernetes in three general ways:
+You can deploy Kubernetes in a few ways:
 
  - In a Cloud Platform such as Azure Kubernetes Service (AKS)
 
  - In your own Kubernetes deployment using `KubeADM`
-
- - In your own Kubernetes deployment using `minikube` (*to be used only for training and testing*)
 
 Regardless of the Kubernetes target, the general steps for setting up the system are:
 
@@ -102,26 +99,6 @@ The <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/" targ
 The kubeadm toolbox can deploy a Kubernetes cluster to physical or virtual machines. It works by specifying the TCP/IP addresses of the targets. 
 
 With this background, you can find the <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-with-kubeadm?view=sqlallproducts-allversions" target="_blank">latest specific steps to deploy a BDC using kubeadm here</a>.
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-3">3.3 Installing Locally Using minikube</a></h2>
-
-Minikube is a tool that simplifies creating and running Kubernetes locally. Minikube creates a single-node Kubernetes cluster inside a VM. It uses Hyper-V, VirtualBox, or other Hypervisor products to create and operate the cluster in Windows, which adds overhead. Using Linux for this process removes the virtualization requirement. 
-
-While SQL Server BDC can be installed on minikube, it requires at least 32GB of RAM to run, and really needs 64GB of RAM or more to perform any real testing. In any case, it is reserved only for testing or training.
-
-Minikube supports the following Kubernetes features:
-
- - DNS
- - NodePorts
- - ConfigMaps and Secrets
- - Dashboards
- - Container Runtime: `Docker`, `rkt`, `CRI-O` or `containerd`
- - Enabling CNI (Container Network Interface)
- - Data Ingress
-
-With this background, you can find the <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-on-minikube?view=sqlallproducts-allversions" target="_blank">latest specific steps to deploy a BDC using minikube here</a>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
