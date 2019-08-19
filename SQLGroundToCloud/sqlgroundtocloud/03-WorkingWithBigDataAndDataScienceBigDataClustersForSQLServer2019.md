@@ -8,19 +8,14 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>03 - Working with Big Data and Data Science - Big Data Clusters for SQL Server 2019</h2>
 
-In this workshop you'll cover using SQL Server, in on-premises and in-cloud, as well as hybrid applications as a solution for data processing. In each section you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. The end of this module contains several helpful references you can use in this course and in production.
+In this Module of the Workshop you'll cover using SQL Server on-premises and in-cloud configurations, as well as hybrid applications as a solution for data processing. In each section you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. The end of this module contains several helpful references you can use in this course and in production.
 
-In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
-
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Pre-Requisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
-
-
-Some industry examples of big data processing are in Retail (*Demand Prediction, Market-Basket Analysis*), Finance (*Fraud detection, customer segmentation*), Healthcare (*Fiscal control analytics, Disease Prevention prediction and classification, Clinical Trials optimization*), Public Sector (*Revenue prediction, Education effectiveness analysis*), Manufacturing (*Predictive Maintenance, Anomaly Detection*) and Agriculture (*Food Safety analysis, Crop forecasting*) to name just a few.
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisite.md" target="_blank">Make sure you check out the <b>prerequisite</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 In this module you'll cover working with Data Science workloads with a focus on larger sets of data. Starting in SQL Server 2019, big data clusters allows for large-scale, near real-time processing of data over the HDFS file system and other data sources. It also leverages the Apache Spark framework which is integrated into one environment for management, monitoring, and security of your environment. This means that organizations can implement everything from queries to analysis to Machine Learning and Artificial Intelligence within SQL Server, over large-scale, heterogeneous data. SQL Server big data clusters can be implemented fully on-premises, in the cloud using a Kubernetes service such as Azure's AKS, and in a hybrid fashion. This allows for full, partial, and mixed security and control as desired.
 
-<b>NOTE:</b> A <a href="https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters
-" target="_blank">complete workshop on this topic is located here</a>.
+> Note: This is a complex topic, so you can find a <a href="https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters
+" target="_blank">complete workshop on this topic here</a>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -28,17 +23,17 @@ In this module you'll cover working with Data Science workloads with a focus on 
 
 Businesses require near real-time insights from ever-larger sets of data from a variety of sources. Large-scale data ingestion requires scale-out storage and processing in ways that allow fast response times. In addition to simply querying this data, organizations want full analysis and even predictive capabilities over their data. Machine Learning, Artificial Intelligence, and Deep Learning techniques all require large sets of data for training their models to be effective. Two technologies have emerged as the primary methods for processing large sets of data, using a scale-out paradigm - Hadoop and Spark. 
 
-Hadoop uses a set of computing nodes that position the workload over distributed data nodes.
+Hadoop uses a set of computing nodes that position the workload over distributed data nodes:
 
 <p><img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/hdfs.png?raw=true"></p> 	 	
 
-Spark is a technology that uses various libraries to make this distributed processing more efficient and faster.
+Spark is a technology that uses various libraries to make processing over distributed storage more efficient and faster:
 
 <br>
 <p><img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/spark3.png?raw=true"></p> 	 	
 <br>
 
-Both of these technologies assumes many nodes (computers), and since you only need the computation elements (not all the drivers and other components of a full computer or Virtual Machine), Container technologies work well for this solution.
+Both of these technologies assume many nodes (computers), and since you only need the computation elements (not all the drivers and other components of a full computer or Virtual Machine), Container technologies work well for this solution.
 
 <br>
 <img style="height: 150;" src="https://docs.docker.com/images/Container%402x.png"> 
@@ -56,9 +51,8 @@ Using the technologies described above, SQL Server uses a Kubernetes Cluster to 
 <img style="height: 200; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bdc.png?raw=true">
 <br>
 
-A SQL Server Big Data Cluster BDC can be deployed to three environments:
+A SQL Server Big Data Cluster (BDC) can be deployed to multiple environments, in-cloud and on-premises:
 
- - Locally for Testing (using minikube)
  - In a Cloud Service (Such as the Azure Kubernetes Service or AKS)
  - On premises (using KubeADM)
 
@@ -80,9 +74,9 @@ This process allows not only a query to disparate systems, but also those remote
 
 <h3>Data Marts with SQL Server Big Data Clusters</h3>
 
-Ad-hoc queries over larges sets of nomralized data are very useful for many scenarios. There are times when you would like to bring the data into storage, so that you can create denormalized representations of datasets, aggregated data, and other purpose-specific data tasks. 
+Ad-hoc queries over larges sets of normalized data are very useful for many scenarios. There are times when you would like to bring the data into storage, so that you can create denormalized representations of datasets, aggregated data, and other purpose-specific data tasks. 
 
-Using the Data Virtualization capability you saw in the <i>02 - BDC Components</i> Module, the IT team creates External Tables using PolyBase statements. These External Table definitions are stored in the database on the SQL Server Master Instance within the cluster. When queried by the user, the queries are engaged from the SQL Server Master Instance through the Compute Pool in the SQL Server BDC, which holds Kubernetes Nodes containing the Pods running SQL Server Instances. These Instances send the query to the PolyBase Connector at the target data system, which processes the query based on the type of target system. The results are processed and returned through the PolyBase Connector to the Compute Pool and then on to the Master Instance, and the PolyBase statements can specify the target of the Data Pool. The SQL Server Instances in the Data Pool store the data in a distributed fashion across multiple databases, called <i>Shards</i>.
+Using the Data Virtualization capability (PolyBase), the IT team creates External Tables using PolyBase statements. These External Table definitions are stored in the database on the SQL Server Master Instance within the cluster. When queried by the user, the queries are engaged from the SQL Server Master Instance through the Compute Pool in the SQL Server BDC, which holds Kubernetes Nodes containing the Pods running SQL Server Instances. These Instances send the query to the PolyBase Connector at the target data system, which processes the query based on the type of target system. The results are processed and returned through the PolyBase Connector to the Compute Pool and then on to the Master Instance, and the PolyBase statements can specify the target of the Data Pool. The SQL Server Instances in the Data Pool store the data in a distributed fashion across multiple databases, called <i>Shards</i>.
 
 <br>
 <img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bdcsolution3.png?raw=true">
@@ -90,9 +84,9 @@ Using the Data Virtualization capability you saw in the <i>02 - BDC Components</
 
 <h3>Data Science and Apache Spark with SQL Server Big Data Clusters</h3>
 
-There are three primary uses for a large cluster of data processing systems for Machine Learning and AI applications. The first is that the users will involved in the creation of the <a href="https://www.codeingschool.com/2018/09/what-are-features-and-labels-in-machine-learning.html" target="_blank">Features used in various ML and AI algorithms, and are often tasked to Label</a> the data. These users can access the Data Pool and Data Storage data stores directly to query and assist with this task. 
+There are various uses for a large cluster of data processing systems for Machine Learning and AI applications. One primary use-case is the creation of the <a href="https://www.codeingschool.com/2018/09/what-are-features-and-labels-in-machine-learning.html" target="_blank">Features and Labels used in various ML and AI algorithms</a>. Large sets of data stored in the Data Pool allow Python, R and Spark calls and libraries are available for this task in BDC. This process is often called <i>Data Engineering</i>. 
 
-The SQL Server Master Instance in the BDC installs with <a href="https://docs.microsoft.com/en-us/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-ver15" target="_blank">Machine Learning Services</a>, which allow creation, training, evaluation and presisting of Machine Learning Models. Data from all parts of the BDC are available, and Data Science oriented languages and libraries in R, Python and Java are enabled. In this scenario, the Data Scientist creates the R or Python code, and the Transact-SQL Developer wraps that code in a Stored Procedure. This code can be used to train, evaluate and create Machine Learning Models. The Models can be stored in the Master Instance for scoring, or sent on to the App Pool where the Machine Learning Server is running, waiting to accept REST-based calls from applications.
+The SQL Server Master Instance in the BDC installs with <a href="https://docs.microsoft.com/en-us/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-ver15" target="_blank">Machine Learning Services</a>, which allow creation, training, evaluation and persisting of Machine Learning Models. Data from all parts of the BDC are available, and Data Science oriented languages and libraries in R, Python and Java are enabled. In this scenario, the Data Scientist creates the R or Python code, and the Transact-SQL Developer wraps that code in a Stored Procedure. This code can be used to train, evaluate and create Machine Learning Models. The Models can be stored in the Master Instance for scoring, or sent on to the App Pool where the Machine Learning Server is running, waiting to accept REST-based calls from applications.
 
 The Data Scientist has another option to create and train ML and AI models. The Spark platform within the Storage Pool is accessible through the Knox gateway, using Livy to send Spark Jobs. This gives access to the full Spark platform, using Jupyter Notebooks (included in <i>Azure Data Studio</i>) or any other standard tools that can access Spark through REST calls. 
 

@@ -6,7 +6,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>00 Pre-Requisites</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>00 prerequisite</h2>
 
 The *Workshop: SQL Ground-to-Cloud* workshop is taught using the following components, which you will install and configure in the sections that follow. 
 
@@ -34,7 +34,7 @@ The free account gives you twelve months of time, and a limited amount of resour
 
 - [Open this resource, and click the "Start Free" button you see there](https://azure.microsoft.com/en-us/free/)
 
-**NOTE: You can only use the Free subscription once, and it expires in 12 months. Set up your account per the instructions below, but ensure that you turn off any VM's in the Portal to ensure that you do no exceed the cost limits on this account. You will turn it off and on in the classroom per the instructor's directions.**
+**NOTE: You can only use the Free subscription once, and it expires in 12 months. Set up your account per the instructions below, but ensure that you turn off any VM's in the Portal to ensure that you do not exceed the cost limits on this account. You will turn it off and on in the classroom per the instructor's directions.**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Option 2 - Microsoft Developer Network Account (MSDN) Account</b></p>
 
