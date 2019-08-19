@@ -1,37 +1,31 @@
+-- Step 1: Create a master key to encrypt the database scoped credentials if they don't exist
 USE [WideWorldImporters]
 GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
 GO
-/*  specify credentials to external data source
-*  IDENTITY: user name for external source.  
-*  SECRET: password for external source.
-*/
-DROP DATABASE SCOPED CREDENTIAL CosmosDBCredentials
-GO
--- You can get the IDENTITY (user) and secret (password) from the Connection String option in the
--- Azure portal
+
+-- Step 2: Create the database scoped credentials with the Azure CosmosDB user and password
+-- You can get the IDENTITY (user) and secret (Primary Password) from the Connection String option in the Azure portal
 CREATE DATABASE SCOPED CREDENTIAL CosmosDBCredentials   
-WITH IDENTITY = 'wwi', Secret = 'hSoxMUeEgNjeeWh4FTz5jmGRlSN4Ko6HoYqiJsbleFzewe86EEXJrvwkAqBgitypJdjUbeJqnTVNBO6NUa0DZQ=='
+WITH IDENTITY = '<user>', Secret = '<password>'
 GO
-DROP EXTERNAL DATA SOURCE CosmosDB
-GO
+
+-- Step 3: Create a data source for the Azure CosmoDB sderver using the host URI and port
 -- The LOCATION is built from <HOST>:<PORT> from the Connection String in the Azure Portal
 CREATE EXTERNAL DATA SOURCE CosmosDB
 WITH ( 
-LOCATION = 'mongodb://wwi.documents.azure.com:10255',
+LOCATION = 'mongodb://<host>:<port>',
 PUSHDOWN = ON,
 CREDENTIAL = CosmosDBCredentials
 )
 GO
-DROP SCHEMA cosmosdb
-go
+
+-- Step 4: Create the schema to hold the external table
 CREATE SCHEMA cosmosdb
 GO
-/*  LOCATION: sql server table/view in 'database_name.schema_name.object_name' format
-*  DATA_SOURCE: the external data source, created above.
-*/
-DROP EXTERNAL TABLE cosmosdb.Orders
-GO
+
+-- Step 5: Create the external table to match the Azure CosmosDB document
+-- The LOCATION is the CosmosDB database and collection you can find using the Data Explorer tool in the Azure Portal
 CREATE EXTERNAL TABLE cosmosdb.Orders
 (
 	[_id] NVARCHAR(100) COLLATE Latin1_General_100_CI_AS NOT NULL,
@@ -49,19 +43,20 @@ CREATE EXTERNAL TABLE cosmosdb.Orders
  DATA_SOURCE=CosmosDB
 )
 GO
+
+-- Step 6: Create local statistics
 CREATE STATISTICS CosmosDBOrderSalesPersonStats ON cosmosdb.Orders ([SalesPersonPersonID]) WITH FULLSCAN
 GO
 
--- Scan the external table just to make sure it works
---
+-- Step 7: Scan the table to make sure it works
 SELECT * FROM cosmosdb.Orders
 GO
--- Filter on a specific SalesPersonPersonID
---
+
+-- Step 8: Filter on a specific SalesPersonPersonID
 SELECT * FROM cosmosdb.Orders WHERE SalesPersonPersonID = 2
 GO
--- Find out the name of the salesperson and which customer they worked with
--- to test out the new mobile app experience.
+
+-- Step 9: Find out the name of the salesperson and which customer they worked with to test out the new mobile app experience.
 SELECT FullName, o.CustomerName, o.CustomerContact, o.OrderDate
 FROM cosmosdb.Orders o
 JOIN [Application].[People] p

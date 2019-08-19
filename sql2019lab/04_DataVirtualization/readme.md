@@ -1,10 +1,6 @@
 # Module 8 Activities - Data Virtualization
 
-These represent demos and examples to show you the basics of SQL Server containers and how to update and upgrade SQL Server using containers.
-
-## polybase
-
-Learn the basics of Polybase with SQL Server 2019
+These examples are used to explore the capabilities of Data Virtualization with Polybase in SQL Server 2019
 
 ## sqldatahub
 
