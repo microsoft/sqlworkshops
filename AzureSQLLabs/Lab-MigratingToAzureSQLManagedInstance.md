@@ -325,7 +325,7 @@ In this task, you will create a new online data migration project in DMS for the
 5.  On the Migration Wizard **Select source** blade, enter the following:
 
     - *Source SQL Server instance name*: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, **13.66.228.107**
-    - *Authentic*: Enter **WorkshopUser**
+    - *User Name*: Enter **WorkshopUser**
     - *Password*: Enter your password
     - *Connection properties**: Check both **Encrypt connection** and **Trust server certificate**
 
