@@ -325,7 +325,7 @@ In SQL MI, several features of Azure SQL Database are examined. [Advanced Data S
 Proceed directly to the following Activities from **Lab: Database Discovery and Assessment for Migrating to Azure** for the hands-on exercises for Tailspin Toys Gaming. When are you done with these activities come back here for the next section as guided by your instructor.  
 
 > **Note:**  
-> If you are attending this lab as part of a day-long workshop, all of the activities below (they will be demoed in class).  
+> If you are attending this lab as part of a day-long workshop, all of the activities below should be skipped(they will be demoed in class).   
 
 <h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessmentForMigratingToAzure.md#Activity-1">Activity 1: Set up Azure Migrate</p></a></h3>
 
