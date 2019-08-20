@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab CTP 3.2
+# Workshop: SQL Server 2019 Lab (RC)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 

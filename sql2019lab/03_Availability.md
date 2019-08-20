@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab CTP 3.2
+# Workshop: SQL Server 2019 Lab (RC)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -12,7 +12,7 @@ SQL Server 2019 includes new capabilities to keep your database and application 
 
 - Online Index Enhancements
 - Enhancements to Availability Groups
-- Availability Groups on Kubernetes
+- Taking advantage of built-in HA for Kubernetes
 - Accelerated Database Recovery
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
@@ -149,7 +149,7 @@ In this activity you have learned Accelerated Database recovery can speed up tra
 
 **NOTE**: Close out any outstanding scripts or notebooks before running this bonus activity.
 
-If you have time use the T-SQL notebook **adr_recovery.ipynb** or T-SQL script **adr_recovery.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery. The scripts will create a database with a data file of 10Gb and transaction log of 10Gb so there is plenty of space for the activity.
+If you have time use the T-SQL notebook **adr_recovery.ipynb** or T-SQL script **adr_recovery.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery. The scripts will create a database with a data file of 10Gb and transaction log of 40Gb so there is plenty of space for the activity.
 
 Armed with this knowledge, proceed to the next activity to learn how **data virtualization** makes SQL Server 2019 the new "data hub".
 
