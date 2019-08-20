@@ -12,7 +12,8 @@ In this hands-on lab, you will implement a proof-of-concept (PoC) for migrating 
 
 At the end of this lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.  
 
-> **Important Note!** These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
+> **Note**:  
+> These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
 
 In this Lab, you'll learn how to assess your on-premises estate (via Tailspin Toys) with tools like [Azure Migrate](https://docs.microsoft.com/en-us/azure/migrate/migrate-services-overview) and [Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-2017). The activities in this Lab include:  
 
@@ -278,7 +279,7 @@ In this task, you will use the *Microsoft Data Migration Assistant* (DMA) to per
 
 <h2><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="Activity-4">Activity 4: Perform assessment for migration to Azure SQL Database Managed Instance</h2></p></a>
 
-> **Important Note!**  
+> **Note**:  
 > If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
 
 
