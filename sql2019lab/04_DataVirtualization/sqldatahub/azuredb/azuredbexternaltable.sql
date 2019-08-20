@@ -8,7 +8,7 @@ GO
 -- IDENTITY = login
 -- SECRET = password
 CREATE DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials   
-WITH IDENTITY = 'thewandog', SECRET = '$Sql2019isfast'
+WITH IDENTITY = '<login>', SECRET = '<password>'
 GO
 
 -- Step 3: Create an external data source
@@ -16,7 +16,7 @@ GO
 -- The name after :// is the Azure SQL Server Database server. Your SQL Server must be on the same vnet as the Azure SQL Server Database or must pass through its firewall rules
 CREATE EXTERNAL DATA SOURCE AzureSQLDatabase
 WITH ( 
-LOCATION = 'sqlserver://bwazuredb.database.windows.net',
+LOCATION = 'sqlserver://<azure sql database server URI>',
 PUSHDOWN = ON,
 CREDENTIAL = AzureSQLDatabaseCredentials
 )
