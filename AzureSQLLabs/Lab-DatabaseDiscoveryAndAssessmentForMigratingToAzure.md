@@ -12,7 +12,8 @@ In this hands-on lab, you will implement a proof-of-concept (PoC) for migrating 
 
 At the end of this lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.  
 
-> **Important Note!** These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
+> **Note**:  
+> These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
 
 In this Lab, you'll learn how to assess your on-premises estate (via Tailspin Toys) with tools like [Azure Migrate](https://docs.microsoft.com/en-us/azure/migrate/migrate-services-overview) and [Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-2017). The activities in this Lab include:  
 
@@ -48,7 +49,7 @@ The web app is deployed to an Azure App Service Web App using Visual Studio 2019
 In SQL MI, several features of Azure SQL Database are examined. [Advanced Data Security (ADS)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security?view=sql-server-2017) is enabled and [Data Discovery and Classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification?view=sql-server-2017) is used to better understand the data and potential compliance issues with data in the database. The ADS [Vulnerability Assessment](https://docs.microsoft.com/en-us/azure/sql-database/sql-vulnerability-assessment?view=sql-server-2017) is used to identify potential security vulnerabilities and issues in the database, and those finding are used to mitigate one finding by enabling [Transparent Data Encryption](https://docs.microsoft.com/en-us/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-2017) in the database. [Dynamic Data Masking (DDM)](https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017) is used to prevent sensitive data from appearing when querying the database. Finally, [Read Scale-out](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) is used to point reports on the Tailspin Toys web app to a read-only secondary, allowing reporting to occur without impacting the performance of the primary database.  
 
 > **Note:**  
-> If you are attending this lab as part of a day-long workshop and were provided an environment, all of the activities below **except** Activity 2 should be skipped. **You must complete Activity 2** prior to moving to the next Lab if you plan on implementing your assessment.
+> If you are attending this lab as part of a day-long workshop and were provided an environment, all of the activities below should be skipped. You can review or try them out at a later time.  
 
 <h2><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="Activity-1">Activity 1: Set up Azure Migrate</h2></p></a>
 
@@ -75,7 +76,7 @@ In this activity, you'll set up Azure Migrate, and explore some of the new integ
 <p><h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="Activity-2">Activity 2: Restore TailspinToys on the SQLServer2008 VM</h2></p></a>
 
 > **Note:**  
-> If you are attending this lab as part of a day-long workshop and were provided an environment to use, you **must complete this activity prior to moving to the next module**. The rest of the activities in this lab can be skipped, they were demoed earlier.
+> If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.  
 
 <!--TODO: Can we make it so this part is done on each VM for each user ahead of the labs?-->
 
@@ -278,7 +279,7 @@ In this task, you will use the *Microsoft Data Migration Assistant* (DMA) to per
 
 <h2><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="Activity-4">Activity 4: Perform assessment for migration to Azure SQL Database Managed Instance</h2></p></a>
 
-> **Important Note!**  
+> **Note**:  
 > If you are attending this lab as part of a day-long workshop, you should skip this activity, it was demoed earlier. If you have time at the end of the day, feel free to return to it.
 
 

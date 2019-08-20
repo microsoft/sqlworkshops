@@ -300,7 +300,7 @@ In this series of hands-on labs (throughout Modules 4 and 5), you will implement
 
 At the end of these hands-on labs, you will be better able to implement a cloud migration solution for business-critical applications and databases.  
 
-> **Important Note!** These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
+> **Note**: These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
 
 
 
@@ -325,17 +325,13 @@ In SQL MI, several features of Azure SQL Database are examined. [Advanced Data S
 Proceed directly to the following Activities from **Lab: Database Discovery and Assessment for Migrating to Azure** for the hands-on exercises for Tailspin Toys Gaming. When are you done with these activities come back here for the next section as guided by your instructor.  
 
 > **Note:**  
-> If you are attending this lab as part of a day-long workshop, all of the activities below **except** Activity 2 should be skipped (they will be demoed in class). **You must complete Activity 2** prior to moving to the next module.
+> If you are attending this lab as part of a day-long workshop, all of the activities below should be skipped (they will be demoed in class).   
 
 <h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessmentForMigratingToAzure.md#Activity-1">Activity 1: Set up Azure Migrate</p></a></h3>
 
 In this activity, you'll set up Azure Migrate, and explore some of the new integrations between Microsoft's Data Migration Assistant (DMA) and Azure Database Migration Services (DMS).  
 
 <h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.2"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessmentForMigratingToAzure.md#Activity-2">Activity 2: Restore TailspinToys on the SQLServer2008 VM</h3></p></a>
-
-> If you are attending this lab as part of a day-long workshop, you **must complete this activity prior to moving to the next module**. The rest of the activities in this lab can be skipped, they were demoed earlier.
-
-<!--TODO: Can we make it so this part is done on each VM for each user ahead of the labs?-->
 
 Before you begin the assessments, you need to restore a copy of the `TailspinToys` database in your SQL Server 2008 R2 instance. In this task, you will create an RDP connection to the SqlServer2008 VM and then restore the `TailspinToys` database onto the SQL Server 2008 R2 instance using a backup provided by Tailspin Toys.
 
