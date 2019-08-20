@@ -300,7 +300,7 @@ In this series of hands-on labs (throughout Modules 4 and 5), you will implement
 
 At the end of these hands-on labs, you will be better able to implement a cloud migration solution for business-critical applications and databases.  
 
-> **Important Note!** These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
+> **Note**: These labs were modified from an existing day-long, hands-on-labs workshop to fit into this workshop. If you'd like to access the extended version of these labs refer to [MCW: Migrating SQL databases to Azure](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure).
 
 
 
@@ -325,7 +325,7 @@ In SQL MI, several features of Azure SQL Database are examined. [Advanced Data S
 Proceed directly to the following Activities from **Lab: Database Discovery and Assessment for Migrating to Azure** for the hands-on exercises for Tailspin Toys Gaming. When are you done with these activities come back here for the next section as guided by your instructor.  
 
 > **Note:**  
-> If you are attending this lab as part of a day-long workshop, all of the activities below should be skipped(they will be demoed in class).   
+> If you are attending this lab as part of a day-long workshop, all of the activities below should be skipped (they will be demoed in class).   
 
 <h3><p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="4.4.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-DatabaseDiscoveryAndAssessmentForMigratingToAzure.md#Activity-1">Activity 1: Set up Azure Migrate</p></a></h3>
 
