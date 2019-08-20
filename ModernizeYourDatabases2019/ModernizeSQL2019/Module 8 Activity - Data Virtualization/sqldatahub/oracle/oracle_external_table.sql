@@ -1,38 +1,29 @@
+-- Step 1: Create a master key to encrypt the database scoped credentials if they don't exist
 USE [WideWorldImporters]
 GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
 GO
-/*  specify credentials to external data source
-*  IDENTITY: user name for external source.  
-*  SECRET: password for external source.
-*/
-DROP DATABASE SCOPED CREDENTIAL OracleCredentials
-GO
+
+-- Step 2: Create the database scoped credentials with the Oracle login and password
 CREATE DATABASE SCOPED CREDENTIAL OracleCredentials   
-WITH IDENTITY = 'gl', Secret = 'glpwd'
+WITH IDENTITY = '<login>', Secret = '<password>'
 GO
-/*  LOCATION: Location string should be of format '<vendor>://<server>[:<port>]'.
-*  PUSHDOWN: specify whether computation should be pushed down to the source. ON by default.
-*  CREDENTIAL: the database scoped credential, created above.
-*/  
-DROP EXTERNAL DATA SOURCE OracleServer
-GO
+
+-- Step 3: Create a data source for the name of the server hosting the ORACLE instance and listener port
 CREATE EXTERNAL DATA SOURCE OracleServer
 WITH ( 
-LOCATION = 'oracle://bworacle:49161',
+LOCATION = 'oracle:/<oracle server>:<listener port>',
 PUSHDOWN = ON,
 CREDENTIAL = OracleCredentials
 )
 GO
-DROP SCHEMA oracle
-go
+
+-- Step 4: Create the schema to hold the external table
 CREATE SCHEMA oracle
 GO
-/*  LOCATION: oracle table/view in 'database_name.schema_name.object_name' format
-*  DATA_SOURCE: the external data source, created above.
-*/
-DROP EXTERNAL TABLE oracle.accountsreceivable
-GO
+
+-- Step 5: Create the external table to match the Oracle table
+-- The LOCATION  is <instance>.<schema>.<table>
 CREATE EXTERNAL TABLE oracle.accountsreceivable
 (
 arid int,
@@ -47,19 +38,21 @@ aramt decimal(10,2)
  DATA_SOURCE=OracleServer
 )
 GO
+
+-- Step 6: Create local statistics
 CREATE STATISTICS arrefstats ON oracle.accountsreceivable ([arref]) WITH FULLSCAN
 GO
--- Let's scan the table to make sure it works
+
+-- Step 7: Scan the table to make sure it works
 SELECT * FROM oracle.accountsreceivable
 GO
 
--- Try a simple filter
+-- Step 8: Find a specific accounts reference #
 SELECT * FROM oracle.accountsreceivable
 WHERE arref = 336252
 GO
 
--- Join with a local table
---
+-- Step 9: Find accts receivable data based on CustomerTransactionID (which matches arref in the AR tables in Oracle)
 SELECT ct.*, oa.arid, oa.ardesc
 FROM oracle.accountsreceivable oa
 JOIN [Sales].[CustomerTransactions] ct

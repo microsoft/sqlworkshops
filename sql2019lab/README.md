@@ -1,7 +1,7 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Lab: SQL Server 2019 (CTP 3.2)
+# Lab: SQL Server 2019 (RC)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -24,7 +24,7 @@ SQL Server 2019 provides many new capabilities including:
 - Data Virtualization with Polybase and Big Data Clusters to reduce the need for data movement
 - Intelligent Performance to boost query performance with no application changes
 - Security enhancements such as Always Encrypted and Data Classification
-- Mission Critical Availability including Availability Groups on Kubernetes and Accelerated Database Recovery
+- Mission Critical Availability including enhancements for Availability Groups, built-in HA from Kubernetes and OpenShift, and Accelerated Database Recovery
 - Modern Development capabilities including Machine Learning Services and Extensibility with Java and the language of your choice
 - SQL Server on the platform of your choice with compatibility including Windows, Linux, Docker, Kubernetes, and Arm64 (Azure SQL Database Edge)
 

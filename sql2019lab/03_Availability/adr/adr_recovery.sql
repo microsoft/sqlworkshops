@@ -8,7 +8,7 @@ CREATE DATABASE gocowboys
 ON PRIMARY
 (NAME = N'gocowboys_primary', FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\gocowboys.mdf', SIZE = 10Gb , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB)
 LOG ON 
-(NAME = N'gocowboys_Log', FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\gocowboys_log.ldf', SIZE = 10Gb , MAXSIZE = UNLIMITED , FILEGROWTH = 65536KB)
+(NAME = N'gocowboys_Log', FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\gocowboys_log.ldf', SIZE = 40Gb , MAXSIZE = UNLIMITED , FILEGROWTH = 65536KB)
 GO
 
 -- Step 2: Create the table
