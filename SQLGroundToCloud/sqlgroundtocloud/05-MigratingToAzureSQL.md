@@ -50,7 +50,7 @@ With the `TailspinToys` database now running on SQL MI in Azure, the next step i
 Complete actitivies 1-9 by following the links below. Once you're in Activity 1, you can continue to the next activity through Activity 9 (the links below all point to different parts of the same overall lab). When are you done with activities 1-9, come back here for the next section (5.2).   
 
 > **Note**:  
-> If you were provided an environment to do this workshop, you should review Activity 5, but a service principal has already been created (no action required).   
+> If you were provided an environment to do this workshop, you should review Activities 4 and 5, but a service principal has already been created (no action required).   
   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.1.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-1">Activity 1</a>: Create an SMB network share on the SQLServer2008VM  
 
@@ -58,7 +58,7 @@ Complete actitivies 1-9 by following the links below. Once you're in Activity 1,
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.1.3"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-3">Activity 3</a>: Create a backup of TailspinToys database  
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.1.4"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-4">Activity 4</a>: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.1.4"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-4">Activity 4</a>: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information **(review only - no action needed)**   
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.1.5"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-5">Activity 5</a>: Create a service principal **(review only - no action needed)**  
 

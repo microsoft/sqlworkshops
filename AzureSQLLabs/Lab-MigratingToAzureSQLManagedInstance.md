@@ -193,6 +193,9 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-4">Activity 4: Retrieve SQL MI, SQL Server 2008 VM, and service principal connection information</b></p></a>
 
+> **Note**:  
+> If you're doing this lab as part of a workshop and were provided an environment to use, this step has already been completed. You can review, but **there is nothing you need to do**. Please refer to instructor guidance.  
+
 In this task, you will use the Azure Cloud shell to retrieve the information necessary to connect to your SQL MI and SqlServer2008 VM from DMS.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
@@ -324,7 +327,9 @@ In this task, you will create a new online data migration project in DMS for the
 
 5.  On the Migration Wizard **Select source** blade, enter the following:
 
-    - *Source SQL Server instance name*: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, **13.66.228.107**
+    - *Source SQL Server instance name*: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, **13.66.228.107**  
+    > **Note**:  
+    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your SQL Server VM's IP address.
     - *User Name*: Enter **WorkshopUser**
     - *Password*: Enter your password
     - *Connection properties**: Check both **Encrypt connection** and **Trust server certificate**
