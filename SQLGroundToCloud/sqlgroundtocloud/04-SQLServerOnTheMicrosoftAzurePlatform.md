@@ -11,7 +11,7 @@
 In the previous modules, you learned about SQL Server 2019, big data, and more. In this module, you'll learn more about Azure SQL, including the benefits, the options, and how to get there. Near the end of the module, you'll learn how to assess your on-premises estate, through an example with the  Tailspin Toys Gaming division of Wide World Importers, with tools like [Azure Migrate](https://docs.microsoft.com/en-us/azure/migrate/migrate-services-overview) and [Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-2017). The module is broken up into the following sections:  
 
 [4.1](#4.1): Introduction to Azure SQL   
-[4.2](#4.2): Fundamentals of Azure SQL  
+[4.2](#4.2): Azure SQL Platform Benefits 
 [4.3](#4.3): Migrating to Azure SQL   
 [4.4](#4.4): Database Discovery and Assessment   
 &ensp;&ensp;&ensp;[Activity 1](#4.4.1): Prepare: Set up Azure Migrate  
@@ -135,119 +135,39 @@ As you've hopefully noticed, while there are a lot of options, Azure is able to 
 
 > Note: Data Migration Assistant (covered later in this module) runs scans that can help you choose some of the options as well as the SKU. [Learn more here](https://docs.microsoft.com/en-us/sql/dma/dma-sku-recommend-sql-db?view=sql-server-2017).
 
-
+Tailspin Toys Gaming is leaning towards Azure SQL Managed Instance, because it supports movement to Azure without changing the database features that are used (in this case, Service Broker). They think business critical is the right tier for them, as they need to maximize performance and availability. By using the vCore-based model, they're able to leverage their existing investments with Azure Hybrid Benefits (1 Enterprise license core for SQL Server = 1 Business Critical vCore). Additionally, they want to levearge the three replicas provided free with business critical, where one can be used for [read scale-out](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out), that is needed as the game experiences heavy read workloads.
 
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.2">4.2 Fundamentals of Azure SQL</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4.2">4.2 Azure SQL Platform Benefits</h2></a>
 
-There is not enough time in this workshop to review all of the fundamentals at a deep level here. You'll receive pointers and an overview of Azure SQL platform benefits. Then, basic networking for Azure SQL will be covered. This section will go quickly in the workshop, but it's recommended to spend some time reviewing the many resources provided in this section.    
+Before Tailspin Toys Gaming commits to moving to Azure SQL Managed Instance, they want to understand some of the benefits that come with running their SQL workloads in Azure.    
+  
 
-### Azure SQL fundamentals    
+In this section, we will highlight some of the key benefits of choosing Azure for your SQL workloads. If you want to go deeper, additional reference information is available.    
+   
 
-Azure SQL Database (including single databases, elastic pools, and managed instances) is a fully managed Database Engine that handles most of the database management functions such as upgrading, patching, backups, and monitoring without user involvement. To learn more about the capabilities, see below:  
+
+Azure SQL Database (including single databases, elastic pools, and managed instances) is a fully managed Database Engine that automates most of the database management functions such as upgrading, patching, backups, and monitoring. Some of the built-in capabilities include:  
 * [Business continuity](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity) enables your business to continue operating in the face of disruption, particularly to its computing infrastructure.
 * [High availability](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-high-availability) of Azure SQL Database guarantees your databases are up and running 99.99% of the time, no need to worry about maintenance/downtimes.
 * [Automated backups](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automated-backups) are created and use Azure read-access geo-redundant storage (RA-GRS) to provide geo-redundancy.
 * [Long term backup retention](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-long-term-retention) enables you to store specific full databases for up to 10 years.
-* [Geo-replication](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview) by creating readable replicas of your database in the same or different data center (region).
+* [Geo-replication](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-active-geo-replication) by creating readable replicas of your database in the same or different data center (region).
 * [Scale](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources) by easily adding more resources (CPU, memory, storage) without long provisioning.
+* Network Security
+    * [Azure SQL Database (single database and elastic pool)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-overview#network-security) provides firewalls to prevent network access to the database server until access is explicitly granted based on IP address or Azure Virtual Network traffic origin.
+    * [Azure SQL Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture) has an extra layer of security in providing native virtual network implementation and connectivity to your on-premises environment using [Azure ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/) or [VPN Gatway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * [Advanced security](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-index) detects threats and vulnerabilities in your databases and enables you to secure your data.
 * [Automatic tuning](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning) analyzes your workload and provides you the recommendations that can optimize performance of your applications by adding indexes, removing unused indexes, and automatically fixing the query plan issues.
 * [Built-in monitoring](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) capabilities enable you to get the insights into performance of your databases and workload, and troubleshoot the performance issues.
 * [Built-in intelligence](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-intelligent-insights) automatically identifies the potential issues in your workload and provides you the recommendations that can [help you to fix the problems](https://azure.microsoft.com/en-us/blog/ai-helped-troubleshoot-an-intermittent-sql-database-performance-issue-in-one-day/). 
 
+> Note: Many benefits typically thought of as Platform as a Service (PaaS) are surfacing in Infrastructure as a Service (IaaS). You can learn more about automated updates, automated backups, high availability, and performance provided in Azure SQL VMs [here](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview).  
+
 In addition to the resources linked to above, several [slide decks](https://aka.ms/azuresqlslides) are available (with notes and animations) that you can review to learn more. You can also check out the [Core Cloud Services - Azure architecture and service guarantees](https://docs.microsoft.com/en-us/learn/modules/explore-azure-infrastructure/) module from Microsoft Learn.  
-
-> Note: Many benefits typically thought of as Platform as a Service (PaaS) are surfacing in Infrastructure as a Service (IaaS). You can learn more about automated updates, automated backups, high availability, and performance provided in Azure SQL VMs [here](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview).
-
-### Networking fundamentals  
-
-Networking is a crucial part to moving to Azure. You'll want to work closely with networking and infrastructure individuals to make sure your deployment to Azure is secure, performant, and scalable. While you may not need to be the expert, having a foundational knowledge is very important. You'll see a few explanations and links to additional courses and information to learn more.  
-
-*Glossary of basic networking terms*  
-
-| **Term**  | **Description** |  
-|-----------|-----------------|  
-| [Azure Virtual Network (VNet)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) | Logically isolated network on Azure <br> Allows resources to securely communicate with each other, the internet, and on-prem networks <br>Scoped to a single region <br> Segmented into one or more subnets  |  
-| [Subnets](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-subnet) | Segmentation of VNets to organize and secure resources in discrete sections  |  
-| [VNet Peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)   | Used to connected multiple virtual networks (can be different regions)|  | [VPN Gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Provides secure connection between Azure VNet and on-prem over the internet|  
-| [ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/) | Provides secure and private connection between Azure and on-prem |  
-| [Network security group (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/)  | Allows or denies inbound traffic to your Azure resources (like a cloud-level firewall for your network)|    
-  
-  
-#### What is a virtual network?  
-
-A [virtual network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) is a logically isolated network on Azure. Azure virtual networks will be familiar to you if you've set up networks on Hyper-V, VMware, or even on other public clouds. A virtual network allows Azure resources to securely communicate with each other, the internet, and on-premises networks. A virtual network is scoped to a single region; however, multiple virtual networks from different regions can be connected together using [virtual network peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview).
-Virtual networks can be segmented into one or more subnets. Subnets help you organize and secure your resources in discrete sections.  
-
-For example, a web, application, and data tier architecture may each have a single VM or service. All three are in the same virtual network but are in separate subnets. Users interact with the web tier directly, so that VM has a public IP address along with a private IP address. Users don't interact with the application or data tiers, so these VMs/services each have a private IP address only.  
-
-You can also keep your service or data tiers in your on-premises network, placing your web tier into the cloud, but keeping tight control over other aspects of your application. A [VPN gateway (or virtual network gateway)](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways), enables this hybrid scenario. It can provide a secure connection between an Azure Virtual Network and an on-premises location over the internet.  
-
-Azure manages the physical hardware for you. You configure virtual networks and gateways through software, which enables you to treat a virtual network just like your own network. You choose which networks your virtual network can reach, whether that's the public internet or other networks in the private IP address space.  
-
-Additionally, a [network security group (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/) allows or denies inbound traffic to your Azure resources. Think of a network security group as a cloud-level firewall for your network.  
-
-> If you want to learn more about Azure networking (above is just the beginning), check out the following modules on Microsoft Learn:
-> * [Core Cloud Services - Azure networking options](https://docs.microsoft.com/en-us/learn/modules/intro-to-azure-networking/)  
-> * [Deeper module on Azure networking and configuration](https://docs.microsoft.com/en-us/learn/modules/configure-network-for-azure-virtual-machines/)  
-> * [Connect your on-prem network to Azure with VPN Gateway](https://docs.microsoft.com/en-us/learn/modules/connect-on-premises-network-with-vpn-gateway/)  
-> * [Design network for performance and scale in Azure](https://docs.microsoft.com/en-us/learn/modules/design-for-performance-and-scalability-in-azure/)
-> * [Distribute services across Azure virtual networks and integrate them with VNet peering](https://docs.microsoft.com/en-us/learn/modules/integrate-vnets-with-vnet-peering/)
-> * [Secure and isolate access to Azure resources by using network security groups and service endpoints](https://docs.microsoft.com/en-us/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints/)
-> * [Connect your on-premises network to the Microsoft global network by using ExpressRoute](https://docs.microsoft.com/en-us/learn/modules/connect-on-premises-network-with-expressroute/)
-
-> You'll then want to check out the following guides:
-> * [Best practices to set up networking for workloads moving to Azure](https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/migrate/azure-best-practices/migrate-best-practices-networking)
-> * [Azure virtual network FAQ](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)
-> * [Networking limits](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)
-
-#### Connectivity architecture for single databases and elastic pools  
-
-The following diagram provides a high-level overview of the connectivity architecture.
-
-![Azure SQL DB Connectivity](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-connectivity-db.png?raw=true)  
-
-The following steps describe how a connection is established to an Azure SQL database:
-* Clients connect to the gateway, that has a public IP address and listens on port 1433.
-* The gateway, depending on the effective connection policy, redirects or proxies the traffic to the right database cluster.
-* Inside the database cluster traffic is forwarded to the appropriate Azure SQL database.  
-
-There are three options for the connection policy setting of a SQL Database server:  
-* **Redirect (recommended)**: Clients establish connections directly to the node hosting the database. After (1) the TCP session is established to the Azure SQL database, the client session is then redirected to the right database cluster with a change to the destination virtual IP from that of the Azure SQL Database gateway to that of the cluster. Thereafter, (2) all subsequent packets flow directly to the cluster, bypassing the Azure SQL Database gateway, thus improving performance for latency and throughput.  
-* **Proxy**: In this mode, all connections are proxied via the Azure SQL Database gateways. Choosing this mode can result in higher latency and lower throughput, depending on nature of the workload.  
-* **Default**: This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either *Proxy* or *Redirect*. The effective policy depends on whether connections originate from within Azure (*Redirect*) or outside of Azure (*Proxy*).
-
-> For more information, including scripts to change connection settings, refer to the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connectivity-architecture) and a [video explanation from the SQL team](https://www.youtube.com/watch?v=e0tWC0XmOgc).  
-
-#### Connectivity architecture for managed instances  
-
-At a high level, a managed instance is a set of service components. These components are hosted on a dedicated set of isolated virtual machines that run inside the customer's virtual network subnet. These machines form a **virtual cluster**.  
-
-A virtual cluster can host multiple managed instances. If needed, the cluster automatically expands or contracts when the customer changes the number of provisioned instances in the subnet.  
-
-Customer applications can connect to managed instances and can query and update databases inside the virtual network, peered virtual network, or network connected by VPN or Azure ExpressRoute. This network must use an endpoint and a private IP address.  
-
-![Azure SQL MI Connectivity](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-connectivity-arch.png?raw=true)
-
-Management and deployment services (which run outside the virtual network) connect and manage the managed instance with a management endpoint that maps to an external load balancer. This endpoint is inside the instance's virtual cluster. The management endpoint is protected by a built-in firewall on the network level. Microsoft services and a managed instance (via the management endpoint) connect over the endpoints that have public IP addresses, so when a managed instance creates an outbound connection, it looks like it's coming from this public IP address. Find more information about determining the management endpoint's IP address, traffic, and the built-in firewall [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint).  
-
-
-Managed instances must be deployed in a dedicated subnet inside the virtual network. There are [certain network requirements for the subnet](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture#network-requirements) that is to contain a managed instance. You should review and prepare accordingly.  
-
-Deeper dive into connectivity architecture for managed instances can be found [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture).  
-
-
-> If you want to dive deeper into networking for Azure SQL, check out the following resources:  
-> * [The ultimate guide for creating and configuring Azure SQL Managed Instance environment](https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01)
-> * [Azure SQL Database and Data Warehouse network access controls](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-networkaccess-overview)
-> * [Azure SQL Network Security](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-overview#network-security)
-> * [Create a virtual network of Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-create-vnet-subnet)
-> * [Video: VNET Azure SQL Database](https://www.youtube.com/watch?v=jAeAjOlkxAU&t=188s)
-
 <br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
