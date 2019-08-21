@@ -1,7 +1,7 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Lab: SQL Server 2019 (RC)
+# Lab: SQL Server 2019
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -123,7 +123,7 @@ In order to complete this workshop you need to install the following software:
 
 This workshop was built and designed for a server or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. You may be able to run this lab with less compute resources.
 
-**NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 5, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
+> **NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 5, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
