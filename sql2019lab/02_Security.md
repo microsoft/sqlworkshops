@@ -243,7 +243,7 @@ All scripts can be found in the **sql2019lab\02_Security\dataclassification** di
 **STEP 1: Cleanup any previous examples**
 
 If you have never run this module activity on your SQL Server, you can skip this step. Otherwise, execute all the steps in the script **dropsqlaudit.sql**
->**No**: *For Linux installations you will need to change the path when deleting past audits to /var/opt/mssql/data.*
+>**NOTE**: *For Linux installations you will need to change the path when deleting past audits to /var/opt/mssql/data.*
 
 ```sql
 -- Step 1: Disable the audits and drop them
@@ -315,7 +315,7 @@ GO
 
 Use the script **checkaudit.sql** to see the if anything was audited.
 
-**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 -- Check the audit
