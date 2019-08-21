@@ -62,13 +62,13 @@ Proceed to the activity to explore how this method can allow you to deploy SQL S
 
 In this activity, you will learn how to deploy a SQL Server replication solution with a publisher, distributor, and subscriber using two SQL Server Linux containers.
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 5.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 5.0 and run through all the steps again.*
 
 <h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
 All scripts for this activity can be found in the **sql2019lab\05_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
 
-**NOTE**: This activity assumes the following:
+>**NOTE**: This activity assumes the following:
 
 - **Docker** is installed. You can use Docker Desktop for Windows or macOS or Docker for Linux to run this activity.
 - You have the **docker-compose** tool installed. In many docker installations, docker-compose comes with the install.
@@ -123,7 +123,7 @@ db1    | Job 'db1-Sales-SnapshotRepl-DB2-1' started successfully.</pre>
 
 The command line will appear to "hang" at this point. This is normal as both programs are running. Once you see this output leave the command line alone. If you attempt `<`Ctrl`>`+`<`C`>` or exit the command line it would stop the 2 containers.
 
-**NOTE**: *You can use add the **-d** parameter to docker-compose -up to run the containers in the background. But then you would need to monitor SQL Sever replication to see when the snapshot has been applied.*
+>**NOTE**: *You can use add the **-d** parameter to docker-compose -up to run the containers in the background. But then you would need to monitor SQL Sever replication to see when the snapshot has been applied.*
 
 **Step 3: Verify the Replication Deployment**
 
