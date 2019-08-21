@@ -8,7 +8,18 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     02 - Modernizing Your Data Estate with SQL Server 2019</b></h2>
 
-SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server.
+SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server. 
+
+The WideWorldImporters company has been evaluating upgrading several SQL Server 2008 instances along with some instances of SQL Server 2012, 2014, and even 2016. WideWorldImporters wants to know whether SQL Server 2019 will solve some of the challenges they face including:
+
+- Improving query performance without having to make application changes
+- Classifying key data columns and being able to audit access to these columns to meet the needs of GDPR compliance.
+- Providing better database availability when applications use long-running transactions.
+- Allowing the WideWorldImporters team to access data from sources like Oracle, Azure SQL Database, and Azure CosmosDB without having to develop expensive ETL jobs.
+- The database team at WideWorldImporters has evaluated SQL Server on Linux but SQL Server 2017 didn't include Replication, a feature they need for their application. They would like to evaluate how SQL Server Replication on Linux works. They also want to understand more about container technology and how it can be used with SQL Server.
+- WideWorldImporters is also evaluating Azure SQL so wants to know what features in SQL Server 2019 also work in Azure.
+
+In this workshop, you will be able to see capabilities in SQL Server 2019 that can provide solutions for these challenges.
 
 Instructor led workshops will review the overall capabilities and value of SQL Server 2019 using the **Module 2.0 Introduction Section** from the PowerPoint slides <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>
 

@@ -74,9 +74,9 @@ Proceed to the Activity to learn an example of how to use Polybase with SQL Serv
 
 In this activity, you will learn how to build an external data source and table to query a table in Azure SQL Database without connecting directly yourself.
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 4.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 4.0 and run through all the steps again.*
 
-**NOTE**: *There are example scripts in **sql2019lab\04_DataVirtualization** for other data sources for you to use at a later time for Hadoop, Oracle, CosmosDB (through MongoDB), SQL Server 2008R2, and SAP HANA. For these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.*
+>**NOTE**: *There are example scripts in **sql2019lab\04_DataVirtualization** for other data sources for you to use at a later time for Hadoop, Oracle, CosmosDB (through MongoDB), SQL Server 2008R2, and SAP HANA. For these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.*
 
 <h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
@@ -84,7 +84,7 @@ Go through the following steps to learn how to query tables in Azure SQL Databas
 
 All scripts for this activity can be found in the **sql2019lab\04_DataVirtualization\sqldatahub\azuredb** folder.
 
-**IMPORTANT**: This activity assumes the following:
+>**IMPORTANT**: This activity assumes the following:
 
 - You have installed and enabled Polybase (stand-alone is acceptable) per the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-installation?view=sqlallproducts-allversions or for Linux at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-linux-setup.
 - You have access to an Azure SQL Database database or Managed Instance. The T-SQL script **createazuredbtable.sql** as found in the sql2019lab\04_DataVirtualization\sqldatahub\azuredb directory contains the target schema and data. The scripts in the activity have a specific Azure SQL Database connection string, login, password, and database name (wwiazure). You may need to modify the scripts to match your Azure SQL Database connection, login, password, and db name.
@@ -117,9 +117,9 @@ GO
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 4.0 can be found in the T-SQL notebook **azuredbexternaltable.ipynb** which can be found in the **sql2019lab\04_DataVirtualization\sqldatahub\azuredb** folder.
 
-**NOTE**: *A T-SQL script **azuredbexternaltable.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
+>**NOTE**: *A T-SQL script **azuredbexternaltable.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
-**IMPORTANT**: For instructor led courses, your instructor will provide you the details of the following authentication and Azure SQL Database Server details
+>**IMPORTANT**: For instructor led courses, your instructor will provide you the details of the following authentication and Azure SQL Database Server details
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials   
@@ -159,7 +159,7 @@ A successful connection looks similar to this (your server may be different):
 
 If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019lab** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **04_DataVirtualization\sqldatahub\azuredb** folder, open up the **azuredbexternaltable.ipynb** notebook and go through all the steps. 
 
-**NOTE**: Be sure to only run one notebook cell at a time for the lab.
+>**NOTE**: Be sure to only run one notebook cell at a time for the lab.
 
 You can now use Azure Data Studio explorer to open up a notebook or script without exiting the tool.
 

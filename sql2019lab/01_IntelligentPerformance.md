@@ -50,7 +50,7 @@ The following is a diagram showing the features of Intelligent Query Processing 
 
 Intelligent Query Processing is a feature that exists for both SQL Server 2019 and Azure SQL Database. You can read the documentation for a description and example of all of these features at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing.
 
-**NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
+> **NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
 
 Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes.
 
@@ -60,7 +60,7 @@ Now proceed to the Activity to learn an example of how Intelligent Query Process
 
 In this activity, you will learn how to use the built-in capabilities of Intelligent Query Processing in SQL Server 2019 simply by changing the database compatibility of WideWorldImporters to version 150 with no application changes.
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
+> **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
 You have been provided a stored procedure called **CustomerProfits** which you will deploy in the **Facts** schema of the **WideWorldImporters** database. The stored procedure uses a *table variable* to store interim results from a user table and then uses that table variable to join with other data in the **WideWorldImporters** database. In previous releases of SQL Server, this design pattern could cause an issue, since SQL Server would always estimate that the table variable only contains 1 row of data. This can cause issues with building the optimal query plan for the best performance.
 
@@ -84,7 +84,7 @@ Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\01_Inte
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
-**NOTE**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
+>**NOTE**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
 T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. When you are done proceed to the **ActivitySummary** section for the Activity below.
 
@@ -110,7 +110,7 @@ A successful connection looks similar to this (your server may be different):
 
 Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019lab** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **01_IntelligentPerformance\iqp** folder, open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. 
 
-**NOTE**: Be sure to only run one notebook cell at a time for the lab.
+>**NOTE**: Be sure to only run one notebook cell at a time for the lab.
 
 You can now use Azure Data Studio explorer to open up a notebook or script without exiting the tool.
 
@@ -150,7 +150,7 @@ You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/
 
 The **WideWorldImporters** sample database that you restored in Module 1.0 has the Query Store feature enabled. If you performed the Activities in Module 1.0, the Query Store recorded performance information about each query execution.
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
 <h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 

@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (RC))
+# Workshop: SQL Server 2019 Lab (RC)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -55,7 +55,7 @@ Now classification information is stored directly with columns in metadata in sy
 
 The added benefit of built-in classification is that now auditing of data classification is included. SSMS starting with version 18 (you should use 18.2 or greater) has been enhanced to take advantage of this new T-SQL feature.
 
-**NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance standards. It is up to a business or organization to use these tools to meet their requirements or regulations.*
+>**NOTE**: *The use of data classification and auditing with SQL Server does not imply an organization has met requirements like GDPR. SQL Server is providing some of the capabilities needed by organizations to meet certain regulations and compliance standards. It is up to a business or organization to use these tools to meet their requirements or regulations.*
 
 Data Classification and Auditing is a feature that exists for both SQL Server 2019 and Azure SQL Database. You can read the documentation for data discovery and classification for SQL Server, Azure SQL Database, and Azure SQL Data Warehouse at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification.
 
@@ -69,13 +69,13 @@ Proceed to the Activity to learn an example of how to use Data Classification wi
 
 In this activity, you will learn how to use SQL Server Management Studio (SSMS) and T-SQL to classify columns of tables in a database. You will use the **WideWorldImporters** sample database to classify specific columns in tables of that database.
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
 <h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
 Follow these steps to classify certain columns in the WideWorldImporters database using SSMS and T-SQL. All scripts for this activity can be found in the **sql2019lab\02_Security\dataclassification** folder.
 
-**NOTE**: *SSMS 18.1 has a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, you must have SSMS 18.2 (or greater) to go through this activity or set the dbcompat of WideWorldImporters to 150 if using a version < SSMS 18.2.*
+>**NOTE**: *SSMS 18.1 has a bug where data classification through the tools has an issue if the database compatibility level is NOT 150. Therefore, you must have SSMS 18.2 (or greater) to go through this activity or set the dbcompat of WideWorldImporters to 150 if using a version < SSMS 18.2.*
 
 **STEP 1: Restore the WideWorldImporters backup.**
 
@@ -102,7 +102,7 @@ GO
 
 **STEP 3: Add classifications using the wizard in SSMS**
 
-**NOTE**: *SSMS still supports using Data Discover and Classification against older versions of SQL Server but will use the older technique built into the tool. Auditing will not be available for these scenarios.*
+>**NOTE**: *SSMS still supports using Data Discover and Classification against older versions of SQL Server but will use the older technique built into the tool. Auditing will not be available for these scenarios.*
 
 - Launch SSMS and select the Data Discovery and Classification option as a Task from WideWorldImporters in Object Explorer
 
@@ -230,9 +230,9 @@ Let's use an activity to see how audit and classification work together.
 
 In this activity you will learn how to audit users trying to view columns that were marked for data classification.
 
-**IMPORTANT**: *This activity assumes you have completed the steps in the Activity for Module 2.0.*
+>**IMPORTANT**: *This activity assumes you have completed the steps in the Activity for Module 2.0.*
 
-**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
 <h3><b><a name="activitysteps">Activity Steps</a></b></h3>
 
@@ -243,8 +243,7 @@ All scripts can be found in the **sql2019lab\02_Security\dataclassification** di
 **STEP 1: Cleanup any previous examples**
 
 If you have never run this module activity on your SQL Server, you can skip this step. Otherwise, execute all the steps in the script **dropsqlaudit.sql**
-
-**Note**: *For Linux installations you will need to change the path when deleting past audits to /var/opt/mssql/data.*
+>**No**: *For Linux installations you will need to change the path when deleting past audits to /var/opt/mssql/data.*
 
 ```sql
 -- Step 1: Disable the audits and drop them
@@ -275,7 +274,7 @@ GO
 
 Use the T-SQL script **setupsqlaudit.sql** to create and enable a new SQL Audit to track SELECT statements against the **[Application].[People]** table in the **WideWorldImporters** database
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 USE master
@@ -316,7 +315,7 @@ GO
 
 Use the script **checkaudit.sql** to see the if anything was audited.
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 -- Check the audit
@@ -350,7 +349,7 @@ GO
 
 Use the script **checkaudit.sql** to see the if anything was audited.
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 -- Check the audit
@@ -385,7 +384,7 @@ This query should return no rows.
 
 Auditing for columns with data classification only apply to queries where columns are in the SELECT "list" of the query. Use the script **checkaudit.sql** to see the if anything was audited.
 
-**Note**: *For Linux installations change the path to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path to /var/opt/mssql/data*
 
 ```sql
 -- Check the audit
@@ -408,7 +407,7 @@ Notice in this results for the new row the data_sensitivity_information columns 
 
 Use the script **cleanup.sql** to disable and drop audits and delete classifications.
 
-**Note**: *For Linux installations change the path in the script to delete audit files to /var/opt/mssql/data*
+>**NOTE**: *For Linux installations change the path in the script to delete audit files to /var/opt/mssql/data*
 
 ```sql
 USE WideWorldImporters
