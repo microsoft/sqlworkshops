@@ -17,7 +17,7 @@ In this lab you will use the [Azure Database Migration Service](https://azure.mi
 
 The activities in this lab include:  
   
-[Lab Exercise 1](#LabExercise-1): Migrate the database to SQL Managed instance (30 minutes)  
+[Lab Exercise 1](#LabExercise-1): Migrate the database to SQL Managed instance   
 &ensp;&ensp;&ensp;[Activity 1](#Activity-1): Create a SMB network share on the SQLServer2008VM  
 &ensp;&ensp;&ensp;[Activity 2](#Activity-2): Change MSSQLSERVER service to run under sqlmiuser account  
 &ensp;&ensp;&ensp;[Activity 3](#Activity-3): Create a backup of TailspinToys database  
@@ -28,12 +28,12 @@ The activities in this lab include:
 &ensp;&ensp;&ensp;[Activity 8](#Activity-8): Verify database and transaction log migration  
 &ensp;&ensp;&ensp;[Activity 9](#Activity-9): Update the application  
 
-[Lab Exercise 2](#LabExercise-2): Improve database security with Advanced Data Security (15 minutes)  
+[Lab Exercise 2](#LabExercise-2): Improve database security with Advanced Data Security   
 &ensp;&ensp;&ensp;[Activity 1](#Activity-2-1): Enable Advanced Data Security  
 &ensp;&ensp;&ensp;[Activity 2](#Activity-2-2): Configure SQL Data Discover and Classification  
 &ensp;&ensp;&ensp;[Activity 3](#Activity-2-3): Review Advanced Data Security Vulnerability Assessment  
 
-[Lab Exercise 3](#LabExercise-3): Use online secondary for read-only queries (15 minutes)  
+[Lab Exercise 3](#LabExercise-3): Use online secondary for read-only queries   
 &ensp;&ensp;&ensp;[Activity 1](#Activity-3-1): View Leaderboard report in Tailspin Toys web application  
 &ensp;&ensp;&ensp;[Activity 2](#Activity-3-2): Update read only connection string  
 &ensp;&ensp;&ensp;[Activity 3](#Activity-3-3): Reload leaderboard report in the Tailspin Toys web application  
@@ -44,7 +44,7 @@ The activities in this lab include:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-1">Lab Exercise 1: Migrate the database to SQL Managed instance (30 minutes)</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-1">Lab Exercise 1: Migrate the database to SQL Managed instance </h2></a>
 
 In this section, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
 
@@ -464,7 +464,7 @@ Since you performed the migration as an "online data migration," the migration w
     ![A status of Completed is displayed in the Complete cutover dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-complete-cutover-completed.png?raw=true "Migration Wizard")  
 
     > **Note**:  
-    > This will take between 15-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress is delayed, you can select **Refresh** to update manually.  
+    > This will take between 10-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress is delayed, you can select **Refresh** to update manually.  
 
 14. Close the *Complete cutover* dialog by selecting the **X** in the upper right corner of the dialog, and do the same thing for the *TailspinToys* blade. This will return you to the *TailspinToysMigration* blade. Select **Refresh**, and you should see a status of *Completed* from the *TailspinToys* database.
 
@@ -816,7 +816,7 @@ Using the SQL Vulnerability Assessment, it is simple to identify and remediate p
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-3">Lab Exercise 3: Use an online secondary for read-only queries (15 minutes)</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-3">Lab Exercise 3: Use an online secondary for read-only queries </h2></a>
 
 In this exercise, you will look at how you can use the automatically created online secondary for reporting, without feeling the impacts of a heavy transactional load on the primary database. Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. Using [**Read Scale-Out**](https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out) allows you to load balance Azure SQL Database read-only workloads using the capacity of one read-only replica.
 
