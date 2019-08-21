@@ -97,7 +97,7 @@ In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Az
 
 To complete this workshop you will need the following:
 
-- Clone the workshop using git from https://github.com/microsoft/sqlworkshops.git. All the scripts and files in the labs are found in the **sql2019** folder.
+- Clone the workshop using git from https://github.com/microsoft/sqlworkshops.git. All the scripts and files in the labs are found in the **sql2019lab** folder.
 - On Windows systems, you should use the following git syntax
 
     `git clone --config core.autocrlf=false https://github.com/microsoft/sqlworkshops.git`
@@ -111,7 +111,7 @@ Each module of this workshop can be studied and used independently of each other
 
 In order to complete this workshop you need to install the following software:
 
-- SQL Server 2019 CTP 3.1 or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
+- SQL Server 2019 CTP 3.2 or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
     - For **Modules 1, 2, and 3** you only need the database engine installed
     - **Module 3** requires disk space to hold a database with a 10Gb data and 10Gb log file.
     - **Module 4** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.)
