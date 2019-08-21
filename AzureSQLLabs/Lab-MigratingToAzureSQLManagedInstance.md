@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> Migrate to Azure SQL Managed Instance</h2>
 
-In this lab you'll use the results of an assessment to migrate a database to a [Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance).  
+In this lab you'll migrate a database from SQL Server 2008 to [Azure SQL Database Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance).  
 
 
 (<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-Pre-Requisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
@@ -17,7 +17,7 @@ In this lab you will use the [Azure Database Migration Service](https://azure.mi
 
 The activities in this lab include:  
   
-[Lab Exercise 1](#LabExercise-1): Migrate the database to SQL Managed instance (30 minutes)  
+[Lab Exercise 1](#LabExercise-1): Migrate the database to SQL Managed instance   
 &ensp;&ensp;&ensp;[Activity 1](#Activity-1): Create a SMB network share on the SQLServer2008VM  
 &ensp;&ensp;&ensp;[Activity 2](#Activity-2): Change MSSQLSERVER service to run under sqlmiuser account  
 &ensp;&ensp;&ensp;[Activity 3](#Activity-3): Create a backup of TailspinToys database  
@@ -28,12 +28,12 @@ The activities in this lab include:
 &ensp;&ensp;&ensp;[Activity 8](#Activity-8): Verify database and transaction log migration  
 &ensp;&ensp;&ensp;[Activity 9](#Activity-9): Update the application  
 
-[Lab Exercise 2](#LabExercise-2): Improve database security with Advanced Data Security (15 minutes)  
+[Lab Exercise 2](#LabExercise-2): Improve database security with Advanced Data Security   
 &ensp;&ensp;&ensp;[Activity 1](#Activity-2-1): Enable Advanced Data Security  
 &ensp;&ensp;&ensp;[Activity 2](#Activity-2-2): Configure SQL Data Discover and Classification  
 &ensp;&ensp;&ensp;[Activity 3](#Activity-2-3): Review Advanced Data Security Vulnerability Assessment  
 
-[Lab Exercise 3](#LabExercise-3): Use online secondary for read-only queries (15 minutes)  
+[Lab Exercise 3](#LabExercise-3): Use online secondary for read-only queries   
 &ensp;&ensp;&ensp;[Activity 1](#Activity-3-1): View Leaderboard report in Tailspin Toys web application  
 &ensp;&ensp;&ensp;[Activity 2](#Activity-3-2): Update read only connection string  
 &ensp;&ensp;&ensp;[Activity 3](#Activity-3-3): Reload leaderboard report in the Tailspin Toys web application  
@@ -44,7 +44,7 @@ The activities in this lab include:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-1">Lab Exercise 1: Migrate the database to SQL Managed instance (30 minutes)</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-1">Lab Exercise 1: Migrate the database to SQL Managed instance </h2></a>
 
 In this section, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).  
 
@@ -52,7 +52,7 @@ In this section, you will use the [Azure Database Migration Service](https://azu
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="Activity-1">Activity 1: Create an SMB network share on the SQLServer2008VM</b></p></a>
 
-In this task, you will create a new SMB network share on the SqlServer2008 VM. This will be the folder used by DMS for retrieving backups of the `TailspinToys` database during the database migration process.
+In this task, you will create a new [SMB network share](https://docs.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-authentication) on the SqlServer2008 VM. This will be the folder used by DMS for retrieving backups of the `TailspinToys` database during the database migration process. By creating the share, you're making it possible for services like DMS to access items in the share if you authenticate to it. You can read more about [the SMB protocol here](https://docs.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview). 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -464,7 +464,7 @@ Since you performed the migration as an "online data migration," the migration w
     ![A status of Completed is displayed in the Complete cutover dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-complete-cutover-completed.png?raw=true "Migration Wizard")  
 
     > **Note**:  
-    > This will take between 15-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress is delayed, you can select **Refresh** to update manually.  
+    > This will take between 10-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress is delayed, you can select **Refresh** to update manually.  
 
 14. Close the *Complete cutover* dialog by selecting the **X** in the upper right corner of the dialog, and do the same thing for the *TailspinToys* blade. This will return you to the *TailspinToysMigration* blade. Select **Refresh**, and you should see a status of *Completed* from the *TailspinToys* database.
 
@@ -521,7 +521,7 @@ With the `TailspinToys` database now running on SQL MI in Azure, the next step i
 
 >**Note**: SQL Managed Instance has a private IP address in its own VNet, so to connect an application you need to configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
->**Note**: The architecture diagram from Lab 4 explains a web app being deployed to Azure. Due to time constraints, the lab will deal with switching the app running on the VM locally to using SQL MI (not the deployment to Azure or integrating the App Service with the Virtual Network). In the [extended version of these labs](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md#exercise-3-update-the-web-application-to-use-the-new-sql-mi-database), or if you have time at the end of the lab, you can do that.
+>**Note**: Due to time constraints, the lab will deal with switching the app running on a Jumpbox VM locally from leveraging data in SQL Server 2008 to SQL MI (but not the deployment to Azure or integrating the App Service with the Virtual Network). In the [extended version of these labs](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/blob/master/Hands-on%20lab/HOL%20step-by-step%20-%20Migrating%20SQL%20databases%20to%20Azure.md#exercise-3-update-the-web-application-to-use-the-new-sql-mi-database), or if you have time at the end of the lab, you can do that.  
 
 
 In this activity, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, run the `TailspinToysWeb` application on the VM.  
@@ -816,7 +816,7 @@ Using the SQL Vulnerability Assessment, it is simple to identify and remediate p
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-3">Lab Exercise 3: Use an online secondary for read-only queries (15 minutes)</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="LabExercise-3">Lab Exercise 3: Use an online secondary for read-only queries </h2></a>
 
 In this exercise, you will look at how you can use the automatically created online secondary for reporting, without feeling the impacts of a heavy transactional load on the primary database. Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. Using [**Read Scale-Out**](https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out) allows you to load balance Azure SQL Database read-only workloads using the capacity of one read-only replica.
 
@@ -877,6 +877,9 @@ In this task, you will refresh the Leaderboard report in the Tailspin Toys web a
 
     > Notice the `updateability` option is now displaying as `READ_ONLY`. With a simple addition to your database connection string, you are able to send read-only queries to the online secondary of your SQL MI Business critical database, allowing you to load-balance read-only workloads using the capacity of one read-only replica. The SQL MI Business Critical cluster has built-in Read Scale-Out capability that provides free-of charge built-in read-only node that can be used to run read-only queries that should not affect performance of your primary workload.
 
+
+> **Note**:  
+> If you are attending this lab as part of a day-long workshop, you have finished the activities for Module 5. [Return to it here](https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-MigratingToAzureSQL.md#54-after-the-migration), review, and refer to instructor guidance.
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>

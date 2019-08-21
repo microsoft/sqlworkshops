@@ -47,7 +47,7 @@ With the `TailspinToys` database now running on SQL MI in Azure, the next step i
 
 <h3><p><img style="float: left; margin: 0px 5px 5px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="5.1.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-1">Activities</h3></p></a>
 
-Complete actitivies 1-9 by following the links below. Once you're in Activity 1, you can continue to the next activity through Activity 9 (the links below all point to different parts of the same overall lab). When are you done with activities 1-9, come back here for the next section (5.2).   
+Complete activities 1-9 by following the links below. Once you're in Activity 1, you can continue to the next activity through Activity 9 (the links below all point to different parts of the same overall lab). When are you done with activities 1-9, come back here for the next section (5.2).   
 
 > **Note**:  
 > If you were provided an environment to do this workshop, you should review Activities 4 and 5, but a service principal has already been created (no action required).   
@@ -83,7 +83,7 @@ In this exercise, you'll enable Advanced Data Security, configure Data Discovery
 
 <h3><p><img style="float: left; margin: 0px 5px 5px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="5.1.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-1">Activities</h3></p></a> 
 
-Complete actitivies 1-3 by following the links below. Once you're in Activity 1, you can continue to the next activity through Activity 3 (the links below all point to different parts of the same overall lab). When are you done with activities 1-3, come back here for the next section (5.3).   
+Complete activities 1-3 by following the links below. Once you're in Activity 1, you can continue to the next activity through Activity 3 (the links below all point to different parts of the same overall lab). When are you done with activities 1-3, come back here for the next section (5.3).   
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.2.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-2-1">Activity 1</a>: Enable Advanced Data Security  
@@ -99,7 +99,7 @@ In this exercise, you will look at how you can use the automatically created onl
 
 <h3><p><img style="float: left; margin: 0px 5px 5px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="5.1.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-3-1">Activities</h3></p></a>
 
-Complete actitivies 1-3 by following the links below. Once you're in Activity 1, you can continue to the next activity through Activity 3 (the links below all point to different parts of the same overall lab). When are you done with activities 1-3, come back here for the next section (5.4).   
+Complete activities 1-3 by following the links below. Once you're in Activity 1, you can continue to the next activity through Activity 3 (the links below all point to different parts of the same overall lab). When are you done with activities 1-3, come back here for the next section (5.4).   
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="5.3.1"><a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/Lab-MigratingToAzureSQLManagedInstance.md#Activity-3-1">Activity 1</a>: View Leaderboard report in Tailspin Toys web application  
 

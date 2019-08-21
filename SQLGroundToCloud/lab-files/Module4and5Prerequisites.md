@@ -105,7 +105,7 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
     - **Location**: Select the location you used for the hands-on-lab-SUFFIX resource group.
     - **Managed Instance Name**: Accept the default value, **sqlmi**. **Note**: The actual name must be globally unique, so a unique string will be generated from your Resource Group and appended to the name during provisioning.
     - **Admin Username**: Accept the default value, **sqlmiuser**.
-    - **Admin Password**: Accept the default value, **Password.1234567890**.
+    - **Admin Password**: Accept the default value or create a unique password.
     > Note: You should note this password, it will be the password for everything in Modules 4 and 5 of the lab.
     - **V Cores**: Select the smallest number possible.
     - **Storage Size in GB**: Accept the default value, **32**.
