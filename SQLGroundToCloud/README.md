@@ -8,11 +8,13 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>About this Workshop</h2>
 
-Welcome to this Microsoft solutions workshop on SQL Server in on-premises, in-cloud and hybrid solutions. In this one-day workshop, you'll gain a deep understanding on the latest SQL Server engine and how you can use it to solve real-world challenges. 
+Welcome to this Microsoft solutions workshop on SQL Server in on-premises, in-cloud and hybrid solutions. In this one-day workshop, you'll  learn how SQL Server 2019 and Azure SQL help you solve real-world challenges. 
 
-The modules in this workshop lead you through conceptual and hands-on topics ranging from the newest technical features in SQL Server to its implementation in all platforms it runs on. You'll learn not only specific technologies, but how to assemble them into a complete solution based on customer needs and requests.   
+The Modules in this workshop lead you through conceptual and hands-on topics ranging from the newest technical features in SQL Server to its implementation in all the platforms it runs on. You'll learn not only specific technologies, but how to assemble them into a complete solution based on customer needs and requests.   
 
-You'll start by learning about the latest improvements to SQL Server, move on to the Big Data Clusters configuration, and then learn about the ways you can leverage SQL in Microsoft Azure (and how to get there) - all with a focus on how to extrapolate what you have learned to create other solutions for your organization. You'll end the day with a "What to Use When" module explaining how to create your own solutions. 
+You'll start by learning about the latest improvements in SQL Server 2019, work with the Big Data Clusters configuration, and then learn about the ways you can leverage SQL in Microsoft Azure (and how to get there) - all with a focus on how to extrapolate what you have learned to create other solutions for your organization. You'll end the day with a "What to Use When" module explaining how to create your own solutions. 
+
+This Workshop contains lecture and hands on lab work, and is particularly useful for Solution Architects, Data Architects, Application Architects, Technical Sellers, and Application Developers. A laptop, Microsoft Azure account, and experience with SQL is considered a prerequisite.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -20,25 +22,18 @@ This README.MD file explains how the workshop is laid out, what you will learn, 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Abstract</h3>
-
-Many organizations are faced with an aging or under-engineered data platform strategy. You need a plan for how to decide if, when, and how you should upgrade your systems, when to extend them to the cloud, what to keep on and what can work in a hybrid fashion.
-
-Members from the Azure Data Product Group will lead you through the data estate options from Microsoft, from on-premises SQL Server (including some of the new features in SQL Server) to Relational Database options in Azure. You'll how to evaluate the benefits/costs of each technology option, and give you multiple tools that you can take home to inventory, evaluate, and migrate your current data platform environment to the best configuration.
-
-This course contains lecture and hands on lab work, and is particularly useful for Solution Architects, Data Architects, Application Architects, Technical Sellers, and Application Developers. A laptop, Microsoft Azure account, and experience with SQL is considered a prerequisite.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"> <h3>Learning Objectives</h3>
 
-In this day-long, hands-on workshop you’ll learn how to:
+In this day-long, hands-on Workshop you’ll learn how to:
 
 <br>
 
- - Articulate the key differentiators between SQL Server on-prem, in Azure VM, in Azure SQL DB, and hybrid configurations
- - Explain the different service tiers within Azure SQL DB, and what to choose when
- - Understand how Azure SQL DB is secured and address security concerns
- - Explain hybrid configurations for Azure SQL DB and SQL Server in common examples
- - Experiment with various features of SQL Server and Azure SQL DB
+ - Articulate the key differentiators between SQL Server on-prem, in Azure VM, in Azure SQL, and hybrid configurations
+ - Explain the different service tiers within Azure SQL, and what to choose when
+ - Understand how Azure SQL is secured and address security concerns
+ - Explain hybrid configurations for Azure SQL and SQL Server in common examples
+ - Experiment with various features of SQL Server and Azure SQL
  - Understand additional Azure platform features for data pipelines and security
  - Understand what services are available to migrate and modernize your entire SQL Server stack
  - Make informed decisions about how your business or customers should modernize their data estate
@@ -71,7 +66,7 @@ The information covered in this workshop includes the following technologies and
   <tr><td style="vertical-align: top">SQL Server 2019 improvements (on-prem and in-cloud)</i></td><td style="vertical-align: top">Covers challenges and solutions in performance, security, availability, data virtualization, and Linux and containers in SQL Server 2019 spanning on-premise, containers, Kubernetes, and cloud platforms.</td></tr>
   <tr><td style="vertical-align: top">Big Data Clusters for SQL Server (on-prem and in-cloud)</i></td><td style="vertical-align: top">Explains the architecture for Big Data Clusters for SQL Server in on-premises installations, containers, Kubernetes, and on the Microsoft Azure platform and in hybrid configurations</td></tr>
   <tr><td style="vertical-align: top">SQL Server Virtual Machines in Microsoft Azure </i></td><td style="vertical-align: top">Covers the tools, processes and procedures for SQL Server Virtual Machines on the Microsoft Azure platform </td></tr>
-  <tr><td style="vertical-align: top">Azure SQL Database </i></td><td style="vertical-align: top">Covers the tools, processes and procedures for Azure SQL Database (Managed Instance, Singleton, and Elastic Pools)</td></tr>
+  <tr><td style="vertical-align: top">Azure SQL </i></td><td style="vertical-align: top">Covers the tools, processes and procedures for Azure SQL (Managed Instance, Single Database, and Elastic Pool)</td></tr>
   <tr><td style="vertical-align: top">Migrating SQL Server installations to Microsoft Azure </i></td><td style="vertical-align: top">Explains the tools and processes to migrate on-premises SQL Server installations to the Microsoft Azure platform </td></tr>
   <tr><td style="vertical-align: top">"What to Use When" </i></td><td style="vertical-align: top">Teaches a complete set of tools and processes used to determine the best architecture for a given customer scenario on the Microsoft Azure platform </td></tr>
 
@@ -81,11 +76,11 @@ The information covered in this workshop includes the following technologies and
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"> <h2><a name="prereqs">Before Taking this Workshop</a></h2>
 
-You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
+You'll need a local system or Virtual Machine that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
 
 You must have a Microsoft Azure account with the ability to create assets, specifically the Azure Kubernetes Service (AKS).
 
-This workshop expects that you understand data structures and working with SQL Server and computer networks. This workshop does not expect you to have any prior data science knowledge, but a basic knowledge of statistics and data science is helpful in the Data Science sections. Knowledge of SQL Server, Azure Data and AI services, Python, and Jupyter Notebooks is recommended. AI techniques are implemented in Python packages. Solution templates are implemented using Azure services, development tools, and SDKs. You should have experience working with the Microsoft Azure Platform.
+This workshop expects that you understand data structures and working with SQL Server and computer networks. This workshop does not expect you to have any prior data science knowledge, but a basic knowledge of statistics and data science is helpful in the Data Science sections. Knowledge of SQL Server, Azure Data and AI services, Python, and Jupyter Notebooks is helpful for the Big Data Clusters feature. AI techniques are implemented in Python packages. Solution templates are implemented using Azure services, development tools, and SDKs. You should have experience working with the Microsoft Azure Platform.
 
 If you are new to these, here are a few references you can complete prior to class:
 
@@ -95,13 +90,9 @@ If you are new to these, here are a few references you can complete prior to cla
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Setup</h3>
 
-<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to turn off any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
+<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">A full prerequisites document is located here</a>. These instructions should be completed before the workshop starts, since you will not have time to cover these in class. <i>Remember to "Stop" any Virtual Machines from the Azure Portal when not taking the class so that you do incur charges (shutting down the machine in the VM itself is not sufficient)</i>.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
-
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"> <h2><a name="details">Workshop Details</a></h2>
-
-This workshop uses SQL Server Management Studio, Azure Data Studio, Microsoft Azure, and SQL Server (2019 and higher) with a focus on architecture and implementation.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"> <h3>Intended Audience</h3>
 
@@ -112,7 +103,7 @@ This workshop uses SQL Server Management Studio, Azure Data Studio, Microsoft Az
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Solution Architects and Data Professionals tasked with implementing modern Data Systems, Big Data, Machine Learning and AI solutions</td></tr>
   <tr><td>Secondary Audience:</td><td> Security Architects, Developers, and Data Scientists</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 300</td></tr>
-  <tr><td>Type:</td><td>In-Person</td></tr>
+  <tr><td>Type:</td><td>In-Person or Self-Paced</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">8-9 hours</td></tr>
 
 </table>

@@ -34,7 +34,7 @@ The free account gives you twelve months of time, and a limited amount of resour
 
 - [Open this resource, and click the "Start Free" button you see there](https://azure.microsoft.com/en-us/free/)
 
-**NOTE: You can only use the Free subscription once, and it expires in 12 months. Set up your account per the instructions below, but ensure that you turn off any VM's in the Portal to ensure that you do not exceed the cost limits on this account. You will turn it off and on in the classroom per the instructor's directions.**
+**NOTE: You can only use the Free subscription once, and it expires in 12 months. Set up your account per the instructions below, but ensure that you "Stop" any VM's in the Portal to ensure that you do not exceed the cost limits on this account. You will turn it off and on in the classroom per the instructor's directions.**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Option 2 - Microsoft Developer Network Account (MSDN) Account</b></p>
 
@@ -50,7 +50,7 @@ You can also use your own account or one provided to you by your organization, b
 
 Your workshop invitation may have instructed you that they will provide a Microsoft Azure account for you to use. If so, you will receive instructions that it will be provided.
 
-**Unless you received explicit instructions in your workshop invitations, you much create either a free, MSDN or Personal account. You must have an account prior to the workshop.**
+**Unless you received explicit instructions in your workshop invitations, you must create either a free, MSDN or Personal account. You must have an account prior to the workshop.**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Set up your environment</b></p>
 
@@ -62,7 +62,7 @@ In order to complete this workshop you need to install the following software:
 
 3. Install Azure Data Studio June 2019 or higher from https://docs.microsoft.com/en-us/sql/azure-data-studio/download. T-SQL notebooks are used extensively in this course.
 
-4. [Install Docker for Windows CE](https://docs.docker.com/docker-for-windows/install/).
+4. [Install Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/).
 
 5. Download the WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
@@ -78,7 +78,6 @@ To complete this Workshop you will work from local files. You can either use the
 - If you have git installed, The workshop git repository is: https://github.com/microsoft/sqlworkshops.git  
     `git clone --config core.autocrlf=false https://github.com/microsoft/sqlworkshops.git`
 	
-- All the scripts and files in the labs are found in the **sql2019** folder.
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Set up your environment for Modules 4 and 5</b></p>
 
 > **Important Note!** If you are being provided an account by your instructor (see Option 4 in Activity 1), you do not need to complete this activity.  

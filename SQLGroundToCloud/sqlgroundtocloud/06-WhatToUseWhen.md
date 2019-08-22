@@ -8,9 +8,9 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> 06 - What to Use When: Designing a Solution </h2>
 
-In this workshop you'll cover using SQL Server both on-premises and in-cloud configurations, as well as hybrid applications as a solution for data processing. In each section you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic. The end of this module contains several helpful references you can use in this course and in production.
+In this workshop you have covered using SQL Server both on-premises and in-cloud configurations, as well as hybrid applications as a solution for data processing. The end of this Module contains several helpful references you can use in these exercises and in production.
 
-This module can be used stand-alone, and does not require any <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">prerequisite</a> other than a laptop and some sort of design software - although you may also just use a whiteboard or paper for your design. 
+This module can be used stand-alone, and does not require any <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">prerequisite</a> other than a laptop and some sort of design software (such as Microsoft Visio) - although you may also just use a whiteboard or paper for your design. 
 
 There are many elements in a single solution, and in this module you'll learn how to take the business scenario and determine the best resources and processes to use to satisfy the requirements while considering the constraints within the scenario. 
 
@@ -18,7 +18,7 @@ In production, there are normally 6 phases to create  a solution. These can be d
 
  - 01 **Discovery**: The original statement of the problem from the customer 
  - 02 **Envisioning**: A "blue-sky" description of what success in the project would look like. Often phrased as *"I can..."* statements
- - 03 **Architecture Design Session** (ADS): An initial layout of the technology options and choices for a preliminary solution
+ - 03 **Architecture Design Session**: An initial layout of the technology options and choices for a preliminary solution
  - 04 **Proof-Of-Concept** (POC): After the optimal solution technologies and processes are selected, a POC is set up with a small representative example of what a solution might look like, as much as possible. If available, a currently-running solution in a prallel example can be used
  - 05 **Implementation**: Implementing a phased-in rollout of the completed solution based on findings from the previous phases
  - 06 **Handoff**: A post-mortem on the project with a discussion of future enhancements
@@ -64,7 +64,7 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 - Cloud Integration
 - Increase Performance
 - Publish Product Catalog to the Web
-- Enable B2B systems
+- Enable Business-To-Business (B2B) systems
 
 <b>Project Constraints</b>
 
@@ -78,7 +78,7 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 
 **Contoso**
 
-[The Contoso company](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-overview) is a multi-national business with headquarters in Paris, France. It is a conglomerate manufacturing, sales, and support organization with over 100,000 products. They are embarking on a multi-year process of migrating from company-owned datacenters to a cloud provider. They have narrowed the list of potential vendors to three, including Microsoft. They have [high security](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-info-protect) and [interoperability with mobile device](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-mdm) concerns. 
+[The Contoso company](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-overview) is a multi-national business with headquarters in Paris, France. It is a conglomerate manufacturing, sales, and support organization with over 100,000 products. They are embarking on a multi-year process of migrating from company-owned datacenters to a cloud provider. They have narrowed the list of potential vendors to three, including Microsoft. They have [high security](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-info-protect) and [interoperability with mobile device](https://docs.microsoft.com/en-us/microsoft-365/enterprise/contoso-mdm) concerns. There is also an Open-Source (OSS) investigation at the company.
 
 
 <b>Project Goals</b>
@@ -87,6 +87,7 @@ Coming off a successful fiscal year, Adventure Works Cycles is looking to broade
 - Multi-Cloud strategy desired - standards-based
 - All client apps should be available worldwide
 - Server-side should be API's by default
+- Interest in parity for platforms (OSS Support)
 
 <b>Project Constraints</b>
 
