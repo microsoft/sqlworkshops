@@ -13,7 +13,7 @@ SQL Server 2019 includes new capabilities designed to enhance your performance w
 - Intelligent Query Processing
 - Lightweight Query Profiling
 - Sequential Key Insert Performance
-- In-Memory Databases
+- In-Memory Database
     - Hybrid Buffer Pool
     - Memory Optimized Tempdb Metadata
     - Persistent Memory Support
