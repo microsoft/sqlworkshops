@@ -95,6 +95,8 @@ SELF-PACED USERS ONLY: If you are using this module self-paced, read and go thro
 
 Proceed directly to the following Activities from **Module SQL Server 2019 Mission Critical Availability of the SQL Server 2019 Lab** for a hands-on exercise about Accelerated Database Recovery. It is recommended to open these links in a new tab with your browser. When are you done with these activities come back here for the next section as guided by your instructor.
 
+> **NOTE**: For instructor led courses, your instructor will let you know whether you should go through the Bonus Activity.
+
 <dl>
 
   <dt><a href="https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/03_Availability.md#activityadr">Activity: Accelerated Database Recovery</a></dt>
