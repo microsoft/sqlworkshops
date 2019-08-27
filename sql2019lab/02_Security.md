@@ -340,6 +340,8 @@ Your results should look like the following:
 
 The first row is a record that the audit has started. The second row is an audit of the SELECT statement. The data_sensitivity_information column contains an XML record of the label and information_type values associated with columns that have data classifications. This includes the information to look up what columns are affected through the **sys.sensitivity_columns** catalog view.
 
+Keep the **checkaudit.sql** query tab available in SSMS as you will use it again over the next several steps.
+
 **STEP 5: SELECT one column from the table**
 
 Use the script **findpeopleonecolumn.sql** to query only one column that is marked for classification.

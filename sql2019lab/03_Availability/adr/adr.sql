@@ -1,4 +1,5 @@
 -- Step 1: Setup the database
+-- Depending on the speed of your server, creating the database and data could take several minutes.
 -- Note: *For Linux installations the default path to use is /var/opt/mssql
 USE master
 GO
