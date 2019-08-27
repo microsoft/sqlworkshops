@@ -108,7 +108,9 @@ To run the solution, simple type the following from the command line (you must b
 
 `docker-compose up`
 
-When you run this you will see alot of information scroll by on the command line. Since docker containers run sqlservr from the command line, part of the output is the ERRORLOG from each server startup being written to stdout.
+When you run this you will see alot of information scroll by on the command line. If the docker images for the lab have not been pulled it will take a few minutes for docker to pull them into local storage.
+
+Since docker containers run sqlservr from the command line, part of the output is the ERRORLOG from each server startup being written to stdout.
 
 If you are using Docker for Windows, you may also see the following firewall pop-up from Windows Defender if you are running this lab on Windows. Please click Allow Access. vpnkit is a gateway used by Docker on Windows to communicate with the VM hosting Linux containers.
 
@@ -116,7 +118,7 @@ If you are using Docker for Windows, you may also see the following firewall pop
 
 You will also see output of the db-init.sql execution mostly from the db1 directory. If you have not previously pulled the images for SQL Server 2019 for RHEL, that will be done first and you will see that output.
 
-The replication solution should be ready to go when you see this output from the command line
+The replication solution should be ready to go when you see this output from the command line. It may take a few minutes to see this as the containers are pausing for enough time for SQL Server to startup.
 
 <pre>db1    | Creating Snapshot...
 db1    | Job 'db1-Sales-SnapshotRepl-DB2-1' started successfully.</pre>
