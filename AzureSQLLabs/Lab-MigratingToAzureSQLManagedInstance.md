@@ -336,7 +336,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     - *Source SQL Server instance name*: Enter the Public IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, **13.66.228.107**  
     > **Note**:  
-    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your SQL Server VM's IP address.
+    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your SQL Server VM's Public IP address.
     - *User Name*: Enter **WorkshopUser**
     - *Password*: Enter your password
     - *Connection properties*: Check both **Encrypt connection** and **Trust server certificate**
@@ -591,7 +591,7 @@ git clone https://github.com/microsoft/sqlworkshops.git
 11. Select **Sign in** and enter your Azure account credentials when prompted:
 
 > **Note**:  
-> If you're doing this lab as part of a workshop and were provided an environment to use, please use the Azure account credentials provided to you.
+> If you're doing this lab as part of a workshop and were provided an environment to use, please use the Azure account credentials provided to you. If you are not prompted, you can skip to the next step for now.  
 
 ![On the Visual Studio welcome screen, the Sign in button is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/visual-studio-sign-in.png?raw=true) 
 
