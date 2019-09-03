@@ -627,7 +627,10 @@ git clone https://github.com/microsoft/sqlworkshops.git
 
 17. Stop the application by closing the browser.  
 
-18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing the SQL 2008 VM IP with the fully qualified domain name for your MI (something like `sqlmi.fdsor39943LabExercise-234j3oj4.database.windows.net`). Then, replace `WorkshopUser` with `sqlmiuser`.   
+18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing `Server=tcp:<your-sql-2008-vm-public-ip>,1433;` with the fully qualified domain name for your MI (something like `Server=sqlmi-SUFFIX.fdsor39943234j3oj4.database.windows.net;`). Then, replace `WorkshopUser` with `sqlmiuser`, as that's how you log into your SQL MI.   
+
+> **Note**:  
+> If your passwords for `WorkshopUser` and `sqlmiuser` are different, don't forget to update to the correct password as well.  
 
 19. Save the file:
 
