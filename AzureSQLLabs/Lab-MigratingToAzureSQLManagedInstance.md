@@ -539,7 +539,8 @@ In this activity, you will create an RDP connection to the JumpBox VM, and then 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-
+> **Note**:  
+> If you were provided an environment for this lab, you may already be in the JumpBox VM. If you are, you can **skip to step 9**.
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** in the *Azure navigation pane*, and select the **hands-on-lab-SUFFIX** resource group from the list:
 
     ![Resource groups is selected in the Azure navigation pane and the "hands-on-lab-SUFFIX" resource group is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/resource-groups.png?raw=true "Resource groups list")
@@ -603,10 +604,12 @@ git clone https://github.com/microsoft/sqlworkshops.git
 
 ```c
 "ConnectionStrings": {
-    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=Workshopuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
-    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
+    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-public-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
+    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-public-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
   }
-```
+```  
+> **Note**:  
+> Use the same login "WorkshopUser" and password from previous activities.  
 
 14. Save the file: 
  
