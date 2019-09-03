@@ -495,6 +495,8 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
 2. In the *Connect to Server* dialog, enter the following:
 
     - *Server name*: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task
+    > **Note:**  
+    > If you were provided an environment for this lab, the fully qualified domain name (also referenced as "MiFQDN" or "FQDN") has been provided to you in your environment details.  
     - *Authentication*: Select **SQL Server Authentication**
     - *Login*: Enter **sqlmiuser**
     - *Password*: Enter your password
