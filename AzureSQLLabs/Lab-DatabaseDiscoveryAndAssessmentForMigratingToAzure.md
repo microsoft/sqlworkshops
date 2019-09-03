@@ -72,8 +72,9 @@ In this activity, you'll set up Azure Migrate, and explore some of the new integ
     ![Azure Migrate project.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/azure-migrate-add-project.png?raw=true "Azure Migrate")  
     > **Note**:  
     > for region, select the one closest to you. The geography specified for the project is only used to store the metadata gathered from on-premises VMs. You can select any target region for the actual migration.
-5. For assessment tools, select **Azure Migrate: Database Assessment**, then select **Add tool**.  
-6. For migration tools, select **Azure Migrate: Database Migration**, and then select **Add tool**. Azure Migrate is now set up for you to use. In the next activity, you'll use some of the tools you added to assess and migrate Tailspin Toys to Azure.  
+5. For assessment tools, select **Azure Migrate: Database Assessment**, then select **Next**.  
+6. For migration tools, select **Azure Migrate: Database Migration**, and then select **Next**.  
+7. Finally, select **Add tool(s)**. Azure Migrate is now set up for you to use. In the next activity, you'll use some of the tools you added to assess and migrate Tailspin Toys to Azure.  
 
 <p><h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><a name="Activity-2">Activity 2: Restore TailspinToys on the SQLServer2008 VM</h2></p></a>
 
