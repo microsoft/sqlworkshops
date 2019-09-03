@@ -88,9 +88,12 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
 <h3><p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true">Steps</h3></p>
 
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your **SqlServer2008** VM by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the **SqlServer2008** VM from the list of resources. On the SqlServer2008 Virtual Machine's *Overview* blade, select **Connect** on the top menu.
+1. In the [Azure portal](https://portal.azure.com), navigate to your **SqlServer2008** VM by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the **SqlServer2008** VM from the list of resources. On the SqlServer2008 Virtual Machine's *Overview* blade, select **Connect** on the top menu.  
 
-    ![The SqlServer2008 VM blade is displayed, with the **Connect** button highlighted in the top menu.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/connect-sqlserver2008.png?raw=true "Connect to SqlServer2008 VM")
+> **Note:**  
+> If you were provided with an environment for these labs, the "SUFFIX" part of the **hands-on-lab-SUFFIX** will be used in several portions of the lab. You should note this value from the credentials provided. Any time "SUFFIX" is referenced, use this number. **Do not use other "SUFFIX" values or you will disrupt another attendees' environment.**   
+
+![The SqlServer2008 VM blade is displayed, with the **Connect** button highlighted in the top menu.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/connect-sqlserver2008.png?raw=true "Connect to SqlServer2008 VM")
 
 2. On the *Connect to virtual machine* blade, select **Download RDP File**, then open the downloaded RDP file.
 
@@ -231,7 +234,8 @@ In this task, you will use the *Microsoft Data Migration Assistant* (DMA) to per
 3. In the *New project* pane, set the following:
 
     - *Project type*: Select **Assessment**
-    - *Project name*: Enter **ToAzureSqlDb**
+    - *Project name*: Enter **ToAzureSqlDb**  
+    - *Assessment type*: Select **Database Engine**
     - *Source server type*: Select **SQL Server**
     - *Target server type*: Select **Azure SQL Database**
 
@@ -302,7 +306,8 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 2. In the *New project* pane, set the following:
 
     - *Project type*: Select **Assessment**
-    - *Project name*: Enter **ToSqlMi**
+    - *Project name*: Enter **ToSqlMi**  
+    - *Assessment type*: Select **Database Engine**
     - *Source server type*: Select **SQL Server**
     - *Target server type*: Select **Azure SQL Database Managed Instance**
 
