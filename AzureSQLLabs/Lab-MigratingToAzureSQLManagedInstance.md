@@ -175,7 +175,7 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
     ![The Browse button is highlighted in the Select Backup Destination dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-select-backup-destination.png?raw=true "Select Backup Destination")
 
-7. In the *Locate Database Files* dialog, select the `C:\dma-backups` folder, enter **TailspinToys.bak** into the *File name* field, and then select **OK**:
+7. In the *Locate Database Files* dialog, select the `C:\dms-backups` folder, enter **TailspinToys.bak** into the *File name* field, and then select **OK**:
 
     ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-locate-database-files.png?raw=true "Location Database Files")
 
@@ -396,7 +396,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     ![On the Migration job blade, the Refresh button is highlighted, and a status of Full backup uploading is displayed and highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-status-running.png?raw=true "Migration status")
 
-16. Continue selecting **Refresh** every 5-10 seconds, until you see the status change to **Log files uploading**. When that status appears, move on to the next task:
+16. Continue selecting **Refresh** every 5-10 seconds, until you see the status change to **Log files uploading** or **Log Shipping in progress** (when the log files are done uploading, it changes to **Log Shipping in progress**, but you don't need to wait for that to happen). When either status appears, move on to the next task:
 
     ![In the migration monitoring window, a status of Log files uploading is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-status-log-files-uploading.png?raw=true "Migration status")
 
@@ -473,7 +473,7 @@ Since you performed the migration as an "online data migration," the migration w
     ![A status of Completed is displayed in the Complete cutover dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-complete-cutover-completed.png?raw=true "Migration Wizard")  
 
     > **Note**:  
-    > This will take between 10-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress is delayed, you can select **Refresh** to update manually.  
+    > This will take between 10-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress bar is delayed, select **Refresh** from the panel to the left (don't worry, it won't close your cutover) to update manually, every ~5 minutes.  
 
 14. Close the *Complete cutover* dialog by selecting the **X** in the upper right corner of the dialog, and do the same thing for the *TailspinToys* blade. This will return you to the *TailspinToysMigration* blade. Select **Refresh**, and you should see a status of *Completed* from the *TailspinToys* database.
 
