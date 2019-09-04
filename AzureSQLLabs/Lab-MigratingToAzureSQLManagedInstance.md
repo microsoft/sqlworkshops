@@ -317,9 +317,11 @@ In this task, you will create a new online data migration project in DMS for the
 > **Note:**  
 > If you were provided with an environment for these labs, the "SUFFIX" part of the **hands-on-lab-SUFFIX** will be used in several portions of the lab. You should note this value from the credentials provided. Any time "SUFFIX" is referenced, use this number. **Do not use other "SUFFIX" values or you will disrupt another attendees' environment.**  
 
-2. On the *Azure Database Migration Service* blade, select **+New Migration Project**:
+2. On the *Azure Database Migration Service* blade, select **+New Migration Project**:  
+> **Note**:  
+> If you were provided an environment for this lab, your Database Migration Service may be paused due to inactivity. You can select **Start Service** to start it, if you get the message "The service is currently unavailable for migration."  
 
-    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-add-new-migration-project.png?raw=true "Azure Database Migration Service New Project")
+![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-add-new-migration-project.png?raw=true "Azure Database Migration Service New Project")
 
 3. On the New migration project blade, enter the following:
 
@@ -870,7 +872,7 @@ In this task, you will enable Read Scale-Out for the `TailspinToys` database, us
 4. The `TailspinToysReadOnlyContext` connection string should now look something like the following:
 
    ```sql
-   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394cLabExercise-database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
+   Server=sqlmi-SUFFIX.15b8611394c.database.windows.net;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```  
 
 
