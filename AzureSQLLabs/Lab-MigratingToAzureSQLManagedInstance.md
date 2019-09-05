@@ -57,9 +57,12 @@ In this task, you will create a new [SMB network share](https://docs.microsoft.c
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your *SqlServer2008* VM by selecting **Resource groups** from the *left-hand navigation menu*, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the **SqlServer2008** VM from the list of resources. On the SqlServer2008 Virtual Machine's *Overview* blade, select **Connect** on the top menu:
+1. In the [Azure portal](https://portal.azure.com), navigate to your *SqlServer2008* VM by selecting **Resource groups** from the *left-hand navigation menu*, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the **SqlServer2008** VM from the list of resources. On the SqlServer2008 Virtual Machine's *Overview* blade, select **Connect** on the top menu:  
 
-    ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/connect-sqlserver2008.png?raw=true "Connect to SqlServer2008 VM")
+> **Note:**  
+> If you were provided with an environment for these labs, the "SUFFIX" part of the **hands-on-lab-SUFFIX** will be used in several portions of the lab. You should note this value from the credentials provided. Any time "SUFFIX" is referenced, use this number. **Do not use other "SUFFIX" values or you will disrupt another attendees' environment.**  
+
+![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/connect-sqlserver2008.png?raw=true "Connect to SqlServer2008 VM")
 
 2. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
 
@@ -172,7 +175,7 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
     ![The Browse button is highlighted in the Select Backup Destination dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-select-backup-destination.png?raw=true "Select Backup Destination")
 
-7. In the *Locate Database Files* dialog, select the `C:\dma-backups` folder, enter **TailspinToys.bak** into the *File name* field, and then select **OK**:
+7. In the *Locate Database Files* dialog, select the `C:\dms-backups` folder, enter **TailspinToys.bak** into the *File name* field, and then select **OK**:
 
     ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/ssms-locate-database-files.png?raw=true "Location Database Files")
 
@@ -220,7 +223,7 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
     ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/cloud-shell-ps-azure-prompt.png?raw=true "Azure Cloud Shell")
 
-5. At the prompt, you will retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing SUFFIX** with your unique identifier:
+5. At the prompt, you will retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing SUFFIX** with your unique identifier or specfic "SUFFIX" assigned to you for the labs:
 
     ```powershell
     az sql mi list --resource-group hands-on-lab-SUFFIX
@@ -230,7 +233,7 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
     ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/cloud-shell-az-sql-mi-list-output.png?raw=true "Azure Cloud Shell")
 
-7. Next, you will enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which you will use to connect to the database on that server. Enter the following PowerShell command, **replacing SUFFIX** with your unique identifier:
+7. Next, you will enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which you will use to connect to the database on that server. Enter the following PowerShell command, **replacing SUFFIX** with your unique identifier or specfic "SUFFIX" assigned to you for the labs:
 
     ```powershell
     az vm list-ip-addresses -g hands-on-lab-SUFFIX -n SqlServer2008
@@ -291,6 +294,7 @@ In this task, you will use the Azure Cloud Shell to create an Azure Active Direc
 
 6. To verify the role assignment, select **Access control (IAM)** from the left-hand menu of the *hands-on-lab-SUFFIX* resource group blade, and then select the **Role assignments** tab and locate *tailspin-toys* under the *OWNER* role.
 
+
     ![The Role assignments tab is displayed, with tailspin-toys highlighted under OWNER in the list.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/rg-hands-on-lab-role-assignments.png?raw=true "Role assignments")
 
 7. Next, you will issue another command to grant the *CONTRIBUTOR* role at the subscription level to the newly created service principal. At the *Cloud Shell* prompt, run the following command:
@@ -310,9 +314,14 @@ In this task, you will create a new online data migration project in DMS for the
 
     ![The tailspin-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/resource-group-dms-resource.png?raw=true "Resources")
 
-2. On the *Azure Database Migration Service* blade, select **+New Migration Project**:
+> **Note:**  
+> If you were provided with an environment for these labs, the "SUFFIX" part of the **hands-on-lab-SUFFIX** will be used in several portions of the lab. You should note this value from the credentials provided. Any time "SUFFIX" is referenced, use this number. **Do not use other "SUFFIX" values or you will disrupt another attendees' environment.**  
 
-    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-add-new-migration-project.png?raw=true "Azure Database Migration Service New Project")
+2. On the *Azure Database Migration Service* blade, select **+New Migration Project**:  
+> **Note**:  
+> If you were provided an environment for this lab, your Database Migration Service may be paused due to inactivity. You can select **Start Service** to start it, if you get the message "The service is currently unavailable for migration."  
+
+![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-add-new-migration-project.png?raw=true "Azure Database Migration Service New Project")
 
 3. On the New migration project blade, enter the following:
 
@@ -327,12 +336,12 @@ In this task, you will create a new online data migration project in DMS for the
 
 5.  On the Migration Wizard **Select source** blade, enter the following:
 
-    - *Source SQL Server instance name*: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, **13.66.228.107**  
+    - *Source SQL Server instance name*: Enter the Public IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, **13.66.228.107**  
     > **Note**:  
-    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your SQL Server VM's IP address.
+    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your SQL Server VM's Public IP address.
     - *User Name*: Enter **WorkshopUser**
     - *Password*: Enter your password
-    - *Connection properties**: Check both **Encrypt connection** and **Trust server certificate**
+    - *Connection properties*: Check both **Encrypt connection** and **Trust server certificate**
 
     > **Note**:  
     > The Password should be consistent among all labs. Your instructor will provide the password if you are taking this Lab in person.  
@@ -346,10 +355,12 @@ In this task, you will create a new online data migration project in DMS for the
     - *Application ID*: Enter the `appId` value from the output of the `az ad sp create-for-rbac' command you executed in the last task
     - *Key*: Enter the `password` value from the output of the `az ad sp create-for-rbac' command you executed in the last task
     > **Note**:  
-    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain your application ID and key.
+    > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain the Application ID and Application secret key.
     <!-- TODO Add guidance on how to do this -->
     - *Subscription*: Select the subscription you are using for this hand-on lab
-    - *Target Azure SQL Managed Instance*: Select the **sqlmi-UNIQUEID** instance
+    - *Target Azure SQL Managed Instance*: Select the **sqlmi-SUFFIX** instance
+    > **Note**:  
+    > If you're doing this lab as part of a workshop and were provided an environment to use, the "SUFFIX" should be the same as the "SUFFIX" for your Resource Group. **Do not use other "SUFFIX" values or you will disrupt another attendees' environment.**  
     - *SQL Username*: Enter **sqlmiuser**
     - *Password*: Enter your password
 
@@ -369,7 +380,7 @@ In this task, you will create a new online data migration project in DMS for the
     - *Windows User Azure Database Migration Service impersonates to upload files to Azure Storage*: Enter **SQLSERVER2008\sqlmiuser**
     - *Password*: Enter your password
     - *Subscription containing storage account*: Select the subscription you are using for this hands-on lab
-    - *Storage account*: Select the **sqlmistoreUNIQUEID** storage account
+    - *Storage account*: Select the **sqlmistoreUNIQUEID** storage account from the drop-down
 
     ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-configure-migration-settings.png?raw=true "Migration Wizard Configure migration settings")
 
@@ -387,7 +398,7 @@ In this task, you will create a new online data migration project in DMS for the
 
     ![On the Migration job blade, the Refresh button is highlighted, and a status of Full backup uploading is displayed and highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-status-running.png?raw=true "Migration status")
 
-16. Continue selecting **Refresh** every 5-10 seconds, until you see the status change to **Log files uploading**. When that status appears, move on to the next task:
+16. Continue selecting **Refresh** every 5-10 seconds, until you see the status change to **Log files uploading** or **Log Shipping in progress** (when the log files are done uploading, it changes to **Log Shipping in progress**, but you don't need to wait for that to happen). When either status appears, move on to the next task:
 
     ![In the migration monitoring window, a status of Log files uploading is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-status-log-files-uploading.png?raw=true "Migration status")
 
@@ -464,7 +475,7 @@ Since you performed the migration as an "online data migration," the migration w
     ![A status of Completed is displayed in the Complete cutover dialog.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/dms-migration-wizard-complete-cutover-completed.png?raw=true "Migration Wizard")  
 
     > **Note**:  
-    > This will take between 10-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress is delayed, you can select **Refresh** to update manually.  
+    > This will take between 10-30 minutes, so it might be a good time to take a break, or to review what you've done so far. Sometimes the progress bar is delayed, select **Refresh** from the panel to the left (don't worry, it won't close your cutover) to update manually, every ~5 minutes.  
 
 14. Close the *Complete cutover* dialog by selecting the **X** in the upper right corner of the dialog, and do the same thing for the *TailspinToys* blade. This will return you to the *TailspinToysMigration* blade. Select **Refresh**, and you should see a status of *Completed* from the *TailspinToys* database.
 
@@ -486,6 +497,8 @@ In this task, you will connect to the SQL MI database using SSMS, and quickly ve
 2. In the *Connect to Server* dialog, enter the following:
 
     - *Server name*: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task
+    > **Note:**  
+    > If you were provided an environment for this lab, the fully qualified domain name (also referenced as "MiFQDN" or "FQDN") has been provided to you in your environment details.  
     - *Authentication*: Select **SQL Server Authentication**
     - *Login*: Enter **sqlmiuser**
     - *Password*: Enter your password
@@ -528,7 +541,8 @@ In this activity, you will create an RDP connection to the JumpBox VM, and then 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-
+> **Note**:  
+> If you were provided an environment for this lab, you may already be in the JumpBox VM. If you are, you can **skip to step 9**.
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** in the *Azure navigation pane*, and select the **hands-on-lab-SUFFIX** resource group from the list:
 
     ![Resource groups is selected in the Azure navigation pane and the "hands-on-lab-SUFFIX" resource group is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/resource-groups.png?raw=true "Resource groups list")
@@ -579,7 +593,7 @@ git clone https://github.com/microsoft/sqlworkshops.git
 11. Select **Sign in** and enter your Azure account credentials when prompted:
 
 > **Note**:  
-> If you're doing this lab as part of a workshop and were provided an environment to use, please use the Azure account credentials provided to you.
+> If you're doing this lab as part of a workshop and were provided an environment to use, please use the Azure account credentials provided to you. If you are not prompted, you can skip to the next step for now.  
 
 ![On the Visual Studio welcome screen, the Sign in button is highlighted.](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLLabs/graphics/visual-studio-sign-in.png?raw=true) 
 
@@ -592,10 +606,12 @@ git clone https://github.com/microsoft/sqlworkshops.git
 
 ```c
 "ConnectionStrings": {
-    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=Workshopuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
-    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
+    "TailspinToysContext": "Server=tcp:<your-sql-2008-vm-public-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
+    "TailspinToysReadOnlyContext": "Server=tcp:<your-sql-2008-vm-public-ip>,1433;Database=TailspinToys;User ID=WorkshopUser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;"
   }
-```
+```  
+> **Note**:  
+> Use the same login "WorkshopUser" and password from previous activities.  
 
 14. Save the file: 
  
@@ -613,7 +629,10 @@ git clone https://github.com/microsoft/sqlworkshops.git
 
 17. Stop the application by closing the browser.  
 
-18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing the SQL 2008 VM IP with the fully qualified domain name for your MI (something like `sqlmi.fdsor39943LabExercise-234j3oj4.database.windows.net`). Then, replace `WorkshopUser` with `sqlmiuser`.   
+18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing `Server=tcp:<your-sql-2008-vm-public-ip>,1433;` with the fully qualified domain name for your MI (something like `Server=sqlmi-SUFFIX.fdsor39943234j3oj4.database.windows.net;`). Then, replace `WorkshopUser` with `sqlmiuser`, as that's how you log into your SQL MI.   
+
+> **Note**:  
+> If your passwords for `WorkshopUser` and `sqlmiuser` are different, don't forget to update to the correct password as well.  
 
 19. Save the file:
 
@@ -853,7 +872,7 @@ In this task, you will enable Read Scale-Out for the `TailspinToys` database, us
 4. The `TailspinToysReadOnlyContext` connection string should now look something like the following:
 
    ```sql
-   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394cLabExercise-database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
+   Server=sqlmi-SUFFIX.15b8611394c.database.windows.net;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```  
 
 
