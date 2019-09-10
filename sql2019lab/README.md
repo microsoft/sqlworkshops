@@ -1,7 +1,7 @@
 
 ![](graphics/microsoftlogo.png)
 
-# Lab: SQL Server 2019
+# Lab: SQL Server 2019 (RC)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
