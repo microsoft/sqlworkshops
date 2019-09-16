@@ -69,6 +69,7 @@ In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Az
 - Ensuring data is highly available
 - Reducing costs of expensive data movement applications
 - Choosing different platforms for SQL Server and taking advantage of containerized applications.
+- Learning tools and techniques to modernize and migrate to SQL Server 2019
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -83,7 +84,7 @@ In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Az
   <tr><td><i>Intelligent Query Processing</i></td><td>Automated query processing enhancements in SQL Server 2019</td></tr>
  <tr><td><i>Query Store</i></td><td>Built-in query performance execution statistics stored in a user database</td></tr>
  <tr><td><i>Data Classification</i></td><td>Built-in data information classification with SQL Server with auditing</td></tr>
-<tr><td><i>Accelerated Database Recovery</i></td><td>Constant Time Recovery, fast rollback, and aggressive transaction log truncation</td></tr>
+<tr><td><i>Accelerated Database Recovery</i></td><td>Turbocharged Recovery, fast rollback, and aggressive transaction log truncation</td></tr>
 <tr><td><i>Polybase</i></td><td>Data Virtualization through external tables</td></tr>
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
   <tr><td><i>Docker</i></td><td>Engine for running and manage containers</td></tr>
@@ -139,7 +140,7 @@ This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Stu
   <tr><td>Secondary Audience:</td><td> Developers, Architects, and IT Pros</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 300</td></tr>
   <tr><td>Type:</td><td>Self-Paced or Instructor Led</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">1-2 hours (self-paced) 4 hours (Instructor Led)</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">1-2 hours (self-paced) 2-4 hours (Instructor Led)</td></tr>
 
 </table>
 
