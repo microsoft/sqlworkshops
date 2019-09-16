@@ -30,11 +30,11 @@ SQL Server 2019 provides many new capabilities including:
 
 In this course you will learn some of the concepts and how to solve modern data challenges using a hands-on lab approach.
 
-This course is intended to be taken as a self-paced lab in 1 to 2 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects. Supplement slide decks are available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder.
+This course is intended to be taken as a self-paced lab in 2 to 4 hours but can be instructor-led to broaden the discussion or go deeper into specific subjects. A supplement slide deck is available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder.
 
 This course is designed for data professionals who have a basic working knowledge of SQL Server and the T-SQL language.
 
-This **README.MD** file explains how the workshop is structured, what you will learn, and the technologies you will use in this solution.
+This **README.MD** file explains how the lab is structured, what you will learn, and the technologies you will use in this solution.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -47,6 +47,7 @@ When you complete this course, you will be able to:
 - Understand and use **Accelerated Database Recovery** to increase database availability.
 - Understand and use **Polybase** to connect and query other data sources with no data movement.
 - Understand and use **Docker containers** to deploy **SQL Server Replication on Linux**.
+- Learn more about **additional capabilities** of SQL Server 2019, **Migration** tools, and **Database Compatibility**.
 
 As part of taking this lab you are also learning about new capabilities in **Azure SQL Database**.
 
@@ -111,17 +112,18 @@ Each module of this workshop can be studied and used independently of each other
 
 In order to complete this workshop you need to install the following software:
 
-- SQL Server 2019 CTP 3.2 or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
+- SQL Server 2019 Release Candidate or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
     - For **Modules 1, 2, and 3** you only need the database engine installed
-    - **Module 3** requires disk space to hold a database with a 10Gb data and 10Gb log file.
+    - **Module 3** requires disk space to hold a database with a 10Gb data and 10Gb or 40Gb log file.
     - **Module 4** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.)
+    - **Docker is required only for Module 5**. You can use Docker for Windows, Linux, or MacOS.
 - Install SQL Server Management Studio (SSMS) 18.2 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
 - Install Azure Data Studio June 2019 or higher from https://docs.microsoft.com/en-us/sql/azure-data-studio/download. T-SQL notebooks are used extensively in this course.
-- **Docker is required only for Module 5**. You can use Docker for Windows, Linux, or MacOS.
+
 - The WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 - Access to an **Azure SQL Database** is required for **Module 4**.
 
-This workshop was built and designed for a server or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. You may be able to run this lab with less compute resources.
+This workshop was built and designed for a computer or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. You may be able to run this lab with less compute resources.
 
 > **NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 5, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
 
@@ -145,7 +147,6 @@ This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Stu
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"><b>     Related Workshops</b></h2>
 
-- [Modernize your Database with SQL Server 2019](https://github.com/Microsoft/sqlworkshops/tree/master/ModernizeYourDatabases2019)
 - [SQL Server Big Data Clusters Architecture](https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 - [SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops/tree/master/SQLonOpenShift)
 
@@ -164,7 +165,9 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
   <tr><td style="background-color: AliceBlue; color: black;"><a href="./02_Security.md" target="_blank">02 - Security</a> </td><td td style="background-color: AliceBlue; color: black;"> Learn new security features of SQL Server 2019 such as Data Classification and Auditing</td></tr>
   <tr><td><a href="./03_Availability.md" target="_blank">03 - Availability</a></td><td> Learn new capabilities to make your SQL Server more available such as Accelerated Database Recovery</td></tr>
   <tr><td style="background-color: AliceBlue; color: black;"><a href="./04_DataVirtualization.md" target="_blank">04 - Data Virtualization</a> </td><td td style="background-color: AliceBlue; color: black;">Learn how to use SQL Server as a data hub and reduce data movement using Polybase++ </td></tr> 
-  <tr><td><a href="./05_Linux_and_Containers.md" target="_blank">04 - Linux and Containers</a></td><td>Learn how to use Docker containers to deploy SQL Server Replication on Linux.</td></tr>
+  <tr><td><a href="./05_Linux_and_Containers.md" target="_blank">05 - Linux and Containers</a></td><td>Learn how to use Docker containers to deploy SQL Server Replication on Linux.</td></tr>
+  <tr></tr>
+  <tr><td><a href="./06_Additional_Migration.md" target="_blank">06 - Additional Capabilities,  Migration, and Next Steps</a></td><td>Learn more about Additional Capabilities in SQL Server 2019, Migration Tools, Database Compatibility, and Next Steps</td></tr>
   <tr></tr>
   <tr></tr>
 </table>

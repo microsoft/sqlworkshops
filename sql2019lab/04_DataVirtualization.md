@@ -19,7 +19,7 @@ In addition for SQL Server 2019 on Windows, Polybase now supports the ability to
 
 SQL Server 2019 Polybase still supports connectivity to Hadoop systems as it did in SQL Server 2016 and 2017. In addition. SQL Server 2019 **Big Data Clusters** provide an integrated data virtualization solution in a Kubernetes cluster.
 
-You'll cover the following topics in this Module:
+You will cover the following topics in this Module:
 
 <dl>
 

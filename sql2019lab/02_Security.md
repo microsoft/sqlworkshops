@@ -18,7 +18,7 @@ SQL Server 2019 has new security enhancements including:
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
 
-You'll cover the following topics in this Module:
+You will cover the following topics in this Module:
 
 <dl>
 
