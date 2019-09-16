@@ -19,13 +19,13 @@ The WideWorldImporters company has been evaluating upgrading several SQL Server 
 - The database team at WideWorldImporters has evaluated SQL Server on Linux but SQL Server 2017 didn't include Replication, a feature they need for their application. They would like to evaluate how SQL Server Replication on Linux works. They also want to understand more about container technology and how it can be used with SQL Server.
 - WideWorldImporters is also evaluating Azure SQL so wants to know what features in SQL Server 2019 also work in Azure.
 
-In this workshop, you will see the capabilities in SQL Server 2019 that can provide solutions for these challenges. To complete this module, use the SQL Server 2019 Lab at https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md.
+In this workshop, you will see the capabilities in SQL Server 2019 that can provide solutions for these challenges. To complete this module, use the **SQL Server 2019 Lab** at https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md.
 
 > **NOTE**: <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">Make sure you check out the <b>prerequisite</b> page before you start.</a>. You'll need all of the items loaded there before you can proceed with the workshop. Instructor led workshops may have provided all the resources in the prerequisites.
 
 Instructor led workshops will use modules from the SQL Server 2019 lab along with the PowerPoint slides <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>. Instructor led labs may not go through all modules in the SQL Server 2019 lab.
 
-When you are done with the SQL Server 2019 lab you have completed Module 02 of the SQL Server Ground to Cloud Workshop. Proceed to the next module using the link in Next Steps below.
+When you are done with the SQL Server 2019 lab you have completed Module 02 of the SQL Server Ground to Cloud Workshop! Proceed to the next module using the link in Next Steps below.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
