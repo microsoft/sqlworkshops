@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Big Data Clusters for SQL Server - Architecture (CTP 3.2)
+# Workshop: SQL Server Big Data Clusters - Architecture (CTP 3.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -327,7 +327,7 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 
 You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Kubernetes here</a>. We're using the Azure Kubernetes Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great tutorial here</a>.
 
-In Big Data Clusters for SQL Server, Kubernetes is responsible for the state of the BDC; Kubernetes builds and configures the cluster Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage) and manages the operation of the cluster.
+In SQL Server Big Data Clusters, Kubernetes is responsible for the state of the BDC; Kubernetes builds and configures the cluster Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage) and manages the operation of the cluster.
 
 (You'll cover the storage aspects of Kubernetes clusters in more detail in a moment.)
 

@@ -1,6 +1,6 @@
 ![](graphics/microsoftlogo.png)
 
-# Workshop: Big Data Clusters for SQL Server - Architecture (CTP 3.2)
+# Workshop: SQL Server Big Data Clusters - Architecture (CTP 3.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -21,7 +21,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/textbubble.png"> <h2><a name="about">About this Workshop</a></h2>
 
-Welcome to this Microsoft solutions workshop on the architecture on *Big Data Clusters for SQL Server*. In this workshop, you'll learn how Big Data Clusters for SQL Server (BDC) implements large-scale data processing and machine learning, and how to select and plan for the proper architecture to enable machine learning to train your models using Python, R, Java or SparkML to operationalize these models, and how to deploy your intelligent apps side-by-side with their data.
+Welcome to this Microsoft solutions workshop on the architecture on *SQL Server Big Data Clusters*. In this workshop, you'll learn how SQL Server Big Data Clusters (BDC) implements large-scale data processing and machine learning, and how to select and plan for the proper architecture to enable machine learning to train your models using Python, R, Java or SparkML to operationalize these models, and how to deploy your intelligent apps side-by-side with their data.
 
 The focus of this workshop is to understand how to deploy an on-premise, hybrid or local environment of a big data cluster, and understand the components of the big data solution architecture.
 

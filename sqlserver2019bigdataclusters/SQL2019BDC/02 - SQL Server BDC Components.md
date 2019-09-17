@@ -1,14 +1,14 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: Big Data Clusters for SQL Server - Architecture (CTP 3.2)
+# Workshop: SQL Server Big Data Clusters - Architecture (CTP 3.2)
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h1>Big Data Clusters for SQL Server Components</h1>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h1>SQL Server Big Data Clusters Components</h1>
 
-In this workshop you'll cover using a Process and various Platform components to create a Big Data Clusters for SQL Server (BDC) solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
+In this workshop you'll cover using a Process and various Platform components to create a SQL Server Big Data Clusters (BDC) solution you can deploy on premises, in the cloud, or in a hybrid architecture. In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
 (<a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">Make sure you check out the <b>prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
@@ -30,7 +30,7 @@ SQL Server (starting with version 2019) provides three ways to work with large s
 
  - **Data Virtualization**: Query multiple sources of data technologies using the Polybase SQL Server feature <i>(data left at source)</i>
  - **Storage Pools**: Create sets of disparate data sources that can be queried from Distributed Data sets <i>(data ingested into sharded databases using PolyBase)</i>
- - **Big Data Clusters for SQL Server**: Create, manage and control clusters of SQL Server Instances that co-exist in a Kubernetes cluster with Apache Spark and other technologies to access and process large sets of data <i>(Data left in place, ingested through PolyBase, and into/through HDFS)</i> 
+ - **SQL Server Big Data Clusters**: Create, manage and control clusters of SQL Server Instances that co-exist in a Kubernetes cluster with Apache Spark and other technologies to access and process large sets of data <i>(Data left in place, ingested through PolyBase, and into/through HDFS)</i> 
 
 Each of these functions are available separately based on the requirements of your solution. You'll cover each of these components in the sections that follow, and learn more about how each is used within the BDC.
 
