@@ -79,9 +79,9 @@ Follow these steps to classify certain columns in the WideWorldImporters databas
 
 **STEP 1: Restore the WideWorldImporters backup.**
 
-If you have restored the WideWorldImporters database backup in Module 01, you can skip this step.
+> **NOTE**: If you have restored the WideWorldImporters database backup in other modules, you can skip this step.
 
-Execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Security\dataclassification** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
+Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) to execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\02_Security\dataclassification** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
 
 **STEP 2: Setup the activity**
 
