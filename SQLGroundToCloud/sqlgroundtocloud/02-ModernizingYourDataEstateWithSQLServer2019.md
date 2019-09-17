@@ -1,12 +1,12 @@
 ![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png?raw=true)
 
-# Workshop: SQL Ground-to-Cloud
+<h1>Workshop: SQL Ground-to-Cloud</h1>
 
 <h4 style="border-bottom: 1px solid lightgrey;"><i>A Microsoft workshop from the SQL Server team</i></h4>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     02 - Modernizing Your Data Estate with SQL Server 2019</b></h2>
 
-SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server.
+SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server. 
 
 The WideWorldImporters company has been evaluating upgrading several SQL Server 2008 instances along with some instances of SQL Server 2012, 2014, and even 2016. WideWorldImporters wants to know whether SQL Server 2019 will solve some of the challenges they face including:
 
