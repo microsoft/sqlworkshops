@@ -1,7 +1,7 @@
 -- Step 1: Create a master key to encrypt the database credential
 USE [WideWorldImporters]
 GO
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'
 GO
 
 -- Step 2: Create a database credential that stores the login and password to the Azure SQL Server Database
@@ -16,7 +16,7 @@ GO
 -- The name after :// is the Azure SQL Server Database server. Your SQL Server must be on the same vnet as the Azure SQL Server Database or must pass through its firewall rules
 CREATE EXTERNAL DATA SOURCE AzureSQLDatabase
 WITH ( 
-LOCATION = 'sqlserver://<azure sql database server URI>',
+LOCATION = 'sqlserver://<server name>.database.windows.net',
 PUSHDOWN = ON,
 CREDENTIAL = AzureSQLDatabaseCredentials
 )
