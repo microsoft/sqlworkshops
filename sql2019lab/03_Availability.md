@@ -17,7 +17,7 @@ SQL Server 2019 includes new capabilities to keep your database and application 
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
 
-You'll cover the following topics in this Module:
+You will cover the following topics in this Module:
 
 <dl>
 

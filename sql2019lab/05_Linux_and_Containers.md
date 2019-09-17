@@ -23,8 +23,8 @@ Containers were also introduced with SQL Server 2017. Containers provide portabi
 SQL Server 2019 introduces the following new enhancements for containers:
 
 - Microsoft Container Registry
-- RedHat Images
-- Availability Groups on Kubernetes
+- Red Hat Images
+- Non-root Containers
 - Windows Containers (Currently Private Preview)
 
 For this module, we will join forces to show you how to implement SQL Server Replication with Linux Containers.
@@ -177,3 +177,9 @@ In this activity, you learned how to deploy a SQL Server replication topology wi
 - [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 
 - [Docker compose](https://docs.docker.com/compose/)
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
+
+Next, Continue to <a href="06_Additional_Migration.md" target="_blank"><i>Additional Capabilities, Migration, and Next Steps</i></a>.
