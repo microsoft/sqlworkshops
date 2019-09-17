@@ -91,7 +91,7 @@ In this activity, you will see how Accelerated Database Recovery affects log tru
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
 
-<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.0">Activity Steps</a></b></h3>
 
 All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database. The scripts will create a database with a data file of 10Gb and transaction log of 10Gb so there is plenty of space for the activity.
 

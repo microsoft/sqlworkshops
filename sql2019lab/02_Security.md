@@ -71,7 +71,7 @@ In this activity, you will learn how to use SQL Server Management Studio (SSMS) 
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
-<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.0">Activity Steps</a></b></h3>
 
 Follow these steps to classify certain columns in the WideWorldImporters database using SSMS and T-SQL. All scripts for this activity can be found in the **sql2019lab\02_Security\dataclassification** folder.
 
@@ -238,7 +238,7 @@ In this activity you will learn how to audit users trying to view columns that w
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
-<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.1">Activity Steps</a></b></h3>
 
 Work through the following steps to enable SQL Server Audit and view auditing details when a user attempts to view columns that are associated with data classification.
 

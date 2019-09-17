@@ -78,7 +78,7 @@ In this activity, you will learn how to build an external data source and table 
 
 >**NOTE**: *There are example scripts in **sql2019lab\04_DataVirtualization** for other data sources for you to use at a later time for Hadoop, Oracle, CosmosDB (through MongoDB), SQL Server 2008R2, and SAP HANA. For these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.*
 
-<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps4.0">Activity Steps</a></b></h3>
 
 Go through the following steps to learn how to query tables in Azure SQL Database using Polybase.
 

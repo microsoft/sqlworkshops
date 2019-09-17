@@ -68,7 +68,11 @@ As work towards a migration to SQL Server 2019, you need to consider a planned p
 
 In addition, database compatibility can become an important solution to make migrations easier and reduce the risk of upgrades.
 
-Consider watching the following video called **Modernizing SQL Server** by Pam Lahoud and Pedro Lopes at https://www.youtube.com/watch?v=5RPkuQHcxxs to get the complete picture of migration and database compatibility.
+Consider watching the following video called **Modernizing SQL Server** by Pam Lahoud and Pedro Lopes to get the complete picture of migration and database compatibility.
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=5RPkuQHcxxs
+" target="_blank"><img src="http://img.youtube.com/vi/5RPkuQHcxxs/0.jpg" 
+alt="Modernize SQL Server" width="240" height="180" border="10" /></a>
 
 <h3><b><a name="langext">Migration Tools</a></b></h3>
 

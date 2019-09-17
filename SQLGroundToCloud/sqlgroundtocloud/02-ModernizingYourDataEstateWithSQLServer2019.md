@@ -10,8 +10,6 @@
 
 SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server.
 
-## This is a header
-
 The WideWorldImporters company has been evaluating upgrading several SQL Server 2008 instances along with some instances of SQL Server 2012, 2014, and even 2016. WideWorldImporters wants to know whether SQL Server 2019 will solve some of the challenges they face including:
 
 - Improving query performance without having to make application changes
