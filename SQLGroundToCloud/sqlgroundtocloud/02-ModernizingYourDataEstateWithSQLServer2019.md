@@ -1,9 +1,10 @@
 ![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png?raw=true)
 
-<h1>Workshop: SQL Ground-to-Cloud</h1>
+# Workshop: SQL Ground-to-Cloud
 
+#### <i>A Microsoft workshop from the SQL Server team</i>
 
-<h4 style="border-bottom: 1px solid lightgrey;"><i>A Microsoft workshop from the SQL Server team</i></h4>
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     02 - Modernizing Your Data Estate with SQL Server 2019</b></h2>
 
@@ -23,6 +24,8 @@ The WideWorldImporters company has been evaluating upgrading several SQL Server 
 In this workshop module, you will see the capabilities in SQL Server 2019 that can provide solutions for these challenges.
 
 > **NOTE**: <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">Make sure you check out the <b>prerequisite</b> page before you start.</a> You'll need all of the items loaded there before you can proceed with the workshop. Instructor led workshops may have provided all the resources in the prerequisites.
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>     Activity: SQL Server 2019 Lab</a></b></h2>
 
