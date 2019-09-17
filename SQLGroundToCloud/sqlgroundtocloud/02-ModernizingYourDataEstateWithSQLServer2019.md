@@ -4,7 +4,7 @@
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
-<p style="border-bottom: 1px solid lightgrey;"></p>
+<div style="border-bottom: 1px solid lightgrey;"></div>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     02 - Modernizing Your Data Estate with SQL Server 2019</b></h2>
 

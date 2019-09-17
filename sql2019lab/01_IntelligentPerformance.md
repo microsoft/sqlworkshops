@@ -70,7 +70,7 @@ The **WideWorldImporters** database example was created using SQL Server 2016 wh
 
 You will observe the performance of the **CustomerProfits** stored procedure with database compatibility level of 130 on SQL Server 2019. You will then compare the performance of the same procedure with no changes with a database compatibility of 150 which will enable the query processor to use  table variable deferred compilation.
 
-<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps1.0">Activity Steps</a></b></h3>
 
 All scripts for this activity can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
 
@@ -152,7 +152,7 @@ The **WideWorldImporters** sample database that you restored in Module 1.0 has t
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
-<h3><b><a name="activitysteps">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps1.1">Activity Steps</a></b></h3>
 
 Work through the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 versus 150.
 
