@@ -31,7 +31,7 @@ In this activity, you will complete a series of modules from the **SQL Server 20
 
 Instructor led workshops will use modules from the SQL Server 2019 lab along with the PowerPoint slides <a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/slides/SQL%20Server%202019%20Modern%20Data%20Platform.pptx">SQL Server 2019 Modern Data Platform</a>. Instructor led labs may not go through all modules in the SQL Server 2019 lab.
 
-<h2><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></h2>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Activity Steps</b></h3>
 
 To complete this module, go to https://github.com/microsoft/sqlworkshops/blob/master/sql2019lab/README.md.
 
