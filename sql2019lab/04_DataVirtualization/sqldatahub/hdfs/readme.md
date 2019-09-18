@@ -1,4 +1,4 @@
-# SQL Server demo with Polybase with HDFS (using Azure Blog Storage)
+# SQL Server demo with Polybase with HDFS (using Azure Blob Storage)
 
 This demo is an example of creating and using an external table for HDFS using Azure Blog Storage.
 
