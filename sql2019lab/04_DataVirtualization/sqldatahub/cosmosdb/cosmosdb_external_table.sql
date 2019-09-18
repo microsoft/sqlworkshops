@@ -1,11 +1,11 @@
 -- Step 1: Create a master key to encrypt the database scoped credentials if they don't exist
 USE [WideWorldImporters]
 GO
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'
 GO
 
 -- Step 2: Create the database scoped credentials with the Azure CosmosDB user and password
--- You can get the IDENTITY (user) and secret (Primary Password) from the Connection String option in the Azure portal
+-- You can get the IDENTITY (user) and secret (password) from the Connection String option in the Azure portal
 CREATE DATABASE SCOPED CREDENTIAL CosmosDBCredentials   
 WITH IDENTITY = '<user>', Secret = '<password>'
 GO
@@ -14,7 +14,7 @@ GO
 -- The LOCATION is built from <HOST>:<PORT> from the Connection String in the Azure Portal
 CREATE EXTERNAL DATA SOURCE CosmosDB
 WITH ( 
-LOCATION = 'mongodb://<host>:<port>',
+LOCATION = 'mongodb://<uri>:<port>',
 PUSHDOWN = ON,
 CREDENTIAL = CosmosDBCredentials
 )
@@ -25,7 +25,7 @@ CREATE SCHEMA cosmosdb
 GO
 
 -- Step 5: Create the external table to match the Azure CosmosDB document
--- The LOCATION is the CosmosDB database and collection you can find using the Data Explorer tool in the Azure Portal
+-- The LOCATION is the CosmosDB database and collection
 CREATE EXTERNAL TABLE cosmosdb.Orders
 (
 	[_id] NVARCHAR(100) COLLATE Latin1_General_100_CI_AS NOT NULL,
@@ -36,7 +36,7 @@ CREATE EXTERNAL TABLE cosmosdb.Orders
 	[CustomerContact] NVARCHAR(100) COLLATE Latin1_General_100_CI_AS NOT NULL,
 	[OrderDate] NVARCHAR(100) COLLATE Latin1_General_100_CI_AS NOT NULL,
 	[CustomerPO] NVARCHAR(100) COLLATE Latin1_General_100_CI_AS NULL,
-	[ExpectedDeliverDate] NVARCHAR(100) COLLATE Latin1_General_100_CI_AS NOT NULL
+	[ExpectedDeliveryDate] NVARCHAR(100) COLLATE Latin1_General_100_CI_AS NOT NULL
 )
  WITH (
  LOCATION='WideWorldImporters.Orders',
