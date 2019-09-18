@@ -53,14 +53,15 @@ The concepts and skills taught in this workshop form the starting points for:
 Businesses require near real-time insights from ever-larger sets of data from a variety of sources. Many have not explored the improvements made in the latest versions of SQL Server, and some are only now exploring the cloud as a computing platform. As time has progressed, a more dramatic upgrade process may be required.
 
 In addition to traditional Online Transaction Processing (OLTP) and Online Analytic Processing (OLAP) workloads, some industry examples of data processing from multiple sources of data at scale are:
-|Industry|Example|
-|-|-|
-|Retail|Demand Prediction<br/>Market-Basket Analysis|
-|Finance|Fraud detection<br/>customer segmentation|
-|Healthcare|Fiscal control analytics<br/>Disease Prevention prediction and classification<br/> Clinical Trials optimization|
-|Public Sector|Revenue prediction<br/>Education effectiveness analysis|
-|Manufacturing|Predictive Maintenance<br/>Anomaly Detection|
-|Agriculture|Food Safety analysis<br/>Crop forecasting|
+<table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
+<tr><th style="background-color: #1b20a1; color: white;">Industry</th><th style="background-color: #1b20a1; color: white;">Example</th></tr>
+<tr><td style="vertical-align: top">Retail</td><td style="vertical-align: top">Demand Prediction<br/>Market-Basket Analysis</td></tr>
+<tr><td style="vertical-align: top">Finance</td><td style="vertical-align: top">Fraud detection<br/>customer segmentation</td></tr>
+<tr><td style="vertical-align: top">Healthcare</td><td style="vertical-align: top">Fiscal control analytics<br/>Disease Prevention prediction and classification<br/> Clinical Trials optimization</td></tr>
+<tr><td style="vertical-align: top">Public Sector</td><td style="vertical-align: top">Revenue prediction<br/>Education effectiveness analysis</td></tr>
+<tr><td style="vertical-align: top">Manufacturing</td><td style="vertical-align: top">Predictive Maintenance<br/>Anomaly Detection</td></tr>
+<tr><td style="vertical-align: top">Agriculture</td><td style="vertical-align: top">Food Safety analysis<br/>Crop forecasting</td></tr>
+</table>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
