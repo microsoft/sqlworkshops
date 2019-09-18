@@ -6,7 +6,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2> 06 - What to Use When: Designing a Solution </h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> 06 - What to Use When: Designing a Solution </h2>
 
 In this workshop you have covered using SQL Server both on-premises and in-cloud configurations, as well as hybrid applications as a solution for data processing. The end of this Module contains several helpful references you can use in these exercises and in production.
 
