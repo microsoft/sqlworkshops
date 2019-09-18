@@ -10,7 +10,7 @@
 
 This module is designed for you to read and learn about additional capabilities in SQL Server 2019, tools to assist Migration, using Database Compatibility, and Next Steps for your journey with SQL Server 2019. There are no activities for this module.
 
-Use the slide deck in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder as you read through this section for more details.
+Use the Powerpoint slides the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder as you read through this section for more details.
 
 You will cover the following topics in this Module:
 
@@ -40,7 +40,7 @@ You can read more about SQL Server Language Extensions at https://docs.microsoft
 
 In SQL Server 2019, we have shipped Java as an example of using SQL Server Language Extensions. As part of the Java installation, we now include an open-source, full-supported version of Java from Azul. 
 
-Try the Java tutorial to implement Regular Expressions at https://docs.microsoft.com/en-us/sql/language-extensions/tutorials/search-for-string-using-regular-expressions-in-java. 
+After taking this workshop you can try the Java tutorial to implement Regular Expressions at https://docs.microsoft.com/en-us/sql/language-extensions/tutorials/search-for-string-using-regular-expressions-in-java. 
 
 <h3><b><a name="voicecustomer">The Voice of the Customer</a></b></h3>
 
@@ -68,7 +68,11 @@ As work towards a migration to SQL Server 2019, you need to consider a planned p
 
 In addition, database compatibility can become an important solution to make migrations easier and reduce the risk of upgrades.
 
-Consider watching the following video called **Modernizing SQL Server** by Pam Lahoud and Pedro Lopes at https://www.youtube.com/watch?v=5RPkuQHcxxs to get the complete picture of migration and database compatibility.
+Consider watching the following video called **Modernizing SQL Server** by Pam Lahoud and Pedro Lopes to get the complete picture of migration and database compatibility.
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=5RPkuQHcxxs
+" target="_blank"><img src="http://img.youtube.com/vi/5RPkuQHcxxs/0.jpg" 
+alt="Modernize SQL Server" width="240" height="180" border="10" /></a>
 
 <h3><b><a name="langext">Migration Tools</a></b></h3>
 
