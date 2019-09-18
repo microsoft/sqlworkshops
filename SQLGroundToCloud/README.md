@@ -6,7 +6,7 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>About this Workshop</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> About this Workshop</h2>
 
 Welcome to this Microsoft solutions workshop on SQL Server in on-premises, in-cloud and hybrid solutions. In this one-day workshop, you'll  learn how SQL Server 2019 and Azure SQL help you solve real-world challenges. 
 
