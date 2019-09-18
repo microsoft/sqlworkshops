@@ -52,7 +52,15 @@ The concepts and skills taught in this workshop form the starting points for:
 
 Businesses require near real-time insights from ever-larger sets of data from a variety of sources. Many have not explored the improvements made in the latest versions of SQL Server, and some are only now exploring the cloud as a computing platform. As time has progressed, a more dramatic upgrade process may be required.
 
-In addition to traditional Online Transaction Processing (OLTP) and Online Analytic Processing (OLAP) workloads, some industry examples of data processing from multiple sources of data at scale are in Retail (Demand Prediction, Market-Basket Analysis), Finance (Fraud detection, customer segmentation), Healthcare (Fiscal control analytics, Disease Prevention prediction and classification, Clinical Trials optimization), Public Sector (Revenue prediction, Education effectiveness analysis), Manufacturing (Predictive Maintenance, Anomaly Detection) and Agriculture (Food Safety analysis, Crop forecasting) to name just a few.
+In addition to traditional Online Transaction Processing (OLTP) and Online Analytic Processing (OLAP) workloads, some industry examples of data processing from multiple sources of data at scale are:
+|Industry|Example|
+|-|-|
+|Retail|Demand Prediction<br/>Market-Basket Analysis|
+|Finance|Fraud detection<br/>customer segmentation|
+|Healthcare|Fiscal control analytics<br/>Disease Prevention prediction and classification<br/> Clinical Trials optimization|
+|Public Sector|Revenue prediction<br/>Education effectiveness analysis|
+|Manufacturing|Predictive Maintenance<br/>Anomaly Detection|
+|Agriculture|Food Safety analysis<br/>Crop forecasting|
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
