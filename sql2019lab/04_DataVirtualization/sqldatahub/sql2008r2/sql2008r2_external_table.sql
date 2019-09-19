@@ -1,7 +1,7 @@
 -- Step 1: Create a master key to encrypt the database scoped credentials if they don't exist
 USE [WideWorldImporters]
 GO
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'
 GO
 
 -- Step 2: Create the database scoped credentials with the SQL 2008 R2 login and password
@@ -12,7 +12,7 @@ GO
 -- Step 3: Create a data source for the name of the SQL Server 2008 R2 server
 CREATE EXTERNAL DATA SOURCE SQLServerInstance
 WITH ( 
-LOCATION = 'sqlserver://<sql server name>',
+LOCATION = 'sqlserver://<sql server host>',
 PUSHDOWN = ON,
 CREDENTIAL = SQLServerCredentials,
 CONNECTION_OPTIONS = 'UseDefaultEncryptionOptions=false' -- This is a workaround for a bug in SQL 2019 CTP 2.3 under investigation.
