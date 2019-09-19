@@ -1,12 +1,12 @@
 -- Step 1: Create a master key to encrypt the database scoped credentials if they don't exist
 USE [WideWorldImporters]
 GO
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'
 GO
 
 -- Step 2: Create the database scoped credentials with the SAP HANA login and password
 CREATE DATABASE SCOPED CREDENTIAL SAPHANACredentials   
-WITH IDENTITY = '<login>', Secret = '<password>'
+WITH IDENTITY = 'bwsaphana', Secret = '<password>'
 GO
 
 -- Step 3: Create a data source for the name of the server hosting SAP HANA and port
@@ -14,8 +14,8 @@ GO
 -- CONNECTION_OPTIONS is connectiong string details to feed the driver.
 CREATE EXTERNAL DATA SOURCE SAPHANAServer
 WITH ( 
-LOCATION = 'odbc://<datasource>',
-CONNECTION_OPTIONS = 'Driver={HDBODBC};ServerNode=<server>:<port>',
+LOCATION = 'odbc://<SAP HANA Host>',
+CONNECTION_OPTIONS = 'Driver={HDBODBC};ServerNode=<SAP HANA Host>:<port>',
 PUSHDOWN = ON,
 CREDENTIAL = SAPHANACredentials
 )
@@ -29,10 +29,10 @@ GO
 -- The LOCATION is the <schema>.<table>
 CREATE EXTERNAL TABLE saphana.customers
 (
-CustomerID int,
-CustomerName nvarchar(100) COLLATE Latin1_General_100_CI_AS,
-AccountOpenedDate date,
-CustomerWebSite nvarchar(256) COLLATE Latin1_General_100_CI_AS
+CUSTOMERID int,
+CUSTOMERNAME nvarchar(100) COLLATE Latin1_General_100_CI_AS,
+ACCOUNTOPENEDDATE date,
+CUSTOMERWEBSITE nvarchar(256) COLLATE Latin1_General_100_CI_AS
 )
  WITH (
  LOCATION='[BWSAPHANA].[CUSTOMERS]',

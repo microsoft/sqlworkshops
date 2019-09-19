@@ -1,1 +1,1 @@
-hdbsql -i90 -Iinsertdata.sql -ubwsaphana -pCprsql2019 -dVANDELAY
+hdbsql -i90 -Iinsertdata.sql -ubwsaphana -p<password> -dVANDELAY

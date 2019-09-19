@@ -1,1 +1,1 @@
-hdbsql -i90 -Icreatedb.sql -uSYSTEM -pCprsql2019 -dVANDELAY
+hdbsql -i90 -Icreatedb.sql -uSYSTEM -p<password> -dVANDELAY
