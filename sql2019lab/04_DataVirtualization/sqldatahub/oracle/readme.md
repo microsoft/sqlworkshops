@@ -12,7 +12,7 @@ SQL Server external tables should work with most current Oracle versions (11g+) 
 
 - Using this new login, I ran the script **createtab.sql** to create a new table with the instance. You can run this script using sqlplus64 like the following:
 
-    `sqlplus64 gl/glpwd@localhost:<port>/<instance> @createtab.sql`
+    `sqlplus64 <login>/<password>@localhost:<port>/<instance> @createtab.sql`
 
 - I then executed the **insertdata.sql** script finding a valid CustomerTransactionID from the Sales.CustomerTransactions table in the WideWorldImporters database. This ID becomes the arref fields in the accounts receivable table.
 
