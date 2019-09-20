@@ -377,6 +377,8 @@ In this task, you will create a new online data migration project in DMS for the
 11. On the *Migration Wizard* | *Configure migration settings* blade, enter the following configuration:
 
     - *Network share location*: Enter **\\\SQLSERVER2008\dms-backups**. This is the path of the SMB network share you created during the before the hands-on lab exercises
+    > **Note**:  
+    > If you're doing this lab as part of a workshop and were provided an environment to use, if *SQLSERVER2008* errors, use the **SQL VM Private IP Address** which was provided to you (e.g. *\\\10.0.0.5\dms-backups*)
     - *Windows User Azure Database Migration Service impersonates to upload files to Azure Storage*: Enter **SQLSERVER2008\sqlmiuser**
     - *Password*: Enter your password
     - *Subscription containing storage account*: Select the subscription you are using for this hands-on lab
