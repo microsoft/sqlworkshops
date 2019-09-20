@@ -1,1 +1,1 @@
-hdbsql -i90 -Icreateuser.sql -uSYSTEM -pCprsql2019 -dVANDELAY
+hdbsql -i90 -Icreateuser.sql -uSYSTEM -p<password> -dVANDELAY

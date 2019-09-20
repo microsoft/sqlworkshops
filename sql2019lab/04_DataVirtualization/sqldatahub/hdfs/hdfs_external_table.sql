@@ -1,46 +1,39 @@
--- Step 1: Enable hadoop connectivity to Azure Blog Storage
+-- Step 1: Enable hadoop connectivity to Azure Blob Storage and ingestion into HDFS
+-- STOP: SQL Server must be restarted for this to take effect
 USE [master]
 GO
 sp_configure @configname = 'hadoop connectivity', @configvalue = 7;
 GO
-RECONFIGURE
-GO
-
--- Step 2: Enable ingest of data to HDFS target
 sp_configure 'allow polybase export', 1
 GO
 RECONFIGURE
 GO
 
---
--- Step 3: STOP: SQL Server must be restarted for this to take effect
--- 
-
--- Step 4: Create master key if not done already in database
+-- Step 2: Create master key if not done already in database
 USE [WideWorldImporters]
 GO
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'
 GO
 
--- Step 5: Create a database scoped credential for access to Azure Blog Storage
+-- Step 3: Create a database scoped credential for access to Azure Blob Storage
 -- IDENTITY: any string (this is not used for authentication to Azure storage).  
 -- SECRET: your Azure storage account key.  
-CREATE DATABASE SCOPED CREDENTIAL AzureStorageCredential
-WITH IDENTITY = 'user', Secret = 'putinyoursecrethere'
+CREATE DATABASE SCOPED CREDENTIAL AzureStorageCredentials
+WITH IDENTITY = 'user', Secret = '<storage account key>'
 GO
 
--- Step 5: Create a datasource referencing the Azure Blog Storage container
+-- Step 4: Create a datasource referencing the Azure Blog Storage container
 -- TYPE: HADOOP
 -- LOCATION:  Azure account storage account name and blob container name.  
 -- CREDENTIAL: The database scoped credential created above.  
 CREATE EXTERNAL DATA SOURCE bwdatalake with (  
       TYPE = HADOOP,
-      LOCATION ='wasbs://<container>@<azure storage account name>',  
-      CREDENTIAL = AzureStorageCredential  
+      LOCATION ='wasbs://wwi@<storage account>.blob.core.windows.net',  
+      CREDENTIAL = AzureStorageCredentials 
 )
 GO
 
--- Step 6: Creae a format specification for the HDFS data
+-- Step 5: Creae a format specification for the HDFS data
 -- FORMAT TYPE: Type of format in Hadoop (DELIMITEDTEXT,  RCFILE, ORC, PARQUET).
 CREATE EXTERNAL FILE FORMAT TextFileFormat WITH (  
       FORMAT_TYPE = DELIMITEDTEXT,
@@ -48,11 +41,11 @@ CREATE EXTERNAL FILE FORMAT TextFileFormat WITH (
             USE_TYPE_DEFAULT = TRUE))
 GO
 
--- Step 7: Create a schema for external tabes for hdfs
+-- Step 6: Create a schema for external tabes for hdfs
 CREATE SCHEMA hdfs
 GO
 
--- Step 8: Create the external table
+-- Step 7: Create the external table
 -- LOCATION: path to file or directory that contains the data (relative to HDFS root).
 CREATE EXTERNAL TABLE [hdfs].[WWI_Order_Reviews] (  
       [OrderID] int NOT NULL,
@@ -66,9 +59,11 @@ WITH (LOCATION='/WWI/',
 )
 GO
 
--- Step 9: Ingest some data lined up with a valid OrderID and CustomerID in the database
+-- Step 8: Ingest some data lined up with a valid OrderID and CustomerID in the database
 INSERT INTO [hdfs].[WWI_Order_Reviews] VALUES (1, 832, 10, 'I had a great experience with my order')
 GO
+
+-- Step 9: SQL Server allows you to store local statistics about specific columns from the remote table. This can help the query processing to make more efficient plan decisions.
 CREATE STATISTICS StatsforReviews on [hdfs].[WWI_Order_Reviews](OrderID, CustomerID)
 GO
 

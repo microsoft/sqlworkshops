@@ -1,1 +1,1 @@
-hdbsql -i90 -Icreatetab.sql -ubwsaphana -pCprsql2019 -dVANDELAY
+hdbsql -i90 -Icreatetab.sql -ubwsaphana -p<password> -dVANDELAY

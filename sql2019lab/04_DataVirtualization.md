@@ -60,7 +60,7 @@ An application runs a T-SQL query against an EXTERNAL TABLE. The EXTERNAL TABLE 
 Polybase has advantages over features like linked servers such as:
 
 - External tables are defined in the database so are naturally part of an Availability Group
-- External tables allow you to define your table and column names per your organization standard vs using object names from the external data source
+- External tables allow you to define your table names per your organization standard vs using object names from the external data source.
 - Polybase has built-in scalability through a concept called a scale-out group.
 - Polybase has built-in client driver support for Hadoop, Oracle, Teradata, and MongoDB.
 
@@ -169,7 +169,17 @@ When you start using a notebook and use the "Play" button of a cell, you may get
 
 ![Play cell in Notebook](./graphics/Play_Cell_Notebook.jpg)
 
-There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks. 
+There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks.
+
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="bonusactivity4.0">Bonus Activity Steps</a></b></h3>
+
+If you have time, look over the scripts and T-SQL notebooks (with saved results) for other data sources in the **04_DataVirtualization\sqldatahub** folder. There are subfolders for examples for these data sources:
+
+- Azure CosmosDB (using MongoDB)
+- HDFS
+- Oracle
+- SAP HANA
+- SQL Server
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
