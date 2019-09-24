@@ -14,10 +14,6 @@ In the previous modules, you learned about SQL Server 2019, big data, and more. 
 [4.2](#4.2): Azure SQL Platform Benefits   
 [4.3](#4.3): Migrating to Azure SQL    
 [4.4](#4.4): Database Discovery and Assessment   
-&ensp;&ensp;&ensp;[Activity 1](#4.4.1): Prepare: Set up Azure Migrate  
-&ensp;&ensp;&ensp;[Activity 2](#4.4.2): Prepare: Restore TailspinToys on the SQLServer2008 VM  
-&ensp;&ensp;&ensp;[Activity 3](#4.4.3): Assess: Perform assessment for migration to Azure SQL Database  
-&ensp;&ensp;&ensp;[Activity 4](#4.4.4): Assess: Perform assessment for migration to Azure SQL Database Managed Instance  
 
 (<a href="https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/00-prerequisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)  
 
