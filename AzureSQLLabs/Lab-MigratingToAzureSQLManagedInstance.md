@@ -358,7 +358,7 @@ In this task, you will create a new online data migration project in DMS for the
     > If you're doing this lab as part of a workshop and were provided an environment to use, please refer to instructor guidance to obtain the Application ID and Application secret key.
     <!-- TODO Add guidance on how to do this -->
     - *Subscription*: Select the subscription you are using for this hand-on lab
-    - *Target Azure SQL Managed Instance*: Select the **sqlmi-SUFFIX** instance
+    - *Target Azure SQL Managed Instance*: Select the **mi-SUFFIX** instance
     > **Note**:  
     > If you're doing this lab as part of a workshop and were provided an environment to use, the "SUFFIX" should be the same as the "SUFFIX" for your Resource Group. **Do not use other "SUFFIX" values or you will disrupt another attendees' environment.**  
     - *SQL Username*: Enter **sqlmiuser**
@@ -631,7 +631,7 @@ git clone https://github.com/microsoft/sqlworkshops.git
 
 17. Stop the application by closing the browser.  
 
-18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing `Server=tcp:<your-sql-2008-vm-public-ip>,1433;` with the fully qualified domain name for your MI (something like `Server=sqlmi-SUFFIX.fdsor39943234j3oj4.database.windows.net;`). Then, replace `WorkshopUser` with `sqlmiuser`, as that's how you log into your SQL MI.   
+18. Now, in order to have the app run with the data in SQL MI, update `appsettings.json` by replacing `Server=tcp:<your-sql-2008-vm-public-ip>,1433;` with the fully qualified domain name for your MI (something like `Server=mi-SUFFIX.fdsor39943234j3oj4.database.windows.net;`). Then, replace `WorkshopUser` with `sqlmiuser`, as that's how you log into your SQL MI.   
 
 > **Note**:  
 > If your passwords for `WorkshopUser` and `sqlmiuser` are different, don't forget to update to the correct password as well.  
@@ -874,7 +874,7 @@ In this task, you will enable Read Scale-Out for the `TailspinToys` database, us
 4. The `TailspinToysReadOnlyContext` connection string should now look something like the following:
 
    ```sql
-   Server=sqlmi-SUFFIX.15b8611394c.database.windows.net;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
+   Server=mi-SUFFIX.15b8611394c.database.windows.net;Database=TailspinToys;User ID=sqlmiuser;Password=<your-password>;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```  
 
 
@@ -900,7 +900,7 @@ In this task, you will refresh the Leaderboard report in the Tailspin Toys web a
 
 
 > **Note**:  
-> If you are attending this lab as part of a day-long workshop, you have finished the activities for Module 5. [Return to it here](https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-MigratingToAzureSQL.md#54-after-the-migration), review, and refer to instructor guidance.
+> If you are attending this lab as part of a day-long workshop, this may still read as READ-WRITE, if the lab was configured using [Instance Pools](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-instance-pools), since Instance Pools currently only support General Purpose (not Business Critical which is needed here). You have finished the activities for Module 5. [Return to it here](https://github.com/microsoft/sqlworkshops/blob/master/SQLGroundToCloud/sqlgroundtocloud/05-MigratingToAzureSQL.md#54-after-the-migration), review, and refer to instructor guidance.
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
