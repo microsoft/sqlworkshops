@@ -202,7 +202,7 @@ Your results from the catalog view query should look like the following
 
 ![Classification Results](./graphics/classification_results.png)
 
-Notice the results have columns for information_type_id and label_id. These are GUID values that you can use instead of just string values. Your organization's data catalog system may require a unique ID for tracking classification metadata. Remember the NEWID() T-SQL function can be used to generate unique GUID values. The SSMS tool generates information_type_id and label_id values.
+Notice the results have columns for **information_type_id** and **label_id**. These are GUID values that you can use instead of just string values. Your organization's data catalog system may require a unique ID for tracking classification metadata. Remember the **NEWID()** T-SQL function can be used to generate unique GUID values. The SSMS tool generates **information_type_id** and **label_id** values.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
@@ -338,7 +338,7 @@ Your results should look like the following:
 
 ![Audit of SELECT of all columns](./graphics/audit_select_all_columns.png)
 
-The first row is a record that the audit has started. The second row is an audit of the SELECT statement. The data_sensitivity_information column contains an XML record of the label and information_type values associated with columns that have data classifications. This includes the information to look up what columns are affected through the **sys.sensitivity_columns** catalog view.
+The first row is a record that the audit has started. The second row is an audit of the SELECT statement. The **data_sensitivity_information** column contains an XML record of the **label** and **information_type** values associated with columns that have data classifications. This includes the information to look up what columns are affected through the **sys.sensitivity_columns** catalog view.
 
 Keep the **checkaudit.sql** query tab available in SSMS as you will use it again over the next several steps.
 

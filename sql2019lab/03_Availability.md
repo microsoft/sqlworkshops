@@ -69,7 +69,7 @@ Because of this design, not only is recovery must faster and no longer affected 
 - **rollback** is **instant**. Because versions are tracked rollback involves simply marking a transaction as aborted
 - **Log truncation** is no longer dependent on an active transaction.
 
-A few questions that often come up:
+Here are some frequently asked questions about ADR:
 
 - **Will my database be larger with the PVS?**
 
@@ -78,6 +78,14 @@ It will be larger than without ADR. However, it may not grow extremely large due
 - **Will it affect performance?**
 
 As with any feature performance impact will vary. However, extremely "write-heavy" applications may see some effect. Typically those applications don't use long running transactions so they may not benefit from ADR. The paper has testing observations using benchmarks derived from TPC.
+
+- **How is the Persistent Version Store different than the Version Store in TempDB?**
+
+SQL Server uses TempDB to store versions for rows for queries that use SNAPSHOT transaction isolation levels (or the database option READ_COMMITTED_SNAPSHOT_ISOLATION). If you enable ADR for a database, any queries using SNAPSHOT transaction isolation levels will use the persistent version store instead.
+
+- **How does this affect Always On Availability Groups?**
+
+Secondary replicas receive all changes to the persistent version store and log records. ADR can help speed up failover times because undo processing can be extremely fast. In addition read-only queries on secondary replicas will now use the persistent version store instead of TempDB on the secondary. Secondary replicas signal the primary replica which versions need to be kept to service read queries on secondaries. If a secondary replica needs to be restarted, the persistent version store can easily be used where as with TempDB, the version store is lost and read queries may be held up for transactions to commit or undo.
 
 Accelerated Database Recovery is a feature that exists for both SQL Server 2019 and Azure SQL Database.
 
