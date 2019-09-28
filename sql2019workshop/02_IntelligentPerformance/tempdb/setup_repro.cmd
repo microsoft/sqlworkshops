@@ -1,0 +1,1 @@
+ostress -Usa -itempstress_ddl.sql -Sbwsql2019

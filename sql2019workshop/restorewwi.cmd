@@ -1,0 +1,1 @@
+sqlcmd -E -irestorewwi.sql

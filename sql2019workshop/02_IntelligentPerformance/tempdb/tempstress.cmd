@@ -1,0 +1,1 @@
+ostress -Usa -PCprsql2019 -Q"exec letsgomavs" -n50 -r5000 -dDallasMavericks -Sbwsql2019
