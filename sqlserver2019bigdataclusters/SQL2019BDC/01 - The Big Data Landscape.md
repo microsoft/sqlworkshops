@@ -132,7 +132,7 @@ You can read more about <a href="https://azure-scenarios-experience.azurewebsite
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Install Class Environment on AKS</a></b></p>
 
-In this lab you will deploy a BDC to the Azure Kubernetes Service. You will need a client machine and a subscription to Microsoft Azure where you can create assets. This will take some time, so you'll do this now as you work through the next few modules, and then return to the installation process in a later module. 
+In this lab you will deploy a BDC to the Azure Container Orchestration Tools (Such as Kubernetes or OpenShift) Service. You will need a client machine and a subscription to Microsoft Azure where you can create assets. This will take some time, so you'll do this now as you work through the next few modules, and then return to the installation process in a later module. 
 
 *NOTE: Your instructor may walk through these steps if the class environment does not have enough resources or time for each person to deploy. If so, they will provide you credentials to work with a pre-configured system in class.*
 
@@ -293,7 +293,7 @@ You can <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-wind
 
 The next level of Abstraction is a <i>Container</i>. There are various types of Container technologies, in this workshop, you will focus on <a href="https://docs.docker.com" target="_blank">Docker</a>.
 
-A Docker Container is provided by the Docker runtime engine, which sits above the operating system (Windows or Linux). In this abstraction, you do not control the hardware <i>or</i> the operating system. The Container has a very small Kernel in it, and can contain binaries such as Python, R, SQL Server, or other binaries. A Container with all its binaries is called an <i>Image</i>. 
+A Container Runtimes (Such as Docker) Container is provided by the Container Runtimes (Such as Docker) runtime engine, which sits above the operating system (Windows or Linux). In this abstraction, you do not control the hardware <i>or</i> the operating system. The Container has a very small Kernel in it, and can contain binaries such as Python, R, SQL Server, or other binaries. A Container with all its binaries is called an <i>Image</i>. 
 
 <i>(NOTE: The Container Image Kernel can run on Windows or Linux, but you will focus on the Linux Kernel Containers in this workshop.)</i>
 
@@ -301,23 +301,23 @@ A Docker Container is provided by the Docker runtime engine, which sits above th
 <img style="height: 300;" src="https://docs.docker.com/images/Container%402x.png"> 
 <br>
 
-This abstraction holds everything for an application to isolate it from other running processes. It is also completely portable - you can create an image on one system, and another system can run it so long as the Docker Runtime is installed. Containers also start very quickly, are easy to create (called <i>Composing</i>) using a simple text file with instructions of what to install on the image. The instructions pull the base Kernel, and then any binaries you want to install. Several pre-built Containers are already available, SQL Server is one of these. <a href="https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-2017" target="_blank">You can read more about installing SQL Server on Docker here</a>.
+This abstraction holds everything for an application to isolate it from other running processes. It is also completely portable - you can create an image on one system, and another system can run it so long as the Container Runtimes (Such as Docker) Runtime is installed. Containers also start very quickly, are easy to create (called <i>Composing</i>) using a simple text file with instructions of what to install on the image. The instructions pull the base Kernel, and then any binaries you want to install. Several pre-built Containers are already available, SQL Server is one of these. <a href="https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-2017" target="_blank">You can read more about installing SQL Server on Container Runtimes (Such as Docker) here</a>.
 
 You can have several Containers running at any one time, based on the amount of hardware resources where you run it. For scale-out systems, a Container allows for distribution and control of complete applications using only declarative commands.
 
-You can <a href="https://hackernoon.com/docker-commands-the-ultimate-cheat-sheet-994ac78e2888" target="_blank">read more about Docker here</a>. 
+You can <a href="https://hackernoon.com/docker-commands-the-ultimate-cheat-sheet-994ac78e2888" target="_blank">read more about Container Runtimes (Such as Docker) here</a>. 
 
 <h3>Container Orchestration <i>(Kubernetes)</i></h3>
 
-For Big Data systems, having lots of Containers is very advantageous to segment purpose and performance profiles. However, dealing with many Container Images, allowing persisted storage, and interconnecting them for network and internetwork communications is a complex task. <i>Kubernetes</i> is an open source Container orchestrator, which can scale Container deployments according to need. The following table defines some important Kubernetes terminology:
+For Big Data systems, having lots of Containers is very advantageous to segment purpose and performance profiles. However, dealing with many Container Images, allowing persisted storage, and interconnecting them for network and internetwork communications is a complex task. <i>Kubernetes</i> is an open source Container orchestrator, which can scale Container deployments according to need. The following table defines some important Container Orchestration Tools (Such as Kubernetes or OpenShift) terminology:
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Component</b></td><td style="background-color: AliceBlue; color: black;"><b>Used for</b></td></tr>
 
-  <tr><td>Cluster</td><td> A Kubernetes cluster is a set of machines, known as nodes. One node controls the cluster and is designated the master node; the remaining nodes are worker nodes. The Kubernetes master is responsible for distributing work between the workers, and for monitoring the health of the cluster.</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;">Node</td><td td style="background-color: AliceBlue; color: black;"> A node runs containerized applications. It can be either a physical machine or a virtual machine. A Kubernetes cluster can contain a mixture of physical machine and virtual machine nodes.</td></tr>
-  <tr><td>Pod</td><td> A pod is the atomic deployment unit of Kubernetes. A pod is a logical group of one or more containers-and associated resources-needed to run an application. Each pod runs on a node; a node can run one or more pods. The Kubernetes master automatically assigns pods to nodes in the cluster.</td></tr>
+  <tr><td>Cluster</td><td> A Container Orchestration Tools (Such as Kubernetes or OpenShift) cluster is a set of machines, known as nodes. One node controls the cluster and is designated the master node; the remaining nodes are worker nodes. The Container Orchestration Tools (Such as Kubernetes or OpenShift) master is responsible for distributing work between the workers, and for monitoring the health of the cluster.</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;">Node</td><td td style="background-color: AliceBlue; color: black;"> A node runs containerized applications. It can be either a physical machine or a virtual machine. A Container Orchestration Tools (Such as Kubernetes or OpenShift) cluster can contain a mixture of physical machine and virtual machine nodes.</td></tr>
+  <tr><td>Pod</td><td> A pod is the atomic deployment unit of Kubernetes. A pod is a logical group of one or more containers-and associated resources-needed to run an application. Each pod runs on a node; a node can run one or more pods. The Container Orchestration Tools (Such as Kubernetes or OpenShift) master automatically assigns pods to nodes in the cluster.</td></tr>
  
 </table>
 	
@@ -325,13 +325,13 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 <p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="../graphics/KubernetesCluster.png"></p> 	 	
 <br>
 
-You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Kubernetes here</a>. We're using the Azure Kubernetes Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great tutorial here</a>.
+You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Container Orchestration Tools (Such as Kubernetes or OpenShift) here</a>. We're using the Azure Container Orchestration Tools (Such as Kubernetes or OpenShift) Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great tutorial here</a>.
 
-In SQL Server Big Data Clusters, Kubernetes is responsible for the state of the BDC; Kubernetes builds and configures the cluster Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage) and manages the operation of the cluster.
+In SQL Server Big Data Clusters, Container Orchestration Tools (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; Container Orchestration Tools (Such as Kubernetes or OpenShift) builds and configures the cluster Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage) and manages the operation of the cluster.
 
-(You'll cover the storage aspects of Kubernetes clusters in more detail in a moment.)
+(You'll cover the storage aspects of Container Orchestration Tools (Such as Kubernetes or OpenShift) clusters in more detail in a moment.)
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Familiarize Yourself with Kubernetes using minikube</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Familiarize Yourself with Container Orchestration Tools (Such as Kubernetes or OpenShift) using minikube</b></p>
 
 To practice with Kubernetes, you will use an online emulator to work with the `minikube` platform. 
 
@@ -353,7 +353,7 @@ For large scale-out data systems, the mounting point for an I/O is another abstr
 
 With an abstraction such as Containers, storage becomes an issue for two reasons: The storage can disappear when the Container is removed, and other Containers and technologies can't access storage easily within a Container. 
 
-To solve this, Docker implemented the concept of <a href="https://docs.docker.com/engine/admin/volumes/" target="_blank">Volumes</a>, and <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">Kubernetes extended this concept</a>. Using <a href="https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md" target="_blank">a specific protocol and command, Kubernetes (and in specific, SQL Server BDC) mounts the storage as a *Persistent Volume* and uses a construct called a *Persistent Volume Claim* to access it</a>. A Kubernetes Volume is a mounted directory which is accessible to the Containers in a Pod within the Node.
+To solve this, Container Runtimes (Such as Docker) implemented the concept of <a href="https://docs.docker.com/engine/admin/volumes/" target="_blank">Volumes</a>, and <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">Container Orchestration Tools (Such as Kubernetes or OpenShift) extended this concept</a>. Using <a href="https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md" target="_blank">a specific protocol and command, Container Orchestration Tools (Such as Kubernetes or OpenShift) (and in specific, SQL Server BDC) mounts the storage as a *Persistent Volume* and uses a construct called a *Persistent Volume Claim* to access it</a>. A Container Orchestration Tools (Such as Kubernetes or OpenShift) Volume is a mounted directory which is accessible to the Containers in a Pod within the Node.
 
 You'll cover Volumes in more depth in a future module as you learn how the SQL Server BDC takes advantage of these constructs.
 
@@ -361,7 +361,7 @@ You <a href="https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html#Introduction
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Review HDFS Tutorial</b></p>
 
-There are two primary storage concepts you will work with in SQL Server Big Data Clusters: the HDFS layer, and SQL Server. Fro HDFS, it's important to know the basics of how it works. 
+There are two primary storage concepts you will work with in SQL Server Big Data Clusters: the HDFS layer, and SQL Server. For HDFS, it's important to know the basics of how it works. 
 
 <p><b>Steps</b></p>
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://data-flair.training/blogs/hadoop-hdfs-tutorial/" target="_blank">Open this reference, and review the lessons you see there</a>. Bookmark this reference for later review.</p>
@@ -378,7 +378,7 @@ There are three primary tools and utilities you will use to control the SQL Serv
  - azdata
  - Azure Data Studio
 
-<h3>Managing the Kubernetes Cluster<i>(kubectl)</i></h3>
+<h3>Managing the Container Orchestration Cluster<i>(cmd-line tools)</i></h3>
 
 The **kubectl** command accesses the Application Programming Interfaces (API's) from Kubernetes. The utility <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">can be installed your workstation using this process</a>, and it is also available in the <a href="https://azure.microsoft.com/en-us/features/cloud-shell/" target="_blank">Azure Cloud Shell with no installation</a>. 
 
@@ -391,10 +391,10 @@ You'll explore further operations with these tools in the <i>Management and Moni
 
 The **azdata** command-line utility is written in Python and can be installed on your workstation using the **pip** command in Python. You will see how to install this utility in the *Planning, Installation and Configuration* module.
 
-The **azdata** utility enables cluster administrators to bootstrap and manage big data clusters via the REST APIs exposed by the Controller service. The controller is deployed and hosted in the same Kubernetes namespace where the customer wants to build out a big data cluster. The Controller is responsible for core logic for deploying and managing a big data cluster.
+The **azdata** utility enables cluster administrators to bootstrap and manage big data clusters via the REST APIs exposed by the Controller service. The controller is deployed and hosted in the same Container Orchestration Tools (Such as Kubernetes or OpenShift) namespace where the customer wants to build out a big data cluster. The Controller is responsible for core logic for deploying and managing a big data cluster.
 
 The <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-controller?view=sqlallproducts-allversions 
-" target="_blank">Controller service is installed by a Kubernetes administrator during cluster bootstrap</a>, using the azdata command-line utility. 
+" target="_blank">Controller service is installed by a Container Orchestration Tools (Such as Kubernetes or OpenShift) administrator during cluster bootstrap</a>, using the azdata command-line utility. 
 
 You'll explore further operations with these tools in the <i>Management and Monitoring</i> module.
 
@@ -514,9 +514,9 @@ While Spark is used for all phases of the data processing lifecycle and can comp
     <li><a href = "https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-what-is?view=sql-server-2017" target="_blank">Official Documentation for this section - Wide World Importers Data Dictionary and company description</a></li>
     <li><a href = "https://www.simplilearn.com/data-science-vs-big-data-vs-data-analytics-article" target="_blank">Understanding the Big Data Landscape</a></li>
     <li><a href = "http://www.admin-magazine.com/Articles/Linux-Essentials-for-Windows-Admins-Part-1" target="_blank">Linux for the Windows Admin</a></li>
-    <li><a href = "https://docs.docker.com/v17.09/engine/userguide/" target="_blank">Docker Guide</a></li>
+    <li><a href = "https://docs.docker.com/v17.09/engine/userguide/" target="_blank">Container Runtimes (Such as Docker) Guide</a></li>
     <li><a href = "https://www.youtube.com/playlist?list=PLLasX02E8BPCrIhFrc_ZiINhbRkYMKdPT" target="_blank">Video introduction to Kubernetes</a></li>
-    <li><a href = "https://github.com/vlele/k8onazure" target="_blank">Complete course on Azure Kubernetes Service (AKS)</a></li>
+    <li><a href = "https://github.com/vlele/k8onazure" target="_blank">Complete course on Azure Container Orchestration Tools (Such as Kubernetes or OpenShift) Service (AKS)</a></li>
      <li><a href = "https://www.kdnuggets.com/2019/01/practical-apache-spark-10-minutes.html" target="_blank">Working with Spark</a></li>
     <li><a href="https://realpython.com/jupyter-notebook-introduction/" target="_blank">Full tutorial on Jupyter Notebooks</a></li>
 </ul>

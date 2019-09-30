@@ -56,7 +56,7 @@ Your workshop invitation may have instructed you that they will provide a Micros
 
 In order to complete this workshop you need to install the following software:
 
-1. Install [SQL Server 2019 CTP 3.2 or later](https://www.microsoft.com/en-us/sql-server/sql-server-2019#Install) with all features, PolyBase (stand-alone) enabled, and ensure you have 20GB of drive space available.
+1. Install [SQL Server 2019 CTP 3.2 or later](https://www.microsoft.com/en-us/sql-server/sql-server-2019#Install) with all features, *PolyBase Query Service for External Data* enabled, and ensure you have 20GB of drive space available.
 
 2. Install SQL Server Management Studio (SSMS) 18.2 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
 
