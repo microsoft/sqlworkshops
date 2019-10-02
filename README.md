@@ -34,7 +34,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [Presentation Materials - *(PowerPoint Decks, etc.)*](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#decks)
 - [Example Code](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#code)
-- [References and Tools from the Microsoft SQL Server Team](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#links)
+- [References and Tools from the Microsoft SQL Team](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#links)
 
 ## Learning how to self-learn
 
