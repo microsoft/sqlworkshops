@@ -11,9 +11,9 @@
 
 Welcome to this Microsoft solutions workshop on *SQL Server 2019 Workshop*.
 
-In this course you will learn some of the concepts and how to solve modern data challenges using a hands-on lab approach.
+In this course you will learn how to solve modern data challenges with SQL Server 2019 using a hands-on lab approach.
 
-This course is intended to be taken as a self-paced workshop but can also be instructor-led to broaden the discussion or go deeper into specific subjects. A supplement slide deck is available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder.
+This course is intended to be taken as a self-paced or instructor-led workshop. A supplement slide deck is available for this course in the [slides](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab/slides) folder.
 
 This course is designed for data professionals who have a basic working knowledge of SQL Server and the T-SQL language.
 
@@ -28,31 +28,36 @@ When you complete this course, you will be able to:
 - Understand and use **Intelligent Performance** and **Optimizations for TempDB** features to boost query performance with no application changes
 - Understand and use **Data Classification and Auditing** to meet the needs of compliance and regulation standards.
 - Understand and use **Accelerated Database Recovery** to increase database availability.
+- Learn how to **extend the T-SQL Language** with Java classes.
+- Understand and use **containers** and deploy **SQL Server Replication on Linux**.
+- Learn how to deploy and use **SQL Server on Kubernetes**
 - Understand and use **Polybase** to connect and query other data sources with no data movement.
-- Understand and use **Docker containers** to deploy **SQL Server Replication on Linux**.
+- Learn how to use **Big Data Clusters** to gain intelligence over all your data integrating SQL Server, Hadoop, and Spark.
 - Learn more about **additional capabilities** of SQL Server 2019, **Migration** tools, and **Database Compatibility**.
 
-As part of taking this lab you are also learning about new capabilities in **Azure SQL Database**.
+As part of taking this lab you are also learning about new capabilities in **Azure SQL**.
 
-The following features in this lab also exist in Azure SQL Database:
+The following features in this lab also exist in Azure SQL:
 
 - Intelligent Query Processing
 - Data Classification and Auditing
 - Accelerated Database Recovery
 
-In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Azure SQL Data Warehouse, and Azure CosmosDB.
+In addition, SQL Server Polybase allows you to connect to Azure SQL, Azure SQL Data Warehouse, and Azure CosmosDB.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2>
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"><b>     Business Applications of this Workshop</b></h2>
 
-- Boosting Database Performance with no application changes
-- Classifying data for industry or regulatory compliance
-- Ensuring data is highly available
-- Reducing costs of expensive data movement applications
-- Choosing different platforms for SQL Server and taking advantage of containerized applications.
-- Learning tools and techniques to modernize and migrate to SQL Server 2019
+- Boost Database Performance with no application changes
+- Classify data for industry or regulatory compliance
+- Ensure data is highly available to outages that can disrupt your business.
+- Reduce costs of expensive data movement applications
+- Integrate all your data and build end-to-end machine learning application in a single solution.
+- Choose different platforms for SQL Server and take advantage of containerized applications.
+- Learn how to extend the T-SQL language to meet the needs of your application.
+- Learn tools and techniques to modernize and migrate to SQL Server 2019.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -70,7 +75,7 @@ In addition, SQL Server Polybase allows you to connect to Azure SQL Database, Az
 <tr><td><i>Accelerated Database Recovery</i></td><td>Turbocharged Recovery, fast rollback, and aggressive transaction log truncation</td></tr>
 <tr><td><i>Polybase</i></td><td>Data Virtualization through external tables</td></tr>
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
-  <tr><td><i>Docker</i></td><td>Engine for running and manage containers</td></tr>
+  <tr><td><i>Container runtime</i></td><td>Engine for running and manage containers</td></tr>
 <tr><td><i>SQL Server Management Studio (SSMS)</i></td><td>Graphical User Interface Management and Query Tool</td></tr>
     <tr><td><i>Azure Data Studio<i></td><td>Graphical User Interface to execute T-SQL queries, notebooks, and manage SQL Server</td></tr>
 
@@ -97,33 +102,36 @@ Each module of this workshop can be studied and used independently of each other
 In order to complete this workshop you need to install the following software:
 
 - SQL Server 2019 Release Candidate or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
-    - For **Modules 1, 2, and 3** you only need the database engine installed
-    - **Module 3** requires disk space to hold a database with a 10Gb data and 10Gb or 40Gb log file.
-    - **Module 4** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.)
-    - **Docker is required only for Module 5**. You can use Docker for Windows, Linux, or MacOS.
+    - For **Modules 2, 3, and 4** you only need the database engine installed
+    - **Module 4** requires disk space to hold a database with a 10Gb data and 10Gb or 40Gb log file.
+    - **Module 5** requires TODO:
+    - **Module 6** requires a container runtime like Docker. You can run this on Windows, MacOS, or Linux.
+    - **Module 7** requires access to a deployed Kubernetes Cluster like Azure Kubernetes Service (AKS).
+    - **Module 8** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.). To run the primary notebook in Module 4 you need access to an Azure SQL Database.
+    - **Module 9** requires you to deploy a SQL Server 2019 Big Data Cluster on Kubernetes.
+
 - Install SQL Server Management Studio (SSMS) 18.2 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
 - Install Azure Data Studio June 2019 or higher from https://docs.microsoft.com/en-us/sql/azure-data-studio/download. T-SQL notebooks are used extensively in this course.
 
-- The WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak. You can find example scripts to restore the WideWorldImporters database in the **sql2019lab** folder.
-- Access to an **Azure SQL Database** is required for **Module 4**.
+- The WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak. You can find example scripts to restore the WideWorldImporters database in the **sql2019workshop** folder.
 
-This workshop was built and designed for a computer or VM to run SQL Server with at least 8Gb RAM and 4 CPUs. You may be able to run this lab with less compute resources.
+This workshop was built and designed for a computer or VM to run SQL Server with at least 8Gb RAM and 4 CPUs.
 
-> **NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 5, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
+> **NOTE**: *If you run this lab from a virtual machine in Azure running Windows, and you want to use Module 6, you will need to enable nested virtualization. Read more at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization*
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"><b>     Workshop Details</b></h2>
 
-This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Studio, Docker containers, and Azure SQL Database for you to learn how you can solve modern data challenges with SQL Server 2019.
+This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Studio, containers, Kubernetes, and Azure SQL Database for you to learn how you can solve modern data challenges with SQL Server 2019.
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Data professionals looking to understand and use new capabilities of SQL Server 2019</td></tr>
-  <tr><td>Secondary Audience:</td><td> Developers, Architects, and IT Pros</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 300</td></tr>
+  <tr><td>Secondary Audience:</td><td>Developers, Architects, IT Pros, Data Scientists, and Data Engineers</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;">300</td></tr>
   <tr><td>Type:</td><td>Self-Paced or Instructor Led</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">1-2 hours (self-paced) 2-4 hours (Instructor Led)</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Full Day</td></tr>
 
 </table>
 
@@ -131,8 +139,10 @@ This workshop uses SQL Server 2019, SQL Server Management Studio, Azure Data Stu
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"><b>     Related Workshops</b></h2>
 
+- [SQL Server 2019 Lab](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab)
 - [SQL Server Big Data Clusters Architecture](https://github.com/microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 - [SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops/tree/master/SQLonOpenShift)
+- [SQL Ground-to-Cloud](https://github.com/microsoft/sqlworkshops/tree/master/SQLGroundToCloud)
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
