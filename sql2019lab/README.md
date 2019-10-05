@@ -42,7 +42,7 @@ This **README.MD** file explains how the lab is structured, what you will learn,
 
 When you complete this course, you will be able to:
 
-- Understand and use **Intelligent Performance** features to boost query performance with application changes
+- Understand and use **Intelligent Performance** features to boost query performance with no application changes
 - Understand and use **Data Classification and Auditing** to meet the needs of compliance and regulation standards.
 - Understand and use **Accelerated Database Recovery** to increase database availability.
 - Understand and use **Polybase** to connect and query other data sources with no data movement.
