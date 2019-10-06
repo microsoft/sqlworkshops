@@ -21,13 +21,13 @@ You will cover the following topics in this Module:
 
 <dl>
 
-  <dt><a href="#3-0">3.0 Accelerated Database Recovery</a></dt>
+  <dt><a href="#4-0">4.0 Accelerated Database Recovery</a></dt>
    
 </dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="3-0">     3.0 Accelerated Database Recovery</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="4-0">     4.0 Accelerated Database Recovery</a></b></h2>
 
 In this module you will learn about a new capability in SQL Server 2019 to solve problems caused by long running transactions. This enhancement to SQL Server 2019 is called Accelerated Database Recovery.
 
@@ -93,11 +93,11 @@ Proceed to the Activity to learn an example of how Accelerated Database Recovery
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityadr">     Activity: Accelerated Database Recovery</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity4.0">     Activity: Accelerated Database Recovery</a></b></h2>
 
 In this activity, you will see how Accelerated Database Recovery affects log truncation and the speed of rollback.
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 4.0 and run through all the steps again.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.0">Activity Steps</a></b></h3>
 
