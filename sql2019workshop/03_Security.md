@@ -21,14 +21,14 @@ You will cover the following topics in this Module:
 
 <dl>
 
-  <dt><a href="#2-0">2.0 Data Classification</a></dt>
-  <dt><a href="#2-1">2.1 Auditing Data Classification</a></dt>
+  <dt><a href="#3-0">3.0 Data Classification</a></dt>
+  <dt><a href="#3-1">3.1 Auditing Data Classification</a></dt>
   
 </dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="2-0"><b>     2.0 Data Classification</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="3-0"><b>     3.0 Data Classification</a></b></h2>
 
 In this module you will learn about the Data Classification capabilities in SQL Server 2019.
 
@@ -64,13 +64,13 @@ Proceed to the Activity to learn an example of how to use Data Classification wi
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitydataclassification">     Activity: Data Classification</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity3.0">     Activity: Data Classification</a></b></h2>
 
 In this activity, you will learn how to use SQL Server Management Studio (SSMS) and T-SQL to classify columns of tables in a database. You will use the **WideWorldImporters** sample database to classify specific columns in tables of that database.
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
-<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.0">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.0">Activity Steps</a></b></h3>
 
 Follow these steps to classify certain columns in the WideWorldImporters database using SSMS and T-SQL. All scripts for this activity can be found in the **sql2019workshop\03_Security\dataclassification** folder.
 
@@ -211,7 +211,7 @@ Armed with this knowledge, proceed to the next activity to learn how auditing is
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-1">     2.1 Auditing Data Classification</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="3-1">     3.1 Auditing Data Classification</a></b></h2>
 
 In this module you will learn how to use the SQL Server Audit capability that comes with SQL Server to audit who, what, and when attempted to view columns that are marked for classification.
 
@@ -229,7 +229,7 @@ Let's use an activity to see how audit and classification work together.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityauditing">     Activity: Using SQL Server Audit with Data Classification</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity3.1">     Activity: Using SQL Server Audit with Data Classification</a></b></h2>
 
 In this activity you will learn how to audit users trying to view columns that were marked for data classification.
 
@@ -237,7 +237,7 @@ In this activity you will learn how to audit users trying to view columns that w
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
-<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.1">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.1">Activity Steps</a></b></h3>
 
 Work through the following steps to enable SQL Server Audit and view auditing details when a user attempts to view columns that are associated with data classification.
 

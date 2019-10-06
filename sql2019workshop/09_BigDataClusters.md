@@ -122,4 +122,4 @@ xxxxxxxxxxx
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
 
-Next, Continue to <a href="10_Additional_Migration.md" target="_blank"><i>Additional Capabilities, Migration, and Database Compatibility</i></a>.
+Next, Continue to <a href="10_Additional_Migration.md" target="_blank"><i>Additional Capabilities, Migration, and Next Steps</i></a>.

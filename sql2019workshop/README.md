@@ -159,7 +159,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
   <tr><td><a href="./02_IntelligentPerformance.md" target="_blank">02 - Intelligent Performance</a></td><td> Learn the how SQL Server can boost your performance with no application changes</td></tr>
   <tr><td><a href="./03_Security.md" target="_blank">03 - Security</a> </td><td > Learn new security features of SQL Server 2019 such as Data Classification and Auditing</td></tr>
   <tr><td><a href="./04_Availability.md" target="_blank">04 - Availability</a></td><td> Learn new capabilities to make your SQL Server more available such as Accelerated Database Recovery</td></tr>
-  <tr><td ><a href="./05_ModenDevPlatform.md" target="_blank">05 - Modern Development Platform</a></td><td> Learn how SQL Server 2019 provides new capabilities for the modern data developer</td></tr>
+  <tr><td ><a href="./05_ModernDevPlatform.md" target="_blank">05 - Modern Development Platform</a></td><td> Learn how SQL Server 2019 provides new capabilities for the modern data developer</td></tr>
   <tr><td><a href="./06_Linux_and_Containers.md" target="_blank">06 - Linux and Containers</a></td><td>Learn how to deploy SQL Server in containers and SQL Server Replication on Linux.</td></tr>
   <tr><td><a href="./07_SQLOnKubernetes.md" target="_blank">07 - SQL Server on Kubernetes</a></td><td>Learn how to deploy SQL Server on a Kubernetes Cluster</td></tr>
   <tr><td><a href="./08_DataVirtualization.md" target="_blank">08 - Data Virtualization</a> </td><td>Learn how to use SQL Server as a data hub and reduce data movement using Polybase++</td></tr> 
