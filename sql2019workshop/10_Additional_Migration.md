@@ -1,12 +1,12 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (RC)
+# Workshop: SQL Server 2019 Workshop
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     Additional Capabilities in SQL Server 2019 and Migration</b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     Additional Capabilities in SQL Server 2019, Migration, and Database Compatibility</b></h2>
 
 This module is designed for you to read and learn about additional capabilities in SQL Server 2019, tools to assist Migration, using Database Compatibility, and Next Steps for your journey with SQL Server 2019. There are no activities for this module.
 
@@ -16,14 +16,14 @@ You will cover the following topics in this Module:
 
 <dl>
 
-<dt><a href="#6-0">6.0 Additional Capabilities in SQL Server 2019</a></dt>
-<dt><a href="#6-1">6.1 Migration and Database Compatibility</a></dt>
+<dt><a href="#10-0">10.0 Additional Capabilities in SQL Server 2019</a></dt>
+<dt><a href="#10-1">10.1 Migration and Database Compatibility</a></dt>
    
 </dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="6-0">     6.0 Additional Capabilities in SQL Server 2019</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="10-0">     10.0 Additional Capabilities in SQL Server 2019</a></b></h2>
 
 In this section of the module you will learn about additional capabilities in SQL Server 2019 including:
 
@@ -62,7 +62,7 @@ You can get more details about all of these in our documentation at https://docs
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="6-0">     6.1 Migration and Database Compatibility</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="10-1">     10.1 Migration and Database Compatibility</a></b></h2>
 
 As work towards a migration to SQL Server 2019, you need to consider a planned process for pre-migration, migration, and post-migration. We have provided a series of tools to help with this process.
 
@@ -135,6 +135,4 @@ Use the following resources to learn more on your journey to SQL Server 2019:
 - Learn from videos and demos at https://aka.ms/sqlchannel
 - Download and try SQL Server 2019 at http://aka.ms/ss19
 - Watch the video of Modernizing SQL Server at https://www.youtube.com/watch?v=5RPkuQHcxxs to plan your migration
-- Read the what’s new for SQL 2019 documentation at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15
-- Sign-up for the EAP program at https://aka.ms/eapsignup
-
+- Read the what’s new for SQL 2019 documentation at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15.
