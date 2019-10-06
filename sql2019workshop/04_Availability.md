@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (RC)
+# Workshop: SQL Server 2019 Workshop
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -101,13 +101,13 @@ In this activity, you will see how Accelerated Database Recovery affects log tru
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.0">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019lab\03_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database. The scripts will create a database with a data file of 10Gb and transaction log of 10Gb so there is plenty of space for the activity.
+All scripts for this activity can be found in the **sql2019workshop\04_Availability\adr** folder. The database will be created as part of this activity. There is no need to restore a separate database. The scripts will create a database with a data file of 10Gb and transaction log of 10Gb so there is plenty of space for the activity.
 
 >**NOTE**: *For Linux installations change the path to /var/opt/mssql/data in the T-SQL notebook and T-SQL scripts.*
 
 **STEP 1: Use a T-SQL notebook to complete the rest of the activity.**
 
-T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 3.0 can be found in the T-SQL notebook **adr.ipynb** which can be found in the **sql2019lab\03_Availability\adr** folder.
+T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 3.0 can be found in the T-SQL notebook **adr.ipynb** which can be found in the **sql2019workshop\sql2019workshop\04_Availability\adr** folder.
 
 >**NOTE**: *A T-SQL script **adr.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
@@ -133,7 +133,7 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019lab** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **03_Availability\adr** folder, open up the **adr.ipynb** notebook and go through all the steps. 
+If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019workshop** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **04_Availability\adr** folder, open up the **adr.ipynb** notebook and go through all the steps. 
 
 >**NOTE**: Be sure to only run one notebook cell at a time for the lab.
 
@@ -177,4 +177,4 @@ Armed with this knowledge, proceed to the next activity to learn how **data virt
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
 
-Next, Continue to <a href="04_DataVirtualization.md" target="_blank"><i>Data Virtualization</i></a>.
+Next, Continue to <a href="05_ModernDevPlatform.md" target="_blank"><i>Modern Development Platform</i></a>.

@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (RC)
+# Workshop: SQL Server 2019 Workshop
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -24,14 +24,15 @@ You will cover the following topics in this Module:
 
 <dl>
 
-  <dt><a href="#1-0">1.0 SQL Server Intelligent Query Processing</a></dt>
-  <dt><a href="#1-1">1.1 Using Query Store for performance analysis</a></dt>
+  <dt><a href="#2-0">2.0 SQL Server Intelligent Query Processing</a></dt>
+  <dt><a href="#2-1">2.1 Using Query Store for performance analysis</a></dt>
+  <dt><a href="#2-2">2.2 Memory Optimized Tempdb Metadata</a></dt>
   
 </dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="1-0">     1.0 SQL Server Intelligent Query Processing</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-0">     2.0 SQL Server Intelligent Query Processing</a></b></h2>
 
 In this module you will learn about the Intelligent Query Processing capabilities in SQL Server 2019.
 
@@ -70,9 +71,9 @@ The **WideWorldImporters** database example was created using SQL Server 2016 wh
 
 You will observe the performance of the **CustomerProfits** stored procedure with database compatibility level of 130 on SQL Server 2019. You will then compare the performance of the same procedure with no changes with a database compatibility of 150 which will enable the query processor to use  table variable deferred compilation.
 
-<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps1.0">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.0">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
+All scripts for this activity can be found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder.
 
 Follow these steps to observe performance differences with table variable deferred compilation.
 
@@ -80,11 +81,11 @@ Follow these steps to observe performance differences with table variable deferr
 
 > **NOTE**: If you have restored the WideWorldImporters database backup in other modules, you can skip this step.
 
-Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) to execute the T-SQL script **restorewwi.sql** as found in the **sql2019lab\01_IntelligentPerformance\iqp** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
+Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) to execute the T-SQL script **restorewwi.sql** as found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
 
 **STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
 
-T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019lab\01_IntelligentPerformance\iqp** folder.
+T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder.
 
 >**NOTE**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
@@ -110,7 +111,7 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019lab** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **01_IntelligentPerformance\iqp** folder, open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. 
+Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019workshop** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **02_IntelligentPerformance\iqp** folder, open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. 
 
 >**NOTE**: Be sure to only run one notebook cell at a time for the lab.
 
@@ -130,7 +131,7 @@ In this activity you have learned the powerful capabilities of Intelligent Query
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="1-1">     1.1 Using Query Store for Performance Analysis</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-1">     2.1 Using Query Store for Performance Analysis</a></b></h2>
 
 In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Module 1.0. Even though query store is not new to SQL Server 2019, it is an excellent feature to help analyze performance differences with Intelligent Query Processing.
 
@@ -154,7 +155,7 @@ The **WideWorldImporters** sample database that you restored in Module 1.0 has t
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
 
-<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps1.1">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.1">Activity Steps</a></b></h3>
 
 Work through the following steps to use the Query Store to examine the query performance differences for the CustomerProfits stored procedure when executed with database compatibility 130 versus 150.
 
@@ -226,7 +227,29 @@ In this example, the query processor used three different Intelligent Query Proc
 
 In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing. You observed the SQL Server query processor using multiple techniques to make your queries faster with no changes to the stored procedure or application.
 
-Proceed to the next module to learn about new **security** capabilities in SQL Server 2019.
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-2">     2.2 Advanced: Memory Optimized Tempdb Metadata</a></b></h2>
+
+xxx
+
+<h3><b><a name="challenge">The Challenge</a></b></h3>
+
+xxx
+
+<h3><b><a name="solution">The Solution</a></b></h3>
+
+xxxx
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityquerystore">     Activity: Tempdb just got faster</a></b></h2>
+
+xxxx
+
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.2">Activity Steps</a></b></h3>
+
+xxx
+
+<h3><b><a name="activitysummary">Activity Summary</a></b></h3>
+
+xxx
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -243,4 +266,4 @@ Proceed to the next module to learn about new **security** capabilities in SQL S
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>  Next Steps</b></h2>
 
-Next, Continue to <a href="02_Security.md" target="_blank"><i>Security</i></a>.
+Next, Continue to <a href="03_Security.md" target="_blank"><i>Security</i></a>.

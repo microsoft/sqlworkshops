@@ -1,19 +1,19 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (RC)
+# Workshop: SQL Server 2019 Workshop
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     SQL Server 2019 Mission Critical Availability</b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     SQL Server 2019 Modern Development Platform</b></h2>
 
-SQL Server 2019 includes new capabilities to keep your database and application highly available:
+SQL Server 2019 includes new capabilities to solve challenges of the Modern Data Developer including:
 
-- Online Index Enhancements
-- Enhancements to Availability Groups
-- Taking advantage of built-in HA for Kubernetes
-- Accelerated Database Recovery
+- Support for a variety of programming languages such as C#, Java, Node.js, php, Python, Ruby, and Go.
+- Support for UTF-8 encoding
+- Enhancements to Machine Learning Services
+- Extending the T-SQL language with SQL Server Language Extensions.
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
 
@@ -21,7 +21,7 @@ You will cover the following topics in this Module:
 
 <dl>
 
-  <dt><a href="#3-0">3.0 Accelerated Database Recovery</a></dt>
+  <dt><a href="#3-0">5.0 Extending the T-SQL Language with Java</a></dt>
    
 </dl>
 
