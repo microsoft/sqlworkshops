@@ -14,7 +14,6 @@ SQL Server 2019 has new security enhancements including:
 - Data Classification and Auditing
 - Transparent Data Encryption (TDE) Suspend and Resume
 - Improved Certificate Management
-- Feature Restrictions
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
 
