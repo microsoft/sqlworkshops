@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server 2019 Lab (RC)
+# Workshop: SQL Server 2019 Workshop
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -30,13 +30,36 @@ SQL Server 2019 introduces the following new enhancements for containers:
 For this module, we will join forces to show you how to implement SQL Server Replication with Linux Containers.
 <dl>
 
-  <dt><a href="#5-0">5.0 SQL Server 2019 Replication on Linux using Containers</a></dt>
+  <dt><a href="#6-0">6.0 Deploying and using SQL Server containers</a></dt>
+  <dt><a href="#6-1">6.1 SQL Server 2019 Replication on Linux using Containers</a></dt>
    
 </dl>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="5-0">     5.0 SQL Server 2019 Replication on Linux using Containers</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="5-0">     6.0 Deploying and using SQL Server Containers</a></b></h2>
+
+<h3><b><a name="challenge">The Challenge</a></b></h3>
+
+xxxxx
+
+<h3><b><a name="solution">The Solution</a></b></h3>
+
+xxxxx
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitylinuxrepl">     Activity: Updating SQL Server with Contianers</a></b></h2>
+
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 6.0 and run through all the steps again.*
+
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps5.0">Activity Steps</a></b></h3>
+
+All scripts for this activity can be found in the **sql2019workshop\06_Linux_and_Containers\containers** folder.
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="5-0">     6.1 SQL Server 2019 Replication on Linux using Containers</a></b></h2>
 
 In this module you will learn how to deploy SQL Server Replication using Containers.
 
@@ -64,9 +87,9 @@ In this activity, you will learn how to deploy a SQL Server replication solution
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 5.0 and run through all the steps again.*
 
-<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps5.0">Activity Steps</a></b></h3>
+<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics6checkmark.png?raw=true"><b><a name="activitysteps5.0">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019lab\05_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
+All scripts for this activity can be found in the **sql2019workshop\06_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
 
 >**NOTE**: This activity assumes the following:
 
@@ -79,7 +102,7 @@ All scripts for this activity can be found in the **sql2019lab\05_Linux_and_Cont
 
 It will help to describe how scripts and files are provided to make the solution work. Examine the following files described in this step to see the flow.
 
-In the **sql2019lab\05_Linux_and_Containers\replication** folder there are two directories and a file:
+In the **sql2019workshop\06_Linux_and_Containers\replication** folder there are two directories and a file:
 
 - **db1** - Scripts and files to build a custom container image for the publisher and distributor.
 - **db2** - Scripts and files to build a customer container for the subscriber.
@@ -182,4 +205,4 @@ In this activity, you learned how to deploy a SQL Server replication topology wi
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
 
-Next, Continue to <a href="06_Additional_Migration.md" target="_blank"><i>Additional Capabilities, Migration, and Next Steps</i></a>.
+Next, Continue to <a href="07_SQLOnKubernetes.md" target="_blank"><i>SQL Server and Kubernetes</i></a>.
