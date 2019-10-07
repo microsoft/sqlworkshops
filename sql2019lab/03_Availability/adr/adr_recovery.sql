@@ -76,7 +76,7 @@ DECLARE @x int
 SET @x = 0
 WHILE (@x < 500000)
 BEGIN
-	INSERT INTO howboutthemcowboys VALUES (@x, 'Jason Whitten returns in 2019')
+	INSERT INTO howboutthemcowboys VALUES (@x, 'Jason Witten returns in 2019')
 	SET @x = @x + 1
 END
 COMMIT TRAN
