@@ -467,6 +467,7 @@ Proceed to the next module learn about new mission critical **availability** fea
 
 - [sys.sensitivity_classifications catalog view](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 - [SQL Server Audit](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [Always Encrypted with Secure Enclaves](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-enclaves)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

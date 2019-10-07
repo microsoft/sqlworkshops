@@ -26,7 +26,7 @@ You will cover the following topics in this Module:
 
   <dt><a href="#2-0">2.0 SQL Server Intelligent Query Processing</a></dt>
   <dt><a href="#2-1">2.1 Using Query Store for performance analysis</a></dt>
-  <dt><a href="#2-2">2.2 Memory Optimized Tempdb Metadata</a></dt>
+  <dt><a href="#2-2">2.2 Advanced: Memory Optimized Tempdb Metadata</a></dt>
   
 </dl>
 

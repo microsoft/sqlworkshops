@@ -49,7 +49,7 @@ XXXXXXXXX
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.0">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019workshop\05_ModernDevPlatform\adr** folder.
+All scripts for this activity can be found in the **sql2019workshop\05_ModernDevPlatform\java_extensibility** folder.
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
@@ -61,10 +61,6 @@ xxxxxxxxxxx
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     For Further Study</b></h2>
-
-- [Accelerated Databased Recovery](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-accelerated-database-recovery)
-
-- [The Constant Time Recovery Paper](https://www.microsoft.com/en-us/research/publication/constant-time-recovery-in-azure-sql-database )
 
 - [What is Azure Data Studio?](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
 

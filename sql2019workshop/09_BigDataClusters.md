@@ -18,7 +18,7 @@ You will cover the following topics in this Module:
 
   <dt><a href="9-0">9.0 Data Virtualization and Big Data Clusters</a></dt>
   <dt><a href="#9-1">9.1 Spark and Machine Learning</a></dt>
-  <dt><a href="#9-2">9.2 Exploring and Monitoring Big Data Clusters</a></dt>
+  <dt><a href="#9-2">9.2 Advanced: Exploring and Monitoring Big Data Clusters</a></dt>
     
 </dl>
 

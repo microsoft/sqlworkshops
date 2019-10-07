@@ -31,7 +31,7 @@ For this module, we will join forces to show you how to implement SQL Server Rep
 <dl>
 
   <dt><a href="#6-0">6.0 Deploying and using SQL Server containers</a></dt>
-  <dt><a href="#6-1">6.1 SQL Server 2019 Replication on Linux using Containers</a></dt>
+  <dt><a href="#6-1">6.1 Advanced: SQL Server 2019 Replication on Linux using Containers</a></dt>
    
 </dl>
 
@@ -59,7 +59,7 @@ All scripts for this activity can be found in the **sql2019workshop\06_Linux_and
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="5-0">     6.1 SQL Server 2019 Replication on Linux using Containers</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="5-0">     6.1 Advanced: SQL Server 2019 Replication on Linux using Containers</a></b></h2>
 
 In this module you will learn how to deploy SQL Server Replication using Containers.
 
