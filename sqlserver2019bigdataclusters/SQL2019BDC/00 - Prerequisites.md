@@ -22,13 +22,13 @@ The other requirements are:
 - **The pip3 Package**: The Python package manager *pip3* is used to install various BDC deployment and configuration tools. 
 - **The kubectl program**: The *kubectl* program is the command-line control feature for Kubernetes.
 - **The azdata utility**: The *azdata* program is the deployment and configuration tool for BDC.
-- **Azure Data Studio**: The *Azure Data Studio* IDE, along with various Extensions, is used for deploying the system, and querying and management of the BDC. In addition, you will use this tool to participate in the workshop.
+- **Azure Data Studio**: The *Azure Data Studio* IDE, along with various Extensions, is used for deploying the system, and querying and management of the BDC. In addition, you will use this tool to participate in the workshop. Note: You can connect to a SQL Server 2019 Big Data Cluster using any SQL Server connection tool or applicaiton, such as SQL Server Management Studio, but this course will use Microsoft Azure Data Studio for cluster management, Jupyter Notebooks and other capabilities. 
 
 *Note that all following activities must be completed prior to class - there will not be time to perform these operations during the workshop.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 1: Set up a Microsoft Azure Account</b></p>
 
-You have multiple options for setting up Microsoft Azure account to complete this workshop. You can use an Microsoft Developer Network (MSDN) account, a personal or corporate account, or in some cases a pass may be provided by the instructor. (Note: for most classes, the MSDN account is best)
+You have multiple options for setting up Microsoft Azure account to complete this workshop. You can use a Microsoft Developer Network (MSDN) account, a personal or corporate account, or in some cases a pass may be provided by the instructor. (Note: for most classes, the MSDN account is best)
 
 **If you are attending this course in-person:**
 Unless you are explicitly told you will be provided an account by the instructor in the invitation to this workshop, you must have your Microsoft Azure account and Data Science Virtual Machine set up before you arrive at class. There will NOT be time to configure these resources during the course.
@@ -41,7 +41,7 @@ The best way to take this workshop is to use your [Microsoft Developer Network (
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><b>Option 2 - Use Your Own Account</b></p>
 
-You can also use your own account or one provided to you by your organization, but you must be able to create a resource group and create, start, and manage a Data Science Virtual Machine (DSVM) and an Azure AKS cluster. 
+You can also use your own account or one provided to you by your organization, but you must be able to create a resource group and create, start, and manage a Virtual Machine and an Azure AKS cluster. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><b>Option 3 - Use an account provided by your instructor</b></p>
 

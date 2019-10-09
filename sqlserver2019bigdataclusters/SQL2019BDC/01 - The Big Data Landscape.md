@@ -165,7 +165,7 @@ For general concepts for Windows storage see the following resources:
 <ul>
     <li><a href="https://social.technet.microsoft.com/wiki/contents/articles/5375.windows-file-systems.aspx?Redirected=true" target="_blank">Understand Windows File Systems</a></li>
     <li><a href="https://docs.microsoft.com/en-us/windows-server/storage/storage" target="_blank">Microsoft primary location for Storage on Windows Server</a></li>
-    <li><a href="https://blogs.msdn.microsoft.com/clustering/2018/05/31/scale-out-file-server-improvements-in-windows-server-2019/" target="_blank">Improvements in Windows Server Storage</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction" target="_blank">Understanding Microsoft Azure Storage</a></li>
 </ul>
 
 In general, Linux treats almost everything as a file system or a process. For general concepts for Linux storage see the following resources:
@@ -291,9 +291,9 @@ You can <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-wind
 
 <h3>Containers <i>(Docker)</i></h3>
 
-The next level of Abstraction is a <i>Container</i>. There are various types of Container technologies, in this workshop, you will focus on <a href="https://docs.docker.com" target="_blank">Docker</a>.
+The next level of Abstraction is a <i>Container</i>. There are various types of Container technologies, in this workshop, you will focus on the docker container format, as implemented in the <a href="https://mobyproject.org/" target="_blank">Moby framework</a>.
 
-A Container Runtimes (Such as Docker) Container is provided by the Container Runtimes (Such as Docker) runtime engine, which sits above the operating system (Windows or Linux). In this abstraction, you do not control the hardware <i>or</i> the operating system. The Container has a very small Kernel in it, and can contain binaries such as Python, R, SQL Server, or other binaries. A Container with all its binaries is called an <i>Image</i>. 
+A Container is provided by the Container Runtime (Such as [containerd](https://containerd.io/)]) runtime engine, which sits above the operating system (Windows or Linux). In this abstraction, you do not control the hardware <i>or</i> the operating system. The Container has a very small Kernel in it, and can contain binaries such as Python, R, SQL Server, or other binaries. A Container with all its binaries is called an <i>Image</i>. You create a container from a file.
 
 <i>(NOTE: The Container Image Kernel can run on Windows or Linux, but you will focus on the Linux Kernel Containers in this workshop.)</i>
 
@@ -309,15 +309,15 @@ You can <a href="https://hackernoon.com/docker-commands-the-ultimate-cheat-sheet
 
 <h3>Container Orchestration <i>(Kubernetes)</i></h3>
 
-For Big Data systems, having lots of Containers is very advantageous to segment purpose and performance profiles. However, dealing with many Container Images, allowing persisted storage, and interconnecting them for network and internetwork communications is a complex task. <i>Kubernetes</i> is an open source Container orchestrator, which can scale Container deployments according to need. The following table defines some important Container Orchestration Tools (Such as Kubernetes or OpenShift) terminology:
+For Big Data systems, having lots of Containers is very advantageous to segment purpose and performance profiles. However, dealing with many Container Images, allowing persisted storage, and interconnecting them for network and internetwork communications is a complex task. One such Container Prchestration tool is <i>Kubernetes</i>, an open source Container orchestrator, which can scale Container deployments according to need. The following table defines some important Container Orchestration Tools (Such as Kubernetes or OpenShift) terminology:
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Component</b></td><td style="background-color: AliceBlue; color: black;"><b>Used for</b></td></tr>
 
-  <tr><td>Cluster</td><td> A Container Orchestration Tools (Such as Kubernetes or OpenShift) cluster is a set of machines, known as nodes. One node controls the cluster and is designated the master node; the remaining nodes are worker nodes. The Container Orchestration Tools (Such as Kubernetes or OpenShift) master is responsible for distributing work between the workers, and for monitoring the health of the cluster.</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;">Node</td><td td style="background-color: AliceBlue; color: black;"> A node runs containerized applications. It can be either a physical machine or a virtual machine. A Container Orchestration Tools (Such as Kubernetes or OpenShift) cluster can contain a mixture of physical machine and virtual machine nodes.</td></tr>
-  <tr><td>Pod</td><td> A pod is the atomic deployment unit of Kubernetes. A pod is a logical group of one or more containers-and associated resources-needed to run an application. Each pod runs on a node; a node can run one or more pods. The Container Orchestration Tools (Such as Kubernetes or OpenShift) master automatically assigns pods to nodes in the cluster.</td></tr>
+  <tr><td>Cluster</td><td> Container Orchestration (Such as Kubernetes or OpenShift) cluster is a set of machines, known as nodes. One node controls the cluster and is designated the master node; the remaining nodes are worker nodes. The Container Orchestration *master* is responsible for distributing work between the workers, and for monitoring the health of the cluster.</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;">Node</td><td td style="background-color: AliceBlue; color: black;"> A node runs containerized applications. It can be either a physical machine or a virtual machine. A Cluster can contain a mixture of physical machine and virtual machines as Nodes.</td></tr>
+  <tr><td>Pod</td><td> A Pod is the atomic deployment unit of a Cluster. A pod is a logical group of one or more Containers and associated resources needed to run an application. Each Pod runs on a Node; a Node can run one or more Pods. The Cluster master automatically assigns Pods to Nodes in the Cluster.</td></tr>
  
 </table>
 	
@@ -325,13 +325,13 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 <p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="../graphics/KubernetesCluster.png"></p> 	 	
 <br>
 
-You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Container Orchestration Tools (Such as Kubernetes or OpenShift) here</a>. We're using the Azure Container Orchestration Tools (Such as Kubernetes or OpenShift) Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great tutorial here</a>.
+You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Container Orchestration systems here</a>. We're using the Azure Kubernetes Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great set of tutorials for you to learn more here</a>.
 
-In SQL Server Big Data Clusters, Container Orchestration Tools (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; Container Orchestration Tools (Such as Kubernetes or OpenShift) builds and configures the cluster Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage) and manages the operation of the cluster.
+In SQL Server Big Data Clusters, the Container Orchestration system (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; it is reponsible for building and configurint the Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage), and manages the operation of the Cluster.
 
-(You'll cover the storage aspects of Container Orchestration Tools (Such as Kubernetes or OpenShift) clusters in more detail in a moment.)
+(You'll cover the storage aspects of Container Orchestration in more detail in a moment.)
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Familiarize Yourself with Container Orchestration Tools (Such as Kubernetes or OpenShift) using minikube</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Familiarize Yourself with Container Orchestration using minikube</b></p>
 
 To practice with Kubernetes, you will use an online emulator to work with the `minikube` platform. 
 
@@ -353,7 +353,7 @@ For large scale-out data systems, the mounting point for an I/O is another abstr
 
 With an abstraction such as Containers, storage becomes an issue for two reasons: The storage can disappear when the Container is removed, and other Containers and technologies can't access storage easily within a Container. 
 
-To solve this, Container Runtimes (Such as Docker) implemented the concept of <a href="https://docs.docker.com/engine/admin/volumes/" target="_blank">Volumes</a>, and <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">Container Orchestration Tools (Such as Kubernetes or OpenShift) extended this concept</a>. Using <a href="https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md" target="_blank">a specific protocol and command, Container Orchestration Tools (Such as Kubernetes or OpenShift) (and in specific, SQL Server BDC) mounts the storage as a *Persistent Volume* and uses a construct called a *Persistent Volume Claim* to access it</a>. A Container Orchestration Tools (Such as Kubernetes or OpenShift) Volume is a mounted directory which is accessible to the Containers in a Pod within the Node.
+To solve this, Container Runtimes (Such as docker) implemented the concept of <a href="https://docs.docker.com/engine/admin/volumes/" target="_blank">Volumes</a>, and <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">Container Orchestration systems extended this concept</a>. Using <a href="https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md" target="_blank">a specific protocol and command, the Container Orchestration system (and in specific, SQL Server BDC) mounts the storage as a *Persistent Volume* and uses a construct called a *Persistent Volume Claim* to access it</a>. A Container Volume is a mounted directory which is accessible to the Containers in a Pod within the Node.
 
 You'll cover Volumes in more depth in a future module as you learn how the SQL Server BDC takes advantage of these constructs.
 
@@ -380,7 +380,7 @@ There are three primary tools and utilities you will use to control the SQL Serv
 
 <h3>Managing the Container Orchestration Cluster<i>(cmd-line tools)</i></h3>
 
-The **kubectl** command accesses the Application Programming Interfaces (API's) from Kubernetes. The utility <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">can be installed your workstation using this process</a>, and it is also available in the <a href="https://azure.microsoft.com/en-us/features/cloud-shell/" target="_blank">Azure Cloud Shell with no installation</a>. 
+The **kubectl** command accesses the Application Programming Interfaces (API's) from Kubernetes (other clustering systems may have different command line tools). The utility <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">can be installed your workstation using this process</a>, and it is also available in the <a href="https://azure.microsoft.com/en-us/features/cloud-shell/" target="_blank">Azure Cloud Shell with no installation</a>. 
 
 A <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/" target="_blank">full list of the **kubectl** commands is here</a>. You can <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/cluster-troubleshooting-commands?view=sqlallproducts-allversions 
 " target="_blank">use these commands for troubleshooting the SQL Server BDC as well</a>. 
@@ -391,10 +391,10 @@ You'll explore further operations with these tools in the <i>Management and Moni
 
 The **azdata** command-line utility is written in Python and can be installed on your workstation using the **pip** command in Python. You will see how to install this utility in the *Planning, Installation and Configuration* module.
 
-The **azdata** utility enables cluster administrators to bootstrap and manage big data clusters via the REST APIs exposed by the Controller service. The controller is deployed and hosted in the same Container Orchestration Tools (Such as Kubernetes or OpenShift) namespace where the customer wants to build out a big data cluster. The Controller is responsible for core logic for deploying and managing a big data cluster.
+The **azdata** utility enables cluster administrators to bootstrap and manage big data clusters via the REST APIs exposed by the Controller service. The controller is deployed and hosted in the same Container Orchestration system's namespace where you to build out a big data cluster. The Controller is responsible for core logic for deploying and managing a big data cluster.
 
 The <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-controller?view=sqlallproducts-allversions 
-" target="_blank">Controller service is installed by a Container Orchestration Tools (Such as Kubernetes or OpenShift) administrator during cluster bootstrap</a>, using the azdata command-line utility. 
+" target="_blank">Controller service is installed by a Container Orchestration administrator during cluster bootstrap</a>, using the `azdata` command-line utility. 
 
 You'll explore further operations with these tools in the <i>Management and Monitoring</i> module.
 
@@ -408,7 +408,7 @@ A Jupyter *Notebook* is a web-page-based interface consisting of *Cells* that ca
 
 *Libraries* are a container on your Notebook server where you can have Notebooks, code, directories and other files. 
 
-Notebooks are JSON files that contain areas called *Cells*, which have text or code in them. When you double-click a Notebook, the Notebook server renders and can display text or run code, such as R or Python, using a Kernel. Cells can hold text (such as *Markdown*, *HTML*, or *LaTeX*) which you can mix together, or Code. Double-click a Cell in a Notebook to edit it, and then click the "Run" button to render what you typed. Code runs and displays an output below the cell. You can toggle the result for code to show or hide it.
+Notebooks are JSON files that contain areas called *Cells*, which have text or code in them. When you double-click a Notebook, the Notebook server renders and can display text or run code, such as R or Python, using a *Kernel*. Cells can hold text (such as *Markdown*, *HTML*, or *LaTeX*) which you can mix together, or Code. Double-click a Cell in a Notebook to edit it, and then click the "Run" button to render what you typed. Code runs and displays an output below the cell. You can toggle the result for code to show or hide it.
 
 *Markdown* is a simplified markup language for text. Use it for general text and simple graphics. You can <a href="https://www.markdowntutorial.com/" target="_blank">read more about Markdown here</a>, and <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">there's a great cheat-sheet on Markdown here</a>. 
 
@@ -435,6 +435,13 @@ You'll explore further operations with the Azure Data Studio in the <i>Operation
 
 <p><b>Steps</b></p>
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://notebooks.azure.com/BuckWoodyNoteBooks/projects/AzureNotebooks" target="_blank">Open this reference, and review the instructions you see there</a>. You can clone this Notebook to work with it later.</p>
+
+<br>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Azure Data Studio Notebooks Overview</b></p>
+
+<p><b>Steps</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks?view=sql-server-2017" target="_blank">Open this reference, and read the tutorial - you do not have to follow the steps, but you can if time permist.</p>
+
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>
@@ -516,7 +523,7 @@ While Spark is used for all phases of the data processing lifecycle and can comp
     <li><a href = "http://www.admin-magazine.com/Articles/Linux-Essentials-for-Windows-Admins-Part-1" target="_blank">Linux for the Windows Admin</a></li>
     <li><a href = "https://docs.docker.com/v17.09/engine/userguide/" target="_blank">Container Runtimes (Such as Docker) Guide</a></li>
     <li><a href = "https://www.youtube.com/playlist?list=PLLasX02E8BPCrIhFrc_ZiINhbRkYMKdPT" target="_blank">Video introduction to Kubernetes</a></li>
-    <li><a href = "https://github.com/vlele/k8onazure" target="_blank">Complete course on Azure Container Orchestration Tools (Such as Kubernetes or OpenShift) Service (AKS)</a></li>
+    <li><a href = "https://github.com/vlele/k8onazure" target="_blank">Complete course on the Azure Kubernetes Service (AKS)</a></li>
      <li><a href = "https://www.kdnuggets.com/2019/01/practical-apache-spark-10-minutes.html" target="_blank">Working with Spark</a></li>
     <li><a href="https://realpython.com/jupyter-notebook-introduction/" target="_blank">Full tutorial on Jupyter Notebooks</a></li>
 </ul>

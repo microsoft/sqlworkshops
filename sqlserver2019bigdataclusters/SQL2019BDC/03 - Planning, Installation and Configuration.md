@@ -27,28 +27,28 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">3.0 Planning your Installation</a></h2>
 
-<i>NOTE: The following Module is based on the Public Preview of the Microsoft SQL Server 2019 big data cluster feature. These instructions will change as the product is updated for the final release. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-get-started?view=sqlallproducts-allversions" target="_blank">The latest installation instructions are located here</a>.</i>
+<i>NOTE: The following Module is based on the Public Preview of the Microsoft SQL Server 2019 big data cluster feature. These instructions will change as the product is updated. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-get-started?view=sqlallproducts-allversions" target="_blank">The latest installation instructions are located here</a>.</i>
 
-A Big Data Cluster for SQL Server (BDC) is deployed onto a Kubernetes Cluster using the `azdata` utility which creates the appropriate Docker Containers and other constructs for the system. The installation uses various switches on the `azdata` utility, and reads from several variables contianed within <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/reference-deployment-config?view=sqlallproducts-allversions" target="_blank">an internal JSON document</a> when you run the command. Using a switch, you can change these variables. You can also dump the enitre document to a file, edit it, and then call the installation that uses that file with the `azdata` command. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-custom-configuration?view=sqlallproducts-allversions" target="_blank">More detail on that process is located here.</a> 
+A Big Data Cluster for SQL Server (BDC) is deployed onto a Cluster Orechestration system (such as Kubernetes or OpenShift) using the `azdata` utility which creates the appropriate Nodes, Pods, Containers and other constructs for the system. The installation uses various switches on the `azdata` utility, and reads from several variables contianed within <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/reference-deployment-config?view=sqlallproducts-allversions" target="_blank">an internal JSON document</a> when you run the command. Using a switch, you can change these variables. You can also dump the enitre document to a file, edit it, and then call the installation that uses that file with the `azdata` command. <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-custom-configuration?view=sqlallproducts-allversions" target="_blank">More detail on that process is located here.</a> 
 
 For planning, it is essential that you understand the SQL Server BDC components, and have a firm understanding of Kubernetes and TCP/IP networking. You should also have an understanding of how SQL Server and Apache Spark use the "Big Four"  (*CPU, I/O, Memory and Networking*). 
 
-Since the Kubernetes Cluster is often made up of Virtual Machines that host the Docker Images, they must be as large as possible. For the best possible performance, large physical machines that are tuned for optimal performance is a recommended physical architecture. The least viable production system is a Minimum of 3 Linux physical machines or virtual machines. The recommended configuration per machine is 8 CPUs, 32 GB of memory and 100GB of storage. This configuration would support only one or two users with a standard workload, and you would want to increase the system for each additional user or heavier workload. 
+Since the Cluster Orechestration system is often made up of Virtual Machines that host the Container Images, they must be as large as possible. For the best possible performance, large physical machines that are tuned for optimal performance is a recommended physical architecture. The least viable production system is a Minimum of 3 Linux physical machines or virtual machines. The recommended configuration per machine is 8 CPUs, 32 GB of memory and 100GB of storage. This configuration would support only one or two users with a standard workload, and you would want to increase the system for each additional user or heavier workload. 
 
 
 You can deploy Kubernetes in a few ways:
 
  - In a Cloud Platform such as Azure Kubernetes Service (AKS)
 
- - In your own Kubernetes deployment using `KubeADM`
+ - In your own Cluster Orechestration system deployment using the appropirate tools such as `KubeADM`
 
-Regardless of the Kubernetes target, the general steps for setting up the system are:
+Regardless of the Cluster Orechestration system target, the general steps for setting up the system are:
 
- - Set up Kubernetes cluster
+ - Set up Cluster Orechestration system with a Cluster target
 
  - Install the cluster tools on the administration machine
 
- - Deploy the BDC onto the Kubernetes cluster
+ - Deploy the BDC onto the Cluster Orechestration system
 
 In the sections that follow, you'll cover the general process for each of these deployments. The official documentation referenced above have the specific steps for each deployment, and the *Activity* section of this Module has the steps for deploying the BDC on AKS for the classroom enviornment.
 
@@ -94,7 +94,7 @@ With this background, you can find the <a href="https://docs.microsoft.com/en-us
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-2">3.2 Installing Locally Using KubeADM</h2>
 
-The <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/" target="_blank">kubeadm toolbox</a> helps you bootstrap a Kubernetes cluster that conforms to best practices. Kubeadm also supports other cluster lifecycle functions, such as upgrades, downgrade, and managing bootstrap tokens.
+If you choose Kubernetes as your Cluster Orechestration system, the <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/" target="_blank">kubeadm toolbox</a> helps you bootstrap a Kubernetes cluster that conforms to best practices. Kubeadm also supports other cluster lifecycle functions, such as upgrades, downgrade, and managing bootstrap tokens.
 
 The kubeadm toolbox can deploy a Kubernetes cluster to physical or virtual machines. It works by specifying the TCP/IP addresses of the targets. 
 
