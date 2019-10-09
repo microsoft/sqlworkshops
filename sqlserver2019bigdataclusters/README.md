@@ -23,13 +23,13 @@
 
 Welcome to this Microsoft solutions workshop on the architecture on *SQL Server Big Data Clusters*. In this workshop, you'll learn how SQL Server Big Data Clusters (BDC) implements large-scale data processing and machine learning, and how to select and plan for the proper architecture to enable machine learning to train your models using Python, R, Java or SparkML to operationalize these models, and how to deploy your intelligent apps side-by-side with their data.
 
-The focus of this workshop is to understand how to deploy an on-premise, hybrid or local environment of a big data cluster, and understand the components of the big data solution architecture.
+The focus of this workshop is to understand how to deploy an on-premises or local environment of a big data cluster, and understand the components of the big data solution architecture.
 
-You'll start by understanding the concepts of big data analytics, and you'll get an overview of the technologies (such as containers, Kubernetes, Spark and HDFS, machine learning, and other technologies) that you will use throughout the workshop. Next, you'll understand the architecture of a BDC. You'll learn how to create external tables over other data sources to unify your data, and how to use Spark to run big queries over your data in HDFS or do data preparation. You'll review a complete solution for an end-to-end scenario, with a focus on how to extrapolate what you have learned to create other solutions for your organization.
+You'll start by understanding the concepts of big data analytics, and you'll get an overview of the technologies (such as containers, container orchestration, Spark and HDFS, machine learning, and other technologies) that you will use throughout the workshop. Next, you'll understand the architecture of a BDC. You'll learn how to create external tables over other data sources to unify your data, and how to use Spark to run big queries over your data in HDFS or do data preparation. You'll review a complete solution for an end-to-end scenario, with a focus on how to extrapolate what you have learned to create other solutions for your organization.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
-(You can view all of the [source files for this workshop on this GitHub site, along with other workshops as well. Open this link in a new tab to find out more.](https://github.com/BuckWoody/workshops))
+You can view all of the [source files for this workshop on this GitHub site, along with other workshops as well. Open this link in a new tab to find out more.](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -77,8 +77,8 @@ The solution includes the following technologies - although you are not limited 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
 
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
-  <tr><td><i>Docker</i></td><td>Encapsulation level for the SQL Server big data cluster architecture</td></tr>
-  <tr><td><i>Kubernetes</i></td><td>Management, control plane for Containers</td></tr>
+  <tr><td><i>Containers</i></td><td>Encapsulation level for the SQL Server big data cluster architecture</td></tr>
+  <tr><td><i>Conainer Orechestration (such as Kubernetes)</i></td><td>Management, control plane for Containers</td></tr>
   <tr><td>Microsoft Azure</td><td>Cloud environment for services</td></tr>
   <tr><td>Azure Kubernetes Service (AKS)</td><td>Kubernetes as a Service</td></tr>
   <tr><td><i>Apache HDFS</i></td><td>Scale-out storage subsystem</td></tr>
@@ -86,7 +86,7 @@ The solution includes the following technologies - although you are not limited 
   <tr><td><i>Apache Livy</i></td><td>Job submission system for Apache Spark</td></tr>
   <tr><td><i>Apache Spark</i></td><td>In-memory large-scale, scale-out data processing architecture used by SQL Server </i></td></tr>
   <tr><td><i>Python, R, Java, SparkML</i></td><td><i>ML/AI programming languages used for Machine Learning and AI Model creation</i></td></tr>
-  <tr><td>Azure Data Studio</td><td>Tooling for SQL Server, HDFS, Kubernetes cluster management, T-SQL, R, Python, and SparkML languages</td></tr>
+  <tr><td>Azure Data Studio</td><td>Tooling for SQL Server, HDFS, Big Data cluster management, T-SQL, R, Python, and SparkML languages</td></tr>
   <tr><td>SQL Server Machine Learning Services</td><td>R, Python and Java extensions for SQL Server</td></tr>
   <tr><td>Microsoft Data Science Process (TDSP)</td><td>Project, Development, Control and Management framework</td></tr>
   <tr><td><i>Monitoring and Management</i></td><td>Dashboards, logs, API's and other constructs to manage and monitor the solution</td></tr>
