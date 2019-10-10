@@ -55,6 +55,8 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/iqp" target="blank">http://aka.ms/IQP</a></td><td>Intelligent Query Processing in SQL databases</td></tr>
   <tr><td><a href="http://aka.ms/iqpdemos" target="blank">http://aka.ms/IQPDemos</a></td><td>Intelligent Query Processing Demos</td></tr>
   <tr><td><a href="http://aka.ms/sqlconventions" target="blank">http://aka.ms/SQLConventions</a></td><td>T-SQL Conventions and Syntax</i></td></tr>
+  <tr><td><a href="http://aka.ms/internationaltsql" target="blank">http://aka.ms/InternationalTSQL</a></td><td>Write International T-SQL Statements</i></td></tr>
+  <tr><td><a href="http://aka.ms/sqlunicode" target="blank">http://aka.ms/SQLUnicode</a></td><td>Collation and Unicode support</i></td></tr>
   <tr><td><a href="http://aka.ms/sqlerrors" target="blank">http://aka.ms/SQLErrors</a></td><td>Errors and Events Reference (Database Engine)</td></tr>
   <tr><td><a href="http://aka.ms/sqlfeedback" target="blank">http://aka.ms/SQLFeedback</a></td><td>Submit feedback to the SQL Server team</td></tr>
   <tr><td><a href="http://aka.ms/sqliaasperf" target="blank">http://aka.ms/SQLIaaSPerf</a></td><td>Performance guidelines for SQL Server in Azure Virtual Machines</td></tr>  
