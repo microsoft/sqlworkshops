@@ -1,3 +1,3 @@
-sqlcmd -Usa -ioptimizetempdb.sql -Sbwsql2019
+sqlcmd -E -ioptimizetempdb.sql
 net stop mssqlserver
 net start mssqlserver

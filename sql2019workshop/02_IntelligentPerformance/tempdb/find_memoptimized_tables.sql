@@ -1,4 +1,4 @@
-use tempdb
+USE tempdb;
 go
-select object_name(object_id), * from sys.dm_db_xtp_object_stats
+SELECT OBJECT_NAME(object_id), * FROM sys.dm_db_xtp_object_stats;
 go

@@ -61,7 +61,7 @@ Now proceed to the Activity to learn an example of how Intelligent Query Process
 
 In this activity, you will learn how to use the built-in capabilities of Intelligent Query Processing in SQL Server 2019 simply by changing the database compatibility of WideWorldImporters to version 150 with no application changes.
 
-> **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
+> **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
 You have been provided a stored procedure called **CustomerProfits** which you will deploy in the **Facts** schema of the **WideWorldImporters** database. The stored procedure uses a *table variable* to store interim results from a user table and then uses that table variable to join with other data in the **WideWorldImporters** database. In previous releases of SQL Server, this design pattern could cause an issue, since SQL Server would always estimate that the table variable only contains 1 row of data. This can cause issues with building the optimal query plan for the best performance.
 
@@ -85,7 +85,7 @@ Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) t
 
 **STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
 
-T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 1.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder.
+T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 2.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder.
 
 >**NOTE**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
@@ -133,7 +133,7 @@ In this activity you have learned the powerful capabilities of Intelligent Query
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-1">     2.1 Using Query Store for Performance Analysis</a></b></h2>
 
-In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Module 1.0. Even though query store is not new to SQL Server 2019, it is an excellent feature to help analyze performance differences with Intelligent Query Processing.
+In this module you will learn how to use the Query Store, a built-in performance analysis feature of SQL Server, to analyze the performance differences of the queries run in Module 2.0. Even though query store is not new to SQL Server 2019, it is an excellent feature to help analyze performance differences with Intelligent Query Processing.
 
 <h3><b><a name="challenge">The Challenge</a></b></h3>
 
@@ -151,9 +151,9 @@ You can read more about the Query Store at https://docs.microsoft.com/en-us/sql/
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityquerystore">     Activity: Using Query Store for Performance Analysis</a></b></h2>
 
-The **WideWorldImporters** sample database that you restored in Module 1.0 has the Query Store feature enabled. If you performed the Activities in Module 1.0, the Query Store recorded performance information about each query execution.
+The **WideWorldImporters** sample database that you restored in Module 2.0 has the Query Store feature enabled. If you performed the Activities in Module 2.0, the Query Store recorded performance information about each query execution.
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 1.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.1">Activity Steps</a></b></h3>
 
@@ -227,29 +227,181 @@ In this example, the query processor used three different Intelligent Query Proc
 
 In this activity you have seen how to use the Query Store for performance insights including the ability to see differences for the same query text of different query plans, including those that benefit from Intelligent Query Processing. You observed the SQL Server query processor using multiple techniques to make your queries faster with no changes to the stored procedure or application.
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-2">     2.2 Advanced: Memory Optimized Tempdb Metadata</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="2-2">     2.2 Advanced: Tempdb Just Runs Faster</a></b></h2>
 
-xxx
+Tempdb is a shared database used implicitly through various capabilities of SQL Server most notably temporary tables and table variables.
 
 <h3><b><a name="challenge">The Challenge</a></b></h3>
 
-xxx
+The use of temporary tables and table variables as a table is unique because a heavy usage will results in frequent drop and create of tables. This activity requires two types of operations within the SQL Server engine:
+
+- Modifications and access to allocation pages such as GAM, SGAM, and PFS pages
+- Internal modifications to rows in system tables used to store metadata of the temporary table or table variable.
+
+These options will result in the requirement for a resource called a page latch to physically protect concurrent access to the internals of an allocation page or page associated with a system table.
+
+A workload with a heavy number of concurrent usage of temporary tables or table variables can result in an unexpected page latch wait (as seen by the wait_type PAGELATCH_xx).
 
 <h3><b><a name="solution">The Solution</a></b></h3>
 
-xxxx
+By creating multiple data files for tempdb, a user is helping partition access to allocation pages thus reducing pressure on page latches for those types of pages. The installation of SQL Server can help automatically configure a certain number of files or customize a number of files as required by the application. A good deep explanation of the best number of tempdb files and contention can be found in this blog post https://techcommunity.microsoft.com/t5/SQL-Server/TEMPDB-Files-and-Trace-Flags-and-Updates-Oh-My/ba-p/385937.
+
+In many cases when a proper number of tempdb files has been configured, users can still experience unexpected page latch waits. The page latch waits are typically contention on pages of system tables. Finding this problem can be difficult. This is because SQL Server diagnostics such as Dynamic Management Views (DMV) typically show page latch waits with a resource of "<dbid>:<fileid>:<pageid>". You would need to use an undocumented, unsupported command like DBCC PAGE on this resource to find if the page was associated with a system table.
+
+SQL Server 2019 provides several solutions to help solve these challenges:
+
+- **Optimized Tempdb Metadata**
+
+Using a SQL Server configuration, the engine will internally implement specific system tables in tempdb as memory-optimized (SCHEMA_ONLY) tables. You can read more about Optimized Tempdb Metadata at https://docs.microsoft.com/en-us/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata.
+
+- **Concurrent PFS updates**
+
+SQL Server 2019 will be default use a different scheme to update PFS pages so that multiple users can concurrently update a PFS page, thus reducing page latch waits for allocation pages.
+
+- **Documented, supported page header access**
+
+SQL Server 2019 provides documented, supported interfaces to determine the object of a page by examining fields of a page header. You can read more about the T-SQL statement to access page header details at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-page-info-transact-sql?.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityquerystore">     Activity: Tempdb just got faster</a></b></h2>
 
-xxxx
+Go through the following activity to learn how tempdb is just faster in SQL Server 2019 using a concurrent temporary table workload. You will also learn how to use new T-SQL interfaces to find the object associated with a page latch.
+
+This activity requires the following software:
+
+- SQL Server 2019
+- The sqlcmd utility
+- The free tool ostress.exe which can be downloaded from https://www.microsoft.com/en-us/download/details.aspx?id=4511.
+- A tool to run various T-SQL scripts such as SQL Server Management Studio (SSMS), Azure Data Studio, or sqlcmd.
+- Windows Performance Monitor
+
+This activity assumes you will run all steps on the same computer as SQL Server where the local user is authorized to run as a SQL sysadmin. You may need to modify some of the scripts if you will use SQL authentication or connect to a remote SQL Server.
+
+Linux and MacOS users can use a SQL Server running in a container or Linux but will need to run the ostress.exe tool from a Windows client. SQL Server also provides performance monitor counter data through the Dynamic Management View sys.dm_os_performance_counters which you can read more about at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql.
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.2">Activity Steps</a></b></h3>
 
-xxx
+> **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back by executing the command script **disableoptimizetempdb.cmd**, restart SQL Server, and run through all the steps again.*
+
+Follow these steps to see how tempdb is just faster in SQL Server 2019 using a combination of SQL scripts and Performance Monitor. All scripts for this activity can be found in the **sql2019workshop\02_IntelligentPerformance\tempdb** folder.
+
+**STEP 1: Setup and configure Windows Performance Monitor**
+
+- Launch Windows Performance Monitor (you could run **perfmon** from a command line easily by right-clicking the Windows "Start" icon, select Run, and type in **perfmon**)
+- Add these counters to the Live Chart
+    - **SQL Server: SQL Statistics/Batch Requests/Sec**. Adjust the scale to 0.01
+    - **SQL Server: Wait Statistics/Patch latch Waits/Waits** started per second. Adjust the scale to 0.01
+- You can remove the % Processor Time counter
+
+**Tip**: To make the chart easier to read I would double-click on each counter and increase the width. I also change the color of Batch Requests/Sec to Dark Green and Page latch waits to Red.
+
+Your performance monitor chart should look like the following
+
+![Perfmon Tempdb Activity](./graphics/perfmon_tempdb_activity.png)
+
+**STEP 2: Create a procedure for the tempdb workload**
+
+Run the command script **setup_repro.cmd** which will execute the following set of T-SQL statements:
+
+```sql
+USE MASTER;
+GO
+DROP DATABASE IF EXISTS DallasMavericks;
+GO
+CREATE DATABASE DallasMavericks;
+GO
+USE DallasMavericks;
+GO
+CREATE OR ALTER PROCEDURE letsgomavs
+AS
+CREATE TABLE #gomavs (col1 INT);
+GO
+```
+
+**STEP 3: Run a tempdb workload**
+
+Run a tempdb based workload with the procedure created in the previous step by executing the command script **tempstress.cmd**. This script runs the following command with ostress:
+
+`ostress -E -Q"exec letsgomavs" -n50 -r5000 -dDallasMavericks`
+
+**STEP 4: Observe performance monitor counters**
+
+Observe the performance monitor chart and numbers to see the scope of page latch waits and the average throughput of batch requests/sec.
+
+Your performance monitor chart should look similar to the following after letting the workload run:
+
+![Perfmon Tempdb with Page Latch Waits](./graphics/tempdb_workload_with_page_latch_waits.png)
+
+**STEP 5: Use T-SQL find out what object belongs to the page latch waits**
+
+Run the following T-SQL statements in the script **pageinfo.sql** to observe what objects belong the majority of page latch waits.
+
+
+```sql
+USE tempdb;
+GO
+SELECT object_name(page_info.object_id), page_info.*
+FROM sys.dm_exec_requests AS d
+  CROSS APPLY sys.fn_PageResCracker(d.page_resource) AS r
+  CROSS APPLY sys.dm_db_page_info(r.db_id, r.file_id, r.page_id,'DETAILED')
+    AS page_info;
+GO
+```
+Your results should show the object name **sysschobjs** as the primary object involved in page latch waits. This system table is the primary table to store table metadata in the tempdb database.
+
+**STEP 6: Observe the total duration of the workload**
+
+Go back to the command window from STEP 3 and wait for the workload to finish and return to a command prompt. Take note of the total duration as indicated by ostress (your time may vary):
+
+`OSTRESS exiting normally, elapsed time: hh:mm:ss.ms`
+
+**STEP 7: Enable Optimize Tempdb Metadata**
+
+Enable the Optimize Tempdb Metadata capability with SQL Server using the script **optimizetempdb.cmd** which runs the following commands:
+
+
+```powershell
+sqlcmd -E -ioptimizetempdb.sql
+net stop mssqlserver
+net start mssqlserver
+```
+The **optimizetempdb.sql** T-SQL scripts runs the following statement
+
+```sql
+ALTER SERVER CONFIGURATION SET MEMORY_OPTIMIZED TEMPDB_METADATA = ON;
+GO
+```
+
+A SQL Server restart is required to enable optimized tempdb metadata. The NET STOP command may require you to shutdown dependent services such as Polybase or Launchpad. The final step in this Activity will be to ensure these services are restarted.
+
+**STEP 8: Run the tempdb workload again**
+
+Run the same tempdb workload as you did in STEP 3 by running the command script **tempstress.cmd**
+
+**STEP 9: Observe performance counters again**
+
+Observe the performance monitor chart and numbers to see the scope of page latch waits and the average throughput of batch requests/sec. What differences did you see from perfmon counters now vs what you observed in STEP 3?
+
+If everything runs as expected, there should be almost no page latch waits (note the red line is almost non-existent) and your batch requests/sec should be 3 to 4  times higher on average (a much higher green line).
+
+Your performance monitor chart should look like the following:
+
+![Perfmon Tempdb without Page Latch Waits](./graphics/tempdb_workload_without_page_latch_waits.png)
+
+**STEP 10: Observe the total duration of the workload**
+
+Go back to the command window from STEP 8 and wait for the workload to finish and return to a command prompt. Take note of the total duration as indicated by ostress (your time may vary)
+
+`OSTRESS exiting normally, elapsed time: hh:mm:ss.ms`
+
+Did this run faster than the first time you observed the duration? If everything runs as expected the total duration should be 4 to 5 times less than it was in STEP 8 overall.
+
+**STEP 11: Restore services**
+
+Some dependent services for SQL Server such as Polybase and LaunchPad may have been shutdown when using the NET STOP command. Use the SQL Server Configuration Manager to restart any dependent service that was shutdown during this activity.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
-xxx
+You have learned in this activity how to accelerate performance of tempdb based workloads with no application changes. You have also learned new diagnostics to find an object associated with a page latch.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -258,6 +410,7 @@ xxx
 - [Intelligent Query Processing in SQL Server](https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing)
 - [Q&A about Intelligent Query Processing](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Intelligent-Query-Processing-Q-amp-A/ba-p/446657)
 - [Monitoring performance of SQL Server using the Query Store](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
+- [Optimized Tempdb Metadata](https://docs.microsoft.com/en-us/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)
 - [What is Azure Data Studio?](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
 
 - [How to use Notebooks in Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks)

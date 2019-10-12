@@ -1,8 +1,0 @@
-USE foo
-GO
-CREATE PROCEDURE x
-AS
-BEGIN
-CREATE TABLE #x (col1 int)
-END
-GO
