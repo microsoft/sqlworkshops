@@ -6,7 +6,7 @@ CREATE DATABASE DallasMavericks;
 GO
 USE DallasMavericks;
 GO
-CREATE OR ALTER PROCEDURE letsgomavs;
+CREATE OR ALTER PROCEDURE letsgomavs
 AS
 CREATE TABLE #gomavs (col1 INT);
 GO
