@@ -5,4 +5,4 @@ docker run `
  sqlvolume2:/var/opt/mssql `
  --name sql2 `
  -d `
- mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+ mcr.microsoft.com/mssql/server:2017-latest

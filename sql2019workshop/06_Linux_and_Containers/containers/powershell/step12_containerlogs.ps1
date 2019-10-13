@@ -1,0 +1,1 @@
+docker logs sql2017latest

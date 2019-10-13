@@ -49,13 +49,84 @@ xxxxx
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitylinuxrepl">     Activity: Updating SQL Server with Contianers</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitycontainers">     Activity: Updating SQL Server with Containers</a></b></h2>
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 6.0 and run through all the steps again.*
+In this activity you will deploy a SQL Server container and interact with SQL Server by restoring and creating a database. You will also learn various methods to interact and inspect a containers using the docker client. You will also see how fast it can be to update SQL Server to a new cumulative update by *switching* containers.
+
+At the time this Module was built there were no cumulative updates for SQL Server 2019. Therefore, this activity uses SQL Server 2017 containers to show how a cumulative update can be applied with containers. The same concepts will apply once cumulative updates are available for SQL Server 2019.
+
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can run the script **cleanup.ps1** (or cleanup.sh for Linux) and go back to the first Activity in 6.0 and run through all the steps again.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps5.0">Activity Steps</a></b></h3>
 
 All scripts for this activity can be found in the **sql2019workshop\06_Linux_and_Containers\containers** folder.
+
+This activity requires you to download the WideWorldImporters sample database from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak. The scripts assume this backup is in the c:\sql_samples_database folder for Windows and /sql_sample_databases for Linux.
+
+There are two subfolders for this Activity:
+
+- **powershell** - Use scripts here for Docker Desktop for Windows
+- **bash** - Use these scripts for Docker for Linux or MacOS.
+
+The steps documented here will use the Powershell subfolder:
+
+**STEP 1: Start the SQL Server container**
+
+Start the SQL Server container using the script **step1_runsqlconainer.ps1** which runs the command:
+
+```powershell
+docker run `
+ -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2017isfast' `
+ --hostname sql2017cu10 `
+ -p 1401:1433 `
+ -v sqlvolume:/var/opt/mssql `
+ --name sql2017cu10 `
+ -d `
+ mcr.microsoft.com/mssql/server:2017-CU10-ubuntu
+```
+We will examine these arguments in more detail later in the lab.
+
+When this command completes it will display the CONTAINER ID as a long UUID value.
+
+**STEP 2: Copy a database backup into the container**
+
+Copy the WideWorldImporters backup into the container by using the script **step2_copyintocontainer.ps1** which runs the command:
+
+```powershell
+docker cp c:\sql_sample_databases\WideWorldImporters-Full.bak sql2017cu10:/var/opt/mssql
+```
+This command will copy the WideWorldImporters-Full.bak file into a folder in the container. This folder is mapped to the persisted container storage volume on the host.
+
+**STEP 3: Restore the WideWorldImporters database**
+
+**STEP 4: Run a second SQL Server container**
+
+**STEP 5: List out running containers**
+
+**STEP 6: Run a query against the SQL Server Container**
+
+
+Connect and query the container with another tool like SQL Server Management Studio or Azure Data Studio
+
+**STEP 7: Run a program in the container**
+
+**STEP 8: Update to a new cumulative update**
+
+**STEP 9: Inspect aspects of the container**
+
+Inspect the volumes
+Look at the container run parameters
+
+**STEP 10: Run a queries against the update SQL Server container**
+
+STEP 11: 
+
+STEP 12
+
+STEP 13
+
+STEP 14
+
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
