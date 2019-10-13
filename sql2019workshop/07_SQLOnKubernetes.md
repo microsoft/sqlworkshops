@@ -53,10 +53,12 @@ In this activity you will learn the basics of how to deploy a SQL Server contain
 
 This activity is designed to be used with an Azure Kubernetes Service (AKS) cluster but most of the scripts and steps can be used with any Kubernetes cluster. This activity only requires a single-node Kubernetes cluster with only 6Gb RAM. Therefore this activity could be used even on a minikube cluster. While this module could be used on a RedHat OpenShift cluster you should use the workshop specifically designed for RedHat OpenShift at https://github.com/Microsoft/sqlworkshops/tree/master/SQLonOpenShift.
 
+One of the key elements to using Kubernetes is declarative programming. The **kubectl** tool communicates with the Kubernetes API Server to execute API in the cluster. Much of the API can be executed by applying a YAML file. You will use kubectl and a series of command and YAML files to deploy a pod with a SQL Server Container.
+
 This activity assumes the following:
 
 - You have access to a Kubernetes cluster
-- You have installed the kubectl tool on your preferred client whether that be Windows, Linux, or MacOS. You can read more about how to install kubectl at https://kubernetes.io/docs/tasks/tools/install-kubectl/. Kubectl needs to be in the path on your computer.
+- You have installed the **kubectl** tool on your preferred client whether that be Windows, Linux, or MacOS. You can read more about how to install kubectl at https://kubernetes.io/docs/tasks/tools/install-kubectl/. Kubectl needs to be in the path on your computer.
 
 >**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can run the script **cleanup.ps1** or **cleanup.sh** and go back to the first Activity in 7.0 and run through all the steps again.*
 
@@ -71,29 +73,112 @@ There are two subfolders for scripts to be used in different shells:
 
 In this module, you will see the steps for kubectl on Powershell but the same sequence can be used with bash shell scripts:
 
-**STEP 1: Create a namespace**
+**STEP 1: Connect to the cluster**
 
-A namespace
+Consult your administrator for how to connect to your Kubernetes cluster. For Azure Kubernetes Service (AKS) you will use the Azure CLI (az) to get credentials to use kubectl. Modify the script **step1_connectcluster.ps1** to put in your *clustername* and *resource group*. 
 
-**STEP 2: Set the default context**
+*>**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
 
-STEP 3: Create a Load Balancer Service
+Run the script **step1_connectcluster.ps1** which runs the following command:
 
-STEP 4: Create a secret to hold the sa password
+```powershell
+az aks get-credentials --resource-group <resource group> --name <clustername>
+```
+For example, if your r*esource group* is called **myaksrg** and your *clustername* is called **myaks**, the command should look like this:
 
-STEP 5: Create persistent storage for databases
+```powershell
+az aks get-credentials --resource-group myaksrg --name myaks
+```
 
-STEP 6: Deploy a pod with a SQL Server container
+When this command completes you should see a message like
 
-STEP 7: Look at logs from the pod
+<pre>Merged *clustername* as current context in *path*\.kube\config</pre>
 
-STEP 8: Look at events from the cluster
+where path is the *path* to your home directory on your computer.
 
-STEP 9: Look at details of the deployment
+**STEP 2: Create a namespace**
 
-STEP 10: Look at details of the pod
+A Kubernetes namespace is a scope object to organize your Kubernetes deployment and objects from other deployments. Run the script **step2_create_namespace.ps1** which runs the following command:
 
-STEP 11: Run a query against SQL Server
+```powershell
+kubectl create namespace mssql
+```
+When this command completes you should see a message like
+
+<pre>namespace/mssql created</pre>
+
+**STEP 3: Set the default context**
+
+To now deploy in Kubernetes you can specify which namespace to use with parameters. But there is also a method to set the *context* to the new namespace. Modify the script **step3_context.ps1** to put in your <clustername> and <resource group>.
+
+*>**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
+
+Run the script **step3_setcontext.ps1** which runs these commands:
+
+```Powershell
+kubectl config set-context mssql --namespace=mssql --cluster=<clustername> --user=clusterUser_<resource group>_<clustername>
+kubectl config use-context mssql
+```
+
+For example if your resource group is called **myaksrg** and your clustername is **myaks**, the following script should be modified to look like this:
+
+```Powershell
+kubectl config set-context mssql --namespace=mssql --cluster=myaks --user=clusterUser_myaksrg_myaks
+kubectl config use-context mssql
+```
+When this command completes you should see messages like
+
+<pre>Context "mssql" created.
+Switched to context "mssql".</pre>
+
+**STEP 4: Create a Load Balancer Service**
+
+Deploy objects in Kubernetes is done in a declarative fashion. One of the key objects to create is a LoadBalancer service which is supported by default in Azure Kubernetes Service (AKS). A LoadBalancer provides a static public IP address mapped to a public IP address in Azure. You will be able to map the LoadBalancer to a SQL Server deployment including a port to map to the SQL Server port 1433. Non-cloud Kubernetes clusters also support a similar concept called a NodePort.
+
+Run the script step4_create_service.ps1 to create the Load Balancer. This script uses the following command to create the LoadBalancer
+
+```Powershell
+kubectl apply -f sqlloadbalancer.yaml --record
+```
+This is an example of declarative programming with Kubernetes. The contents of the sqlloadbalancer.yaml file looks like this:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssql-service
+spec:
+  selector:
+    app: mssql
+  ports:
+    - protocol: TCP
+      port: 31433
+      targetPort: 1433
+  type: LoadBalancer
+```
+The **kind:Service** is the built-in support for a Service in Kubernetes with a **type: LoadBalancer**. The name of the service is mssql-service which you will use when deploying the pod later in this Activity. The **app:mssql** is a *label* which can be used for various ways to refer to a collection of objects of the same project. Finally, the **ports:** section declares the protocol and how to map a public port to the port in the container of the pod which for SQL Server is 1433.
+
+When this command completes you should see a message like:
+
+<pre>service/mssql-service created</pre>
+
+The creation of the LoadBalancer service happens in the background. You will check the status of this service being created later in this Activity.
+
+STEP 5: Create a secret to hold the sa password
+
+STEP 6: Create persistent storage for databases
+
+STEP 7: Deploy a pod with a SQL Server container
+
+STEP 8: Look at logs from the pod
+
+STEP 9: Look at events from the cluster
+
+STEP 10: Look at details of the deployment
+
+STEP 11: Look at details of the pod
+
+STEP 12: Run a query against SQL Server
 
 TODO: Copy in a database backup and restore it
 

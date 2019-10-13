@@ -171,6 +171,8 @@ When you start using a notebook and use the "Play" button of a cell, you may get
 
 There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks.
 
+TODO: Another activity to look at Polybase components such as query plans, services, and DMVs.
+
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="bonusactivity4.0">Bonus Activity Steps</a></b></h3>
 
 If you have time, look over the scripts and T-SQL notebooks (with saved results) for other data sources in the **08_DataVirtualization\sqldatahub** folder. There are subfolders for examples for these data sources:
