@@ -27,20 +27,7 @@ You will cover the following topics in this Module:
 
 In this section of the module you will learn about additional capabilities in SQL Server 2019 including:
 
-- SQL Server Language Extensions
 - Features in the Database Engine based on the Voice of the Customer
-
-<h3><b><a name="langext">SQL Server Language Extensions</a></b></h3>
-
-To meet the challenge of extending the T-SQL language for requirements not met with T-SQL today we have built a framework called SQL Server Language Extensions. Using the same architecture as SQL Server Machine Learning Services, we now allow for new languages to be accessed via T-SQL as seen in the following diagram:
-
-![SQL Server Language Extensions](./graphics/SQL_Language_Extensions.jpg)
-
-You can read more about SQL Server Language Extensions at https://docs.microsoft.com/en-us/sql/language-extensions/language-extensions-overview.
-
-In SQL Server 2019, we have shipped Java as an example of using SQL Server Language Extensions. As part of the Java installation, we now include an open-source, full-supported version of Java from Azul. 
-
-After taking this workshop you can try the Java tutorial to implement Regular Expressions at https://docs.microsoft.com/en-us/sql/language-extensions/tutorials/search-for-string-using-regular-expressions-in-java. 
 
 <h3><b><a name="voicecustomer">The Voice of the Customer</a></b></h3>
 
