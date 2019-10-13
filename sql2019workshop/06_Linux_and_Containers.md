@@ -105,7 +105,6 @@ This command will copy the WideWorldImporters-Full.bak file into a folder in the
 
 **STEP 6: Run a query against the SQL Server Container**
 
-
 Connect and query the container with another tool like SQL Server Management Studio or Azure Data Studio
 
 **STEP 7: Run a program in the container**
@@ -117,16 +116,15 @@ Connect and query the container with another tool like SQL Server Management Stu
 Inspect the volumes
 Look at the container run parameters
 
-**STEP 10: Run a queries against the update SQL Server container**
+**STEP 10: Run queries against the update SQL Server container**
 
-STEP 11: 
+**STEP 11: Rollback to the previous cumulative update for SQL Server**
 
-STEP 12
+**STEP 12: Examine the logs of a container**
 
-STEP 13
+**STEP 13: Look at the top running processes in a container**
 
-STEP 14
-
+**STEP 14: Run queries against the rolled back version of SQL Server**
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
