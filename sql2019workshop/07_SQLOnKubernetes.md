@@ -135,7 +135,7 @@ Switched to context "mssql".</pre>
 
 Deploy objects in Kubernetes is done in a declarative fashion. One of the key objects to create is a LoadBalancer service which is supported by default in Azure Kubernetes Service (AKS). A LoadBalancer provides a static public IP address mapped to a public IP address in Azure. You will be able to map the LoadBalancer to a SQL Server deployment including a port to map to the SQL Server port 1433. Non-cloud Kubernetes clusters also support a similar concept called a NodePort.
 
-Run the script step4_create_service.ps1 to create the Load Balancer. This script uses the following command to create the LoadBalancer
+Run the script **step4_create_service.ps1** to create the Load Balancer. This script uses the following command to create the LoadBalancer
 
 ```Powershell
 kubectl apply -f sqlloadbalancer.yaml --record
@@ -390,7 +390,7 @@ The output of this command is lengthy but provides details of the pod including 
 
 **STEP 12: Run a query against SQL Server**
 
-Now using the LoadBalancer service as the "servername" which includes a port you can run a query against SQL Server deployed in the pod. Use the script step12_querysql.ps1 to run a query to find the version of SQL Server. The script uses Powershell to dynamically find the EXTERNAL IP address of the Load Balancer service with this command (Note: the bash shell equivalent uses grep and awk):
+Now using the LoadBalancer service as the "servername" which includes a port you can run a query against SQL Server deployed in the pod. Use the script **step12_querysql.ps1** to run a query to find the version of SQL Server. The script uses Powershell to dynamically find the EXTERNAL IP address of the Load Balancer service with this command (Note: the bash shell equivalent uses grep and awk):
 
 
 ```powershell
@@ -412,49 +412,158 @@ When you are done proceed to the **Activity Summary** section for the Activity b
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
-xxxxxxxxxxx
+In this activity you have learned the fundamentals of deploying SQL Server with Kubernetes. You have learned various Kubernetes objects used to deploy SQL Server including a node, pod, secret, LoadBalancer, Persistent Volume Claim, and deployment.
+
+This deployment is required to proceed and complete the next activity.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="7-1">     7.1 SQL Server High Availability on Kubernetes</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="7-1">     7.1 Advanced: SQL Server High Availability on Kubernetes</a></b></h2>
 
-xxxxxxxxxx
+Kubernetes comes built-in with capabilities to support a basic high availability solution for a containerized stateful application. In this module you will learn how SQL Server high availability can be achieved through Kubernetes. Always On Availability Groups are not covered in this module. Always On Availability Groups are supported through the Big Data Clusters solution but are not yet supported outside of that solution on Kubernetes.
 
 <h3><b><a name="challenge">The Challenge</a></b></h3>
 
-xxxxx
+Containers provide many advantages for applications including consistency, portability, reduced footprint, and faster patching. Container runtimes do not provide any type of built-in high availability which is critical for a data platform like SQL Server.
 
 <h3><b><a name="solution">The Solution</a></b></h3>
 
-xxxxxx
+Kubernetes has built-in capabilities to provide high-availability through the concepts of a ReplicaSet (or StatefulSet) combined with Persistent Storage and a Load Balancer. In this module you will learn how to use all of these components with SQL Server on Kubernetes.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity7.1">     Activity: Testing High Availability for SQL Server on Kubernetes</a></b></h2>
 
-XXXXXXXXX
+>**STOP**: This activity requires you go through all the steps in Activity 7.0 first.
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
+This activity will walk you the concepts and scenarios for how Kubernetes provides basic high availability for a SQL Server instance. You will see how the LoadBalancer can be used to consistently connect to SQL Server even if the Private IP address of the pod changes. You will also observe the system databases all remain intact even if the SQL Server container is restarted because these databases are stored on a Persistent Volume Claim (PVC).
+
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you must gob back and do all the steps in the Activity for 7.0 in this Module.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="actvitysteps7.1">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019workshop\07_SQLOnKubernetes\ha** folder.
+All scripts for this activity can be found in the **sql2019workshop\07_SQLOnKubernetes\ha** folder. Because this is a continuation of Activity 7.0, the steps will start with STEP 13.
+
+**STEP 13: Create a new database on SQL Server**
+
+Connect to SQL Server deployed in Kubernetes and create a new database. Use the script **step13_createdb.ps1** to create the database and query all databases in master. The script runs the following command (using the same technique as in Activity 7.0 to dynamically connect to SQL Server using the Load Balancer)
+
+
+```powershell
+$Service = kubectl get service | Select-String -Pattern mssql-service | Out-String
+$Service = $Service.split(" ")
+$Server+="-S"
+$Server+=$Service[9]
+$Server+=",31433"
+sqlcmd '-Usa' '-PSql2019isfast' $Server '-Q"CREATE DATABASE sqlk8s;SELECT name FROM sys.databases"'
+```
+
+The result of the command should be a list of databases that includes system databases and sqlk8s.
+
+**STEP 14: Get the status of running pods**
+
+Get the status of running pods in the mssql namespace which includes STATUS and the private IP address associated with the pod. Use the script **step14_getpods.ps1** which runs the following command:
+
+```Powershell
+kubectl get pods -o wide
+```
+Your results should look similar to the following (the NAME, IP, and NODE will likely be different)
+
+<pre>NAME                                READY   STATUS    RESTARTS   AGE     IP            NODE                       NOMINATED NODE   READINESS GATES
+mssql-deployment-68769447bc-zmgff   1/1     Running   0          7m35s   10.244.2.17   aks-nodepool1-90949249-2   <none>           <none></pre>
+
+**STEP 15: Crash SQL Server**
+
+Because was deployed with a Replicas value of 1, Kubernetes will attempt to ensure all containers in the pod are Running. If the container crashes in the pod, Kubernetes will automatically restart it. Simulate this behavior by running the script **step15_crashsql.ps1** which runs the following command:
+
+```powershell
+$Service = kubectl get service | Select-String -Pattern mssql-service | Out-String
+$Service = $Service.split(" ")
+$Server+="-S"
+$Server+=$Service[9]
+$Server+=",31433"
+sqlcmd '-Usa' '-PSql2019isfast' $Server '-Q"SHUTDOWN WITH NOWAIT"'
+```
+When this command completes you should see the following message:
+
+<pre>Server shut down by NOWAIT request from login sa.</pre>
+
+**STEP 16: Check status and IP address of running pods**
+
+Check the status of the pod with the SQL Server by running the script **step16_getpods.ps1** which runs the following command (the same command in STEP 14)
+
+```Powershell
+kubectl get pods -o wide
+```
+Your results should look similar as in STEP 14. The name of the pod, STATUS, and IP are all the same. Notice the column RESTARTS now is a value of 1, indicating that Kubernetes has automatically restarted the containers in the pod.
+
+**STEP 17: Query SQL Server**
+
+To validate SQL Server is up and running with the same set of databases, run the script **step17_querysql.ps1** which runs the following command:
+
+```powershell
+$Service = kubectl get service | Select-String -Pattern mssql-service | Out-String
+$Service = $Service.split(" ")
+$Server+="-S"
+$Server+=$Service[9]
+$Server+=",31433"
+sqlcmd '-Usa' '-PSql2019isfast' $Server '-Q"SELECT @@VERSION;SELECT name FROM sys.databases"'
+```
+Your results should be the same version of SQL Server as it was first deployed and the same set of databases from STEP 13.
+
+**STEP 18: Simulate a pod failure**
+
+If the pod has a failure in the Kubernetes cluster, Kubernetes will automatically schedule a new pod with the same set of containers. The Private IP address of the pod may change but you can still connect to the same SQL Server using the LoadBalancer which will map to the new Private IP address. Use the script step18_podfailure.ps1 which runs the following command:
+
+```Powershell
+kubectl delete pod -l app=mssql
+```
+When this command completes, you should see the following message (your pod name will likely be different)
+
+<pre>pod "mssql-deployment-68769447bc-55zwx" deleted</pre>
+
+**STEP 19: Check status and IP address of running pods**
+
+Check the status and IP of the pod by running the script **step19_getpods.ps1** which runs the following command:
+
+```Powershell
+kubectl get pods -o wide
+```
+The results of this command will yield a new pod NAME and a new IP address. If you have deployed a mulit-node cluster the name of the NODE may be different as well. If your pod was deployed on a new node and SQL Server was never deployed on that node, it could take longer to deploy the pod to pull the container image.
+
+**STEP 20: Query SQL Server**
+
+Even though the new pod has a new IP address and was rescheduled, the LoadBalancer is redirected to the pod and the databases are still intact. Use the script step20_querysql.ps1 which runs the following command:
+
+```powershell
+$Service = kubectl get service | Select-String -Pattern mssql-service | Out-String
+$Service = $Service.split(" ")
+$Server+="-S"
+$Server+=$Service[9]
+$Server+=",31433"
+sqlcmd '-Usa' '-PSql2019isfast' $Server '-Q"SELECT @@VERSION;SELECT name FROM sys.databases"'
+```
+Your results should be the same SQL Server version and same set of databases. The LoadBalancer redirected your queries to the new pod and IP address.
+
+**STEP 21: Cleanup resources**
+
+Cleanup all deployed resources by running the script **cleanup.ps1**. This will delete the mssql namespace which delete all objects created in this activity.
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
-xxxxxxxxxxx
+Your learned in this activity how Kubernetes provides basic high-availability for SQL Server in the case of an issue with the container or pod. Kubernetes will also the ReplicaSet concept to schedule a new pod on a new node should one of the nodes become available in the cluster (assuming a multi-node cluster).
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     For Further Study</b></h2>
 
-- [Accelerated Databased Recovery](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-accelerated-database-recovery)
+- [The Kubernetes Main Website](https://kubernetes.io/)
 
-- [The Constant Time Recovery Paper](https://www.microsoft.com/en-us/research/publication/constant-time-recovery-in-azure-sql-database )
+- [What is Kubernetes?](https://azure.microsoft.com/en-us/topic/what-is-kubernetes)
 
-- [What is Azure Data Studio?](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
+- [Azure Kubernetes Service](https://azure.microsoft.com/en-us/services/kubernetes-service/)
 
-- [How to use Notebooks in Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks)
+- [Deploy SQL Server in Azure Kubernetes Service](https://docs.microsoft.com/en-us/sql/linux/tutorial-sql-server-containers-kubernetes)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
