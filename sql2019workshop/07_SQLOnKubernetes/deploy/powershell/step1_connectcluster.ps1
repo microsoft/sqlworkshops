@@ -1,0 +1,1 @@
+az aks get-credentials --resource-group bwaks --name bwsqlaks
