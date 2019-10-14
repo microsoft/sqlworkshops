@@ -164,21 +164,247 @@ When this command completes you should see a message like:
 
 The creation of the LoadBalancer service happens in the background. You will check the status of this service being created later in this Activity.
 
-STEP 5: Create a secret to hold the sa password
+**STEP 5: Create a secret to hold the sa password**
 
-STEP 6: Create persistent storage for databases
+In order to use a password to connect to SQL Server, Kubernetes provides an object called a *secret*. Use the script **step5_create_secret.ps1** to create the secret which runs the following command: (You are free to change the password but you will need to use the new password later in this Activity to connect to SQL Server)
 
-STEP 7: Deploy a pod with a SQL Server container
+```Powershell
+kubectl create secret generic mssql-secret --from-literal=SA_PASSWORD="Sql2019isfast"
+```
+The name of the secret is called mssql-secret which you will need when deploying a pod later in this Activity.
 
-STEP 8: Look at logs from the pod
+When this command completes you should see the following message:
 
-STEP 9: Look at events from the cluster
+<pre>secret/mssql-secret created</pre>
 
-STEP 10: Look at details of the deployment
+You cannot retrieve the plaintext of the password from the secret later so you need to remember this password.
 
-STEP 11: Look at details of the pod
+**STEP 6: Create persistent storage for databases**
 
-STEP 12: Run a query against SQL Server
+SQL Server needs persistent storage for databases and files. This is a similar concept to using a volume with containers to map to directories in the SQL Server container. Disk systems are exposed in Kubernetes as a **StorageClass**. Azure Kubernetes Service (AKS) exposes a StorageClass called **azure-disk** which is mapped to Azure Premium Storage. Applications like SQL Server can use a Persistent Volume Claim (PVC) to request storage from the azure-disk StorageClass.
+
+Execute the script **step6_create_storage.ps1** to create a Persistent Volume Claim using the following command:
+
+```Powershell
+kubectl apply -f storage.yaml
+```
+The **storage.yaml** file declare the PVC request:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-data
+  annotations:
+    volume.beta.kubernetes.io/storage-class: azure-disk
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+```
+The name of the PVC is mssql-data which will be used to map to the SQL Server container directory for databases when deploying the pod. The **annotations:** maps the PVC to the azure-disk StorageClass. The rest of the declaration specifies how to access the PVC which is ReadWriteOnce. ReadWriteOnce means *one node a time* in the cluster can access the PVC. The size of the PVC in this case is 8Gb which for the purposes of this activity is plenty of space.
+
+**STEP 7: Deploy a pod with a SQL Server container**
+
+Now that you have deployed a LoadBalancer service, a secrete, and a Persistent Volume Claim (PVC),you have all the components to deploy a pod running a SQL Server container. To deploy the pod you will use a concept called **Deployment** which provides the ability to declare a **ReplicaSet**. Run the script **step7_deploy_sql2019.ps1** and after it executes you will analyze the details of the deployment. This scripts runs the command:
+
+```Powershell
+kubectl apply -f sql2019deployment.yaml --record
+```
+
+When this command completes you should see the following message:
+
+<pre>deployment.apps/mssql-deployment created</pre>
+
+The pod is deployed in the background. Before you check on the status of the deployment, examine the contents of the **sql2019deployment.yaml** file:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mssql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mssql
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mssql
+        image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        env:
+        - name: MSSQL_PID
+          value: "Developer"
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql-secret
+              key: SA_PASSWORD 
+        volumeMounts:
+        - name: mssqldb
+          mountPath: /var/opt/mssql
+      volumes:
+      - name: mssqldb
+        persistentVolumeClaim:
+          claimName: mssql-data
+```
+Here are important components of the yaml file
+
+```yaml
+kind: Deployment
+metadata:
+  name: mssql-deployment
+```
+
+This defines the name of the deployment
+
+```yaml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mssql
+  template:
+    metadata:
+      labels:
+        app: mssql
+```
+This defines a ReplicaSet of 1 for the deployment. This is a key component of basic high availability. Kubernetes will try to ensure at least one pod for this container is always Running in the cluster. You will learn more how this works in the next Activity. Labels for mssql are also used for the deployment and pod. This automatically associates the LoadBalancer service with the pod because of the use of the mssql label.
+
+```yaml
+   spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mssql
+        image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        env:
+        - name: MSSQL_PID
+          value: "Developer"
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql-secret
+              key: SA_PASSWORD
+```
+This section defines key element of how to deploy a container for the pod. This includes the image for the containers (which is the latest SQL 2019 image based on Red Hat Enterprise Linux), the edition for SQL Server, accepting the EULA agreement, and the sa password based on the previous defined secret.
+
+```yaml
+       volumeMounts:
+        - name: mssqldb
+          mountPath: /var/opt/mssql
+      volumes:
+      - name: mssqldb
+        persistentVolumeClaim:
+          claimName: mssql-data
+```
+This final section maps the Persistent Volume Claim (PVC) with the directory /var/opt/mssql in the container in the pod. Now any file stored in that directory in the container will be stored in the PVC.
+
+**STEP 8: Check the deployment and pod status**
+
+Check the status of the deployment and pod by executing the script **step8_check_deployment.ps1**which runs these commands:
+
+```Powershell
+kubectl get pods
+kubectl get all
+```
+If the deployment was successful, the results should look like the following:
+
+<pre>
+NAME                                READY   STATUS    RESTARTS   AGE
+mssql-deployment-68769447bc-2rw7q   1/1     Running   0          19m
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/mssql-deployment-68769447bc-2rw7q   1/1     Running   0          19m
+
+NAME                    TYPE           CLUSTER-IP    EXTERNAL-IP       PORT(S)           AGE
+service/mssql-service   LoadBalancer   10.0.97.225   104.209.223.215   31433:32240/TCP   80m
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mssql-deployment   1/1     1            1           19m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/mssql-deployment-68769447bc   1         1         1       19m</pre>
+
+In this example output, the name of the pod is mssql-deployment-68769447bc-2rw7q. Your name will be different but start with mssql-deployment.
+
+They key aspects to this output are the STATUS of the pod which should be Running and the EXTERNAL-IP for the LoadBalancer will should be a valid IP address. The deployment is on the last line of the output and if the pod is successfully running, READY will be 1. The LoadBalancer status is independent of the Deployment status.
+
+Before trying to connect to SQL Server, examine other details of the pod and container.
+
+If your deployment has not completed, continue through the Activity and check it again before running queries against SQL Server in STEP 12.
+
+**STEP 9: Look at logs from the pod**
+
+You can examine the contents of logs from the container in the pod by executing the script step9_getlogs.ps1 which runs the following command:
+
+```Powershell
+kubectl logs -l app=mssql --tail=100000
+```
+In this case we can take advantage of the mssql label instead of having to discover the exact name of the pod.
+
+Your output should be the standard SQL Server ERRORLOG output.
+
+**STEP 10: Look at events from the cluster**
+
+One way to gain insights for the cluster *for the current namespace* is to look at *events*. Events are a sequence of actions performed across the cluster. They can be used to gain insights across the cluster especially if there are issues. Execute the script **step10_getevents.ps1** which runs the following command:
+
+```Powershell
+kubectl get events
+```
+Your results should look similar to the following because these are the events for the current namespace that have occurred in the cluster:
+
+<pre>
+LAST SEEN   TYPE     REASON                   OBJECT                                  34m         Normal   ProvisioningSucceeded    persistentvolumeclaim/mssql-data         Successfully provisioned volume pvc-a5349fbd-edfb-11e9-9a90-66910c93f627 using kubernetes.io/azure-disk
+32m         Normal   Scheduled                pod/mssql-deployment-68769447bc-2rw7q    Successfully assigned mssql/mssql-deployment-68769447bc-2rw7q to aks-nodepool1-90949249-2
+31m         Normal   SuccessfulAttachVolume   pod/mssql-deployment-68769447bc-2rw7q    AttachVolume.Attach succeeded for volume "pvc-a5349fbd-edfb-11e9-9a90-66910c93f627"
+31m         Normal   Pulled                   pod/mssql-deployment-68769447bc-2rw7q    Container image "mcr.microsoft.com/mssql/rhel/server:2019-latest" already present on machine
+31m         Normal   Created                  pod/mssql-deployment-68769447bc-2rw7q    Created container mssql
+31m         Normal   Started                  pod/mssql-deployment-68769447bc-2rw7q    Started container mssql
+32m         Normal   SuccessfulCreate         replicaset/mssql-deployment-68769447bc   Created pod: mssql-deployment-68769447bc-2rw7q
+32m         Normal   ScalingReplicaSet        deployment/mssql-deployment              Scaled up replica set mssql-deployment-68769447bc to 1</pre>
+
+You can see the sequence of events to deploy the pod and run a container in the pod.
+
+**STEP 11: Look at details of the pod**
+
+Kubernetes also provides the ability to gain insights into the details of the pod deployment by *describing* the pod. Run the script step11_describe_pod.ps1 which runs the following command:
+
+```Powershell
+kubectl describe pod -l app=mssql
+```
+This command is another example of the advantage of using a label so you don't have to specify the exact pod name.
+
+The output of this command is lengthy but provides details of the pod including what node it was schedule to deploy on, details about the container, and sequence of specific events to deploy the pod.
+
+**STEP 12: Run a query against SQL Server**
+
+Now using the LoadBalancer service as the "servername" which includes a port you can run a query against SQL Server deployed in the pod. Use the script step12_querysql.ps1 to run a query to find the version of SQL Server. The script uses Powershell to dynamically find the EXTERNAL IP address of the Load Balancer service with this command (Note: the bash shell equivalent uses grep and awk):
+
+
+```powershell
+$Service = kubectl get service | Select-String -Pattern mssql-service | Out-String
+$Service = $Service.split(" ")
+$Server+="-S"
+$Server+=$Service[9]
+$Server+=",31433"
+sqlcmd '-Usa' '-PSql2019isfast' $Server '-Q"SELECT @@version"'
+```
+
+The result of the query should provide a result of the SQL Server version which can vary given the image is based on the latest SQL Server 2019 build using Red Hat Enterprise Linux.
+
+As a bonus activity, try to connect to SQL Server in the pod using SQL Server Management Studio or Azure Data Studio. The server name is the External IP address of the LoadBalancer and the port of 31433.
 
 TODO: Copy in a database backup and restore it
 
