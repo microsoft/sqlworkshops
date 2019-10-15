@@ -207,4 +207,4 @@ In this activity you have learned how Polybase in SQL Server 2019 allows you to 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
 
-Next, Continue to <a href="09_bigDataClusters.md" target="_blank"><i>Big Data Clusters</i></a>.
+Next, Continue to <a href="09_BigDataClusters.md" target="_blank"><i>Big Data Clusters</i></a>.
