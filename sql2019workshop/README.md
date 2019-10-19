@@ -160,7 +160,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
   <tr><td><a href="./sql2019wks/03_Security.md" target="_blank">03 - Security</a> </td><td > Learn new security features of SQL Server 2019 such as Data Classification and Auditing</td></tr>
   <tr><td><a href="./sql2019wks/04_Availability.md" target="_blank">04 - Availability</a></td><td> Learn new capabilities to make your SQL Server more available such as Accelerated Database Recovery</td></tr>
   <tr><td ><a href="./sql2019wks/05_ModernDevPlatform.md" target="_blank">05 - Modern Development Platform</a></td><td> Learn how SQL Server 2019 provides new capabilities for the modern data developer</td></tr>
-  <tr><td><a href="./06_Linux_and_Containers.md" target="_blank">06 - Linux and Containers</a></td><td>Learn how to deploy SQL Server in containers and SQL Server Replication on Linux.</td></tr>
+  <tr><td><a href="./sql2019wks/06_Linux_and_Containers.md" target="_blank">06 - Linux and Containers</a></td><td>Learn how to deploy SQL Server in containers and SQL Server Replication on Linux.</td></tr>
   <tr><td><a href="./sql2019wks/07_SQLOnKubernetes.md" target="_blank">07 - SQL Server on Kubernetes</a></td><td>Learn how to deploy SQL Server on a Kubernetes Cluster</td></tr>
   <tr><td><a href="./sql2019wks/08_DataVirtualization.md" target="_blank">08 - Data Virtualization</a> </td><td>Learn how to use SQL Server as a data hub and reduce data movement using Polybase++</td></tr> 
   <tr><td><a href="./sql2019wks/09_BigDataClusters.md" target="_blank">09 - Big Data Clusters</a> </td><td>Learn how to use and manage an integrated solution with SQL Server, Hadoop, and Spark</td></tr>
