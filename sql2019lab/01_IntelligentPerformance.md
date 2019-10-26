@@ -175,8 +175,7 @@ FROM Sales.Invoices i
 INNER JOIN @ilines il
 ON i.InvoiceID = il.InvoiceID
 GROUP By i.CustomerID
-END
-GO</pre>
+</pre>
 
 When you find this query your screen should look similar to the following with the chart in the right hand corner showing two "dots" representing the variance in performance for two query plans for the same query text.
 
