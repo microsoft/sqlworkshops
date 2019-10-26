@@ -289,7 +289,7 @@ Follow these steps to see how tempdb is just faster in SQL Server 2019 using a c
 - Launch Windows Performance Monitor (you could run **perfmon** from a command line easily by right-clicking the Windows "Start" icon, select Run, and type in **perfmon**)
 - Add these counters to the Live Chart
     - **SQL Server: SQL Statistics/Batch Requests/Sec**. Adjust the scale to 0.01
-    - **SQL Server: Wait Statistics/Patch latch Waits/Waits** started per second. Adjust the scale to 0.01
+    - **SQL Server: Wait Statistics/Page latch Waits/Waits started per second**. Adjust the scale to 0.01
 - You can remove the % Processor Time counter
 
 **Tip**: To make the chart easier to read I would double-click on each counter and increase the width. I also change the color of Batch Requests/Sec to Dark Green and Page latch waits to Red.
