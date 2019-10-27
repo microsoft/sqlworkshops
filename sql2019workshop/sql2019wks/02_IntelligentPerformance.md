@@ -73,7 +73,7 @@ You will observe the performance of the **CustomerProfits** stored procedure wit
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps2.0">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder.
+All scripts for this activity can be found in the **sql2019workshop\sql2019wks\02_IntelligentPerformance\iqp** folder.
 
 Follow these steps to observe performance differences with table variable deferred compilation.
 
@@ -81,11 +81,11 @@ Follow these steps to observe performance differences with table variable deferr
 
 > **NOTE**: If you have restored the WideWorldImporters database backup in other modules, you can skip this step.
 
-Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) to execute the T-SQL script **restorewwi.sql** as found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
+Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) to execute the T-SQL script **restorewwi.sql** as found in the **sql2019workshop\sql2019wks\02_IntelligentPerformance\iqp** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak.
 
 **STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
 
-T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 2.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019workshop\02_IntelligentPerformance\iqp** folder.
+T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 2.0 can be found in the T-SQL notebook **iqp_tablevariabledeferred.ipynb** which can be found in the **sql2019workshop\sql2019wks\02_IntelligentPerformance\iqp** folder.
 
 >**NOTE**: *A T-SQL script **iqp_tablevariabledeferred.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
@@ -111,7 +111,7 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sqlworkshops\sql2019workshop** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **02_IntelligentPerformance\iqp** folder, open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. 
+Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sql2019workshop\sql2019wks** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **02_IntelligentPerformance\iqp** folder, open up the **iqp_tablevariabledeferred.ipynb** notebook and go through all the steps. 
 
 >**NOTE**: Be sure to only run one notebook cell at a time for the lab.
 
@@ -176,8 +176,7 @@ FROM Sales.Invoices i
 INNER JOIN @ilines il
 ON i.InvoiceID = il.InvoiceID
 GROUP By i.CustomerID
-END
-GO</pre>
+</pre>
 
 When you find this query your screen should look similar to the following with the chart in the right hand corner showing two "dots" representing the variance in performance for two query plans for the same query text.
 
@@ -268,7 +267,7 @@ Go through the following activity to learn how tempdb is just faster in SQL Serv
 
 This activity requires the following software:
 
-- SQL Server 2019
+- SQL Server 2019 Evaluation, Developer, or Enterprise Edition
 - The sqlcmd utility
 - The free tool ostress.exe which can be downloaded from https://www.microsoft.com/en-us/download/details.aspx?id=4511.
 - A tool to run various T-SQL scripts such as SQL Server Management Studio (SSMS), Azure Data Studio, or sqlcmd.
@@ -282,7 +281,7 @@ Linux and MacOS users can use a SQL Server running in a container or Linux but w
 
 > **NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back by executing the command script **disableoptimizetempdb.cmd**, restart SQL Server, and run through all the steps again.*
 
-Follow these steps to see how tempdb is just faster in SQL Server 2019 using a combination of SQL scripts and Performance Monitor. All scripts for this activity can be found in the **sql2019workshop\02_IntelligentPerformance\tempdb** folder.
+Follow these steps to see how tempdb is just faster in SQL Server 2019 using a combination of SQL scripts and Performance Monitor. All scripts for this activity can be found in the **sql2019workshop\sql2019wks\02_IntelligentPerformance\tempdb** folder.
 
 **STEP 1: Setup and configure Windows Performance Monitor**
 
@@ -397,7 +396,7 @@ Did this run faster than the first time you observed the duration? If everything
 
 **STEP 11: Restore services**
 
-Some dependent services for SQL Server such as Polybase and LaunchPad may have been shutdown when using the NET STOP command. Use the SQL Server Configuration Manager to restart any dependent service that was shutdown during this activity.
+Some dependent services for SQL Server such as Polybase and LaunchPad may have been shutdown when using the NET STOP command. Use the **SQL Server Configuration Manager** (search for the SQL Server 2019 Configuration Manager application) to restart any dependent service that was shutdown during this activity.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 

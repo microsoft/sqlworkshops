@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mssql-data
   annotations:
-    volume.beta.kubernetes.io/storage-class: azure-disk
+    volume.beta.kubernetes.io/storage-class: managed-premium
 spec:
   accessModes:
   - ReadWriteOnce

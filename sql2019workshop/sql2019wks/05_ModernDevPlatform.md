@@ -69,7 +69,7 @@ Linux - https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-langua
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.0">Activity Steps</a></b></h3>
 
-To go through the steps for this Activity follow all the instructions in the tutorial as found in the SQL Server documentation at  https://docs.microsoft.com/en-us/sql/language-extensions/tutorials/search-for-string-using-regular-expressions-in-java. The following files have been provided to match what you can use from the tutorial in the **sql2019workshop\05_ModernDevPlatform\java_extensibility** folder:
+To go through the steps for this Activity follow all the instructions in the tutorial as found in the SQL Server documentation at  https://docs.microsoft.com/en-us/sql/language-extensions/tutorials/search-for-string-using-regular-expressions-in-java. The following files have been provided to match what you can use from the tutorial in the **sql2019workshop\sql2019wks\05_ModernDevPlatform\java_extensibility** folder:
 
 - **RegexSample.java**
 
