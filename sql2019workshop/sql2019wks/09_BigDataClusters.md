@@ -14,19 +14,23 @@ SQL Server Big Data Clusters provide a solution for Intelligence over all of you
 
 Big Data Clusters are deployed using Kubernetes nodes, pods, and services. Big Data Clusters is complete built-in solution providing:
 
-- A **SQL Server Master Instance** with HADR built-in with Always On Availability Groups
+- A **SQL Server Master Instance** with HADR built-in using Always On Availability Groups
 - A **Compute Pool** of pods to deploy a Polybase scale-out group
 - A **Storage Pool** of pods with a deployed HDFS cluster with Spark installed. The SQL Server engine is deployed to provide optimized access to HDFS files.
 - A **Data Pool** of pods implementing a data mart to store cached or offline results
 - Access to **external data sources** such as Oracle, SQL Server (including Azure), MongoDB (including CosmosDB), and Teradata through Polybase.
 - Access to the **language of your choice** including T-SQL, Spark, R, Python, Scala, and Java.
 - An **Application Deploy pool** of pods to deploy your Machine Learning application or SSIS package.
+- TODO: Control Plane
+- TODO: HDFS Tiering
 
-Systems Imagination is a company using SQL Server 2019 Big Data Clusters to transform and effectively use machine learning.
+Balzano is a company using SQL Server 2019 Big Data Clusters to transform and effectively use machine learning.
 
 ![SQL 2019 BDC](./graphics/sql2019_bdc_components.png)
 
 You can read more SQL Server Big Data Clusters at https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview.
+
+This module provides a fundamental look and usage of SQL Server 2019 Big Data Clusters as part of the overall SQL Server 2019 product. Use the following workshop for a detailed look at SQL Server 2019 Big Data Clusters at https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters.
 
 You will cover the following topics in this Module:
 
@@ -213,9 +217,9 @@ Accessing data of all types through *ad-hoc* queries or applications to relation
 
 SQL Server 2019 Big Data Clusters solve challenges of HDFS deployment and maximum performance data access through a **Storage and Data Pool**.
 
-A **Storage Pool** is a pre-deployed HDFS cluster using Kubernetes pods that can be accessed through standard HDFS interfaces (WebHDFS) or through the SQL Server Master Instance with Polybase. A Storage Pool uses the SQL Server engine for optimized access to HDFS files.
+A **Storage Pool** is a pre-deployed HDFS cluster using Kubernetes pods that can be accessed through standard HDFS interfaces (WebHDFS) or through the SQL Server Master Instance with Polybase using a special built-in **connector**. A Storage Pool uses the SQL Server engine for optimized access to HDFS files. You can read more about storage pools at https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-storage-pool.
 
-A **Data Pool** is a pre-deployed set of pods using SQL Server instances to store shards of data optimized with columnstore indexes. Data Pools are access with Polybase from the SQL Server Master Instance.
+A **Data Pool** is a pre-deployed set of pods using SQL Server instances to store shards of data optimized with columnstore indexes. Data Pools are accessed with Polybase from the SQL Server Master Instance through a special built-in connector. You can use T-SQL statements like INSERT, SELECT, TRUNCATE, and EXECUTE AS with data pools. You can read more about data pools at https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-data-pool.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.1">     Activity: Analyzing data using the Storage and Data Pool</a></b></h2>
 
@@ -227,19 +231,25 @@ Then, ingest query results from SQL Server joined with HDFS into the Data Pool.
 
 All scripts for this activity can be found in the **sql2019workshop\sql2019wks\09_BigDataClusters\storage_and_data_pool** folder.
 
-**STEP 1: Ingest data into HDFS**
+>**NOTE:** Other external data sources such as Oracle, MongoDB, SQL Server (including Azure), and Teradata can be used in a big data cluster using the same techniques you learned in Module 08 Data Virtualization
+
+**STEP 1: Ingest data into HDFS in the Storage Pool**
 
 Follow the instructions to load sample data into HDFS in a Big Data cluster at https://docs.microsoft.com/en-us/sql/big-data-cluster/tutorial-load-sample-data.
 
 **STEP 2: Query data in HDFS through Polybase in a Big Data Cluster**
 
+Use the T-SQL notebook **datavirtualization_storagepool.ipynb** to query HDFS data in the storage pool based on files loaded in STEP 1.
+
 **STEP 3: Ingest and access data in a Data Pool in a Big Data Cluster**
+
+Use the T-SQL notebook **datavirtualization_datapool.ipynb** to ingest data based on queries from STEP 2 and query the cached results.
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
-xxxxxxxxxxx
+In this activity, you learned how to ingest data into HDFS in the Storage Pool of a Big Data Cluster. You also learned how to query HDFS data through Polybase deployed and built-in to Big Data Clusters. You then ingested data and queried cached results in the data pool using Polybase.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
