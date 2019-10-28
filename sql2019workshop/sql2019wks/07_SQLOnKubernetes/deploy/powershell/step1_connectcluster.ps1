@@ -1,1 +1,1 @@
-az aks get-credentials --resource-group bwaks --name bwsqlaks
+az aks get-credentials --resource-group <resource group> --name <clustername>
