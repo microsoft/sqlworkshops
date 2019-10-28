@@ -386,7 +386,17 @@ XXXXXXXXX
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="actvitysteps9.3">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019workshop\09_BigDataClusters\explore_and_monitor** folder.
+**STEP 1: Find BDC management endpoints**
+
+**STEP 2: Use azdata for BDC monitoring**
+
+**STEP 3: Use dashboards to examine BDC health**
+
+**STEP 4: Look at BDC metrics**
+
+**STEP 5: Explore BDC logs**
+
+**STEP 6: Using kubectl with BDC**
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
