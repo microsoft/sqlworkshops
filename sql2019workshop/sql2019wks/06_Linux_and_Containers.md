@@ -25,7 +25,6 @@ SQL Server 2019 introduces the following new enhancements for containers:
 - Microsoft Container Registry
 - Red Hat Images
 - Non-root Containers
-- Windows Containers (Currently Private Preview)
 
 For this module, we will join forces to show you how to implement SQL Server Replication with Linux Containers.
 <dl>
@@ -61,7 +60,7 @@ There are several container runtime programs in the marketplace today. This acti
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps5.0">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019workshop\06_Linux_and_Containers\containers** folder.
+All scripts for this activity can be found in the **sql2019workshop\sql2019wks\06_Linux_and_Containers\containers** folder.
 
 This activity requires you to download the WideWorldImporters sample database from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak. The scripts assume this backup is in the c:\sql_samples_database folder for Windows and /sql_sample_databases for Linux.
 
@@ -320,16 +319,16 @@ You should now be back in your Powershell or original bash shell prompt.
 
 **STEP 12: Examine the logs of a container**
 
-Container runtimes like docker provide a method to see logged output of a running or even stopped container. For a SQL Server container, those logs represent the latest ERRORLOG file. Use the script **step12_containerlogs.ps1** which runs the following command:
+Container runtime engines like docker provide a method to see logged output of a running or even stopped container. For a SQL Server container, those logs represent the latest ERRORLOG file. Use the script **step12_containerlogs.ps1** which runs the following command:
 
 ```powershell
 docker logs sql2017latest
 ```
-Your output should be the ERRORLOG from the shutdown SQL Server container which was runing the latest cumulative update.
+Your output should be the ERRORLOG from the shutdown SQL Server container which was running the latest cumulative update.
 
 **STEP 13: See the top processes in a container**
 
-Container runtimes like docker also support viewing the top running processes in a container without executing a shell in the container. Use the script **step13_containertop.ps1** which uses the command:
+Container runtime engines like Docker also support viewing the top running processes in a container without executing a shell in the container. Use the script **step13_containertop.ps1** which uses the command:
 
 ```powershell
 docker top sql2017cu10
@@ -395,7 +394,7 @@ In this activity, you will learn how to deploy a SQL Server replication solution
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics6checkmark.png?raw=true"><b><a name="activitysteps5.0">Activity Steps</a></b></h3>
 
-All scripts for this activity can be found in the **sql2019workshop\06_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
+All scripts for this activity can be found in the **sql2019workshop\sql2019wks\06_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
 
 >**NOTE**: This activity assumes the following:
 
@@ -408,7 +407,7 @@ All scripts for this activity can be found in the **sql2019workshop\06_Linux_and
 
 It will help to describe how scripts and files are provided to make the solution work. Examine the following files described in this step to see the flow.
 
-In the **sql2019workshop\06_Linux_and_Containers\replication** folder there are two directories and a file:
+In the **sql2019workshop\sql2019wks\06_Linux_and_Containers\replication** folder there are two directories and a file:
 
 - **db1** - Scripts and files to build a custom container image for the publisher and distributor.
 - **db2** - Scripts and files to build a customer container for the subscriber.
