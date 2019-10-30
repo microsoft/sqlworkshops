@@ -71,19 +71,21 @@ There are two subfolders for scripts to be used in different shells:
 - **powershell** - Use scripts here for kubectl on Windows
 - **bash** - Use these scripts for kubectl on Linux or MacOS
 
-In this module, you will see the steps for kubectl on Powershell but the same sequence can be used with bash shell scripts:
+In this module, you will see the steps for kubectl on Powershell but the same sequence can be used with bash shell scripts.
+
+**NOTE:** You may need to run the following command on your computer to execute Powershell scripts:
+
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
 **STEP 1: Connect to the cluster**
 
 Consult your administrator for how to connect to your Kubernetes cluster. For Azure Kubernetes Service (AKS) you will use the Azure CLI (az) to get credentials to use kubectl. Modify the script **step1_connectcluster.ps1** to put in your *clustername* and *resource group*. 
 
-*>**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
+*>**NOTE**: For instructor led workshops, you instructor may provide you Azure credentials, the name of the Azure Resource Group, and AKS cluster name.*
 
 In order to run these steps you must first login to Azure using the following command:
 
 `az login`
-
-This will prompt you for your Azure credentials.
 
 Run the script **step1_connectcluster.ps1** which runs the following command:
 
@@ -115,7 +117,9 @@ When this command completes you should see a message like
 
 **STEP 3: Set the default context**
 
-To now deploy in Kubernetes you can specify which namespace to use with parameters. But there is also a method to set the *context* to the new namespace. Modify the script **step3_context.ps1** to put in your **clustername** and **resource group**.
+To now deploy in Kubernetes you can specify which namespace to use with parameters. But there is also a method to set the *context* to the new namespace. 
+
+**ST0P:** Modify the script **step3_context.ps1** to put in your **clustername** and **resource group**.
 
 *>**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
 
@@ -434,9 +438,7 @@ Containers provide many advantages for applications including consistency, porta
 
 Kubernetes has built-in capabilities to provide high-availability through the concepts of a ReplicaSet (or StatefulSet) combined with Persistent Storage and a Load Balancer. In this module you will learn how to use all of these components with SQL Server on Kubernetes.
 
-TODO: Include more here include the slide on built-in HA.
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity7.1">     Activity: Testing High Availability for SQL Server on Kubernetes</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity7.1">     Advanced Activity: Testing High Availability for SQL Server on Kubernetes</a></b></h2>
 
 >**STOP**: This activity requires you go through all the steps in Activity 7.0 first.
 
@@ -537,7 +539,9 @@ The results of this command will yield a new pod NAME and a new IP address. If y
 
 **STEP 20: Query SQL Server**
 
-Even though the new pod has a new IP address and was rescheduled, the LoadBalancer is redirected to the pod and the databases are still intact. Use the script **step20_querysql.ps1** which runs the following command:
+Even though the new pod has a new IP address and was rescheduled, the LoadBalancer is redirected to the pod and the databases are still intact. Use the script **step20_querysql.ps1** which runs the following command.
+
+Take time to examine how the Powershell script is written to dynamically retrieve the LoadBalancer IP address and use that to connect to SQL Server:
 
 ```powershell
 $Service = kubectl get service | Select-String -Pattern mssql-service | Out-String
@@ -551,7 +555,7 @@ Your results should be the same SQL Server version and same set of databases. Th
 
 **STEP 21: Cleanup resources**
 
-Cleanup all deployed resources by running the script **cleanup.ps1**. This will delete the mssql namespace which delete all objects created in this activity.
+Cleanup all deployed resources by running the script **cleanup.ps1**. This will delete the mssql namespace which delete all objects created in this activity. This shows another convenience of using a namespace since a single command can remove all objects created in that namespace.
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 

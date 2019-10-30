@@ -261,7 +261,7 @@ SQL Server 2019 will be default use a different scheme to update PFS pages so th
 
 SQL Server 2019 provides documented, supported interfaces to determine the object of a page by examining fields of a page header. You can read more about the T-SQL statement to access page header details at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-page-info-transact-sql?.
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityquerystore">     Activity: Tempdb just got faster</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activityquerystore">     Advanced Activity: Tempdb just got faster</a></b></h2>
 
 Go through the following activity to learn how tempdb is just faster in SQL Server 2019 using a concurrent temporary table workload. You will also learn how to use new T-SQL interfaces to find the object associated with a page latch.
 

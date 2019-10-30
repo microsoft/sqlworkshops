@@ -107,11 +107,11 @@ All scripts for this activity can be found in the **sql2019workshop\sql2019wks\0
 
 **STEP 1: Use a T-SQL notebook to complete the rest of the activity.**
 
-T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 3.0 can be found in the T-SQL notebook **adr.ipynb** which can be found in the **sql2019workshop\sql2019wks\04_Availability\adr** folder.
+T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 3.0 can be found in the T-SQL notebook **basic_adr.ipynb** which can be found in the **sql2019workshop\sql2019wks\04_Availability\adr** folder.
 
->**NOTE**: *A T-SQL script **adr.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
+>**NOTE**: *A T-SQL script **basic_adr.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
 
-T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **adr.ipynb** notebook and go through all the steps. When you are done proceed to the **Activity Summary** section for the Activity below.
+T-SQL notebooks can be executed with Azure Data Studio. If you are familiar with using Azure Data Studio and T-SQL notebooks open up the **basic_adr.ipynb** notebook and go through all the steps. When you are done proceed to the **Activity Summary** section for the Activity below.
 
 If you have never opened a T-SQL notebook with Azure Data Studio, use the following instructions:
 
@@ -133,7 +133,7 @@ A successful connection looks similar to this (your server may be different):
 
 ![Azure Data Studio Successful Connection](./graphics/Azure_Data_Studio_Successful_Connect.jpg)
 
-If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sql2019workshop\sql2019wks** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **04_Availability\adr** folder, open up the **adr.ipynb** notebook and go through all the steps. 
+If you haven't already used Explorer in Azure Data Studio, it can be used to explore files. Use the power of Azure Data Studio Explorer to open up any file including notebooks. Use the File/Open Folder menu to open up the **sql2019workshop\sql2019wks** folder. Now click the Explorer icon on the left hand side of Azure Data Studio to see all files and directories for the lab. Navigate to the **04_Availability\adr** folder, open up the **basic_adr.ipynb** notebook and go through all the steps. 
 
 >**NOTE**: Be sure to only run one notebook cell at a time for the lab.
 
@@ -153,11 +153,11 @@ When you are done proceed to the **Activity Summary** section for the Activity b
 
 In this activity you have learned Accelerated Database recovery can speed up transaction rollback significantly. You have also learned how transaction log truncation is no longer affected by long running transactions.
 
-<h3><b><a name="bonusactivity">Advanced Activites</a></b></h3>
+<h3><b><a name="advancedactivity">Advanced Activity</a></b></h3>
 
 >**NOTE**: Close out any outstanding scripts or notebooks before running this bonus activity.
 
-If you have time use the T-SQL notebook **adr_recovery.ipynb** or T-SQL script **adr_recovery.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery. The scripts will create a database with a data file of 10Gb and transaction log of 40Gb so there is plenty of space for the activity.
+If you have time use the T-SQL notebook **recovery_adr.ipynb** or T-SQL script **recovery_adr.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery. The scripts will create a database with a data file of 5Gb and transaction log of 20Gb so there is plenty of space for the activity.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
