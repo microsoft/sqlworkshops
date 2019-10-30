@@ -73,6 +73,10 @@ There are two subfolders for this Activity:
 
 The steps documented here will use the Powershell subfolder and Docker Desktop for Windows. Docker Desktop for Windows on Windows 10 uses a Virtual Machine running Linux called DockerDesktopVM. Windows 10 insider builds have an update to the Windows Subsystem for Linux called **wsl2**. wsl2 does not require a full virtual machine to run Linux programs on Windows. Docker for Desktop has a Preview version that takes advantage of wsl2. This Activity does not currently use wsl2 as it and Docker for Desktop are not mainstream builds at this time. Once these become more mainstream this workshop will be changed to use wsl2.
 
+**NOTE:** You may need to run the following command on your computer to execute Powershell scripts:
+
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
+
 **STEP 1: Start the SQL Server container**
 
 Start the SQL Server container using the script **step1_runsqlconainer.ps1** which runs the command:
@@ -138,7 +142,7 @@ The restore will run and could take a few minutes to complete. When this command
 
 **STEP 4: Run a query against the SQL Server Container**
 
-Run a query against a table in the WideWorldImporters database and find the SQL Server version using the script step4_querysql.ps1 which runs the following commands:
+Run a query against a table in the WideWorldImporters database and find the SQL Server version using the script **step4_querysql.ps1** which runs the following commands:
 
 
 ```powershell
@@ -354,7 +358,7 @@ Wait for a short period of time and retry the script if this occurs. This indica
 
 **STEP 15: Clean up resources**
 
-In case you want to run the activity again or proceed to the advanced activity, use the script **cleanup.ps1** to shutdown all containers and remove volumes.
+Use the script **cleanup.ps1** to shutdown all containers and remove volumes. **YOU MUST RUN this step to use the Advanced Activity below!**
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
@@ -402,6 +406,8 @@ All scripts for this activity can be found in the **sql2019workshop\sql2019wks\0
 - You have the **docker-compose** tool installed. In many docker installations, docker-compose comes with the install.
 - You have internet access to pull SQL Server images from mcr.microsoft.com
 - You have **SQL Server Management Studio** (SSMS) 18.1 or higher installed to use as a client. If you are running this example on Linux or MacOS you can still view the results of the replication setup using T-SQL commands. SSMS provides graphical navigation that is not currently available in other tools.
+
+>**STOP:** If you have gone through the steps in the Activity for Module 6.0, you must first run STEP 15 to cleanup previous containers.
 
 **STEP 1: Explore how the solution works**
 

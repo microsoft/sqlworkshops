@@ -74,9 +74,7 @@ Proceed to the Activity to learn an example of how to use Polybase with SQL Serv
 
 In this activity, you will learn how to build an external data source and table to query a table in Azure SQL Database without connecting directly yourself.
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 4.0 and run through all the steps again.*
-
->**NOTE**: *There are example scripts in **sql2019workshop\sql2019wks\08_DataVirtualization** for other data sources for you to use at a later time for Hadoop, Oracle, CosmosDB (through MongoDB), SQL Server 2008R2, and SAP HANA. For these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" used the cleanup.sql script and go back to the first activity step.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps8.0">Activity Steps</a></b></h3>
 
@@ -89,37 +87,19 @@ All scripts for this activity can be found in the **sql2019workshop\sql2019wks\0
 - You have installed and enabled Polybase (stand-alone is acceptable) per the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-installation?view=sqlallproducts-allversions or for Linux at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-linux-setup.
 - You have access to an Azure SQL Database database or Managed Instance. The T-SQL script **createazuredbtable.sql** as found in the sql2019lab\04_DataVirtualization\sqldatahub\azuredb directory contains the target schema and data. The scripts in the activity have a specific Azure SQL Database connection string, login, password, and database name (wwiazure). You may need to modify the scripts to match your Azure SQL Database connection, login, password, and db name.
 
+>**IMPORTANT**: For instructor led courses, your instructor will provide you the details of the following authentication and Azure SQL Database Server details. Also, for instructor led courses your instructor has pre-created the Azure SQL Database and objects for this notebook.
+
 **STEP 1: Restore the WideWorldImporters backup.**
 
 > **NOTE**: If you have restored the WideWorldImporters database backup in other modules, you can skip this step.
 
 Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) to execute the T-SQL script **restorewwi.sql** as found in the **sql2019workshop\sql2019wks\08_DataVirtualization** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
-**STEP 2: Clean up any previous execution**
-
-Use the T-SQL script **cleanup.sql** from the **sql2019workshop\sql2019wks\08_DataVirtualization\sqldatahub\azuredb** folder to clean up any previous execution of this activity. If you get errors that the objects don't exist you can safely ignore them because it means you have not run the activity before.
-
-```sql
-USE [WideWorldImporters]
-GO
-DROP EXTERNAL TABLE azuresqldb.ModernStockItems
-GO
-DROP SCHEMA azuresqldb
-GO
-DROP EXTERNAL DATA SOURCE AzureSQLDatabase
-GO
-DROP DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials
-GO
-DROP MASTER KEY
-GO
-```
-**STEP 3: Use a T-SQL notebook to complete the rest of the activity.**
+**STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 4.0 can be found in the T-SQL notebook **azuredbexternaltable.ipynb** which can be found in the **sql2019workshop\sql2019wks\08_DataVirtualization\sqldatahub\azuredb** folder.
 
 >**NOTE**: *A T-SQL script **azuredbexternaltable.sql** is also provided if you want to go through the same steps as the notebook but use a tool like SQL Server Management Studio*.
-
->**IMPORTANT**: For instructor led courses, your instructor will provide you the details of the following authentication and Azure SQL Database Server details
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL AzureSQLDatabaseCredentials   
@@ -182,6 +162,8 @@ If you have time, look over the scripts and T-SQL notebooks (with saved results)
 - Oracle
 - SAP HANA
 - SQL Server
+
+>**NOTE**: If you want to run these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.*
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
