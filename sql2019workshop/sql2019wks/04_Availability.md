@@ -153,7 +153,7 @@ When you are done proceed to the **Activity Summary** section for the Activity b
 
 In this activity you have learned Accelerated Database recovery can speed up transaction rollback significantly. You have also learned how transaction log truncation is no longer affected by long running transactions.
 
-<h3><b><a name="bonusactivity">Advanced Activities</a></b></h3>
+<h3><b><a name="advancedactivity">Advanced Activity</a></b></h3>
 
 >**NOTE**: Close out any outstanding scripts or notebooks before running this bonus activity.
 

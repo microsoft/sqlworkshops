@@ -95,7 +95,7 @@ All scripts for this activity can be found in the **sql2019workshop\sql2019wks\0
 
 Use a tool like SQL Server Management Studio (SSMS) or Azure Data Studio (ADS) to execute the T-SQL script **restorewwi.sql** as found in the **sql2019workshop\sql2019wks\08_DataVirtualization** folder to restore the WideWorldImporters backup. The script assumes a specific path for the backup and database/log files. You may need to edit this depending on your installation. *Remember for Linux installations, the default path is /var/opt/mssql/data.* Your instructor may have provided this backup for you but if necessary you can download it from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
-**STEP 2: Use a T-SQL notebook to complete the rest of the activity.**
+**STEP 2: Use a T-SQL notebook to connect to Azure SQL Database.**
 
 T-SQL notebooks provide a very nice method to execute T-SQL code with documentation in the form of markdown code. All the steps and documentation to complete the rest of the activity for Module 4.0 can be found in the T-SQL notebook **azuredbexternaltable.ipynb** which can be found in the **sql2019workshop\sql2019wks\08_DataVirtualization\sqldatahub\azuredb** folder.
 
@@ -151,11 +151,9 @@ When you start using a notebook and use the "Play" button of a cell, you may get
 
 There is additional documentation on how to use SQL notebooks at https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks.
 
-TODO: Another activity to look at Polybase components such as query plans, services, and DMVs.
+**STEP 3: Look at how to connect to other data sources**
 
-<h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="bonusactivity4.0">Bonus Activity Steps</a></b></h3>
-
-If you have time, look over the scripts and T-SQL notebooks (with saved results) for other data sources in the **08_DataVirtualization\sqldatahub** folder. There are subfolders for examples for these data sources:
+Look over the scripts and T-SQL notebooks (with saved results) for other data sources in the **08_DataVirtualization\sqldatahub** folder. There are subfolders for examples for these data sources:
 
 - Azure CosmosDB (using MongoDB)
 - HDFS
@@ -163,13 +161,19 @@ If you have time, look over the scripts and T-SQL notebooks (with saved results)
 - SAP HANA
 - SQL Server
 
->**NOTE**: If you want to run these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.*
+>**NOTE**: If you want to run these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
 In this activity you have learned how Polybase in SQL Server 2019 allows you to connect and query data from external data sources without moving data using ETL applications. In the Activity you learned how to create and query an EXTERNAL DATA SOURCE and EXTERNAL TABLE mapped to an Azure SQL Database table.
+
+<h3><b><a name="advancedactivity">Advanced Activity</a></b></h3>
+
+As an advanced activity go through the steps of the T-SQL script **polybasediagnostics.sql** as found in the **sql2019workshop\sql2019wks\08_DataVirtualization\polybasediags** folder to see various aspects of using diagnostics with Polybase.
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

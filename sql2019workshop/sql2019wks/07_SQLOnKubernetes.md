@@ -438,7 +438,7 @@ Containers provide many advantages for applications including consistency, porta
 
 Kubernetes has built-in capabilities to provide high-availability through the concepts of a ReplicaSet (or StatefulSet) combined with Persistent Storage and a Load Balancer. In this module you will learn how to use all of these components with SQL Server on Kubernetes.
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity7.1">     Activity: Testing High Availability for SQL Server on Kubernetes</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity7.1">     Advanced Activity: Testing High Availability for SQL Server on Kubernetes</a></b></h2>
 
 >**STOP**: This activity requires you go through all the steps in Activity 7.0 first.
 
