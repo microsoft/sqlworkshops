@@ -121,7 +121,7 @@ To now deploy in Kubernetes you can specify which namespace to use with paramete
 
 **ST0P:** Modify the script **step3_context.ps1** to put in your **clustername** and **resource group**.
 
-*>**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
+>**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
 
 Run the script **step3_setcontext.ps1** which runs these commands:
 
@@ -444,7 +444,7 @@ Kubernetes has built-in capabilities to provide high-availability through the co
 
 This activity will walk you the concepts and scenarios for how Kubernetes provides basic high availability for a SQL Server instance. You will see how the LoadBalancer can be used to consistently connect to SQL Server even if the Private IP address of the pod changes. You will also observe the system databases all remain intact even if the SQL Server container is restarted because these databases are stored on a Persistent Volume Claim (PVC).
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you must gob back and do all the steps in the Activity for 7.0 in this Module.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you must go back and do all the steps in the Activity for 7.0 in this Module.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="actvitysteps7.1">Activity Steps</a></b></h3>
 

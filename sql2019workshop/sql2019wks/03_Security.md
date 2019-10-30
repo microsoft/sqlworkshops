@@ -68,7 +68,7 @@ Proceed to the Activity to learn an example of how to use Data Classification wi
 
 In this activity, you will learn how to use SQL Server Management Studio (SSMS) and T-SQL to classify columns of tables in a database. You will use the **WideWorldImporters** sample database to classify specific columns in tables of that database.
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.0">Activity Steps</a></b></h3>
 
@@ -233,9 +233,9 @@ Let's use an activity to see how audit and classification work together.
 
 In this activity you will learn how to audit users trying to view columns that were marked for data classification.
 
->**IMPORTANT**: *This activity assumes you have completed the steps in the Activity for Module 2.0.*
+>**IMPORTANT**: *This activity assumes you have completed the steps in the Activity for Module 3.0.*
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 2.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 3.0 and run through all the steps again.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps3.1">Activity Steps</a></b></h3>
 
