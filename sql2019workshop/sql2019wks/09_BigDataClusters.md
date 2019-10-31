@@ -20,9 +20,9 @@ Big Data Clusters are deployed using Kubernetes nodes, pods, and services. Big D
 - A **Data Pool** of pods implementing a data mart to store cached or offline results
 - Access to **external data sources** such as Oracle, SQL Server (including Azure), MongoDB (including CosmosDB), and Teradata through Polybase.
 - Access to the **language of your choice** including T-SQL, Spark, R, Python, Scala, and Java.
-- An **Application Deploy pool** of pods to deploy your Machine Learning application or SSIS package. Even though Application Deploy is not covered in this module you can learn more about how to deploy appliactions in Big Data Clusters at https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-application-deployment. You can see various examples of Applciation Deploy at https://github.com/microsoft/sql-server-samples/tree/master/samples/features/sql-big-data-cluster/app-deploy.
-- TODO: Control Plane
-- TODO: HDFS Tiering
+- An **Application Deploy pool** of pods to deploy your Machine Learning application or SSIS package. Even though Application Deploy is not covered in this module you can learn more about how to deploy applications in Big Data Clusters at https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-application-deployment. You can see various examples of Application Deploy at https://github.com/microsoft/sql-server-samples/tree/master/samples/features/sql-big-data-cluster/app-deploy.
+- A **controller** and set of services to help manage, monitor, and coordinate services within the cluster.
+- **HDFS Tiering** to allow external HDFS file systems to be mounted to the storage pool. You can learn more about HDFS Tiering at https://cloudblogs.microsoft.com/sqlserver/2019/10/31/unify-your-data-lakes-with-hdfs-tiering-in-sql-server-big-data-clusters/.
 
 Balzano is a company using SQL Server 2019 Big Data Clusters to transform and effectively use machine learning.
 
@@ -55,13 +55,13 @@ Deploying a set of software components on Kubernetes that includes SQL Server, H
 
 <h3><b><a name="solution">The Solution</a></b></h3>
 
-SQL Server 2019 Big Data Clusters come with tools such as the **azdata** command line interface (CLI) to help simplify the deployment of a Big Data Cluster on Kubernetes
+SQL Server 2019 Big Data Clusters come with tools such as the **azdata** command line interface (CLI) to help simplify the deployment of a Big Data Cluster on Kubernetes.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.0">     Activity: Deploying a Big Data Cluster</a></b></h2>
 
-Azure Kuberentes Service (AKS) provides a managed platform to deploy a Kubernetes cluster. Kubernetes can also be deployed on the platform of your choice using tools like **kubeadm**.
+Azure Kubernetes Service (AKS) provides a managed platform to deploy a Kubernetes cluster. Kubernetes can also be deployed on the platform of your choice using tools like **kubeadm**.
 
-SQL Server 2019 Big Data Clusters provide guidance for deployment on AKS or your Kuberentes cluster at https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-guidance
+SQL Server 2019 Big Data Clusters provide guidance for deployment on AKS or your Kubernetes cluster at https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-guidance
 
 <h3><img style="margin: 0px 15px 15px 0px;" ****src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="actvitysteps9.0">Activity Steps</a></b></h3>
 
@@ -69,7 +69,7 @@ SQL Server 2019 Big Data Clusters provide guidance for deployment on AKS or your
 
 Follow the instructions at https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-on-aks to deploy SQL Server 2019 Big Data Clusters on AKS.
 
->**NOTE**: If you would like to deploy a Big Data Cluster that includes built-in HA for the SQL Server Master Instance with Always-On Availability Groups, consult the documentaiton at https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-high-availability.
+>**NOTE**: If you would like to deploy a Big Data Cluster that includes built-in HA for the SQL Server Master Instance with Always-On Availability Groups, consult the documentation at https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-high-availability.
 
 When using **azdata** for deployment, your results should look something like this from the command line (you will have responded to prompts for passwords)
 
