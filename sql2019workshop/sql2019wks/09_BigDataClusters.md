@@ -231,15 +231,15 @@ The controller provides the key interface to expose all the endpoints in a Big D
 
 - **SQL Server Master Instance Front-End (sql-server-master)**
 
-Use this IP address and port to connect to the SQL Server Master Instance with common SQL tools like Azure Data Studio or SQL Server Management Studio (SSMS)
+Use this IP address and port to connect to the SQL Server Master Instance, which is a TDS interface, with common SQL tools like Azure Data Studio or SQL Server Management Studio (SSMS). The SQL Server Master Instance can use a well-known endpoint for the controller in the cluster to access other resources in the cluster. This means you can connect to SQL Server with a TDS connection and access cluster resources with redirection from the controller.
 
 - **Cluster Management Service (controller)**
 
-This is the connection to the **controller**. In most cases you don't need to directly connect to the controller. For example the azdata tool can directly connect to the controller using the **azdata login** command. Tools like Azure Data Studio may prompt you for this information to show a dashboard for cluster health. Note that even though this endpoint is an https address it accepts RESTful API requests so is not appropriate to connect with a browser.
+This is the connection to the **controller** which is a REST interface. In most cases you don't need to directly connect to the controller. For example the azdata tool can directly connect to the controller using the **azdata login** command (azdata can use the same well-known endpoint as the SQL Server Master Instance). Tools like Azure Data Studio may prompt you for this information to show a dashboard for cluster health. Note that even though this endpoint is an https address it accepts RESTful API requests so is not appropriate to connect with a browser. You will use the CONTROLLER_USERNAME and CONTROLLER_PASSWORD you provided when you deployed a Big Data cluster to access this endpoint.
 
 - **Gateway to access HDFS files, Spark (gateway)**
 
-This endpoint is also known as a **Knox gateway** and is used to access the HDFS cluster deployed in a Big Data Cluster. It can also be used to directly execute Spark jobs.
+This endpoint is also known as a **Knox gateway**, using a REST interface, and is used to access the HDFS cluster deployed in a Big Data Cluster. It can also be used to directly execute Spark jobs.
 
 Typically you will use proxy connections to use the Knox gateway which are also listed as endpoints in the list.
 
@@ -253,7 +253,7 @@ This proxy is also known as a **Livy** endpoint. Although Spark jobs can be dire
 
 - **Application Proxy (app-prox)**
 
-This endpoint is used to access applications deployed in the Application Pool. You can read more about using this endpoint at https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-consume-apps?view=sql-server-ver15.
+This endpoint, using a REST interface, is used to access applications deployed in the Application Pool. You can read more about using this endpoint at https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-consume-apps?view=sql-server-ver15.
 
 You will learn in the next Module how to connect to the SQL Server Master Instance and submit queries for data virtualization.
 
@@ -345,11 +345,19 @@ Here are other examples of how to use Spark with Big Data Clusters:
 
 In this activity you will use a notebook in Azure Data Studio to run Spark jobs to prepare, train, and persist a machine learning model.
 
+The business scenario is a company delivers good that are temperature sensitive in refrigerated trucks. This company has had problems with the cooling systems they believe are caused by battery failures in the trucks.
+
+Today the company has decided to replace these batteries at fixed time frames but wants a more cost-effective way to replace the batteries before they fail but only when needed.
+
+You will use SQL Server Big Data Clusters, Spark,IoT data, and Machine Learning to help build a prediction model for battery lifetime.
+
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="actvitysteps9.2">Activity Steps</a></b></h3>
+
+>**NOTE:** This activity assumes you have deployed a SQL Server 2019 Big Data Cluster per instructions in Activity 9.1.
 
 All scripts for this activity can be found in the **sql2019workshop\sql2019wks\09_BigDataClusters\spark_and_ml** folder.
 
-TODO: Possibly use Buck's notebook after going through a series of questions for him.
+Use Azure Data Studio connected to a SQL Server Big Data Cluster you have deployed to run through the steps in a PySpark notebook called **truckrefrigpredict.ipynb**. 
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
@@ -365,11 +373,11 @@ Administrators and data professionals need methods and tools to manage a Big Dat
 
 <h3><b><a name="challenge">The Challenge</a></b></h3>
 
-Big Data Clusters are built on the foundation of Kuberentes using nodes, pods, services, and other Kuberentes concepts. A Kubernetes cluster on its own can be a complex system to manage. Therefore, managing and monitoring Big Data Cluster components is important and requires built-in software and tools.
+Big Data Clusters are built on the foundation of Kubernetes using nodes, pods, services, and other Kubernetes concepts. A Kubernetes cluster on its own can be a complex system to manage. Therefore, managing and monitoring Big Data Cluster components is important and requires built-in software and tools.
 
 <h3><b><a name="solution">The Solution</a></b></h3>
 
-For information about how to manage a **Kubernetes cluster** consider using the book Managing Kubernetes which you can find at https://www.oreilly.com/library/view/managing-kubernetes/9781492033905/. In addition, a good source to learn more about Kuberenetes can be found at https://azure.microsoft.com/mediahandler/files/resourcefiles/kubernetes-learning-path/Kubernetes%20Learning%20Path%20version%201.0.pdf. To learn more about using and managing an Azure Kuberentes Service (AKS) cluster look at these well-defined training [resources](https://azure.microsoft.com/en-us/services/kubernetes-service/?&ef_id=Cj0KCQjwgNXtBRC6ARIsAIPP7RvoU34L1o1NrmIWxI6Ul8FS6IwiwkU9hlo3avZXzFXRctSC4A6MFhIaAuMhEALw_wcB:G:s&OCID=AID2000586_SEM_UInoS0XO&lnkd=Google_Kubernetes_Brand&MarinID=sUInoS0XO_366906494820_azure%20kubernetes%20service_e_c__78855468680_aud-402620943028:kwd-486572907816_).
+For information about how to manage a **Kubernetes cluster** consider using the book Managing Kubernetes which you can find at https://www.oreilly.com/library/view/managing-kubernetes/9781492033905/. In addition, a good source to learn more about Kubernetes can be found at https://azure.microsoft.com/mediahandler/files/resourcefiles/kubernetes-learning-path/Kubernetes%20Learning%20Path%20version%201.0.pdf. To learn more about using and managing an Azure Kubernetes Service (AKS) cluster look at these well-defined training [resources](https://azure.microsoft.com/en-us/services/kubernetes-service/?&ef_id=Cj0KCQjwgNXtBRC6ARIsAIPP7RvoU34L1o1NrmIWxI6Ul8FS6IwiwkU9hlo3avZXzFXRctSC4A6MFhIaAuMhEALw_wcB:G:s&OCID=AID2000586_SEM_UInoS0XO&lnkd=Google_Kubernetes_Brand&MarinID=sUInoS0XO_366906494820_azure%20kubernetes%20service_e_c__78855468680_aud-402620943028:kwd-486572907816_).
 
 **Big Data Clusters** comes deployed with several services and tools to help you monitor and manage the solution including:
 
@@ -378,35 +386,243 @@ For information about how to manage a **Kubernetes cluster** consider using the 
 - The **azdata** command line interface (CLI) to interact, manage, and monitor aspects of the cluster
 - **Dashboards** to examine cluster health using Azure Data Studio.
 - **Troubleshooting Guides** implemented through notebooks built by the engineering team accessed through Azure Data Studio
-- Use the **kubectl** tool to copy data, manage, diagnose, and monitor Kubernnetes.
+- Use the **kubectl** tool to copy data, manage, diagnose, and monitor Kubernetes.
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.3">     Activity: Using tools to explore and monitor Big Data Clusters</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.3">     Advanced Activity: Using tools to explore and monitor Big Data Clusters</a></b></h2>
 
-XXXXXXXXX
+In this activity you will learn how to tools to explore various aspects of management and monitoring with SQL Server Big Data Clusters.
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="actvitysteps9.3">Activity Steps</a></b></h3>
 
+>**NOTE:** This activity assumes you have deployed a SQL Server 2019 Big Data Cluster per instructions in Activity 9.1.
+
 **STEP 1: Find BDC management endpoints**
 
-**STEP 2: Use azdata for BDC monitoring**
+One of the first actions you need to do in order to use all the tools to manage and monitor a SQL Server Big Data Cluster is to find the various endpoints to connect for specific management and monitoring activities to manage and monitor the cluster.
 
-**STEP 3: Use dashboards to examine BDC health**
+Similar to the first Activity in this module, use the following command to get a complete list of endpoints:
 
-**STEP 4: Look at BDC metrics**
+`azdata bdc endpoint list -o table`
 
-**STEP 5: Explore BDC logs**
+Your results should look like the following:
 
-**STEP 6: Using kubectl with BDC**
+<pre>
+Description                                             Endpoint                                                  Name                        Protocol
+------------------------------------------------------  --------------------------------------------------------  --------------------------  ----------
+Gateway to access HDFS files, Spark                     https://[ip address]:30443                               gateway                     https
+Spark Jobs Management and Monitoring Dashboard          https://[ip address]:30443/gateway/default/sparkhistory  spark-history               https
+Spark Diagnostics and Monitoring Dashboard              https://[ip address]:30443/gateway/default/yarn          yarn-ui                     https
+Application Proxy                                       https://[ip address]:30778                               app-proxy                   https
+Management Proxy                                        https://[ip address]:30777                                mgmtproxy                   https
+Log Search Dashboard                                    https://[ip address]:30777/kibana                         logsui                      https
+Metrics Dashboard                                       https://[ip address]:30777/grafana                        metricsui                   https
+Cluster Management Service                              https://[ip address]:30080                                controller                  https
+SQL Server Master Instance Front-End                    [ip address],31433                                        sql-server-master           tds
+SQL Server Master Readable Secondary Replicas           [ip address],31436                                        sql-server-master-readonly  tds
+HDFS File System Proxy                                  https://[ip address]:30443/gateway/default/webhdfs/v1    webhdfs                     https
+Proxy for running Spark statements, jobs, applications  https://[ip address]:30443/gateway/default/livy/v1       livy                        https
+</pre>
+
+>**NOTE**: This list includes a readable secondary replica for SQL Server and will only be viewable in your list if you have deployed a Big Data Cluster with High Availability.
+
+In this list of endpoints are key ones used for management and monitoring:
+
+- **Cluster Management Service (controller)**
+
+This is the connection to the **controller** which is REST interface. In most cases you don't need to directly connect to the controller. For example the azdata tool can directly connect to the controller using the **azdata login** command. Tools like Azure Data Studio may prompt you for this information to show a dashboard for cluster health. Note that even though this endpoint is an https address it accepts RESTful API requests so is not appropriate to connect with a browser. You will use the CONTROLLER_USERNAME and CONTROLLER_PASSWORD you provided when you deployed a Big Data cluster to access this endpoint.
+
+- **Log Search Dashboard (logsui)**
+
+This HTTP interface is used to access log files collected in the cluster and displayed using Kibana and searchable powered by Elasticsearch. You will use the CONTROLLER_USERNAME and CONTROLLER_PASSWORD you provided when you deployed a Big Data cluster to access this endpoint.
+
+- **Metrics Dashboard (metricsui)**
+
+This HTTP interface is used to show metrics for resource usage for pods, nodes, and SQL Server instances across the cluster using an interface called Grafana. You will use the CONTROLLER_USERNAME and CONTROLLER_PASSWORD you provided when you deployed a Big Data cluster to access this endpoint.
+
+- **Spark Jobs Management and Monitoring Dashboard (spark-history)**
+
+This HTTP interface is used to view the history of Spark Jobs. You can access this endpoint directly as it is proxied through the **gateway** endpoint. To access this endpoint, you will need to use the user **root** and the KNOX_PASSWORD you provided when you deployed a Big Data Cluster.
+
+- **Spark Diagnostics and Monitoring Dashboard (yarn-ui)**
+
+This HTTP interface is used to monitor applications managed by YARN in the Big Data Cluster which will be Spark jobs. You can access this endpoint directly as it is proxied through the **gateway** endpoint. To access this endpoint, you will need to use the user **root** and the KNOX_PASSWORD you provided when you deployed a Big Data Cluster.
+
+You can also retrieve a list of endpoints using the **SQL Server Master Instance (sql-server-master)** endpoint. The SQL Server Master Instance knows a  in the cluster to contract the controller endpoint. Using this well-known endpoint SQL Server can use a REST API call to ask the controller for all endpoints in the cluster.
+
+Connect to the SQL Server master instance with a tool like Azure Data Studio or SQL Server Management Studio (SSMS) and run the following T-SQL query:
+
+```sql
+SELECT * FROM sys.dm_cluster_endpoints
+```
+Your results should look the same as when you used the azdata command to list endpoints.
+
+**STEP 2: Use azdata for monitoring and managing**
+
+azdata is the "kubectl" for SQL Server Big Data Clusters. azdata knows how to connect to the controller endpoint in the cluster and can be used to perform a variety of tasks.
+
+In the first activity you ran the following command to get the status of the cluster:
+
+`azdata bdc status show`
+
+The **bdc** subcommand has other interesting option including the abilty to get the status of individual services, create or delete a cluster, configure the cluster, retrieve endpoints, and submit spark jobs.
+
+One interesting aspect of az data bdc is to interact with the HDFS file systems in the cluster
+
+Run the following command to a deployed BDC to get a shell to interact with the HDFS file ssytem
+
+`azdata bdc hdfs shell`
+
+After supplying the KNOX_PASSWORD or CONTROLLER_PASSWORD you will get a prompt like the following:
+
+<pre>
+
+HDFS Interactive Shell.  Type help or ? to list commands.
+
+[hdfs]
+</pre>
+
+You can now direclty interact wtih HDFS to perform file and diretory commands. Try out various commands wiht your HDFS file system. Type quit to **exit** this shell.
+
+Review the azdata reference at Read the entire reference for azdata at https://docs.microsoft.com/en-us/sql/big-data-cluster/reference-azdata and try out other various azdta commands with your cluster
+
+>**TIP:** For SQL Server users take a look at the azdata sql commands.
+
+**STEP 3: Use dashboards to examine health**
+
+Azure Data Studio comes built-in with a dashboard to examine the health of a cluster. There are two ways to ring up the dashboard:
+
+- Azure Data Studio can connect directory to the controller
+- You can connect to the SQL Server Master Instance.
+
+Follow the instructions in the documentation at https://docs.microsoft.com/en-us/sql/big-data-cluster/manage-with-controller-dashboard and view the dashboard for your cluster.
+
+You will use this dashboard in the next activities to look at metrics and logs.
+
+The following is an example dashboard for a Big Data Cluster
+
+![BDC Dashboard](./graphics/big_data_cluster_dashboard.png)
+
+**STEP 4: Look at metrics using Grafana**
+
+SQL Server Big Data Clusters deploys containers throughout the cluster to collect metrics about components of the cluster include node, pod, and SQL Server metrics.
+
+Using the dashboard you displayed in the previous step, click on the SQL Server service under Cluster Overview
+
+![SQL Server Service](./graphics/sql_server_service.png)
+
+This will bring up a new display of health and links for metrics and logs.
+
+>NOTE: This display is for a cluster where HA has been enabled which is why there are three master instances
+
+Click on the link to View SQL Metrics for master-0
+
+![master_0_metrics](./graphics/master_0_metrics.png)
+
+Your default browser will be activated.
+
+>NOTE: At the time of the creation of this workshop there could be problems with the Microsoft Edge browser. It is recommended you use another browser like Chrome or the Microsoft Edge Beta.
+
+You will be prompted for the CONTROLLER_USERNAME and CONTROLLER_PASSWORD. Once this complete your webpage should look like this
+
+![grafana_big_data_cluster](./graphics/grafana_big_data_cluster.png)
+
+As pointed by the arrows at this point you can change context to see other types of metrics such as Node or Pod metrics. Or you can see SQL metrics from other SQL Server instances deployed in the cluster.
+
+You may close or leave open this browser for further exploration.
+
+**STEP 5: Explore logs using Kibana**
+
+Similar to metrics, containers are deployed in the SQL Server Big Data Cluster to collect logs for various components in the cluster including SQL Server ERRORLOG entries.
+
+Using the same dashboard as you did in the previous step, click on View for master-0 logs
+
+![master_0_logs](./graphics/master_0_logs.png)
+
+Another browser window or tab will be dislplayed and you will be prompted for the CONTROLLER_USERNAME and CONTROLLER_PASSWORD.
+
+>NOTE: At the time of the creation of this workshop there could be problems with the Microsoft Edge browser. It is recommended you use another browser like Chrome or the Microsoft Edge Beta.
+
+Your browser window should look similar to the following:
+
+![kibana_big_data_cluster](./graphics/kibana_big_data_cluster.png)
+
+In order to see SQL ERRORLOG files, you will need to add a filter.
+
+By default the last 15 minutes of all logs files are displayed. Choose the date picker to pick a different time frame like "This week".
+
+Now add a filter to only get the entries from ERRORLOG files
+
+![kibana_filter_for_errorlogs](./graphics/kibana_filter_for_errorlogs.png)
+
+Now to make the output more readable add the kubernetes_pod_name and message fields to the output
+
+![kibana_add_fields](./graphics/kibana_add_fields.png)
+
+The result should look like SQL ERRORLOG entries. You could remove the filter for the master-0 pod to look at ERRORLOG entries across the cluster.
+
+![kibana_sql_errorlog_entries](./graphics/kibana_sql_errorlog_entries.png)
+
+**STEP 6: Exploring Kubernetes**
+
+Since Big Data Clusters is deployed on Kubernetes you can use familar tools to interact with the k8s cluster including the kubectl tool and a Kubernetes dashboard.
+
+Run the following command to see a list of the number of pods and containers deployed in the cluster:
+
+`kubectl get pods -o wide`
+
+Your results should look something like this:
+
+>**NOTE:** The following results include a HA enabled deployment on a 3 node AKS cluster. Notice how pods are distributed across the AKS cluster naturally
+
+<pre>
+NAME              READY   STATUS    RESTARTS   AGE    IP            NODE                       NOMINATED NODE   READINESS GATES
+appproxy-sqcpg    2/2     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+compute-0-0       3/3     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+control-8wvjl     3/3     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+controldb-0       2/2     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+controlwd-z67t6   1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-2   <none>           <none>
+data-0-0          3/3     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+data-0-1          3/3     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+gateway-0         2/2     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+logsdb-0          1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-2   <none>           <none>
+logsui-lfdvw      1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+master-0          4/4     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+master-1          4/4     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+master-2          4/4     Running   0          4h1m   [ip address]  aks-nodepool1-29363419-2   <none>           <none>
+metricsdb-0       1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+metricsdc-755bd   1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-2   <none>           <none>
+metricsdc-xjdnj   1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+metricsdc-xr8wr   1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+metricsui-gc925   1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+mgmtproxy-7lhlr   2/2     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+nmnode-0-0        2/2     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+operator-grdlh    1/1     Running   0          6d     [ip address]  aks-nodepool1-29363419-2   <none>           <none>
+sparkhead-0       4/4     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+storage-0-0       4/4     Running   0          6d     [ip address]  aks-nodepool1-29363419-0   <none>           <none>
+storage-0-1       4/4     Running   0          6d     [ip address]  aks-nodepool1-29363419-1   <none>           <none>
+</pre>
+
+The values under the READY column indicate how many containers are deployed and are runnig. If you sum up these numbers you will see that Big Data Clusters deploys at minimum (again with HA enabled) some 53 containers!.
+
+Explore the other aspects of using kubectl with Big Data Clusters using examples in the documentation at https://docs.microsoft.com/en-us/sql/big-data-cluster/cluster-troubleshooting-commands. See how to display a Kubernetes dashboard by following the steps in the documentation at https://docs.microsoft.com/en-us/sql/big-data-cluster/cluster-troubleshooting-commands?view=sql-server-ver15#kubernetes-dashboard.
+
+![kubernetes_dashboard_big_data_cluster](./graphics/kubernetes_dashboard_big_data_cluster.png)
 
 When you are done proceed to the **Activity Summary** section for the Activity below.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 
-xxxxxxxxxxx
+In this activity you learned how to use tools like azdata, Azure Data Studio, Kibana, Grafana, and kubectl to manage and monitor a SQL Server Big Data Cluster.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     For Further Study</b></h2>
+
+- [What are SQL Server Big Data Clusters?](https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview)
+
+- [Get Started with SQL Server Big Data Clusters](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-get-started)
+
+- [Workshop: SQL Server Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
 
 - [What is Azure Data Studio?](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
 
