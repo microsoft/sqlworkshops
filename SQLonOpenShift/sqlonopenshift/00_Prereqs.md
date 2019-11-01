@@ -1,6 +1,6 @@
 ![](../graphics/microsoftlogo.png)
 
-# Workshop: SQL Server on OpenShift
+# Workshop: SQL Server 2019 on OpenShift (CTP 2.5)
 
 #### <i>A Microsoft workshop from the SQL Server team</i>
 
@@ -20,62 +20,75 @@ You'll cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3-0">0.0 Prerequisites</a></h2>
 
-In this module you will learn what the prerequisites are for this workshop.
+In this module you will learn the prerequisites for this workshop.
 
-The workshop does not assume a deep working knowledge of SQL Server or OpenShift. It does have an assumption to know basics of using a Linux bash shell but all commands are provided to run the activities including scripts.
+The workshop does not assume a deep working knowledge of SQL Server or OpenShift. You should know how to use a Linux bash shell. All commands are provided to run the activities.
 
 In order to go through the activities of this workshop you will need the following:
 
-**Note**: It is possible your instructor will provide you with a client environment and full access to an OpenShift cluster including login credentials.
-
-- Access to an OpenShift 3.11 cluster. The workshop is currently designed for OpenShift 3.11 and has not been tested for OpenShift 4.0
+- Access to an OpenShift 3.11 cluster. The workshop is currently designed for OpenShift 3.11 and has not been tested for OpenShift 4.0.
 - Modules 1 through 4 require user privileges for the OpenShift cluster for **anyuid** at minimum. Module 5 currently requires cluster admin rights.
-- A client computer that has access to connect to the OpenShift cluster and has the following software installed
+- A client computer that has access to connect to the OpenShift cluster with the following software installed and configured:
+  - A Linux bash shell
+  - The OpenShift CLI (oc.exe)
+  - Azure Data Studio (Minimum version is 1.5.2). Install from https://docs.microsoft.com/en-us/sql/azure-data-studio/download
+  - SQL Command Line Tools (sqlcmd). Check the **For Further Study** section for links to install these tools.
+  - **git** client (only needed if you do not have the latest version of the workshop provided to you by the instructor)
+  - In addition, the client computer must be able to connect to the Internet to download a sample file or your instructor must provide it for you (WideWorldImporters-Full.bak)
 
-1. A Linux bash shell
-2. The OpenShift CLI (oc.exe)
-3. Azure Data Studio - Minimum version is 1.5.2. Install from https://docs.microsoft.com/en-us/sql/azure-data-studio/download
-4. SQL Command Line Tools (sqlcmd). Check the **For Further Study** section for links to install these tools.
-5. git client (only needed if you do not have the latest version of the workshop provided to you by the instructor)
-6. In addition, the client computer must be able to connect to the Internet to download a sample file or your instructor must provide it for you (WideWorldImporters-Full.bak)
+The workshop currently supports a single node OpenShift cluster but can be run on a multiple cluster environment. For cluster administrators building a cluster for this workshop, each user will need ~8Gb of RAM to run the containers in the workshop.
 
-The workshop currently supports a single node OpenShift cluster but can be run on a multiple cluster environment. Each user will need ~8Gb of RAM to run the containers in the workshop.
+>**Note**: *If you are attending this course in-person, the instructor may provide you with a client environment and full access to an OpenShift cluster including login credentials.*
 
-Proceed to the Activity to go through the prerequisites.
+With the above environment configured, you can now proceed to the first Activity for the course.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Prerequsites</a></b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b><a name="aks">Activity: Set up Workshop</a></b></p>
 
-1. Download the latest version of the workshop from https://aka.ms/sqlworkshops. If you have used git clone to pull down the repo of the workshops, run **git pull** to get the latest version.
+<br>
 
-2. Login to your OpenShift cluster by using the URL provided to you for the **openshiftConsoleUrl** in a web browser.
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Download the latest version of the workshop from https://aka.ms/sqlworkshops</p>
 
-3. You may get warnings from the web page saying "This site is not secure". Click Details and then "Go on to the webpage"
+Navigate to your home directory `~` and enter the following command:
 
-4. You will be presented with a login screen like the following
+`git clone https://github.com/Microsoft/sqlworkshops.git`
 
-    ![OpenShift login screen](../graphics/OpenShift_Console_Login.jpg)
+>**Note**: *If you have used `git clone` to pull down the repo of the workshops in the past, run `git pull` in the sqlworkshops directory to get the latest version.*
 
-5. Type in the user name and password provided to you for OpenShift cluster access. Your instructor may call this **openshiftAdminUsername** and **openshiftPassword**
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Login to your OpenShift cluster, via a web browser, using the URL provided to you for the <b>openshiftConsoleUrl</b>.</p>
 
-6. You will now see a new web page like the following
+>**Note**: *You may get warnings from the web page saying "This site is not secure". Click Details or Advanced and then "Go on to the webpage" or "Proceed to ...".*
 
-    ![OpenShift Master Console](../graphics/OpenShift_Master_Console.jpg)
+You will be presented with a login screen:
 
-7. In the upper right hand corner, click on your user name and select Copy Login Command like the following
+![OpenShift login screen](../graphics/OpenShift_Console_Login.jpg)
 
-    ![copy login command](../graphics/OpenShift_Copy_Login.jpg)
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Type in the user name and password provided to you for OpenShift cluster access</p>
 
-8. You now have on your clipboard a complete oc login sytnax with a token. Open up a shell and paste in the copy (right click your mouse)
+>**Note**: *In-class, your instructor may call this **openshiftAdminUsername** and **openshiftPassword**.*
 
-    The command should look something like this
+You will now see a new web page:
 
-    `oc login https://[masterconsoleaddress]:443 --token=[tokenstring]`
+![OpenShift Master Console](../graphics/OpenShift_Master_Console.jpg)
 
-    Hit enter
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Get the Login command</p>
 
-    You should see results like the following and then placed back at the command prompt
+In the upper right hand corner, click on your user name and select `Copy Login Command` 
+
+![copy login command](../graphics/OpenShift_Copy_Login.jpg)
+
+Your clipboard now holds a complete `oc login` syntax with a security token. 
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Use the token</p>
+
+Open up a shell and paste in the token you copied using the right-click of your mouse or `SHIFT-INSERT`. The command should look similar to the following:
+
+`oc login https://[masterconsoleaddress]:443 --token=[tokenstring]`
+
+Press the `Enter` key. If you are promoted for "Use insecure connections? (y/n)" type in `y`
+
+You should see results similar to the following. You are then placed back at the command prompt:
 
 <pre>Logged into "https://[masterconsoleurl]:443" as "ocpadmin" using the token provided.
 
@@ -100,7 +113,7 @@ You have access to the following projects and can switch between them with 'oc p
 Using project "default".
 </pre>
 
-You have now successfully logged into the OpenShift Cluster and can proceed with Next Steps below.
+You have now successfully logged into the OpenShift Cluster and can proceed with **Next Steps** below.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

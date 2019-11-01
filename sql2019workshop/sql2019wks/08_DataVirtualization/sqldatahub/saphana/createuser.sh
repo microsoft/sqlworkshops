@@ -1,0 +1,1 @@
+hdbsql -i90 -Icreateuser.sql -uSYSTEM -p<password> -dVANDELAY
