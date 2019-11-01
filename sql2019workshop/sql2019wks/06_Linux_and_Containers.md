@@ -69,7 +69,7 @@ There are two subfolders for this Activity:
 - **powershell** - Use scripts here for Docker Desktop for Windows
 - **bash** - Use these scripts for Docker for Linux.
 
-*>**NOTE:** This full activity is currently not supported on MacOS due to problems using volumes. See this GitHub issue for more details https://github.com/Microsoft/mssql-docker/issues/12. It is possible to modify this activity to not use volumes on MacOS to still see aspects of running SQL Server containers.*
+>**NOTE:** This full activity is currently not supported on MacOS due to problems using volumes. See this GitHub issue for more details https://github.com/Microsoft/mssql-docker/issues/12. It is possible to modify this activity to not use volumes on MacOS to still see aspects of running SQL Server containers.*
 
 The steps documented here will use the Powershell subfolder and Docker Desktop for Windows. Docker Desktop for Windows on Windows 10 uses a Virtual Machine running Linux called DockerDesktopVM. Windows 10 insider builds have an update to the Windows Subsystem for Linux called **wsl2**. wsl2 does not require a full virtual machine to run Linux programs on Windows. Docker for Desktop has a Preview version that takes advantage of wsl2. This Activity does not currently use wsl2 as it and Docker for Desktop are not mainstream builds at this time. Once these become more mainstream this workshop will be changed to use wsl2.
 
@@ -79,7 +79,7 @@ The steps documented here will use the Powershell subfolder and Docker Desktop f
 
 **STEP 1: Start the SQL Server container**
 
-Start the SQL Server container using the script **step1_runsqlconainer.ps1** which runs the command:
+Start a SQL Server container using the script **step1_runsqlconainer.ps1** which runs the command:
 
 ```powershell
 docker run `
@@ -394,7 +394,7 @@ Proceed to the activity to explore how this method can allow you to deploy SQL S
 
 In this activity, you will learn how to deploy a SQL Server replication solution with a publisher, distributor, and subscriber using two SQL Server Linux containers.
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you can go back to the first Activity in 5.0 and run through all the steps again.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" you must first run the command docker-compose down and then you can go back to the first Activity in 6.1 and run through all the steps again.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics6checkmark.png?raw=true"><b><a name="activitysteps5.0">Activity Steps</a></b></h3>
 
@@ -407,7 +407,7 @@ All scripts for this activity can be found in the **sql2019workshop\sql2019wks\0
 - You have internet access to pull SQL Server images from mcr.microsoft.com
 - You have **SQL Server Management Studio** (SSMS) 18.1 or higher installed to use as a client. If you are running this example on Linux or MacOS you can still view the results of the replication setup using T-SQL commands. SSMS provides graphical navigation that is not currently available in other tools.
 
->**STOP:** If you have gone through the steps in the Activity for Module 6.0, you must first run STEP 15 to cleanup previous containers.
+>**STOP:** If you have gone through the steps in the Activity for Module 6.0, you must first run STEP 15 from Activity 6.0 to cleanup previous containers.
 
 **STEP 1: Explore how the solution works**
 

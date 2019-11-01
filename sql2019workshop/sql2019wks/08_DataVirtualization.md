@@ -74,7 +74,7 @@ Proceed to the Activity to learn an example of how to use Polybase with SQL Serv
 
 In this activity, you will learn how to build an external data source and table to query a table in Azure SQL Database without connecting directly yourself.
 
->**NOTE**: *If at anytime during the Activities of this Module you need to "start over" used the cleanup.sql script and go back to the first activity step.*
+>**NOTE**: *If at anytime during the Activities of this Module you need to "start over" use the cleanup.sql script and go back to the first activity step in Activity 8.0.*
 
 <h3><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b><a name="activitysteps8.0">Activity Steps</a></b></h3>
 
