@@ -70,7 +70,7 @@ Watch the following video by James-Rowland Jones, Principal Program Manager at M
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=oJTCKvwsyo8
 " target="_blank"><img src="http://img.youtube.com/vi/oJTCKvwsyo8/0.jpg" 
-alt="Introducing SQL Server 2019" width="500" height="400" border="10" /></a>
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
 
 Proceed to the Activity to learn an example of how to use Polybase with SQL Server 2019 and Azure SQL Server Database.
 

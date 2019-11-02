@@ -61,7 +61,7 @@ Watch this video as Mihaela Blendea, Senior Program Manager at Microsoft, talks 
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=h4u8MI-iR7U
 " target="_blank"><img src="http://img.youtube.com/vi/h4u8MI-iR7U/0.jpg" 
-alt="Introducing SQL Server 2019" width="500" height="400" border="10" /></a>
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.0">     Activity: Deploying a Big Data Cluster</a></b></h2>
 

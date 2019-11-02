@@ -50,7 +50,7 @@ Watch this video at Vin Yu, Senior Program Manager at Microsoft, explain more ab
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Kx1jZxq5pjA
 " target="_blank"><img src="http://img.youtube.com/vi/Kx1jZxq5pjA/0.jpg" 
-alt="Introducing SQL Server 2019" width="500" height="400" border="10" /></a>
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
