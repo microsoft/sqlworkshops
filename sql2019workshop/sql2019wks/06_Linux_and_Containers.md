@@ -46,6 +46,12 @@ You would like to explore and use containers as a solution to provide a consiste
 
 SQL Server containers provide solutions for these challenges. Use containers to have all developers work on the same build of SQL Server whether they use Windows, Linux, or MacOS. Since SQL Server cumulative updates are compatible, you can use containers to easily switch between builds maintaining the same databases with minimal downtime. You can learn more about how to use SQL Server containers at https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker.
 
+Watch this video at Vin Yu, Senior Program Manager at Microsoft, explain more about SQL Server 2019 in Containers
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Kx1jZxq5pjA
+" target="_blank"><img src="http://img.youtube.com/vi/Kx1jZxq5pjA/0.jpg" 
+alt="Introducing SQL Server 2019" width="500" height="400" border="10" /></a>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitycontainers">     Activity: Deploying and updating SQL Server with Containers</a></b></h2>

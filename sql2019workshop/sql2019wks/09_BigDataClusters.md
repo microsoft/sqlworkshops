@@ -57,6 +57,12 @@ Deploying a set of software components on Kubernetes that includes SQL Server, H
 
 SQL Server 2019 Big Data Clusters come with tools such as the **azdata** command line interface (CLI) to help simplify the deployment of a Big Data Cluster on Kubernetes.
 
+Watch this video as Mihaela Blendea, Senior Program Manager at Microsoft, talks more about Big Data Cluster deployment
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=h4u8MI-iR7U
+" target="_blank"><img src="http://img.youtube.com/vi/h4u8MI-iR7U/0.jpg" 
+alt="Introducing SQL Server 2019" width="500" height="400" border="10" /></a>
+
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.0">     Activity: Deploying a Big Data Cluster</a></b></h2>
 
 Azure Kubernetes Service (AKS) provides a managed platform to deploy a Kubernetes cluster. Kubernetes can also be deployed on the platform of your choice using tools like **kubeadm**.

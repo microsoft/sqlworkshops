@@ -66,6 +66,12 @@ Polybase has advantages over features like linked servers such as:
 
 You can read more about a comparison of Polybase to Linked Servers at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-faq?view=sql-server-ver15.
 
+Watch the following video by James-Rowland Jones, Principal Program Manager at Microsoft, explain more about Data Virtualization in SQL Server 2019
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=oJTCKvwsyo8
+" target="_blank"><img src="http://img.youtube.com/vi/oJTCKvwsyo8/0.jpg" 
+alt="Introducing SQL Server 2019" width="500" height="400" border="10" /></a>
+
 Proceed to the Activity to learn an example of how to use Polybase with SQL Server 2019 and Azure SQL Server Database.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
