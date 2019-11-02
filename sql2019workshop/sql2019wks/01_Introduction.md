@@ -29,7 +29,7 @@ Watch this video by Travis Wright, Principal Program Manager on the SQL Server t
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=TZrsxrz6w34
 " target="_blank"><img src="http://img.youtube.com/vi/TZrsxrz6w34/0.jpg" 
-alt="Introducing SQL Server 2019" width="500" height="400" border="10" /></a>
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
