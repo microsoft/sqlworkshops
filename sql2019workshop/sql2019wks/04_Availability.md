@@ -12,7 +12,6 @@ SQL Server 2019 includes new capabilities to keep your database and application 
 
 - Online Index Enhancements
 - Enhancements to Availability Groups
-- Taking advantage of built-in HA for Kubernetes
 - Accelerated Database Recovery
 
 You can read more details about all of these enhancements at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions.
