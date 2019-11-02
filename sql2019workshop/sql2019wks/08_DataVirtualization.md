@@ -37,9 +37,9 @@ In this module you will learn about the enhanced Polybase feature of SQL Server 
 
 Organizations often today have multiple database providers and sources that they must integrate together. SQL Server is a leading industry data platform so many customers move data from other data sources into SQL Server often using Extract, Transform, and Load (ETL) applications. ETL applications can be costly to build and maintain and often results in latencies to access data external to SQL Server.
 
-Consider all the data sources facing a company like WideWorldImporters
+Consider all the data sources a company may have today:
 
-![WWI Data Sources](./graphics/wwi_data_sources.png)
+![SQL Server Data Hub](./graphics/sql_server_data_hub.png)
 
 Traditionally, WideWorldImporters would have to write ETL jobs to move data from all these sources into SQL Server. While that solution still may be best for this company, what if SQL Server could act as a "data hub" for all of these sources? What if you could develop T-SQL queries and execute them against SQL Server 2019, and SQL Server would query the external data sources to bring back the results? Imagine if you could join local SQL Server tables with external data sources or perhaps join all of these together!
 

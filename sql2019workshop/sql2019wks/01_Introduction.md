@@ -25,6 +25,11 @@ SQL Server 2019 provides many new capabilities including:
 - Security enhancements such as Always Encrypted and Data Classification
 - Mission Critical Availability including enhancements for Availability Groups, online index enhancements, and Accelerated Database Recovery
 
+Watch this video by Travis Wright, Principal Program Manager on the SQL Server team, introducing SQL Server 2019:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=TZrsxrz6w34
+" target="_blank"><img src="http://img.youtube.com/vi/TZrsxrz6w34/0.jpg" 
+alt="Introducing SQL Server 2019" width="240" height="180" border="10" /></a>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

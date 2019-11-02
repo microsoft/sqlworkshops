@@ -566,7 +566,7 @@ The result should look like SQL ERRORLOG entries. You could remove the filter fo
 
 The best way to learn to troubleshoot is by learning from others. Explore the troubleshooting notebooks created by the Enginering team at https://docs.microsoft.com/en-us/sql/big-data-cluster/manage-notebooks on your deployed SQL Server Big Data Cluster
 
-**STEP 7: Exploring Kubernetes**
+**STEP 7: Exploring Kubernetes on Big Data Cluster**
 
 Since Big Data Clusters is deployed on Kubernetes you can use familar tools to interact with the k8s cluster including the kubectl tool and a Kubernetes dashboard.
 
