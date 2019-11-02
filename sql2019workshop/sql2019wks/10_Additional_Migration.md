@@ -59,7 +59,7 @@ Consider watching the following video called **Modernizing SQL Server** by Pam L
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=5RPkuQHcxxs
 " target="_blank"><img src="http://img.youtube.com/vi/5RPkuQHcxxs/0.jpg" 
-alt="Modernize SQL Server" width="500" height="300" border="10" /></a>
+alt="Modernize SQL Server" width="500" height="400" border="10" /></a>
 
 <h3><b><a name="langext">Migration Tools</a></b></h3>
 
