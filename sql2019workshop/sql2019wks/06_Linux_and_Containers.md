@@ -294,6 +294,8 @@ Notice the only other programs are bash and ps. bash and ps are programs seen by
 
 Now run the following command to see contents of the container:
 
+>NOTE: Copy and past the command below. The ll stands for 'listlong'
+
 `ll /var/opt/mssql/log`
 
 Your results should look similar to this
@@ -492,7 +494,7 @@ If you open up a new command line shell or Powershell window, you can simply run
 
 and the containers will be stopped and removed.
 
-You can also hit `<`Ctrl`>`+`<`C`>` from the command line where you run docker-compose up. This will stop the containers. You will then need to run
+>**WARNING:** If you hit `<`Ctrl`>`+`<`C`>` from the command line where you run docker-compose up it will stop the containers. You will then need to run
 
 `docker-compose down`
 
