@@ -48,7 +48,7 @@ SQL Server containers provide solutions for these challenges. Use containers to 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitycontainers">     Activity: Updating SQL Server with Containers</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitycontainers">     Activity: Deploying and updating SQL Server with Containers</a></b></h2>
 
 In this activity you will deploy a SQL Server container and interact with SQL Server by restoring and creating a database. You will also learn various methods to interact and inspect a containers using the docker client. You will also see how fast it can be to update SQL Server to a new cumulative update by *switching* containers.
 
@@ -154,7 +154,7 @@ These are examples of using sqlcmd outside of the container connecting to port 1
 
 The results of these commands should be a list of rows followed by the SQL Server version which should be SQL Server 2017 CU10.
 
-**STEP 5: Update to a new cumulative update**
+**STEP 5: Move to a new cumulative update**
 
 To update the SQL Server container to the latest cumulative update, you will *switch* containers. You will shutdown the existing container and start a new one using the latest cumulative update image. The volume will be the same as well as the port number. The new SQL Server container will recognize the existing system and user databases and perform a small upgrade step to use the new cumulative update.
 
@@ -284,7 +284,7 @@ Your results should look like the following:
 
 These results prove *container isolation*. The primary program for the container is sqlservr. SQL Server on Linux consists of two sqlservr programs (one of which is the true SQL Server engine running. The other is a "watchdog" process)
 
-Notice the only other programs are bash and ps. Bash and ps are programs seen by the container because docker exec was used to run bash. bash and ps are true programs running in an isolated fashion on the host but in the same *namespace* as the SQL Server container.
+Notice the only other programs are bash and ps. bash and ps are programs seen by the container because docker exec was used to run bash. bash and ps are true programs running in an isolated fashion on the host but in the same *namespace* as the SQL Server container.
 
 Now run the following command to see contents of the container:
 
@@ -400,7 +400,7 @@ In this activity, you will learn how to deploy a SQL Server replication solution
 
 All scripts for this activity can be found in the **sql2019workshop\sql2019wks\06_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
 
->**NOTE**: This activity assumes the following:
+**NOTE**: This activity assumes the following:
 
 - **Docker** is installed. You can use Docker Desktop for Windows or macOS or Docker for Linux to run this activity.
 - You have the **docker-compose** tool installed. In many docker installations, docker-compose comes with the install.

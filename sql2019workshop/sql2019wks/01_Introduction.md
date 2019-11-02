@@ -32,6 +32,10 @@ SQL Server 2019 provides many new capabilities including:
 
 - [What's new in SQL Server 2019](https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15)
 
+- [SQL Server 2019 Example Notebooks](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/sql2019notebooks)
+
+- [SQL Server 2019 Video Learning Series](https://aka.ms/sql2019learning)
+
 - [What is Azure Data Studio?](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is)
 
 - [How to use Notebooks in Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks)
