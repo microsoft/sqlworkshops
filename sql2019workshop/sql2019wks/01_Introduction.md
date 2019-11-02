@@ -8,7 +8,7 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     Introduction to SQL Server 2019</b></h2>
 
-SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server. Consider today's modern data challenges for a company called WideWorldImporters
+SQL Server 2019 is a modern data platform designed to tackle the challenges of today's data professional. SQL Server 2019 is not just an upgrade option from previous releases of SQL Server. Consider today's modern data challenges for a business.
 
 ![Modern Data Challenges](./graphics/modern_data_challenges.png)
 
@@ -19,11 +19,11 @@ SQL Server 2019 includes new capabilities that can solve these challenges. Consi
 SQL Server 2019 provides many new capabilities including:
 
 - Data Virtualization with Polybase and Big Data Clusters to reduce the need for data movement.
+- SQL Server on the platform of your choice with compatibility including Windows, Linux, containers, Kubernetes, and Arm64 (Azure SQL Database Edge)
+- Modern Development capabilities including Machine Learning Services and Extensibility with Java and the language of your choice
 - Intelligent Performance to boost query performance with no application changes
 - Security enhancements such as Always Encrypted and Data Classification
-- Mission Critical Availability including enhancements for Availability Groups, built-in HA from Kubernetes, and Accelerated Database Recovery
-- Modern Development capabilities including Machine Learning Services and Extensibility with Java and the language of your choice
-- SQL Server on the platform of your choice with compatibility including Windows, Linux, containers, Kubernetes, and Arm64 (Azure SQL Database Edge)
+- Mission Critical Availability including enhancements for Availability Groups, online index enhancements, and Accelerated Database Recovery
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

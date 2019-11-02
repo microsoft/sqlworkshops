@@ -155,9 +155,9 @@ In this activity you have learned Accelerated Database recovery can speed up tra
 
 <h3><b><a name="advancedactivity">Advanced Activity</a></b></h3>
 
->**NOTE**: Close out any outstanding scripts or notebooks before running this bonus activity.
+>**NOTE**: Close out any outstanding scripts or notebooks before running this advanced activity.
 
-If you have time use the T-SQL notebook **recovery_adr.ipynb** or T-SQL script **recovery_adr.sql** to see how ADR affects the recovery process. This bonus activity can take some time as a large number of modifications are needed to see a bigger effect on recovery. The scripts will create a database with a data file of 5Gb and transaction log of 20Gb so there is plenty of space for the activity.
+Use the T-SQL notebook **recovery_adr.ipynb** or T-SQL script **recovery_adr.sql** to see how ADR affects the recovery process. This advanced activity can take some time as a large number of modifications are needed to see a bigger effect on recovery. The scripts will create a database with a data file of 5Gb and transaction log of 20Gb so there is plenty of space for the activity. In addition the instructions in the notebook or script file have you stop, start SQL SErver, and examine the ERRORLOG file.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
