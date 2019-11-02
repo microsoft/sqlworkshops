@@ -31,7 +31,7 @@ You will cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="7-0">     7.0 Deploying SQL Server on Kubernetes</a></b></h2>
 
-Since SQL Server supports containers as a stateful application it is a perfect fit to deploy and use on a Kubernetes platform.
+Since SQL Server is a stateful container application it is a perfect fit to deploy and use on a Kubernetes platform.
 
 <h3><b><a name="challenge">The Challenge</a></b></h3>
 

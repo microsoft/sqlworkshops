@@ -13,6 +13,6 @@ FROM (CONTENT = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL
 WITH (LANGUAGE = 'Java');
 GO
 CREATE EXTERNAL LIBRARY sqlregex
-FROM (CONTENT = 'C:\demos\sql2019\java\sqlregex.jar')
+FROM (CONTENT = 'D:\repos\sql2019workshop\sql2019wks\05_ModernDevPlatform\java_extensibility\sqlregex.jar')
 WITH (LANGUAGE = 'Java');
 GO

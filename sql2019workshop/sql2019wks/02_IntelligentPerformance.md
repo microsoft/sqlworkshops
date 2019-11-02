@@ -396,7 +396,7 @@ Did this run faster than the first time you observed the duration? If everything
 
 **STEP 11: Restore services**
 
-Some dependent services for SQL Server such as Polybase and LaunchPad may have been shutdown when using the NET STOP command. Use the **SQL Server Configuration Manager** (search for the SQL Server 2019 Configuration Manager application) to restart any dependent service that was shutdown during this activity.
+Some dependent services for SQL Server such as Polybase and LaunchPad may have been shutdown when using the NET STOP command. Use the **SQL Server Configuration Manager** (search for the SQL Server 2019 Configuration Manager application. For RC1 builds it could be called the SQL Server 2019 RC1 Configuration Manager) to restart any dependent service that was shutdown during this activity.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 

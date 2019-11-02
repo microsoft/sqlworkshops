@@ -59,7 +59,7 @@ Consider watching the following video called **Modernizing SQL Server** by Pam L
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=5RPkuQHcxxs
 " target="_blank"><img src="http://img.youtube.com/vi/5RPkuQHcxxs/0.jpg" 
-alt="Modernize SQL Server" width="240" height="180" border="10" /></a>
+alt="Modernize SQL Server" width="500" height="400" border="10" /></a>
 
 <h3><b><a name="langext">Migration Tools</a></b></h3>
 
@@ -98,8 +98,6 @@ Read all the details of using Database Compatibility Levels for upgrades at http
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     For Further Study</b></h2>
 
-- [SQL Server Language Extensions](https://docs.microsoft.com/en-us/sql/dma/dma-overview)
-
 - [What's New in SQL Server 2019](https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15)
 
 - [Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview)
@@ -118,8 +116,12 @@ Read all the details of using Database Compatibility Levels for upgrades at http
 
 Use the following resources to learn more on your journey to SQL Server 2019:
 
-- Take advantage of all the free training at https://aka.ms/sqlworkshops
-- Learn from videos and demos at https://aka.ms/sqlchannel
-- Download and try SQL Server 2019 at http://aka.ms/ss19
-- Watch the video of Modernizing SQL Server at https://www.youtube.com/watch?v=5RPkuQHcxxs to plan your migration
-- Read the what’s new for SQL 2019 documentation at https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15.
+- Download and try it: http://aka.ms/ss19
+- Use our free training: https://aka.ms/sqlworkshops
+- Use examples through our https://aka.ms/SQL2019Notebooks
+- Learn from videos: https://aka.ms/sql2019learning
+- Read what’s new for SQL 2019: [documentation](https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-ver15?view=sqlallproducts-allversions)
+- Watch how to Modernize SQL Server: [check out the video](https://www.youtube.com/watch?feature=player_embedded&v=5RPkuQHcxxs)
+- Get the book: https://aka.ms/sql2019book
+
+![SQL Server 2019 Revealed](./graphics/sql_2019_book_image.jpg)
