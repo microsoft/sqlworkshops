@@ -25,7 +25,6 @@ These PowerPoint Decks deal with SQL Server in general, for many different versi
 
 </table>
 
-<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <h2><a name="code">Sample Code from Demos and Courses</a></h2>
 
@@ -49,6 +48,7 @@ These references deal with SQL Server in general, for many different versions an
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
   <tr><th style="background-color: #1b20a1; color: white;">Resource  </th> <th style="background-color: #2c71e7; color: white;">Description</th></tr>
 
+<tr><td><a href="http://aka.ms/sql2019notebooks" target="blank">http://aka.ms/sql2019notebooks</a></td><td>Azure Data Studio Notebooks for evaluating the NEW features of SQL Server 2019</td></tr>
 <tr><td><a href="http://aka.ms/aid" target="blank">http://aka.ms/AID</a></td><td>Adaptive Index Defrag</td></tr>
   <tr><td><a href="http://aka.ms/bpcheck" target="blank">http://aka.ms/BPCheck</a></td><td>Performance and Best Practices Check</td></tr>
   <tr><td><a href="http://aka.ms/dbcompat" target="blank">http://aka.ms/DBCompat</a></td><td>Database Compatibility Levels and SQL Server Upgrades</td></tr>
