@@ -166,7 +166,7 @@ spec:
       targetPort: 1433
   type: LoadBalancer
 ```
-The **kind:Service** is the built-in support for a Service in Kubernetes with a **type: LoadBalancer**. The name of the service is mssql-service which you will use when deploying the pod later in this Activity. The **app:mssql** is a *label* which can be used for various ways to refer to a collection of objects of the same project. Finally, the **ports:** section declares the protocol and how to map a public port to the port in the container of the pod which for SQL Server is 1433.
+The **kind:Service** is the built-in support for a Service in Kubernetes with a **type: LoadBalancer**. The name of the service is mssql-service which you will use when deploying the pod later in this Activity. The **app:mssql** is a *label* which can be used for various ways to refer to a collection of objects of the same project. In this case the label is being used as a *label selector* for the service. Any pod deployed with the mssql label will be bound to the LoadBalancer. Finally, the **ports:** section declares the protocol and how to map a public port to the port in the container of the pod which for SQL Server is 1433.
 
 When this command completes you should see a message like:
 
@@ -216,9 +216,13 @@ spec:
 ```
 The name of the PVC is mssql-data which will be used to map to the SQL Server container directory for databases when deploying the pod. The **annotations:** maps the PVC to the managed-premium StorageClass. The rest of the declaration specifies how to access the PVC which is ReadWriteOnce. ReadWriteOnce means *one node a time* in the cluster can access the PVC. The size of the PVC in this case is 8Gb which for the purposes of this activity is plenty of space.
 
+When this command completes you should see the following message:
+
+<pre>persistentvolumeclaim/mssql-data created</pre>
+
 **STEP 7: Deploy a pod with a SQL Server container**
 
-Now that you have deployed a LoadBalancer service, a secrete, and a Persistent Volume Claim (PVC),you have all the components to deploy a pod running a SQL Server container. To deploy the pod you will use a concept called **Deployment** which provides the ability to declare a **ReplicaSet**. Run the script **step7_deploy_sql2019.ps1** and after it executes you will analyze the details of the deployment. This scripts runs the command:
+Now that you have deployed a LoadBalancer service, a secret, and a Persistent Volume Claim (PVC),you have all the components to deploy a pod running a SQL Server container. To deploy the pod you will use a concept called **Deployment** which provides the ability to declare a **ReplicaSet**. Run the script **step7_deploy_sql2019.ps1** and after it executes you will analyze the details of the deployment. This scripts runs the command:
 
 ```Powershell
 kubectl apply -f sql2019deployment.yaml --record

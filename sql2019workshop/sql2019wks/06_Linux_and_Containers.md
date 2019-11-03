@@ -294,6 +294,8 @@ Notice the only other programs are bash and ps. bash and ps are programs seen by
 
 Now run the following command to see contents of the container:
 
+>NOTE: Copy and past the command below. The ll stands for 'listlong'
+
 `ll /var/opt/mssql/log`
 
 Your results should look similar to this
@@ -463,7 +465,7 @@ The replication solution should be ready to go when you see this output from the
 <pre>db1    | Creating Snapshot...
 db1    | Job 'db1-Sales-SnapshotRepl-DB2-1' started successfully.</pre>
 
-The command line will appear to "hang" at this point. This is normal as both programs are running. Once you see this output leave the command line alone. If you attempt `<`Ctrl`>`+`<`C`>` or exit the command line it would stop the 2 containers.
+The command line will appear to "hang" at this point. This is normal as both programs are running. Once you see this output leave the command line alone. WARNING: If you attempt `<`Ctrl`>`+`<`C`>` or exit the command line it would stop the 2 containers.
 
 >**NOTE**: *You can use add the **-d** parameter to docker-compose -up to run the containers in the background. But then you would need to monitor SQL Sever replication to see when the snapshot has been applied.*
 
@@ -484,6 +486,15 @@ Now connect to the subscriber (port 2600) to check that the new table, customers
 
 ![Check table and data](./graphics/check_table_and_data.png)
 
+If you have any problems with Object Explorer in SSMS, run a query to see the rows in table like:
+
+```sql
+USE Sales;
+GO
+SELECT * FROM customer;
+GO
+```
+
 **Step 4: Shutdown and remove the containers**
 
 If you open up a new command line shell or Powershell window, you can simply run the following command:
@@ -492,7 +503,7 @@ If you open up a new command line shell or Powershell window, you can simply run
 
 and the containers will be stopped and removed.
 
-You can also hit `<`Ctrl`>`+`<`C`>` from the command line where you run docker-compose up. This will stop the containers. You will then need to run
+**WARNING:** If you hit `<`Ctrl`>`+`<`C`>` from the command line where you run docker-compose up it will stop the containers. You will then need to run
 
 `docker-compose down`
 
