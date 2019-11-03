@@ -102,9 +102,9 @@ Each module of this workshop can be studied and used independently of each other
 In order to complete this workshop you need to install the following software:
 
 - SQL Server 2019 Release Candidate or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
-    - For **Modules 2, 3, and 4** you only need the database engine installed
-    - **Module 4** requires disk space to hold a database with a 10Gb data and 10Gb or 40Gb log file.
-    - **Module 5** requires TODO:
+    - For **Modules 2, 3, and 4** you only need the database engine installed.
+    - **Module 4** requires disk space to hold a database with a 5Gb data and 10Gb or 20Gb log file.
+    - **Module 5** requires a Java SDK to be installed to compile the Java classes and the Machine Learning and Language Extensions feature to be installed.
     - **Module 6** requires a container runtime like Docker. You can run this on Windows, MacOS, or Linux.
     - **Module 7** requires access to a deployed Kubernetes Cluster like Azure Kubernetes Service (AKS).
     - **Module 8** requires you to install and enable Polybase (you don't need the Java option and you can choose a stand-alone Polybase.). To run the primary notebook in Module 4 you need access to an Azure SQL Database.
