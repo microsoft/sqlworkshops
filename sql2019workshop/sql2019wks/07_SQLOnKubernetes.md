@@ -81,7 +81,7 @@ In this module, you will see the steps for kubectl on Powershell but the same se
 
 Consult your administrator for how to connect to your Kubernetes cluster. For Azure Kubernetes Service (AKS) you will use the Azure CLI (az) to get credentials to use kubectl. Modify the script **step1_connectcluster.ps1** to put in your *clustername* and *resource group*. 
 
-*>**NOTE**: For instructor led workshops, you instructor may provide you Azure credentials, the name of the Azure Resource Group, and AKS cluster name.*
+>**NOTE**: For instructor led workshops, you instructor may provide you Azure credentials, the name of the Azure Resource Group, and AKS cluster name.*
 
 In order to run these steps you must first login to Azure using the following command:
 
