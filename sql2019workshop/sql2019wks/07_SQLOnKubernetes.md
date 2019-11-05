@@ -306,6 +306,8 @@ This defines a ReplicaSet of 1 for the deployment. This is a key component of ba
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        securityContext:
+          runAsUser: 0
         env:
         - name: MSSQL_PID
           value: "Developer"
