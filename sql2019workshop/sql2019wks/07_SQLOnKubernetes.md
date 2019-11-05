@@ -77,6 +77,8 @@ In this module, you will see the steps for kubectl on Powershell but the same se
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
+>**WARNING**: Run these scripts from powershell. Do not run these scripts from Windows Powershell ISE
+
 **STEP 1: Connect to the cluster**
 
 Consult your administrator for how to connect to your Kubernetes cluster. For Azure Kubernetes Service (AKS) you will use the Azure CLI (az) to get credentials to use kubectl. Modify the script **step1_connectcluster.ps1** to put in your *clustername* and *resource group*. 
@@ -119,7 +121,7 @@ When this command completes you should see a message like
 
 To now deploy in Kubernetes you can specify which namespace to use with parameters. But there is also a method to set the *context* to the new namespace. 
 
-**ST0P:** Modify the script **step3_context.ps1** to put in your **clustername** and **resource group**.
+**ST0P:** Modify the script **step3_setcontext.ps1** to put in your **clustername** and **resource group**.
 
 >**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
 
@@ -255,6 +257,8 @@ spec:
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        securityContext:
+          runAsUser: 0
         env:
         - name: MSSQL_PID
           value: "Developer"
@@ -302,6 +306,8 @@ This defines a ReplicaSet of 1 for the deployment. This is a key component of ba
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        securityContext:
+          runAsUser: 0
         env:
         - name: MSSQL_PID
           value: "Developer"

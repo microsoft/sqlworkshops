@@ -83,6 +83,8 @@ The steps documented here will use the Powershell subfolder and Docker Desktop f
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
+>**WARNING**: Run these scripts from powershell. Do not run these scripts from Windows Powershell ISE
+
 **STEP 1: Start the SQL Server container**
 
 Start a SQL Server container using the script **step1_runsqlconainer.ps1** which runs the command:
@@ -182,7 +184,7 @@ Notice the first container is stopped but not removed. The second container is s
 
 **STEP 6: Run a second SQL Server container**
 
-SQL Server on Linux does not support named instances. Therefore, the way to run multiple SQL Server instances on Linux is with containers. Using the script **step6_runsqlcontainer2.sql** start a new container. This script uses the following command:
+SQL Server on Linux does not support named instances. Therefore, the way to run multiple SQL Server instances on Linux is with containers. Using the script **step6_runsqlcontainer2.ps1** start a new container. This script uses the following command:
 
 ```powershell
 docker run `
@@ -257,7 +259,7 @@ Wait for a short period of time and retry the script if this occurs. This indica
 
 **STEP 10: Rollback to the previous cumulative update for SQL Server**
 
-Let's say you need to rollback to the SQL 2017 CU10 build due to some issue. Since that container is stopped but not removed and the same volume is used for that container and the one currently running the latest cumulative update, you can rollback the update change by stopping the current container and starting back the container sql2017cu10. Use the script **step10_rollbackupdate.ps1**which runs the following command:
+Let's say you need to rollback to the SQL 2017 CU10 build due to some issue. Since that container is stopped but not removed and the same volume is used for that container and the one currently running the latest cumulative update, you can rollback the update change by stopping the current container and starting back the container sql2017cu10. Use the script **step10_rollbackupdate.ps1** which runs the following command:
 
 ```powershell
 docker stop sql2017latest
@@ -266,7 +268,7 @@ docker start sql2017cu10
 
 **STEP 11: Run a program in the container**
 
-While the rollback is taking place, let's do something interest by running a bash shell inside the container and doing some exploration. Use the script **step11_execincontainers.ps1** which runs the following command:
+While the rollback is taking place, let's do something interesting by running a bash shell inside the container and doing some exploration. Use the script **step11_execincontainers.ps1** which runs the following command:
 
 ```powershell
 docker exec -it sql2017cu10 bash
