@@ -256,7 +256,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: mssql
-        image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        image: mcr.microsoft.com/mssql/rhel/server:2019-RC1
         env:
         - name: MSSQL_PID
           value: "Developer"
