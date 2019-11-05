@@ -253,6 +253,12 @@ SQL Server 2019 provides several solutions to help solve these challenges:
 
 Using a SQL Server configuration, the engine will internally implement specific system tables in tempdb as memory-optimized (SCHEMA_ONLY) tables. You can read more about Optimized Tempdb Metadata at https://docs.microsoft.com/en-us/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata.
 
+Lear more about how tempdb is just now faster with Optimized Tempdb Metadata from Senior Program Manager Pam Lahoud
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LQejtjKERWM
+" target="_blank"><img src="http://img.youtube.com/vi/LQejtjKERWM/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 - **Concurrent PFS updates**
 
 SQL Server 2019 will be default use a different scheme to update PFS pages so that multiple users can concurrently update a PFS page, thus reducing page latch waits for allocation pages.
