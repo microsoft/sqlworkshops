@@ -27,7 +27,7 @@ CREATE SCHEMA azuresqldb
 GO
 
 -- Step 5: Create the EXTERNAL TABLE
--- Each column must match the column in the remote table
+-- The columns names must match the names in the remote table
 -- Notice the character columns use a collation that is compatible with the target table
 -- The WITH clause includes the name of the remote [database].[schema].[table] and the external database source
 CREATE EXTERNAL TABLE azuresqldb.ModernStockItems

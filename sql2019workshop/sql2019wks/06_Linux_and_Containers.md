@@ -87,7 +87,7 @@ The steps documented here will use the Powershell subfolder and Docker Desktop f
 
 **STEP 1: Start the SQL Server container**
 
-Start a SQL Server container using the script **step1_runsqlconainer.ps1** which runs the command:
+Start a SQL Server container using the script **step1_runsqlcontainer.ps1** which runs the command:
 
 ```powershell
 docker run `
