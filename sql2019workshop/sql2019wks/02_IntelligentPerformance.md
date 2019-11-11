@@ -53,6 +53,11 @@ Intelligent Query Processing is a feature that exists for both SQL Server 2019 a
 
 > **NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
 
+Learn more about Intelligent Query Processing from Senior Program Manager Pedro Lopes:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LI9Jtl7m8t8" target="_blank"><img src="http://img.youtube.com/vi/LI9Jtl7m8t8/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

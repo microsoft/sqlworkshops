@@ -254,6 +254,8 @@ spec:
         app: mssql
     spec:
       terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest
@@ -303,11 +305,11 @@ This defines a ReplicaSet of 1 for the deployment. This is a key component of ba
 ```yaml
    spec:
       terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest
-        securityContext:
-          runAsUser: 0
         env:
         - name: MSSQL_PID
           value: "Developer"
