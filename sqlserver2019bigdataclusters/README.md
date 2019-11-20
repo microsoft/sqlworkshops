@@ -78,7 +78,7 @@ The solution includes the following technologies - although you are not limited 
 
   <tr><td><i>Linux</i></td><td>Operating system used in Containers and Container Orchestration</td></tr>
   <tr><td><i>Containers</i></td><td>Encapsulation level for the SQL Server big data cluster architecture</td></tr>
-  <tr><td><i>Conainer Orechestration (such as Kubernetes)</i></td><td>Management, control plane for Containers</td></tr>
+  <tr><td><i>Container Orchestration (such as Kubernetes)</i></td><td>Management, control plane for Containers</td></tr>
   <tr><td>Microsoft Azure</td><td>Cloud environment for services</td></tr>
   <tr><td>Azure Kubernetes Service (AKS)</td><td>Kubernetes as a Service</td></tr>
   <tr><td><i>Apache HDFS</i></td><td>Scale-out storage subsystem</td></tr>
