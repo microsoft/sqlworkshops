@@ -1,1 +1,1 @@
-sudo docker cp WideWorldImporters-Full.bak sql2017cu10:/var/opt/mssql
+sudo docker cp WideWorldImporters-Full.bak sql2019ga:/var/opt/mssql
