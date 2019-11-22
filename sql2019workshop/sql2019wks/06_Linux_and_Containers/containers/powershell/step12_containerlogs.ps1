@@ -1,1 +1,1 @@
-docker logs sql2017latest
+docker logs sql2019ga
