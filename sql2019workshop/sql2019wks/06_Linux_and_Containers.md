@@ -91,21 +91,21 @@ Start a SQL Server container using the script **step1_runsqlcontainer.ps1** whic
 
 ```powershell
 docker run `
- -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2017isfast' `
- --hostname sql2017cu10 `
+ -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2019isfast' `
+ --hostname sql2019ga `
  -p 1401:1433 `
- -v sqlvolume:/var/opt/mssql `
- --name sql2017cu10 `
+ -v sql2019volume:/var/opt/mssql `
+ --name sql2019ga `
  -d `
- mcr.microsoft.com/mssql/server:2017-CU10-ubuntu
+ mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
 ```
 Let's examine each of these arguments:
 
-**-e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2017isfast'**
+**-e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2019isfast'**
 
 These are environment variables used to feed SQL Server in the container to accept the EULA agreement and supply a sa password. You can put in whatever sa password you like but you must use that same sa password in subsequent steps in the activity.
 
-**--hostname sql2017cu10**
+**--hostname sql2019ga**
 
 This becomes @@SERVERNAME in the container
 
@@ -113,11 +113,11 @@ This becomes @@SERVERNAME in the container
 
 This is used to map port 1433 (the default port for SQL Server) to a new port. Applications will connect now to port 1401 to access this SQL Server in the container. If you only run one SQL Server container on a host and don't run any SQL Server outside of a container on the host, you don't need to map the port.
 
-**-v sqlvolume:/var/opt/mssql**
+**-v sql2019volume:/var/opt/mssql**
 
 This is used to map a persisted volume on the host to a directory in the container. If any changes are made in the mapped directory in the container they are reflected in the persisted volume. This is an example of a *named volume* where the container runtime decides the location of the volume. You can also use any valid host volume or mount point.
 
-**--name sql2017cu10**
+**--name sql2019ga**
 
 This tags the SQL Server container with a name you use with other container runtime commands.
 
@@ -132,7 +132,7 @@ When this command completes it will display the CONTAINER ID as a long UUID valu
 Copy the WideWorldImporters backup into the container by using the script **step2_copyintocontainer.ps1** which runs the command:
 
 ```powershell
-docker cp c:\sql_sample_databases\WideWorldImporters-Full.bak sql2017cu10:/var/opt/mssql
+docker cp c:\sql_sample_databases\WideWorldImporters-Full.bak sql2019ga:/var/opt/mssql
 ```
 This command will copy the WideWorldImporters-Full.bak file into a folder in the container. This folder is mapped to the persisted container storage volume on the host so if the container is removed the files in that directory will not be lost. Change the path where the WideWorldImporters backup file exists on your environment.
 
@@ -141,7 +141,7 @@ This command will copy the WideWorldImporters-Full.bak file into a folder in the
 Restore the backup you copied in the previous step using the **step3_restoredb.ps1** script which runs the following command:
 
 ```powershell
-docker exec sql2017cu10 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Sql2017isfast' -Q"RESTORE DATABASE WideWorldImporters FROM DISK = '/var/opt/mssql/WideWorldImporters-Full.bak' WITH MOVE 'WWI_Primary' TO '/var/opt/mssql/data/WideWorldImporters.mdf', MOVE 'WWI_UserData' TO '/var/opt/mssql/data/WideWorldImporters_userdata.ndf', MOVE 'WWI_Log' TO '/var/opt/mssql/data/WideWorldImporters.ldf', MOVE 'WWI_InMemory_Data_1' TO '/var/opt/mssql/data/WideWorldImporters_InMemory_Data_1'"
+docker exec sql2019ga /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Sql2019isfast' -Q"RESTORE DATABASE WideWorldImporters FROM DISK = '/var/opt/mssql/WideWorldImporters-Full.bak' WITH MOVE 'WWI_Primary' TO '/var/opt/mssql/data/WideWorldImporters.mdf', MOVE 'WWI_UserData' TO '/var/opt/mssql/data/WideWorldImporters_userdata.ndf', MOVE 'WWI_Log' TO '/var/opt/mssql/data/WideWorldImporters.ldf', MOVE 'WWI_InMemory_Data_1' TO '/var/opt/mssql/data/WideWorldImporters_InMemory_Data_1'"
 ```
 
 In this example, docker is used to run a program in the container which is sqlcmd. sqlcmd is installed in all SQL Server containers. An alternative way to restore the database would be to run sqlcmd outside the container and connect using the port mapped to the container. You will see an example of that later in this activity.
@@ -154,31 +154,31 @@ Run a query against a table in the WideWorldImporters database and find the SQL 
 
 
 ```powershell
-sqlcmd '-Usa' '-Slocalhost,1401' '-Q"USE WideWorldImporters;SELECT * FROM [Application].[People];"' '-PSql2017isfast'
-sqlcmd '-Usa' '-Slocalhost,1401' '-Q"SELECT @@VERSION"' '-PSql2017isfast'
+sqlcmd '-Usa' '-Slocalhost,1401' '-Q"USE WideWorldImporters;SELECT * FROM [Application].[People];"' '-PSql2019isfast'
+sqlcmd '-Usa' '-Slocalhost,1401' '-Q"SELECT @@VERSION"' '-PSql2019isfast'
 ```
 
 These are examples of using sqlcmd outside of the container connecting to port 1401. localhost is used because the container is running on the same computer. As a bonus activity, Connect and query the container with another tool like SQL Server Management Studio or Azure Data Studio. Use the same localhost,1401 as the servername with SQL Authentication and the correct sa password.
 
-The results of these commands should be a list of rows followed by the SQL Server version which should be SQL Server 2017 CU10.
+The results of these commands should be a list of rows followed by the SQL Server version which should be SQL Server 2019 RTM (GA).
 
-**STEP 5: Move to a new cumulative update**
+**STEP 5: Move to a new update of SQL Server**
 
-To update the SQL Server container to the latest cumulative update, you will *switch* containers. You will shutdown the existing container and start a new one using the latest cumulative update image. The volume will be the same as well as the port number. The new SQL Server container will recognize the existing system and user databases and perform a small upgrade step to use the new cumulative update.
+To update the SQL Server container to a new update of SQL Server, you will *switch* containers. You will shutdown the existing container and start a new one using the latest cumulative update image. The volume will be the same as well as the port number. The new SQL Server container will recognize the existing system and user databases and perform a small upgrade step to use the new SQL Server update.
 
-Run the script **step5_updatesql.ps1** which uses the following commands:
+Run the script **step5_patchsql.ps1** which uses the following commands:
 
 ```powershell
-docker stop sql2017cu10
+docker stop sql2019ga
 docker run `
- -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2017isfast' `
+ -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2019isfast' `
  -p 1401:1433 `
- -v sqlvolume:/var/opt/mssql `
- --hostname sql2017latest `
+ -v sql2019volume:/var/opt/mssql `
+ --hostname sql2019gdr1 `
  --name `
- sql2017latest `
+ sql2019gdr1 `
  -d `
- mcr.microsoft.com/mssql/server:2017-latest
+ mcr.microsoft.com/mssql/server:2019-GDR1-ubuntu-16.04
 ```
 Notice the first container is stopped but not removed. The second container is started with the same port and volume but the latest cumulative update image. While this process is running let's learn how to run another SQL Server container.
 
@@ -188,13 +188,13 @@ SQL Server on Linux does not support named instances. Therefore, the way to run 
 
 ```powershell
 docker run `
- -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2017isfast' `
- --hostname sql2 `
+ -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2019isfast' `
+ --hostname sql2019ga2 `
  -p 1402:1433 -v `
- sqlvolume2:/var/opt/mssql `
- --name sql2 `
+ sql2019volume2:/var/opt/mssql `
+ --name sql2019ga2 `
  -d `
- mcr.microsoft.com/mssql/server:2017-latest
+ mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
 ```
 This looks very similar to the other containers you have run except there is a new hostname and container name as well as a different volume and port mapping.
 
