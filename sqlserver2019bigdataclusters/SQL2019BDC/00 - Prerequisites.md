@@ -73,69 +73,21 @@ Install-WindowsUpdate
 
 *Note: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Install Chocolatey Windows package Manager</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Install Big Data Cluster Tools</p>
 
-Next, install the Chocolatey Windows Package manager to aid in command-line installations:
+Next, install the tools to work with Big Data Clusters:
 
-<pre>
-write-host "Install Chocolatey" 
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco feature enable -n allowGlobalConfirmation
-</pre>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 3: Install Azure CLI</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 3: Install BDC Tools</b></p>
 
-The Azure Command Line Utility is used to set up and control Azure resources. Run the following commands in your elevated PowerShell window:
+Open this resource, and follow all instructions for the Microsoft Windows operating system
 
-<pre>
-write-host "Install Azure CLI"
-choco install azure-cli
-</pre>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 4: Install Python 3 and git</b></p>
+ **NOTE:** For the `azdata` utility step below, [use this MSI package](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-install-azdata-installer?view=sql-server-ver15) rather than the `pip` installer.
 
-While `git` has not been mentioned as a requirement for SQL Server, it's used for the workshop. First you'll install Python.
+- [https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sql-server-ver15](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sql-server-ver15)
 
-<pre>
-write-host "Install Python 3"
-choco install python3 
-
-write-host "Install git"
-choco install git
-</pre>
-
-Note: Python can install in multiple locations based on various conditions. To see the Python intepreter location in current use in Windows, type: 
-
-`where python`
-
-Note that the Chocolatey Package Manager should have set the Path variable for Python and pip, but if they are not in your path <a href="https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path" target="_blank">you can learn how to set that here</a>. 
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 5: Install kubectl</b></p>
-
-The `kubectl` program is used to deploy, configure and manage Kubernetes Clusters. It is used in several functions of the BDC.
-
-<pre>
-write-host "Install kubectl"
-choco install kubernetes-cli 
-</pre>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 8: Install azdata</b></p>
-
-`azdata` is a command-line utility written in Python that enables cluster administrators to bootstrap and manage the BDC via REST APIs. 
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-install-azdata?view=sqlallproducts-allversions" target="_blank">
-Click here, read the entire page, and follow the instructions for the Windows operating system </a></p> 
-
-Once complete, return to these instructions and continue the steps below.
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 6: Install Azure Data Studio and Extensions</b></p>
-
-The primary management tool for working with a BDC is Azure Data Studio. You will also use this tool in your workshop.
-
-<pre>
-write-host "Install Azure Data Studio" 
-choco install azure-data-studio
-</pre>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 4: Re-Update Your Workstation</b></p>
 
 Once again, download the MSI and run it from there. It's always a good idea after this many installations to run Windows Update again:
 

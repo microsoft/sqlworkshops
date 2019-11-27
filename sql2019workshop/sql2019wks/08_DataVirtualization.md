@@ -37,9 +37,9 @@ In this module you will learn about the enhanced Polybase feature of SQL Server 
 
 Organizations often today have multiple database providers and sources that they must integrate together. SQL Server is a leading industry data platform so many customers move data from other data sources into SQL Server often using Extract, Transform, and Load (ETL) applications. ETL applications can be costly to build and maintain and often results in latencies to access data external to SQL Server.
 
-Consider all the data sources facing a company like WideWorldImporters
+Consider all the data sources a company may have today:
 
-![WWI Data Sources](./graphics/wwi_data_sources.png)
+![SQL Server Data Hub](./graphics/sql_server_data_hub.png)
 
 Traditionally, WideWorldImporters would have to write ETL jobs to move data from all these sources into SQL Server. While that solution still may be best for this company, what if SQL Server could act as a "data hub" for all of these sources? What if you could develop T-SQL queries and execute them against SQL Server 2019, and SQL Server would query the external data sources to bring back the results? Imagine if you could join local SQL Server tables with external data sources or perhaps join all of these together!
 
@@ -65,6 +65,12 @@ Polybase has advantages over features like linked servers such as:
 - Polybase has built-in client driver support for Hadoop, Oracle, Teradata, and MongoDB.
 
 You can read more about a comparison of Polybase to Linked Servers at https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-faq?view=sql-server-ver15.
+
+Watch the following video by James-Rowland Jones, Principal Program Manager at Microsoft, explain more about Data Virtualization in SQL Server 2019
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=oJTCKvwsyo8
+" target="_blank"><img src="http://img.youtube.com/vi/oJTCKvwsyo8/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
 
 Proceed to the Activity to learn an example of how to use Polybase with SQL Server 2019 and Azure SQL Server Database.
 

@@ -53,6 +53,11 @@ Intelligent Query Processing is a feature that exists for both SQL Server 2019 a
 
 > **NOTE**: *One of the features of Intelligent Query Processing, approximate count distinct, does not require database compatibility of 150*
 
+Learn more about Intelligent Query Processing from Senior Program Manager Pedro Lopes:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LI9Jtl7m8t8" target="_blank"><img src="http://img.youtube.com/vi/LI9Jtl7m8t8/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 Now proceed to the Activity to learn an example of how Intelligent Query Processing can accelerate query performance automatically with no application changes.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
@@ -253,6 +258,12 @@ SQL Server 2019 provides several solutions to help solve these challenges:
 
 Using a SQL Server configuration, the engine will internally implement specific system tables in tempdb as memory-optimized (SCHEMA_ONLY) tables. You can read more about Optimized Tempdb Metadata at https://docs.microsoft.com/en-us/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata.
 
+Lear more about how tempdb is just now faster with Optimized Tempdb Metadata from Senior Program Manager Pam Lahoud
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LQejtjKERWM
+" target="_blank"><img src="http://img.youtube.com/vi/LQejtjKERWM/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 - **Concurrent PFS updates**
 
 SQL Server 2019 will be default use a different scheme to update PFS pages so that multiple users can concurrently update a PFS page, thus reducing page latch waits for allocation pages.
@@ -396,7 +407,7 @@ Did this run faster than the first time you observed the duration? If everything
 
 **STEP 11: Restore services**
 
-Some dependent services for SQL Server such as Polybase and LaunchPad may have been shutdown when using the NET STOP command. Use the **SQL Server Configuration Manager** (search for the SQL Server 2019 Configuration Manager application) to restart any dependent service that was shutdown during this activity.
+Some dependent services for SQL Server such as Polybase and LaunchPad may have been shutdown when using the NET STOP command. Use the **SQL Server Configuration Manager** (search for the SQL Server 2019 Configuration Manager application. For RC1 builds it could be called the SQL Server 2019 RC1 Configuration Manager) to restart any dependent service that was shutdown during this activity.
 
 <h3><b><a name="activitysummary">Activity Summary</a></b></h3>
 

@@ -57,6 +57,12 @@ Deploying a set of software components on Kubernetes that includes SQL Server, H
 
 SQL Server 2019 Big Data Clusters come with tools such as the **azdata** command line interface (CLI) to help simplify the deployment of a Big Data Cluster on Kubernetes.
 
+Watch this video as Mihaela Blendea, Senior Program Manager at Microsoft, talks more about Big Data Cluster deployment
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=h4u8MI-iR7U
+" target="_blank"><img src="http://img.youtube.com/vi/h4u8MI-iR7U/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.0">     Activity: Deploying a Big Data Cluster</a></b></h2>
 
 Azure Kubernetes Service (AKS) provides a managed platform to deploy a Kubernetes cluster. Kubernetes can also be deployed on the platform of your choice using tools like **kubeadm**.
@@ -562,7 +568,11 @@ The result should look like SQL ERRORLOG entries. You could remove the filter fo
 
 ![kibana_sql_errorlog_entries](./graphics/kibana_sql_errorlog_entries.png)
 
-**STEP 6: Exploring Kubernetes**
+**STEP 6: Troubleshooting Notebooks**
+
+The best way to learn to troubleshoot is by learning from others. Explore the troubleshooting notebooks created by the Enginering team at https://docs.microsoft.com/en-us/sql/big-data-cluster/manage-notebooks on your deployed SQL Server Big Data Cluster
+
+**STEP 7: Exploring Kubernetes on Big Data Cluster**
 
 Since Big Data Clusters is deployed on Kubernetes you can use familar tools to interact with the k8s cluster including the kubectl tool and a Kubernetes dashboard.
 

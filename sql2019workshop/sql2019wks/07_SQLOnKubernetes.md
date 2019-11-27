@@ -31,7 +31,7 @@ You will cover the following topics in this Module:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><b><a name="7-0">     7.0 Deploying SQL Server on Kubernetes</a></b></h2>
 
-Since SQL Server supports containers as a stateful application it is a perfect fit to deploy and use on a Kubernetes platform.
+Since SQL Server is a stateful container application it is a perfect fit to deploy and use on a Kubernetes platform.
 
 <h3><b><a name="challenge">The Challenge</a></b></h3>
 
@@ -77,11 +77,13 @@ In this module, you will see the steps for kubectl on Powershell but the same se
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
+>**WARNING**: Run these scripts from powershell. Do not run these scripts from Windows Powershell ISE
+
 **STEP 1: Connect to the cluster**
 
 Consult your administrator for how to connect to your Kubernetes cluster. For Azure Kubernetes Service (AKS) you will use the Azure CLI (az) to get credentials to use kubectl. Modify the script **step1_connectcluster.ps1** to put in your *clustername* and *resource group*. 
 
-*>**NOTE**: For instructor led workshops, you instructor may provide you Azure credentials, the name of the Azure Resource Group, and AKS cluster name.*
+>**NOTE**: For instructor led workshops, you instructor may provide you Azure credentials, the name of the Azure Resource Group, and AKS cluster name.*
 
 In order to run these steps you must first login to Azure using the following command:
 
@@ -119,7 +121,7 @@ When this command completes you should see a message like
 
 To now deploy in Kubernetes you can specify which namespace to use with parameters. But there is also a method to set the *context* to the new namespace. 
 
-**ST0P:** Modify the script **step3_context.ps1** to put in your **clustername** and **resource group**.
+**ST0P:** Modify the script **step3_setcontext.ps1** to put in your **clustername** and **resource group**.
 
 >**NOTE**: For instructor led workshops, you instructor will provide you the name of the Azure Resource Group and AKS cluster name.*
 
@@ -166,7 +168,7 @@ spec:
       targetPort: 1433
   type: LoadBalancer
 ```
-The **kind:Service** is the built-in support for a Service in Kubernetes with a **type: LoadBalancer**. The name of the service is mssql-service which you will use when deploying the pod later in this Activity. The **app:mssql** is a *label* which can be used for various ways to refer to a collection of objects of the same project. Finally, the **ports:** section declares the protocol and how to map a public port to the port in the container of the pod which for SQL Server is 1433.
+The **kind:Service** is the built-in support for a Service in Kubernetes with a **type: LoadBalancer**. The name of the service is mssql-service which you will use when deploying the pod later in this Activity. The **app:mssql** is a *label* which can be used for various ways to refer to a collection of objects of the same project. In this case the label is being used as a *label selector* for the service. Any pod deployed with the mssql label will be bound to the LoadBalancer. Finally, the **ports:** section declares the protocol and how to map a public port to the port in the container of the pod which for SQL Server is 1433.
 
 When this command completes you should see a message like:
 
@@ -216,9 +218,13 @@ spec:
 ```
 The name of the PVC is mssql-data which will be used to map to the SQL Server container directory for databases when deploying the pod. The **annotations:** maps the PVC to the managed-premium StorageClass. The rest of the declaration specifies how to access the PVC which is ReadWriteOnce. ReadWriteOnce means *one node a time* in the cluster can access the PVC. The size of the PVC in this case is 8Gb which for the purposes of this activity is plenty of space.
 
+When this command completes you should see the following message:
+
+<pre>persistentvolumeclaim/mssql-data created</pre>
+
 **STEP 7: Deploy a pod with a SQL Server container**
 
-Now that you have deployed a LoadBalancer service, a secrete, and a Persistent Volume Claim (PVC),you have all the components to deploy a pod running a SQL Server container. To deploy the pod you will use a concept called **Deployment** which provides the ability to declare a **ReplicaSet**. Run the script **step7_deploy_sql2019.ps1** and after it executes you will analyze the details of the deployment. This scripts runs the command:
+Now that you have deployed a LoadBalancer service, a secret, and a Persistent Volume Claim (PVC),you have all the components to deploy a pod running a SQL Server container. To deploy the pod you will use a concept called **Deployment** which provides the ability to declare a **ReplicaSet**. Run the script **step7_deploy_sql2019.ps1** and after it executes you will analyze the details of the deployment. This scripts runs the command:
 
 ```Powershell
 kubectl apply -f sql2019deployment.yaml --record
@@ -248,9 +254,13 @@ spec:
         app: mssql
     spec:
       terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        securityContext:
+          runAsUser: 0
         env:
         - name: MSSQL_PID
           value: "Developer"
@@ -295,6 +305,8 @@ This defines a ReplicaSet of 1 for the deployment. This is a key component of ba
 ```yaml
    spec:
       terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest

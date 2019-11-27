@@ -15,6 +15,8 @@ spec:
         app: mssql
     spec:
       terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: mssql
         image: mcr.microsoft.com/mssql/rhel/server:2019-latest

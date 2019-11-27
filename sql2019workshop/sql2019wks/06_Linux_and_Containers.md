@@ -46,9 +46,15 @@ You would like to explore and use containers as a solution to provide a consiste
 
 SQL Server containers provide solutions for these challenges. Use containers to have all developers work on the same build of SQL Server whether they use Windows, Linux, or MacOS. Since SQL Server cumulative updates are compatible, you can use containers to easily switch between builds maintaining the same databases with minimal downtime. You can learn more about how to use SQL Server containers at https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker.
 
+Watch this video at Vin Yu, Senior Program Manager at Microsoft, explain more about SQL Server 2019 in Containers
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Kx1jZxq5pjA
+" target="_blank"><img src="http://img.youtube.com/vi/Kx1jZxq5pjA/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitycontainers">     Activity: Updating SQL Server with Containers</a></b></h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activitycontainers">     Activity: Deploying and updating SQL Server with Containers</a></b></h2>
 
 In this activity you will deploy a SQL Server container and interact with SQL Server by restoring and creating a database. You will also learn various methods to interact and inspect a containers using the docker client. You will also see how fast it can be to update SQL Server to a new cumulative update by *switching* containers.
 
@@ -77,9 +83,11 @@ The steps documented here will use the Powershell subfolder and Docker Desktop f
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
+>**WARNING**: Run these scripts from powershell. Do not run these scripts from Windows Powershell ISE
+
 **STEP 1: Start the SQL Server container**
 
-Start a SQL Server container using the script **step1_runsqlconainer.ps1** which runs the command:
+Start a SQL Server container using the script **step1_runsqlcontainer.ps1** which runs the command:
 
 ```powershell
 docker run `
@@ -154,7 +162,7 @@ These are examples of using sqlcmd outside of the container connecting to port 1
 
 The results of these commands should be a list of rows followed by the SQL Server version which should be SQL Server 2017 CU10.
 
-**STEP 5: Update to a new cumulative update**
+**STEP 5: Move to a new cumulative update**
 
 To update the SQL Server container to the latest cumulative update, you will *switch* containers. You will shutdown the existing container and start a new one using the latest cumulative update image. The volume will be the same as well as the port number. The new SQL Server container will recognize the existing system and user databases and perform a small upgrade step to use the new cumulative update.
 
@@ -176,7 +184,7 @@ Notice the first container is stopped but not removed. The second container is s
 
 **STEP 6: Run a second SQL Server container**
 
-SQL Server on Linux does not support named instances. Therefore, the way to run multiple SQL Server instances on Linux is with containers. Using the script **step6_runsqlcontainer2.sql** start a new container. This script uses the following command:
+SQL Server on Linux does not support named instances. Therefore, the way to run multiple SQL Server instances on Linux is with containers. Using the script **step6_runsqlcontainer2.ps1** start a new container. This script uses the following command:
 
 ```powershell
 docker run `
@@ -251,7 +259,7 @@ Wait for a short period of time and retry the script if this occurs. This indica
 
 **STEP 10: Rollback to the previous cumulative update for SQL Server**
 
-Let's say you need to rollback to the SQL 2017 CU10 build due to some issue. Since that container is stopped but not removed and the same volume is used for that container and the one currently running the latest cumulative update, you can rollback the update change by stopping the current container and starting back the container sql2017cu10. Use the script **step10_rollbackupdate.ps1**which runs the following command:
+Let's say you need to rollback to the SQL 2017 CU10 build due to some issue. Since that container is stopped but not removed and the same volume is used for that container and the one currently running the latest cumulative update, you can rollback the update change by stopping the current container and starting back the container sql2017cu10. Use the script **step10_rollbackupdate.ps1** which runs the following command:
 
 ```powershell
 docker stop sql2017latest
@@ -260,7 +268,7 @@ docker start sql2017cu10
 
 **STEP 11: Run a program in the container**
 
-While the rollback is taking place, let's do something interest by running a bash shell inside the container and doing some exploration. Use the script **step11_execincontainers.ps1** which runs the following command:
+While the rollback is taking place, let's do something interesting by running a bash shell inside the container and doing some exploration. Use the script **step11_execincontainers.ps1** which runs the following command:
 
 ```powershell
 docker exec -it sql2017cu10 bash
@@ -284,9 +292,11 @@ Your results should look like the following:
 
 These results prove *container isolation*. The primary program for the container is sqlservr. SQL Server on Linux consists of two sqlservr programs (one of which is the true SQL Server engine running. The other is a "watchdog" process)
 
-Notice the only other programs are bash and ps. Bash and ps are programs seen by the container because docker exec was used to run bash. bash and ps are true programs running in an isolated fashion on the host but in the same *namespace* as the SQL Server container.
+Notice the only other programs are bash and ps. bash and ps are programs seen by the container because docker exec was used to run bash. bash and ps are true programs running in an isolated fashion on the host but in the same *namespace* as the SQL Server container.
 
 Now run the following command to see contents of the container:
+
+>NOTE: Copy and past the command below. The ll stands for 'listlong'
 
 `ll /var/opt/mssql/log`
 
@@ -400,7 +410,7 @@ In this activity, you will learn how to deploy a SQL Server replication solution
 
 All scripts for this activity can be found in the **sql2019workshop\sql2019wks\06_Linux_and_Containers\replication** folder. These scripts and this activity is based on the sample Vin Yu built as found at https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/replication.
 
->**NOTE**: This activity assumes the following:
+**NOTE**: This activity assumes the following:
 
 - **Docker** is installed. You can use Docker Desktop for Windows or macOS or Docker for Linux to run this activity.
 - You have the **docker-compose** tool installed. In many docker installations, docker-compose comes with the install.
@@ -457,7 +467,7 @@ The replication solution should be ready to go when you see this output from the
 <pre>db1    | Creating Snapshot...
 db1    | Job 'db1-Sales-SnapshotRepl-DB2-1' started successfully.</pre>
 
-The command line will appear to "hang" at this point. This is normal as both programs are running. Once you see this output leave the command line alone. If you attempt `<`Ctrl`>`+`<`C`>` or exit the command line it would stop the 2 containers.
+The command line will appear to "hang" at this point. This is normal as both programs are running. Once you see this output leave the command line alone. WARNING: If you attempt `<`Ctrl`>`+`<`C`>` or exit the command line it would stop the 2 containers.
 
 >**NOTE**: *You can use add the **-d** parameter to docker-compose -up to run the containers in the background. But then you would need to monitor SQL Sever replication to see when the snapshot has been applied.*
 
@@ -478,6 +488,15 @@ Now connect to the subscriber (port 2600) to check that the new table, customers
 
 ![Check table and data](./graphics/check_table_and_data.png)
 
+If you have any problems with Object Explorer in SSMS, run a query to see the rows in table like:
+
+```sql
+USE Sales;
+GO
+SELECT * FROM customer;
+GO
+```
+
 **Step 4: Shutdown and remove the containers**
 
 If you open up a new command line shell or Powershell window, you can simply run the following command:
@@ -486,7 +505,7 @@ If you open up a new command line shell or Powershell window, you can simply run
 
 and the containers will be stopped and removed.
 
-You can also hit `<`Ctrl`>`+`<`C`>` from the command line where you run docker-compose up. This will stop the containers. You will then need to run
+**WARNING:** If you hit `<`Ctrl`>`+`<`C`>` from the command line where you run docker-compose up it will stop the containers. You will then need to run
 
 `docker-compose down`
 

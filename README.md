@@ -13,11 +13,13 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops/tree/master/SQLGroundToCloud)
 - [Workshop: SQL Server 2019 on OpenShift](https://github.com/Microsoft/sqlworkshops/tree/master/SQLonOpenShift)
+- [Workshop: SQL Server 2019](https://github.com/microsoft/sqlworkshops/tree/master/sql2019workshop)
 - [Lab: SQL Server 2019](https://github.com/microsoft/sqlworkshops/tree/master/sql2019lab)
 
 
 ## Azure SQL 
 - [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops/tree/master/SQLGroundToCloud)
+- [Workshop: Azure SQL [COMING SOON]](https://github.com/IrishSQL/MicrosoftAzureSQL/blob/master/ModernizingDatabase_withAzure_PRECON.pdf)
 - [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops/tree/master/AzureSQLLabs)
 
 ## Programming
