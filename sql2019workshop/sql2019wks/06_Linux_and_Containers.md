@@ -77,7 +77,7 @@ There are two subfolders for this Activity:
 
 >**NOTE:** This full activity is currently not supported on MacOS due to problems using volumes. See this GitHub issue for more details https://github.com/Microsoft/mssql-docker/issues/12. It is possible to modify this activity to not use volumes on MacOS to still see aspects of running SQL Server containers.*
 
-The steps documented here will use the Powershell subfolder and Docker Desktop for Windows. Docker Desktop for Windows on Windows 10 uses a Virtual Machine running Linux called DockerDesktopVM. Windows 10 insider builds have an update to the Windows Subsystem for Linux called **wsl2**. wsl2 does not require a full virtual machine to run Linux programs on Windows. Docker for Desktop has a Preview version that takes advantage of wsl2. This Activity does not currently use wsl2 as it and Docker for Desktop are not mainstream builds at this time. Once these become more mainstream this workshop will be changed to use wsl2.
+The steps documented here will use the Powershell subfolder and Docker Desktop for Windows. Docker Desktop for Windows on Windows 10 uses a Virtual Machine running Linux called DockerDesktopVM. Windows 10 insider builds have an update to the Windows Subsystem for Linux called **wsl2**. wsl2 does not require a full virtual machine to run Linux programs on Windows. Docker for Desktop has a Preview version that takes advantage of wsl2. This Activity does not currently use wsl2 it is not in mainstream Windows 10 builds at this time. Once these become more mainstream this workshop will be changed to use wsl2.
 
 **NOTE:** You may need to run the following command on your computer to execute Powershell scripts:
 
@@ -207,38 +207,38 @@ docker ps -a
 ```
 The results should look something like this:
 
-<pre>CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS                     PORTS                    NAMES
-78a9fb10028a        mcr.microsoft.com/mssql/server:2017-latest        "/opt/mssql/bin/nonr…"   2 minutes ago       Up 2 minutes               0.0.0.0:1402->1433/tcp   sql2
-f41b12720e91        mcr.microsoft.com/mssql/server:2017-latest        "/opt/mssql/bin/nonr…"   6 minutes ago       Up 6 minutes               0.0.0.0:1401->1433/tcp   sql2017latest
-7c9a04aba1b0        mcr.microsoft.com/mssql/server:2017-CU10-ubuntu   "/opt/mssql/bin/sqls…"   About an hour ago   Exited (0) 6 minutes ago                            sql2017cu10</pre>
+<pre>CONTAINER ID        IMAGE                                                   COMMAND                  CREATED              STATUS                      PORTS                    NAMES
+1a40fbcfc33f        mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04     "/opt/mssql/bin/perm…"   15 seconds ago       Up 13 seconds               0.0.0.0:1402->1433/tcp   sql2019ga2
+1615d02ac26b        mcr.microsoft.com/mssql/server:2019-GDR1-ubuntu-16.04   "/opt/mssql/bin/perm…"   24 seconds ago       Up 22 seconds               0.0.0.0:1401->1433/tcp   sql2019gdr1
+7bab7a0cae34        mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04     "/opt/mssql/bin/perm…"   About a minute ago   Exited (0) 25 seconds ago                            sql2019ga</pre>
 
-Notice for the STATUS two containers are running (Up for ...) while one is not (Exited...)). The container sql2017cu10 is the one you stopped.
+Notice for the STATUS two containers are running (Up for ...) while one is not (Exited...)). The container sql2019ga is the one you stopped.
 
 **STEP 8: Inspect aspects of the container**
 
 Each of the two running containers uses a volume which is mapped to a host directory or mount point. Use the script **step8_inspectvols.ps1** which uses the following command to how details of each volume:
 
 ```powershell
-docker inspect sqlvolume sqlvolume2
+docker inspect sql2019volume sql2019volume2
 ```
 Your results should look like the following:
 
 <pre>[
     {
-        "CreatedAt": "2019-10-13T13:52:15Z",
+        "CreatedAt": "2019-12-02T20:37:26Z",
         "Driver": "local",
         "Labels": null,
-        "Mountpoint": "/var/lib/docker/volumes/sqlvolume/_data",
-        "Name": "sqlvolume",
+        "Mountpoint": "/var/lib/docker/volumes/sql2019volume/_data",
+        "Name": "sql2019volume",
         "Options": null,
         "Scope": "local"
     },
     {
-        "CreatedAt": "2019-10-13T14:49:30Z",
+        "CreatedAt": "2019-12-02T20:39:03Z",
         "Driver": "local",
         "Labels": null,
-        "Mountpoint": "/var/lib/docker/volumes/sqlvolume2/_data",
-        "Name": "sqlvolume2",
+        "Mountpoint": "/var/lib/docker/volumes/sql2019volume2/_data",
+        "Name": "sql2019volume2",
         "Options": null,
         "Scope": "local"
     }
@@ -248,7 +248,7 @@ Notice that each volume has a separate Mountpoint which is the true directory on
 
 **STEP 9: Run queries against the update SQL Server container**
 
-The update of the SQL Server container should be done. Run the same query as you did in STEP 4 using the script **step9_querysql.ps1** to see the same results of the table in WideWorldImporters and a new version of SQL Server which should be the latest SQL 2017 Cumulative Update build.
+The update of the SQL Server container should be done. Run the same query as you did in STEP 4 using the script **step9_querysql.ps1** to see the same results of the table in WideWorldImporters and a new version of SQL Server which should be the first GDR build for SQL Server 2019.
 
 It is possible for a brief period of time you may see these messages when running this script
 
@@ -259,11 +259,11 @@ Wait for a short period of time and retry the script if this occurs. This indica
 
 **STEP 10: Rollback to the previous cumulative update for SQL Server**
 
-Let's say you need to rollback to the SQL 2017 CU10 build due to some issue. Since that container is stopped but not removed and the same volume is used for that container and the one currently running the latest cumulative update, you can rollback the update change by stopping the current container and starting back the container sql2017cu10. Use the script **step10_rollbackupdate.ps1** which runs the following command:
+Let's say you need to rollback to the SQL Server 2019 GA (RTM) build due to an issue. Since that container is stopped but not removed and the same volume is used for that container and the one currently running the latest cumulative update, you can rollback the update change by stopping the current container and starting back the container sql2019ga. Use the script **step10_rollbacksqlpatch.ps1** which runs the following command:
 
 ```powershell
-docker stop sql2017latest
-docker start sql2017cu10
+docker stop sql2019gdr1
+docker start sql2019ga
 ```
 
 **STEP 11: Run a program in the container**
@@ -271,11 +271,11 @@ docker start sql2017cu10
 While the rollback is taking place, let's do something interesting by running a bash shell inside the container and doing some exploration. Use the script **step11_execincontainers.ps1** which runs the following command:
 
 ```powershell
-docker exec -it sql2017cu10 bash
+docker exec -it sql2019ga bash
 ```
 When this command is successful you should be placed at a bash shell prompt like this:
 
-`root@sql2017cu10:/#`
+`mssql@sql2019ga:/$`
 
 Type in the following command at the prompt
 
@@ -283,12 +283,12 @@ Type in the following command at the prompt
 
 Your results should look like the following:
 
-<pre>root@sql2017cu10:/# ps -axf
+<pre>mssql@sql2019ga:/$ ps -axf
   PID TTY      STAT   TIME COMMAND
-  191 pts/0    Ss     0:00 bash
-  207 pts/0    R+     0:00  \_ ps -axf
+  235 pts/0    Ss     0:00 bash
+  247 pts/0    R+     0:00  \_ ps -axf
     1 ?        Ssl    0:00 /opt/mssql/bin/sqlservr
-    7 ?        Sl     0:42 /opt/mssql/bin/sqlservr</pre>
+    9 ?        Sl     1:00 /opt/mssql/bin/sqlservr</pre>
 
 These results prove *container isolation*. The primary program for the container is sqlservr. SQL Server on Linux consists of two sqlservr programs (one of which is the true SQL Server engine running. The other is a "watchdog" process)
 
@@ -296,32 +296,29 @@ Notice the only other programs are bash and ps. bash and ps are programs seen by
 
 Now run the following command to see contents of the container:
 
->NOTE: Copy and past the command below. The ll stands for 'listlong'
+>NOTE: Copy and past the command below.
 
-`ll /var/opt/mssql/log`
+`ls -l /var/opt/mssql/log`
 
 Your results should look similar to this
 
-<pre>root@sql2017cu10:/# ll /var/opt/mssql/log
-total 5668
-drwxr-xr-x 2 root root    4096 Oct 13 15:14 ./
-drwxr-xr-x 6 root root    4096 Oct 13 13:52 ../
--rw-r----- 1 root root   77824 Oct 13 13:37 HkEngineEventFile_0_132154474234530000.xel
--rw-r----- 1 root root   77824 Oct 13 14:44 HkEngineEventFile_0_132154514995750000.xel
--rw-r----- 1 root root   77824 Oct 13 15:09 HkEngineEventFile_0_132154529918890000.xel
--rw-r----- 1 root root  233663 Oct 13 15:15 errorlog
--rw-r----- 1 root root  232544 Oct 13 15:09 errorlog.1
--rw-r----- 1 root root   24269 Oct 13 14:44 errorlog.2
--rw-r----- 1 root root       0 Oct 13 13:37 errorlog.3
--rw-r----- 1 root root 1048576 Oct 13 15:00 log_16.trc
--rw-r----- 1 root root 1048576 Oct 13 15:05 log_17.trc
--rw-r----- 1 root root 1048576 Oct 13 15:09 log_18.trc
--rw-r----- 1 root root 1048576 Oct 13 15:14 log_19.trc
--rw-r----- 1 root root   41984 Oct 13 15:15 log_20.trc
--rw-r----- 1 root root     156 Oct 13 15:09 sqlagentstartup.log
--rw-r----- 1 root root  458752 Oct 13 14:44 system_health_0_132154474250790000.xel
--rw-r----- 1 root root  229376 Oct 13 15:09 system_health_0_132154515001650000.xel
--rw-r----- 1 root root  131072 Oct 13 15:14 system_health_0_132154529924610000.xel</pre>
+<pre>mssql@sql2019ga:/$ ll /var/opt/mssql/log
+total 4784
+-rw-r----- 1 mssql root   77824 Dec  2 20:37 HkEngineEventFile_0_132197926485920000.xel
+-rw-r----- 1 mssql root   77824 Dec  2 20:38 HkEngineEventFile_0_132197927314190000.xel
+-rw-r----- 1 mssql root   77824 Dec  2 20:44 HkEngineEventFile_0_132197930647790000.xel
+-rw-r----- 1 mssql root  235979 Dec  2 20:46 errorlog
+-rw-r----- 1 mssql root  236383 Dec  2 20:44 errorlog.1
+-rw-r----- 1 mssql root   24834 Dec  2 20:38 errorlog.2
+-rw-r----- 1 mssql root       0 Dec  2 20:37 errorlog.3
+-rw-r----- 1 mssql root 1048576 Dec  2 20:38 log.trc
+-rw-r----- 1 mssql root 1048576 Dec  2 20:43 log_1.trc
+-rw-r----- 1 mssql root 1048576 Dec  2 20:44 log_2.trc
+-rw-r----- 1 mssql root  599552 Dec  2 20:46 log_3.trc
+-rw-r----- 1 mssql root     156 Dec  2 20:44 sqlagentstartup.log
+-rw-r----- 1 mssql root  126976 Dec  2 20:38 system_health_0_132197926502160000.xel
+-rw-r----- 1 mssql root  151552 Dec  2 20:44 system_health_0_132197927325210000.xel
+-rw-r----- 1 mssql root  122880 Dec  2 20:46 system_health_0_132197930656270000.xel</pre>
 
 These list of files should look familiar to the SQL Server user. The are XEvent traces, ERRORLOG files, and default SQL Server trace files. You could dump out the ERRORLOG at this point but let's use a different method to do that outside of the container.
 
@@ -336,28 +333,28 @@ You should now be back in your Powershell or original bash shell prompt.
 Container runtime engines like docker provide a method to see logged output of a running or even stopped container. For a SQL Server container, those logs represent the latest ERRORLOG file. Use the script **step12_containerlogs.ps1** which runs the following command:
 
 ```powershell
-docker logs sql2017latest
+docker logs sql2019ga
 ```
-Your output should be the ERRORLOG from the shutdown SQL Server container which was running the latest cumulative update.
+Your output should be the ERRORLOG from the SQL Server 2019 GA container.
 
 **STEP 13: See the top processes in a container**
 
 Container runtime engines like Docker also support viewing the top running processes in a container without executing a shell in the container. Use the script **step13_containertop.ps1** which uses the command:
 
 ```powershell
-docker top sql2017cu10
+docker top sql2019ga
 ```
 Your results should look like the following:
 
 <pre>PID                 USER                TIME                COMMAND
-14443               root                0:00                /opt/mssql/bin/sqlservr
-14489               root                1:07                /opt/mssql/bin/sqlservr</pre>
+4068                10001               0:00                /opt/mssql/bin/sqlservr
+4116                10001               1:18                /opt/mssql/bin/sqlservr</pre>
 
 This is similar output to running the Linux top command inside the container.
 
 **STEP 14: Run queries against the rolled back version of SQL Server**
 
-The rollback should be complete so now run the same queries you did in STEP 9 using the script **step14_querysql.ps1**. You should see the same rows from the table in WideWorldImporters and the version of SQL Server which should be back to SQL 2017 CU10. You have successfully rolled back to SQL Server 2017 CU10 with minimal downtime, same data, and no direct patching of SQL Server.
+The rollback should be complete so now run the same queries you did in STEP 9 using the script **step14_querysql.ps1**. You should see the same rows from the table in WideWorldImporters and the version of SQL Server which should be back to SQL Server 2019 GA (RTM). You have successfully rolled back to SQL Server 2019 GA (RTM) with minimal downtime, same data, and no direct patching of SQL Server.
 
 It is possible for a brief period of time you may see these messages when running this script
 
