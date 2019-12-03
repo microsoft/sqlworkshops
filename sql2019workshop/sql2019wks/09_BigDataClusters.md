@@ -394,6 +394,12 @@ For information about how to manage a **Kubernetes cluster** consider using the 
 - **Troubleshooting Guides** implemented through notebooks built by the engineering team accessed through Azure Data Studio
 - Use the **kubectl** tool to copy data, manage, diagnose, and monitor Kubernetes.
 
+To learn more about Big Data Cluster Administration watch this video from Senior Program Manager Mihaela Blendea:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=-h0BRQ26NBQ
+" target="_blank"><img src="http://img.youtube.com/vi/-h0BRQ26NBQ/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.3">     Advanced Activity: Using tools to explore and monitor Big Data Clusters</a></b></h2>
 
 In this activity you will learn how to tools to explore various aspects of management and monitoring with SQL Server Big Data Clusters.

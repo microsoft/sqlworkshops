@@ -2,8 +2,6 @@
 sleep 60s
 
 mkdir /var/opt/mssql/ReplData/
-chown mssql /var/opt/mssql/ReplData/
-chgrp mssql /var/opt/mssql/ReplData/
 
 echo "running set up script"
 #run the setup script to create the DB and the schema in the DB
