@@ -1,0 +1,12 @@
+USE [WideWorldImporters]
+GO
+DROP EXTERNAL TABLE sharepoint.keynotelist
+GO
+DROP SCHEMA sharepoint
+GO
+DROP EXTERNAL DATA SOURCE SharepointServer
+GO
+DROP DATABASE SCOPED CREDENTIAL SharepointCredentials
+GO
+DROP MASTER KEY
+GO

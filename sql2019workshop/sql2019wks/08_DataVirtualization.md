@@ -15,7 +15,7 @@ SQL Server 2019 includes new capabilities for data virtualization by extending t
 - Teradata
 - MongoDB
 
-In addition for SQL Server 2019 on Windows, Polybase now supports the ability to connect to any ODBC data source such as MySQL, PostgreSQL, SAP HANA, IBM DB2, or even Excel.
+In addition for SQL Server 2019 on Windows, Polybase now supports the ability to connect to any ODBC data source such as MySQL, PostgreSQL, SAP HANA, IBM DB2, or even Excel or Sharepoint.
 
 SQL Server 2019 Polybase still supports connectivity to Hadoop systems as it did in SQL Server 2016 and 2017. In addition. SQL Server 2019 **Big Data Clusters** provide an integrated data virtualization solution in a Kubernetes cluster.
 
@@ -166,6 +166,7 @@ Look over the scripts and T-SQL notebooks (with saved results) for other data so
 - Oracle
 - SAP HANA
 - SQL Server
+- Sharepoint
 
 >**NOTE**: If you want to run these examples, you will need to create or use your own external data source. The scripts and directions to create table definitions, data, and external tables are included.
 

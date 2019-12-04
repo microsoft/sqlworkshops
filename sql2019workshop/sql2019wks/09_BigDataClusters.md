@@ -84,15 +84,16 @@ The privacy statement can be viewed at:
 https://go.microsoft.com/fwlink/?LinkId=853010
 
 The license terms for SQL Server Big Data Cluster can be viewed at:
-https://go.microsoft.com/fwlink/?LinkId=2002534
+Enterprise: https://go.microsoft.com/fwlink/?linkid=2104292
+Standard: https://go.microsoft.com/fwlink/?linkid=2104294
+Developer: https://go.microsoft.com/fwlink/?linkid=2104079
+
 
 Cluster deployment documentation can be viewed at:
 https://aka.ms/bdc-deploy
 
-Please provide a value for CONTROLLER_USERNAME:admin
-Please provide a value for CONTROLLER_PASSWORD:
-Please provide a value for MSSQL_SA_PASSWORD:
-Please provide a value for KNOX_PASSWORD:
+Please provide a value for AZDATA_USERNAME:thewandog
+Please provide a value for AZDATA_PASSWORD:
 
 NOTE: Cluster creation can take a significant amount of time depending on
 configuration, network speed, and the number of nodes in the cluster.
@@ -104,14 +105,14 @@ Waiting for cluster controller to start.
 Waiting for cluster controller to start.
 Waiting for cluster controller to start.
 Waiting for cluster controller to start.
-Waiting for cluster controller to start.
-Cluster controller endpoint is available at 40.76.88.178:30080.
+Cluster controller endpoint is available at 13.65.88.162:30080.
 Cluster control plane is ready.
-Compute pool is ready.
-Storage pool is ready.
 Data pool is ready.
+Storage pool is ready.
+Compute pool is ready.
 Master pool is ready.
-Cluster deployed successfully.</pre>
+Cluster deployed successfully.
+</pre>
 
 The statement "Cluster deployed successfully" show mean the BDC cluster is ready to use. An additional step to verify cluster health can be done with **azdata**.
 
@@ -123,18 +124,18 @@ Login to the the cluster using the following command:
 
 You will be prompted for the controller login and password (which you supplied when creating the cluster) and the name of the cluster (which the default is mssql-cluster). If the login succeeds, you will be returned the value of the controller endpoint (which you can retrieve later in other ways)
 
-<pre>Controller Username: admin
-Controller Password:
-Cluster Name: mssql-cluster
-Logged in successfully to `https://[ip address]:30080`</pre>
+<pre>
+Namespace: mssql-cluster
+Username: thewandog
+Password:
+Logged in successfully to `https://[ip address]:30080` in namespace `mssql-cluster`. Setting active context to `mssql-cluster`.
+</pre>
 
 You can now do a quick check of BDC health using the following command:
 
 `azdata bdc status show`
 
 The results should look like the following showing a State of Healthy on all *Services* (Services is a term for BDC components not a Kubernetes Service even though BDC does deploy several Kubernetes Services such as Load Balancers):
-
->***NOTE**: There was an issue in SQL Server 2019 RC1 where the health of some components might not correctly show as Healthy even though the true state is Healthy Most of these issues were with **Control Services**.
 
 <pre>
 

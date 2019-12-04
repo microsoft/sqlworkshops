@@ -12,7 +12,7 @@ SQL Server 2019 is a modern data platform designed to tackle the challenges of t
 
 ![Modern Data Challenges](./graphics/modern_data_challenges.png)
 
-SQL Server 2019 includes new capabilities that can solve these challenges. Consider the following infographic
+SQL Server 2019 includes new capabilities that can solve these challenges. Consider the following infographic.
 
 ![SQL Server 2019 Solves Modern Data Challenges](./graphics/2019_solve_data_challenges.png)
 
