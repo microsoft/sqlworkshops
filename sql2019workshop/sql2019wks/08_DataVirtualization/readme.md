@@ -4,4 +4,4 @@ These examples are used to explore the capabilities of Data Virtualization with 
 
 ## sqldatahub
 
-Learn how to connect to many different data sources with SQL Server 2019 to create your own data hub connecting to SQL Server 2008R2, Azure SQL Database, CosmosDB, Oracle, HDFS, and SAP HANA.
+Learn how to connect to many different data sources with SQL Server 2019 to create your own data hub connecting to SQL Server 2008R2, Azure SQL Database, CosmosDB, Oracle, HDFS, SAP HANA, and Sharepoint.

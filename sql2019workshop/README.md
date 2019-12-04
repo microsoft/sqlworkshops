@@ -101,7 +101,7 @@ Each module of this workshop can be studied and used independently of each other
 
 In order to complete this workshop you need to install the following software:
 
-- SQL Server 2019 Release Candidate or later. You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
+- Servicing Update for SQL Server 2019 RTM or later (https://support.microsoft.com/en-us/help/4517790/servicing-update-for-sql-server-2019-rtm). You can run all of the activities from this workshop on an installed SQL Server on Windows, Linux, or Containers. You can use the client tools on a separate computer or VM provided it has access to connect to SQL Server.
     - For **Modules 2, 3, and 4** you only need the database engine installed.
     - **Module 4** requires disk space to hold a database with a 5Gb data and 10Gb or 20Gb log file.
     - **Module 5** requires a Java SDK to be installed to compile the Java classes and the Machine Learning and Language Extensions feature to be installed.
