@@ -6,23 +6,23 @@
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>01 - Introduction to Azure SQL</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>05 - Putting it all together</h2>
 
-In this module, you'll start with a brief history of why and how we built Azure SQL, then you’ll then learn about the various deployment options and service tiers, including what to use when. This includes Azure SQL Database and Azure SQL managed instance. Understanding what Platform as a Service (PaaS) encompasses and how it compares to the SQL Server “box” will help level-set what you get (and don’t get) when you move to the cloud. We’ll cover deployment, configuration, and other getting started related tasks for Azure SQL (hands-on). 
+In the final activity, we’ll validate your Azure SQL expertise with a challenging problem-solution exercise. We’ll then broaden your horizons to the many other opportunities and resources for personal and corporate growth that Azure offer.  
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
 (<a href="url" target="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/00-Prerequisites.md">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
 In this module, you'll cover these topics:  
-[1.1](#1.1): TODO   
-[1.2](#1.2): TODO   
-[1.3](#1.3): TODO 
+[5.1](#5.1): TODO   
+[5.2](#5.2): TODO   
+[5.3](#5.3): TODO 
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="1.1">1.1 TODO: Topic Name</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.1">5.1 TODO: Topic Name</h2></a>
 
 TODO: Topic Description
 
@@ -46,7 +46,7 @@ TODO: Enter activity steps description with checkbox
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="1.2">1.2 TODO: Topic Name</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.2">5.2 TODO: Topic Name</h2></a>
 
 TODO: Topic Description
 
@@ -70,5 +70,5 @@ TODO: Enter activity steps description with checkbox
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
-
-Next, Continue to <a href="url" target="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/02-Security.md"><i> 02 - Security</i></a>.
+  
+Congratulations! You have completed The Azure SQL Workshop. You now have the tools, assets, and processes you need to extrapolate this information into other applications.
