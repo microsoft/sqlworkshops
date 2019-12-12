@@ -292,7 +292,17 @@ SQL Server 2019 Big Data Clusters solve challenges of HDFS deployment and maximu
 
 A **Storage Pool** is a pre-deployed HDFS cluster using Kubernetes pods that can be accessed through standard HDFS interfaces (WebHDFS) or through the SQL Server Master Instance with Polybase using a special built-in **connector**. A Storage Pool uses the SQL Server engine for optimized access to HDFS files. You can read more about storage pools at https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-storage-pool.
 
+To learn more about querying data from the Storage Pool, watch this video by Microsoft Principal Program Manager Umachandar Jayachandran:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=QTgX5uIL1eA" target="_blank"><img src="http://img.youtube.com/vi/QTgX5uIL1eA/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 A **Data Pool** is a pre-deployed set of pods using SQL Server instances to store shards of data optimized with columnstore indexes. Data Pools are accessed with Polybase from the SQL Server Master Instance through a special built-in connector. You can use T-SQL statements like INSERT, SELECT, TRUNCATE, and EXECUTE AS with data pools. You can read more about data pools at https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-data-pool.
+
+To learn more about querying data from the Data Pool watch this video by Microsoft Principal Program Manager Umachandar Jayachandran:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=HnzQyDrU1r4" target="_blank"><img src="http://img.youtube.com/vi/HnzQyDrU1r4/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="activity9.1">     Activity: Analyzing data using the Storage and Data Pool</a></b></h2>
 

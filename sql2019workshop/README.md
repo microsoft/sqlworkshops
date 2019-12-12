@@ -113,6 +113,12 @@ In order to complete this workshop you need to install the following software:
 - Install SQL Server Management Studio (SSMS) 18.2 or higher from https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms. Several of the modules require features built only into SSMS.
 - Install Azure Data Studio June 2019 or higher from https://docs.microsoft.com/en-us/sql/azure-data-studio/download. T-SQL notebooks are used extensively in this course.
 
+Azure Data Studio includes new important capabilities for the SQL Server professional called Notebooks. To learn more watch this video by Microsoft Principal Program Manager Vicky Harp on Azure Data Studio:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Nt4kIHQ0IOc
+" target="_blank"><img src="http://img.youtube.com/vi/Nt4kIHQ0IOc/0.jpg" 
+alt="Introducing SQL Server 2019" width="400" height="300" border="10" /></a>
+
 - The WideWorldImporters sample backup from https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak. You can find example scripts to restore the WideWorldImporters database in the **sql2019workshop** folder.
 
 This workshop was built and designed for a computer or VM to run SQL Server with at least 8Gb RAM and 4 CPUs.
