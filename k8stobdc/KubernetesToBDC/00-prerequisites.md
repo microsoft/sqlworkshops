@@ -81,4 +81,4 @@ TODO: Enter any code typing here
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="url" target="_blank"><i> 01 - Module</i></a>.
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/KubernetesToBDC/01-introduction.md" target="_blank"><i> Module 1 - Introduction</i></a>.

@@ -39,4 +39,4 @@ In this activity you will <TODO: Explain Activity>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
 
-Next, Continue to <a href="TODO: Enter next .md link" target="_blank"><i> <TODO: Enter Module Name></i></a>.
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/KubernetesToBDC/04-bdc.md"><i> Module 4 - Big Data Clusters</i></a>.

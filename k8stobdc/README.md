@@ -8,11 +8,11 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     About this Workshop</b></h2>
 
-Welcome to this Microsoft solutions workshop on *<TODO: Enter workshop name>*. In this workshop, you'll learn about setting up a production grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered will include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of Jupyter Notebooks in Azure Data Studio to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
+Welcome to this Microsoft solutions workshop on *<Kubernetes - From Bare Metal to SQL Server Big Data Clusters*. In this workshop, you'll learn about setting up a production grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered will include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of Jupyter Notebooks in Azure Data Studio to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
 
-The focus of this workshop is to understand <TODO: Describe the workshop's primary focus in one sentence>
+The focus of this workshop is to understand the hardware, software, and environment you need to work with [SQL Server 2019's big data clusters](https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview?view=sql-server-ver15) on a Kubernetes platform.
 
-You'll start by <TODO: Describe what the flow of the workshop will be>, with a focus on how to extrapolate what you have learned to create other solutions for your organization.
+You'll start by understanding Containers and Kubernetes, moving on to a discussion of the hardware and software environment for Kubernetes, and then to more in-depth Kubernetes concepts. You'll follow-on with the SQL Server 2019 big data clusters architecture, and then how to use the entire system in a practical application, all with a focus on how to extrapolate what you have learned to create other solutions for your organization.
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
