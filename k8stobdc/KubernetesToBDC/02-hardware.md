@@ -4,6 +4,7 @@
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> 02 - Hardware and Virtualization environment for Kubernetes </h2>
@@ -14,7 +15,25 @@ This module covers Container technologies and how they are different than Virtua
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">2.1 TOPIC</h2>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">2.1 Kubernetes Targets</h2>
+
+<TODO: Content on Virutal, Cloud and on-prem, discussion on which is best suited for what, minikube, etc.>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
+
+In this activity you will <TODO: Explain Activity>
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+<TODO: Enter specific steps to perform the activity> 
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">2.2 Computing and Networking Hardware Setup and Configuration</h2>
 
 <TODO: Content>
 
@@ -30,6 +49,52 @@ In this activity you will <TODO: Explain Activity>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">2.3 Virtualization (Hypervisor) Setup and Configuration</h2>
+
+<TODO: Content>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
+
+In this activity you will <TODO: Explain Activity>
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+<TODO: Enter specific steps to perform the activity> 
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">2.4 Creating the Cluster Node Hosts (Virtual)</h2>
+
+<TODO: 3. Create a Linux virtual machine, our template which we will use to create the virtual machines for this (master nodes, worker nodes and jump host) will be derived from this.
+
+4. Create all the virtual machines, the lab for the day will probably end up with:
+
+- a single jump host
+This is the VM that kubespray, kubectl and azdata will be ran from
+
+- two master nodes
+
+- as many as 30 (or 31) worker nodes
+
+- a jump host>
+
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
+
+In this activity you will <TODO: Explain Activity>
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+<TODO: Enter specific steps to perform the activity> 
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b> For Further Study</b></p>
 

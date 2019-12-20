@@ -8,11 +8,13 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     About this Workshop</b></h2>
 
-Welcome to this Microsoft solutions workshop on *<Kubernetes - From Bare Metal to SQL Server Big Data Clusters*. In this workshop, you'll learn about setting up a production grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered will include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of Jupyter Notebooks in Azure Data Studio to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
+Welcome to this Microsoft solutions workshop on *Kubernetes - From Bare Metal to SQL Server Big Data Clusters*. In this workshop, you'll learn about setting up a production grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered will include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of Jupyter Notebooks in Azure Data Studio to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
 
 The focus of this workshop is to understand the hardware, software, and environment you need to work with [SQL Server 2019's big data clusters](https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview?view=sql-server-ver15) on a Kubernetes platform.
 
 You'll start by understanding Containers and Kubernetes, moving on to a discussion of the hardware and software environment for Kubernetes, and then to more in-depth Kubernetes concepts. You'll follow-on with the SQL Server 2019 big data clusters architecture, and then how to use the entire system in a practical application, all with a focus on how to extrapolate what you have learned to create other solutions for your organization.
+
+**NOTE:** *This course is designed to be taught in-person with hardware provided by the instructional team. There are instructions for setting up your own hardware, virtual or Cloud environments for Kubernetes, but they are pointers to a more involved process you will carry out on your own if not attending in-person.* 
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -25,20 +27,14 @@ This README.MD file explains how the workshop is laid out, what you will learn, 
 In this workshop you'll learn:
 <br>
 
-- <TODO: Bullet-point on learning objective>
-- <TODO: Bullet-point on learning objective>
-- <TODO: Bullet-point on learning objective>
-
-<TODO: Enter the text you use when you submit the description for this course to a presentation, or advertising>
-
-The goal of this workshop is to train <TODO: Describe who you would train for this and why>.
+- How Containers and Kubernetes work and where you can use them
+- Hardware considerations for setting up a production Kubernetes Cluster on -remises
+- Considerations for Virtual and Cloud-based environments for production Kubernetes Cluster
 
 The concepts and skills taught in this workshop form the starting points for:
-
-    <TODO: Job Description and level of person who is the primary that should attend and the reason>.
-    For instance: Solution Architects and Developers, to understand how to put together an end to end solution.
-    <TODO: Job Description and level of person who is the secondary that should attend and the reason>.
-    <TODO: Job Description and level of person who is the third-level of who might want to attend and the reason>.
+   
+   Solution Architects, to understand how to put design an end-to-end solution.
+   System Administrators, Database Administrators, or Data Engineers, to understand how to put together an end-to-end solution.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -75,13 +71,13 @@ This workshop expects that you understand <TODO: Enter a brief solution for what
 
 If you are new to these, here are a few references you can complete prior to class:
 
--  [Microsoft SQL Server Administration and Use](https://url)
--  [Machine Learning](https://url)
--  [HDFS](https://url)
--  [Spark](https://url)
--  [Hypervisor Technologies - Hyper-V](https://url)
+-  [Microsoft SQL Server Administration and Use](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20764)
+-  [Linux](https://www.edx.org/course/introduction-to-linux)
+-  [HDFS](https://data-flair.training/blogs/hadoop-hdfs-tutorial/)
+-  [Spark](https://www.edx.org/course/implementing-predictive-analytics-with-spark-in-az)
+-  [Hypervisor Technologies - Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-technology-overview)
 or
--  [Hypervisor Technologies - VMWare](https://url)
+-  [Hypervisor Technologies - VMWare](https://tsmith.co/free-vmware-training/)
 
 <h3><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/bulletlist.png?raw=true"><b>     Setup</b></h3>
 
