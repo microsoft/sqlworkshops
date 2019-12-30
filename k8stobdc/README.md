@@ -8,7 +8,7 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     About this Workshop</b></h2>
 
-Welcome to this Microsoft solutions workshop on *Kubernetes - From Bare Metal to SQL Server Big Data Clusters*. In this workshop, you'll learn about setting up a production grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered will include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of Jupyter Notebooks in Azure Data Studio to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
+Welcome to this Microsoft solutions workshop on *Kubernetes - From Bare Metal to SQL Server Big Data Clusters*. In this workshop, you'll learn about setting up a production grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of Jupyter Notebooks in Azure Data Studio to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
 
 The focus of this workshop is to understand the hardware, software, and environment you need to work with [SQL Server 2019's big data clusters](https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview?view=sql-server-ver15) on a Kubernetes platform.
 
@@ -18,7 +18,7 @@ You'll start by understanding Containers and Kubernetes, moving on to a discussi
 
 This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
-(You can view all of the [source files for this workshop on this github site, along with other workshops as well. Open this link in a new tab to find out more.](https://github.com/BuckWoody/workshops))
+(You can view all of the [source files for this workshop on this github site, along with other workshops as well. Open this link in a new tab to find out more.](https://github.com/microsoft/sqlworkshops))
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -40,9 +40,7 @@ The concepts and skills taught in this workshop form the starting points for:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"><b>     Business Applications of this Workshop</b></h2>
 
-Businesses require <TODO: Describe the reason the student's business or organization would be interested in the information. Be detailed about the solutions it addresses> 
-
-Some industry examples of <TODO: Workshop Topic> are <TODO: Enter Sectors and use briefly>, to name just a few.
+Businesses require stable, secure environments at scale, which work in on-premises and in-cloud configurations. Using Kubernetes and Containers allows for manifest-driven Dev-Ops practices, which further streamline IT processes.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -54,8 +52,10 @@ The solution includes the following technologies - although you are not limited 
 
   <tr><th style="background-color: #1b20a1; color: white;">Technology</th> <th style="background-color: #1b20a1; color: white;">Description</th></tr>
 
-  <tr><td><i>TODO: Technology name not owned by Microsoft that you will cover</i></td><td>TODO: Reason the student needs to learn it</td></tr>
-  <tr><td>TODO: Technology name owned by Microsoft that you will cover</td><td>TODO: Reason the student needs to learn it</td></tr>
+<tr><td><i>Linux</i></td><td>The primary operating system used in and by Containers and Kubernetes</td></tr>
+<tr><td><i>Containers</i></td><td>The atomic layer of a Kubernetes Cluster</td></tr>
+<tr><td><i>Kubernetes</i></td><td>The primary clustering technology for manifest-driven environments</td></tr>
+  <tr><td>SQL Server Big Data Clusters</td><td>Relational and non-relational data at scale with Spark, HDFS and application deployment capabilities</td></tr>
 
 </table>
 
@@ -67,12 +67,11 @@ You'll need a local system that you are able to install software on. The worksho
 
 You must have a Microsoft Azure account with the ability to create assets.
 
-This workshop expects that you understand <TODO: Enter a brief solution for what a student should know before taking the workshop>.
+This workshop expects that you understand computer technologies, networking, SQL Server, HDFS, Spark, and general use of Hypervisors. 
 
 If you are new to these, here are a few references you can complete prior to class:
 
 -  [Microsoft SQL Server Administration and Use](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20764)
--  [Linux](https://www.edx.org/course/introduction-to-linux)
 -  [HDFS](https://data-flair.training/blogs/hadoop-hdfs-tutorial/)
 -  [Spark](https://www.edx.org/course/implementing-predictive-analytics-with-spark-in-az)
 -  [Hypervisor Technologies - Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-technology-overview)
@@ -91,11 +90,11 @@ This workshop uses <TODO: enter main technologies used to solve the sceanrio>, w
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">TODO: Enter the technical people who will take the workshop> tasked with TODO: Enter what they are tasked to do</td></tr>
-  <tr><td>Secondary Audience:</td><td> TODO: Secondary Audience</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> TODO: 100, 200, 300, 400 </td></tr>
-  <tr><td>Type:</td><td>TODO: In-Person, On-Line, or from github</td></tr>
-  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">TODO: Number of hours</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Technical processionals  tasked with configuring, deploying and managing large-scale clustering systems</td></tr>
+  <tr><td>Secondary Audience:</td><td> Data professionals tasked with working with data at scale</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 300 </td></tr>
+  <tr><td>Type:</td><td>TODO: In-Person (self-guided possible)</td></tr>
+  <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">8</td></tr>
 
 </table>
 
@@ -103,7 +102,7 @@ This workshop uses <TODO: enter main technologies used to solve the sceanrio>, w
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pinmap.png?raw=true"><b>     Related Workshops</b></h2>
 
- - [TODO: Enter any other workshops that help in this area](url)
+ - [50 days from zero to hero with Kubernetes](https://azure.microsoft.com/mediahandler/files/resourcefiles/kubernetes-learning-path/Kubernetes%20Learning%20Path%20version%201.0.pdf)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
