@@ -129,38 +129,62 @@ If you want to dive deeper into the deployment options and how to choose, check 
 Now that you have a general awareness of Azure SQL, let's work through some of the tasks and additional decisions you'll have to make as the Azure SQL professional, and how it compares to SQL Server.  
 
 ## Deployment methods  
-Explanation of how you typically install SQL Server
-Overview of how it's different in Azure
-Overview of the methods (platform deployment, GUI deployment, unattended deployment, offline deployment) and those that do/do not apply to Azure SQL.  
 
-### Platform deployment
-### GUI deployment  
-### Unattended deployment  
-### Offline deployment  
+When you first set out to deploy SQL Server, you'll look at deploying the platform. In an on-prem environment, this means building the bare metal machine and installing the OS. You're probably then going to configure Hypervisor and deploy and configure a Virtual Mahine on top of that and install the OS. Then, you need to take the time to properly configure the OS including any security updates, storage, domain, and timezone. With Azure SQL, you don't have to do that. With an Azure SQL VM, you still potentially need to configure your OS, but with Azure SQL, since the OS is abstracted in Azure SQL DB and Azure SQL MI, you don't have any responsibilities for deploying the platform.  
+
+Once the platform is ready, for the typical box SQL Server, you can use a GUI deployment with the SQL Server Setup from Media or you can leverage SQL Server setup.exe from Media and PowerShell Desired State Configuration for an unattended deployment. For Azure SQL, your main GUI deployment tool is the Azure portal, and you unattended deployment options consist of PowerShell and the Azure Command-line interface (Azure CLI).  
+
+Finally, if you want todo an offline deployment for the box SQL Server, it's the same as the unattended deployment, and with Azure SQL, there currently is no offline deployment.  
 
 ## Configuration choices during deployment
-Summary of the things you choose when you deploy/install SQL Server and how it is different than Azure.
-Followed by a detailed view of the choices you have to make in SQL DB
+TODO: Summary of the things you choose when you deploy/install SQL Server and how it is different than Azure.  
+
+As you go through the deployment of SQL Server, there are specific steps that are required. Below is a list of things you typically do and how they're different in Azure:   
+* Accept the EULA  
+    * In Azure SQL, you do something similar
+* Choose the features to be installed
+    * In Azure SQL, you just get everything there is, there are no 'custom' installations with certain features turned on or off
+* Choose the collation
+    * In Azure SQL, you do this too
+* Choose Instant File Initiation
+    * In Azure SQL, 
+* Choose Directories
+    * In Azure SQL,
+* Choose Service Accounts
+    * In Azure SQL, you can do this after deployment
+* Add sys admin account(s)
+    * In Azure SQL, you do something similar
+* Choose tempdb config
+    * In Azure SQL, 
+* Choose MAXDOP config
+    * In Azure SQL, 
+* Choose memory config
+    * In Azure SQL, 
+
+In the rest of this section, we'll go through a detailed view of the process and choices involved in deploying Azure SQL (whether it's DB, MI, or Elastic Pools).  
+
 ### Resource group  
-Whenever you deploy any services (or "resources") in Azure, they must be tied to a [resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal), which is simply a logical grouping of resources in an Azure subscription. This could be all of the resources for a solution, or just the onces you want to manage together. Generally, you add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group. When you deploy any service in the Azure SQL suite, you'll need to specify a resource group first.    
+Whenever you deploy any services (or "resources") in Azure, they must be tied to a [resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal), which is simply a logical grouping of resources in an Azure subscription. This could be all of the resources for a solution, or just the onces you want to manage together. Generally, you add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group. When you deploy any service in the Azure SQL suite, you'll need to specify an existing resource group or create a new one first.    
 
-### Server admin login
+### Server
 
-You'll then be prompted to supply a Server admin login username and password. This is the equilavent to the system admin in SQL Server. This account connects using SQL authentication (username and password) and only one of these accounts can exist. You can optionally configure an Azure Active Directory account (individual or security group). More details on logins [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-manage-logins).  
+When you create an Azure SQL MI, giving the supplying the server name is the same as in SQL Server. However, for databases and elastic pools, an Azure SQL Database server is required. This is a logical construct that acts as a central administrative point for multiple single or pooled databases, logins, firewall rules, auditing rules, threat detection policies, and failover groups (more on these topics later). But having this logical server does not expose any instance-level access or features. More on SQL Database servers [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-servers).  
+
+### Server admin login / Managed Instance admin login
+
+You'll then be prompted to supply a Server admin login (or Managed Instance admin login if using Azure SQL MI or Azure SQL Instance Pools) username and password. This is the equilavent to the system admin in SQL Server. This account connects using SQL authentication (username and password) and only one of these accounts can exist. You can optionally configure an Azure Active Directory account (individual or security group). More details on logins [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-manage-logins).  
 
 ### Region
 
 Next, you'll have to select a region where you want the service deployed. The list of available regions for Azure SQL DB and MI can be found [here](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=sql-database&regions=all).
 
+### Elastic pool
 
-### Server name
-
-When you create an Azure SQL MI, giving the supplying the server name is the same as in SQL Server. However, for databases and elastic pools, an Azure SQL Database server is required. This is a logical construct that acts as a central administrative point for multiple single or pooled databases, logins, firewall rules, auditing rules, threat detection policies, and failover groups (more on these topics later). But having this logical server does not expose any instance-level access or features. More on SQL Database servers [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-servers).
-
+In Azure SQL DB, you then decide if you want this database to be a part of an Elastic Pool (new or existing). In Azure SQL MI, [creating an instance pool (public preview) currently requires a different flow](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool) than the Azure SQL MI create experience in the Azure portal. 
 
 ### Purchasing model
 You have two options for the purchasing model, [virtual core (vCore)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) (recommended) or [Database transaction unit (DTU)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-dtu
-).     
+). The DTU model is not available in Azure SQL MI.     
 
 The vCore-based model is recommended because it allows you to independently choose compute and storage resources, while the DTU-based model is a bundled measure of compute, storage and I/O resources, which means you have less control over paying only for what you need. This model also allows you to use [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) to gain cost savings. In the [vCore model](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore), you pay for:  
 
@@ -170,7 +194,7 @@ The vCore-based model is recommended because it allows you to independently choo
 
 For the purposes of this workshop, we'll focus on the vCore purchasing model (recommended), but you can [compare vCores and DTUs here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-purchase-models
 ).  
-### Service tiers
+### Service tier
 Legacy tiers  
 
 Comparison of the three  
@@ -179,7 +203,7 @@ Include differences in their architectures in the in-class portion slides
 The next decision is choosing the service tier for performance and availability. We recommend you start with the General Purpose, and adjust as needed. There are three tiers available in the vCore model:  
 * **[General purpose](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-general-purpose)**: Most business workloads. Offers budget-oriented, balanced, and scalable compute and storage options.
 * **[Business critical](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-business-critical)**: Business applications with low-latency response requirements. Offers highest resilience to failures by using several isolated replicas. This is the only tier that can leverage [in-memory OLTP](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-in-memory) to improve performance.
-* **[Hyperscale](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-hyperscale)**: Most business workloads with highly scalable storage and read-scale requirements. From a performance and cost perspective, it falls between General purpose and Business critical. *Currently only available for single databases, not managed instances or pools*.  
+* **[Hyperscale](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-hyperscale)**: Most business workloads with highly scalable storage (100TB+) and read-scale requirements. From a performance and cost perspective, it falls between General purpose and Business critical. *Currently only available for single databases, not managed instances or pools*.  
 
 If you choose **General Purpose within Azure SQL DB** and the **vCore-based model**, you have an additional decision to make regarding the compute that you pay for:
 * **Provisioned compute** is meant for more regular usage patterns with higher average compute utilization over time, or multiple databases using elastic pools. 
@@ -196,11 +220,6 @@ For a deeper explanation between the three service tiers (including scenarios), 
 > If you're looking for compute cost saving opportunities, you can prepay for compute resources with [Azure SQL Database reserved capacity](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-reserved-capacity).
 
 ### Hardware generation
-Gen4 - future plans
-Gen5
-Future gens
-Also include explanation of why the generations change/why we let you choose    
-
 The vCore model lets you choose the generation of hardware:  
 * **Gen4**: Up to 24 logical CPUs based on Intel E5-2673 v3 (Haswell) 2.4-GHz processors, vCore = 1 physical core, 7 GB per core, attached SSD
 * **Gen5**: Up to 80 logical CPUs based on Intel E5-2673 v4 (Broadwell) 2.3-GHz processors, vCore = 1 hyper-thread, 5.1 GB per core, fast NVMe SSD  
@@ -208,26 +227,63 @@ The vCore model lets you choose the generation of hardware:
 Basically, Gen4 hardware offers substantially more memory per vCore. However, Gen5 hardware allows you to scale up compute resources much higher. New Gen4 databases are no longer supported in certain regions, where Gen5 is available in most regions worldwide. As technology advances, you can expect that the hardware will change as well. For example, Fsv2-series (compute optimized) and M-series (memory optmized) hardware options recently became available in public preview for Azure SQL DB. You can reivew the latest hardware generations and availability [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 > Note: If you choose General Purpose within Azure SQL DB and want to use the serverless compute tier, Gen5 hardware is the only option and it currently can scale up to 16 vCores.  
-### Networking in Azure SQL DB And Azure SQL MI
+
+### Networking options
+
+Choices for networking for Azure SQL DB and Azure SQL MI are different. When you deploy an Azure SQL Database, currently the default is that the "Allow Azure services and resources to access this server" blade is set to yes, meaning that other Azure services (e.g. Azure Data Factory or an Azure VM) can access the database if you configure it. Additionally, after deployment you can alter the firewall rules to meet your requirements.
+
+With Azure SQL MI, you deploy it inside an Azure virtual network and a subnet that is dedicated to managed instances. This enables you to have a completely secure, private IP address. Azure SQL MI provides the ability to connect an on-prem network to a managed instance, connect a managed instance to a linked server or other on-prem data store, and connect a managed instance to other resources. You can additionally enable a public endpoint so you can connect to managed instance from the Internet without VPN. This access is disabled by default.  
+
+The principle of private endpoints through virtual network isolation is making it's way to Azure SQL DB in something called 'private link' (currently in public preview), and you can learn more [here](https://docs.microsoft.com/en-us/azure/private-link/private-link-overview).
+
+During deployment, in Azure SQL MI you're also able to choose the connection type. In Azure SQL DB, you can also choose the connection type, but only via PowerShell after deployment. You can keep the default (Proxy) or change to Redirect. At the highest level, in Proxy mode, all connections are proxied through the Azure SQL Database gateways, but in Redirect mode, after the connection is established leveraging the gateway, the connection is directly to the database or managed instance. The direct connection (redirect) allows for reduced latency and improved throughput, but also requires opening up additional ports.  
+
+More information on connectivity for Azure SQL DB can be found [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connectivity-architecture) and for Azure SQL MI [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture). There will also be more on this in upcoming sections/modules.  
+
+### Data source
+
+In Azure SQL DB, upon deployment you have the option to select the AdventureWorksLT database as the sample in the Azure portal. Using the Azure CLI (a set of command-line interface tools for working with Azure) you can also [deploy with the WideWorldImporters sample database](https://docs.microsoft.com/en-us/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create). In Azure SQL MI, however, you deploy the instance first, and then databases inside of it, so there is not an option to have the sample database upon deployment (similar to in SQL Server).
+
 ### Collation
+Collations in SQL Server and Azure SQL tell the Database Engine how to treat certain characters and languages. A collation provides the sorting rules, case, and accent sensitivity properties for your data. When you're creating a new Azure SQL DB or MI, it's important to first take into account the locale requirements of the data you're working with, because the collation set will affect the characteristics of many operations in the database. In the SQL Server box product, the default collation is typically determined by the OS locale. In Azure SQL MI, you can set the server collation upon creation of the instance, and it cannot be changed later. The server collation sets the default for all of the databases in that instance of Azure SQL MI, but you can modify the collations on a database and column level. In Azure SQL DB, you can not set the server collation, it is set at the default (and most common) collation of `SQL_Latin1_General_CP1_CI_AS`. If we break that into chunks:  
+* `SQL` means it is a SQL Server collation (as opposed to a Windows or Binary collation)  
+* `Latin1_General` specifies the alphabet/language to use when sorting
+* `CP1` references the code page used by the collation
+* `CI` means it will be case insensitive, where `CS` is case sensitive
+* `AS` meand it will be accent sensitive, where `AI` is accent insensitive     
+
+There are other options available related to widths, UTF-8, etc., which you can [reference here](https://docs.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver15).
+
 ### Timezone
 
 Azure SQL MI is the only deployment option within Azure SQL that supports [time zone setting](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-timezone) and it must be done at instance creation. Other deployment options are set at Coordinated Universal Time (UTC), and that remains the Microsoft recommended time zone for the data tier of cloud solutions. Choice of time zones in Azure SQL MI was introduced to meet the needs of existing applications that store/call date and time values with a context of a specific time zone.  
 
-### Advanced Data Security (ADS)
-### Geo-replication
-MI
+### Advanced Data Security (ADS)   
+When you deploy Azure SQL DB in the portal, you are prompted if you'd like to enable [Advanced Data Security (ADS)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security) on a free trial. After the free trial, it is billed according to the [Azure Security Center Standard Tier pricing](https://azure.microsoft.com/en-us/pricing/details/security-center/). If you choose to enable it, you get functionality related to data discovery and classification, identifying/mitigating potential database vulnerabilities, and threat detection. You'll learn more about these capabilities in the next module (<a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/02-Security.md" target="_blank"><i>02 - Security</i></a>). In Azure SQL MI, you can enable it on the instance after deployment.  
+
+
 ### Terms and Privacy
 
-> Note that each of the sections above may focus on SQL DB but need to tie in differences for MI/EP
+Finally, before deploying your Azure SQL MI (single instance or instance pool) or Azure SQL DB (single database or elastic pool), you have to agree to the [Azure Marketplace Terms](https://azure.microsoft.com/en-us/support/legal/marketplace-terms/). The term "Azure Marketplace" simply refers to any service that's offered in the Azure portal, and the terms, are similar to the End User License Agreement (EULA) that you accept when deploying SQL Server. They contain details about purchasing and billing, use rights, and privacy and data protection. Like any contract you consent to, you should [review the terms](https://azure.microsoft.com/en-us/support/legal/marketplace-terms/) before deploying.
+
 
 ## Verify deployment  
-Summary/overview of what you usually do in SQL Server box and how it is different in Azure  
+In SQL Server, once you've completed the installation flow, you'll complete a few steps to verify the deployment. The follow table gives an overview on how the processes vary by deployment options, with details that follow:   
 
-### Initial verfication
-Various things to check to verify deployment
-### Initial connect with SSMS or ADS
-### Queries to verify deployment
+| SQL Server | Azure SQL MI | Azure SQL DB |
+|:-----------|:-------------|:-------------|
+| Check Service Status | Check managed instance status with Azure portal or Azure CLI | Check database status with Azure portal or Azure CLI |
+| Check ERRORLOG and Event Logs | Check Deployment details and Activity Log | Check Deployment details and Activity Log |
+| Check setup log files | Check ERRORLOG | |
+| Connect with SSMS | Connect with SSMS | Connect with SSMS |
+| Run "verify deployment" queries | Run "verify deployment" queries | Run "verify deployment" queries |  
+
+TODO: Commentary on the differences
+
+### Initial connect with SSMS or ADS   
+TODO
+### Queries to verify deployment  
+TODO
 
 ## Determine what features exist  
 ## Configure SQL Server  
