@@ -212,7 +212,7 @@ If you choose **General Purpose within Azure SQL DB** and the **vCore-based mode
 For a deeper explanation between the two compute options (including scenarios), you can refer to the detailed [comparison in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-serverless#comparison-with-provisioned-compute-tier).  
 
 
-A member of the Product Group released a [blog](https://azure.microsoft.com/en-gb/blog/understanding-and-leveraging-azure-sql-database-sla/) and [video](https://www.youtube.com/watch?v=l7FUNJd5TSE) explaining the SLA (service level agreements that set an expectation for uptime and performance). This resource will help you make an informed decision about which tier to move to.  
+A member of the Product Group released a [blog](https://azure.microsoft.com/en-gb/blog/understanding-and-leveraging-azure-sql-database-sla/) and [video](https://www.youtube.com/watch?v=l7FUNJd5TSE) explaining the SLA (service level agreements that set an expectation for uptime and performance). This resource will help you make an informed decision about which configuration to move to based on the SLA you require.  
 
 For a deeper explanation between the three service tiers (including scenarios), you can also refer to the [service-tier characteristics](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore#service-tier-characteristics) in the documentation.   
 
@@ -224,7 +224,7 @@ The vCore model lets you choose the generation of hardware:
 * **Gen4**: Up to 24 logical CPUs based on Intel E5-2673 v3 (Haswell) 2.4-GHz processors, vCore = 1 physical core, 7 GB per core, attached SSD
 * **Gen5**: Up to 80 logical CPUs based on Intel E5-2673 v4 (Broadwell) 2.3-GHz processors, vCore = 1 hyper-thread, 5.1 GB per core, fast NVMe SSD  
 
-Basically, Gen4 hardware offers substantially more memory per vCore. However, Gen5 hardware allows you to scale up compute resources much higher. New Gen4 databases are no longer supported in certain regions, where Gen5 is available in most regions worldwide. As technology advances, you can expect that the hardware will change as well. For example, Fsv2-series (compute optimized) and M-series (memory optmized) hardware options recently became available in public preview for Azure SQL DB. You can reivew the latest hardware generations and availability [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+Basically, Gen4 hardware offers substantially more memory per vCore. However, Gen5 hardware allows you to scale up compute resources much higher. [New Gen4 databases are no longer supported in certain regions](https://azure.microsoft.com/en-us/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/), where Gen5 is available in most regions worldwide. As technology advances, you can expect that the hardware will change as well. For example, Fsv2-series (compute optimized) and M-series (memory optmized) hardware options recently became available in public preview for Azure SQL DB. You can reivew the latest hardware generations and availability [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 > Note: If you choose General Purpose within Azure SQL DB and want to use the serverless compute tier, Gen5 hardware is the only option and it currently can scale up to 16 vCores.  
 
@@ -242,7 +242,7 @@ More information on connectivity for Azure SQL DB can be found [here](https://do
 
 ### Data source
 
-In Azure SQL DB, upon deployment you have the option to select the AdventureWorksLT database as the sample in the Azure portal. Using the Azure CLI (a set of command-line interface tools for working with Azure) you can also [deploy with the WideWorldImporters sample database](https://docs.microsoft.com/en-us/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create). In Azure SQL MI, however, you deploy the instance first, and then databases inside of it, so there is not an option to have the sample database upon deployment (similar to in SQL Server).
+In Azure SQL DB, upon deployment you have the option to select the AdventureWorksLT database as the sample in the Azure portal. Using the Azure CLI (a set of command-line interface tools for working with Azure) you can also [deploy with the WideWorldImporters sample database](https://docs.microsoft.com/en-us/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create). In Azure SQL MI, however, you deploy the instance first, and then databases inside of it, so there is not an option to have the sample database upon deployment (similar to in SQL Server). There are several options for loading databases into Azure SQL after deployment that will be explored in a later section.
 
 ### Collation
 Collations in SQL Server and Azure SQL tell the Database Engine how to treat certain characters and languages. A collation provides the sorting rules, case, and accent sensitivity properties for your data. When you're creating a new Azure SQL DB or MI, it's important to first take into account the locale requirements of the data you're working with, because the collation set will affect the characteristics of many operations in the database. In the SQL Server box product, the default collation is typically determined by the OS locale. In Azure SQL MI, you can set the server collation upon creation of the instance, and it cannot be changed later. The server collation sets the default for all of the databases in that instance of Azure SQL MI, but you can modify the collations on a database and column level. In Azure SQL DB, you can not set the server collation, it is set at the default (and most common) collation of `SQL_Latin1_General_CP1_CI_AS`. If we break that into chunks:  
@@ -268,7 +268,7 @@ Finally, before deploying your Azure SQL MI (single instance or instance pool) o
 
 
 ## Verify deployment  
-In SQL Server, once you've completed the installation flow, you'll complete a few steps to verify the deployment. The follow table gives an overview on how the processes vary by deployment options, with details that follow:   
+In SQL Server, once you've completed the installation flow, you generally go through a few steps to verify the deployment. The follow table gives an overview on how the processes vary by deployment options, with details that follow:   
 
 | SQL Server | Azure SQL MI | Azure SQL DB |
 |:-----------|:-------------|:-------------|
