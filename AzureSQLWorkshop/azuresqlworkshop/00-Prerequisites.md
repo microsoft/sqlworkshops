@@ -74,9 +74,9 @@ TODO: Enter any code typing here
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 <ul>
-    <li><a href="url" target="_blank">Official Documentation for this section</a></li>
+    <li><a href="url" target="_blank">TODO Official Documentation for this section</a></li>
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Next, Continue to <a href="url" target="_blank"><i> 01 - Introduction to Azure SQL</i></a>.
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/01-IntroToAzureSQL.md" target="_blank_"><i> 01 - Introduction to Azure SQL</i></a>.
