@@ -9,11 +9,11 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> 02 - Hardware and Virtualization environment for Kubernetes </h2>
 
-In this workshop you have covered the fundamentals behind contains and container orchestration. The end of this Module contains several helpful references you can use in these exercises and in production. The end of this Module contains several helpful references you can use in these exercises and in production.
+In this workshop you have covered the fundamentals behind contains and container orchestration. The end of this Module contains several helpful references you can use in these exercises and in production. 
 
 This module covers the infrastructure foundation for building a Kubernetes cluster. You will examine the cluster installation on a Hypervisor environment for the in-person class, and you will also get references for other architectures. 
 
-NOTE: This module will use Kubernetes-specific terms you have not seen yet. This is because the in-person course requires a platform to learn the Kubernetes concepts and technologies in the next module, so just take the information here as a statement, and you'll learn more about what each term means in the following modules. If you are reading through this course on your own, you can read the next module first, and then come back to this one for a more natural flow. 
+> **NOTE:** This module will use Kubernetes-specific terms you have not seen yet. This is because the in-person course requires a platform to learn the Kubernetes concepts and technologies in the next module, so just take the information here as a statement, and you'll learn more about what each term means in the following modules. If you are reading through this course on your own, you can read the next module first, and then come back to this one for a more natural flow. 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
