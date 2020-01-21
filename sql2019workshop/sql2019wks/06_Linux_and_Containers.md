@@ -125,6 +125,10 @@ This tags the SQL Server container with a name you use with other container runt
 
 This parameter indicates the container should be run in the background. If you did not use -d, the SQL Server ERRORLOG would dump to the screen as the sqlservr program by default writes the ERRORLOG as it starts up to stdout. This could be useful for debugging purposes.
 
+**mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04**
+
+This is the name of the image used to run the container. This specific image is for SQL Server 2019 GA build based on Ubuntu. To see a complete list of images, you can use the web page on docker at https://hub.docker.com/_/microsoft-mssql-server.
+
 When this command completes it will display the CONTAINER ID as a long UUID value. If the container image was not previously pulled, docker would first *pull* the image and then run the container.
 
 **STEP 2: Copy a database backup into the container**
@@ -174,13 +178,12 @@ docker run `
  -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Sql2019isfast' `
  -p 1401:1433 `
  -v sql2019volume:/var/opt/mssql `
- --hostname sql2019gdr1 `
- --name `
- sql2019gdr1 `
+ --hostname sql2019cu1 `
+ --name sql2019cu1 `
  -d `
- mcr.microsoft.com/mssql/server:2019-GDR1-ubuntu-16.04
+ mcr.microsoft.com/mssql/server:2019-CU1-ubuntu-16.04
 ```
-Notice the first container is stopped but not removed. The second container is started with the same port and volume but the latest cumulative update image. While this process is running let's learn how to run another SQL Server container.
+Notice the first container is stopped but not removed. The second container is started with the same port and volume but the cumulative update image for SQL Server 2019 CU1. While this process is running let's learn how to run another SQL Server container.
 
 **STEP 6: Run a second SQL Server container**
 
@@ -207,10 +210,10 @@ docker ps -a
 ```
 The results should look something like this:
 
-<pre>CONTAINER ID        IMAGE                                                   COMMAND                  CREATED              STATUS                      PORTS                    NAMES
-1a40fbcfc33f        mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04     "/opt/mssql/bin/perm…"   15 seconds ago       Up 13 seconds               0.0.0.0:1402->1433/tcp   sql2019ga2
-1615d02ac26b        mcr.microsoft.com/mssql/server:2019-GDR1-ubuntu-16.04   "/opt/mssql/bin/perm…"   24 seconds ago       Up 22 seconds               0.0.0.0:1401->1433/tcp   sql2019gdr1
-7bab7a0cae34        mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04     "/opt/mssql/bin/perm…"   About a minute ago   Exited (0) 25 seconds ago                            sql2019ga</pre>
+<pre>CONTAINER ID        IMAGE                                                  COMMAND                  CREATED              STATUS                     PORTS                    NAMES
+470ac147879d        mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04    "/opt/mssql/bin/perm…"   About a minute ago   Up About a minute          0.0.0.0:1402->1433/tcp   sql2019ga2
+afe3b3c1ff2f        mcr.microsoft.com/mssql/server:2019-CU1-ubuntu-16.04   "/opt/mssql/bin/perm…"   3 minutes ago        Up 3 minutes               0.0.0.0:1401->1433/tcp   sql2019cu1
+1289d5a354bf        mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04    "/opt/mssql/bin/perm…"   27 minutes ago       Exited (0) 3 minutes ago                            sql2019ga</pre>
 
 Notice for the STATUS two containers are running (Up for ...) while one is not (Exited...)). The container sql2019ga is the one you stopped.
 
@@ -248,7 +251,7 @@ Notice that each volume has a separate Mountpoint which is the true directory on
 
 **STEP 9: Run queries against the update SQL Server container**
 
-The update of the SQL Server container should be done. Run the same query as you did in STEP 4 using the script **step9_querysql.ps1** to see the same results of the table in WideWorldImporters and a new version of SQL Server which should be the first GDR build for SQL Server 2019.
+The update of the SQL Server container should be done. Run the same query as you did in STEP 4 using the script **step9_querysql.ps1** to see the same results of the table in WideWorldImporters and a new version of SQL Server which should be the CU1 build for SQL Server 2019.
 
 It is possible for a brief period of time you may see these messages when running this script
 
@@ -262,7 +265,7 @@ Wait for a short period of time and retry the script if this occurs. This indica
 Let's say you need to rollback to the SQL Server 2019 GA (RTM) build due to an issue. Since that container is stopped but not removed and the same volume is used for that container and the one currently running the latest cumulative update, you can rollback the update change by stopping the current container and starting back the container sql2019ga. Use the script **step10_rollbacksqlpatch.ps1** which runs the following command:
 
 ```powershell
-docker stop sql2019gdr1
+docker stop sql2019cu1
 docker start sql2019ga
 ```
 
@@ -430,7 +433,7 @@ When docker-compose is run it will use the docker-compose.yml file to build two 
 
 In each **db1** and **db2** directory are the following files:
 
-- **Dockerfile** - This tells docker how to build a custom image based on the SQL Server 2019 RHEL image
+- **Dockerfile** - This tells docker how to build a custom image based on the latest SQL Server 2019 RHEL image.
 - **entrypoint.sh** - This is a Linux shell script included in the custom image which will be the main "program" for the container. This script will run a script called **db-init.sh** and then run the sqlservr program
 - **db-init.sh** - This shell script will sleep for a period of time waiting for sqlservr to start up. Then it will use sqlcmd inside the container to run a T-SQL script called **db-init.sql**
 - **db-init.sql** - This could be any set of T-SQL statements to run after sqlservr has started. For the db1 directory this will create a database, a table, insert data, and then run T-SQL scripts to configure a publisher, distributor, subscriber, publication, article, and agents to run a snapshot. This script for the db2 directory only creates an empty database to hold the table in the publication.
