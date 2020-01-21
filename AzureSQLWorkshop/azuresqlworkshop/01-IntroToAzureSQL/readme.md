@@ -143,7 +143,7 @@ For the workshop, select **Sample**.
 
 **Step 11 - Database collations**
 
-Since we're using the AdventureWorksLT sample, the database collation is already set. For a review of collations and how they apply in Azure SQL, continue reading, otherwise you can skip to **Step 12**.
+Since we're using the AdventureWorksLT sample, the **database collation is already set**. For a review of collations and how they apply in Azure SQL, continue reading, otherwise **you can skip to Step 12**.
 
 Collations in SQL Server and Azure SQL tell the Database Engine how to treat certain characters and languages. A collation provides the sorting rules, case, and accent sensitivity properties for your data. When you're creating a new Azure SQL DB or MI, it's important to first take into account the locale requirements of the data you're working with, because the collation set will affect the characteristics of many operations in the database. In the SQL Server box product, the default collation is typically determined by the OS locale. In Azure SQL MI, you can set the server collation upon creation of the instance, and it cannot be changed later. The server collation sets the default for all of the databases in that instance of Azure SQL MI, but you can modify the collations on a database and column level. In Azure SQL DB, you can not set the server collation, it is set at the default (and most common) collation of `SQL_Latin1_General_CP1_CI_AS`, but you can set the database collation. If we break that into chunks:  
 * `SQL` means it is a SQL Server collation (as opposed to a Windows or Binary collation)  
@@ -198,11 +198,95 @@ Once your resource has deployment, review the "Overview" pane for the SQL databa
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Initial connect and comparison</b></p>
 
-TODO
+**Step 1 - Connect to SQL Server 2019**
+Now that everything looks to be up and running in the Azure portal, let's switch to a familiar tool, SQL Server Management Studio (SSMS). Open SSMS and connect, using Windows Authentication, to the local instance of SQL Server 2019 that's running on your Azure VM (if you don't have this, please revisit the prerequisites).  
+
+![](../images/localconnect.png)  
+
+If you completed the prerequisites, expanding the databases and system databases folders should result in a view similar to the following.  
+
+![](../images/localserver.png)   
+
+**Step 2 - Connect to Azure SQL Database**  
+
+Next, let's connect to your Azure SQL Database logical server and compare. First, select **Connect > Database Engine**.  
+
+![](../images/dbengine.png)  
+
+For server name, input the name of your Azure SQL Database logical server. You may need to refer to the Azure portal to get this, e.g. *aw-server0406.database.windows.net*.  
+
+Change the authentication to **SQL Server Authentication**, and input the corresponding admin Login and Password.  
+
+Check the **Remember password** box and select **Connect**.
+
+![](../images/connectazsql.png)   
+
+Expanding the databases and system databases should result in a view similar to the following.  
+
+![](../images/azureserver.png)   
+
+Spend a few minutes clicking around and exploring the differences, at first glance, between the Azure SQL Database logical server and Azure SQL Database. You won't deploy an Azure SQL Managed Instance as part of this workshop, but the image below shows how Azure SQL Managed Instance would appear in SSMS.
+
+**TODO SCREENSHOT OF SSMS WITH ADVENTUREWORKS**  
+
+
+
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Verify deployment queries</b></p>
 
-TODO
+Now that you've seen how Azure SQL appears in SSMS, let's explore a tool that may be new to you called Azure Data Studio (ADS). ADS is a source-open tool that provides a lightweight editor and other tools (including Notebooks which you'll see soon) for interacting with Azure Data Services (including SQL Server on-prem, Azure SQL, Azure Database for PostgreSQL, and more). Let's take a brief tour to get acquainted.  
+
+**Step 1 - Open Azure Data Studio and Connect**  
+
+Open Azure Data Studio (ADS). When opening for the first time, you'll first be prompted to make a connection.  
+
+![](../images/adsconnect.png)  
+
+Note that you can connect to your local instance of SQL Server 2019 here. Let's do that first. You can also supply a Server group and Name, if you want to group different connections together. For example, when you connect to SQL Server 2019, you might place it in a new Server group called **SQL Server 2019**. Fill in your information and connect to SQL Server 2019 by selecting **Connect**.  
+
+![](../images/adsconnectss.png)  
+
+You'll then go to a page that contains the "Server Dashboard". Select the **Connections** button (red square in below image) to view your Server groups and connections.     
+
+![](../images/serverdashboard.png)  
+
+Your results should be similar to what you saw in SSMS. Select the **New connection** button in the "Servers" bar.  
+
+![](../images/newconnection.png)  
+
+Now, connect to your Azure SQL Database logical server, just as you did in SSMS, but putting it in a new Server group called "Azure SQL Database", and selecting **Connect**.   
+
+![](../images/adsconnectdb.png)  
+
+In your "Connections" tab, under "Servers," you should now see both connections, and you should be able to expand the folders similar to SSMS.  
+
+![](../images/adsservers.png)   
+
+**Step 2 - Set up easy file access with ADS**  
+
+Now that your connected, you might want an easy way to access scripts and Jupyter notebooks. A Jupyter notebook (often referred to just as "Notebooks") is a way of integrating runnable code with text. If you aren't familiar with Jupyter notebooks, you will be soon, and you can check out more details later in the [documentation](https://docs.microsoft.com/en-us/sql/big-data-cluster/notebooks-guidance?view=sql-server-ver15).  
+
+First, in ADS, select **File > Open Folder**.  
+
+![](../images/openfolder.png)  
+
+Next, navigate to where the repository of all the workshop resources are. If you followed the prerequisites, the path should be similar to `C:\Users\<vm-username>\sqlworkshops\AzureSQLWorkshop`. Once you're there, select **Select Folder**.  
+
+![](../images/selectfolder.png)  
+
+Next, select the **Explorer** icon from the left taskbar to navigate through the files in the workshop.  
+
+![](../images/explorer.png)  
+
+Throughout the workshop, you'll be instructed at various points to open a notebook (file ending in `.ipynb`) or a script (file ending in `.sql`), and you can access those through here directly.   
+
+**Step 3 - Verify deployment queries**  
+
+Once you've deployed an instance of SQL (be in Azure SQL or SQL Server), there are typically some queries you would run to verify your deployment. In Azure SQL, some of these queries vary from SQL Server. In this step, you'll see what and how things change from SQL Server, and what is new.   
+
+For this step, you'll use the notebook **VerifyDeployment.ipynb** which is under `azuresqlworkshop\01-IntroToAzureSQL\VerifyDeployment.ipynb`. Navigate to that file to complete this step, and then return here.  
+
+
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Azure CLI</b></p>
 
