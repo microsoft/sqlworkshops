@@ -86,24 +86,24 @@ Create a new cluster, deploy a big data cluster to it and then restore a backup 
 3.2.1 Prerequisites
 
 In order to carry out the deployment of the Kubernetes cluster, it is assumed that workshop attendees have a basic understanding of the following tasks:
-	Ubuntu base operating system installation
+- Ubuntu base operating system installation
 
-	Ubuntu package management via apt
+- Ubuntu package management via apt
 
-	Cloning a GitHub repo
+- Cloning a GitHub repo
 
-	Setting up remote access to Ubuntu hosts with ssh
+- Setting up remote access to Ubuntu hosts with ssh
 
-	Basic Ubuntu firewall configuration
+- Basic Ubuntu firewall configuration
 3.2.2 Introducing Kubespray
 Kubespray is a Kubernetes cluster life cycle management tool that is based on Ansible playbooks, it can:
-	Create clusters
+- Create clusters
 
-	Upgrade clusters
+- Upgrade clusters
 
-	Remove clusters
+- Remove clusters
 
-	Add nodes to existing clusters
+- Add nodes to existing clusters
 Kubespray is a Cloud Native Computing Foundation project and with its own GitHub repo that can be found here.
 3.2.3 What Is Ansible?
 Ansible is an open source declarative tool for deploying applications and infrastructure-as-code. Components of an application or infrastructure are specified declaratively in what are know as ‘Runbooks’. Unlike other infrastructure-as-code tools such as Puppet, Ansible does not require that a special node is built for the purpose of deploying applications and infrastructure. All that is required is a host on which Ansible can be installed. Files known as inventory files are used to specify Ansible deployment targets. In the case of Kubespray, the deployment targets are the hosts which nodes and etcd instances are to be created on. Communication between Ansible and the deployment targets specified in an inventory file is via ssh.
@@ -112,31 +112,31 @@ Ansible is an open source declarative tool for deploying applications and infras
 Unlike other available deployment tools, Kubespray does everything for you in “One shot”. For example, Kubeadm requires that certificates on nodes are created manually, Kubespray not only leverages Kubeadm but it also looks after everything including certificate creation for you. Kubespray works against most of the popular public cloud providers and has been tested for the deployment of clusters with thousands of nodes. The real elegance of Kubespray is the reuse it promotes. If an organisation has a requirement to deploy multiple clusters, once Kubespray is setup, for every new cluster that needs to be created, the only prerequisite is to create a new inventory file for the nodes the new cluster will use.
 3.2.5 High Level Kubespray Workflow
 The deployment of a Kubernetes cluster via Kubespray follows this workflow:
-	Preinstall step
+- Preinstall step
 
-	Install Container Engine
+- Install Container Engine
 
-	Install etcd
+- Install etcd
 
-	Setup certificates
+- Setup certificates
 
-	Install Kubernetes master(s)
+- Install Kubernetes master(s)
 
-	Install Kubernetes worker(s)
+- Install Kubernetes worker(s)
 
-	Configure network plugin
+- Configure network plugin
 
-	Configure any add-ons
+- Configure any add-ons
 Conceptually the creation of a three-worker node cluster looks like this:
 
  
  
 Note:
-	The deployment is instigated from the jump server,
-	The etcd instances can share nodes with the two masters and a worker node due to their minimal CPU and memory requirements,
-	hosts.yaml contains the IP addresses of the hosts that the masters, etcd instances and workers will be deployed to,
-	cluster.yml contains the play book for creating the Kubernetes cluster itself,
-	The entire cluster is deployed via a single invocation of the ansible-playbook command.
+- The deployment is instigated from the jump server,
+- The etcd instances can share nodes with the two masters and a worker node due to their minimal CPU and memory requirements,
+- hosts.yaml contains the IP addresses of the hosts that the masters, etcd instances and workers will be deployed to,
+- cluster.yml contains the play book for creating the Kubernetes cluster itself,
+- The entire cluster is deployed via a single invocation of the ansible-playbook command.
 
 3.2.6 Requirements
 Refer to the requirements section here in the Kubespray GitHub repo.
@@ -145,13 +145,13 @@ The primary tool for administering a Kubernetes cluster is kubectl. After deploy
 
 3.2.8 Hands on Practical Exercises
 Use the kubectl cheat sheet to  familiarise yourself with various kubectl commands. One of the key commands to be aware of is kubectl get.
-	Use kubectl to obtain the state of each node in the cluster, all nodes in a healthy cluster should have a state of ‘Ready’
+- Use kubectl to obtain the state of each node in the cluster, all nodes in a healthy cluster should have a state of ‘Ready’
 
-	Apart from single node clusters that are used for the purposes of learning Kubernetes such as minikube, pods should never run on master nodes. As such a NoSchedule taint should be present on each master node, use kubectl describe to verify this.
+- Apart from single node clusters that are used for the purposes of learning Kubernetes such as minikube, pods should never run on master nodes. As such a NoSchedule taint should be present on each master node, use kubectl describe to verify this.
 
-	Labels can be assigned to any object created in a Kubernetes cluster, an entity known as a ‘Selector’ is used to filter objects with labels. Use kubectl get to display the nodes with the role of master. Labels and selectors are covered by the Kubernetes documentation in detail.
+- Labels can be assigned to any object created in a Kubernetes cluster, an entity known as a ‘Selector’ is used to filter objects with labels. Use kubectl get to display the nodes with the role of master. Labels and selectors are covered by the Kubernetes documentation in detail.
 
-	All objects that reside in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster.
+- All objects that reside in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster.
 
 
 
@@ -206,9 +206,9 @@ In this activity you will <TODO: Explain Activity>
 3.1.1 The Kubernetes Storage Sub System
 The touch point for storage at the pod level is a volume. There are two critical Kubernetes objects that need to be created for storage to be made available to the volume:
 
-	A PersistentVolume (PV) is storage that has been provisioned manually or dynamically using Storage Classes. It is a resource in the cluster just like a node is a cluster resource. PVs have a lifecycle independent of any individual Pod that uses the PV. 
+- A PersistentVolume (PV) is storage that has been provisioned manually or dynamically using Storage Classes. It is a resource in the cluster just like a node is a cluster resource. PVs have a lifecycle independent of any individual Pod that uses the PV. 
 
-	A PersistentVolumeClaim (PVC) is a request for storage by a user that provides the bridge between a volume and persistent volume. For a persistent volume claim 
+- A PersistentVolumeClaim (PVC) is a request for storage by a user that provides the bridge between a volume and persistent volume. For a persistent volume claim 
 
 
 While PersistentVolumeClaims allow a user to consume abstract storage resources, it is common that users need PersistentVolumes with varying properties, such as performance, for different problems. Cluster administrators need to be able to offer a variety of PersistentVolumes that differ in more ways than just size and access modes, without exposing users to the details of how those volumes are implemented. For these needs, there is the StorageClass resource.
