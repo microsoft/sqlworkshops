@@ -5,3 +5,7 @@ These represent scripts and notebooks you can run to see the behavior of Intelli
 ## iqp
 
 Show the capabilities of Intelligent Query Processing including deferred table variable compilation.
+
+## tempdb
+
+Advanced activity to demonstrate Tempdb Metadata Optimization.

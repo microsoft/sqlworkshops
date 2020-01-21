@@ -2,7 +2,6 @@
 
 This demo uses docker-compose to start two SQL Server containers; one that acts as the publisher and distributor, and the other as the subscriber in a push snapshot configuration. 
 
-
 ### How to Use
 
 1. Run the following command in this directory:
@@ -26,9 +25,6 @@ note: credentials are listed in the **docker-compose.yml**
 ```
 docker-compose down
 ```
-
-
-
 ### How it Works 
 
 1. Both SQL Server containers start with the environment variables specified in the docker-compose file. In this example, **db1** is the publisher/distributor and **db2** is the subscriber.
