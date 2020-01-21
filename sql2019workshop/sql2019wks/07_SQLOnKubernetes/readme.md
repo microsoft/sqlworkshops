@@ -1,7 +1,11 @@
-# Module 1 Activities - Intelligent Performance
+# Module 7 Activities - SQL Server on Kubernetes
 
-These represent scripts and notebooks you can run to see the behavior of Intelligent Performance in SQL Server 2019. 
+These activities show the capabilities of SQL Server on Kubernetes. 
 
-## iqp
+## deploy
 
-Show the capabilities of Intelligent Query Processing including deferred table variable compilation.
+Show the fundamental process to deploy SQL Server on Kubernetes.
+
+## ha
+
+Show the basic built-in availability capabilities of Kubernetes with SQL Server.

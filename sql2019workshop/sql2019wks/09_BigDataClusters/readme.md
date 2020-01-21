@@ -1,7 +1,11 @@
-# Module 1 Activities - Intelligent Performance
+# Module 9 Activities - Big Data Clusters (BDC)
 
-These represent scripts and notebooks you can run to see the behavior of Intelligent Performance in SQL Server 2019. 
+Assuming an already deployed Big Data Cluster, use these examples to learn about BDC capabilities
 
-## iqp
+## spark_and_ml
 
-Show the capabilities of Intelligent Query Processing including deferred table variable compilation.
+Learn capabilities of Spark and Machine Learning with BDC
+
+## storage_and_data_pool
+
+Learn the fundamentals of using the storage and data pools in BDC.
