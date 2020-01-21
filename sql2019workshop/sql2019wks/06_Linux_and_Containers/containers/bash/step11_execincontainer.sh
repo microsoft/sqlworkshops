@@ -1,1 +1,1 @@
-sudo docker exec -it sql2019gdr1 bash
+sudo docker exec -it sql2019cu1 bash
