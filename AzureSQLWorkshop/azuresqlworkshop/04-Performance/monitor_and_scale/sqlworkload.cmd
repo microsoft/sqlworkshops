@@ -1,0 +1,1 @@
+.\ostress.exe '-Sbobazuresqlserver.database.windows.net' '-isqlquery.sql' '-Uthewandog' '-dAdventureWorksAzureLT' '-P$cprsqlserver2019' -n10 -r1000 -q
