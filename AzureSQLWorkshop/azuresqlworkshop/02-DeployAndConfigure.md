@@ -21,10 +21,9 @@ In this module, you'll cover these topics:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Initial connect and comparison  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): Verify deployment queries   
 [2.3](#2.3): Configure  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Configure with Azure CLI  
-[2.4](#2.4): Deploy and configure databases  
-[2.5](#2.5): Load data  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 5](#5): Load data  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 4](#4): Configure with Azure CLI  
+[2.4](#2.4): Load data  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 5](#5): Load data  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -306,17 +305,12 @@ To complete this activity, you'll use a PowerShell notebook, which is the same c
 For this activity, you'll use the notebook called **AzureCli.ipynb** which is under `azuresqlworkshop\01-IntroToAzureSQL\cli\AzureCli.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
 
 >In the `cli` folder, you'll also find a script if you want to try the activity with the Azure Cloud Shell. 
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.4">2.4 Deploy and configure databases</h2></a>
-
-TODO: Topic Description
 
 <br>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.5">2.5 Load data</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.4">2.4 Load data</h2></a>
 
 TODO: Topic Description
 
