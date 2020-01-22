@@ -19,6 +19,8 @@ In this module, you'll cover these topics:
 [5.2](#5.2): TODO   
 [5.3](#5.3): TODO 
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): TODO  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): TODO  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -32,7 +34,7 @@ TODO: Topic Description
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: TODO: Activity Name</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: TODO: Activity Name</b></p>
 
 TODO: Activity Description and tasks
 
@@ -50,7 +52,7 @@ TODO: Enter activity steps description with checkbox
 
 TODO: Topic Description
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: TODO: Activity Name</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: TODO: Activity Name</b></p>
 
 TODO: Activity Description and tasks
 
