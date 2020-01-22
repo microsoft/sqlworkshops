@@ -79,7 +79,7 @@ There are two subfolders for this Activity:
 
 The steps documented here will use the Powershell subfolder and Docker Desktop for Windows. Docker Desktop for Windows on Windows 10 uses a Virtual Machine running Linux called DockerDesktopVM. Windows 10 insider builds have an update to the Windows Subsystem for Linux called **wsl2**. wsl2 does not require a full virtual machine to run Linux programs on Windows. Docker for Desktop has a Preview version that takes advantage of wsl2. This Activity does not currently use wsl2 it is not in mainstream Windows 10 builds at this time. Once these become more mainstream this workshop will be changed to use wsl2.
 
-**NOTE:** You may need to run the following command on your computer to execute Powershell scripts:
+>**NOTE:** You may need to run the following command on your computer to execute Powershell scripts:
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
@@ -199,7 +199,7 @@ docker run `
  -d `
  mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
 ```
-This looks very similar to the other containers you have run except there is a new hostname and container name as well as a different volume and port mapping.
+Look over the parameters of this script. This looks very similar to the other containers you have run except there is a new hostname and container name as well as a different volume and port mapping. This is an example of how to run two concurrent SQL Server containers or "multi-instance" for SQL Server on Linux.
 
 **STEP 7: List out running containers**
 
@@ -215,7 +215,7 @@ The results should look something like this:
 afe3b3c1ff2f        mcr.microsoft.com/mssql/server:2019-CU1-ubuntu-16.04   "/opt/mssql/bin/perm…"   3 minutes ago        Up 3 minutes               0.0.0.0:1401->1433/tcp   sql2019cu1
 1289d5a354bf        mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04    "/opt/mssql/bin/perm…"   27 minutes ago       Exited (0) 3 minutes ago                            sql2019ga</pre>
 
-Notice for the STATUS two containers are running (Up for ...) while one is not (Exited...)). The container sql2019ga is the one you stopped.
+Notice for the STATUS two containers are running (Up for ...) while one is not (Exited...)). The container sql2019ga is the one you stopped. The sql2019ga container is stopped but not removed. You will be able take advantage of this to rollback a cumulative update in a few steps later in this lab.
 
 **STEP 8: Inspect aspects of the container**
 
@@ -247,7 +247,9 @@ Your results should look like the following:
     }
 ]</pre>
 
-Notice that each volume has a separate Mountpoint which is the true directory on the host where the files for /var/opt/mssql in the container are stored. In this activity, these directories exist inside the Linux VM created by Docker Desktop for Windows.
+Notice that each volume has a separate mount point which is the true directory on the host where the files for /var/opt/mssql in the container are stored. In this activity, these directories exist inside the Linux VM created by Docker Desktop for Windows.
+
+>**NOTE**: Docker for Windows supports using volumes from Windows volumes and directories to map to directories in Linux containers. I didn't use that technique for these labs due to a known issue with SQL Server as documented at https://github.com/microsoft/mssql-docker/issues/441. There is a workaround listed in this issue
 
 **STEP 9: Run queries against the update SQL Server container**
 
@@ -323,7 +325,11 @@ total 4784
 -rw-r----- 1 mssql root  151552 Dec  2 20:44 system_health_0_132197927325210000.xel
 -rw-r----- 1 mssql root  122880 Dec  2 20:46 system_health_0_132197930656270000.xel</pre>
 
-These list of files should look familiar to the SQL Server user. The are XEvent traces, ERRORLOG files, and default SQL Server trace files. You could dump out the ERRORLOG at this point but let's use a different method to do that outside of the container.
+These list of files should look familiar to the SQL Server user. The are XEvent traces, ERRORLOG files, and default SQL Server trace files. Dump out the contents of the ERRORLOG using the following command:
+
+`cat /var/opt/mssql/log/errorlog`
+
+You will learn in the next step an alternate way to see the contents of the ERRORLOG for SQL Server in the container.
 
 Type in the following command to leave the bash shell
 
