@@ -127,3 +127,7 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 
 Next, Continue to <a href="00-prerequisites.md" target="_blank"><i> Pre-Requisites</i></a>
+
+**Legal Notice**
+
+*Kubernetes and the Kubernetes logo are trademarks or registered trademarks of The Linux Foundation. in the United States and/or other countries. The Linux Foundation and other parties may also have trademark rights in other terms used herein. This course is not certified, accredited, affiliated with, nor endorsed by Kubernetes or The Linux Foundation.*
