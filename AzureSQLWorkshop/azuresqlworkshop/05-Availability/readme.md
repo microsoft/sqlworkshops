@@ -1,6 +1,6 @@
-# Module 3 Activities - Performance
+# Module 5 Activities - Availability
 
-These represent demos and examples you can run that accompany Module 3. See [Module 3](../03-Performance.md) for details on how to use the files in this module.
+These represent demos and examples you can run that accompany Module 5. See [Module 5](../05-Availability.md) for details on how to use the files in this module.
 
 ## verifydeployment TODO
 

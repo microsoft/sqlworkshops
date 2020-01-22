@@ -1,6 +1,6 @@
-# Module 1 Activities - Introduction to Azure SQL
+# Module 2 Activities - Deploy and Configure
 
-These represent demos and examples you can run that accompany Module 1. See [Module 1](../01-IntroToAzureSQL.md) for details on how to use the files in this module.
+These represent demos and examples you can run that accompany Module 2. See [Module 2](../02-DeployAndConfigure.md) for details on how to use the files in this module.
 
 ## verifydeployment
 
