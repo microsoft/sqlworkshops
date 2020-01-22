@@ -1,6 +1,6 @@
-# Module 2 Activities - Security
+# Module 4 Activities - Performance
 
-These represent demos and examples you can run that accompany Module 2. See [Module 2](../02-Security.md) for details on how to use the files in this module.
+These represent demos and examples you can run that accompany Module 4. See [Module 4](../04-Performance.md) for details on how to use the files in this module.
 
 ## verifydeployment TODO
 

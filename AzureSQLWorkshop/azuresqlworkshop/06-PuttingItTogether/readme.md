@@ -1,6 +1,6 @@
-# Module 4 Activities - Availability
+# Module 6 Activities - PuttingItTogether
 
-These represent demos and examples you can run that accompany Module 4. See [Module 4](../04-Availability.md) for details on how to use the files in this module.
+These represent demos and examples you can run that accompany Module 6. See [Module 6](../06-PuttingItTogether.md) for details on how to use the files in this module.
 
 ## verifydeployment TODO
 
