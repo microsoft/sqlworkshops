@@ -122,7 +122,7 @@ Select **Next : Networking**.
 
 Choices for networking for Azure SQL DB and Azure SQL MI are different. When you deploy an Azure SQL Database, currently the default is "No access".  
 
-You can then choose to select Public endpoint or Private endpoint (preview). In this workshop we'll use the public endpoint and set the "Allow Azure services and resources to access this server" blade to yes, meaning that other Azure services (e.g. Azure Data Factory or an Azure VM) can access the database if you configure it. You can also select "Add current client IP address" if you want to be able to connect from the IP address you use to deploy Azure SQL Database, which you do. Make sure your settings match below:    
+You can then choose to select Public endpoint or Private endpoint (preview). In this workshop we'll use the public endpoint and set the "Allow Azure services and resources to access this server" blade to yes, meaning that other Azure services (e.g. Azure Data Factory or an Azure VM) can access the database if you configure it. You can also select "Add current client IP address" if you want to be able to connect from the IP address you use to deploy Azure SQL Database, which you do. Make sure your settings match below:     
 
 ![](../graphics/networkconnect.png)  
 
