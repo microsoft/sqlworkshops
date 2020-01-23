@@ -8,36 +8,135 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> 03 - Kubernetes Concepts and Implementation </h2>
 
-In this workshop you have covered <TODO: Explain where the student is at the moment>. The end of this Module contains several helpful references you can use in these exercises and in production.
+In this workshop you have covered the hardware and software environment for Kubernetes. You've learned about Linux, Containers, and a quick overview of Kubernetes. With all that in place, in the previous Module you set up your environment to install Kubernetes. We didn't cover the terms you used to define and deploy your cluster.  
+This module covers the concepts, terms, and tools for Kubernetes. You'll follow various exercises to ground your understanding of each topic, and the end of this Module contains several helpful references you can use in these exercises and in production.
 
-This module covers <TODO: Explain the main topics quicly >. 
+We'll begin with a set of definitions. These aren't all the terms used in Kubernetes - you'll see more as you work through the Modules - but they do form the basics for the concepts that follow. You'll work with each of these terms throughout this Module and the rest of the course, so just familiarize yourself with them, and refer back to this list as you work through each section. 
 
-Glossary: 
-
-
-Implementation
-
-A Kubernetes cluster requires the following components:
-- Master nodes
-These form the cluster’s control plane
-
-- Worker nodes 
-The nodes on which the applications containers run
-
-- etcd
-A high performance key value store that stores the cluster’s state. Since etcd is quite light weight in nature, etcd instances can generally share resources with other nodes in the cluster. The Hardware recommendations section of the official etcd.io site provides a detailed breakdown of the hardware requirement for etcd. 
-
-- Container Network Interface (CNI) Plugin
-The nodes in the cluster communicate with each other via what is known as an overlay network, or more simply put, a software defined network. There are a variety of CNI plugins that Kubernetes can use, however, for the purpose of this workshop, the default CNI plugin of Calico will be used.
-
-- Certificate Management
-
-- Persistent Storage
-Any type of data-centric application, and big data clusters fall into this category have a basic requirement to persists state. One of the key aims is ensure that if a pod is rescheduled to run on a different node, its state is not lost as it moves from its original node to a new one. In the early days of Kubernetes, most storage drivers were called as “In tree”, meaning that vendors who wanted Kubernetes to use their storage had to integrate the code for their drivers directly with the Kubernetes code base. The IT industry is now gravitating towards the Container Storage Interface specification which allows Kubernetes to seamlessly use any storage platform that supports this standard without having to touch the Kubernetes code base. Ultimately, the aim of the CSI standard is to promote storage portability.
-
-- Ingress Management (Optional)
-A key difference between ‘Vanilla’ Kubernetes and Kubernetes-As-A-Service, such as Azure Kubernetes Service (AKS), is that services do not come with load balancing endpoints by default. Load balancer services for vanilla Kubernetes is enabled through the issue of ingress software such as MetalLb.
-
+<table style="tr:nth-child(even) {background-color: #dddddd;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray; ">
+	<tbody>
+		<tr style="vertical-align:top;">
+			<th>Category </th>
+			<th>Term </th>
+			<th>Description </th>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td><b>Tools</b> </td>
+			<td><i>Kubernetes API</i> </td>
+			<td> </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>kubectl</i> </td>
+			<td>Command-line control tool for a Kubernetes cluster. Used from a client workstation or a "Jump Box" that acts as the client for your environment. This tool can be installed on Windows, Linux and Mac OS/X. </td>
+        </tr>
+		<tr style="vertical-align:top;">
+			<td><b><a href="https://kubernetes.io/docs/concepts/#kubernetes-objects">Object</b></a> </td>
+			<td><i>Node</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Pod</i></a> </td>
+			<td>The basic execution unit of a Kubernetes application - holds a processes running on your Cluster. It contains one or more <i>Containers</i>, the storage resources, a unique network IP, and any Container configurations. While the <i>docker daemon</i> is the most common container runtime used in a Kubernetes Pod, other container runtimes are also supported. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Service</i> </td>
+			<td>Thing </td>
+		</tr>	
+        <tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Volume</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Persistent Storage </i> </td>
+			<td>A hardware and software combination used to persists state. One of the key aims is ensure that if a Pod is rescheduled to run on a different Node, its state is not lost as it moves from its original Node to a new one. In the early days of Kubernetes, most storage drivers were called as “In tree”, meaning that vendors who wanted Kubernetes to use their storage had to integrate the code for their drivers directly with the Kubernetes code base. The IT industry is now gravitating towards the Container Storage Interface specification which allows Kubernetes to seamlessly use any storage platform that supports this standard without having to touch the Kubernetes code base. Ultimately, the aim of the CSI standard is to promote storage portability. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Namespace</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td><b>Control </b> </td>
+			<td><i>Controller</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Deployment</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Daemon Set</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Stateful Set</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Replica Set </i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Job</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Control Plane</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>etcd</i> </td>
+			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td><b>Kubernetes Master</b> </td>
+			<td><i>kube-apiserver </i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>kube-controller-manager</i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>kube-scheduler </i> </td>
+			<td>Thing </td>
+		</tr>		
+        <tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Container Network Interface (CNI) Plugin </i> </td>
+			<td>The Nodes in the cluster communicate with each other via what is known as an <i>overlay network</i> - a software-defined network. There are a variety of CNI plugins that Kubernetes can use. This Workshop uses the the default <i>Calico</i> CNI plugin. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Certificate Management </i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Ingress Management (Optional) </i> </td>
+			<td>A key difference between "Vanilla" Kubernetes and an Kubernetes-As-A-Service (such as Azure Kubernetes Service) is that services do not come with load balancing endpoints by default. Load balancer services for Kubernetes is enabled using software such as <i>MetalLb</i>. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td><b>Thing</b> </td>
+			<td><i>Thing</i> </td>
+			<td>Thing </td>
+		</tr>
+	</tbody>
+</table>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
