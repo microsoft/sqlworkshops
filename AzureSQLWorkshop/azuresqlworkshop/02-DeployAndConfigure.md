@@ -29,7 +29,14 @@ In this module, you'll cover these topics:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.1">2.1 Pre-deployment planning</h2></a>
 
-TODO: Topic Description
+Before you start deploying things in Azure, it's important to understand what your requirements are and how they match to offerings in Azure SQL. Using what you learned in Module 1, it's time to make a plan. You need to determine the following:  
+* Deployment method: GUI or unattended?
+* Deployment option: VM, DB, Elastic Pool, MI, or Instance Pool?
+* Purchasing model: DTU or vCore?
+* Service tier (SLO): General purpose, business critical, or hyperscale?
+* Hardware: Gen4, Gen5, or something new?
+* Sizing: number of vCores and data max size?  
+> The Data Migration Assistant tool (DMA) has a [SKU Recommender](https://docs.microsoft.com/en-us/sql/dma/dma-sku-recommend-sql-db?view=sql-server-ver15) that can help you determine the number of vCores and size if you are migrating.  
 
 <br>
 
@@ -37,7 +44,7 @@ TODO: Topic Description
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.2">2.2 Deploy and Verify</h2></a>
 
-TODO: Topic Description
+Once you've completed your pre-deployment planning, it's time to deploy and verify that deployment. In this stage, you'll deploy Azure SQL (using the Azure portal or command-line), determine network configuration and how to connect, and run some queries that verify your deployment configuration.  
 
 <br>
 
@@ -72,7 +79,7 @@ When you create an Azure SQL MI, supplying the server name is the same as in SQL
 
 Select **Create new** next to "Server" and provide the following information:  
 * *Server name*: **aw-serverID** where ID is the same identifier you used for the database and resource group.  
-* *Server admin login*: **cloudadmin**. This is the equilavent to the system admin in SQL Server. This account connects using SQL authentication (username and password) and only one of these accounts can exist.    
+* *Server admin login*: **cloudadmin**. This is the equivalent to the system admin in SQL Server. This account connects using SQL authentication (username and password) and only one of these accounts can exist.    
 * *Password*: A complex password that meets the requirements.
 * *Location*: Use the same location as your resource group.  
 
@@ -95,12 +102,12 @@ For the purposes of this workshop, we'll focus on the vCore purchasing model (re
 **Step 6 - Service tier**  
 >For more details on service tiers and comparisons, refer to [Module 1](../azuresqlworkshop/01-IntroToAzureSQL.md).  
 
-The next decision is choosing the service tier for performance and availability. We recommend you start with the General Purpose, and adjust as needed.  
+The next decision is choosing the service tier for performance and availability. We recommend you start with the General Purpose and adjust as needed.  
 
 **Step 7 - Hardware**
 >For more details on available hardware and comparisons, refer to [Module 1](../azuresqlworkshop/01-IntroToAzureSQL.md).  
 
-For the workshop, you can leave the default hardware selection of **Gen5** but you can select **Change configuration** to view the other options available (may vary by region).  
+For the workshop, you can leave the default hardware selection of **Gen5**, but you can select **Change configuration** to view the other options available (may vary by region).  
 
 **Step 8 - Sizing**
 
@@ -108,7 +115,9 @@ One of the final steps is to determine how many vCores and the Data max size. Fo
 
 Generally, if you're migrating, you should use a similar size as to what you use on-premises. You can also leverage tools, like the [Data Migration Assistant SKU Recommender](https://docs.microsoft.com/en-us/sql/dma/dma-sku-recommend-sql-db?view=sql-server-ver15) to estimate the vCore and Data max size based on your current workload.  
 
-You might also be wondering what "9.6 GB LOG SPACE ALLOCATED" in the bottom right corner means. TODO
+The Data max size is not necessarily the database size of your data today. It is the maximum amount of data space that can be allocated for your database. For more information about the difference between data space used, data space allocated, and data max size, refer to this [explanation in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-file-space-management#understanding-types-of-storage-space-for-a-database). This will also help you understand the log space allocated, which scales with your data max size.  
+
+
 
 Before you select **Apply**, confirm your selections look similar to those below:  
 
@@ -131,7 +140,7 @@ You can then choose to select Public endpoint or Private endpoint (preview). In 
 
 With Azure SQL MI, you deploy it inside an Azure virtual network and a subnet that is dedicated to managed instances. This enables you to have a completely secure, private IP address. Azure SQL MI provides the ability to connect an on-prem network to a managed instance, connect a managed instance to a linked server or other on-prem data store, and connect a managed instance to other resources. You can additionally enable a public endpoint so you can connect to managed instance from the Internet without VPN. This access is disabled by default.  
 
-The principle of private endpoints through virtual network isolation is making it's way to Azure SQL DB in something called 'private link' (currently in public preview), and you can learn more [here](https://docs.microsoft.com/en-us/azure/private-link/private-link-overview).
+The principle of private endpoints through virtual network isolation is making its way to Azure SQL DB in something called 'private link' (currently in public preview), and you can learn more [here](https://docs.microsoft.com/en-us/azure/private-link/private-link-overview).
 
 More information on connectivity for Azure SQL DB can be found [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connectivity-architecture) and for Azure SQL MI [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture). There will also be more on this topic in upcoming sections/modules.  
 
@@ -147,19 +156,19 @@ For the workshop, select **Sample**.
 
 Since we're using the AdventureWorksLT sample, the **database collation is already set**. For a review of collations and how they apply in Azure SQL, continue reading, otherwise **you can skip to Step 12**.
 
-Collations in SQL Server and Azure SQL tell the Database Engine how to treat certain characters and languages. A collation provides the sorting rules, case, and accent sensitivity properties for your data. When you're creating a new Azure SQL DB or MI, it's important to first take into account the locale requirements of the data you're working with, because the collation set will affect the characteristics of many operations in the database. In the SQL Server box product, the default collation is typically determined by the OS locale. In Azure SQL MI, you can set the server collation upon creation of the instance, and it cannot be changed later. The server collation sets the default for all of the databases in that instance of Azure SQL MI, but you can modify the collations on a database and column level. In Azure SQL DB, you can not set the server collation, it is set at the default (and most common) collation of `SQL_Latin1_General_CP1_CI_AS`, but you can set the database collation. If we break that into chunks:  
+Collations in SQL Server and Azure SQL tell the Database Engine how to treat certain characters and languages. A collation provides the sorting rules, case, and accent sensitivity properties for your data. When you're creating a new Azure SQL DB or MI, it's important to first take into account the locale requirements of the data you're working with, because the collation set will affect the characteristics of many operations in the database. In the SQL Server box product, the default collation is typically determined by the OS locale. In Azure SQL MI, you can set the server collation upon creation of the instance, and it cannot be changed later. The server collation sets the default for all of the databases in that instance of Azure SQL MI, but you can modify the collations on a database and column level. In Azure SQL DB, you cannot set the server collation, it is set at the default (and most common) collation of `SQL_Latin1_General_CP1_CI_AS`, but you can set the database collation. If we break that into chunks:  
 * `SQL` means it is a SQL Server collation (as opposed to a Windows or Binary collation)  
 * `Latin1_General` specifies the alphabet/language to use when sorting
 * `CP1` references the code page used by the collation
 * `CI` means it will be case insensitive, where `CS` is case sensitive
-* `AS` meand it will be accent sensitive, where `AI` is accent insensitive     
+* `AS` means it will be accent sensitive, where `AI` is accent insensitive     
 
 There are other options available related to widths, UTF-8, etc., and more details about what you can and can't do with Azure SQL [here](https://docs.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver15).
 
 
 **Step 12 - Opt-in for Advanced Data Security**
 
-When you deploy Azure SQL DB in the portal, you are prompted if you'd like to enable [Advanced Data Security (ADS)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security) on a free trial. Select **Start free trial**. After the free trial, it is billed according to the [Azure Security Center Standard Tier pricing](https://azure.microsoft.com/en-us/pricing/details/security-center/). If you choose to enable it, you get functionality related to data discovery and classification, identifying/mitigating potential database vulnerabilities, and threat detection. You'll learn more about these capabilities in the next module (<a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/03-Security.md" target="_blank"><i>03 - Security</i></a>). In Azure SQL MI, you can enable it on the instance after deployment.  
+When you deploy Azure SQL DB in the portal, you are prompted if you'd like to enable [Advanced Data Security (ADS)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security) on a free trial. Select **Start free trial**. After the free trial, it is billed according to the [Azure Security Center Standard Tier pricing](https://azure.microsoft.com/en-us/pricing/details/security-center/). If you choose to enable it, you get functionality related to data discovery and classification, identifying/mitigating potential database vulnerabilities, and threat detection. You'll learn more about these capabilities in the next module (<a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/03-Security.md" target="_blank">03 - Security</a>). In Azure SQL MI, you can enable it on the instance after deployment.  
 
 Your "Additional settings" pane should now look similar to the image below.
 
@@ -198,7 +207,7 @@ If, for whatever reason, you get lost from this page and the deployment has not 
 Once your resource has deployment, review the "Overview" pane for the SQL database in the Azure portal and confirm that the Status is "Online."  
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity 2</a>: Initial connect and comparison</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Initial connect and comparison</b></p>
 
 **Step 1 - Connect to SQL Server 2019**
 Now that everything looks to be up and running in the Azure portal, let's switch to a familiar tool, SQL Server Management Studio (SSMS). Open SSMS and connect, using Windows Authentication, to the local instance of SQL Server 2019 that's running on your Azure VM (if you don't have this, please revisit the prerequisites).  
@@ -229,9 +238,8 @@ Expanding the databases and system databases should result in a view similar to 
 
 Spend a few minutes clicking around and exploring the differences, at first glance, between the Azure SQL Database logical server and Azure SQL Database. You won't deploy an Azure SQL Managed Instance as part of this workshop, but the image below shows how Azure SQL Managed Instance would appear in SSMS.
 
-**TODO SCREENSHOT OF SSMS WITH ADVENTUREWORKS**  
 
-
+![](../graphics/miserver.png)   
 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>Activity 3</a>: Verify deployment queries</b></p>
@@ -280,13 +288,13 @@ Next, select the **Explorer** icon from the left taskbar to navigate through the
 
 ![](../graphics/explorer.png)  
 
-Throughout the workshop, you'll be instructed at various points to open a notebook (file ending in `.ipynb`) or a script (file ending in `.sql`), and you can access those through here directly.   
+Throughout the workshop, you'll be instructed at various points to open a notebook (file ending in `.ipynb`), and you can access those from here directly.   
 
 **Step 3 - Verify deployment queries**  
 
 Once you've deployed an instance of SQL (be in Azure SQL or SQL Server), there are typically some queries you would run to verify your deployment. In Azure SQL, some of these queries vary from SQL Server. In this step, you'll see what and how things change from SQL Server, and what is new.   
 
-For this step, you'll use the notebook **VerifyDeployment.ipynb** which is under `azuresqlworkshop\01-IntroToAzureSQL\verifydeployment\VerifyDeployment.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
+For this step, you'll use the notebook **VerifyDeployment.ipynb** which is under `azuresqlworkshop\02-DeployAndConfigure\verifydeployment\VerifyDeployment.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -296,15 +304,16 @@ TODO: Topic Description
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Azure CLI</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="4">Activity 4</a>: Configure with Azure CLI</b></p>
 
 So you've seen the Azure portal, SSMS, and SQL Notebooks in ADS, but there are other tools available to you to use to manage Azure SQL. Two of the most popular are the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) and [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-3.3.0). They are similar in their functionality, but for this workshop we will focus on the Azure CLI.  
 
 To complete this activity, you'll use a PowerShell notebook, which is the same concept as a SQL notebook, but the coding language is PowerShell. You can use PowerShell notebooks to leverage Azure CLI or Azure PowerShell, but we will focus on Azure CLI. For more information on the Azure PowerShell module, [see the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-powershell-samples?tabs=single-database). For both of these tools, you can also use the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), which is an interactive shell environment that you can use through your browser in the Azure portal.  
 
-For this activity, you'll use the notebook called **AzureCli.ipynb** which is under `azuresqlworkshop\01-IntroToAzureSQL\cli\AzureCli.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
+In the example that follows, you'll also explore the latency effects of using different connection policies in Azure SQL.  
 
->In the `cli` folder, you'll also find a script if you want to try the activity with the Azure Cloud Shell. 
+For this activity, you'll use the notebook called **AzureCli.ipynb** which is under `azuresqlworkshop\02-DeployAndConfigure\cli\AzureCli.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
+
 
 <br>
 
@@ -316,15 +325,19 @@ TODO: Topic Description
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="5"><b>Activity 5</a>: Load data</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="5">Activity 5</a>: Load data into Azure SQL Database</b></p>
 
-TBD  
+In this activity, you'll explore one scenario for bulk loading data from Azure Blob storage using T-SQL and Shared Access Signatures (SAS) into Azure SQL Database.   
+
+For this activity, you'll use the notebook called **LoadData.ipynb** which is under `azuresqlworkshop\02-DeployAndConfigure\loaddata\LoadData.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 <ul>
-    <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/sql/dma/dma-sku-recommend-sql-db?view=sql-server-ver15" target="_blank">Data Migration Assistant tool (DMA) SKU Recommender</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-get-started" target="_blank">Quickstart: Create an Azure SQL Managed Instance</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-migrate" target="_blank">How to migrate to Azure SQL Managed Instance</a></li>
 </ul>
 
 
