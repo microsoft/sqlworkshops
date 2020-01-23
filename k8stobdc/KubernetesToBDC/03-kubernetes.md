@@ -22,18 +22,18 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>
 		<tr style="vertical-align:top;">
 			<td><b>Tools</b> </td>
-			<td><i>Kubernetes API</i> </td>
-			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/"><i>The Kubernetes API</i></a> </td>
+			<td>The foundation for the declarative configuration schema calls for the entire system. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>kubectl</i> </td>
-			<td>Command-line control tool for a Kubernetes cluster. Used from a client workstation or a "Jump Box" that acts as the client for your environment. This tool can be installed on Windows, Linux and Mac OS/X. </td>
+			<td><a href="https://kubernetes.io/docs/reference/kubectl/overview/"><i>kubectl</i></a> </td>
+			<td>Command-line control tool for a Kubernetes cluster. Used from a client workstation or a "Jump Box" that acts as the client for your environment. This tool can be installed on Windows, Linux and Mac OS/X. Uses a set of configurations set in a text file to connect to a Kubernetes cluster. </td>
         </tr>
 		<tr style="vertical-align:top;">
 			<td><b><a href="https://kubernetes.io/docs/concepts/#kubernetes-objects">Object</b></a> </td>
-			<td><i>Node</i> </td>
-			<td>Thing </td>
+			<td><a href="https://www.tutorialspoint.com/kubernetes/kubernetes_node.htm"><i>Node</i></a> </td>
+			<td>The computers (physical or virtual) that host the rest of the Objects in a Kubernetes cluster. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
@@ -42,23 +42,53 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Service</i> </td>
-			<td>Thing </td>
+			<td><i><a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</i></a> </td>
+			<td>A "description" of a set of Pods and a policy to access them. This de-couples the call to an application to it's physical representation, and allows the application running on the Pod to be more stateless. </td>
 		</tr>	
         <tr style="vertical-align:top;">
 			<td> </td>
 			<td><i>Volume</i> </td>
-			<td>Thing </td>
+			<td>A pointer to a storage directory - either "ethereal" (has the same lifetime as the Pod) or permanent.  Can use various providers such as cloud storage and on-premises devices, and is set with various parameters </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Persistent Storage </i> </td>
+			<td><i><a href="https://github.com/container-storage-interface/spec/blob/master/spec.md">Persistent Storage </i></a> </td>
 			<td>A hardware and software combination used to persists state. One of the key aims is ensure that if a Pod is rescheduled to run on a different Node, its state is not lost as it moves from its original Node to a new one. In the early days of Kubernetes, most storage drivers were called as “In tree”, meaning that vendors who wanted Kubernetes to use their storage had to integrate the code for their drivers directly with the Kubernetes code base. The IT industry is now gravitating towards the Container Storage Interface specification which allows Kubernetes to seamlessly use any storage platform that supports this standard without having to touch the Kubernetes code base. Ultimately, the aim of the CSI standard is to promote storage portability. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Namespace</i> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"><i>Namespace</i></a> </td>
+			<td>Used to define multiple virtual clusters backed by the same physical cluster. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td><b>Kubernetes Master</b> </td>
+			<td><a href="https://kubernetes.io/docs/admin/kube-apiserver/"><i>kube-apiserver </i></a> </td>
+			<td>Responds to REST calls to provide the frontend to the cluster’s shared state. This allows all commands through which all other components interact. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/"><i>kube-controller-manager</i></a> </td>
+			<td>A daemon that embeds the non-terminating control loops shipped with Kubernetes that watches the shared state of the cluster through the API Server and makes changes to change the current state of the cluster to the desired state. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>kube-scheduler </i> </td>
 			<td>Thing </td>
+		</tr>		
+        <tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Container Network Interface </i> </td>
+			<td>The Nodes in the cluster communicate with each other via what is known as an <i>overlay network</i> - a software-defined network. There are a variety of CNI plugins that Kubernetes can use. This Workshop uses the the default <i>Calico</i> CNI plugin. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Certificate Management </i> </td>
+			<td>Thing </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i>Ingress Management (Optional) </i> </td>
+			<td>A key difference between "Vanilla" Kubernetes and an Kubernetes-As-A-Service (such as Azure Kubernetes Service) is that services do not come with load balancing endpoints by default. Load balancer services for Kubernetes is enabled using software such as <i>MetalLb</i>. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td><b>Control </b> </td>
@@ -99,36 +129,6 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<td> </td>
 			<td><i>etcd</i> </td>
 			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
-		</tr>
-		<tr style="vertical-align:top;">
-			<td><b>Kubernetes Master</b> </td>
-			<td><i>kube-apiserver </i> </td>
-			<td>Thing </td>
-		</tr>
-		<tr style="vertical-align:top;">
-			<td> </td>
-			<td><i>kube-controller-manager</i> </td>
-			<td>Thing </td>
-		</tr>
-		<tr style="vertical-align:top;">
-			<td> </td>
-			<td><i>kube-scheduler </i> </td>
-			<td>Thing </td>
-		</tr>		
-        <tr style="vertical-align:top;">
-			<td> </td>
-			<td><i>Container Network Interface (CNI) Plugin </i> </td>
-			<td>The Nodes in the cluster communicate with each other via what is known as an <i>overlay network</i> - a software-defined network. There are a variety of CNI plugins that Kubernetes can use. This Workshop uses the the default <i>Calico</i> CNI plugin. </td>
-		</tr>
-		<tr style="vertical-align:top;">
-			<td> </td>
-			<td><i>Certificate Management </i> </td>
-			<td>Thing </td>
-		</tr>
-		<tr style="vertical-align:top;">
-			<td> </td>
-			<td><i>Ingress Management (Optional) </i> </td>
-			<td>A key difference between "Vanilla" Kubernetes and an Kubernetes-As-A-Service (such as Azure Kubernetes Service) is that services do not come with load balancing endpoints by default. Load balancer services for Kubernetes is enabled using software such as <i>MetalLb</i>. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td><b>Thing</b> </td>
