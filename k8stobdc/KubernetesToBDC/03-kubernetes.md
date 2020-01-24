@@ -28,7 +28,17 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/reference/kubectl/overview/"><i>kubectl</i></a> </td>
-			<td>Command-line control tool for a Kubernetes cluster. Used from a client workstation or a "Jump Box" that acts as the client for your environment. This tool can be installed on Windows, Linux and Mac OS/X. Uses a set of configurations set in a text file to connect to a Kubernetes cluster. </td>
+			<td>A command-line control tool for a Kubernetes cluster. Used from a client workstation or a "Jump Box" that acts as the client for your environment. This tool can be installed on Windows, Linux and Mac OS/X. Uses a set of configurations set in a text file to connect to a Kubernetes cluster. </td>
+        </tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/reference/tools/#kubeadm"><i>kubeadm</i></a> </td>
+			<td>A command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or virtual machines. </td>
+        </tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/reference/tools/#dashboard"><i>The Kubernetes Dashboard</i></a> </td>
+			<td>A web-based Kubernetes interface that allows you to deploy containerized applications to a Kubernetes cluster, troubleshoot them, and manage the cluster and its resources. </td>
         </tr>
 		<tr style="vertical-align:top;">
 			<td><b><a href="https://kubernetes.io/docs/concepts/#kubernetes-objects">Object</b></a> </td>
@@ -97,53 +107,48 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Ingress Management (Optional) </i> </td>
+			<td><a href="https://metallb.universe.tf/"><i>Ingress Management (Optional) </i></a> </td>
 			<td>A key difference between "Vanilla" Kubernetes and an Kubernetes-As-A-Service (such as Azure Kubernetes Service) is that services do not come with load balancing endpoints by default. Load balancer services for Kubernetes is enabled using software such as <i>MetalLb</i>. </td>
 		</tr>
 		<tr style="vertical-align:top;">
-			<td><b>Control </b> </td>
-			<td><i>Controller</i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/concepts/architecture/cloud-controller/"><b>Control </b></a> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/architecture/controller/"><i>Controller</i></a> </td>
+			<td>A "plugin" mechanism that allows cloud providers to integrate with Kubernetes easily. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Deployment</i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"><i>Deployment</i></a> </td>
+			<td>A YAML file describing the state of Pods and ReplicaSets. Deployed to the <i>Kubernetes API</i> using <i>kubectl</i> or <i>REST</i> calls. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Daemon Set</i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"><i>Daemon Set</i></a> </td>
+			<td>A service that ensures that <i>Nodes</i> run a copy of a <i>Pod</i>. As Nodes are added to the cluster, Pods are added to them. As Nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Stateful Set</i> </td>
-			<td>Thing </td>
+			<td><a hrf="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"><i>Stateful Set</i></a> </td>
+			<td>The workload API object used to manage stateful applications. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Replica Set </i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"><i>Replica Set </i></a> </td>
+			<td>A service that maintains a stable set of replica Pods running at any given time. Used to guarantee the availability of a specified number of identical Pods. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Job</i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/"><i>Job</i></a> </td>
+			<td>A Job creates one or more Pods and ensures that a specified number of them successfully terminate. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Control Plane</i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/concepts/#kubernetes-control-plane"><i>Control Plane</i></a> </td>
+			<td>Contains components such as the <i>Kubernetes Master</i> and <i>kubelet</i> processes that governs how Kubernetes communicates with your cluster. The Control Plane maintains a record of all of the Kubernetes Objects in the system, and runs continuous control loops to manage those objects’ state. At any given time, the Control Plane’s control loops will respond to changes in the cluster and work to make the actual state of all the objects in the system match the desired state that you provided. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>etcd</i> </td>
+			<td><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/"><i>etcd</i></a> </td>
 			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
-		</tr>
-		<tr style="vertical-align:top;">
-			<td><b>Thing</b> </td>
-			<td><i>Thing</i> </td>
-			<td>Thing </td>
 		</tr>
 	</tbody>
 </table>
