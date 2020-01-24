@@ -21,7 +21,7 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<th>Description </th>
 		</tr>
 		<tr style="vertical-align:top;">
-			<td><b>Tools</b> </td>
+			<td><a href="https://kubernetes.io/docs/reference/tools/"><b>Tools</b></a> </td>
 			<td><a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/"><i>The Kubernetes API</i></a> </td>
 			<td>The foundation for the declarative configuration schema calls for the entire system. </td>
 		</tr>
@@ -37,6 +37,16 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
+			<td><a href="https://kubernetes.io/docs/admin/kubelet/"><i>kubelet</i></a> </td>
+			<td>Runs on each Node, and provides communication with the Kubernetes Master. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/admin/kube-proxy/"><i>kube-proxy </i></a> </td>
+			<td>Runs on each Node, and provides a network proxy which reflects Kubernetes networking services. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
 			<td><i><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Pod</i></a> </td>
 			<td>The basic execution unit of a Kubernetes application - holds a processes running on your Cluster. It contains one or more <i>Containers</i>, the storage resources, a unique network IP, and any Container configurations. While the <i>docker daemon</i> is the most common container runtime used in a Kubernetes Pod, other container runtimes are also supported. </td>
 		</tr>
@@ -47,8 +57,8 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>	
         <tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Volume</i> </td>
-			<td>A pointer to a storage directory - either "ethereal" (has the same lifetime as the Pod) or permanent.  Can use various providers such as cloud storage and on-premises devices, and is set with various parameters </td>
+			<td><a href="https://kubernetes.io/docs/concepts/storage/volumes/"><i>Volume</i></a> </td>
+			<td>A pointer to a storage directory - either "ethereal" (has the same lifetime as the Pod) or permanent. Can use various providers such as cloud storage and on-premises devices, and is set with various parameters. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
@@ -61,7 +71,7 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<td>Used to define multiple virtual clusters backed by the same physical cluster. </td>
 		</tr>
 		<tr style="vertical-align:top;">
-			<td><b>Kubernetes Master</b> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/architecture/master-node-communication/"><b>Kubernetes Master</b></a> </td>
 			<td><a href="https://kubernetes.io/docs/admin/kube-apiserver/"><i>kube-apiserver </i></a> </td>
 			<td>Responds to REST calls to provide the frontend to the cluster’s shared state. This allows all commands through which all other components interact. </td>
 		</tr>
@@ -72,18 +82,18 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>kube-scheduler </i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/"><i>kube-scheduler </i></a> </td>
+			<td>A policy-driven scheduling service that is topology aware and specific to a workload. It is called for functions such as availability, performance, and capacity. </td>
 		</tr>		
         <tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Container Network Interface </i> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/"><i>Container Network Interface </i></a> </td>
 			<td>The Nodes in the cluster communicate with each other via what is known as an <i>overlay network</i> - a software-defined network. There are a variety of CNI plugins that Kubernetes can use. This Workshop uses the the default <i>Calico</i> CNI plugin. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><i>Certificate Management </i> </td>
-			<td>Thing </td>
+			<td><a href="https://kubernetes.io/docs/concepts/security/overview/"><i>Certificate Management </i></a> </td>
+			<td>Security management for a Kubernetes cluster is managed through <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Secrets which can use Certificates</a>. This concept deals with those layers. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
