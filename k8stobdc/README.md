@@ -27,7 +27,7 @@ This README.MD file explains how the workshop is laid out, what you will learn, 
 In this workshop you'll learn:
 <br>
 
-- How Containers and Kubernetes work and where you can use them
+- How Containers and Kubernetes work and when and where you can use them
 - Hardware considerations for setting up a production Kubernetes Cluster on -remises
 - Considerations for Virtual and Cloud-based environments for production Kubernetes Cluster
 
