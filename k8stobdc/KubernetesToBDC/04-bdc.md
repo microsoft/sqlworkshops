@@ -148,7 +148,7 @@ These components are used in the Compute Pool of the BDC:
 
 <h3>BDC: App Pool</h3>
 
-The App Pool is a set of Pods within a Node that hold multiple types of end-points into the system. SQL Server Integration Services lives in the App Pool, and other Job systems are possible. You could instatiate a long-running job (such as IoT streaming) or Machine Learning (ML) endpoints used for scoring a prediction or returning a classification.  
+The App Pool is a set of Pods within a Node that hold multiple types of end-points into the system. SQL Server Integration Services lives in the App Pool, and other Job systems are possible. You could instantiate a long-running job (such as IoT streaming) or Machine Learning (ML) endpoints used for scoring a prediction or returning a classification.  
 
 These components are used in the Compute Pool of the BDC:
 

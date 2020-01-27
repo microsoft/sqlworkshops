@@ -203,7 +203,9 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 
 You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Container Orchestration systems here</a>. We're using the Azure Kubernetes Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great set of tutorials for you to learn more here</a>.
 
-In SQL Server Big Data Clusters, the Container Orchestration system (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; it is reponsible for building and configurint the Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage), and manages the operation of the Cluster.
+In SQL Server Big Data Clusters, the Container Orchestration system (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; it is responsible for building and configuring the Nodes, assigns Pods to Nodes,creates and manages the Persistent Volumes (durable storage), and manages the operation of the Cluster.
+
+> NOTE: The OpenShift Container Platform is a commercially supported Platform as a Service (PaaS) based on Kubernetes from RedHat. Many shops require a commercial vendor to implement and support Kubernetes. 
 
 (You'll cover the storage aspects of Container Orchestration in more detail in a moment.)
 
@@ -282,7 +284,7 @@ You'll explore further operations with the Azure Data Studio in the final module
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Azure Data Studio Notebooks Overview</b></p>
 
 <p><b>Steps</b></p>
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks?view=sql-server-2017" target="_blank">Open this reference, and read the tutorial - you do not have to follow the steps, but you can if time permist.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks?view=sql-server-2017" target="_blank">Open this reference, and read the tutorial - you do not have to follow the steps, but you can if time permits.</p>
 
 <br>
 <p style="border-bottom: 1px solid lightgrey;"></p>

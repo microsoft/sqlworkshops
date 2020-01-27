@@ -92,7 +92,7 @@ This solution uses an example of a retail organization that has multiple data so
 
 <img style="height: 25;" src="../graphics/WWI-logo.png">
 
-Wide World Importeres (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. They have a great training program for new employees, that focuses on connecting with their customers and providing great face-to-face customer service. This strong focus on customer relationships has helped set WWI apart from their competitors. 
+Wide World Importers (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. They have a great training program for new employees, that focuses on connecting with their customers and providing great face-to-face customer service. This strong focus on customer relationships has helped set WWI apart from their competitors. 
 
 WWI has now added web and mobile commerce to their platform, which has generated a significant amount of additional data, and data formats. These new platforms have been added without integrating into the OLTP system data or Business Intelligence infrastructures. As a result, "silos" of data stores have developed.
 
@@ -144,7 +144,7 @@ Using the following steps, you will create a Resource Group in Azure that will h
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sqlallproducts-allversions" target="_blank"> Read the following article to install the big data cluster Tools, ensuring that you carefully follow each step</a>. Note that if you followed the pre-requisites properly, you will already have <i>Python</i>, <i>kubectl</i>, and <i>Azure Data Studio</i> installed, so those may be skipped. Follow all other instructions.</p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sqlallproducts-allversions" target="_blank"> Read the following article to deploy the bdc to AKS, ensuring that you carefully follow each step</a>. Stop at the section marked <b>Connect to the cluster</b>.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sqlallproducts-allversions" target="_blank"> Read the following article to deploy the Big Data Cluster to the Azure Kubernetes Service, ensuring that you carefully follow each step</a>. Stop at the section marked <b>Connect to the cluster</b>.</p>
  
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -309,7 +309,7 @@ You can <a href="https://hackernoon.com/docker-commands-the-ultimate-cheat-sheet
 
 <h3>Container Orchestration <i>(Kubernetes)</i></h3>
 
-For Big Data systems, having lots of Containers is very advantageous to segment purpose and performance profiles. However, dealing with many Container Images, allowing persisted storage, and interconnecting them for network and internetwork communications is a complex task. One such Container Prchestration tool is <i>Kubernetes</i>, an open source Container orchestrator, which can scale Container deployments according to need. The following table defines some important Container Orchestration Tools (Such as Kubernetes or OpenShift) terminology:
+For Big Data systems, having lots of Containers is very advantageous to segment purpose and performance profiles. However, dealing with many Container Images, allowing persisted storage, and interconnecting them for network and internetwork communications is a complex task. One such Container Orchestration tool is <i>Kubernetes</i>, an open source Container orchestrator, which can scale Container deployments according to need. The following table defines some important Container Orchestration Tools (Such as Kubernetes or OpenShift) terminology:
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
@@ -327,7 +327,7 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 
 You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Container Orchestration systems here</a>. We're using the Azure Kubernetes Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great set of tutorials for you to learn more here</a>.
 
-In SQL Server Big Data Clusters, the Container Orchestration system (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; it is reponsible for building and configurint the Nodes, assigns Pods to Nodes,creates and manages the Persistent Voumes (durable storage), and manages the operation of the Cluster.
+In SQL Server Big Data Clusters, the Container Orchestration system (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; it is responsible for building and configuring the Nodes, assigns Pods to Nodes,creates and manages the Persistent Volumes (durable storage), and manages the operation of the Cluster.
 
 (You'll cover the storage aspects of Container Orchestration in more detail in a moment.)
 
@@ -440,7 +440,7 @@ You'll explore further operations with the Azure Data Studio in the <i>Operation
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>Activity: Azure Data Studio Notebooks Overview</b></p>
 
 <p><b>Steps</b></p>
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks?view=sql-server-2017" target="_blank">Open this reference, and read the tutorial - you do not have to follow the steps, but you can if time permist.</p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png"><a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-notebooks?view=sql-server-2017" target="_blank">Open this reference, and read the tutorial - you do not have to follow the steps, but you can if time permits.</p>
 
 
 <br>
@@ -486,7 +486,7 @@ Since HDFS is a file-system, data transfer is largely a matter of using it as a 
 
 <h3>Data Pipelines using <i>Azure Data Factory</i></h3>
 
-As described earlier, you can use various methods to ingest data ad-hoc and as-needed for your two data targets (HDFS and SQL Server Tables. A more holistic archicture is to use a <i>Pipeline</i> system that can define sources, triggers and events, transforms, targets, and has logging and tracking capabilities. The Microsoft Azure Data Factory provides all of the capabilities, and often serves as the mechanism to transfer data to and from on-premises, in-cloud, and other sources and targets. <a href="https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities" target="_blank">ADF can serve as a full data pipeline system, as described here</a>. 
+As described earlier, you can use various methods to ingest data ad-hoc and as-needed for your two data targets (HDFS and SQL Server Tables. A more holistic architecture is to use a <i>Pipeline</i> system that can define sources, triggers and events, transforms, targets, and has logging and tracking capabilities. The Microsoft Azure Data Factory provides all of the capabilities, and often serves as the mechanism to transfer data to and from on-premises, in-cloud, and other sources and targets. <a href="https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities" target="_blank">ADF can serve as a full data pipeline system, as described here</a>. 
 
 <br>
 <img style="height: 75;" src="../graphics/adf.png"> 

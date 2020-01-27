@@ -29,7 +29,7 @@ You'll cover the following topics in this Module:
 
 There are two primary areas for monitoring your BDC deployment. The first deals with SQL Server 2019, and the second deals with the set of elements in the Cluster. 
 
-For SQL Server, <a href="https://docs.microsoft.com/en-us/sql/relational-databases/database-lifecycle-management?view=sql-server-ver15" target="_blank">management is much as you would normally perform for any SQL Server system</a>. You have the same type of services, surface points, security areas and other control vectors as in a stand-alone installation of SQL Server. The tools you have avalaible for managing the Master Instance in the BDC are the same as managing a stand-alone installation, including SQL Server Management Studio, command-line interfaces, Azure Data Studio, and third party tools. 
+For SQL Server, <a href="https://docs.microsoft.com/en-us/sql/relational-databases/database-lifecycle-management?view=sql-server-ver15" target="_blank">management is much as you would normally perform for any SQL Server system</a>. You have the same type of services, surface points, security areas and other control vectors as in a stand-alone installation of SQL Server. The tools you have available for managing the Master Instance in the BDC are the same as managing a stand-alone installation, including SQL Server Management Studio, command-line interfaces, Azure Data Studio, and third party tools. 
 
 For the cluster components, you have three primary interfaces to use, which you will review next.
 
