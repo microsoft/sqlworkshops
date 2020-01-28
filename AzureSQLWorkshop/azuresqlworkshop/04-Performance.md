@@ -78,7 +78,7 @@ This DMV will track overall resource usage of your workload against Azure SQL Da
 
 - Setup an XEvent trace for queries
 
-TODO: Show steps to setup XEvent to an Azure Storage account to trace queries
+TODO: This step may be moved to a BONUS activity.
 
 **Step 2: Run the workload and observe performance**
 
@@ -106,12 +106,12 @@ Substitue the login name created for the Azure SQL Database Server created in Mo
 Substitute the database you deployed in Module 2 for the **-d parameter**<br>
 Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
 
-This script will use 15 concurrent users running the workload query 1000 times.
+This script will use 10 concurrent users running the workload query 1500 times.
 
 From a powershell command prompt, change to the directory for this module activity:
 
 <pre>
-cd AzureSQLWorkshop\azuresqlworkshop\03-Performance
+cd AzureSQLWorkshop\azuresqlworkshop\03-Performance\monitor_and_scale
 </pre>
 
 Run the workload with the following command
@@ -119,8 +119,6 @@ Run the workload with the following command
 ```Powershell
 .\sqlworkload.cmd
 ```
-
-
 
 Your screen at the command prompt should look similar to the following
 
@@ -131,8 +129,8 @@ Your screen at the command prompt should look similar to the following
 [datetime] [ostress PID] -U[user]
 [datetime] [ostress PID] -dAdventureWorks0406
 [datetime] [ostress PID] -P********
-[datetime] [ostress PID] -n15
-[datetime] [ostress PID] -r1000
+[datetime] [ostress PID] -n10
+[datetime] [ostress PID] -r1500
 [datetime] [ostress PID] -q
 [datetime] [ostress PID] Using language id (LCID): 1024 [English_United States.1252] for character formatting with NLS: 0x0006020F and Defined: 0x0006020F
 [datetime] [ostress PID] Default driver: SQL Server Native Client 11.0
@@ -153,7 +151,7 @@ Your screen at the command prompt should look similar to the following
 
 - Use the query in SSMS to monitor dm_exec_requests (**sqlrequests.sql**) to observe active requests. Run this query 5 or 6 times and observe some of the results.
 
-You should see many of the requests have a status = RUNNABLE and last_wait_type = SOS_SCHEDULER_YIELD.
+You should see many of the requests have a status = RUNNABLE and last_wait_type = SOS_SCHEDULER_YIELD. One indicator of many RUNNABLE requests and many SOS_SCHEDULER_YIELD seen often is a possible lack of CPU resources for active queries.
 
 >NOTE: You may see one or more active requests with a command = SELECT and a wait_type = XE_LIVE_TARGET_TVF. These are queries run by services managed by Microsoft to help power capabilities like Performance Insights using Extended Events. Microsoft does not publish the details of these Extended Event sessions.
 
@@ -172,9 +170,9 @@ For a SQL Server on-premises environment you would typically use a tool specific
 - Let the workload complete and take note of its overall duration. When the workload completes you should see results like the following and a return to the command prompt
 
 <pre>[datetime] [ostress PID] Total IO waits: 0, Total IO wait time: 0 (ms)
-[datetime] [ostress PID] OSTRESS exiting normally, elapsed time: 00:01:02.637</pre>
+[datetime] [ostress PID] OSTRESS exiting normally, elapsed time: 00:01:22.637</pre>
 
-Your duration time may vary but this typically takes at least 1 minute.
+Your duration time may vary but this typically takes at least 1 minute or more.
 
 **Step 3: Use Query Store to do further performance analysis**
 
@@ -188,22 +186,60 @@ Query Store comes with a series of system catalog views to view performance data
 
 Using the Object Explorer in SSMS, open the Query Store Folder to find the report for **Top Resource Consuming Queries**<br><br>
 
-<img src="../graphics/SSMS_QDS_Find_Top_Queries.png" alt="SSMS_QDS_Find_Top_Queries" width="300"/>
+<img src="../graphics/SSMS_QDS_Find_Top_Queries.png" alt="SSMS_QDS_Find_Top_Queries"/>
 
 Select the report to find out what queries have consumed the most avg resources and execution details of those queries. Based on the workload run to this point, your report should look something like the following:<br><br>
-<img src="../graphics/SSMS_QDS_Top_Query_Report.png" alt="SSMS_QDS_Find_Top_Queries" width="500"/>
+<img src="../graphics/SSMS_QDS_Top_Query_Report.png" alt="SSMS_QDS_Find_Top_Queries"/>
 
-The query shown is the SQL query from the workload for customer sales. Hover over the Plan_id circle to observe execution statistics for the query
+The query shown is the SQL query from the workload for customer sales. This report has 3 components: Queries with the high total duration (you can change the metric), the associated query plan and runtime statistics, and the associated query plan in a visual map.
 
-- Look at Waits Report. Observe CPU waits and look at waits for CPU for query
+If you click on the bar chart for the query (the query_id may be different for your system), your results should look like the following:<br><br>
+
+<img src="../graphics/SSMS_QDS_Query_ID.png" alt="SSMS_QDS_Query_ID"/>
+
+You can see the total duration of the query and query text.
+
+Right of this bar chart is a chart for statistics for the query plan associated with the query. Hover over the dot associated with the plan. Your results should look like the following:<br><br>
+
+<img src="../graphics/SSMS_Slow_Query_Stats.png" alt="SSMS_Slow_Query_Stats"/>
+
+Note the average duration of the query. Your times may vary but the key will be to compare this average duration to the average wait time for this query and eventually the average duration when we introduce a performance improvement.
+
+The final component is the visual query plan. The query plan for this query looks like the following:<br><br>
+
+<img src="../graphics/SSMS_Workload_Query_Plan.png" alt="SSMS_Workload_Query_Plan"/>
+
+Given the small nature of rows in the tables in this database, this query plan is not inefficient. There could be some tuning opportunities but not much performance will be gained by tuning the query itself.
+
+- Observe waits to see if they are affecting performance.
+
+We know from earlier diagnostics that a high number of requests constantly were in a RUNNABLE status along with almost 100% CPU. Query Store comes with reports to look at possible performance bottlenecks to due waits on resources.
+
+Below the Top Resource Consuming Queries report in SSMS is a report called Query Wait Statistics. Click on this report and hover over the bar chart. Your results should look like the following:<br><br>
+
+<img src="../graphics/SSMS_Top_Wait_Stats.png" alt="SSMS_Top_Wait_Stats"/>
+
+You can see the top wait category is CPU and the average wait time. Furthermore, the top query waiting for CPU is the query from the workload we are using.
+
+Click on the bar chart for CPU to see more about query wait details. Hover over the bar chart for the query. Your results should look like the following:<br><br>
+
+<img src="../graphics/SSMS_Top_Wait_Stats_Query.png" alt="SSMS_Top_Wait_Stats_Query"/>
+
+Notice that the average wait time for CPU for this query is a high % of the overall average duration for the query.
+
+Given the evidence to this point, without any query tuning, our workload requires more CPU capacity than we have deployed for our Azure SQL Database.
 
 **Step 4: Observe query performance with Extended Events**
 
 - Load up XEvent file and observe information in the query trace.
 
+TODO: This may be moved to a BONUS activity.
+
 **Step 5: Observe performance using the Azure Portal**
 
 - Observe performance in the portal for the resource graph for the db
+
+TODO: Go back and run through demo steps and show the Compute Portal graph.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -223,32 +259,63 @@ In this activity you will take the results of your monitoring in Module 4.2 and 
 
 **Step 1: Decide options on how to scale performance**
 
-Since workload is CPU bound one way to improve performance is to increase CPU capacity or speed. A SQL Server user would have to move to a different machine or reconfigure a VM to get more CPU capacity.
+Since workload is CPU bound one way to improve performance is to increase CPU capacity or speed. A SQL Server user would have to move to a different machine or reconfigure a VM to get more CPU capacity. In some cases, even a SQL Server administrator may not have permission to make these scaling changes or the process could take time.
 
 For Azure, we can use ALTER DATABASE, az cli, or the portal to increase CPU capacity.
 
-Look at the portal for options.
+Using the Azure Portal we can see options for how you can scale for more CPU resources. Using the Overview option for the database, select the Pricing tier current deployment.
+
+< put in screen here >
+
+Here you can see options for changing or scaling compute resources. For General Purpose, you can easily scale up to something like 8 vCores.
+
+< put in screen here >
 
 **Step 2: Increase capacity of your Azure SQL Database**
 
-Use ALTER DATABASE to move up to 8vcores for General Purpose.
+There are other methods to change the Pricing tier and one of them is with the T-SQL statement ALTER DATABASE.
 
-Example queries to use
+>**NOTE**: For this demo you must first flush the query store using the following script **flushhquerystore.sql** or T-SQL statement:
 
 ```sql
-select  database_name,slo_name,cpu_limit,max_db_memory
-,max_db_max_size_in_mb, primary_max_log_rate,primary_group_max_io, volume_local_iops,volume_pfs_iops
-from  sys.dm_user_db_resource_governance
-go
-ALTER DATABASE AdventureWorksAzureLT
-MODIFY (SERVICE_OBJECTIVE = 'GP_Gen5_8')
-go
-SELECT DATABASEPROPERTYEX('AdventureWorksAzureLT', 'ServiceObjective')
+EXEC sp_query_store_flush_db
 ```
+
+- First, learn how to find out your current Pricing tier using T-SQL. The Pricing tier is also know as a *service objective*. Using SSMS, open the script **get_service_object.sql** or the T-SQL statements to find out this information:
+
+```sql
+SELECT database_name,slo_name,cpu_limit,max_db_memory, max_db_max_size_in_mb, primary_max_log_rate,primary_group_max_io, volume_local_iops,volume_pfs_iops
+FROM sys.dm_user_db_resource_governance;
+GO
+SELECT DATABASEPROPERTYEX('AdventureWorks0406', 'ServiceObjective');
+GO
+```
+
+For the current Azure SQL Database deployment, your results should look like the following:
+
+< put in results here >
+
+The documentation for ALTER DATABASE shows all the possible options for service objectives and how they match to the Azure portal: https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15.
+
+When you view the ALTER DATABASE documentation, notice the ability to click on your target SQL Server deployment to get the right syntax options. Click on SQL Database single database/elastic pool to see the options for Azure SQL Database. To match the compute scale you found in the portal you need the service object **'GP_Gen5_8'**
+
+Using SSMS, run the script modify_service_objective.sql or T-SQL command:
+
+```sql
+ALTER DATABASE AdventureWorks0406 MODIFY (SERVICE_OBJECTIVE = 'GP_Gen5_8');
+```
+
+This statement comes back immediately but the scaling of the compute resources take place in the background. A scale this small should take less than a minute and for a short period of time the database will be offline to make the change effective. You can monitor the progress of this scaling activity using the Azure Portal. 
+
+< put in screenshot here>
+
+When this is done using the queries listed above to verify the new service objective or pricing tier of 8 vCores has taken affect.
 
 **Step 3: Run the workload again**
 
-Re-run the ostress workload.
+Now that the scaling has complete, we need to see if the workload duration is faster and whether waits on CPU resources has decreased.
+
+Run the workload again using the command **sqlworkload.cmd** that you executed in Section 4.2
 
 **Step 4: Observe new performance of the workload**
 
