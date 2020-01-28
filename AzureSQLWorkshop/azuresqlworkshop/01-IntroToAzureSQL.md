@@ -162,7 +162,7 @@ Basically, Gen4 hardware offers substantially more memory per vCore. However, Ge
 
 > Note: If you choose General Purpose within Azure SQL DB and want to use the serverless compute tier, Gen5 hardware is the only option and it currently can scale up to 16 vCores.  
 
-  
+In this module, you learned about Azure SQL, including the deployment options, purchasing models, service tiers, and hardware choices. Hopefully, you also have a better understanding of what to choose when. In the next module, you'll learn more about deploying and configuring Azure SQL.  
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>

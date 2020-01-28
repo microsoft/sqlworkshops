@@ -605,15 +605,18 @@ Back in the overview, select **Azure SQL - Security Insights**.
 
 This dashboard gives more auditing information to help you understand database activity, and gain insight into anomalies. Spend a few minutes reviewing the options here.  
 
-**Summary**  
+> Looking for another bonus security activity? In the workshop, you likely will not have time, but you can review this tutorial: [Always Encrypted: Protect sensitive data and store encryption keys in Azure Key Vault](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault?tabs=azure-powershell).  
 
-In this module's activities, you got to get hands-on with many security features that are available for Azure SQL. You were able to touch on topics related to TODO
+In this module and throughout the activities, you got to get hands-on with many security features that are available for Azure SQL. In the next module, you'll take a look at how performance is different in Azure, and you'll see how you can optimize it in Azure SQL.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 <ul>
-    <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-overview" target="_blank">Azure SQL Security Documentation</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-best-practice" target="_blank">Azure SQL Security Best Practices Playbook</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-aad-security-tutorial" target="_blank">Configure security for Azure SQL Managed Instance</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-tutorial" target="_blank">Configure security for Azure SQL Database</a></li>
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
