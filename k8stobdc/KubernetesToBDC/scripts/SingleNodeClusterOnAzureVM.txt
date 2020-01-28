@@ -53,7 +53,7 @@ az account set --subscription "<YourAccountNameHere>"
 
 az group create -n <ResourceGroupName> -l eastus2
 
-az vm create -n <VMName>> -g <ResourceGroupName> -l eastus2 --image UbuntuLTS --os-disk-size-gb 200 --storage-sku Premium_LRS --admin-username bdcadmin --admin-password <ReplaceWithPassword> --size Standard_D8s_v3 --public-ip-address-allocation static
+az vm create -n <VMName> -g <ResourceGroupName> -l eastus2 --image UbuntuLTS --os-disk-size-gb 200 --storage-sku Premium_LRS --admin-username bdcadmin --admin-password <ReplaceWithPassword> --size Standard_D8s_v3 --public-ip-address-allocation static
 
 ssh -X bdcadmin@<ReplaceWithIPAddressThatReturnsFromLastCommand>
 

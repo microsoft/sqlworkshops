@@ -86,7 +86,7 @@ or
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"><b>     Workshop Details</b></h2>
 
-This workshop uses <TODO: enter main technologies used to solve the sceanrio>, with a focus on <TODO: architecture and implementation, development and use, etc>.
+This workshop uses Kubernetes to deploy a workload, with a focus on Microsoft SQL Server's big data clusters deployment for Big Data and Data Science workloads.
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 
@@ -128,6 +128,11 @@ This is a modular workshop, and in each section, you'll learn concepts, technolo
 
 Next, Continue to <a href="00-prerequisites.md" target="_blank"><i> Pre-Requisites</i></a>
 
+**Workshop Authors and Contributors**
+
+- [The Microsoft SQL Server Team](http://microsoft.com/sql)
+- [Chris Adkin](https://www.linkedin.com/in/wollatondba/), Pure Storage
+
 **Legal Notice**
 
-*Kubernetes and the Kubernetes logo are trademarks or registered trademarks of The Linux Foundation. in the United States and/or other countries. The Linux Foundation and other parties may also have trademark rights in other terms used herein. This course is not certified, accredited, affiliated with, nor endorsed by Kubernetes or The Linux Foundation.*
+*Kubernetes and the Kubernetes logo are trademarks or registered trademarks of The Linux Foundation. in the United States and/or other countries. The Linux Foundation and other parties may also have trademark rights in other terms used herein. This Workshop is not certified, accredited, affiliated with, nor endorsed by Kubernetes or The Linux Foundation.*
