@@ -22,7 +22,7 @@ The other requirements are:
 - **The pip3 Package**: The Python package manager *pip3* is used to install various BDC deployment and configuration tools. 
 - **The kubectl program**: The *kubectl* program is the command-line control feature for Kubernetes.
 - **The azdata utility**: The *azdata* program is the deployment and configuration tool for BDC.
-- **Azure Data Studio**: The *Azure Data Studio* IDE, along with various Extensions, is used for deploying the system, and querying and management of the BDC. In addition, you will use this tool to participate in the workshop. Note: You can connect to a SQL Server 2019 Big Data Cluster using any SQL Server connection tool or applicaiton, such as SQL Server Management Studio, but this course will use Microsoft Azure Data Studio for cluster management, Jupyter Notebooks and other capabilities. 
+- **Azure Data Studio**: The *Azure Data Studio* IDE, along with various Extensions, is used for deploying the system, and querying and management of the BDC. In addition, you will use this tool to participate in the workshop. Note: You can connect to a SQL Server 2019 Big Data Cluster using any SQL Server connection tool or application, such as SQL Server Management Studio, but this course will use Microsoft Azure Data Studio for cluster management, Jupyter Notebooks and other capabilities. 
 
 *Note that all following activities must be completed prior to class - there will not be time to perform these operations during the workshop.*
 
@@ -71,7 +71,7 @@ Get-WindowsUpdate
 Install-WindowsUpdate
 </pre>
 
-*Note: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
+*Note: If you get an error during this update process, evaluate it to see if it is fatal. You may receive certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/checkbox.png">Install Big Data Cluster Tools</p>
 
@@ -97,7 +97,7 @@ Get-WindowsUpdate
 Install-WindowsUpdate
 </pre>
 
-*Note 1: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
+*Note 1: If you get an error during this update process, evaluate it to see if it is fatal. You may receive certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
 
 **Note 2: If you are using a Virtual Machine in Azure, power off the Virtual Machine using the Azure Portal every time you are done with it. Turning off the VM using just the Windows power off in the VM only stops it running, but you are still charged for the VM if you do not stop it from the Portal. Stop the VM from the Portal unless you are actively using it.**
 

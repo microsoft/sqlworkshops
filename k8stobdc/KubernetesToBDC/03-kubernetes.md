@@ -78,7 +78,7 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"><i>Namespace</i></a> </td>
-			<td>Used to define multiple virtual clusters backed by the same physical cluster. </td>
+			<td>Used to define multiple virtual clusters backed by the same physical cluster. It also is the primary construct for working with Role-Based Security (RBAC).</td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td><a href="https://kubernetes.io/docs/concepts/architecture/master-node-communication/"><b>Kubernetes Master</b></a> </td>
@@ -122,17 +122,17 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"><i>Daemon Set</i></a> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"><i>DaemonSet</i></a> </td>
 			<td>A service that ensures that <i>Nodes</i> run a copy of a <i>Pod</i>. As Nodes are added to the cluster, Pods are added to them. As Nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><a hrf="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"><i>Stateful Set</i></a> </td>
-			<td>The workload API object used to manage stateful applications. </td>
+			<td><a hrf="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"><i>StatefulSet</i></a> </td>
+			<td>The workload API object used used for stateful apps that are clustered in nature.</td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"><i>Replica Set </i></a> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"><i>ReplicaSet </i></a> </td>
 			<td>A service that maintains a stable set of replica Pods running at any given time. Used to guarantee the availability of a specified number of identical Pods. </td>
 		</tr>
 		<tr style="vertical-align:top;">
@@ -148,7 +148,7 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/"><i>etcd</i></a> </td>
-			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
+			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official http://etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
 		</tr>
 	</tbody>
 </table>
@@ -231,6 +231,7 @@ Luckily help is at hand in the form of a tool that leverages kubeadm in order to
 
 - Add nodes to existing clusters
 
+
 Kubespray is a Cloud Native Computing Foundation project and with its own [GitHub repository](https://github.com/kubernetes-sigs/kubespray).
 
 ### 3.2.5 What Is Ansible? ###
@@ -252,6 +253,9 @@ In order to carry out the deployment of the Kubernetes cluster, a basic understa
 - Basic Ubuntu firewall configuration
 
 ### 3.2.7 Kubespray Workflow ###
+
+Unlike other available deployment tools, Kubespray does everything for you in “One shot”. For example, Kubeadm requires that certificates on nodes are created manually, Kubespray not only leverages Kubeadm but it also looks after everything including certificate creation for you. Kubespray works against most of the popular public cloud providers and has been tested for the deployment of clusters with thousands of nodes. The real elegance of Kubespray is the reuse it promotes. If an organization has a requirement to deploy multiple clusters, once Kubespray is setup, for every new cluster that needs to be created, the only prerequisite is to create a new inventory file for the nodes the new cluster will use.
+3.2.5 High Level Kubespray Workflow
 
 The deployment of a Kubernetes cluster via Kubespray follows this workflow:
 
@@ -285,7 +289,6 @@ Note:
 
 ### 3.2.8 Requirements ###
 
-Refer to the [requirements](https://github.com/kubernetes-sigs/kubespray#requirements) section in the Kubespray GitHub repo.
 
 ### 3.2.9 Post Cluster Deployment Activities ###
 
