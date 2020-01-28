@@ -20,10 +20,13 @@ In this module, you'll cover these topics:
 [3.2](#3.2): Access management and Authorization   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Getting started with Azure AD authentication    
 [3.3](#3.3): Information protection and encryption  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): Confirm TDE is enabled via powershell   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): Confirm TDE is enabled   
 [3.4](#3.4): Security management  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Auditing  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 5](#5): Advanced Data Security   
+
+(Bonus) Activity 6: Using SQL Server Audit with Data Classification  
+
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
@@ -203,7 +206,7 @@ TODO Add screenshots and test with Bob.
 
 TODO: Topic Description
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>Activity 3</a>: Confirm TDE is enabled via powershell</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>Activity 3</a>: Confirm TDE is enabled</b></p>
 
 This is a quick activity to show you how easily you can confirm that TDE is enabled, or turn it on if it is not.  
 
@@ -217,7 +220,7 @@ Next, navigate to your Azure SQL Database logical server, and in the left-hand t
 
 ![](../graphics/tdeoption.png)  
 
-The default is to let the Azure service manage your key. As it says, Azure will automatically generate a key to encrypt your databases, and manage the key rotations.  
+The default is to let the Azure service manage your key. As it says, Azure will automatically generate a key to encrypt your databases, and manage the key rotations. You've seen how to do this with the Azure portal, but you can also use PowerShell, Azure CLI, T-SQL, or REST APIs. For more details, [refer here](https://docs.microsoft.com/en-us/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal).  
 
 You can, alternatively, bring your own key (BYOK) leveraging Azure key vault. In this scenario, you (not Azure) are responsible for and in full control of a key lifecycle management (key creation, rotation, deletion), key usage permissions, and auditing of operations on keys. For more information regarding Azure SQL TDE with BYOK, please [refer here](https://docs.microsoft.com/en-us/azure/sql-database/transparent-data-encryption-byok-azure-sql?view=sql-server-ver15).  
 
@@ -229,32 +232,378 @@ TODO: Topic Description
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Auditing</b></p>
 
-TODO: Activity Description and tasks
+The auditing feature tracks database events and writes events to an audit log in either Azure storage, Azure Monitor logs, or to an event hub. Auditing helps maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate potential security violations. In this activity, you'll set up Auditing at the server level (also available at the database level for Azure SQL Database).  
 
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
-
-TODO: Enter activity description with checkbox
+> **Aside**: The main differences between auditing in Azure SQL and auditing in SQL Server are:  
+> * With Azure SQL Database, auditing is at server or database level, but with Azure SQL Managed Instance and SQL Server is at the server level.  
+> * XEvent auditing supports Azure Blob storage targets  
+> * [SQL Server Auditing](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15) is only available (with some differences) in Azure SQL Managed Instance
+> * For Azure SQL Managed Instance specifically:  
+>    * With `CREATE AUDIT`, you have new syntax `TO URL` and `TO EXTERNAL MONITOR` allow you to specify an Azure Blob storage container and enable Event Hub and Azure Monitor logs target, respectively.  
+>    * `TO FILE`, shutdown option, and `queue_delay`=0 are not supported in Azure SQL.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-TODO: Enter activity steps description with checkbox
+**Step 1 - Enable auditing on the Azure SQL Database logical server**  
+
+Open the Azure portal and navigate to your Azure SQL Database. In the left-hand task menu, under Security, select **Auditing**. Review the options and then select **View server settings**. The Microsoft recommendation is to apply auditing at the server level, which then applies to all databases within the Azure SQL Database logical server.  
+
+![](../graphics/dbaudit.png)  
+
+Next, set **Auditing** to **ON**. Notice you have different options for your log destination, depending how you want to audit your data. Since Azure SQL has built a useful dashboard based on Log Analytics, you will explore that option in this lab. You can explore the other implementations by reviewing [the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing).  
+
+Select **Log Analytics (Preview)** and the **Configure** button.  
+
+![](../graphics/serveraudit.png)   
+
+Next, select **+ Create New Workspace**.  
+
+![](../graphics/newws.png)  
+
+Fill in the information according to the subscription, resource group, and location, that you are using to complete this workshop. We recommend naming your Log Analytics Workspace **azuresqlworkshopUID-la**, using your unique ID for your resources. Select **OK**.  
+
+![](../graphics/laws.png)  
+
+This may take a few moments to validate and create. You should now see your Log Analytics account.  
+
+Next, select **Storage**. This option allows you to collect XEvent log files in an Azure Blob storage account. In a later activity, you'll see more on how this differs from Log Analytics. Select **Configure**.  
+
+![](../graphics/configstorage.png)  
+
+Next, select the subscription you're using for this workshop as well as the storage account that was created to be used with Advanced data security (should be *sql* + *a random string of letters and numbers*). In this storage account, auditing logs will be saved as a collection of blob files within a container named **sqldbauditlogs**.  
+
+You also have options for the number of days you want to retain data. The default, **0**, means to retain data forever. You can change this to something else, if you want to cut back on the storage that may be generated and charged here. For this exercise, input **7**.  
+
+Finally, you can make a decision of which storage access key to use. Note you can use this to switch between keys when it's time to rotate them. Selct **Primary**.   
+
+After you've configured your options, select **OK**.  
+
+![](../graphics/sasql.png)  
+
+Select **Save**.  
+
+![](../graphics/savela.png)  
+
+Once it saves, you can select the **X** button to close the server level Auditing pane. Back in the Azure SQL Database Auditing pane, you may notice that the **Auditing** option says **OFF**. It's important to note that if auditing is enabled on the server, it will always apply to the database.  
+
+![](../graphics/dbauditoff.png)  
+
+This is the end of this activity. In a later activity in this module, you'll see how to analyze the audit logs with information from Data Discovery & Classification in a Security dashboard as well as in SSMS.  
 
 TODO: Topic Description CONTD
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="5"><b>Activity 5</a>: Advanced Data Security</b></p>
 
-TODO: Activity Description and tasks
+Advanced data security (ADS) is a unified package for advanced SQL security capabilities, providing a single go-to location for enabling and managing three main capabilities:  
+* [Data discovery & classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)  
+* [Vulnerability assessment](https://docs.microsoft.com/en-us/azure/sql-database/sql-vulnerability-assessment)  
+* [Advanced Threat Protection](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview)  
 
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
+In this activity, you'll enable ADS and explore some of the features within each of the capabilities mentioned above.  
 
-TODO: Enter activity description with checkbox
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-TODO: Enter activity steps description with checkbox
+**Step 1 - Enable ADS**  
+
+In the Azure portal, navigate to your Azure SQL Database logical server. Then, in the left-hand menu, under Security, select **Advanced data security**. If you followed the deployment activity in Module 2, ADS should already be enabled. If it is not, select **ON** and select **Save**.
+
+![](../graphics/adson.png)  
 
 
+**Step 2 - ADS server level settings**  
 
+In this step, you'll review the selections you've made for your Azure SQL Database logical server. In the same pane as step 1 (Azure SQL Database logical server > Security > Advanced data security), you will also see information regarding Vulnerability Assessments and Advanced Threat Protection.  
+
+At the highest level, SQL Vulnerability Assessment (VA) is a scanning service that provide visibility into your security state. It then provides actionable steps to address any potential concerns. When you configure periodic recurring scans, you're enabling the service to scan your databases every seven days and check for any vulnerabilities. You can then choose to send those reports to the admins, subscription owners, or anyone else that might need to be made notified of changes. In order for this service to operate, you have to specify a storage account for the results to be stored. This storage account was deployed during deployment of your Azure SQL Database, as you opted in to turn on ADS. Review the options and add your email address if you want to view a recurring scan.  
+
+![](../graphics/vasettings.png)  
+
+Lastly, you can configure your Advanced Threat Protection (ATP) settings. ATP enables you to detect and respond to potential threats as they occur by providing security alerts on anomalous activities. To check the ATP alert types available, select **All** under Advanced Threat Protection types.  
+
+![](../graphics/atptypes.png)  
+
+Just like you can configure who receives the VA scans, you can configure who receives the ATP alerts. Review the options and add your email address if you want to be alerted (recommended for future lab).  
+
+![](../graphics/atpsettings.png)  
+
+Once you've updated all your settings, don't forget to select **Save**.  
+
+![](../graphics/save.png)  
+
+Setting these settings up will enable you to complete some of the other steps in this activity, so you'll see more of VA and ATP soon.  
+
+**Step 3 - Data Discovery & Classification**  
+
+Navigate back to your Azure SQL Database (not the logical server!). In the left-hand menu, under Security, Select **Advanced Data Security**. 
+
+![](../graphics/adsdashboard.png)   
+
+First, you'll review Data Discovery & Classification (DD&C). Select the **Data Discovery & Classification** box. This GUID and wizard type of view is similar (but not exactly matching) to the Data Discovery & Classification tool that exists in SQL Server today through SSMS. Using the SSMS wizard is **not supported** for Azure SQL, but you can achieve similar functionality here.    
+
+Select the information bar that says **We have found XX columns with classification recommendations**.  
+
+![](../graphics/recs.png)  
+
+DD&C tries to identify potential sensitive data based on the column names in your tables. Review some of the suggested labels and then select **Select all** and **Accept selected recommendations**.  
+
+![](../graphics/ddcrecs.png)  
+
+Then, select **Save** near the top left corner.
+
+![](../graphics/save.png)  
+
+Finally, select **Overview** to view the overview dashboard and review the classifications you've added.  
+
+![](../graphics/ddcoverview.png)  
+
+**Step 4 - Vulnerability Assessment**  
+
+Select the **X** in the top right corner of DD&C to bring you back to the ADS dashboard. Next, you'll review the Vulnerability Assessment (VA) capabilities. Start by selecting the **Vulnerability Assessment** box.  
+
+![](../graphics/adsdashboard2.png)  
+
+Next, select **Scan** to get the most current VA results. This will take a few moments, while VA scans all the databases in your Azure SQL Database logical server.    
+
+![](../graphics/vascan.png)  
+
+Your resulting view should be similar to below.  
+
+![](../graphics/vadashboard.png)  
+
+Every security risk has a risk level (high, medium, or low) and additional information. Select the security check **VA2065** to get a detailed view, similar to below. Review the status and other available information.   
+
+![](../graphics/va20651.png)  
+![](../graphics/va20652.png)  
+
+In this case, VA is suggesting that you configure a baseline of your server level firewall rules. Once you have a baseline, you can then monitor and assess any changes.  
+
+Depending on the security check, there will be alternate views and recommendations. For this security check, you can select the **Approve as Baseline** button at the top of the details page.  
+
+![](../graphics/vabaseline.png)  
+
+You can then optionally complete another scan and confirm that VA2065 is now showing up as a **Passed** security check.  
+
+![](../graphics/va20653.png)  
+
+**Step 5 - Advanced Threat Protection overview**  
+
+Select the **X** in the top right corner of VA to get back to the ADS dashboard. Select the **Advanced Threat Protection** (ATP) box to drill in.  
+
+![](../graphics/adsdashboard3.png)  
+
+Likely, you won't see any security alerts. In the next step, you will run a test that will trigger an alert, so you can review the results in ATP.  
+
+**Step 6 - Testing ATP capabilities**  
+
+TODO with help of Bob  
+
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="6">Activity 6</a>: Using SQL Audit with Data Classification</b></p>
+
+In this activity, you will learn how to audit users trying to view columns that were marked for data classification. This activity will combine several of the things you've already learned about in the module, and take those learnings to the next level.    
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+**Step 1 - Add new data classification manually**  
+
+In the Azure portal, navigate to your Azure SQL Database (not logical server!). In the left-hand menu, under Security, select **Advanced data security** and then select the **Data Discovery & Classification** box.  
+
+![](../graphics/adsdashboard4.png)  
+
+Next, select the **Classification** tab and then select **+ Add classification**.  
+
+![](../graphics/addddc.png)  
+
+In a previous activity, you added all the recommended column classifications. In this step, you will *manually* add a potentially sensitive column to the list of classified columns.  
+
+In the SalesLT Customer table, DD&C identified FirstName and LastName to be classified, but not MiddleName. Using the drop-downs, add it now. Then, select **Add classification**.  
+
+![](../graphics/addddc2.png)  
+
+Select **Save**.  
+
+![](../graphics/save.png)  
+
+You can confirm that this was successful by viewing the **Overview** tab and confirming that MiddleName is now present in the list of classified columns under the SalesLT schema.  
+
+**Step 2 - Apply Dynamic Data Masking over the Name columns**  
+
+Dynamic data masking (DDM) is something available in Azure SQL as well as in SQL Server. It limits data exposure by masking sensitive data to non-provileged users. Azure SQL will recommend things for you to mask, which you'll see in this step. You'll also mask the FirstName, MiddleName, and LastName columns which you reviewed in the previous step.  
+
+In the Azure portal, navigate to your Azure SQL Database. In the left-hand menu, under Security, select **Dynamic Data Masking** and then select **+ Add mask**.  
+
+![](../graphics/addmask.png)   
+
+First, select the **SalesLT** schema, **Customer** table, and **FirstName** column. Then, you can review the options for masking, but the default is good for this scenario. Select **Add** to add the masking rule.    
+
+![](../graphics/addmask2.png)   
+
+Repeat this for both **MiddleName** and **LastName** in that table.  
+
+After, you should have three masking rules, similar to below.  
+
+![](../graphics/addmask3.png)   
+
+Select **Save**.  
+
+![](../graphics/save.png)   
+
+**Step 3 - Query classified and masked columns**  
+
+Now, navigate to SSMS and create a new query in your AdventureWorks database.  
+
+![](../graphics/newquery.png)   
+
+> Note: You should be connected to this logical server using Azure AD authentication. If you are connected as `cloudadmin`, create a new connection and connect using Azure AD authentication.  
+
+Now, run the following query to return the classified (and in some cases masked) data.  
+```sql
+SELECT TOP 10 FirstName, MiddleName, LastName
+FROM SalesLT.Customer
+```
+You should get a result of the first ten names, with no masking applied. Why? Because you are the admin for this Azure SQL Database logical server.  
+
+![](../graphics/names.png)   
+
+Now, run the following query to create a new user and run the previous query as that user. You may notice the first few commands, they are a repeat from Acitivity 2, Step 3.  
+```sql
+-- Create a new SQL user and give them a password
+CREATE USER Bob WITH PASSWORD = 'gocowboys1!';
+
+-- Until you run the following two lines, Bob has no access to read or write data
+ALTER ROLE db_datareader ADD MEMBER Bob;
+ALTER ROLE db_datawriter ADD MEMBER Bob;
+
+-- Execute as our new, low-privilege user, Bob
+EXECUTE AS USER = 'Bob';
+SELECT TOP 10 FirstName, MiddleName, LastName
+FROM SalesLT.Customer;
+REVERT;
+```
+
+Now, you should get a result of the first ten names, but masking applied. Bob has not been granted access to the unmasked form of this data.  
+
+![](../graphics/names2.png)   
+
+**Step 4 - Add excluded users from masking**  
+
+What if, for some reason, Bob needs access to the names and gets permission to have it?  
+
+You can update excluded users from masking in the Azure portal (in the Dynamic Data Masking pane under Security), but you can also do it using T-SQL. Use the query below to allow Bob to query the names results without masking.  
+
+```sql
+GRANT UNMASK TO Bob;  
+EXECUTE AS USER = 'Bob';
+SELECT TOP 10 FirstName, MiddleName, LastName
+FROM SalesLT.Customer;
+REVERT;   
+```
+Your results should include the names in full.  
+![](../graphics/names.png)   
+
+Finally, you can also take away a user's unmasking privileges, and confirm that with the following T-SQL.  
+```sql
+-- Execute as Bob
+EXECUTE AS USER = 'Bob';
+SELECT TOP 10 FirstName, MiddleName, LastName
+FROM SalesLT.Customer;
+REVERT;   
+```
+Your results should include the masked names.  
+![](../graphics/names2.png)   
+
+**Step 5 - Analyze audit logs from Azure Blob storage with SSMS**  
+
+Next, you'll take a look at the audit files that are being sent to Azure Blob storage. The first thing you have to do is merge the audit files, in case logs span multiple files. You can do this from SSMS. First, select **File** > **Open** > **Merge Audit Files**.  
+
+![](../graphics/fileaudit.png)   
+
+Next, select **Add**.  
+
+![](../graphics/fileauditadd.png)   
+
+Specify to add then from Azure Blob storage and select **Connect**.  
+
+![](../graphics/fileauditconnect.png)   
+
+Now sign into Azure with the account you are using for this workshop.  
+
+![](../graphics/fileauditsignin.png)  
+
+Select the subscription, storage account, and blob container you configured Audit logs to go to (refer to your selection in the Azure portal under your Azure SQL Database logical server's Auditing blade). The container will be called `sqldbauditlogs`.  
+
+![](../graphics/fileauditselect.png)  
+
+Select your Azure SQL Database logical server and your AdventureWorks database. It should take everything from the day up until the second you select the Database name. Select **OK**.  
+
+![](../graphics/fileauditok.png)  
+
+The confirmation window lets you know how many files are being downloaded and merged. Select **OK**.  
+
+![](../graphics/downloadconf.png)  
+
+Review the files and select **OK** one last time.  
+
+![](../graphics/mergeaudit.png)  
+
+You should now be able to see all the audit logs. Look for where you were testing with masking with Bob. You can select the statement, and then use the detail pane below to review the information. For example, for one of the queries where Bob tries to view classified data, under the `data_sensitivity_information` field, you can see the data that is classified. For more information on the naming conventions in audit logs, [see here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-audit-log-format).    
+
+This merged file can then be exported to an XEL or CSV file (or to a table) for additional analysis. You can also query the [Extended Events files using PowerShell](https://sqlscope.wordpress.com/reading-extended-event-files-using-client-side-tools-only/). 
+
+**Step 6 - Analyze audit logs with Log Analytics**  
+
+Analyzing your audit logs will depend on your preference, and the method in Step 5 may be more familiar. In this step, you'll be exposed to querying security logs in the Azure portal with Log Analytics.   
+
+In the Azure portal, navigate to your Azure SQL Database. In the left-hand menu, under Security, select **Auditing**. Then select **View audit logs**.  
+
+![](../graphics/viewauditlogs.png)  
+
+You should now be able to see a query of your event records, options to run in Query Editor (run queries through the portal), options for Log Analytics/View dashboard, and more.  
+
+![](../graphics/auditrecords.png)  
+
+Feel free to click around and understand what some of the options are.  
+
+Then, click on **Log Analytics**. This takes you to a query editor but it is not T-SQL. This view allows you to query logs using Kusto query language or KQL, which is meant to be easy to use and understand by SQL professionals. For the KQL documentation, [refer here](https://docs.microsoft.com/en-us/azure/kusto/query/).  
+
+The default query is querying the category `SQLSecurityAuditEvents`, so while you might use this now to view security related incidents, it can also be used for querying other Azure logs in [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview).  
+
+![](../graphics/laview.png)  
+
+This workshop won't get much deeper than this for KQL querying of logs, but there are many resources in the references above if you want more practice later.  
+
+**Step 7 - Analyze audit logs and monitor security with the Log Analytics SQL Security dashboard**  
+
+In this step, you'll see how SQL Security has built a dashboard based on Log Analytics for you to monitor and audit the logs and other SQL activity. To get back to Audit records, select the **X** in the top right corner of the Log Analytics query window.  
+
+Then, select **View dashboard**.  
+
+![](../graphics/viewdb.png)  
+
+You should now see an overview dashboard. Drill in to **Azure SQL - Access to Sensitive Data**.  
+
+![](../graphics/securitydb.png)  
+
+You can use this drill down to find out:  
+1. How many queries are accessing sensitive data
+1. Which types and sensitivities of are being accessed
+1. Which principals are accessing sensitive data
+1. Which IPs are accessing sensitive data  
+
+Review what's available here, and how you can audit usage with this tool.  
+
+When you're done, select the **X** in the top right corner of the **Azure SQL - Access to Sensitive Data** tab.  
+
+Back in the overview, select **Azure SQL - Security Insights**.  
+
+![](../graphics/securitydb.png)  
+
+This dashboard gives more auditing information to help you understand database activity,and gain insight into anomalies. Spend a few minutes reviewing the options here.  
+
+**Summary**  
+
+In this module's activities, you got to get hands-on with many security features that are available for Azure SQL. You were able to touch on topics related to TODO
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
