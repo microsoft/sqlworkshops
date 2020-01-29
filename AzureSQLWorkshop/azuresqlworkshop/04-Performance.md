@@ -367,48 +367,15 @@ TODO: Does this become part of the bonus activity.
 
 In this activity you will take the results of your monitoring in Module 4.2 and learn how to scale your workload in Azure to see improved results.
 
-**Step 1: xxxxxxx**
-
-xxxxxxx
-
-**Step 2: Change to Serverless**
-
-xxxxxx
-
-**Step 3: Run the workload again**
-
-Re-run the ostress workload.
-
-**Step 4: Observe new performance of the workload**
+**Step 1 - xxxxxxx**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS)</a>: Optimizing performance of data loading</b></p>
 
 >**IMPORTANT**: This activity assumes you have completed all Activities in Module 2
 
-In this activity you will take the results of your monitoring in Module 4.2 and learn how to scale your workload in Azure to see improved results.
+xxxxxx
 
-**Step 1: xxxxx**
-
-Since workload is CPU bound one way to improve performance is to increase CPU capacity or speed. A SQL Server user would have to move to a different machine or reconfigure a VM to get more CPU capacity.
-
-For Azure, we can use ALTER DATABASE, az cli, or the portal to increase CPU capacity.
-
-Look at the portal for options.
-
-**Step 2: xxxxx**
-
-Use ALTER DATABASE to move up to 8vcores for General Purpose.
-
-**Step 3: xxxxxx**
-
-Re-run the ostress workload.
-
-**Step 4: xxxxxxx**
-
-- Observe DMV queries
-- Observe query store reports
-- Observe azure portal
-- Observe differences with XEvents.
+**Step 1 - xxxxx**
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
