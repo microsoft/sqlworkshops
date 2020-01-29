@@ -300,7 +300,7 @@ For this step, you'll use the notebook **VerifyDeployment.ipynb** which is under
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.3">2.3 Configure</h2></a>
 
-TODO: Topic Description
+TODO: Put in text here that talks about the process to configure, and configure/deploy databases with Azure SQL comparing this to SQL Server
 
 <br>
 
@@ -321,7 +321,7 @@ For this activity, you'll use the notebook called **AzureCli.ipynb** which is un
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.4">2.4 Load data</h2></a>
 
-TODO: Topic Description
+TODO: Put in text here that talks about the process to load data with Azure SQL comparing this to SQL Server
 
 <br>
 

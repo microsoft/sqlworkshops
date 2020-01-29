@@ -55,7 +55,7 @@ Your workshop invitation may have instructed you that they will provide a Micros
 
 In order to complete this workshop you need to install the following software:  
 
-1. Create a resource group for the workshop, naming it **azuresqlworkshopUID** where **ID** is some 4-6 digit identifier that you can easily remember (e.g. 0406 is my birthday so I might pick "azuresqlworkshop0406"). Use this same **ID** every time you are told to name something ending in **ID**. Select a region that is close to where you are, and use this region for all future resoureces.
+1. Create a resource group for the workshop, naming it **azuresqlworkshopID** where **ID** is some 4-6 digit identifier that you can easily remember (e.g. 0406 is my birthday so I might pick "azuresqlworkshop0406"). Use this same **ID** every time you are told to name something ending in **ID**. Select a region that is close to where you are, and use this region for all future resources.
 1. Deploy an [Azure virtual machine](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine-ARM) (link goes to service in Azure portal). The recommended minimum size is a **D2s_v3**, and you should use a **Windows 10** image. Name the virtual machine **win-vmID** (i.e. "win-vm0406"). Accept other defaults, and refer to more information on deploying Azure virtual machines [here](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine).
 
 1. Connect to the virtual machine, and perform the remaining steps in the virtual machine.  

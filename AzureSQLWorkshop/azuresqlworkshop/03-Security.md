@@ -23,7 +23,7 @@ In this module, you'll cover these topics:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): Confirm TDE is enabled   
 [3.4](#3.4): Security management  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Auditing  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 5](#5): Advanced Data Security   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 5](#5): Advanced data security   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 6](#6): Data classification, Dynamic data masking, and SQL Audit
 
 
@@ -32,11 +32,9 @@ In this module, you'll cover these topics:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3.1">3.1 Platform and network security</h2></a>
 
-TODO: Topic Description
+TODO: Put in text here that talks about the process for network security with Azure SQL comparing this to SQL Server
 
-<br>
 
-<img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="linkToPictureEndingIn.png">
 
 <br>
 
@@ -101,9 +99,9 @@ Note that this method of setting the firewall rules (using the Azure portal or A
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3.2">3.2 Information protection and encryption</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3.2">3.2 Access management and Authorization</h2></a>
 
-TODO: Topic Description
+TODO: Put in text here that talks about the process to access management with Azure SQL comparing this to SQL Server
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Getting started with Azure AD authentication</b></p>
 
@@ -150,6 +148,8 @@ Next to the server name, you should now be able to see that you are authenticate
 **Step 3 - Grant other users access (SQL)**  
 
 Now that you're authenticated using Azure AD, your next step might be to add other users. Just as in SQL Server, you can add new SQL users. In SSMS, using your Azure AD connection, right-click on your database and create a new query. Run the following.
+
+> Note: You must right-click on the **database** within your Azure SQL Database logical server. In SQL Server and Azure SQL managed instance, you can query at the server level and use `USE DatabaseName`, but in Azure SQL Database, you must query the database directly, the `USE` statement is not supported. 
 
 ```sql
 -- Create a new SQL user and give them a password
@@ -203,7 +203,8 @@ TODO Add screenshots and test with Bob.
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3.3">3.3 Information protection and encryption</h2></a>
 
-TODO: Topic Description
+TODO: Put in text here that talks about the process to protect information/encryption with Azure SQL comparing this to SQL Server
+
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>Activity 3</a>: Confirm TDE is enabled</b></p>
 
@@ -227,7 +228,7 @@ You can, alternatively, bring your own key (BYOK) leveraging Azure key vault. In
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="3.4">3.4 Security management</h2></a>
 
-TODO: Topic Description
+TODO: Put in text here that talks about the process for security management with Azure SQL comparing this to SQL Server
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Auditing</b></p>
 
@@ -605,7 +606,7 @@ Back in the overview, select **Azure SQL - Security Insights**.
 
 This dashboard gives more auditing information to help you understand database activity, and gain insight into anomalies. Spend a few minutes reviewing the options here.  
 
-> Looking for another bonus security activity? In the workshop, you likely will not have time, but you can review this tutorial: [Always Encrypted: Protect sensitive data and store encryption keys in Azure Key Vault](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault?tabs=azure-powershell).  
+> Looking for another bonus security activity? Try this tutorial: [Always Encrypted: Protect sensitive data and store encryption keys in Azure Key Vault](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault?tabs=azure-powershell). You will need VS for this, you can download [Visual Studio Community for free here](https://visualstudio.microsoft.com/downloads/).   
 
 In this module and throughout the activities, you got to get hands-on with many security features that are available for Azure SQL. In the next module, you'll take a look at how performance is different in Azure, and you'll see how you can optimize it in Azure SQL.  
 
