@@ -1,1 +1,1 @@
-ostress.exe -Sbobazuresqlserver.database.windows.net -itopcustomersales.sql -Uthewandog -dAdventureWorks0406 -P$cprsqlserver2019 -n10 -r1500 -q
+ostress.exe -S<server>.database.windows.net -itopcustomersales.sql -U<login> -dAdventureWorks0406 -P<password> -n10 -r1500 -q

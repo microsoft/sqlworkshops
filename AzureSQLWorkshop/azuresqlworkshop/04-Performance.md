@@ -108,6 +108,8 @@ Substitute the password for the login for the Azure SQL Database Server created 
 
 This script will use 10 concurrent users running the workload query 1500 times.
 
+>NOTE: If you are not seeing CPU usage behavior with this workload for your environment you can adjust the **-n parameter** for number of users and **-r parameter** for iterations.
+
 From a powershell command prompt, change to the directory for this module activity:
 
 <pre>
@@ -352,6 +354,8 @@ Look also at the Query Wait Statistics report as you did in Section 4.2 Activity
 Look at the Overview blade again for the Compute Utilization. Notice the significant drop in overall CPU resource usage compared to the previous workload execution:<br><br>
 
 <img src="../graphics/Azure_Portal_Compute_Query_Comparison.png" alt="Azure_Portal_Compute_Query_Comparison"/>
+
+>**NOTE:** If you continue to increase vCores for this database you can improve performance up to a threshold where all queries have plenty of CPU resources. This does not mean you must match the number of vCores to the number of concurrent users from your workload. In addition, you can change the Pricing Tier to use **Serverless** *Compute Tier* instead of **Provisioned** to achieve a more "auto-scaled" approach to a workload. For example, for this workload if you chose a min vCore value of 2 and max VCore value of 8, this workload would immediately scale to 8vCores.
 
 - Observe differences with XEvents.
 
