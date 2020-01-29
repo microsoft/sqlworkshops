@@ -21,8 +21,8 @@ In this module, you'll cover these topics:
 [4.2](#4.2): Monitoring performance in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): How to monitor performance in Azure SQL Database  
 [4.3](#4.3): Improving Performance in Azure SQL<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Scaling your workload performance in Azure SQL Database
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3 (BONUS)](#2): Scaling your workload performance with Azure SQL Database Serverless<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Scaling your workload performance in Azure SQL Database<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3 (BONUS)](#2): xxxxxx <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4 (BONUS)](#2): Optimizing performance of data loading
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
@@ -186,7 +186,7 @@ Query Store comes with a series of system catalog views to view performance data
 
 Using the Object Explorer in SSMS, open the Query Store Folder to find the report for **Top Resource Consuming Queries**<br><br>
 
-<img src="../graphics/SSMS_QDS_Find_Top_Queries.png" alt="SSMS_QDS_Find_Top_Queries"/>
+<img src="../graphics/SSMS_QDS_Find_Top_Queries.png" alt="SSMS_QDS_Find_Top_Queries" width=200 height=100/>
 
 Select the report to find out what queries have consumed the most avg resources and execution details of those queries. Based on the workload run to this point, your report should look something like the following:<br><br>
 <img src="../graphics/SSMS_QDS_Top_Query_Report.png" alt="SSMS_QDS_Find_Top_Queries"/>
@@ -201,7 +201,7 @@ You can see the total duration of the query and query text.
 
 Right of this bar chart is a chart for statistics for the query plan associated with the query. Hover over the dot associated with the plan. Your results should look like the following:<br><br>
 
-<img src="../graphics/SSMS_Slow_Query_Stats.png" alt="SSMS_Slow_Query_Stats"/>
+<img src="../graphics/SSMS_Slow_Query_Stats.png" alt="SSMS_Slow_Query_Stats" width=350/>
 
 Note the average duration of the query. Your times may vary but the key will be to compare this average duration to the average wait time for this query and eventually the average duration when we introduce a performance improvement.
 
@@ -237,9 +237,11 @@ TODO: This may be moved to a BONUS activity.
 
 **Step 5: Observe performance using the Azure Portal**
 
-- Observe performance in the portal for the resource graph for the db
+The Azure Portal provides performance information in the form of a graph. The standard default view is called **Compute Utilization** which you can see on the Overview blade for your database:<br><br>
 
-TODO: Go back and run through demo steps and show the Compute Portal graph.
+<img src="../graphics/Azure_Portal_Compute_Slow_Query.png" alt="Azure_Portal_Compute_Slow_Query"/>
+
+Notice in this example, the compute utilization near 100% for a recent time range. This chart will show resource resource usage over the last hour and is refreshed continually. If you click on the chart you customize the chart (Ex. bar chart) and look at other resource usage.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -263,13 +265,15 @@ Since workload is CPU bound one way to improve performance is to increase CPU ca
 
 For Azure, we can use ALTER DATABASE, az cli, or the portal to increase CPU capacity.
 
-Using the Azure Portal we can see options for how you can scale for more CPU resources. Using the Overview option for the database, select the Pricing tier current deployment.
+Using the Azure Portal we can see options for how you can scale for more CPU resources. Using the Overview blade for the database, select the Pricing tier current deployment.
 
-< put in screen here >
+<img src="../graphics/Azure_Portal_Change_Tier.png" alt="Azure_Portal_Change_Tier"/>
 
 Here you can see options for changing or scaling compute resources. For General Purpose, you can easily scale up to something like 8 vCores.
 
-< put in screen here >
+<img src="../graphics/Azure_Portal_Compute_Options.png" alt="Azure_Portal_Compute_Options"/>
+
+Instead of using the portal, I'll show you a different method to scale your workload.
 
 **Step 2: Increase capacity of your Azure SQL Database**
 
@@ -293,7 +297,9 @@ GO
 
 For the current Azure SQL Database deployment, your results should look like the following:
 
-< put in results here >
+<img src="../graphics/service_objective_results.png" alt="service_objective_results"/>
+
+Notice the term **slo_name** is also used for service objective. The term **slo** stands for *service level objective*.
 
 The documentation for ALTER DATABASE shows all the possible options for service objectives and how they match to the Azure portal: https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15.
 
@@ -307,7 +313,7 @@ ALTER DATABASE AdventureWorks0406 MODIFY (SERVICE_OBJECTIVE = 'GP_Gen5_8');
 
 This statement comes back immediately but the scaling of the compute resources take place in the background. A scale this small should take less than a minute and for a short period of time the database will be offline to make the change effective. You can monitor the progress of this scaling activity using the Azure Portal. 
 
-< put in screenshot here>
+<img src="../graphics/Azure_Portal_Update_In_Progress.png" alt="Azure_Portal_Update_In_Progress"/>
 
 When this is done using the queries listed above to verify the new service objective or pricing tier of 8 vCores has taken affect.
 
@@ -319,25 +325,40 @@ Run the workload again using the command **sqlworkload.cmd** that you executed i
 
 **Step 4: Observe new performance of the workload**
 
-- Observe DMV queries
+- Observe DMV results
 
-More RUNNING queries
-avg CPU down to 30-50%
+Use the same queries from Section 4.2 Activity 1 to observe results from **dm_exec_requests** and **dm_db_resource_stats**.
 
-- Workload should finish in < 20secs
+You will see there are more queries with a status of RUNNING and the avg_cpu_percent should drop to 40-60%.
 
-- Observe query store reports
+- Observe the new workload duration.
 
-Avg duration 50% or more
-Wait stats show average CPU wait signficantly down for new query_id
+The workload duration from **sqlworkload.cmd** should now be much less and somewhere ~20 seconds.
 
-- Observe azure portal
+- Observe Query Store reports
 
-Compute in portal down under 60%
+Using the same techniques as in Section 4.2 Activity 1, look at the **Top Resource Consuming Queries** report from SSMS:<br><br>
+
+<img src="../graphics/SSMS_QDS_Top_Query_Faster.png" alt="Azure_Portal_Update_In_Progress"/>
+
+You will now see two queries (query_id). These are the same query but show up as different query_id values in Query Store because the scale operation required a restart so the query had to be recompiled. You can see in the report the overall and average duration was significantly less.
+
+Look also at the Query Wait Statistics report as you did in Section 4.2 Activity 1. You can see the overall average wait time for the query is less and a lower % of the overall duration. This is good indication that CPU is not as much of a resource bottleneck when the database had a lower number of vCores:<br><br>
+
+<img src="../graphics/SSMS_Top_Wait_Stats_Query_Faster.png" alt="Azure_Portal_Update_In_Progress"/>
+
+- Observe Azure Portal Compute Utilization
+
+Look at the Overview blade again for the Compute Utilization. Notice the significant drop in overall CPU resource usage compared to the previous workload execution:<br><br>
+
+<img src="../graphics/Azure_Portal_Compute_Query_Comparison.png" alt="Azure_Portal_Compute_Query_Comparison"/>
+
 
 - Observe differences with XEvents.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3 (BONUS)</a>: Scaling your workload performance with Azure SQL Database Serverless</b></p>
+TODO: Does this become part of the bonus activity.
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3 (BONUS)</a>: XXXXXX </b></p>
 
 >**IMPORTANT**: This activity assumes you have completed all the steps in Activity 1 in Module 4.
 
@@ -363,7 +384,6 @@ Re-run the ostress workload.
 - Observe differences with XEvents.
 
 - **TODO:** - Why does dm_db_resource_stats show lower overall CPU% on serverless? 
-
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS)</a>: Optimizing performance of data loading</b></p>
 
