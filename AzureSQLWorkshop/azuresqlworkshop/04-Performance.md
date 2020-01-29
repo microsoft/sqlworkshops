@@ -186,7 +186,7 @@ Query Store comes with a series of system catalog views to view performance data
 
 Using the Object Explorer in SSMS, open the Query Store Folder to find the report for **Top Resource Consuming Queries**<br><br>
 
-<img src="../graphics/SSMS_QDS_Find_Top_Queries.png" alt="SSMS_QDS_Find_Top_Queries" width=200 height=100/>
+<img src="../graphics/SSMS_QDS_Find_Top_Queries.png" alt="SSMS_QDS_Find_Top_Queries"/>
 
 Select the report to find out what queries have consumed the most avg resources and execution details of those queries. Based on the workload run to this point, your report should look something like the following:<br><br>
 <img src="../graphics/SSMS_QDS_Top_Query_Report.png" alt="SSMS_QDS_Find_Top_Queries"/>
@@ -265,11 +265,11 @@ Since workload is CPU bound one way to improve performance is to increase CPU ca
 
 For Azure, we can use ALTER DATABASE, az cli, or the portal to increase CPU capacity.
 
-Using the Azure Portal we can see options for how you can scale for more CPU resources. Using the Overview blade for the database, select the Pricing tier current deployment.
+Using the Azure Portal we can see options for how you can scale for more CPU resources. Using the Overview blade for the database, select the Pricing tier current deployment.<br><br>
 
 <img src="../graphics/Azure_Portal_Change_Tier.png" alt="Azure_Portal_Change_Tier"/>
 
-Here you can see options for changing or scaling compute resources. For General Purpose, you can easily scale up to something like 8 vCores.
+Here you can see options for changing or scaling compute resources. For General Purpose, you can easily scale up to something like 8 vCores.<br><br>
 
 <img src="../graphics/Azure_Portal_Compute_Options.png" alt="Azure_Portal_Compute_Options"/>
 
@@ -295,7 +295,7 @@ SELECT DATABASEPROPERTYEX('AdventureWorks0406', 'ServiceObjective');
 GO
 ```
 
-For the current Azure SQL Database deployment, your results should look like the following:
+For the current Azure SQL Database deployment, your results should look like the following:<br><br>
 
 <img src="../graphics/service_objective_results.png" alt="service_objective_results"/>
 
@@ -311,7 +311,7 @@ Using SSMS, run the script modify_service_objective.sql or T-SQL command:
 ALTER DATABASE AdventureWorks0406 MODIFY (SERVICE_OBJECTIVE = 'GP_Gen5_8');
 ```
 
-This statement comes back immediately but the scaling of the compute resources take place in the background. A scale this small should take less than a minute and for a short period of time the database will be offline to make the change effective. You can monitor the progress of this scaling activity using the Azure Portal. 
+This statement comes back immediately but the scaling of the compute resources take place in the background. A scale this small should take less than a minute and for a short period of time the database will be offline to make the change effective. You can monitor the progress of this scaling activity using the Azure Portal.<br><br>
 
 <img src="../graphics/Azure_Portal_Update_In_Progress.png" alt="Azure_Portal_Update_In_Progress"/>
 
@@ -353,7 +353,6 @@ Look at the Overview blade again for the Compute Utilization. Notice the signifi
 
 <img src="../graphics/Azure_Portal_Compute_Query_Comparison.png" alt="Azure_Portal_Compute_Query_Comparison"/>
 
-
 - Observe differences with XEvents.
 
 TODO: Does this become part of the bonus activity.
@@ -377,13 +376,6 @@ xxxxxx
 Re-run the ostress workload.
 
 **Step 4: Observe new performance of the workload**
-
-- Observe DMV queries
-- Observe query store reports
-- Observe azure portal
-- Observe differences with XEvents.
-
-- **TODO:** - Why does dm_db_resource_stats show lower overall CPU% on serverless? 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS)</a>: Optimizing performance of data loading</b></p>
 
