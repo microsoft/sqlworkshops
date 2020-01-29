@@ -73,12 +73,12 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><i><a href="https://github.com/container-storage-interface/spec/blob/master/spec.md">Persistent Storage </i></a> </td>
-			<td>A hardware and software combination used to persists state. One of the key aims is ensure that if a Pod is rescheduled to run on a different Node, its state is not lost as it moves from its original Node to a new one. In the early days of Kubernetes, most storage drivers were called as “In tree”, meaning that vendors who wanted Kubernetes to use their storage had to integrate the code for their drivers directly with the Kubernetes code base. The IT industry is now gravitating towards the Container Storage Interface specification which allows Kubernetes to seamlessly use any storage platform that supports this standard without having to touch the Kubernetes code base. Ultimately, the aim of the CSI standard is to promote storage portability. </td>
+			<td>A hardware and software combination used to persist state. One of the key aims is ensure that if a Pod is rescheduled to run on a different Node, its state is not lost as it moves from its original Node to a new one. In the early days of Kubernetes, most storage drivers were called as “In tree”, meaning that vendors who wanted Kubernetes to use their storage had to integrate the code for their drivers directly with the Kubernetes code base. The IT industry is now gravitating towards the Container Storage Interface specification which allows Kubernetes to seamlessly use any storage platform that supports this standard without having to touch the Kubernetes code base. Ultimately, the aim of the CSI standard is to promote storage portability. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"><i>Namespace</i></a> </td>
-			<td>Used to define multiple virtual clusters backed by the same physical cluster. </td>
+			<td>Used to define multiple virtual clusters backed by the same physical cluster. Namespaces are a critical component in the Kubernetes role based access control security model.</td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td><a href="https://kubernetes.io/docs/concepts/architecture/master-node-communication/"><b>Kubernetes Master</b></a> </td>
@@ -122,17 +122,17 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"><i>Daemon Set</i></a> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"><i>DaemonSet</i></a> </td>
 			<td>A service that ensures that <i>Nodes</i> run a copy of a <i>Pod</i>. As Nodes are added to the cluster, Pods are added to them. As Nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><a hrf="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"><i>Stateful Set</i></a> </td>
-			<td>The workload API object used to manage stateful applications. </td>
+			<td><a hrf="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"><i>StatefulSet</i></a> </td>
+			<td>The workload API object used to manage stateful applications that are clustered by nature. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
-			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"><i>Replica Set </i></a> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"><i>ReplicaSet </i></a> </td>
 			<td>A service that maintains a stable set of replica Pods running at any given time. Used to guarantee the availability of a specified number of identical Pods. </td>
 		</tr>
 		<tr style="vertical-align:top;">
@@ -150,6 +150,11 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<td><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/"><i>etcd</i></a> </td>
 			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
 		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/"><i>operator</i></a> </td>
+			<td>A custom Kubernetes object implemented for the management of applications with complex life cycles<i>operator</i>. </td>
+		</tr>
 	</tbody>
 </table>
 
@@ -159,9 +164,19 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 
 <TODO: Content>
 
-kubectl
+"North-south" traffic between a Kubernetes cluster and the outside is made via the Kubernetes API server. There are a number of standard client tools for administering and utilising a Kubernetes cluster: 
 
-Dashboard
+**[kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)**
+A command line tool for administering a Kubernetes cluster and creating / modifying Kubernetes objects via YAML files.
+
+**[Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)**
+A general purpose web based grpahical interface for Kubernetes.
+
+**[Helm](https://helm.sh/)**
+A tool for Kubernetes application package management and deployment.
+
+Language Client Libraries
+Client libraries exist for most of the popular third generation languages, such as [Python](https://github.com/kubernetes-client/python).
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
 
@@ -274,7 +289,6 @@ The deployment of a Kubernetes cluster via Kubespray follows this workflow:
 Conceptually the creation of a three-worker node cluster looks like this:
 
 **<TODO: Insert image here>**
- 
 
 Note:
 - The deployment is instigated from the jump server,
@@ -488,7 +502,7 @@ This raises the question; if the persistent volumes for a kubernetes cluster alr
 
   The volume can be mounted as read-write by many nodes
 
-### 3.5.7 ### StatefulSets
+### 3.5.7 StatefulSets ###
 
 The architecture of a SQL Server 2019 big data cluster contains components that are clustered by nature, such as storage pods in the storage pool:
 
@@ -518,8 +532,37 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
 
 - ```kubectl taint nodes <node name> key=value:NoSchedule-```
 
-### 3.5.8 ### Storage Quality of Service Requirement Per Big Data Cluster Component
 
-***<TODO: Insert table from Microsoft online documentation>***
+### 3.5.8 Considerations for Choosing Storage ### 
 
-### 3.5.8 ### Storage Plugin Options
+- **cost**
+  - Is this CAPEX, OPEX, priced on capacity and / or IOPS ?.
+
+- **availability**
+  - How available is the platform to serve IO in the event that it suffers a component failure ?.
+  - Can the platform still serve IO if a data center or availability zone is lost ?.
+
+- **durability**
+  - How durable is the data once it is written ?.
+
+- **performance**
+  - Does the storage platform meet the latency / IO bandwidth requirements of the application ?.
+
+- **security**
+  - What security features does the storage platform come with ?.
+  - If a Kubernetes cluster to be used in a regulated industry that mandates certain security certifications, does the platform adher to these ?.
+
+- **storage protocol support**
+  - Does the organization have a preference for storage protocol support; iSCSI, Fiber Channel, NFS, SMB etc, if so does the platform support this ?.
+
+- **managability**
+  - How easy is the platform to manage ?.
+  - What management tools does the platform come with ?.
+  - What data protection tools does the platform come with ?.
+  - Does the platform require any scripting / programming expertise in order to manage it ?.
+  - Does the platform need to provide integration for any existing management frameworks and / or monitoring solutions ?.
+
+- **interoperability**
+  - Does the storage platform support any industry standard interfaces ?, Kubernetes is moving towards the container storage interface (CSI) as a standard, 
+  - platforms that support this can be seemlessly interchanged.
+  - Does the platform need to provide interopability with existing infrastructure, virtualized infrastructure for example.
