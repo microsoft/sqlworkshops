@@ -520,11 +520,6 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
 
 ### 3.5.8 ### Storage Quality of Service Requirement Per Big Data Cluster Component
 
-
-|     Resource       |  Storage Type for Data   |   Storage Type for Logs    |                   Notes                    |
-|--------------------|--------------------------|----------------------------|--------------------------------------------|
-|                    |                          |                            |                                            |
-|                    |                          |                            |                                            | 
-|                    |                          |                            |                                            |
+***<TODO: Insert table from Microsoft online documentation>***
 
 ### 3.5.8 ### Storage Plugin Options
