@@ -1,0 +1,124 @@
+# SQL Server 2019 big data cluster
+Single-Node Cluster on an Azure Virtual Machine (Unsupported for production - classroom only)
+In this set of instructions you'll set up a SQL Server 2019 big data cluster using Ubuntu on 
+a single-Node using a Microsoft Azure Virtual Machine.
+
+NOTE: This is an unsupported configuration, and should be used only for classroom purposes. 
+Carefully read the instructions for the parameters you need to replace for your specific 
+subscription and parameters.
+
+-------------------------------------------------------------------------------------------------------------
+## Running these Instructions
+
+These instructions use shell commands, such as PowerShell, bash, or the CMD window from a 
+system that has the Secure Shell software installed (SSH). You can type:
+
+ssh -h 
+
+To see if this tool is installed. 
+
+You can copy-and-paste from the lines that show the commands, or you can set your IDE to run the current line 
+in a Terminal window. (In Visual Studio Code or Azure Data Studio, these are called "Keybindings"):
+https://code.visualstudio.com/docs/getstarted/keybindings
+
+You can set this to any key you like:
+(Preferences | Keyboard Shortcuts | Terminal: Run Selected Text in Active Terminal)
+
+-------------------------------------------------------------------------------------------------------------
+## References 
+This Notebook uses the script located here: 
+https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15
+and that reference supersedes the information in the steps listed below. 
+
+You can also create a SQL Server Big Data Cluster on the Azure Kubernetes Service (AKS): 
+Those instructions are located here: https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sql-server-ver15 
+
+For a complete workshop on SQL Server 2019's big data clusters, see this reference: 
+https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters
+
+-------------------------------------------------------------------------------------------------------------
+### Step 1: Log in to Azure
+az login 
+
+-------------------------------------------------------------------------------------------------------------
+### Step 2: Set your account - show the accounts, replace <YourAccountNameHere> with your account name
+az account list --output table
+
+az account set --subscription "<YourAccountNameHere>"
+
+-------------------------------------------------------------------------------------------------------------
+### Step 3: Create a Resource Group, and a Virtual Machine - Look for values with the <Replace> characters to change to your values
+#### (Note: Needs a machine large enough to run BDC and also have Nested Virtualization)
+
+
+az group create -n <ResourceGroupName> -l eastus2
+
+az vm create -n <VMName> -g <ResourceGroupName> -l eastus2 --image UbuntuLTS --os-disk-size-gb 200 --storage-sku Premium_LRS --admin-username bdcadmin --admin-password <ReplaceWithPassword> --size Standard_D8s_v3 --public-ip-address-allocation static
+
+ssh -X bdcadmin@<ReplaceWithIPAddressThatReturnsFromLastCommand>
+
+### Step 4: Update and Upgrade VM
+sudo apt-get update
+
+sudo apt-get upgrade
+
+sudo apt autoremove
+
+-------------------------------------------------------------------------------------------------------------
+### Step 5: (Optional) Install an XWindows server 
+sudo apt-get install xorg openbox
+
+sudo reboot
+#### After about 5 minutes: 
+ssh -X bdcadmin@<ReplaceWithVMIP>
+
+sudo apt-get install gnome-core
+
+sudo reboot
+
+#### After about 5 minutes: 
+ssh -X bdcadmin@<ReplaceWithVMIP>
+
+sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config
+
+mkdir /home/bdcadmin/.config/nautilus
+
+cd ~
+mkdir ./Downloads
+
+touch  /home/bdcadmin/.gtk-bookmarks
+
+wget https://cs7a9736a9346a1x44c6xb00.blob.core.windows.net/backups/ads.deb
+
+#### Check XWindows - Note, requires that you have XWindows software installed on your laptop
+nautilus &
+
+-------------------------------------------------------------------------------------------------------------
+### Step 6: Install BDC Single Node - Pre-requisites (Current as of 1/31/2020)
+sudo apt update && sudo apt upgrade -y
+sudo reboot
+#### After about 5 minutes: 
+ssh -X bdcadmin@<ReplaceWithVMIP>
+
+-------------------------------------------------------------------------------------------------------------
+### Step 7: Download and mark BDC Setup script
+curl --output setup-bdc.sh https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/kubeadm/ubuntu-single-node-vm/setup-bdc.sh
+
+chmod +x setup-bdc.sh
+
+sudo ./setup-bdc.sh
+
+-------------------------------------------------------------------------------------------------------------
+### Step 8: Setup path and Check
+source ~/.bashrc
+
+azdata --version
+
+kubectl get pods
+
+#### You can now use the system.
+-------------------------------------------------------------------------------------------------------------
+## Cleanup - Erase everything
+### Only perform this step when you are done experimenting with the system...
+az group delete --name <ResourceGroupName>
+

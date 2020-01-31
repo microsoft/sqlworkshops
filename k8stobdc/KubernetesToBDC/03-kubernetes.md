@@ -148,7 +148,7 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/"><i>etcd</i></a> </td>
-			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
+			<td>A high performance key value store that stores the cluster’s state. Since <i>etcd</i> is  light-weight, each instance can generally share resources with other Nodes in the cluster. The Hardware recommendations section of the official http://etcd.io site provides a detailed breakdown of the hardware requirement for <i>etcd</i>. </td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
@@ -246,6 +246,7 @@ Luckily help is at hand in the form of a tool that leverages kubeadm in order to
 
 - Add nodes to existing clusters
 
+
 Kubespray is a Cloud Native Computing Foundation project and with its own [GitHub repository](https://github.com/kubernetes-sigs/kubespray).
 
 ### 3.2.5 What Is Ansible? ###
@@ -267,6 +268,9 @@ In order to carry out the deployment of the Kubernetes cluster, a basic understa
 - Basic Ubuntu firewall configuration
 
 ### 3.2.7 Kubespray Workflow ###
+
+Unlike other available deployment tools, Kubespray does everything for you in “One shot”. For example, Kubeadm requires that certificates on nodes are created manually, Kubespray not only leverages Kubeadm but it also looks after everything including certificate creation for you. Kubespray works against most of the popular public cloud providers and has been tested for the deployment of clusters with thousands of nodes. The real elegance of Kubespray is the reuse it promotes. If an organization has a requirement to deploy multiple clusters, once Kubespray is setup, for every new cluster that needs to be created, the only prerequisite is to create a new inventory file for the nodes the new cluster will use.
+3.2.5 High Level Kubespray Workflow
 
 The deployment of a Kubernetes cluster via Kubespray follows this workflow:
 
@@ -299,7 +303,6 @@ Note:
 
 ### 3.2.8 Requirements ###
 
-Refer to the [requirements](https://github.com/kubernetes-sigs/kubespray#requirements) section in the Kubespray GitHub repo.
 
 ### 3.2.9 Post Cluster Deployment Activities ###
 

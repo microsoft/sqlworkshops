@@ -28,7 +28,7 @@ You'll cover the following topics in this Module:
 
 SQL Server (starting with version 2019) provides three ways to work with large sets of data:
 
- - **Data Virtualization**: Query multiple sources of data technologies using the Polybase SQL Server feature <i>(data left at source)</i>
+ - **Data Virtualization**: Query multiple sources of data technologies using the PolyBase SQL Server feature <i>(data left at source)</i>
  - **Storage Pools**: Create sets of disparate data sources that can be queried from Distributed Data sets <i>(data ingested into sharded databases using PolyBase)</i>
  - **SQL Server Big Data Clusters**: Create, manage and control clusters of SQL Server Instances that co-exist in a Kubernetes cluster with Apache Spark and other technologies to access and process large sets of data <i>(Data left in place, ingested through PolyBase, and into/through HDFS)</i> 
 
