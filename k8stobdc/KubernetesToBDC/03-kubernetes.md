@@ -162,8 +162,6 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">3.1 Kubernetes Interfaces</h2>
 
-<TODO: Content>
-
 "North-south" traffic between a Kubernetes cluster and the outside is made via the Kubernetes API server. There are a number of standard client tools for administering and utilising a Kubernetes cluster: 
 
 **[kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)**
@@ -178,21 +176,9 @@ A tool for Kubernetes application package management and deployment.
 Language Client Libraries
 Client libraries exist for most of the popular third generation languages, such as [Python](https://github.com/kubernetes-client/python).
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
-
-In this activity you will <TODO: Explain Activity>
-
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-<TODO: Enter specific steps to perform the activity> 
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">3.2 Deployments (YAML Manifests)</h2>
-
-<TODO: Content>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">3.2 Deploying a Cluster</h2>
 
 ### 3.2.1 Control Plane ###
 
@@ -218,7 +204,7 @@ A production grade SQL Server 2019 Big Data Cluster requires a minimum of three 
 
   Create a new cluster, deploy a big data cluster to it and then restore a backup of the data from the original cluster. This approach requires more hardware than the in-situ upgrade method. If the upgrade spans multiple versions of Kubernetes, for example the upgrade is from version 1.15 to 1.17, this method allows a 1.17 cluster to be created from scratch cleanly and then the data from 1.15 cluster restored onto the new 1.17 cluster.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create A Single Node Big Data Cluster Sandpit</b></p>
 
 In this activity you will deploy a single node big data cluster sandpit environment on an Ubuntu virtual machine using [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15)
 
@@ -232,7 +218,7 @@ In the last activity, we deployed a single node SQL Server 2019 big data cluster
 
 - Automate the tasks that have to be performed in addition to running kubeadm
 
-Luckily help is at hand in the form of a tool that leverages kubeadm in order to achieve all of these goals.
+There is a tool that leverages kubeadm in order to achieve all of these goals.
 
 ### 3.2.4 Introducing Kubespray ###
 
@@ -318,6 +304,8 @@ Use the kubectl cheat sheet to familiarise yourself with various kubectl command
 - Labels can be assigned to any object created in a Kubernetes cluster, an entity known as a ‘Selector’ is used to filter objects with labels. Use kubectl get to display the nodes with the role of master. Labels and selectors are covered by the Kubernetes documentation in detail.
 
 - All objects that live in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster.
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 ## 3.3 Storage ##
 
@@ -532,7 +520,6 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
 
 - ```kubectl taint nodes <node name> key=value:NoSchedule-```
 
-
 ### 3.5.8 Considerations for Choosing Storage ### 
 
 - **cost**
@@ -552,9 +539,6 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
   - What security features does the storage platform come with ?.
   - If a Kubernetes cluster to be used in a regulated industry that mandates certain security certifications, does the platform adher to these ?.
 
-- **storage protocol support**
-  - Does the organization have a preference for storage protocol support; iSCSI, Fiber Channel, NFS, SMB etc, if so does the platform support this ?.
-
 - **managability**
   - How easy is the platform to manage ?.
   - What management tools does the platform come with ?.
@@ -566,3 +550,12 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
   - Does the storage platform support any industry standard interfaces ?, Kubernetes is moving towards the container storage interface (CSI) as a standard, 
   - platforms that support this can be seemlessly interchanged.
   - Does the platform need to provide interopability with existing infrastructure, virtualized infrastructure for example.
+  - Does the organization have a preference for storage protocol support; iSCSI, Fiber Channel, NFS, SMB etc, if so does the platform support this ?.
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Installing A Strorage Plugin</b></p>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Utilising Kubernetes Persistent Storage Volumes</b></p>
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+## 3.4 Troubleshooting ##
