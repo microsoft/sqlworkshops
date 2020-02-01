@@ -76,10 +76,6 @@ SELECT * FROM sys.dm_db_resource_stats
 
 This DMV will track overall resource usage of your workload against Azure SQL Database such as CPU, I/O, and memory.
 
-- Setup an XEvent trace for queries
-
-TODO: This step may be moved to a BONUS activity.
-
 **Step 2: Run the workload and observe performance**
 
 - Examine the workload query from the script **topcustomersales.sql**. 
@@ -102,7 +98,7 @@ GO
 
 Edit the script script that runs ostress **sqlworkload.cmd**:<br><br>
 Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
-Substitue the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**
+Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**
 Substitute the database you deployed in Module 2 for the **-d parameter**<br>
 Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
 
@@ -110,10 +106,12 @@ This script will use 10 concurrent users running the workload query 1500 times.
 
 >**NOTE:** If you are not seeing CPU usage behavior with this workload for your environment you can adjust the **-n parameter** for number of users and **-r parameter** for iterations.
 
-From a powershell command prompt, change to the directory for this module activity:
+From a powershell command prompt, change to the directory for this module activity: 
+
+[vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\[vmusername] where you have cloned the GitHub repo.
 
 <pre>
-cd AzureSQLWorkshop\azuresqlworkshop\03-Performance\monitor_and_scale
+cd c:\users\[vmusername]\AzureSQLWorkshop\azuresqlworkshop\03-Performance\monitor_and_scale
 </pre>
 
 Run the workload with the following command
@@ -148,7 +146,7 @@ Your screen at the command prompt should look similar to the following
 [datetime] [ostress PID] Attempting DOD5015 removal of [directory]\sqlquery_9.out]
 [datetime] [ostress PID] Starting query execution...
 [datetime] [ostress PID]  BETA: Custom CLR Expression support enabled.
-[datetime] [ostress PID] Creating 15 thread(s) to process queries
+[datetime] [ostress PID] Creating 10 thread(s) to process queries
 [datetime] [ostress PID] Worker threads created, beginning execution...</pre>
 
 - Use the query in SSMS to monitor dm_exec_requests (**sqlrequests.sql**) to observe active requests. Run this query 5 or 6 times and observe some of the results.
@@ -232,12 +230,6 @@ Notice that the average wait time for CPU for this query is a high % of the over
 
 Given the evidence to this point, without any query tuning, our workload requires more CPU capacity than we have deployed for our Azure SQL Database.
 
-**Step 4: Observe query performance with Extended Events**
-
-- Load up XEvent file and observe information in the query trace.
-
-TODO: This may be moved to a BONUS activity.
-
 **Step 5: Observe performance using the Azure Portal**
 
 The Azure Portal provides performance information in the form of a graph. The standard default view is called **Compute Utilization** which you can see on the Overview blade for your database:<br><br>
@@ -318,6 +310,8 @@ This statement comes back immediately but the scaling of the compute resources t
 
 <img src="../graphics/Azure_Portal_Update_In_Progress.png" alt="Azure_Portal_Update_In_Progress"/>
 
+TODO: Look at dm_operation_status
+
 When this is done using the queries listed above to verify the new service objective or pricing tier of 8 vCores has taken affect.
 
 **Step 3: Run the workload again**
@@ -332,7 +326,7 @@ Run the workload again using the command **sqlworkload.cmd** that you executed i
 
 Use the same queries from Section 4.2 Activity 1 to observe results from **dm_exec_requests** and **dm_db_resource_stats**.
 
-You will see there are more queries with a status of RUNNING and the avg_cpu_percent should drop to 40-60%.
+You will see there are more queries with a status of RUNNING (less RUNNABLE although this will appear some) and the avg_cpu_percent should drop to 40-60%.
 
 - Observe the new workload duration.
 
@@ -358,11 +352,7 @@ Look at the Overview blade again for the Compute Utilization. Notice the signifi
 
 >**NOTE:** If you continue to increase vCores for this database you can improve performance up to a threshold where all queries have plenty of CPU resources. This does not mean you must match the number of vCores to the number of concurrent users from your workload. In addition, you can change the Pricing Tier to use **Serverless** *Compute Tier* instead of **Provisioned** to achieve a more "auto-scaled" approach to a workload. For example, for this workload if you chose a min vCore value of 2 and max VCore value of 8, this workload would immediately scale to 8vCores.
 
-- Observe differences with XEvents.
-
-TODO: Does this become part of the bonus activity.
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3 (BONUS)</a>: XXXXXX </b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3 (BONUS)</a>: Using Extended Events in Azure SQL Database </b></p>
 
 >**IMPORTANT**: This activity assumes you have completed all the steps in Activity 1 in Module 4.
 
@@ -370,11 +360,11 @@ In this activity you will take the results of your monitoring in Module 4.2 and 
 
 **Step 1 - xxxxxxx**
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS)</a>: Optimizing performance of data loading</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS)</a>: Optimizing performance for index builds in Azure SQL Database</b></p>
 
 >**IMPORTANT**: This activity assumes you have completed all Activities in Module 2
 
-xxxxxx
+TODO: We may do an index build for log rate governance activity here.
 
 **Step 1 - xxxxx**
 
