@@ -274,7 +274,7 @@ The deployment of a Kubernetes cluster via Kubespray follows this workflow:
 
 Conceptually the creation of a three-worker node cluster looks like this:
 
-**<TODO: Insert image here>**
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_2_7_kubespray-flow.png?raw=true">
 
 Note:
 - The deployment is instigated from the jump server,
@@ -289,7 +289,15 @@ Refer to the [requirements](https://github.com/kubernetes-sigs/kubespray#require
 
 ### 3.2.9 Post Cluster Deployment Activities ###
 
-The primary tool for administering a Kubernetes cluster is kubectl. After deploying the cluster, the first step is to install this followed by installing and configuring a storage plugin.
+Install kubectl - the primary tool for administering a Kubernetes cluster. kubectl requires a configuration file in order to access the cluster, by default kubectl will look for a file named config in the .kube directory under the home directory of the user that is logged in:
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_2_9_kubectl.png?raw=true">
+
+The config file specifies clusters, users and contexts, a context being a label for connection details for a cluster in terms of a user and namespace. If kubectl cannot find a config file or it has been corrupted in any way when an attempt is made to run a command against a cluster, the following error message will appear:
+
+**The connection to the server localhost:8080 was refused - did you specify the right host or port?**
+
+The [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) goes into detail regarding the creation of config files and contexts for accessing multiple clusters. The fastest and simplest way to create a config file is to copy the file: /etc/kubernetes/admin.conf off one of the master node hosts and onto the client machine that kubectl is installed on.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
 
