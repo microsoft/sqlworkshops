@@ -196,11 +196,11 @@ It is recommended that a production grade cluster has a minimum of two master no
 
 A production grade SQL Server 2019 Big Data Cluster requires a minimum of three nodes each with 64 GB of RAM and 8 logical processors. However, consideration also needs to be made for upgrading a Kubernetes cluster from one version to another. There are two options:
 
-- Upgrade each node in the cluster in-situ
+- **Upgrade each node in the cluster in-situ**
 
   This requires that a ‘Taint’ is applied to a node so that it cannot accept pods, the node is then drained of its current pod workload after which it can be upgraded. When the node is drained, the pods that are running on it need somewhere else to go, therefore this approach mandates that there are N+1 worker nodes (assuming one node is upgraded at a time). This approach runs the risk that if the upgrade fails for any reason, the cluster may be left in a state with worker nodes on different versions of Kubernetes.
 
-- Create a new cluster
+- **Create a new cluster**
 
   Create a new cluster, deploy a big data cluster to it and then restore a backup of the data from the original cluster. This approach requires more hardware than the in-situ upgrade method. If the upgrade spans multiple versions of Kubernetes, for example the upgrade is from version 1.15 to 1.17, this method allows a 1.17 cluster to be created from scratch cleanly and then the data from 1.15 cluster restored onto the new 1.17 cluster.
 
@@ -294,7 +294,7 @@ Note:
 
 Install kubectl - the primary tool for administering a Kubernetes cluster. kubectl requires a configuration file in order to access the cluster, by default kubectl will look for a file named config in the .kube directory under the home directory of the user that is logged in:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_2_9_kubectl.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_2_9_kubectl.png?raw=true">
 
 The config file specifies clusters, users and contexts, a context being a label for connection details for a cluster in terms of a user and namespace. If kubectl cannot find a config file or it has been corrupted in any way when an attempt is made to run a command against a cluster, the following error message will appear:
 
@@ -339,8 +339,8 @@ Use the kubectl cheat sheet to familiarise yourself with various kubectl command
 OpenShift Container Platform from Red Hat Software is a platform as a service built on Kubernetes that supports
 the full software development lifecycle:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_1_openshift.png?raw=true">
- 
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_1_openshift.png?raw=true">
+
 
 ## 3.3.3  OpenShift Container Platform Compared to Kubernetes ##
 
@@ -487,11 +487,11 @@ spec:
 
 Persistent Volumes can be provisioned in one of two different ways:
 
-- manually
+- **manually**
 
   This requires that the cluster administrator must undertake manual activities in order to create the persistent volume.
   
-- automatically
+- **automatically**
 
   Under an automatic provisioning scheme, once a persistent volume claim is created, a persistent volume is created automatically and the two are bound.
 
@@ -499,11 +499,11 @@ Persistent Volumes can be provisioned in one of two different ways:
 
 When using persistent volumes, something known as a “Storage class” must be specified and a SQL Server 2019 big data cluster is no exception to this. Simply put, each storage platform that can be used to allocate storage to the cluster has its own storage class. Furthermore, the Kubernetes API allows users to create their own storage classes. There are two fundamental components in a SQL Server 2019 big data cluster that consume storage:
 
-- The storage pool 
+- **The storage pool** 
 
   For the storage of unstructured data in HDFS parquet format
 
-- The data pool
+- **The data pool**
 
   For the storage of traditional SQL Server data
   
@@ -521,19 +521,19 @@ When using persistent volumes, something known as a “Storage class” must be 
 
 Pods can either be stateless or stateful. One of the most fundamental tasks that Kubernetes carries out is to ensure that the desired state of a pod in terms of replicas and its actual state are one of the same. Pods typically run in either a ReplicaSet or a StatefulSet, if a replica dies by a node going offline for example, Kubernetes will schedule a new pod to run on a healthy node: 
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_4_stateless.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateless.png?raw=true">
 
 Things become more nuanced once state is involved. When a pod that is stateful is scheduled to run on a different node, the state associated with that pod needs to ‘Follow’ it from its original node to its new node. This can be achieved in one of two ways.
  
 - Storage Replication
 Storage is replicated between nodes, such that if a pod needs to be rescheduled, it can be scheduled to run on a node that its state has been replicated to.
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_4_stateful_replicated.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_replicated.png?raw=true">
 
 - Shared Storage
 Each node in the cluster has access to the same storage. When a node fails, a pod can be re-scheduled to any other worker node in the cluster:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_4_stateful_shared.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_shared.png?raw=true">
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
  
@@ -568,15 +568,15 @@ FOR ATTACH;
 
 This raises the question; if the persistent volumes for a kubernetes cluster already exist, can this be attached to a big data cluster ?. The answer is that this depends on what is known as the “Access mode” for the persistent volume, of which there are three types:
 
-- ReadWriteOnce
+- **ReadWriteOnce**
 
   The volume can be mounted as read-write by a single node, this is usually associated with block storage platforms; the type of storage that SQL Server usually runs on that is typically accessed via the iSCSI or the Fiber Channel storage protocols.
 
-- ReadOnlyMany
+- **ReadOnlyMany**
 
   The volume can be mounted read-only by many nodes. This access mode and ReadWriteMany are usually associated with file-based storage platforms, such platforms are usually accessed via the NFS or SMB protocols.
 
-- ReadWriteMany
+- **ReadWriteMany**
 
   The volume can be mounted as read-write by many nodes
 
@@ -584,7 +584,7 @@ This raises the question; if the persistent volumes for a kubernetes cluster alr
 
 The architecture of a SQL Server 2019 big data cluster contains components that are clustered by nature, such as storage pods in the storage pool:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_4_7_bdc_architecture.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_4_7_bdc_architecture.png?raw=true">
 
 Components of an application that are clustered have some special requirements which are not catered for by ReplicaSets. Per the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), clustered applications usually exhibit one or more of the following requirements:
 
@@ -702,7 +702,7 @@ kubectl desc pvc test-pvc
 
 6. List all the persistent volumes present in your sandpit environment cluster:
 ```
-kubectl get p --all-namespaces
+kubectl get pv --all-namespaces
 ```
 
 For a storage class that provides automatic provisioning, the persistent volume is automatically created for the test-pvc volume.
