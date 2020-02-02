@@ -339,7 +339,7 @@ Use the kubectl cheat sheet to familiarise yourself with various kubectl command
 OpenShift Container Platform from Red Hat Software is a platform as a service built on Kubernetes that supports
 the full software development lifecycle:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_1_openshift.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_1_openshift.PNG?raw=true">
 
 
 ## 3.3.3  OpenShift Container Platform Compared to Kubernetes ##
@@ -584,7 +584,7 @@ This raises the question; if the persistent volumes for a kubernetes cluster alr
 
 The architecture of a SQL Server 2019 big data cluster contains components that are clustered by nature, such as storage pods in the storage pool:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_4_7_bdc_architecture.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_4_7_bdc_architecture.PNG?raw=true">
 
 Components of an application that are clustered have some special requirements which are not catered for by ReplicaSets. Per the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), clustered applications usually exhibit one or more of the following requirements:
 
