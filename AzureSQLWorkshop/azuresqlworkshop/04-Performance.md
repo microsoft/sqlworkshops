@@ -404,15 +404,53 @@ Look at the Overview blade again for the Compute Utilization. Notice the signifi
 
 >**NOTE:** If you continue to increase vCores for this database you can improve performance up to a threshold where all queries have plenty of CPU resources. This does not mean you must match the number of vCores to the number of concurrent users from your workload. In addition, you can change the Pricing Tier to use **Serverless** *Compute Tier* instead of **Provisioned** to achieve a more "auto-scaled" approach to a workload. For example, for this workload if you chose a min vCore value of 2 and max VCore value of 8, this workload would immediately scale to 8vCores.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3</a>: Optimizing performance for index maintenance in Azure SQL Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3</a>: Optimizing application performance for Azure SQL Database</b></p>
 
 >**IMPORTANT**: This activity assumes you have completed all Activities in Module 2
 
 Good article read: https://azure.microsoft.com/en-us/blog/resource-governance-in-azure-sql-database/
 
-TODO: We may do an index build for log rate governance activity here.
+In some cases, migrating an existing application and SQL query workload to Azure may uncover opportunities to optimize and tune queries.
 
-**Step 1 - xxxxx**
+Assume that to support a new extenstion to a website for AdventureWorks orders to support a rating system from customers you need to add a new table to support a heavy set of concurrent INSERT activity for ratings. You have tested the SQL query workload on a development computer that has a local SSD drive for the database and transaction log.
+
+When you move your test to Azure SQL Database using the General Purpose tier (8 vCores), the INSERT workload is slower. You need to discover whether you need to change the service objective or tier to support the new workload.
+
+**Step 1 - Create a new table**
+
+Create a new table
+
+**Step 2 - Load up a query to monitor query execution**
+
+Look at dm_exec_requests
+Look at dm_os_wait_stats
+Look at dm_io_virtual_file_stats
+
+**Step 3 - Run the workload**
+
+**Step 4 - Observe query requests and duration**
+
+WRITELOG waits
+Latency on the tlog (only 2ms on avg but on local SSD it is almost 0)
+
+TODO: WRITELOG waits don't show up in Query Store?
+
+**Step 5 - Decide on a resolution**
+
+One commit for each insert is not efficient but the application was not affected on a local SSD because each commit was very fast.
+
+Business critical provides local SSD drives but maybe there ia an application optimization.
+
+Change the workload to wrap a BEGIN TRAN/COMMIT TRAN around the INSERT workload 
+
+The concept of "batching" can help most applications including Azure.
+
+
+**Step 6 - Run the modified workload and observe**
+
+Now it runs in almost 5 seconds compared to even 18-19 seconds with a local SSD using singleton transactions.
+
+Make a note that extremely large transactions can be affected on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
