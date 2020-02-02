@@ -528,12 +528,12 @@ Things become more nuanced once state is involved. When a pod that is stateful i
 - Storage Replication
 Storage is replicated between nodes, such that if a pod needs to be rescheduled, it can be scheduled to run on a node that its state has been replicated to.
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_replicated.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_replicated.PNG?raw=true">
 
 - Shared Storage
 Each node in the cluster has access to the same storage. When a node fails, a pod can be re-scheduled to any other worker node in the cluster:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_shared.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_shared.PNG?raw=true">
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
  
