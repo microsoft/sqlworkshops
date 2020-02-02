@@ -153,7 +153,7 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/"><i>operator</i></a> </td>
-			<td>A custom Kubernetes object implemented for the management of applications with complex life cycles<i>operator</i>. </td>
+			<td>A custom Kubernetes object implemented for the management of applications with complex life cycles. </td>
 		</tr>
 	</tbody>
 </table>
@@ -204,7 +204,7 @@ A production grade SQL Server 2019 Big Data Cluster requires a minimum of three 
 
   Create a new cluster, deploy a big data cluster to it and then restore a backup of the data from the original cluster. This approach requires more hardware than the in-situ upgrade method. If the upgrade spans multiple versions of Kubernetes, for example the upgrade is from version 1.15 to 1.17, this method allows a 1.17 cluster to be created from scratch cleanly and then the data from 1.15 cluster restored onto the new 1.17 cluster.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create A Single Node Big Data Cluster Sandpit</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create a single node big data cluster sandpit environment</b></p>
 
 In this activity you will deploy a single node big data cluster sandpit environment on an Ubuntu virtual machine using [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15)
 
@@ -315,9 +315,90 @@ Use the kubectl cheat sheet to familiarise yourself with various kubectl command
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-## 3.3 Storage ##
+## 3.3 OpenShift Container Platform ##
 
-### 3.3.1 Kubernetes Storage Concepts ###
+## 3.3.1  OpenShift Container Platform - Why ?
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Understanding what open-source means</b></p>
+
+1. Use a search engine lookup the Kubernetes repository on GitHub.
+
+2. Make a note of the licence that the Kubernetes project is available under.
+
+3. On the GitHub page for the Kubernetes repository, click on 'Issues' (top left of the page), then by clicking on 'Sort', sort the issues in ascending date order. Note the age and severity of some of the issues.
+
+4. Note the GitHub login of the individual who has raised issue #489.
+
+5. In a browser navigate to the link https://landscape.cncf.io/ and make a mental note of the number of projects in the CNCF landscape.
+
+## 3.3.2  OpenShift Container Platform - What Is It ? ##
+
+OpenShift Container Platform from Red Hat Software is a platform as a service built on Kubernetes that supports
+the full software development lifecycle:
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_1_openshift.png?raw=true">
+ 
+
+## 3.3.3  OpenShift Container Platform Compared to Kubernetes ##
+
+<table style="width:100%">
+  <tr>
+    <th><b>Feature / Aspect</b></th>
+    <th><b>Kubernetes</b></th>
+    <th><b>Openshift Container Platform</b></th>
+  </tr>
+  <tr>
+    <td>Kubernetes support</td>
+    <td>100% compatible</td>
+    <td>100% compatible</td>
+  </tr>
+  <tr>
+    <td>Licence</td>
+    <td>Apache 2.0</td>
+    <td>Commercial</td>
+  </tr>
+  <tr>
+    <td>Linux distribution support</td>
+    <td>Most debian based distributions</td>
+    <td>Red Hat Enterprise Linux (CentOS for OKD)</td>
+  </tr>
+  <tr>
+    <td>Open source version</td>
+    <td>Kubernetes is 100% open source</td>
+    <td>Openshift Community Edition (OKD)</td>
+  </tr>
+  <tr>
+    <td>Preferred method of chart/'Package' installation</td>
+    <td>Helm</td>
+    <td>operator</td>
+  </tr>
+  <tr>
+    <td>Command line interface</td>
+    <td>kubectl</td>
+    <td>kubectl and oc</td>
+  </tr>
+  <tr>
+    <td>Single node sand pit version</td>
+    <td>minikube, kind, microk8s</td>
+    <td>minishift</td>
+  </tr>
+  <tr>
+    <td>Default container engine</td>
+    <td>containerd</td>
+    <td>cri-o</td>
+  </tr>
+  <tr>
+    <td>Built in image registry ?</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+## 3.4 Storage ##
+
+### 3.4.1 Kubernetes Storage Concepts ###
 
 There are two storage options available when deploying a SQL Server 2019 big data cluster:
 
@@ -399,7 +480,7 @@ spec:
   storageClassName: my-block-storage-class
 ```
 
-### 3.3.2 Manual and Automatic Provisioning ###
+### 3.4.2 Manual and Automatic Provisioning ###
 
 Persistent Volumes can be provisioned in one of two different ways:
 
@@ -411,7 +492,7 @@ Persistent Volumes can be provisioned in one of two different ways:
 
   Under an automatic provisioning scheme, once a persistent volume claim is created, a persistent volume is created automatically and the two are bound.
 
-### 3.3.3 Storage Classes ###
+### 3.4.3 Storage Classes ###
 
 When using persistent volumes, something known as a “Storage class” must be specified and a SQL Server 2019 big data cluster is no exception to this. Simply put, each storage platform that can be used to allocate storage to the cluster has its own storage class. Furthermore, the Kubernetes API allows users to create their own storage classes. There are two fundamental components in a SQL Server 2019 big data cluster that consume storage:
 
@@ -433,23 +514,23 @@ When using persistent volumes, something known as a “Storage class” must be 
 
   - Only a small subset of the data is being used for test and development purposes and because our production grade storage comes at a premium, we might want to use a storage class associated with a cheaper storage platform for this purpose.
 
-### 3.3.4 Pod Mobility ###
+### 3.4.4 Pod Mobility ###
 
 Pods can either be stateless or stateful. One of the most fundamental tasks that Kubernetes carries out is to ensure that the desired state of a pod in terms of replicas and its actual state are one of the same. Pods typically run in either a ReplicaSet or a StatefulSet, if a replica dies by a node going offline for example, Kubernetes will schedule a new pod to run on a healthy node: 
 
-**<TODO: Insert image here>**
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_4_stateless.png?raw=true">
 
 Things become more nuanced once state is involved. When a pod that is stateful is scheduled to run on a different node, the state associated with that pod needs to ‘Follow’ it from its original node to its new node. This can be achieved in one of two ways.
  
 - Storage Replication
 Storage is replicated between nodes, such that if a pod needs to be rescheduled, it can be scheduled to run on a node that its state has been replicated to.
 
-**<TODO: Insert image here>**
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_4_stateful_replicated.png?raw=true">
 
 - Shared Storage
 Each node in the cluster has access to the same storage. When a node fails, a pod can be re-scheduled to any other worker node in the cluster:
 
-**<TODO: Insert image here>**
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_3_4_stateful_shared.png?raw=true">
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
  
@@ -470,10 +551,8 @@ Use the kubectl cheat sheet to  familiarise yourself with various kubectl comman
 ```
 kubectl create namespace MyNamespace
 ```
-
-In the final activity in this section we will install a storage plugin in our sand pit environments and create a persistent volume claim and persistent volume.
  
-### 3.5.6 Access Modes ###
+### 3.4.6 Access Modes ###
 
 Microsoft database platform professionals will be familiar with the concept of CREATE DATABASE FOR ATTACH:
 
@@ -498,11 +577,11 @@ This raises the question; if the persistent volumes for a kubernetes cluster alr
 
   The volume can be mounted as read-write by many nodes
 
-### 3.5.7 StatefulSets ###
+### 3.4.7 StatefulSets ###
 
 The architecture of a SQL Server 2019 big data cluster contains components that are clustered by nature, such as storage pods in the storage pool:
 
-***<TODO: Insert image here>***
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_4_7_bdc_architecture.png?raw=true">
 
 Components of an application that are clustered have some special requirements which are not catered for by ReplicaSets. Per the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), clustered applications usually exhibit one or more of the following requirements:
 
@@ -513,6 +592,20 @@ Components of an application that are clustered have some special requirements w
 - Ordered, graceful deployment and scaling.
 
 - Ordered, automated rolling updates.
+
+A key feature of a StatefulSet is that each member of a cluster application requires its own persistent volume claim, for this very reason, a StatefulSet uses a persistent volume claim template:
+
+```
+volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "my-storage-class"
+      resources:
+        requests:
+          storage: 1Gi
+```		  
 
 If the Kubernetes cluster's storage platform has a snapshot capability that can be used to refresh storage volumes, persistent volumes can be refreshed via snapshots. The basic work flow for this:
 
@@ -528,7 +621,7 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
 
 - ```kubectl taint nodes <node name> key=value:NoSchedule-```
 
-### 3.5.8 Considerations for Choosing Storage ### 
+### 3.4.8 Considerations for Choosing Storage ### 
 
 - **cost**
   - Is this CAPEX, OPEX, priced on capacity and / or IOPS ?.
@@ -547,9 +640,14 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
   - What security features does the storage platform come with ?.
   - If a Kubernetes cluster to be used in a regulated industry that mandates certain security certifications, does the platform adher to these ?.
 
+- **supportability**
+  - Is the platform open source or commercially supported ?.
+  - Does the organization the kubernetes cluster is deployed at belong to a regulated industry ?
+
 - **managability**
   - How easy is the platform to manage ?.
   - What management tools does the platform come with ?.
+  - How easy is it to add storage capacity to the platform ?. 
   - What data protection tools does the platform come with ?.
   - Does the platform require any scripting / programming expertise in order to manage it ?.
   - Does the platform need to provide integration for any existing management frameworks and / or monitoring solutions ?.
@@ -560,10 +658,52 @@ If the Kubernetes cluster's storage platform has a snapshot capability that can 
   - Does the platform need to provide interopability with existing infrastructure, virtualized infrastructure for example.
   - Does the organization have a preference for storage protocol support; iSCSI, Fiber Channel, NFS, SMB etc, if so does the platform support this ?.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Installing A Strorage Plugin</b></p>
-
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Utilising Kubernetes Persistent Storage Volumes</b></p>
+
+1. Following the plugin instructions in section 2 in order to install the Kubernetes storage plugin.
+
+2. A test-pvc.yaml file should be present in the home directory of the sandpit environmen. The contents of the file should be as follows:
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-pvc
+spec:
+  accessModes:
+   - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: block-storage-class
+```
+
+The storage class name will vary depending on which vendor has supplied the workshop hardware.
+
+3. Create the persistent volume claim as follows:
+```
+kubectl apply -f test-pvc.yaml
+```
+
+4. List all the persistent volume claims present in your sandpit environment cluster:
+```
+kubectl get pvc --all-namespaces
+```
+
+Note the status of test-pvc persistent volume claim.
+
+5. Obtain a detailed description of the test-pvc persistent volume claim:
+```
+kubectl desc pvc test-pvc
+```
+
+6. List all the persistent volumes present in your sandpit environment cluster:
+```
+kubectl get p --all-namespaces
+```
+
+For a storage class that provides automatic provisioning, the persistent volume is automatically created for the test-pvc volume.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-## 3.4 Troubleshooting ##
+## 3.5 Troubleshooting ##
