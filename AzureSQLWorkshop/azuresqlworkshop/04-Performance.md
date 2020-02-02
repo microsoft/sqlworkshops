@@ -22,8 +22,7 @@ In this module, you'll cover these topics:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): How to monitor performance in Azure SQL Database  
 [4.3](#4.3): Improving Performance in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Scaling your workload performance in Azure SQL Database<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3 (BONUS)](#2): xxxxxx <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4 (BONUS)](#2): Optimizing performance of data loading
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3 (BONUS)](#2): Optimizing performance for index maintenance.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -31,7 +30,11 @@ In this module, you'll cover these topics:
 
 In this section you will learn how to monitor the performance of a SQL workload using tools and techniques both familiar to the SQL Server professional along with differences with Azure SQL.
 
-**TODO:** Here is where we would put in more details comparing the performance capabilities and tasks of SQL Server with Azure SQL including Database and MI. This includes performance features and tools to get fast, stay fast, and get faster.
+**Azure SQL Performance Capabilities**
+
+**Monitoring and Troubleshooting Performance**
+
+**Accelerating and Improving Performance**
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -39,13 +42,48 @@ In this section you will learn how to monitor the performance of a SQL workload 
 
 In this section you will learn how to monitor the performance of a SQL workload using tools and techniques both familiar to the SQL Server professional along with differences with Azure SQL.
 
-**TODO:** Put in text here that talks about the process to monitor performance with Azure SQL comparing this to SQL Server.
+**Monitoring SQL queries**
+
+- DMVs
+- Extended Events
+- Azure Portal
+
+**Monitoring CPU usage**
+
+- DMVs
+- Azure Portal
+- Query Store
+
+**Monitoring Waits**
+
+- DMVs
+
+sys.dm_exec_requests can be used to see wait types, duration, and wait resources for any active request. This DMV also works across Azure SQL. There can be some wait types that are unique to Azure SQL which can be found at XXXXXX...
+
+Some of the more common new wait type values new to Azure SQL are:
+
+XXXX
+XXXX
+XXXX
+
+SQL Server supports **sys.dm_os_wait_stats**. Azure SQL Database supports a database specific DMV for this called **sys.dm_db_wait_stats**. sys.dm_os_waits or sys.dm_db_wait_stats can be used with Azure SQL Database Managed Instance.
+
+- Query Store
+- Azure Portal
+
+**Monitoring Memory**
+
+**Monitoring Transaction Log Usage**
+
+**Monitoring I/O**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: How to monitor performance in Azure SQL Database</b></p>
 
 >**IMPORTANT**: This activity assumes you have completed all the activities in Module 2.
 
 All scripts for this activity can be found in the **azuresqlworkshop\04-Performance\monitor_and_scale** folder.
+
+>**NOTE:** This activity will work against an Azure SQL Database Managed Instance. However, you may need to make some changes to the scripts to increase the workload since the minimum number of vCores for Managed Instance General Purpose is 4 vCores.
 
 In this activity, you will take a typical workload based on SQL queries and learn how to monitor performance for Azure SQL Database. You will learn how to identify a potential performance bottleneck using familiar tools and techniques to SQL Server. You will also learn differences with Azure SQL Database for performance monitoring.
 
@@ -159,9 +197,7 @@ The familiar SQL DMV dm_exec_requests can be used with Azure SQL Database but mu
 
 - Run the query in SSMS to monitor dm_db_resource_stats (**azuresqlresourcestats.sql**). Run the query to see the results of this DMV 3 or 4 times.
 
-This DMV records of snapshot of resource usage for the database every 15 seconds (kept for 1 hour).  You should see the column **avg_cpu_percent** close to 100% for several of the snapshots. (at least in the high 90% range). This is a symptom of a workload pushing the limits of CPU resources for the database. You can read more details about this DMV at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current.
-
-TODO: This DMV seems to work for MI but what does it show?
+This DMV records of snapshot of resource usage for the database every 15 seconds (kept for 1 hour).  You should see the column **avg_cpu_percent** close to 100% for several of the snapshots. (at least in the high 90% range). This is a symptom of a workload pushing the limits of CPU resources for the database. You can read more details about this DMV at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current. This DMV also works with Azure SQL Database Managed Instance.
 
 For a SQL Server on-premises environment you would typically use a tool specific to the Operating System like Windows Performance Monitor to track overall resource usage such a CPU. If you ran this example on a on-premises SQL Server or SQL Server in a Virtual Machine with 2 CPUs you would see near 100% CPU utilization on the server.
 
@@ -228,6 +264,8 @@ Click on the bar chart for CPU to see more about query wait details. Hover over 
 
 Notice that the average wait time for CPU for this query is a high % of the overall average duration for the query.
 
+The DMV **sys.dm_db_wait_stats** will show a high number of SOS_SCHEDULER_YIELD waits with this scenario.
+
 Given the evidence to this point, without any query tuning, our workload requires more CPU capacity than we have deployed for our Azure SQL Database.
 
 **Step 5: Observe performance using the Azure Portal**
@@ -244,7 +282,11 @@ Notice in this example, the compute utilization near 100% for a recent time rang
 
 In this section you will learn how to improve the performance of a SQL workload in Azure SQL using your knowledge of SQL Server and gained knowledge from Module 4.2.
 
-**TODO:** Put in text here about various ways to improve performance in SQL Server and how that compares to Azure SQL including Database and MI. A discussion of Hyperscale is fine here as well although we won't use that in the Activity.
+**SQL Query Tuning**
+
+**Azure SQL Database Auto Tuning**
+
+**Scaling Performance**
 
 Here is a good article to reference: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems and https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources.
 
@@ -296,6 +338,10 @@ For the current Azure SQL Database deployment, your results should look like the
 
 Notice the term **slo_name** is also used for service objective. The term **slo** stands for *service level objective*.
 
+The various slo_name values are not documented but you can see from the string value this database uses a General Purpose SKU with 2 vCores:
+
+>**NOTE:** Testing shows that SQLDB_OP_... is the string used for Business Critical.
+
 The documentation for ALTER DATABASE shows all the possible options for service objectives and how they match to the Azure portal: https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15.
 
 When you view the ALTER DATABASE documentation, notice the ability to click on your target SQL Server deployment to get the right syntax options. Click on SQL Database single database/elastic pool to see the options for Azure SQL Database. To match the compute scale you found in the portal you need the service object **'GP_Gen5_8'**
@@ -310,7 +356,13 @@ This statement comes back immediately but the scaling of the compute resources t
 
 <img src="../graphics/Azure_Portal_Update_In_Progress.png" alt="Azure_Portal_Update_In_Progress"/>
 
-TODO: Look at dm_operation_status
+TAnother way to monitor the progress of a change for the service object for Azure SQL Database is to use the DMV **sys.dm_operation_status**. This DMV exposes a history of changes to the database with ALTER DATABASE to the service objective and will show active progress of the change. Here is an example of this DMV after executing the above ALTER DATABASE statement:
+
+<pre>
+session_activity_id	resource_type	resource_type_desc	major_resource_id	minor_resource_id	operation	state	state_desc	percent_complete	error_code	error_desc	error_severity	error_state	start_time	last_modify_time
+97F9474C-0334-4FC5-BFD5-337CDD1F9A21	0	Database	AdventureWorks0406		ALTER DATABASE	1	IN_PROGRESS	0	0		0	0	[datetime]	[datetime]</pre>
+
+During a change for the service objective, queries are allowed against the database until the final change is implemented so an application cannot connect for a very brief period of time. For Azure SQL Database Managed Instance, a change to Tier (or SKU) will allow queries and connections but prevents all database operations like creation of new databases (in these cases operations like these will fail with the error message "**The operation could not be completed because a service tier change is in progress for managed instance '[server]' Please wait for the operation in progress to complete and try again**".)
 
 When this is done using the queries listed above to verify the new service objective or pricing tier of 8 vCores has taken affect.
 
@@ -352,17 +404,11 @@ Look at the Overview blade again for the Compute Utilization. Notice the signifi
 
 >**NOTE:** If you continue to increase vCores for this database you can improve performance up to a threshold where all queries have plenty of CPU resources. This does not mean you must match the number of vCores to the number of concurrent users from your workload. In addition, you can change the Pricing Tier to use **Serverless** *Compute Tier* instead of **Provisioned** to achieve a more "auto-scaled" approach to a workload. For example, for this workload if you chose a min vCore value of 2 and max VCore value of 8, this workload would immediately scale to 8vCores.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3 (BONUS)</a>: Using Extended Events in Azure SQL Database </b></p>
-
->**IMPORTANT**: This activity assumes you have completed all the steps in Activity 1 in Module 4.
-
-In this activity you will take the results of your monitoring in Module 4.2 and learn how to scale your workload in Azure to see improved results.
-
-**Step 1 - xxxxxxx**
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS)</a>: Optimizing performance for index builds in Azure SQL Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3</a>: Optimizing performance for index maintenance in Azure SQL Database</b></p>
 
 >**IMPORTANT**: This activity assumes you have completed all Activities in Module 2
+
+Good article read: https://azure.microsoft.com/en-us/blog/resource-governance-in-azure-sql-database/
 
 TODO: We may do an index build for log rate governance activity here.
 
