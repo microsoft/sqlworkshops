@@ -278,7 +278,7 @@ The deployment of a Kubernetes cluster via Kubespray follows this workflow:
 
 Conceptually the creation of a three-worker node cluster looks like this:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/k8stobdc/blob/master/graphics/3_2_7_kubespray-flow.png?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;"src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_2_7_kubespray-flow.png?raw=true">
 
 Note:
 - The deployment is instigated from the jump server,
