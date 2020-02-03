@@ -296,6 +296,8 @@ Here is a good article to reference: https://docs.microsoft.com/en-us/azure/sql-
 
 In this activity you will take the results of your monitoring in Module 4.2 and learn how to scale your workload in Azure to see improved results.
 
+All scripts for this activity can be found in the **azuresqlworkshop\04-Performance\monitor_and_scale** folder.
+
 **Step 1: Decide options on how to scale performance**
 
 Since workload is CPU bound one way to improve performance is to increase CPU capacity or speed. A SQL Server user would have to move to a different machine or reconfigure a VM to get more CPU capacity. In some cases, even a SQL Server administrator may not have permission to make these scaling changes or the process could take time.
@@ -412,45 +414,107 @@ Good article read: https://azure.microsoft.com/en-us/blog/resource-governance-in
 
 In some cases, migrating an existing application and SQL query workload to Azure may uncover opportunities to optimize and tune queries.
 
-Assume that to support a new extenstion to a website for AdventureWorks orders to support a rating system from customers you need to add a new table to support a heavy set of concurrent INSERT activity for ratings. You have tested the SQL query workload on a development computer that has a local SSD drive for the database and transaction log.
+Assume that to support a new extension to a website for AdventureWorks orders to support a rating system from customers you need to add a new table to support a heavy set of concurrent INSERT activity for ratings. You have tested the SQL query workload on a development computer that has a local SSD drive for the database and transaction log.
 
 When you move your test to Azure SQL Database using the General Purpose tier (8 vCores), the INSERT workload is slower. You need to discover whether you need to change the service objective or tier to support the new workload.
 
+All scripts for this activity can be found in the **azuresqlworkshop\04-Performance\tuning_applications** folder.
+
 **Step 1 - Create a new table**
 
-Create a new table
+Run the following statement (or use the script**order_rating_ddl.sql**) to create a table in the AdventureWorks database you have used in Activity 1 and 2:
+
+```sql
+DROP TABLE IF EXISTS SalesLT.OrderRating;
+GO
+CREATE TABLE SalesLT.OrderRating
+(OrderRatingID int identity not null,
+SalesOrderID int not null,
+OrderRatingDT datetime not null,
+OrderRating int not null,
+OrderRatingComments char(500) not null);
+GO
+```
 
 **Step 2 - Load up a query to monitor query execution**
 
-Look at dm_exec_requests
-Look at dm_os_wait_stats
-Look at dm_io_virtual_file_stats
+- Use the following query or script **sqlrequests.sql** to look at active SQL queries *in the context of the AdventureWorks database*:
+
+```sql
+SELECT er.session_id, er.status, er.command, er.wait_type, er.last_wait_type, er.wait_resource, er.wait_time
+FROM sys.dm_exec_requests er
+INNER JOIN sys.dm_exec_sessions es
+ON er.session_id = es.session_id
+AND es.is_user_process = 1;
+```
+- Use the following query or script **top_waits.sql** to look at top wait types by count *in the context of the AdventureWorks database*:
+
+```sql
+SELECT * FROM sys.dm_os_wait_stats
+ORDER BY waiting_tasks_count DESC;
+```
+- Use the following query or script **tlog_io.sql** to observe latency for transaction log writes:
+
+```sql
+SELECT io_stall_write_ms/num_of_writes as avg_tlog_io_write_ms, * 
+FROM sys.dm_io_virtual_file_stats
+(db_id('AdventureWorks0406'), 2);
+```
 
 **Step 3 - Run the workload**
 
+Run the test INSERT workload using the script order_rating_insert_single.cmd. This script uses ostress to run 25 concurrent users running the following T-SQL statement (in the script **order_rating_insert_single.sql**):
+
+```sql
+DECLARE @x int;
+SET @x = 0;
+WHILE (@x < 100)
+BEGIN
+SET @x = @x + 1;
+INSERT INTO SalesLT.OrderRating
+(SalesOrderID, OrderRatingDT, OrderRating, OrderRatingComments)
+VALUES (@x, getdate(), 5, 'This was a great order');
+END
+```
+You can see from this script that it is not exactly a real depiction of data coming from the website but it does simulate many order ratings being ingested into the database.
+
 **Step 4 - Observe query requests and duration**
 
-WRITELOG waits
-Latency on the tlog (only 2ms on avg but on local SSD it is almost 0)
+Using the queries in Step 2 you should observe the following:
 
-TODO: WRITELOG waits don't show up in Query Store?
+- Many requests constantly have a wait_type of WRITELOG with a value > 0
+- The WRITELOG wait type is the highest count
+- The avg time to write to the transaction log is somewhere around 2ms.
+
+The duration of this workload on a SQL Server 2019 instance with a SSD drive is somewhere around 15 seconds. The total duration using this on Azure SQL Database using a Gen5 v8core is around 32+ seconds. 
+
+WRITELOG wait types are indicative of latency flushing to the transaction log. 2ms per write doesn't seem like much but on a local SSD drive these waits may < 1ms.
+
+TODO: WRITELOG waits sometimes don't show up in Query Store?
 
 **Step 5 - Decide on a resolution**
 
-One commit for each insert is not efficient but the application was not affected on a local SSD because each commit was very fast.
+The problem is not a high% of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25%. The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the documenation for resource limits lists latency between 5-7ms (https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases).
 
-Business critical provides local SSD drives but maybe there ia an application optimization.
+If you examine the workload, you will see each INSERT is a single transaction commit which requires a transaction log flush.
 
-Change the workload to wrap a BEGIN TRAN/COMMIT TRAN around the INSERT workload 
+One commit for each insert is not efficient but the application was not affected on a local SSD because each commit was very fast. The Business Critical pricing tier (servie objective or SKU) provides local SSD drives with a lower latency but maybe there ia an application optimization.
 
-The concept of "batching" can help most applications including Azure.
-
+The T-SQL batch can be changed for the workload to wrap a BEGIN TRAN/COMMIT TRAN around the INSERT iterations.
 
 **Step 6 - Run the modified workload and observe**
 
-Now it runs in almost 5 seconds compared to even 18-19 seconds with a local SSD using singleton transactions.
+The modified workload can be found in the script **order_rating_insert.sql**. Run the modified workload using the script with ostress called **order_rating_insert.cmd**
 
-Make a note that extremely large transactions can be affected on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column.
+Now the workload runs in almost 5 seconds compared to even 18-19 seconds with a local SSD using singleton transactions. This is an example of tuning an application for SQL queries that will run after in or outside of Azure.
+
+The workload runs so fast it may be difficult to observe diagnostic data from queries used previously in this activity. It is important to note that sys.dm_os_wait_stats cannot be cleared using DBCC SQLPERF as it can be with SQL Server.
+
+TODO: What does this workload look like in MI?
+
+The concept of "batching" can help most applications including Azure. Read more at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-use-batching-to-improve-performance.
+
+>*NOTE:** Very large transactions can be affected on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column. TODO: Add more to this paragraph.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
