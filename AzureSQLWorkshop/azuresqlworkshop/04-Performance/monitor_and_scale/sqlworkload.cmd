@@ -1,0 +1,1 @@
+ostress.exe -Saw-server<ID>.database.windows.net -itopcustomersales.sql -Ucloudadmin -dAdventureWorks<ID> -P<password> -n10 -r1500 -q
