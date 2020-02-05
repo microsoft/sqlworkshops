@@ -1,0 +1,1 @@
+ostress.exe -Sbobazuresqlserver.database.windows.net -iorder_rating_insert.sql -Uthewandog -dAdventureWorks0406 -P$cprsqlserver2019 -n25 -r100 -q

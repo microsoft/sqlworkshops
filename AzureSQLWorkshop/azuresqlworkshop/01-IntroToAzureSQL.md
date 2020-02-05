@@ -1,69 +1,133 @@
-# Module 1 Activity - Introduction to Azure SQL
+![](../graphics/microsoftlogo.png)
 
-#### <i>The Azure SQL Workshop</i>
+# The Azure SQL Workshop
+
+#### <i>A Microsoft workshop from the SQL team</i>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>Overview</h2>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>01 - Introduction to Azure SQL</h2>
 
-> You must complete the prerequisites before completing these activities. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.    
+In this module, you'll start with a brief history of why and how we built Azure SQL, then you’ll then learn about the various deployment options and service tiers, including what to use when. This includes Azure SQL Database and Azure SQL managed instance. Understanding what Platform as a Service (PaaS) encompasses and how it compares to the SQL Server “box” will help level-set what you get (and don’t get) when you move to the cloud. We’ll cover deployment, configuration, and other getting started related tasks for Azure SQL (hands-on). 
 
-In this module's activities, you will deploy and configure Azure SQL, specifically Azure SQL Database. In addition to the Azure portal, you'll leverage SSMS, Azure Data Studio (including SQL and PowerShell Notebooks), and the Azure CLI.   
+In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-Throughout the activities, it's important to also read the accompanying text to the steps, but know that you can always come back to this page to review what you did at a later time (after the workshop).  
+(<a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/00-Prerequisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
 
-There are X activities in this module:  
-* TODO1 WITH LINK
-* TODO2 WITH LINK
-* TODO3 WITH LINK
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 1: Deploy Azure SQL Database using the Azure portal</b></p>
-
-In this activity, you'll deploy Azure SQL Database using the Azure portal. Throughout this exercise, you'll also get to explore the various options that are available to you. 
-
-**Step 1 - Deployment options**  
-
-Navigate to https://portal.azure.com/ and log in with your account, if you are not already. In the top search bar, type **Azure SQL** and review what appears:  
-![](../graphics/search.png)
-* **Services**: this allows you to see your existing resources grouped by what type of service they are
-* **Resources**: this allows you to select specific resources
-* **Marketplace**: this allows you to deploy new resources
-* **Documentation**: this searches docs.microsoft.com 
-* **Resource groups**: this allows you to select a resource group  
-
-Next, select **Azure SQL** under "Marketplace." This will bring you to the Azure SQL create experience. Take a few seconds to click around and explore.    
+In this module, you'll cover these topics:  
+[1.1](#1.1): History   
+[1.2](#1.2): Azure SQL Overview   
+[1.3](#1.3): Purchasing models, service tiers, and hardware choices
 
 
-![](../graphics/AzureSQLDeploymentOptions.gif)
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
-Next, select **Single database** and click **Create**.  
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="1.1">1.1 History</h2></a>
 
-**Step 2 - Database name**  
+Before you learn about Azure SQL and where it's going, let's briefly consider where it started. In 2008, at the [Microsoft Professional Developers Conference](https://www.youtube.com/watch?v=otuf3goxLsg), Microsoft's Chief Software Architect (at the time) [Ray Ozzie announced](https://news.microsoft.com/2008/10/27/microsoft-unveils-windows-azure-at-professional-developers-conference/#IP8XlBTCMpvORgaV.97) the new cloud computing operating system, Windows Azure (or "Project Red Dog"), which was later changed to Microsoft Azure. One of the five key components of the Azure Services Platform launch was "Microsoft SQL Services." From the beginning, SQL has been a big part of Azure. SQL Azure (then renamed to Azure SQL Database and now expanded to Azure SQL) was created to provide a cloud-hosted version of SQL Server.  
 
-Select the subscription and resource group you created in the prerequisites (or were provided to use), then enter a database name **AdventureWorksID** where ID is the unique identifier you used in the prerequisites, or the unique ID at the end of the resource group you were provided (e.g. TODO).  
+[An explanation](https://social.technet.microsoft.com/wiki/contents/articles/1308.select-an-edition-of-sql-server-for-application-development/revision/7.aspx) of when you would want to use the early Azure SQL Database (2010) is as follows: [Azure SQL Database] is a cloud database offering that Microsoft provides as part of the Azure cloud computing platform. Unlike other editions of SQL Server, you do not need to provision hardware for, install or patch [Azure SQL Database]; Microsoft maintains the platform for you. You also do not need to architect a database installation for scalability, high availability or disaster recovery as these features are provided automatically by the service. Any application that uses [Azure SQL Database] must have Internet access in order to connect to the database.  
 
-**Step 3 - Server**  
+This explanation still remains valid today, though the capabilities around security, performance, availability, and scale have been enhanced greatly. There are now multiple deployment options with the flexibility to scale to your needs, and there have been over seven million deployments of some form of Azure SQL.  
 
-When you create an Azure SQL MI, supplying the server name is the same as in SQL Server. However, for databases and elastic pools, an Azure SQL Database server is required. This is a *logical* construct that acts as a central administrative point for multiple single or pooled databases, logins, firewall rules, auditing rules, threat detection policies, and failover groups (more on these topics later). But having this logical server does not expose any instance-level access or features. More on SQL Database servers [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-servers).  
+Since 2008, SQL Server has changed a lot and Azure SQL has changed a lot. It's no surprise then that the role of the SQL Server professional has also changed a lot. The goal of this course is to help SQL Server professionals translate their existing skills to become not only better SQL Server professionals, but also Azure SQL professionals.  
 
-Select **Create new** next to "Server" and provide the following information:  
-* *Server name*: **aw-serverID** where ID is the same identifier you used for the database and resource group.  
-* *Server admin login*: **cloudadmin**. This is the equilavent to the system admin in SQL Server. This account connects using SQL authentication (username and password) and only one of these accounts can exist.    
-* *Password*: A complex password that meets the requirements.
-* *Location*: Use the same location as your resource group.  
 
-![](../graphics/newserver.png)  
+<br>
 
-Then, select **OK**.
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
-**Step 4 - Opt-in for elastic pools**
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="1.2">1.2 Azure SQL Deployment Options</h2></a>
 
-In Azure SQL DB, you then decide if you want this database to be a part of an Elastic Pool (new or existing). In Azure SQL MI, [creating an instance pool (public preview) currently requires a different flow](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool) than the Azure SQL create experience in the Azure portal.
+Within the umbrella of the "Azure SQL" term, there are many deployment options and choices to be made in order to tailor to various customers' needs. While there are a lot of options, this is not meant to confuse or complicate things, but rather to give customers the flexibility to get and pay for exactly what they need. This topic will cover some of the challenges and scenarios that lead to choosing various Azure SQL deployment options, as well as some of the technical specifications for each of those options. The deployment options discussed in this topic include Azure SQL virtual machines, Azure SQL managed instances, Azure SQL Databases, and Azure SQL "pools" (Azure SQL Instance Pools and Azure SQL Elastic Pools).  
 
-**Step 5 - Purchasing model**  
+![](../graphics/azuresql.png)  
 
-Next to "Compute + storage" select **Configure Database**.  The top bar, by default shows the different service tiers available in the vCore purchasing model. You have two options for the purchasing model, [virtual core (vCore)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) (recommended) or [Database transaction unit (DTU)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-dtu
+At the highest level, when you're considering your options, the first question you may ask is, "What level of scope do I want?" As you move from virtual machines to managed instances to databases, your management scope decreases. With virtual machines, you not only get access to but are also responsible for the OS and the SQL Server. With managed instance, the OS is abstracted from you and now you have access to only the SQL Server. And the highest abstraction is SQL database where you just get a database, and you don't have access to instance-level features or the OS.  
+
+## Azure SQL virtual machine
+![](../graphics/sqlvm.png)  
+*[Extended Security Updates](https://www.microsoft.com/en-us/cloud-platform/extended-security-updates) worth 75% of license every year for the next three years after End of Service (July 9, 2019). Applicable to Azure Marketplace images, customers using customer SQL Server 2008/R2 custom images can download the Extended Security Updates for free and manually apply.  
+**[GigaOm Performance Study](https://gigaom.com/report/sql-transaction-processing-price-performance-testing/)
+
+An Azure SQL virtual machine is simply a version of SQL Server that you specify running in an Azure VM. It's just SQL Server, so all of your SQL Server skills should directly transfer, though we can help automate backups and security patches. Azure SQL virtual machines are referred to as [Infrastructure as a Service (IaaS)](https://azure.microsoft.com/en-us/overview/what-is-iaas/). You are responsible for updating and patching the OS and SQL Server (apart from critical SQL security patches), but you have access to the full capabilities of SQL Server.   
+
+The customer example for Azure SQL virtual machines is [Allscripts](https://customers.microsoft.com/en-us/story/allscripts-partner-professional-services-azure). Allscripts is a leading healthcare software manufacturer, serving physician practices, hospitals, health plans, and Big Pharma. To transform its applications frequently and host them securely and reliably, Allscripts wanted to move to Azure quickly. In just three weeks, the company lifted and shifted dozens of acquired applications running on ~1,000 virtual machines to Azure with [Azure Site Recovery](https://azure.microsoft.com/en-us/services/site-recovery/).  
+
+This isn't the focus of this workshop, but if you're considering Azure SQL VMs, you'll want to review the [guidance on images to choose from](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview), the [quick checklist](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) to obtain optimal performance of Azure SQL VMs, and the guidance for [storage configuration](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-storage-configuration).  
+
+> Note: if you installed SQL Server on an Azure VM yourself (as opposed to leveraging a [pre-installed Azure Marketplace image](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=sql%20server&page=1&filters=virtual-machine-images%3Bmicrosoft)), [Resource Provider](http://www.aka.ms/sqlvm_rp_documentation) can bring the functionality of Azure Marketplace images to SQL Server instances self-installed on Azure VMs.  
+
+> Note: If you're specifically looking at SQL Server on RHEL Azure VMs, there's a full operations guide available [here](https://azure.microsoft.com/en-us/resources/sql-server-on-rhel-azure-vms-operations-guide/
+).  
+
+## IaaS vs PaaS
+
+Azure SQL virtual machines are considered IaaS. The other deployment options in the Azure SQL umbrella (Azure SQL managed instance and Azure SQL Database) are [Platform as a Service (PaaS)](https://azure.microsoft.com/en-us/overview/what-is-paas/) deployments. These PaaS Azure SQL deployment options use fully managed Database Engine that automates most of the database management functions such as upgrading, patching, backups, and monitoring. Throughout this course, you'll learn much more about the benefits and capabilities that the PaaS deployment options enable and how to optimally configure, manage, and troubleshoot them, but some highlights are listed below:  
+
+* [Business continuity](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity) enables your business to continue operating in the face of disruption, particularly to its computing infrastructure.
+* [High availability](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-high-availability) of Azure SQL Database guarantees your databases are up and running 99.99% of the time, no need to worry about maintenance/downtimes.
+* [Automated backups](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automated-backups) are created and use Azure read-access geo-redundant storage (RA-GRS) to provide geo-redundancy.
+* [Long term backup retention](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-long-term-retention) enables you to store specific full databases for up to 10 years.
+* [Geo-replication](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-active-geo-replication) by creating readable replicas of your database in the same or different data center (region).
+* [Scale](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources) by easily adding more resources (CPU, memory, storage) without long provisioning.
+* Network Security
+    * [Azure SQL Database (single database and elastic pool)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-overview#network-security) provides firewalls to prevent network access to the database server until access is explicitly granted based on IP address or Azure Virtual Network traffic origin.
+    * [Azure SQL Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture) has an extra layer of security in providing native virtual network implementation and connectivity to your on-premises environment using [Azure ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/) or [VPN Gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* [Advanced security](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-index) detects threats and vulnerabilities in your databases and enables you to secure your data.
+* [Automatic tuning](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning) analyzes your workload and provides you the recommendations that can optimize performance of your applications by adding indexes, removing unused indexes, and automatically fixing the query plan issues.
+* [Built-in monitoring](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) capabilities enable you to get the insights into performance of your databases and workload, and troubleshoot the performance issues.
+* [Built-in intelligence](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-intelligent-insights) automatically identifies the potential issues in your workload and provides you the recommendations that can [help you to fix the problems](https://azure.microsoft.com/en-us/blog/ai-helped-troubleshoot-an-intermittent-sql-database-performance-issue-in-one-day/). 
+
+## Azure SQL managed instance
+
+![](../graphics/sqlmi.png)  
+
+[Azure SQL managed instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance) is a PaaS deployment option of Azure SQL that basically gives you an evergreen instance of SQL Server. Most of the features available in the SQL Server box products are available in Azure SQL managed instance (Azure SQL MI). This option is ideal for customers who want to leverage instance-scoped features (features that are tied to an instance of SQL Server as opposed to features that are tied to a database in an instance of SQL Server) like SQL Server Agent, Service Broker, Common Language Runtime (CLR), etc. and want to move to Azure without rearchitecting their applications. While Azure SQL MI allows customers to access the instance-scoped features, customers do not have to worry about (nor do they have access to) the OS or the infrastructure underneath.     
+
+A good customer example comes from [Komatsu](https://customers.microsoft.com/en-us/story/komatsu-australia-manufacturing-azure). Komatsu is a manufacturing company that produces and sells heavy equipment for construction. They had multiple mainframe applications for different types of data, which they wanted to consolidate to get a holistic view. Additionally, they wanted a way reduce overhead. Because Komatsu uses a large surface area of SQL Server features, they chose to move to **Azure SQL Managed Instance**. They were able to move about 1.5 terabytes of data smoothly, and [start enjoying benefits like automatic patching and version updates, automated backups, high availability, and reduced management overhead](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview). After migrating, they reported ~49% cost reduction and ~25-30% performance gains.  
+
+## Azure SQL Database
+
+![](../graphics/sqldb.png)  
+
+Azure SQL Database is a PaaS deployment option of Azure SQL that abstracts both the OS and the SQL Server instance away from the users. Azure SQL Database has the industry's highest availability [SLA](https://azure.microsoft.com/en-us/support/legal/sla/sql-database/v1_4/), along with other intelligent capabilities related to monitoring and performance, due in part to the fact that Microsoft is managing the instance. This deployment option allows you to just 'get a database' and start developing applications. Azure SQL Database (Azure SQL DB) is also the only deployment option that currently supports scenarios related to needing unlimited database storage ([Hyperscale](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-hyperscale)) and autoscaling for unpredictable workloads ([serverless](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-serverless)).  
+
+[AccuWeather](https://customers.microsoft.com/en-us/story/accuweather-partner-professional-services-azure) is a great example of using Azure SQL Database. AccuWeather has been analyzing and predicting the weather for more than 55 years. They wanted access to the rich and rapidly advanced platform of Azure that includes big data, machine learning, and AI capabilities. They want to focus on building new models and applications, not managing databases. They selected **Azure SQL Database** to use with other services, like [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/) and [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/service/), to quickly and easily deploy new internal applications to make sales and customer predictions.  
+
+## Azure SQL "pools"
+
+You've now learned about the three main deployment options within Azure SQL: virtual machines, managed instances, and databases. For the PaaS deployment options (Azure SQL MI and Azure SQL DB), there are additional options for if you have multiple instances or databases, and these options are referred to as "pools". Using pools can help at a high level because they allow you to share resources between multiple instances/databases and cost optimize.  
+
+[Azure SQL Instance Pools](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-instance-pools) (currently in public preview) allow you to host multiple Azure SQL MIs and share resources. You can pre-provision the compute resources which can reduce the overall deployment time and thus make migrations easier. You can also host smaller Azure SQL MIs in an Instance Pool than in just a single Azure SQL MI (more on this in future sections).
+
+[Azure SQL Database Elastic Pools](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-pool) (Generally Available) allow you to host many databases that may be multi-tenanted. This is ideal for a [Software as a Service (SaaS)](https://azure.microsoft.com/en-us/overview/what-is-saas/) application or provider, because you can manage and monitor performance in a simplified way for many databases.  
+
+A good example for where a customer leveraged Azure SQL Database Elastic Pools is [Paychex](https://customers.microsoft.com/en-us/story/paychex-azure-sql-database-us). Paychex is a human capital management firm that serves more than 650,000 businesses across the US and Europe. They needed a way to separately manage the time and pay management for each of their customers, and cut costs. They opted for [**Azure SQL Database Elastic Pools**](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-pool), which allowed them to simplify the management and enable resource sharing between separate databases to lower costs.  
+
+## Azure SQL Deployment Options - Summary
+
+In this section, you've learned about Azure SQL and the deployment options that are available to you. A brief visual that summarizes the deployment options is below. In the next section, we'll go through deploying and configuring Azure SQL and how it compares to deploying and configuring the box SQL Server.  
+
+![](../graphics/azuresql2.png)
+
+
+If you want to dive deeper into the deployment options and how to choose, check out the following resources:  
+* [Blog announcement for Azure SQL](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Unified-Azure-SQL-experience/ba-p/815368) which explains and walks through Azure SQL and some of the resulting views and experiences available in the Azure portal.
+* [Microsoft Customer Stories](https://customers.microsoft.com/en-us/home?sq=&ff=&p=0) for many more stories similar to the ones above. You can use this to explore various use cases, industries, and solutions.  
+* [Choose the right deployment option in Azure SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-paas-vs-sql-server-iaas) is a page in the documentation regularly updated to help provide insight into making the decisions between the Azure SQL options.
+* [Choosing your database migration path to Azure](https://azure.microsoft.com/mediahandler/files/resourcefiles/choosing-your-database-migration-path-to-azure/Choosing_your_database_migration_path_to_Azure.pdf) is a white paper that talks about tools for discovering, assessing, planning and migrating SQL databases to Azure. This workshop will refer to it several times, and it's a highly recommended read. Chapter 5 deeply discusses choosing the right deployment option.  
+* [Feature comparison between SQL database, SQL managed instance, and SQL Server](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-features) 
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="1.3">1.3 Purchasing models, service tiers, and hardware choices</h2></a>  
+
+Once you have an idea of what deployment option is best for your requirements, determining the purchasing model, service tier, and hardware, is the next thing to determine. In this section, you'll get an overview of the options and what to use when.  
+
+**Purchasing model**  
+
+You have two options for the purchasing model, [virtual core (vCore)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) (recommended) or [Database transaction unit (DTU)-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-dtu
 ). The DTU model is not available in Azure SQL MI.     
 
 > The vCore-based model is recommended because it allows you to independently choose compute and storage resources, while the DTU-based model is a bundled measure of compute, storage and I/O resources, which means you have less control over paying only for what you need. This model also allows you to use [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) to gain cost savings. In the [vCore model](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore), you pay for:  
@@ -72,10 +136,10 @@ Next to "Compute + storage" select **Configure Database**.  The top bar, by defa
 > * The type and amount of data and log storage.
 > * Backup storage ([read-access, geo-redundant storage (RA-GRS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs)).  
 
-For the purposes of this workshop, we'll focus on the vCore purchasing model (recommended), so there is no action in this step. You can optionally review the DTU model by selecting **Looking for basic, standard, premium?** and by [comparing vCores and DTUs in-depth here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-purchase-models
+For the purposes of this workshop, we'll focus on the vCore purchasing model (recommended). You can optionally review the DTU model by [comparing vCores and DTUs in-depth here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-purchase-models
 ).  
 
-**Step 6 - Service tier**  
+**Service tier**  
 
 The next decision is choosing the service tier for performance and availability. We recommend you start with the General Purpose, and adjust as needed. There are three tiers available in the vCore model:  
 * **[General purpose](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-general-purpose)**: Most business workloads. Offers budget-oriented, balanced, and scalable compute and storage options.
@@ -88,217 +152,29 @@ If you choose **General Purpose within Azure SQL DB** and the **vCore-based mode
 
 For a deeper explanation between provisioned and serverless compute (including scenarios), you can refer to the detailed [comparison in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-serverless#comparison-with-provisioned-compute-tier).  For a deeper explanation between the three service tiers (including scenarios), you can refer to the [service-tier characteristics](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore#service-tier-characteristics) in the documentation.  
 
-**Step 7 - Hardware**
+**Hardware**
 
 The vCore model lets you choose the generation of hardware:  
 * **Gen4**: Up to 24 logical CPUs based on Intel E5-2673 v3 (Haswell) 2.4-GHz processors, vCore = 1 physical core, 7 GB per core, attached SSD
 * **Gen5**: Up to 80 logical CPUs based on Intel E5-2673 v4 (Broadwell) 2.3-GHz processors, vCore = 1 hyper-thread, 5.1 GB per core, fast NVMe SSD  
 
-Basically, Gen4 hardware offers substantially more memory per vCore. However, Gen5 hardware allows you to scale up compute resources much higher. [New Gen4 databases are no longer supported in certain regions](https://azure.microsoft.com/en-us/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/), where Gen5 is available in most regions worldwide. As technology advances, you can expect that the hardware will change as well. For example, Fsv2-series (compute optimized) and M-series (memory optmized) hardware options recently became available in public preview for Azure SQL DB. You can reivew the latest hardware generations and availability [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+Basically, Gen4 hardware offers substantially more memory per vCore. However, Gen5 hardware allows you to scale up compute resources much higher. [New Gen4 databases are no longer supported in certain regions](https://azure.microsoft.com/en-us/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/), where Gen5 is available in most regions worldwide. As technology advances, you can expect that the hardware will change as well. For example, Fsv2-series (compute optimized) and M-series (memory optimized) hardware options recently became available in public preview for Azure SQL DB. You can review the latest hardware generations and availability [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 > Note: If you choose General Purpose within Azure SQL DB and want to use the serverless compute tier, Gen5 hardware is the only option and it currently can scale up to 16 vCores.  
 
-For the workshop, you can leave the default hardware selection of **Gen5** but you can select **Change configuration** to view the other options available (may vary by region).  
+In this module, you learned about Azure SQL, including the deployment options, purchasing models, service tiers, and hardware choices. Hopefully, you also have a better understanding of what to choose when. In the next module, you'll learn more about deploying and configuring Azure SQL.  
 
-**Step 8 - Sizing**
 
-One of the final steps is to determine how many vCores and the Data max size. For the workshop, you can select **2 vCores** and **32 GB Data max size**.  
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
-Generally, if you're migrating, you should use a similar size as to what you use on-premises. You can also leverage tools, like the [Data Migration Assistant SKU Recommender](https://docs.microsoft.com/en-us/sql/dma/dma-sku-recommend-sql-db?view=sql-server-ver15) to estimate the vCore and Data max size based on your current workload.  
+<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
+<ul>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-paas-vs-sql-server-iaas" target="_blank">Choose the right deployment option in Azure SQL</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-purchase-models" target="_blank">Purchasing models</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-general-purpose-business-critical" target="_blank">Service tiers</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore?tabs=azure-portal" target="_blank">vCore Model</a></li>
+</ul>
 
-You might also be wondering what "9.6 GB LOG SPACE ALLOCATED" in the bottom right corner means. TODO
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
 
-Before you select **Apply**, confirm your selections look similar to those below:  
-
-![](../graphics/configuredb.png)
-
-The "Basics" pane should now look similar to the image below:  
-
-![](../graphics/basicspane.png)  
-
-**Step 9 - Networking**  
-
-Select **Next : Networking**.  
-
-Choices for networking for Azure SQL DB and Azure SQL MI are different. When you deploy an Azure SQL Database, currently the default is "No access".  
-
-You can then choose to select Public endpoint or Private endpoint (preview). In this workshop we'll use the public endpoint and set the "Allow Azure services and resources to access this server" blade to yes, meaning that other Azure services (e.g. Azure Data Factory or an Azure VM) can access the database if you configure it. You can also select "Add current client IP address" if you want to be able to connect from the IP address you use to deploy Azure SQL Database, which you do. Make sure your settings match below:    
-
-![](../graphics/networkconnect.png)  
-
-
-With Azure SQL MI, you deploy it inside an Azure virtual network and a subnet that is dedicated to managed instances. This enables you to have a completely secure, private IP address. Azure SQL MI provides the ability to connect an on-prem network to a managed instance, connect a managed instance to a linked server or other on-prem data store, and connect a managed instance to other resources. You can additionally enable a public endpoint so you can connect to managed instance from the Internet without VPN. This access is disabled by default.  
-
-The principle of private endpoints through virtual network isolation is making it's way to Azure SQL DB in something called 'private link' (currently in public preview), and you can learn more [here](https://docs.microsoft.com/en-us/azure/private-link/private-link-overview).
-
-More information on connectivity for Azure SQL DB can be found [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connectivity-architecture) and for Azure SQL MI [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connectivity-architecture). There will also be more on this topic in upcoming sections/modules.  
-
-For now, select **Next : Additional settings**
-
-**Step 10 - Data source**
-
-In Azure SQL DB, upon deployment you have the option to select the AdventureWorksLT database as the sample in the Azure portal. In Azure SQL MI, however, you deploy the instance first, and then databases inside of it, so there is not an option to have the sample database upon deployment (similar to in SQL Server).  
-
-For the workshop, select **Sample**.  
-
-**Step 11 - Database collations**
-
-Since we're using the AdventureWorksLT sample, the **database collation is already set**. For a review of collations and how they apply in Azure SQL, continue reading, otherwise **you can skip to Step 12**.
-
-Collations in SQL Server and Azure SQL tell the Database Engine how to treat certain characters and languages. A collation provides the sorting rules, case, and accent sensitivity properties for your data. When you're creating a new Azure SQL DB or MI, it's important to first take into account the locale requirements of the data you're working with, because the collation set will affect the characteristics of many operations in the database. In the SQL Server box product, the default collation is typically determined by the OS locale. In Azure SQL MI, you can set the server collation upon creation of the instance, and it cannot be changed later. The server collation sets the default for all of the databases in that instance of Azure SQL MI, but you can modify the collations on a database and column level. In Azure SQL DB, you can not set the server collation, it is set at the default (and most common) collation of `SQL_Latin1_General_CP1_CI_AS`, but you can set the database collation. If we break that into chunks:  
-* `SQL` means it is a SQL Server collation (as opposed to a Windows or Binary collation)  
-* `Latin1_General` specifies the alphabet/language to use when sorting
-* `CP1` references the code page used by the collation
-* `CI` means it will be case insensitive, where `CS` is case sensitive
-* `AS` meand it will be accent sensitive, where `AI` is accent insensitive     
-
-There are other options available related to widths, UTF-8, etc., and more details about what you can and can't do with Azure SQL [here](https://docs.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver15).
-
-
-**Step 12 - Opt-in for Advanced Data Security**
-
-When you deploy Azure SQL DB in the portal, you are prompted if you'd like to enable [Advanced Data Security (ADS)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security) on a free trial. Select **Start free trial**. After the free trial, it is billed according to the [Azure Security Center Standard Tier pricing](https://azure.microsoft.com/en-us/pricing/details/security-center/). If you choose to enable it, you get functionality related to data discovery and classification, identifying/mitigating potential database vulnerabilities, and threat detection. You'll learn more about these capabilities in the next module (<a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/02-Security.md" target="_blank"><i>02 - Security</i></a>). In Azure SQL MI, you can enable it on the instance after deployment.  
-
-Your "Additional settings" pane should now look similar to the image below.
-
-![](../graphics/additionalsettings.png)
-
-**Step 13 - Tags**
-
-Select **Next : Tags**. 
-
-Tags can be used to logically organize Azure resources across a subscription. For example, you can apply the name "Environment" and the value "Development" to this SQL database and Database server, but you might use the value "Production" for production resources. This can helpful for organizing resources for billing or management. You can read more [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources).
-
-![](../graphics/tags.png)  
-
-**Step 14 - Review and create**
-
-Finally, select **Next : Review + create**. Here you can review your deployment selections and the [Azure marketplace terms](https://go.microsoft.com/fwlink/?linkid=2045624).  
-
-> You also have the option to "Download a template for automation." We won't get in to that here, but if you're interested, you can [learn more](https://docs.microsoft.com/en-us/azure/azure-resource-manager/).  
-
-Finally, select **Create** to deploy the service.  
-
-Soon after selecting Create, you will be redirected to a page that looks like this (below), and where you can monitor the status of your deployment.
-
-![](../graphics/deploymentunderway.png)
-
-And some time later ... 
-![](../graphics/deploymentunderway2.png)
-
-And finally...
-![](../graphics/deploymentunderway3.png)
-
-If, for whatever reason, you get lost from this page and the deployment has not completed, you can navigate to your resource group, and select **Deployments**. This will give you the various deployments, their statuses, and more information.  
-
-![](../graphics/deploymentstatus.png)
-
-Once your resource has deployment, review the "Overview" pane for the SQL database in the Azure portal and confirm that the Status is "Online."  
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Initial connect and comparison</b></p>
-
-**Step 1 - Connect to SQL Server 2019**
-Now that everything looks to be up and running in the Azure portal, let's switch to a familiar tool, SQL Server Management Studio (SSMS). Open SSMS and connect, using Windows Authentication, to the local instance of SQL Server 2019 that's running on your Azure VM (if you don't have this, please revisit the prerequisites).  
-
-![](../graphics/localconnect.png)  
-
-If you completed the prerequisites, expanding the databases and system databases folders should result in a view similar to the following.  
-
-![](../graphics/localserver.png)   
-
-**Step 2 - Connect to Azure SQL Database**  
-
-Next, let's connect to your Azure SQL Database logical server and compare. First, select **Connect > Database Engine**.  
-
-![](../graphics/dbengine.png)  
-
-For server name, input the name of your Azure SQL Database logical server. You may need to refer to the Azure portal to get this, e.g. *aw-server0406.database.windows.net*.  
-
-Change the authentication to **SQL Server Authentication**, and input the corresponding admin Login and Password.  
-
-Check the **Remember password** box and select **Connect**.
-
-![](../graphics/connectazsql.png)   
-
-Expanding the databases and system databases should result in a view similar to the following.  
-
-![](../graphics/azureserver.png)   
-
-Spend a few minutes clicking around and exploring the differences, at first glance, between the Azure SQL Database logical server and Azure SQL Database. You won't deploy an Azure SQL Managed Instance as part of this workshop, but the image below shows how Azure SQL Managed Instance would appear in SSMS.
-
-**TODO SCREENSHOT OF SSMS WITH ADVENTUREWORKS**  
-
-
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Verify deployment queries</b></p>
-
-Now that you've seen how Azure SQL appears in SSMS, let's explore a tool that may be new to you called Azure Data Studio (ADS). ADS is a source-open tool that provides a lightweight editor and other tools (including Notebooks which you'll see soon) for interacting with Azure Data Services (including SQL Server on-prem, Azure SQL, Azure Database for PostgreSQL, and more). Let's take a brief tour to get acquainted.  
-
-**Step 1 - Open Azure Data Studio and Connect**  
-
-Open Azure Data Studio (ADS). When opening for the first time, you'll first be prompted to make a connection.  
-
-![](../graphics/adsconnect.png)  
-
-Note that you can connect to your local instance of SQL Server 2019 here. Let's do that first. You can also supply a Server group and Name, if you want to group different connections together. For example, when you connect to SQL Server 2019, you might place it in a new Server group called **SQL Server 2019**. Fill in your information and connect to SQL Server 2019 by selecting **Connect**.  
-
-![](../graphics/adsconnectss.png)  
-
-You'll then go to a page that contains the "Server Dashboard". Select the **Connections** button (red square in below image) to view your Server groups and connections.     
-
-![](../graphics/serverdashboard.png)  
-
-Your results should be similar to what you saw in SSMS. Select the **New connection** button in the "Servers" bar.  
-
-![](../graphics/newconnection.png)  
-
-Now, connect to your Azure SQL Database logical server, just as you did in SSMS, but putting it in a new Server group called "Azure SQL Database", and selecting **Connect**.   
-
-![](../graphics/adsconnectdb.png)  
-
-In your "Connections" tab, under "Servers," you should now see both connections, and you should be able to expand the folders similar to SSMS.  
-
-![](../graphics/adsservers.png)   
-
-**Step 2 - Set up easy file access with ADS**  
-
-Now that your connected, you might want an easy way to access scripts and Jupyter notebooks. A Jupyter notebook (often referred to just as "Notebooks") is a way of integrating runnable code with text. If you aren't familiar with Jupyter notebooks, you will be soon, and you can check out more details later in the [documentation](https://docs.microsoft.com/en-us/sql/big-data-cluster/notebooks-guidance?view=sql-server-ver15).  
-
-First, in ADS, select **File > Open Folder**.  
-
-![](../graphics/openfolder.png)  
-
-Next, navigate to where the repository of all the workshop resources are. If you followed the prerequisites, the path should be similar to `C:\Users\<vm-username>\sqlworkshops\AzureSQLWorkshop`. Once you're there, select **Select Folder**.  
-
-![](../graphics/selectfolder.png)  
-
-Next, select the **Explorer** icon from the left taskbar to navigate through the files in the workshop.  
-
-![](../graphics/explorer.png)  
-
-Throughout the workshop, you'll be instructed at various points to open a notebook (file ending in `.ipynb`) or a script (file ending in `.sql`), and you can access those through here directly.   
-
-**Step 3 - Verify deployment queries**  
-
-Once you've deployed an instance of SQL (be in Azure SQL or SQL Server), there are typically some queries you would run to verify your deployment. In Azure SQL, some of these queries vary from SQL Server. In this step, you'll see what and how things change from SQL Server, and what is new.   
-
-For this step, you'll use the notebook **VerifyDeployment.ipynb** which is under `azuresqlworkshop\01-IntroToAzureSQL\verifydeployment\VerifyDeployment.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
-
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Azure CLI</b></p>
-
-So you've seen the Azure portal, SSMS, and SQL Notebooks in ADS, but there are other tools available to you to use to manage Azure SQL. Two of the most popular are the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) and [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-3.3.0). They are similar in their functionality, but for this workshop we will focus on the Azure CLI.  
-
-To complete this activity, you'll use a PowerShell notebook, which is the same concept as a SQL notebook, but the coding language is PowerShell. You can use PowerShell notebooks to leverage Azure CLI or Azure PowerShell, but we will focus on Azure CLI. For more information on the Azure PowerShell module, [see the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-powershell-samples?tabs=single-database). For both of these tools, you can also use the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), which is an interactive shell environment that you can use through your browser in the Azure portal.  
-
-For this activity, you'll use the notebook called **AzureCli.ipynb** which is under `azuresqlworkshop\01-IntroToAzureSQL\cli\AzureCli.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
-
->In the `cli` folder, you'll also find a script if you want to try the activity with the Azure Cloud Shell. 
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
-
-Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/azuresqlworkshop/azuresqlworkshop/02-Security.md" target="_blank"><i> 02 - Security</i></a>.
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/02-DeployAndConfigure.md" target="_blank"><i> 02 - Deploy and Configure</i></a>.
