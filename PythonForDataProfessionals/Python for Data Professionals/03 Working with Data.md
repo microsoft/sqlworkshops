@@ -246,7 +246,7 @@ Open the **03_WorkingWithData.py** file and enter the code you find for section 
 
 Python has many ways to read data in (*sometimes into memory, sometimes streaming as it reads it*) built right in to the standard libraries. Other Libraries, such as Pandas and NumPy, have their own way of reading in data.
 
-In any case, the data is assigned to a data family or *structure*, which you learned about earlier. Depending on which Library you are using, you'll pick a data structure that makes the most sense for how you want to work with it. For instance, Pandas uses a dataframe as the primary data structure it works with. This is why it's important to know the data types, so that you understand what stucture you need to perform your desired operations.
+In any case, the data is assigned to a data family or *structure*, which you learned about earlier. Depending on which Library you are using, you'll pick a data structure that makes the most sense for how you want to work with it. For instance, Pandas uses a dataframe as the primary data structure it works with. This is why it's important to know the data types, so that you understand what structure you need to perform your desired operations.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./graphics/checkbox.png"><b>Reading from Files</b></p>
 
@@ -465,7 +465,7 @@ Read the [Documentation Reference here](https://docs.microsoft.com/en-us/azure/m
 
 Read the [Documentation Reference here](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-data)
 
-The Data Aquisition and Understanding phase of the TDSP you ingest or access data from various locations to answer the questions the organization has asked. In most cases, this data will be in multiple locations. Once the data is ingested into the system, you’ll need to examine it to see what it holds. All data needs cleaning, so after the inspection phase, you’ll replace missing values, add and change columns. You’ve already seen the Libraries you'll need to work with for Data Wrangling - Pandas being the most common in use.
+The Data Acquisition and Understanding phase of the TDSP you ingest or access data from various locations to answer the questions the organization has asked. In most cases, this data will be in multiple locations. Once the data is ingested into the system, you’ll need to examine it to see what it holds. All data needs cleaning, so after the inspection phase, you’ll replace missing values, add and change columns. You’ve already seen the Libraries you'll need to work with for Data Wrangling - Pandas being the most common in use.
 
 <p style="border-bottom: 1px solid lightgrey;"></p> 
 <h4>Phase Three - Modeling</h4>
