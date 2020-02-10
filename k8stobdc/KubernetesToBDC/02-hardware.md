@@ -58,11 +58,11 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_2_vcenter.PNG?raw=true">
 
-3. Select a VNMware ESXi server which the virtual machine will use for compute resources:
+3. Select a VMware ESXi server which the virtual machine will use for compute resources:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_3_vcenter.PNG?raw=true">
 
-4. Select a VNMware datastore that the virtual machine will use for storage
+4. Select a VMware datastore that the virtual machine will use for storage
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_4_vcenter.PNG?raw=true">
 
