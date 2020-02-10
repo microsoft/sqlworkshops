@@ -113,11 +113,9 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 14. Specify a subnet mask in **CIDR format**, the IP address, gateway, name (DNS) server and search domain:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_15_vcenter.PNG?raw=true">
-
-15. Repeat the same steps for the iSCSI network adapter, note that this does not require a default gateway or name server:
-
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_16_vcenter.PNG?raw=true">
+
+15.
 
 16. Enter a http proxy, if one is used for accessing the internet:
 
