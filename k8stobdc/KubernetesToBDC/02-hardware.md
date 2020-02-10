@@ -62,7 +62,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_3_vcenter.PNG?raw=true">
 
-4. Select a VMware datastore that the virtual machine will use for storage
+4. Select a VMware datastore that the virtual machine will use for storage:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_4_vcenter.PNG?raw=true">
 
@@ -115,7 +115,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_15_vcenter.PNG?raw=true">
 
-15. Repeat the same steps for the adapter for the iSCSI network, note that this does not require a default gateway or name server:
+15. Repeat the same steps for the iSCSI network adapter, note that this does not require a default gateway or name server:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_16_vcenter.PNG?raw=true">
 
@@ -135,11 +135,11 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_20_vcenter.PNG?raw=true">
 
-20. Select done to confirm the filesystem configuration:
+20. Select 'Done' to confirm the filesystem configuration:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_21_vcenter.PNG?raw=true">
 
-21. Select continue to confirm that the target disk of the installation will be formatted:
+21. Select 'Continue' to confirm that the target disk of the installation will be formatted (destructively):
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_22_vcenter.PNG?raw=true">
 
@@ -151,15 +151,15 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_24_vcenter.PNG?raw=true">
 
-24. Hit done to confirm that no featured server snaps are to be installed, the single node cluster script will install everything that is required:
+24. Hit 'Done' to confirm that no featured server snaps are to be installed, the single node cluster script will install everything that is required:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_25_vcenter.PNG?raw=true">
 
-25. Installation of the Ubuntu operating system will now commence:
+25. Ubuntu operating system installtion will now commence:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_26_vcenter.PNG?raw=true">
 
-26. The full log of the installation can be viewed if required
+26. The full log of the installation can be viewed if so required:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_27_vcenter.PNG?raw=true">
 
@@ -167,11 +167,11 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_28_vcenter.PNG?raw=true">
 
-28. In order for the reboot to take place, the DVD/CD drive needs to be removed from the virtual machine
+28. In order for the reboot to take place, the DVD/CD drive needs to be removed from the virtual machine:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_29_vcenter.PNG?raw=true">
 
-29. Perform a basic test of the virtual 
+29. Perform a basic test of the virtual machine by pinging a well known URL to ensure that it can deliver and receive internet traffic: 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
