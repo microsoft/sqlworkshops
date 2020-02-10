@@ -111,7 +111,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_14_vcenter.PNG?raw=true">
 
-14. specify a subnet mask in **CIDR format**, the ip address, gateway, name (dns) server and search domain:
+14. Specify a subnet mask in **CIDR format**, the IP address, gateway, name (DNS) server and search domain:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_15_vcenter.PNG?raw=true">
 
