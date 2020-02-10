@@ -177,9 +177,19 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 29. Perform a basic test of the virtual machine by pinging a well known URL to ensure that it can deliver and receive internet traffic: 
 
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_32_vcenter.PNG?raw=true">
+
+30. **At this stage, we now have a virtual machine that a single node SQL Server 2019 Big Data Cluster can be delpoyed to**. 
+
+If the objective of the exercise is to deplopy a full blown production grade big data cluster, a virtual machine template is required. To create the virtual machine template, right click on the virtual machine, select 'Power' and then "Power Off":
+
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_33_vcenter.PNG?raw=true">
+
+31. Right click on the virtual machine, select 'Template' and then "Convert to Template".
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-## 2.5 Storage Orchestration ##
+## 2.4 Storage Orchestration ##
 
 In this instructor-led workshop, Storage Orchestration is facilitated via the [Pure Service Orchestrator](https://github.com/purestorage/helm-charts/blob/master/pure-k8s-plugin/README.md). This component is a [Kubernetes Container Storage Interface-compliant plugin](https://github.com/container-storage-interface/spec) that automatically provisions storage across one or more Pure Storage FlashArray™ and FlashBlade™ storage arrays. 
 
