@@ -61,6 +61,13 @@ In this section you will learn how to monitor the performance of a SQL workload 
 
 - DMVs
 
+**Other Monitoring Methods**
+
+Alerts
+Intelligent Insights
+
+TODO: This is in preview. Do we want to cover it? https://docs.microsoft.com/en-us/azure/sql-database/sql-database-intelligent-insights
+
 sys.dm_exec_requests can be used to see wait types, duration, and wait resources for any active request. This DMV also works across Azure SQL. There can be some wait types that are unique to Azure SQL which can be found at XXXXXX...
 
 Some of the more common new wait type values new to Azure SQL are:
@@ -96,7 +103,7 @@ Using the Azure SQL Database based on the AdventureWorksLT sample, you are given
 
 **Step 1: Setup to monitor Azure SQL Database**
 
-TODO: Joe Sack says to look at Azure Monitor for alerting.43 (37) 
+TODO: Do we have them setup Azure Alert Monitoring. I've tried this but it seems to lag when the problem actually happens. Chatting with Joe Sack about this.
 
 >**TIP**: To open a script file in the context of a database in SSMS, click on the database in Object Explorer and then use the File/Open menu in SSMS.
 
@@ -273,13 +280,19 @@ The DMV **sys.dm_db_wait_stats** will show a high number of SOS_SCHEDULER_YIELD 
 
 Given the evidence to this point, without any query tuning, our workload requires more CPU capacity than we have deployed for our Azure SQL Database.
 
-**Step 5: Observe performance using the Azure Portal**
+TODO: This is where we would interject Query Performance Insights since it uses the Query Store.
 
-The Azure Portal provides performance information in the form of a graph. The standard default view is called **Compute Utilization** which you can see on the Overview blade for your database:<br><br>
+**Step 5: Observing performance using Azure Monitor**
+
+Azure Monitor provides performance metrics which you can view in various methods including Azure Portal. In the Overview page for an Azure SQL database, the standard default view is called **Compute Utilization** which you can see on the Overview blade for your database:<br><br>
 
 <img src="../graphics/Azure_Portal_Compute_Slow_Query.png" alt="Azure_Portal_Compute_Slow_Query"/>
 
 Notice in this example, the compute utilization near 100% for a recent time range. This chart will show resource resource usage over the last hour and is refreshed continually. If you click on the chart you customize the chart (Ex. bar chart) and look at other resource usage.
+
+**TODO:**The Compute utilization from the portal uses Azure Monitor Metrics. Show how to get the same information (which provides historical information) from the portal menu. Show how to click on Metrics and add CPU percentage.
+
+TODO: Show how to see the same CPU metric data using either Kusto queries or Azure SQL Analytics.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -515,6 +528,8 @@ Now the workload runs in almost 5 seconds compared to even 18-19 seconds with a 
 
 The workload runs so fast it may be difficult to observe diagnostic data from queries used previously in this activity. It is important to note that sys.dm_os_wait_stats cannot be cleared using DBCC SQLPERF as it can be with SQL Server.
 
+TODO: There is no metric in Azure Monitor for 
+
 TODO: The first test is interesting. A GP MI with 8 vCore is MUCH SLOWER than GP v8core???? Even with "batched" INSERTs it was 10 seconds. WRITELOG waits can be very bad on MI????
 
 The concept of "batching" can help most applications including Azure. Read more at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-use-batching-to-improve-performance.
@@ -537,9 +552,7 @@ In this section you will learn about the built-in intelligent performance capabi
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS) </a>: Performance Recommendations from Azure SQL Database</b></p>
 
-TODO: The idea here is to show the steps and results of running a workload and getting index and parameter recommendations. In a classroom setting they won't be doing this because it takes too long but I'll document the exact steps to make this repeatable and show the results.
-
-TODO: This is in preview. Do we want to cover it? https://docs.microsoft.com/en-us/azure/sql-database/sql-database-intelligent-insights
+TODO: The idea here is to show the steps and results of running a workload and getting index and parameterized query recommendations. In a classroom setting they won't be doing this because it takes too long but I'll document the exact steps to make this repeatable and show the results.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
