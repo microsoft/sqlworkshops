@@ -92,15 +92,18 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_9_vcenter.PNG?raw=true">
 
-10. Configure the Ubuntu operating system after the machine boots up from the ISO by first specifying the language that the guest operating system will use:
+10. After the machine boots up from the ISO, configure the Ubuntu operating system by specifying the guest's operating system language:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_11_vcenter.PNG?raw=true">
 
-11. Select the preferred keyboard layout
+11. Select the preferred keyboard layout:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_12_vcenter.PNG?raw=true">
 
-12. The network adapter configuration screen should display entries for two adapters; the first for "East - West" traffic within the Kubernetes cluster and the second for the clusters persistent storage accessed via iSCSI:
+12. The network adapter configuration screen should display entries for two adapters:
+
+- The first for "East - West" traffic within the Kubernetes cluster,
+- The second for the cluster's persistent storage accessed via iSCSI.
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_13_vcenter.PNG?raw=true">
 
