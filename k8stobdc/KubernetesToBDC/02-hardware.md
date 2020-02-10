@@ -133,47 +133,47 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 18. Select "Use An Entire Disk" for the filesystem:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_19_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_21_vcenter.PNG?raw=true">
 
 19. Select the default of /dev/sda as the device to install Ubuntu on:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_20_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_22_vcenter.PNG?raw=true">
 
 20. Select 'Done' to confirm the filesystem configuration:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_21_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_23_vcenter.PNG?raw=true">
 
 21. Select 'Continue' to confirm that the target disk of the installation will be formatted (destructively):
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_22_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_24_vcenter.PNG?raw=true">
 
 22. Enter details for the user to be used to login to the system:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_23_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_25_vcenter.PNG?raw=true">
 
 23. Install the OpenSSH server:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_24_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_26_vcenter.PNG?raw=true">
 
 24. Hit 'Done' to confirm that no featured server snaps are to be installed, the single node cluster script will install everything that is required:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_25_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_27_vcenter.PNG?raw=true">
 
 25. Ubuntu operating system installtion will now commence:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_26_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_28_vcenter.PNG?raw=true">
 
 26. The full log of the installation can be viewed if so required:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_27_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_29_vcenter.PNG?raw=true">
 
 27. Once the install has completed, the guest operating system needs to be rebooted:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_28_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_30_vcenter.PNG?raw=true">
 
 28. In order for the reboot to take place, the DVD/CD drive needs to be removed from the virtual machine:
 
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_29_vcenter.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_31_vcenter.PNG?raw=true">
 
 29. Perform a basic test of the virtual machine by pinging a well known URL to ensure that it can deliver and receive internet traffic: 
 
