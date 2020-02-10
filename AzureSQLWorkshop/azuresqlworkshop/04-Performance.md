@@ -143,7 +143,6 @@ ON soh.SalesOrderID = sod.SalesOrderID
 ORDER BY sod.LineTotal desc
 GO
 ```
-
 - Run the workload from the command line using ostress.
 
 Edit the script script that runs ostress **sqlworkload.cmd**:<br><br>
@@ -152,7 +151,7 @@ Substitute the login name created for the Azure SQL Database Server created in M
 Substitute the database you deployed in Module 2 for the **-d parameter**<br>
 Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
 
-This script will use 10 concurrent users running the workload query 1500 times.
+This script will use 10 concurrent users running the workload query 2500 times.
 
 >**NOTE:** If you are not seeing CPU usage behavior with this workload for your environment you can adjust the **-n parameter** for number of users and **-r parameter** for iterations.
 
@@ -180,7 +179,7 @@ Your screen at the command prompt should look similar to the following
 [datetime] [ostress PID] -dAdventureWorks0406
 [datetime] [ostress PID] -P********
 [datetime] [ostress PID] -n10
-[datetime] [ostress PID] -r1500
+[datetime] [ostress PID] -r2500
 [datetime] [ostress PID] -q
 [datetime] [ostress PID] Using language id (LCID): 1024 [English_United States.1252] for character formatting with NLS: 0x0006020F and Defined: 0x0006020F
 [datetime] [ostress PID] Default driver: SQL Server Native Client 11.0
@@ -220,7 +219,7 @@ For a SQL Server on-premises environment you would typically use a tool specific
 <pre>[datetime] [ostress PID] Total IO waits: 0, Total IO wait time: 0 (ms)
 [datetime] [ostress PID] OSTRESS exiting normally, elapsed time: 00:01:22.637</pre>
 
-Your duration time may vary but this typically takes at least 1 minute or more.
+Your duration time may vary but this typically takes at least 1-2 minutes.
 
 **Step 3: Use Query Store to do further performance analysis**
 
@@ -280,17 +279,35 @@ The DMV **sys.dm_db_wait_stats** will show a high number of SOS_SCHEDULER_YIELD 
 
 Given the evidence to this point, without any query tuning, our workload requires more CPU capacity than we have deployed for our Azure SQL Database.
 
-TODO: This is where we would interject Query Performance Insights since it uses the Query Store.
+TODO: This is where we would interject Query Performance Insights since it uses the Query Store. The charts don't show what I expect so need to research.
 
-**Step 5: Observing performance using Azure Monitor**
+**Step 5: Observing performance using Azure Monitor Metrics**
 
 Azure Monitor provides performance metrics which you can view in various methods including Azure Portal. In the Overview page for an Azure SQL database, the standard default view is called **Compute Utilization** which you can see on the Overview blade for your database:<br><br>
 
 <img src="../graphics/Azure_Portal_Compute_Slow_Query.png" alt="Azure_Portal_Compute_Slow_Query"/>
 
-Notice in this example, the compute utilization near 100% for a recent time range. This chart will show resource resource usage over the last hour and is refreshed continually. If you click on the chart you customize the chart (Ex. bar chart) and look at other resource usage.
+Notice in this example, the CPU utilization near 100% for a recent time range. This chart will show resource usage (defaults to CPU and I/O) over the last hour and is refreshed continually. If you click on the chart you customize the chart (Ex. bar chart) and look at other resource usage.
 
-**TODO:**The Compute utilization from the portal uses Azure Monitor Metrics. Show how to get the same information (which provides historical information) from the portal menu. Show how to click on Metrics and add CPU percentage.
+Another method to see the same compute utilization metrics and others automatically collected by Azure Monitor for Azure SQL Database is to use the **Metrics Explorer** under Monitoring in the portal (The Compute Utilization is a just a pre-defined view of the Metrics Explorer) If you click on Metrics you will see the following:
+
+<img src="../graphics/Azure_Monitor_Metrics.png" alt="Azure_Monitor_Metrics"/>
+
+You can read more about the Metrics Explorer for any Azure resource at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts. Metrics for Azure SQL Database are kept for 93 days. Yuo can also read more details about Metrics in Azure Monitor at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics.
+
+As you can see in the screenshot there are several metrics you can use to view with the Metrics Explorer. The default view of Metrics Explorer is for a 24 hour period showing a 5 minute granularity. The Compute Utilization view is the last hour with a 1 minute granularity (which you can change). To see the same view, select CPU percentage and change the capture for 1 hour. The granularity will change to 1 minute and should look like the following:
+
+<img src="../graphics/Azure_Monitor_Metrics_CPU_1minrefresh.png" alt="Azure_Monitor_Metrics_CPU_1minrefresh"/>
+
+The default is a line chart but the Explorer view allows you to change the chart type. There are various options with Metrics Explorer including the ability to show multiple metrics on the same chart.
+
+**Step 6: Observe performance with Azure Monitor Logs**
+
+In addition to ad-hoc access to Azure Monitor Metrics, Azure Monitor provides logging capabilities across the Azure platform. Azure SQL Database has specific logging capabilities. You can read more about Azure SQL logs at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging.
+
+Let's use the logging you setup in Module 2 of the workshop to analyze the same type of performance data you have seen with DMVs, Query Store, and Azure Monitor Metrics.
+
+
 
 TODO: Show how to see the same CPU metric data using either Kusto queries or Azure SQL Analytics.
 
