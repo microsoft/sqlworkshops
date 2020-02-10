@@ -115,11 +115,11 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_16_vcenter.PNG?raw=true">
 
-15.
-
-16. Enter a http proxy, if one is used for accessing the internet:
+15. Specify a static IPv4 address for the iSCSI network adapter, note that it does not require any routing or a name server:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_17_vcenter.PNG?raw=true">
+
+16. Proxy
 
 17. Accept the default mirror site for Ubuntu:
 
