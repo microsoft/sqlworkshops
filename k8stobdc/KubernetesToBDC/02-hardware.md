@@ -92,8 +92,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_9_vcenter.PNG?raw=true">
 
-10. Now that the basic virtual machine is configured and powered on, it is time to configure the Ubuntu operating system after the machine boots up from the ISO,
-the first step is to specify the language that the guest operating system will use:
+10. Configure the Ubuntu operating system after the machine boots up from the ISO by first specifying the language that the guest operating system will use:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_11_vcenter.PNG?raw=true">
 
