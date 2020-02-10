@@ -53,7 +53,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 1. First start by creating a virtual machine in VMware vCenter:
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_1_vcenter.png?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_1.PNG?raw=true">
 
 2. Provide a name for the virtual machine:
 
