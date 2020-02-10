@@ -41,6 +41,31 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<td>A web-based Kubernetes interface that allows you to deploy containerized applications to a Kubernetes cluster, troubleshoot them, and manage the cluster and its resources. </td>
         </tr>
 		<tr style="vertical-align:top;">
+			<td><a href="https://kubernetes.io/docs/concepts/"><b>Concepts</b></a> </td>
+			<td><a href="https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/"><i>Declaritive API</i></a> </td>
+			<td>Objects are specified according to the desired state that an object should be instantiated in. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/"><i>Overlay network</i></a> </td>
+			<td>A software defined network via which nodes in the cluster communicate, this is usually implemented via a Container Network Interface compliant plugin, the default of which is Calico. </td>
+        </tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/"><i>Ingress</i></a> </td>
+			<td>Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. </td>
+        </tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i><a href="https://github.com/container-storage-interface/spec/blob/master/spec.md">Persistent Storage </i></a> </td>
+			<td>A hardware and software combination used to persist state. One of the key aims is ensure that if a Pod is rescheduled to run on a different Node, its state is not lost as it moves from its original Node to a new one. In the early days of Kubernetes, most storage drivers were called as “In tree”, meaning that vendors who wanted Kubernetes to use their storage had to integrate the code for their drivers directly with the Kubernetes code base. The IT industry is now gravitating towards the Container Storage Interface specification which allows Kubernetes to seamlessly use any storage platform that supports this standard without having to touch the Kubernetes code base. Ultimately, the aim of the CSI standard is to promote storage portability. </td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i><a href="https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/">Bin packing</i></a> </td>
+			<td>The algorithm by which pods are assigned to nodes based on each node's CPU and memory requirements and the available resouirces on each node.</td>
+        </tr>
+		<tr style="vertical-align:top;">
 			<td><b><a href="https://kubernetes.io/docs/concepts/#kubernetes-objects">Object</b></a> </td>
 			<td><a href="https://www.tutorialspoint.com/kubernetes/kubernetes_node.htm"><i>Node</i></a> </td>
 			<td>The computers (physical or virtual) that host the rest of the Objects in a Kubernetes cluster. </td>
@@ -65,20 +90,50 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<td><i><a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</i></a> </td>
 			<td>A "description" of a set of Pods and a policy to access them. This de-couples the call to an application to it's physical representation, and allows the application running on the Pod to be more stateless. </td>
 		</tr>	
-        <tr style="vertical-align:top;">
+    <tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/concepts/storage/volumes/"><i>Volume</i></a> </td>
 			<td>A pointer to a storage directory - either "ethereal" (has the same lifetime as the Pod) or permanent. Can use various providers such as cloud storage and on-premises devices, and is set with various parameters. </td>
 		</tr>
-		<tr style="vertical-align:top;">
+    <tr style="vertical-align:top;">
 			<td> </td>
-			<td><i><a href="https://github.com/container-storage-interface/spec/blob/master/spec.md">Persistent Storage </i></a> </td>
-			<td>A hardware and software combination used to persist state. One of the key aims is ensure that if a Pod is rescheduled to run on a different Node, its state is not lost as it moves from its original Node to a new one. In the early days of Kubernetes, most storage drivers were called as “In tree”, meaning that vendors who wanted Kubernetes to use their storage had to integrate the code for their drivers directly with the Kubernetes code base. The IT industry is now gravitating towards the Container Storage Interface specification which allows Kubernetes to seamlessly use any storage platform that supports this standard without having to touch the Kubernetes code base. Ultimately, the aim of the CSI standard is to promote storage portability. </td>
+			<td><a href="https://kubernetes.io/docs/concepts/storage/volumes/"><i>Persistent Volume</i></a> </td>
+			<td>A piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes.</td>
+		</tr>
+    <tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/storage/volumes/"><i>Persistent Volume Claim</i></a> </td>
+			<td>A request for storage from a PersistentVolume by a user.</td>
+		</tr>
+    <tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/storage/volumes/"><i>StorageClass</i></a> </td>
+			<td>A StorageClass provides a way for administrators to describe the “classes” of storage available to a Kubenetes cluster.</td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"><i>Namespace</i></a> </td>
 			<td>Used to define multiple virtual clusters backed by the same physical cluster. Namespaces are a critical component in the Kubernetes role based access control security model.</td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Label</i></a> </td>
+			<td>key/value pairs that are attached to objects, such as pods. Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system.</td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Selector</i></a> </td>
+			<td>Mechanism by which a client/user can identify a set of objects that have specific label(s).</td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Secret</i></a> </td>
+			<td>An object that contains a small amount of sensitive data such as a password, a token, or a key.</td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><i><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">ConfigMap</i></a> </td>
+			<td>A resource for injecting containers with configuration data that allows containers to be Kubernetes agnostic.</td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td><a href="https://kubernetes.io/docs/concepts/architecture/master-node-communication/"><b>Kubernetes Master</b></a> </td>
@@ -192,9 +247,13 @@ Provision must be made for the control plane to be highly available, this includ
 
 It is recommended that a production grade cluster has a minimum of two master nodes and three etcd instances.
 
+The standard method for bootstrapping the control plane in is use ```kubeadm init```.
+
 ### 3.2.2 Worker Nodes ###
 
-A production grade SQL Server 2019 Big Data Cluster requires a minimum of three nodes each with 64 GB of RAM and 8 logical processors. However, consideration also needs to be made for upgrading a Kubernetes cluster from one version to another. There are two options:
+A production grade SQL Server 2019 Big Data Cluster requires a minimum of three nodes each with 64 GB of RAM and 8 logical processors. The standard method for bootstrapping worker nodes and joining them to the cluster is to use ```kubeadm join```.
+
+Consideration needs to be made for upgrading a Kubernetes cluster from one version to another and allowing the cluster to tolerate node failure(s). There are two options:
 
 - **Upgrade each node in the cluster in-situ**
 
@@ -206,7 +265,25 @@ A production grade SQL Server 2019 Big Data Cluster requires a minimum of three 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create a single node big data cluster sandpit environment</b></p>
 
-In this activity you will deploy a single node big data cluster sandpit environment on an Ubuntu virtual machine using [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15)
+In this activity workshop attendees will familiarise themselves with the single node sandbox lab environment created using this script [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15):
+
+1. Connect to your sandbox environment using a ssh client, macOS comes with a built in client, windows users can use a DOS command shell windows and issue the following command:
+
+```ssh labuser@<ip-address>```
+
+Your workshop hosts will provide each attendee with an ip address and password.
+
+2. List some of the key processes that your sandbox Kubernetes cluster consists of:
+
+```ps -ef | egrep'(containerd|docker|etcd|kubelet)'```
+
+3. List the log files for the pods that form your sandbox big data cluster:
+
+```ls -l /var/log/pods```
+
+4. Observe live process stats that include those of the comnponents that make up the sandbox Kubernetes cluster:
+
+```top```
 
 ### 3.2.3 Kubernetes Production Grade Deployments ###
 
@@ -218,7 +295,23 @@ In the last activity, we deployed a single node SQL Server 2019 big data cluster
 
 - Automate the tasks that have to be performed in addition to running kubeadm
 
-There is a tool that leverages kubeadm in order to achieve all of these goals.
+Also consider the number of steps required to deploy a cluster using kubeadm:
+
+- Import the keys and register the repository for Kubernetes on each machine that will host a cluster node.
+
+- Configure docker and Kubernetes prerequisites on each machine.
+
+- Configure docker and Kubernetes prerequisites on each machine.
+
+- Create a YAML file in order to enable RBAC for the cluster
+
+- Initialise the Kubernetes master on this machine.
+
+- Boostrap each work node and join it to the cluster.
+
+- Configure an agent / kubelet on each worker node.
+
+Can this process be automated ?.
 
 ### 3.2.4 Introducing Kubespray ###
 
@@ -231,7 +324,6 @@ There is a tool that leverages kubeadm in order to achieve all of these goals.
 - Remove clusters
 
 - Add nodes to existing clusters
-
 
 Kubespray is a Cloud Native Computing Foundation project and with its own [GitHub repository](https://github.com/kubernetes-sigs/kubespray).
 
@@ -289,7 +381,6 @@ Note:
 
 ### 3.2.8 Requirements ###
 
-
 ### 3.2.9 Post Cluster Deployment Activities ###
 
 Install kubectl - the primary tool for administering a Kubernetes cluster. kubectl requires a configuration file in order to access the cluster, by default kubectl will look for a file named config in the .kube directory under the home directory of the user that is logged in:
@@ -308,13 +399,17 @@ For this activity, workshop attendees will log onto the jump server and use a pr
 
 Use the kubectl cheat sheet to familiarise yourself with various kubectl commands. One of the key commands to be aware of is kubectl get.
 
-- Use kubectl to obtain the state of each node in the cluster, all nodes in a healthy cluster should have a state of ‘Ready’
+1. Display the config containing the context for accessing the sandbox Kubernetes cluster:
 
-- Ordinarily, with the exception of single node clusters that are used for learning purposes, pods should never run on master nodes. As such a NoSchedule taint should be present on each master node, use kubectl describe to verify this.
+```kubectl config view```
 
-- Labels can be assigned to any object created in a Kubernetes cluster, an entity known as a ‘Selector’ is used to filter objects with labels. Use kubectl get to display the nodes with the role of master. Labels and selectors are covered by the Kubernetes documentation in detail.
+2. Use kubectl to obtain the state of each node in the cluster, all nodes in a healthy cluster should have a state of ‘Ready’.
 
-- All objects that live in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster.
+3. Obtained detailed information on the sandbox cluster's single node using describe.
+
+4. Labels can be assigned to any object created in a Kubernetes cluster, an entity known as a ‘Selector’ is used to filter objects with labels. Use kubectl get to display the nodes with the role of master. Labels and selectors are covered by the Kubernetes documentation in detail.
+
+5. All objects that live in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
