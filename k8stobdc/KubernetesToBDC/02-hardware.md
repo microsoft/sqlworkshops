@@ -74,7 +74,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_6_vcenter.PNG?raw=true">
 
-7. For a single node cluster sandbox enivoronment and the Pure Storage Kubernetes storage plugin, the virtual machine requires:
+7. For a single node cluster sandbox environment and the Pure Storage Kubernetes storage plugin, the virtual machine requires:
 
 - 4 logical processors
 - 16GB of memory
