@@ -21,17 +21,6 @@ This module covers the infrastructure foundation for building a Kubernetes clust
 
 Kubernetes and it's variants, can run on "bare metal" - a server-hardware system. You can also use a Hypervisor, such as VMWare or Hyper-V. In many companies, the IT infrastructure is completely virtualized, so this module covers the installation on that platform. Most of the principles for deploying Kubernetes apply when carrying out the activity on non-virtualized hardware, and you'll learn the differences as you progress through the exercises.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
-
-In this activity you will <TODO: Explain Activity>
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-<TODO: Enter specific steps to perform the activity> 
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -39,10 +28,27 @@ In this activity you will <TODO: Explain Activity>
 
 In this instructor-led session, the hardware for the hands on lab exercises consists of the following components: 
 
-- 3 x servers each with 2 12 core processors and 512GB of RAM
-- One all-Flash solid state storage array connected to the compute resource via iSCSI
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_2_1_workshop_hw.PNG?raw=true">
 
-<TODO: insert image here>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Basic Sandbox Environment Familiarisation</b></p>
+
+1. Connect to your sandbox environment using a ssh client. macOS comes with a built in client. Windows users may wish to user either [Putty](https://www.putty.org/) or a DOS command shell window. Your workshops tutors will make login credentials available to each attendee.
+
+2. Install the virt-what package using apt-get:
+
+```sudo apt-get install virt-what```
+
+3. Execute virt-what to verify the platform that your sandbox environment is running on:
+
+```sudo virt-what```
+
+4. Obtain the amount of memory your sandbox environment has by running the following command:
+
+```lsmem```
+
+5. Obtain the processor information for your sandbox environment by running the following command:
+
+```lscpu```
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -179,55 +185,117 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_32_vcenter.PNG?raw=true">
 
-30. **At this stage, we now have a virtual machine that a single node SQL Server 2019 Big Data Cluster can be delpoyed to**. If the objective of the exercise is to deplopy a full blown production grade big data cluster, a virtual machine template is required. To create the virtual machine template, right click on the virtual machine, select 'Power' and then "Power Off":
+30. **We now have a virtual machine that a single node SQL Server 2019 Big Data Cluster can be delpoyed to using [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15)**. If the objective is to deplopy a production grade cluster, the following commands should be executed against the guest operating system, after which the virtual machine can be converted into a template:
+
+```
+apt-get install -q -y ebtables ethtool
+apt-get install -q -y apt-transport-https
+# Run the following modprobe command for Ubuntu 18 only
+modprobe br_netfilter
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+echo net.ipv6.conf.all.disable_ipv6=1 > /etc/sysctl.conf
+echo net.ipv6.conf.default.disable_ipv6=1 > /etc/sysctl.conf
+echo net.ipv6.conf.lo.disable_ipv6=1 > /etc/sysctl.conf
+sysctl net.bridge.bridge-nf-call-iptables=1
+```
+
+31. To create the virtual machine template, right click on the virtual machine, select 'Power' and then "Power Off":
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_33_vcenter.PNG?raw=true">
 
-31. Right click on the virtual machine, select 'Template' and then "Convert to Template".
+32. Right click on the virtual machine, select 'Template' and then "Convert to Template".
+
+33. Deployment of a production grade Kubernetes cluster can be carried out using:
+
+- Kubeadm, as per the instructions in [Microsoft's online documentation](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-with-kubeadm?view=sql-server-ver15).
+
+- Or for an approach that leverages Kubeadm **and** automates the entire deployment process, [Kubespray](https://kubespray.io/#/) can be used.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 ## 2.4 Storage Orchestration ##
 
-In this instructor-led workshop, Storage Orchestration is facilitated via the [Pure Service Orchestrator](https://github.com/purestorage/helm-charts/blob/master/pure-k8s-plugin/README.md). This component is a [Kubernetes Container Storage Interface-compliant plugin](https://github.com/container-storage-interface/spec) that automatically provisions storage across one or more Pure Storage FlashArray™ and FlashBlade™ storage arrays. 
+In this instructor-led workshop, Storage Orchestration is facilitated via the [Pure Service Orchestrator](https://github.com/purestorage/helm-charts/blob/master/pure-k8s-plugin/README.md). This component is a [Kubernetes Container Storage Interface-compliant plugin](https://github.com/container-storage-interface/spec) that automatically provisions storage across one or more Pure Storage FlashArray™ and / or FlashBlade™ storage arrays. 
 
-You will learn much more about the Storage component of a Kubernetes cluster in the next module. 
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Installing The Storage Plugin </b></p>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
-
-In this activity you will <TODO: Explain Activity>
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
+The activity covers the installation of a Container Storage Interface compliant Kubernetes storage plugin using Helm. 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-<TODO: Enter specific steps to perform the activity> 
+
+1. List the storage class that is currently installed on the single node cluster. For a sandbox type environment built using Microsoft's [single node kubeadm script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15), this should return the ```local-storage``` storage class.
+```
+kubectl get sc
+```
+
+2. Verify that the iSCSI target endpoints are reachable:
+```
+ping <iSCSI target ip address(es)>
+```
+
+In this example, each IP address associated with the interfaces ct0 and ct1 should be reachable from each node host in the cluster:
+
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_4_2_purity.PNG?raw=true">
+
+3. Confirm the version of helm that is installed by executing the command ```helm version```.
+
+4. Download the YAML template for the storage plugin configuration:
+```
+curl --output pso-values.yaml https://raw.githubusercontent.com/purestorage/helm-charts/master/pure-csi/values.yaml```
+```
+
+4. Using a text editor such as VI or nano, open the pso-values.yaml file.
+
+5. Uncomment lines 82 through to 84 by removing the hash symbol from each line.
+
+6. On line 83, replace the template IP address with the management endpoint IP address of the array that persistent volumes are to be created on.
+
+7. On line 84, replace the template API token with API token for the array that persistent volumes are to be created on.
+
+8. Add the repo containing the Helm chart for the storage plugin:
+
+- For all versions of Helm run:
+```
+helm repo add pure https://purestorage.github.io/helm-charts
+helm repo update
+```
+- For Helm version 2, also run:
+```
+helm search pure-csi
+```
+- For Helm version 3, also run:
+```
+helm search repo pure-csi
+```
+
+9. Perform a dry run install of the plugin, this will verify that the contents of the pso-values.yaml file is correct:
+- For Helm version 2, run:
+```
+helm install --name pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml --dry-run --debug
+```
+- For Helm version 3, run:
+```
+helm install pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml --dry-run --debug
+```
+
+10. If the dry run of the installation completed successfully, the actual install of the plugin can be performed, otherwise the pso-values.yaml file needs to be corrected:
+- For Helm version 2, run:
+```
+helm install --name pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml
+```
+- For Helm version 3, run:
+```
+helm install pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml
+```
+
+11. List the type of storage classes that are now installed, a new storage class should be present:
+```
+kubectl get sc
+```
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
-
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true">2.6 Kubernetes Cluster Deployment</h2>
-
-Now that all of the components are in place, you can deploy your cluster. Using the layout for the "Nodes" (Virtual Machines) in the first table, and using the Jump Box tools, you can create the cluster.
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
-
-In this activity you will <TODO: Explain Activity>
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-<TODO: Enter specific steps to perform the activity> 
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b> For Further Study</b></p>
-
-<ul>
-    <li><a href="<TODO: Enter Link address>" target="_blank"><TODO: Enter Name of Link></a> <TODO: Enter Explanation of Why the link is useful.</li>
-</ul>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
 
 Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/KubernetesToBDC/03-kubernetes.md" target="_blank"><i> Module 3 - Kubernetes</i></a>.
