@@ -126,11 +126,37 @@ SELECT * FROM sys.dm_db_resource_stats
 
 This DMV will track overall resource usage of your workload against Azure SQL Database such as CPU, I/O, and memory.
 
+- Setting up logging for Azure Monitor
+
+Now setup a Log Analytics Workspace and add in Azure Monitor Diagnostics and Metrics logging for this workload.
+
+Create a LogAnalytics Workspace from the Azure Portal. First find the Log Analytics service as a resource:
+
+<img src="../graphics/add_azure_service.png" alt="add_azure_service"/>
+
+Type in Log Analytics to find the service:
+
+<img src="../graphics/add_azure_service.png" alt="add_azure_service"/>
+
+Create the Log Analytics service workspace
+
+<img src="../graphics/log_analytics_service.png" alt="log_analytics_service"/>
+
+To create the workspace, put in a workspace name that corresponds to your database name. Use your resource group from your Azure SQL Database deployment and choose the same region:
+
+<img src="../graphics/create_log_analytics_workspace.png" alt="create_log_analytics_workspace" width=300/>
+
+When the deployment of the workspace is complete, you should see an indication of this in the portal
+
+<img src="../graphics/log_analytics_deployment_complete.png" alt="log_analytics_deployment_complete"/>
+
+Later on this section you will use this workspace to analyze performance data.
+
 **Step 2: Run the workload and observe performance**
 
 - Examine the workload query from the script **topcustomersales.sql**. 
 
-This database is not large so the query to retrieve customer and their associated sales information ordered by customers with the most sales shouldn't generate a large result set. It is possible to tune this query by reducing the number of columns from the result set but these are needed for demostration purposes of this activity.
+This database is not large so the query to retrieve customer and their associated sales information ordered by customers with the most sales shouldn't generate a large result set. It is possible to tune this query by reducing the number of columns from the result set but these are needed for demonstration purposes of this activity.
 
 
 ```sql
@@ -305,9 +331,7 @@ The default is a line chart but the Explorer view allows you to change the chart
 
 In addition to ad-hoc access to Azure Monitor Metrics, Azure Monitor provides logging capabilities across the Azure platform. Azure SQL Database has specific logging capabilities. You can read more about Azure SQL logs at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging.
 
-Let's use the logging you setup in Module 2 of the workshop to analyze the same type of performance data you have seen with DMVs, Query Store, and Azure Monitor Metrics.
-
-
+Let's use the logging you setup at the beginning of this section to analyze the same type of performance data you have seen with DMVs, Query Store, and Azure Monitor Metrics.
 
 TODO: Show how to see the same CPU metric data using either Kusto queries or Azure SQL Analytics.
 
