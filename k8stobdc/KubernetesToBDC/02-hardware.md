@@ -225,7 +225,6 @@ The activity covers the installation of a Container Storage Interface compliant 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-
 1. List the storage class that is currently installed on the single node cluster. For a sandbox type environment built using Microsoft's [single node kubeadm script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15), this should return the ```local-storage``` storage class.
 ```
 kubectl get sc
