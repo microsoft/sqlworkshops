@@ -15,75 +15,22 @@ Depending on the SLA your business requires, Azure SQL has the options you need 
 
 
 In this module, you'll cover these topics:  
-[5.1](#5.1): Azure SQL high availability basics   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): TODO-Turn-key FCIs  
-[5.2](#5.2): Backup and restore   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity X](#X): Restore a deleted database  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Restore to a point in time    
+[5.1](#5.1): Backup and restore   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): Restore to a point in time  
+[5.2](#5.2): Azure SQL high availability basics     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): TODO-Turn-key FCIs    
 [5.3](#5.3): The highest availability  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): TODO-Turn-key AGs in Business critical  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Geo-distributed auto-failover groups with read-scale in Business critical  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.1">5.1 Azure SQL high availability basics</h2></a>
-
-TODO: Explain basic architecture of general purpose/business critical/hyperscale for availability
-
-
-<br>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: TODO: TODO-Turn-key FCIs</b></p>
-
-TODO: Activity Description and tasks
-
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
-
-TODO: Enter activity description with checkbox
-
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
-
-TODO: Enter activity steps description with checkbox
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.2">5.2 TODO: Backup and restore</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.1">5.1 TODO: Backup and restore</h2></a>
 
 TODO: Explain how on prem you have to have a plan for DR and a BU/R strategy, but how it's built for you in Azure. Also talk about how it all works, ADR, LTR, etc.
+<br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="X"><b>Activity X</a>: TODO: Restore a deleted database</b></p>
-
-TODO: Activity Description and tasks
-
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
-
-TODO: Enter activity description with checkbox
-
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
-
-TODO: Enter activity steps description with checkbox
-
-![](../graphics/deletedb.png)  
-
-![](../graphics/deleteddb.png)  
-
-![](../graphics/deleteddb2.png)  
-
-![](../graphics/deleteddbview.png)  
-(this takes about 2 min to show up)  
-
-![](../graphics/restoredb.png)  
-
-![](../graphics/restoredb2.png)  
-
-![](../graphics/deploynotification.png)  
-
-![](../graphics/deployunderway.png)  
-
-NOTE: It took 11 MINUTES to restore the deleted database and 2-3 min for it to show up so I could delete it. With 14 minutes waiting time, I think we should drop this lab, I will mention it at the end of activity 2.  
-
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Undo errors to a point in time</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: Undo errors to a point in time</b></p>
 
 In all organizations, big or small, mistakes can happen. That's why you always have to have a plan for how you will restore to where you need to be. In SQL Server, ideally, you want choose to [restore to a point in time](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model?view=sql-server-ver15), but you can only do that if you are running in full recovery model. Under the bulk-logged recovery model, it's more likely that you'll have to recover the database to the end of the transaction log backup.  
 
@@ -92,6 +39,23 @@ One of the benefits of Azure SQL is that Azure can take care of all of this for 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
 For this activity, you'll use the notebook called **pitr.ipynb** which is under `azuresqlworkshop\05-Availability\pitr\pitr.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.2">5.2 TODO: Azure SQL high availability basics</h2></a>
+
+TODO: Explain basic architecture of general purpose/business critical/hyperscale for availability
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: TODO: TODO-Turn-key FCIs</b></p>
+
+TODO: Activity Description and tasks  
+
+
+<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
+
+TODO: Enter activity steps description with checkbox
+
+
 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
