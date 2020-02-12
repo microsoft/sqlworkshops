@@ -1,6 +1,6 @@
 ![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png?raw=true)
 
-# Workshop: <TODO: Enter workshop name>
+# Workshop: Kubernetes - From Bare Metal to SQL Server Big Data Clusters
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
@@ -8,21 +8,23 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>00 prerequisites</h2>
 
-This workshop is taught using the following components, which you will install and configure in the sections that follow. 
+This workshop is taught using various components, which you will install and configure in the sections that follow. 
 
-*(Note: Due to the nature of working with large-scale systems, it may not be possible for you to set up everything you need to perform each lab exercise.  Participation in each Activity is optional - we will be working through the exercises together, but if you cannot install any software or don't have an Azure account, the instructor will work through each exercise in the workshop. You will also have full access to these materials so that you can work through them later when you have more time and resources.)*
+> Note: Due to the nature of working with large-scale systems, it may not be possible for you to set up everything you need to perform each lab exercise.  Participation in each Activity is optional - we will be working through the exercises together, but if you cannot install any software or don't have an Azure account, the instructor will work through each exercise in the workshop. You will also have full access to these materials so that you can work through them later when you have more time and resources.
 
-For this workshop, you will use Microsoft Windows as the base workstation, although Apple and Linux operating systems can be used in production. You can <a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise" target="_blank">download a Windows 10 Workstation `.ISO` to create a Virtual Machine on the Hypervisor of your choice for free here</a>. 
+For this workshop, you will use a Virtual Machine with Ubuntu as the operating system, Docker, Kubernetes and Microsoft's SQL Server Big Data Cluster installed. The intention of the course is that these systems are provided to you in class. However, to ensure that you have an environment available should something go wrong with the in-class system, or if you want to take this course outside of a classroom, you need to set up a Virtual Machine with these software components. 
 
-The other requirements are:
+> Note: If you wish to use another cloud service or a local Virtual Machine, it needs to match or exceed the [Microsoft Azure Standard_D8s_v3 Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general#dsv3-series-1) which  has the following requirements:
+- Ubuntu 16.04
+- 8 CPU's
+- 32 GB Memory
+- 200 GB Disk, all on primary OS mount
 
-- **Microsoft Azure**: This workshop uses the Microsoft Azure platform to host the Kubernetes cluster (using the Azure Kubernetes Service), and optionally you can deploy a system there to act as a workstation. You can use an MSDN Account, your own account, or potentially one provided for you, as long as you can create about $100.00 (U.S.) worth of assets.
-- **Azure Command Line Interface**: The Azure CLI allows you to work from the command line on multiple platforms to interact with your Azure subscription, and also has control statements for AKS.
-- **Python (3)**: Python version 3.5 (and higher) is used by the SQL Server programs to deploy and manage a Big Data Cluster for SQL Server (BDC).
-- **The pip3 Package**: The Python package manager *pip3* is used to install various BDC deployment and configuration tools. 
-- **The kubectl program**: The *kubectl* program is the command-line control feature for Kubernetes.
-- **The azdata utility**: The *azdata* program is the deployment and configuration tool for BDC.
-- **Azure Data Studio**: The *Azure Data Studio* IDE, along with various Extensions, is used for deploying the system, and querying and management of the BDC. In addition, you will use this tool to participate in the workshop. Note: You can connect to a SQL Server 2019 Big Data Cluster using any SQL Server connection tool or applicaiton, such as SQL Server Management Studio, but this course will use Microsoft Azure Data Studio for cluster management, Jupyter Notebooks and other capabilities. 
+Whether you use the provided classroom system, the Microsoft Azure Virtual Machine, or another Virtual Machine system, the requirements for your local laptop are:
+
+- **A Microsoft Azure Account**: This workshop uses the Microsoft Azure platform to host the Kubernetes cluster (using an appropriately sized Virtual Machine). You can use an MSDN account for Azure, your own Azure account, or potentially one provided for you, as long as you can create about $50.00 (U.S.) worth of Microsoft Azure assets. You will learn how to set up in the account in this pre-requisites document.
+- **The Azure Command Line Interface**: The Azure CLI allows you to work from the command line on multiple platforms to interact with your Azure subscription, and also has control statements for AKS.
+- **Microsoft Azure Data Studio**: The *Azure Data Studio* IDE, along with various Extensions, is used for deploying the system, and querying and management of the BDC. In addition, you will use this tool to participate in the workshop. Note: You can connect to a SQL Server 2019 Big Data Cluster using any SQL Server connection tool or application, such as SQL Server Management Studio, but this course will use Microsoft Azure Data Studio for cluster management, Jupyter Notebooks and other capabilities. 
 
 *Note that all following activities must be completed prior to class - there will not be time to perform these operations during the workshop.*
 
@@ -31,7 +33,7 @@ The other requirements are:
 You have multiple options for setting up Microsoft Azure account to complete this workshop. You can use a Microsoft Developer Network (MSDN) account, a personal or corporate account, or in some cases a pass may be provided by the instructor. (Note: for most classes, the MSDN account is best)
 
 **If you are attending this course in-person:**
-Unless you are explicitly told you will be provided an account by the instructor in the invitation to this workshop, you must have your Microsoft Azure account and Data Science Virtual Machine set up before you arrive at class. There will NOT be time to configure these resources during the course.
+Unless you are explicitly told you will be provided an account by the instructor in the invitation to this workshop, you must have your Microsoft Azure account and  Virtual Machine set up before you arrive at class. There will NOT be time to configure these resources during the course.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Option 1 - Microsoft Developer Network Account (MSDN) Account</b></p>
 
@@ -41,7 +43,7 @@ The best way to take this workshop is to use your [Microsoft Developer Network (
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Option 2 - Use Your Own Account</b></p>
 
-You can also use your own account or one provided to you by your organization, but you must be able to create a resource group and create, start, and manage a Virtual Machine and an Azure AKS cluster. 
+You can also use your own account or one provided to you by your organization, but you must be able to create a resource group and create, start, and manage a Virtual Machine and an Azure Virtual Machine. 
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Option 3 - Use an account provided by your instructor</b></p>
 
@@ -50,60 +52,132 @@ Your workshop invitation may have instructed you that they will provide a Micros
 **Unless you received explicit instructions in your workshop invitations, you much create either an MSDN or Personal account. You must have an account prior to the workshop.**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Prepare Your Workstation</b></p>
-<br>
-The instructions that follow are the same for either a "base metal" workstation or laptop, or a Virtual Machine. It's best to have at least 4MB of RAM on the management system, and these instructions assume that you are not planning to run the database server or any Containers on the workstation. It's also assumed that you are using a current version of Windows, either desktop or server.
-<br>
 
-*(You can copy and paste all of the commands that follow in a PowerShell window that you run as the system Administrator)*
+You will need to install the Azure Command Line utility to run the rest of these commands, and at the end of the course you will need the Microsoft Azure Data Studio tool to access the SQL Server Big Data Cluster.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true">Updates<p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Install The Microsoft Azure Command Line Utility</b></p>
 
-First, ensure all of your updates are current. You can use the following commands to do that in an Administrator-level PowerShell session:
+[Open this reference in another browser tab, and follow the instructions you find there.](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Install The Microsoft Azure Data Studio</b></p>
+
+[Open this reference in another browser tab, and follow the instructions you find there.](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15)
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Prepare The Virtual Machine on Azure</b></p>
+
+These instructions create a Single-Node Kubernetes Cluster on an Azure Virtual Machine *(Unsupported for production - classroom use only)*.
+
+In this set of instructions you'll set up a SQL Server 2019 big data cluster using Ubuntu on a single-Node using a Microsoft Azure Virtual Machine.
+
+> Note: This is an unsupported configuration, and should be used only for classroom purposes. Carefully read the instructions for the parameters you need to replace for your specific subscription and parameters.
+
+These instructions use shell commands, such as PowerShell, bash, or the CMD window from a system that has the Secure Shell software installed (SSH). You can type:
+
+<pre>ssh -h</pre>
+
+To see if this tool is installed. 
+
+You can copy-and-paste the lines that follow to run the commands, or you can set your IDE to run the current line in a Terminal window. In Visual Studio Code or Azure Data Studio, these are called "Keybindings":
+https://code.visualstudio.com/docs/getstarted/keybindings and you can set the command to run the current line from a text file in the default terminal to any key you like:
+
+*Preferences* | *Keyboard Shortcuts* | *Terminal: Run Selected Text in Active Terminal*
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 1: Log in to Azure</b></p>
+
+<pre>az login</pre>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 2: Set your account</b></p>
+
+Show the accounts:
+
+<pre>az account list --output table</pre>
+
+Replace **YourAccountNameHere** with your account name from the previous command. If you have one account, that will automatically be the set account, but it's best to be specific.
+
+<pre>az account set --subscription "YourAccountNameHere"</pre>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 3: Create a Resource Group, and a Virtual Machine</b></p>
+
+>Note: You'll needs a machine large enough to run BDC and also have Nested Virtualization. The script steps that follow take care of that for you. 
+
+In the commands below, replace the following items with your values: 
+
+- ReplaceWithResourceGroupName : Enter a Resource Group name you would like for this class. Use lowercase only.
+- ReplaceWithPassword : Enter a password to use for the Virtual Machine. 
+- ReplaceWithVMName : Enter a Virtual Machine name you would like for this class. Use lowercase only.
 
 <pre>
-write-host "Standard Install for Windows. Classroom or test system only - use at your own risk!"
-Set-ExecutionPolicy RemoteSigned
+az group create -n ReplaceWithResourceGroupName -l eastus2
 
-write-host "Update Windows"
-Install-Module PSWindowsUpdate
-Import-Module PSWindowsUpdate
-Get-WindowsUpdate
-Install-WindowsUpdate
+az vm create -n ReplaceWithVMName -g ReplaceWithResourceGroupName -l eastus2 --image UbuntuLTS --os-disk-size-gb 200 --storage-sku Premium_LRS --admin-username bdcadmin --admin-password ReplaceWithPassword --size Standard_D8s_v3 --public-ip-address-allocation static
 </pre>
 
-*Note: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
+The last set of commands will return an IP address. Replace the value **ReplaceWithIPAddressThatReturnsFromLastCommand** with that number.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true">Install Big Data Cluster Tools</p>
+<pre>ssh -X bdcadmin@ReplaceWithIPAddressThatReturnsFromLastCommand</pre>
 
-Next, install the tools to work with Big Data Clusters:
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 4: Update and Upgrade Ubuntu</b></p>
 
+Once connected, you'll need to update the Linux Environment.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 3: Install BDC Tools</b></p>
+<pre> 
+sudo apt-get update
 
-Open this resource, and follow all instructions for the Microsoft Windows operating system
+sudo apt-get upgrade
 
+sudo apt autoremove
+</pre>
 
- **NOTE:** For the `azdata` utility step below, [use this MSI package](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-install-azdata-installer?view=sql-server-ver15) rather than the `pip` installer.
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Install BDC Single Node - Pre-requisites (Current as of 1/31/2020)</b></p>
 
-- [https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sql-server-ver15](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sql-server-ver15)
+Now you're ready to install Docker, Kubernetes, and all of the components for a SQL Server Big Data Cluster. You should still be in the Secure Shell environment - if not, run this command again using the proper IP address. Replace the value **ReplaceWithIPAddressThatReturnsFromLastCommand** with that number.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 4: Re-Update Your Workstation</b></p>
+<pre>ssh -X bdcadmin@ReplaceWithIPAddressThatReturnsFromLastCommand</pre>: 
 
-Once again, download the MSI and run it from there. It's always a good idea after this many installations to run Windows Update again:
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 5: Download and mark the BDC Setup script for Execution</b></p>
+
+In  this step you'll pull down the complete SQL Server Big Data Cluster Single-Node script. This will install Docker, Kubernetes, and all of SQL Server. This will take anywhere from 15-30 minutes. 
 
 <pre>
-write-host "Re-Update Windows"
-Get-WindowsUpdate
-Install-WindowsUpdate
+curl --output setup-bdc.sh https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/kubeadm/ubuntu-single-node-vm/setup-bdc.sh
+
+chmod +x setup-bdc.sh
+
+sudo ./setup-bdc.sh
 </pre>
 
-*Note 1: If you get an error during this update process, evaluate it to see if it is fatal. You may recieve certain driver errors if you are using a Virtual Machine, this can be safely ignored.*
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 6: Set the tools path and Check Installation</b></p>
 
-**Note 2: If you are using a Virtual Machine in Azure, power off the Virtual Machine using the Azure Portal every time you are done with it. Turning off the VM using just the Windows power off in the VM only stops it running, but you are still charged for the VM if you do not stop it from the Portal. Stop the VM from the Portal unless you are actively using it.**
+In this final 
+source ~/.bashrc
+
+azdata --version
+
+kubectl get pods
+
+You can now use the system in class. Use the Linux <pre>shutdown -h</pre> command in the secure shell to stop the Virtual Machine. 
+
+Next, run the following command to de-allocate the machine safely so that you are no longer charged except for the storage. 
+
+>Note: This command does not remove the Virtual Machine. You will start it again once you start the class. 
+
+<pre>az vm deallocate --name ReplaceWithVMName</pre>
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 5: After Class Cleanup - Erase everything</b></p> 
+
+When the class is complete, you can remove your environment so that you are no longer charged for it. The following commands will do that for you. 
+
+> Only perform this step when you are done experimenting with the system, after the class
+
+<pre>az group delete --name ReplaceWithResourceGroupName</pre>
+
+>Note: If you are using a Virtual Machine in Azure, power off the Virtual Machine using the Azure Portal every time you are done with it. Turning off the VM using just the Linux shutdown command in the VM only stops it running, but you are still charged for the VM if you do not stop it from the Portal. Stop (de-allocate) the VM from the Portal unless you are actively using it.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>For Further Study</b></p>
 <ul>
-    <li><a href="https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads" target="_blank">Official Documentation for this section</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15" target="_blank">This Notebook uses the script located here</a>, and that reference supersedes the information in the steps listed above.</li> 
+    <li><a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sql-server-ver15" target="_blank">You can also create a SQL Server Big Data Cluster on the Azure Kubernetes Service (AKS) using these instructions</a>.</li>
+    <li><a href="https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters" target="_blank">For a complete workshop on SQL Server 2019's big data clusters, see this reference</a>.</li>
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
