@@ -569,13 +569,11 @@ Now the workload runs in almost 5 seconds compared to even 18-19 seconds with a 
 
 The workload runs so fast it may be difficult to observe diagnostic data from queries used previously in this activity. It is important to note that sys.dm_os_wait_stats cannot be cleared using DBCC SQLPERF as it can be with SQL Server.
 
-TODO: There is no metric in Azure Monitor for 
-
 TODO: The first test is interesting. A GP MI with 8 vCore is MUCH SLOWER than GP v8core???? Even with "batched" INSERTs it was 10 seconds. WRITELOG waits can be very bad on MI????
 
 The concept of "batching" can help most applications including Azure. Read more at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-use-batching-to-improve-performance.
 
->*NOTE:** Very large transactions can be affected on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column. TODO: Add more to this paragraph.
+>**NOTE:** Very large transactions can be affected by resource governance on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -593,7 +591,7 @@ In this section you will learn about the built-in intelligent performance capabi
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS) </a>: Performance Recommendations from Azure SQL Database</b></p>
 
-TODO: The idea here is to show the steps and results of running a workload and getting index and parameterized query recommendations. In a classroom setting they won't be doing this because it takes too long but I'll document the exact steps to make this repeatable and show the results.
+>This Activity is UNDER CONSTRUCTION
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
