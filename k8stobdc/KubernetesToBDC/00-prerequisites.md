@@ -102,9 +102,9 @@ Replace **YourAccountNameHere** with your account name from the previous command
 
 In the commands below, replace the following items with your values: 
 
-- ReplaceWithResourceGroupName : Enter a Resource Group name you would like for this class. Use lowercase only.
-- ReplaceWithPassword : Enter a password to use for the Virtual Machine. 
-- ReplaceWithVMName : Enter a Virtual Machine name you would like for this class. Use lowercase only.
+- **ReplaceWithResourceGroupName** : Enter a Resource Group name you would like for this class. Use lowercase only.
+- **ReplaceWithPassword** : Enter a password to use for the Virtual Machine. 
+- **ReplaceWithVMName** : Enter a Virtual Machine name you would like for this class. Use lowercase only.
 
 <pre>
 az group create -n ReplaceWithResourceGroupName -l eastus2
@@ -132,7 +132,7 @@ sudo apt autoremove
 
 Now you're ready to install Docker, Kubernetes, and all of the components for a SQL Server Big Data Cluster. You should still be in the Secure Shell environment - if not, run this command again using the proper IP address. Replace the value **ReplaceWithIPAddressThatReturnsFromLastCommand** with that number.
 
-<pre>ssh -X bdcadmin@ReplaceWithIPAddressThatReturnsFromLastCommand</pre>: 
+<pre>ssh -X bdcadmin@ReplaceWithIPAddressThatReturnsFromLastCommand</pre>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 5: Download and mark the BDC Setup script for Execution</b></p>
 
@@ -148,16 +148,19 @@ sudo ./setup-bdc.sh
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><b>Step 6: Set the tools path and Check Installation</b></p>
 
-In this final 
+In this final step you'll set the Linux path so that the tools run properly, and then check to make sure everything is up.
+
+<pre>
 source ~/.bashrc
 
 azdata --version
 
 kubectl get pods
+</pre>
 
-You can now use the system in class. Use the Linux <pre>shutdown -h</pre> command in the secure shell to stop the Virtual Machine. 
+The system is now ready for class. Use the Linux <pre>shutdown -h</pre> command in the secure shell to stop the Virtual Machine. 
 
-Next, run the following command to de-allocate the machine safely so that you are no longer charged except for the storage. 
+Next, run the following command to de-allocate the machine safely so that you are no longer charged (except for the storage) until class starts.  
 
 >Note: This command does not remove the Virtual Machine. You will start it again once you start the class. 
 
