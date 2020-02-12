@@ -169,7 +169,7 @@ You can optionally re-connect and update the Additional Connection Parameters (r
 
 TODO copy Bob's instructions and test  
 
-**Step 4 - Is there a quick performance test that we can use to compare with something done in Module 4 activities?**
+**Step 4 - Is there a *quick* performance test that we can use to compare with something done in Module 4 activities?**
 
 
 
