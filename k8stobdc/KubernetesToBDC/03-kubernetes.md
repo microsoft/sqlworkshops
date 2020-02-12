@@ -265,7 +265,9 @@ Consideration needs to be made for upgrading a Kubernetes cluster from one versi
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create a single node big data cluster sandpit environment</b></p>
 
-In this activity workshop attendees will familiarise themselves with the single node sandbox lab environment created using this script [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15):
+In the previous section we looked at the workshop sandbox environments from an infrastructure perpsective, in this activity we will focus on on the environment from a Kubernetes component perspective:
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
 1. Connect to your sandbox environment using a ssh client, macOS comes with a built in client, windows users can use a DOS command shell windows and issue the following command:
 
@@ -287,13 +289,11 @@ Your workshop hosts will provide each attendee with an ip address and password.
 
 ### 3.2.3 Kubernetes Production Grade Deployments ###
 
-In the last activity, we deployed a single node SQL Server 2019 big data cluster running on a single node. But what if we want to:
+The environments used for the workshop hands on activities are created via a single script that leverages Kubeadm. Consider what a production deployments of a Kubernetes cluster might require:
 
-- Deploy a Kubernetes cluster with multiple nodes, even tens of nodes
+- Deployment of multi-node clusters.
 
-- Deploy multiple Kubernetes clusters without having to write a script for each cluster
-
-- Automate the tasks that have to be performed in addition to running kubeadm
+- Repeatable cluster deployments for different environments with minimal scripting and manual command entry.
 
 Also consider the number of steps required to deploy a cluster using kubeadm:
 
@@ -393,11 +393,51 @@ The config file specifies clusters, users and contexts, a context being a label 
 
 The [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) goes into detail regarding the creation of config files and contexts for accessing multiple clusters. The fastest and simplest way to create a config file is to copy the file: /etc/kubernetes/admin.conf off one of the master node hosts and onto the client machine that kubectl is installed on.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Deploying A Single Node Cluster</b></p>
 
-For this activity, workshop attendees will log onto the jump server and use a preinstalled version of kubectl that allows a production grade kubernetes cluster to be accessed via a read-only context.
+For this activity, workshop attendees will create their own sandbox environment for all subsequent workshop activities. For the purposes of expediency all the docker images and apt packages required to do this have been downloaded onto the virtual machines provided. The resulting sandbox environment will have installed:
 
-Use the kubectl cheat sheet to familiarise yourself with various kubectl commands. One of the key commands to be aware of is kubectl get.
+- A single node Kubernetes cluster
+- kubectl
+- Helm
+- The Kubernetes dashboard
+- local-storage storage class
+- A single node SQL Server 2019 big data cluster
+- azdata
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+1. The workshop leaders will provide each attendee with:
+
+- The ip address of a virtual machine running Ubuntu 18.04.03 LTS
+- A username and password of an account for accessing the Ubuntu virtual machine
+
+First connect to the virtual machine guest operating system using a ssh client, macOS users may use the ssh client that comes built into their operating system and windows users may use putty or a DOS command shell window.
+
+2. Download the deployment script using this command:
+```
+curl --output setup-bdc.sh https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/kubeadm/ubuntu-single-node-vm/setup-bdc.sh
+```
+
+3. Set the permissions on this file such that it can be executed:
+```
+chmod +x setup-bdc.sh
+```
+
+4. Run the script:
+```
+sudo ./setup-bdc.sh
+```
+
+5. Setup an alias for azdata:
+```
+source ~/.bashrc
+```
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Kubernetes Tool Familiarisation</b></p>
+Now that your sandbox enivornment is up and running, its time to look at kubectl; the primary command line tool for managing and administering Kubernetes clusters. The [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) will come in useful for this activity.
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
 1. Display the config containing the context for accessing the sandbox Kubernetes cluster:
 
@@ -412,6 +452,33 @@ Use the kubectl cheat sheet to familiarise yourself with various kubectl command
 5. All objects that live in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
+
+## 3.2.10 ## 
+
+The deployment of non-trivial applications often comes with following requirements:
+
+- The ability to package components together.
+- Version control.
+- The ability to downgrade and upgrade packaged applications.
+
+The use of YAML files does not meet the requirements of deploying complex applications, a problem exacerbated by trhe rise of microservice based architectures.
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_2_10_package_mgmt.PNG?raw=true">
+
+Kubernetes solves this problem via [Helm](https://helm.sh/). Helm packages are defined in what are called charts, and charts in turn are stored in chart repositories. Whilst Helm is not required for deploying a SQL Server 2019 big data cluster, the chances are that there are supporting objects in the rest of your Kubernetes eco-system that require the use of Helm.
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Using Helm</b></p>
+In this activity we will deploy a storage plugin using Helm, this activity will demonstrate:
+
+- How to add a repository to your chart "Search space".
+- The dry-run facility that Helm provides
+- Specifying values for use with Helm
+- Installing a software component using Helm
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+Follow the steps in section 2.4.
+
 
 ## 3.3 OpenShift Container Platform ##
 
