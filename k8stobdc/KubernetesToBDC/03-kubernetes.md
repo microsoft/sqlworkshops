@@ -41,6 +41,11 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<td>A web-based Kubernetes interface that allows you to deploy containerized applications to a Kubernetes cluster, troubleshoot them, and manage the cluster and its resources. </td>
         </tr>
 		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://github.com/etcd-io/etcd/tree/master/etcdctl"><i>etcdctl</i></a> </td>
+			<td>etcdctl command line tool.</td>
+        </tr>
+		<tr style="vertical-align:top;">
 			<td><a href="https://kubernetes.io/docs/concepts/"><b>Concepts</b></a> </td>
 			<td><a href="https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/"><i>Declaritive API</i></a> </td>
 			<td>Objects are specified according to the desired state that an object should be instantiated in. </td>
@@ -885,8 +890,29 @@ kubectl get secret -n mssql-cluster
 ```
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="MySuperSecretP@ssw0rd"
 ```
+## 3.7 Disaster Recovery ##
 
-## 3.7 Production Grade Kubernetes Clusters ##
+The ecosystem in which a SQL Server 2019 big data cluster runs on Kubernetes comprises of different layers:
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_7_1_tech_stack.PNG?raw=true">
+
+In the context of Kubernetes, state is stored in several places:
+
+1. Persistent volumes for application data.
+
+2. etcd for the entire configuration of the cluster, including secrets and configuration maps.
+
+3. Certificates; the communication between many of the key components in a cluster involves SSL certificates, such as when kubelets talk to a master node.
+
+Options for backing up etcd include:
+
+- **Backup the directory where your cluster's etcd data resides**, this could involve the use of storage snapshot technology
+
+- **etcdctl**, this allows snapshots of etcd to be taken, restoring a etcd cluster involves a new instance of the cluster being created which incurrs downtime.
+
+- **[VMware Velero](https://github.com/vmware-tanzu/velero)** (formally Heptio Ark), this integrates with 3rd party storage APIs in order to backup the entire state of a Kubernetes cluster.
+
+## 3.8 Production Grade Kubernetes Clusters ##
 
 Now that many of the most important Kubernetes concepts have been covered, what exactly does a Kubernetes cluster that is fit for production puproses look like ?, the simple answer is that a production grade cluster should adhere to many of the following points:
 
@@ -910,6 +936,6 @@ kubectl api-versions | grep rbac
 ```
 - Make provision for extra node capacity to allow for pod rescheduling in the event of a node failure **and** test this prior to putting a cluster into production.
 
-- Despite Kubernetes being a new platform to many Microsoft data platform professionals, general disaster recovery best practices still apply, always test your backups.
+- General disaster recovery best practices still apply as per any platform, **always test your backups**.
 
-## 3.5 Troubleshooting ##
+## 3.9 Troubleshooting ##
