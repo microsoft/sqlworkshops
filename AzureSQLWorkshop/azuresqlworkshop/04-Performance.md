@@ -329,11 +329,29 @@ The default is a line chart but the Explorer view allows you to change the chart
 
 **Step 6: Observe performance with Azure Monitor Logs**
 
-In addition to ad-hoc access to Azure Monitor Metrics, Azure Monitor provides logging capabilities across the Azure platform. Azure SQL Database has specific logging capabilities. You can read more about Azure SQL logs at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging.
+In addition to ad-hoc access to Azure Monitor Metrics, Azure Monitor provides logging capabilities across the Azure platform. Azure SQL Database has specific logging capabilities. You can read more about Azure SQL logs at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging. Log ingestion delays can be found at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-ingestion-time.
 
-Let's use the logging you setup at the beginning of this section to analyze the same type of performance data you have seen with DMVs, Query Store, and Azure Monitor Metrics.
+Let's use the Log Analytics workspace you setup in Step 1 of this Activity to analyze the same type of performance data you have seen with DMVs, Query Store, and Azure Monitor Metrics.
 
-TODO: Show how to see the same CPU metric data using either Kusto queries or Azure SQL Analytics.
+- To bring up logs to analyze choose Logs under Monitoring on main blade of the database:
+
+<img src="../graphics/Find_Azure_Logs.png" alt="Find_Azure_Logs" width=300/>
+
+You are now presented with an interface to run a Kusto or KQL query:
+
+<img src="../graphics/Log_Query_Interface.png" alt="Log_Query_Interface"/>
+
+Paste in the following query where it says "Type your query here..." to see cpu_percentage metrics displayed as a bar chart. Change ADVENTUREWORKS0406 to your exact database name.
+
+
+```kusto
+AzureMetrics
+| where MetricName == 'cpu_percent'
+| where Resource == "ADVENTUREWORKS0406"
+| project TimeGenerated, Average
+| render columnchart
+```
+
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
