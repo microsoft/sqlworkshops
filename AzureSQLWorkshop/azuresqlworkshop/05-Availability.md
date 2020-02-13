@@ -18,7 +18,7 @@ In this module, you'll cover these topics:
 [5.1](#5.1): Backup and restore   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): Restore to a point in time  
 [5.2](#5.2): Azure SQL high availability basics     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): TODO-Turn-key FCIs    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Basic HA in Azure SQL Database    
 [5.3](#5.3): The highest availability  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): TODO-Turn-key AGs in Business critical  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Geo-distributed auto-failover groups with read-scale in Business critical  
@@ -44,18 +44,18 @@ For this activity, you'll use the notebook called **pitr.ipynb** which is under 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.2">5.2 TODO: Azure SQL high availability basics</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.2">5.2 Azure SQL high availability basics</h2></a>
 
 TODO: Explain basic architecture of general purpose/business critical/hyperscale for availability
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: TODO: TODO-Turn-key FCIs</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Basic HA in Azure SQL Database</b></p>
 
-TODO: Activity Description and tasks  
+In this activity, you'll get to see how the General purpose tier of Azure SQL Database behaves similarly to a Failover Cluster Instance on-prem. The difference is that on-prem, this can be time-consuming or tricky to set up, but with Azure SQL, you get it out of the box.
 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-TODO: Enter activity steps description with checkbox
+For this activity, you'll use the notebook called **basic-ha.ipynb** which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.     
 
 
 
@@ -111,7 +111,7 @@ Run the following commands (adding your information) to update your service tier
 
 First, set the `id` variable, replacing `0406` with your ID you've been using for the workshop.
 ```cli
-id='0406'
+$id='0406'
 ```
 
 Now, you can use the following command to update the service tier.  
@@ -165,27 +165,27 @@ You can optionally re-connect and update the Additional Connection Parameters (r
 
 ![](../graphics/readwrite.png)  
 
-**Step 3 - Compare failover time to General purpose (TODO repeat of GP lab activity)**  
+**(Bonus) Step 3 - Compare failover time to General purpose**  
 
-TODO copy Bob's instructions and test  
+In Activity 1, you forced a failover in your General purpose database using the notebook **basic-ha.ipynb**. It took about one minute. Now that you've switched to Business critical, will the failover be faster?  
 
-**Step 4 - Is there a *quick* performance test that we can use to compare with something done in Module 4 activities?**
+For this step, you'll use the same notebook from Activity 1, which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this step, and then return here.  
 
+TODO: explanation of why it's so much faster in BC
 
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+TODO in slides or in markdown  
+
+Compare geo-repl and FGs.  
+Both available in DB, GP/BS/HS?  
+Geo-repl is only avail in DB  
+FGs in MI and DB  
+Include chart  
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Geo-distributed auto-failover groups with read-scale in Business critical</b></p>
 
-TODO: Activity Description and tasks  
-
-Compare geo-repl and FGs.
-Both available in DB, GP/BS/HS?
-Geo-repl is only avail in DB
-FGs in MI and DB
-Include chart
-  
-
-Explain activity  https://docs.microsoft.com/en-us/azure/sql-database/sql-database-implement-geo-distributed-database?tabs=azure-powershell  
-
+In this activity, you'll configure auto-failover groups for your Azure SQL Database. You'll then initiate a failover and observe the results, leveraging an application.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
