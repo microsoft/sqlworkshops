@@ -189,17 +189,7 @@ Explain activity  https://docs.microsoft.com/en-us/azure/sql-database/sql-databa
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-**Step 1 - Create failover group**  
-
-**Step 2 - Configure network**
-
-**Step 2 - Configure application**  
-
-**Step 3 - Run application**  
-
-**Step 4 - Initiate a failover**  
-
-**Step 5 - How many read-replicas?**  
+For this activity, you'll use the notebook called **fg-powershell.ipynb** which is under `azuresqlworkshop\05-Availability\fg\fg-powershell.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.     
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

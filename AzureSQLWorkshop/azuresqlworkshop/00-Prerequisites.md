@@ -64,7 +64,9 @@ In order to complete this workshop you need to install the following software:
 
 1. Download the [new Microsoft Edge](https://www.microsoft.com/en-us/edge?form=MY01BL&OCID=MY01BL) and make it your default browser (you can type "default browser" in the Windows taskbar and it will take you to the settings for this).
 
-1. Complete [Step 1.2 and 1.3 at this link to install and configure Java and Maven](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/windows). You can confirm this worked by opening the command prompt and running `mvn --version`. If this command results include Maven 3.6.3+ and Java 1.8.0_241+, the configuration is complete.    
+1. Complete [Step 1.2 and 1.3 at this link to install and configure Java and Maven](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/windows). You can confirm this worked by opening a new command prompt and running `mvn --version`. If this command results include Maven 3.6.3+ and Java 1.8.0_241+, the configuration is complete.    
+
+1. Install the [RMUtils tool (which contains ostress)](https://www.microsoft.com/en-us/download/details.aspx?id=4511) and add `C:\Program Files\Microsoft Corporation\RMLUtils` to the VM's System variables' Path. You can confirm this worked by opening a new command prompt and running `ostress`. If you see the available commands, the configuration is complete.  
 
 1. Install [SQL Server 2019 Developer/Evaluation edition](https://www.microsoft.com/en-us/sql-server/sql-server-2019#Install) with default features enabled.
 
@@ -74,7 +76,7 @@ In order to complete this workshop you need to install the following software:
 
 1. Install the [Az PowerShell Module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-3.4.0).
 
-3. Install [Azure Data Studio February 2020 or higher](https://docs.microsoft.com/en-us/sql/azure-data-studio/download). T-SQL and PowerShell notebooks are used in this course.
+3. Install [Azure Data Studio February 2020 or higher](https://docs.microsoft.com/en-us/sql/azure-data-studio/download). T-SQL and PowerShell notebooks are used in this course.  
 
 4. Download the [AdventureWorksLT2017.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksLT2017.bak) and restore it on the SQL Server 2019 instance you created in an earlier step.
 
