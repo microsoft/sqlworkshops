@@ -210,6 +210,21 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 			<td><a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/"><i>operator</i></a> </td>
 			<td>A custom Kubernetes object implemented for the management of applications with complex life cycles. </td>
 		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/"><i>Node Affinity </i></a> </td>
+			<td>A property of pods that attracts them to a set of nodes (either as a preference or a hard requirement).</td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/"><i>Taint</i></a> </td>
+			<td>A property that repels pods from particular nodes.</td>
+		</tr>
+		<tr style="vertical-align:top;">
+			<td> </td>
+			<td><a href="https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/"><i>Toleration</i></a> </td>
+			<td>A property that allows pods to be scheduled on nodes with taints, something you might want to do with daemonsets for example.</td>
+		</tr>
 	</tbody>
 </table>
 
@@ -263,29 +278,46 @@ Consideration needs to be made for upgrading a Kubernetes cluster from one versi
 
   Create a new cluster, deploy a big data cluster to it and then restore a backup of the data from the original cluster. This approach requires more hardware than the in-situ upgrade method. If the upgrade spans multiple versions of Kubernetes, for example the upgrade is from version 1.15 to 1.17, this method allows a 1.17 cluster to be created from scratch cleanly and then the data from 1.15 cluster restored onto the new 1.17 cluster.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create a single node big data cluster sandpit environment</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create A Single Node Sandbox Environment</b></p>
 
-In the previous section we looked at the workshop sandbox environments from an infrastructure perpsective, in this activity we will focus on on the environment from a Kubernetes component perspective:
+In the previous section we looked at the workshop sandbox environments from an infrastructure perpsective, in this activity we will deploy a single node Kubernetes cluster (and SQL Server 2019 big data cluster) on the workshop virtual machines. This activity will result in the following components being installed on your Ubuntu virtual machine:
+
+- A single node Kubernetes cluster
+- kubectl
+- Helm
+- The Kubernetes dashboard
+- local-storage storage class
+- A single node SQL Server 2019 big data cluster
+- azdata
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-1. Connect to your sandbox environment using a ssh client, macOS comes with a built in client, windows users can use a DOS command shell windows and issue the following command:
+1. Log onto the your workshop virtual machine using a ssh client, your workshop leaders will provide you with an ip address, username and password. macOS users may use the ssh client already built into their operating system, windows users can use either [putty](https://www.putty.org/) or a DOS command shell.
 
-```ssh labuser@<ip-address>```
-
-Your workshop hosts will provide each attendee with an ip address and password.
-
-2. List some of the key processes that your sandbox Kubernetes cluster consists of:
-
-```ps -ef | egrep'(containerd|docker|etcd|kubelet)'```
-
-3. List the log files for the pods that form your sandbox big data cluster:
-
-```ls -l /var/log/pods```
-
-4. Observe live process stats that include those of the comnponents that make up the sandbox Kubernetes cluster:
-
-```top```
+2. Download the deployment script using this command:
+```
+curl --output setup-bdc.sh https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/kubeadm/ubuntu-single-node-vm/setup-bdc.sh
+```
+3. Set the permissions on this file such that it can be executed:
+```
+chmod +x setup-bdc.sh
+```
+4. Execute the cluster creation script as follows:
+```
+sudo ./setup-bdc.sh
+```
+5. Now that your single node cluster is up and running, list some of the key processes that your sandbox Kubernetes cluster consists of:
+```
+ps -ef | egrep'(containerd|docker|etcd|kubelet)'
+```
+6. List the log files for the pods that form your sandbox big data cluster:
+```
+ls -l /var/log/pods
+```
+7. Observe live process stats that include those of the comnponents that make up the sandbox Kubernetes cluster:
+```
+top
+```
 
 ### 3.2.3 Kubernetes Production Grade Deployments ###
 
@@ -393,67 +425,22 @@ The config file specifies clusters, users and contexts, a context being a label 
 
 The [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) goes into detail regarding the creation of config files and contexts for accessing multiple clusters. The fastest and simplest way to create a config file is to copy the file: /etc/kubernetes/admin.conf off one of the master node hosts and onto the client machine that kubectl is installed on.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Deploying A Single Node Cluster</b></p>
-
-For this activity, workshop attendees will create their own sandbox environment for all subsequent workshop activities. For the purposes of expediency all the docker images and apt packages required to do this have been downloaded onto the virtual machines provided. The resulting sandbox environment will have installed:
-
-- A single node Kubernetes cluster
-- kubectl
-- Helm
-- The Kubernetes dashboard
-- local-storage storage class
-- A single node SQL Server 2019 big data cluster
-- azdata
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Kubectl Familiarisation</b></p>
+Now that your sandbox enivornment is up and running, its time to look at kubectl; the primary command line tool for managing and administering Kubernetes clusters. Use the [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) for assistance with this activity.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
-1. The workshop leaders will provide each attendee with:
+1. Display the config containing the context for accessing the sandbox Kubernetes cluster (hint: config switch).
 
-- The ip address of a virtual machine running Ubuntu 18.04.03 LTS
-- A username and password of an account for accessing the Ubuntu virtual machine
+2. Use kubectl to obtain the state of the cluster's single node, do this such that the operating system the node is running on is displayed (hint: use the -o switch)
 
-First connect to the virtual machine guest operating system using a ssh client, macOS users may use the ssh client that comes built into their operating system and windows users may use putty or a DOS command shell window.
+3. Obtained detailed information on the sandbox cluster's single node using describe and make a note of the taint associated with the node (hint: kubectl describe).
 
-2. Download the deployment script using this command:
-```
-curl --output setup-bdc.sh https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/kubeadm/ubuntu-single-node-vm/setup-bdc.sh
-```
-
-3. Set the permissions on this file such that it can be executed:
-```
-chmod +x setup-bdc.sh
-```
-
-4. Run the script:
-```
-sudo ./setup-bdc.sh
-```
-
-5. Setup an alias for azdata:
-```
-source ~/.bashrc
-```
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Kubernetes Tool Familiarisation</b></p>
-Now that your sandbox enivornment is up and running, its time to look at kubectl; the primary command line tool for managing and administering Kubernetes clusters. The [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) will come in useful for this activity.
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-1. Display the config containing the context for accessing the sandbox Kubernetes cluster:
-
-```kubectl config view```
-
-2. Use kubectl to obtain the state of each node in the cluster, all nodes in a healthy cluster should have a state of ‘Ready’.
-
-3. Obtained detailed information on the sandbox cluster's single node using describe.
-
-4. Labels can be assigned to any object created in a Kubernetes cluster, an entity known as a ‘Selector’ is used to filter objects with labels. Use kubectl get to display the nodes with the role of master. Labels and selectors are covered by the Kubernetes documentation in detail.
-
-5. All objects that live in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster.
+4. All objects that live in a Kubernetes cluster reside in a namespace, when a big data cluster is created, all its objects reside in a namespace dedicated to that big data cluster. Use kubectl to obtain the names of namespaces present in the workshop cluster (hint: kubectl get)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-## 3.2.10 ## 
+## 3.2.10 Package Management ## 
 
 The deployment of non-trivial applications often comes with following requirements:
 
@@ -479,12 +466,13 @@ In this activity we will deploy a storage plugin using Helm, this activity will 
 
 Follow the steps in section 2.4.
 
-
 ## 3.3 OpenShift Container Platform ##
 
 ## 3.3.1  OpenShift Container Platform - Why ?
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Understanding what open-source means</b></p>
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
 1. Use a search engine lookup the Kubernetes repository on GitHub.
 
@@ -502,7 +490,6 @@ OpenShift Container Platform from Red Hat Software is a platform as a service bu
 the full software development lifecycle:
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_1_openshift.PNG?raw=true">
-
 
 ## 3.3.3  OpenShift Container Platform Compared to Kubernetes ##
 
@@ -533,9 +520,9 @@ the full software development lifecycle:
     <td>Openshift Community Edition (OKD)</td>
   </tr>
   <tr>
-    <td>Preferred method of chart/'Package' installation</td>
+    <td>Chart installation method</td>
     <td>Helm</td>
-    <td>operator</td>
+    <td>Helm for version < 4.3, operator for version 4.3 onward</td>
   </tr>
   <tr>
     <td>Command line interface</td>
@@ -543,7 +530,7 @@ the full software development lifecycle:
     <td>kubectl and oc</td>
   </tr>
   <tr>
-    <td>Single node sand pit version</td>
+    <td>Single node version</td>
     <td>minikube, kind, microk8s</td>
     <td>minishift</td>
   </tr>
@@ -553,9 +540,14 @@ the full software development lifecycle:
     <td>cri-o</td>
   </tr>
   <tr>
-    <td>Built in image registry ?</td>
+    <td>Built in software to image capability ?</td>
     <td>No</td>
     <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Default Software defined network plugin</td>
+    <td>Calico</td>
+    <td>OpenShift SDN</td>
   </tr>
 </table>
 
@@ -569,21 +561,21 @@ There are two storage options available when deploying a SQL Server 2019 big dat
 
 - Ephemeral storage
 
-- Persistent volume
+- Persistent volumes
 
-Ephemeral storage, often also referred to as loopback storage, should never be used for production purposes. With ephemeral storage, the second that a pod is rescheduled to run on a different node, any data associated with that pod will be lost. Ephemeral storage should only ever be ysed for snad pit type environments, for all other use cases persistent volumes should be used.
+Ephemeral storage, often also referred to as loopback storage, should never be used for production purposes. With ephemeral storage, the second that a pod is rescheduled to run on a different node, any data associated with that pod will be lost. Ephemeral storage should only ever be used for in environments deployed for the purposes of learning Kubernetes. For production use cases persistent volumes should be used.
 
-There are three key entities are associated with persistent volumes:
+Three key entities are associated with persistent volumes:
 
 1.	Volume
-This can be thought of in similar terms to a mount point for a Linux or Unix file system.
+Mount point for a Linux or Unix file system inside a pod.
 
 2.	Persistent Volume Claim (PVC)
-A request for storage that will underpin the volume.
+A request for the storage that will underpin the volume.
 
 3.	Persistent Volume (PV)
 A construct that maps directly to the underlying storage platform that persistent volume claims consume storage from.
-A persistent volume claim associated with a persistent volume is said to be in a ‘Bound’ state.
+A persistent volume claim associated with a persistent volume is said to be in a ‘Bound’ state. Persistent volumes created via the local-storage storage class are an exception to this rule, this is because binding only takes place once the pod associated with persistent volume claim / persistent volume is scheduled to run on a node.  
 
 The following deployment illustrates the use a volume and persistent volume claim for a SQL Server instance:
 
@@ -679,6 +671,10 @@ When using persistent volumes, something known as a “Storage class” must be 
 
   - Only a small subset of the data is being used for test and development purposes and because our production grade storage comes at a premium, we might want to use a storage class associated with a cheaper storage platform for this purpose.
 
+**Reclaim Policy**
+
+A [reclaim policy](https://kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/) is an attribute of a storage class that specifies what happens to persistent volume when there are no persistent volume claims bound to it. For storage classes that use dynamic provisioning the default policy is delete. As a best practices Microsoft recommend that the reclaim policy is set to 'Retain'.
+
 ### 3.4.4 Pod Mobility ###
 
 Pods can either be stateless or stateful. One of the most fundamental tasks that Kubernetes carries out is to ensure that the desired state of a pod in terms of replicas and its actual state are one of the same. Pods typically run in either a ReplicaSet or a StatefulSet, if a replica dies by a node going offline for example, Kubernetes will schedule a new pod to run on a healthy node: 
@@ -687,35 +683,33 @@ Pods can either be stateless or stateful. One of the most fundamental tasks that
 
 Things become more nuanced once state is involved. When a pod that is stateful is scheduled to run on a different node, the state associated with that pod needs to ‘Follow’ it from its original node to its new node. This can be achieved in one of two ways.
  
-- Storage Replication
+- **Storage Replication**
+
 Storage is replicated between nodes, such that if a pod needs to be rescheduled, it can be scheduled to run on a node that its state has been replicated to.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_replicated.PNG?raw=true">
 
-- Shared Storage
+- **Shared Storage**
+
 Each node in the cluster has access to the same storage. When a node fails, a pod can be re-scheduled to any other worker node in the cluster:
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateful_shared.PNG?raw=true">
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: <TODO: Activity Name></b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Investigate The Storage Objects Associated With Your Workshop Cluster</b></p>
+
+In this activity we will look at the different storage objects associated with your sandbox environment.
  
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
 Use the kubectl cheat sheet to  familiarise yourself with various kubectl commands in order to carry out the following on the jump server:
 
-- List the storage classes available to the workshop Kubernetes cluster
+1. List the storage classes available to the workshop Kubernetes cluster
 
-- List the persistent volume claims present for the workshop SQL Server 2019 big data cluster
+2. List the persistent volume claims present for the workshop SQL Server 2019 big data cluster
 
-- From the list of persistent volume claims obtained in the previous step, pick a persistent volume claim and inspect it in detail using kubectl describe.
+3. From the list of persistent volume claims obtained in the previous step, pick a persistent volume claim and inspect it in detail using kubectl describe.
 
-- List the persistent volumes present for the workshop SQL Server 2019 big data cluster.
-
-- From the list of persistent volumes obtained in the previous step, pick a persistent volume claim and inspect it in detail using kubectl describe.
-
-- Create a new namespace using the following kubectl command:
-
-```
-kubectl create namespace MyNamespace
-```
+4. List the persistent volumes present for the workshop SQL Server 2019 big data cluster.
  
 ### 3.4.6 Access Modes ###
 
@@ -772,19 +766,19 @@ volumeClaimTemplates:
           storage: 1Gi
 ```		  
 
-If the Kubernetes cluster's storage platform has a snapshot capability that can be used to refresh storage volumes, persistent volumes can be refreshed via snapshots. The basic work flow for this:
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Working With Statefulsets</b></p>
 
-- ```kubectl taint nodes <node name> key=value:NoSchedule```
+1. List the statefulsets present on your sandbox Kubernetes cluster:
+```
+kubectl get statefulset
+```
+2. Open the file create-statefulset.yaml, this should be present in the home directory of your sandbox user, use either nano or vi for this purpose. Note the kind of object this is and the volume claim template at the bottom of the file.
 
-- ```kubectl drain <node name>```
-
-- ```kubectl scale statefulsets <stateful-set-name> --replicas=0```
-
-- Overwrite StatefulSet persistent volumes using snapshot(s)
-
-- ```kubectl scale statefulsets <stateful-set-name> --replicas=<original replica count>```
-
-- ```kubectl taint nodes <node name> key=value:NoSchedule-```
+3. Create a statefulset using the following command:
+```
+kubectl apply -f create-statefulset.yaml
+```
+4. List the persistent volume claims, why are there three of these associated with the statefulset that was just created ?.
 
 ### 3.4.8 Considerations for Choosing Storage ### 
 
@@ -870,5 +864,52 @@ kubectl get pv --all-namespaces
 For a storage class that provides automatic provisioning, the persistent volume is automatically created for the test-pvc volume.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
+
+## 3.6 Management Of Sensitive Information ##
+
+Key to managing sensitive information such as passwords is the Kubernetes object type of Secret. Secrets encrypt information which is stored in etcd, at the time when a secret is required it is injected into a pod(s) are made available via a temporary file system.
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Working With Secrets</b></p>
+
+In this activity we will look at what Secret objects come with a big data cluster and create a secret.
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+1. Connect to your workshop Ubuntu virtual machine using a ssh client.
+
+2. List the secrets associated with your sandbox environment big data cluster:
+```
+kubectl get secret -n mssql-cluster
+```
+3. Now create a secret:
+```
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="MySuperSecretP@ssw0rd"
+```
+
+## 3.7 Production Grade Kubernetes Clusters ##
+
+Now that many of the most important Kubernetes concepts have been covered, what exactly does a Kubernetes cluster that is fit for production puproses look like ?, the simple answer is that a production grade cluster should adhere to many of the following points:
+
+- There should be atleast two master nodes.
+
+- Each master node should have a NoSchedule taint.
+
+- There should be atleast 3 etcd instances.
+
+- The cluster should have a storage plugin installed with an associated storage class that has a retain policy on Retain.
+
+- Always use the latest GA verison of Kubernetes.
+
+- Do not deploy the Kubernetes dashboard without using RBAC.
+
+- Use kubectl proxy as the peferred method of exposing the Kubernetes dashboard, otherwise look at using an authenticating proxy or a NodePort service for this purpose.
+
+- Follow [documented](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/) Kubernetes best security practices, this includes checking that role base access is enabled for the cluster, this can be verified with this command:
+```
+kubectl api-versions | grep rbac
+```
+- Make provision for extra node capacity to allow for pod rescheduling in the event of a node failure **and** test this prior to putting a cluster into production.
+
+- Despite Kubernetes being a new platform to many Microsoft data platform professionals, general disaster recovery best practices still apply, always test your backups.
 
 ## 3.5 Troubleshooting ##
