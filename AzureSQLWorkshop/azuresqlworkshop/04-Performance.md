@@ -103,8 +103,6 @@ Using the Azure SQL Database based on the AdventureWorksLT sample, you are given
 
 **Step 1: Setup to monitor Azure SQL Database**
 
-TODO: Do we have them setup Azure Alert Monitoring. I've tried this but it seems to lag when the problem actually happens. Chatting with Joe Sack about this.
-
 >**TIP**: To open a script file in the context of a database in SSMS, click on the database in Object Explorer and then use the File/Open menu in SSMS.
 
 - Launch SQL Server Management Studio (SSMS) and load a query *in the context of the database you deployed in Module 2* to monitor the Dynamic Management View (DMV) **sys.dm_exec_requests** from the script **sqlrequests.sql** which looks like the following:
@@ -126,31 +124,24 @@ SELECT * FROM sys.dm_db_resource_stats
 
 This DMV will track overall resource usage of your workload against Azure SQL Database such as CPU, I/O, and memory.
 
-- Setting up logging for Azure Monitor
+- Using Extended Events to Monitor Azure SQL Database
 
-Now setup a Log Analytics Workspace and add in Azure Monitor Diagnostics and Metrics logging for this workload.
+When you deploy an Azure SQL Database, Azure Monitor metrics are available for a period of 90+ days for your database. You will learn later in this activity how to view those metrics.
 
-Create a LogAnalytics Workspace from the Azure Portal. First find the Log Analytics service as a resource:
+In addition, you can configure Extended Events sessions for Azure SQL Database and Azure SQL Database Managed Instance. You can read more about using Extended Events in Azure SQL Database at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr. Extended Events in with Azure SQL Database Managed Instance will be very much like SQL Server which you can read about at https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15.
 
-<img src="../graphics/add_azure_service.png" alt="add_azure_service"/>
+This activity will not walk through the process of setting up Extended Events but as a *bonus activity* users can setup Extended Events and trace any activities with this module.
 
-Type in Log Analytics to find the service:
+>**NOTE** Extended Events file targets for Managed Instance will also use Azure Blob Storage similar to Azure SQL Database. Azure Managed Instance will allow more events, targets, and actions than Azure SQL Database similar to SQL Server.
 
-<img src="../graphics/add_azure_service.png" alt="add_azure_service"/>
+- Using Azure Monitor with Azure SQL Database
 
-Create the Log Analytics service workspace
+Azure supports a concept called Azure Monitor with **Metrics** and **Logs**. **Azure Monitor Metrics** are near real-time and are enabled when you deploy an Azure SQL Database. You will learn how to use Azure Monitor metrics later in this activity.
 
-<img src="../graphics/log_analytics_service.png" alt="log_analytics_service"/>
+Azure also supports a concept called **Azure Monitor Logs**. Azure Monitor Logs allow you to capture key metrics and events associated with Azure SQL Database in a log format for offline analysis. Azure Monitor logs can be sent to Event Hub, Azure Blog Storage, or Azure Log Analytics. You can read more about using logging for metrics and diagnostic events at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging. Azure SQL Database Managed Instance also supports logging with Azure Monitor but does not support the same set of events as with Azure SQL Database.
 
-To create the workspace, put in a workspace name that corresponds to your database name. Use your resource group from your Azure SQL Database deployment and choose the same region:
+The Azure Monitor Log system requires time to setup and establish logging for a deployed Azure SQL Database or Managed Instance. In some cases, once setup, the logging system is not available to capture metrics and events for an hour or more. Therefore, this activity will not walk through the process of setting up Azure Monitor Logs. If you using this activity in a self-paced fashion, you may choose to setup Azure Monitor Logs. In the Azure Portal, you can configure this under the **Diagnostic Settings** option for your database or Managed Instance. You can read more about how to configure this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging#enable-logging-of-diagnostics-telemetry.
 
-<img src="../graphics/create_log_analytics_workspace.png" alt="create_log_analytics_workspace" width=300/>
-
-When the deployment of the workspace is complete, you should see an indication of this in the portal
-
-<img src="../graphics/log_analytics_deployment_complete.png" alt="log_analytics_deployment_complete"/>
-
-Later on this section you will use this workspace to analyze performance data.
 
 **Step 2: Run the workload and observe performance**
 
@@ -307,7 +298,7 @@ Given the evidence to this point, without any query tuning, our workload require
 
 TODO: This is where we would interject Query Performance Insights since it uses the Query Store. The charts don't show what I expect so need to research.
 
-**Step 5: Observing performance using Azure Monitor Metrics**
+**Step 5: Observing performance using Azure Monitor**
 
 Azure Monitor provides performance metrics which you can view in various methods including Azure Portal. In the Overview page for an Azure SQL database, the standard default view is called **Compute Utilization** which you can see on the Overview blade for your database:<br><br>
 
@@ -319,7 +310,7 @@ Another method to see the same compute utilization metrics and others automatica
 
 <img src="../graphics/Azure_Monitor_Metrics.png" alt="Azure_Monitor_Metrics"/>
 
-You can read more about the Metrics Explorer for any Azure resource at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts. Metrics for Azure SQL Database are kept for 93 days. Yuo can also read more details about Metrics in Azure Monitor at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics.
+You can read more about the Metrics Explorer for any Azure resource at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts. Metrics for Azure SQL Database are kept for 90+ days. Yuo can also read more details about Metrics in Azure Monitor at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics.
 
 As you can see in the screenshot there are several metrics you can use to view with the Metrics Explorer. The default view of Metrics Explorer is for a 24 hour period showing a 5 minute granularity. The Compute Utilization view is the last hour with a 1 minute granularity (which you can change). To see the same view, select CPU percentage and change the capture for 1 hour. The granularity will change to 1 minute and should look like the following:
 
@@ -327,22 +318,7 @@ As you can see in the screenshot there are several metrics you can use to view w
 
 The default is a line chart but the Explorer view allows you to change the chart type. There are various options with Metrics Explorer including the ability to show multiple metrics on the same chart.
 
-**Step 6: Observe performance with Azure Monitor Logs**
-
-In addition to ad-hoc access to Azure Monitor Metrics, Azure Monitor provides logging capabilities across the Azure platform. Azure SQL Database has specific logging capabilities. You can read more about Azure SQL logs at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging. Log ingestion delays can be found at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-ingestion-time.
-
-Let's use the Log Analytics workspace you setup in Step 1 of this Activity to analyze the same type of performance data you have seen with DMVs, Query Store, and Azure Monitor Metrics.
-
-- To bring up logs to analyze choose Logs under Monitoring on main blade of the database:
-
-<img src="../graphics/Find_Azure_Logs.png" alt="Find_Azure_Logs" width=300/>
-
-You are now presented with an interface to run a Kusto or KQL query:
-
-<img src="../graphics/Log_Query_Interface.png" alt="Log_Query_Interface"/>
-
-Paste in the following query where it says "Type your query here..." to see cpu_percentage metrics displayed as a bar chart. Change ADVENTUREWORKS0406 to your exact database name.
-
+If you had configured Azure Monitor Logs with a Log Analytics workspace (**not required for this activity**), you could use the following Kusto Query to see the same type of results for CPU utilization for the database:
 
 ```kusto
 AzureMetrics
@@ -351,7 +327,9 @@ AzureMetrics
 | project TimeGenerated, Average
 | render columnchart
 ```
+Your results would look like the following:
 
+<img src="../graphics/kusto_query_metric_cpu_percent.png" alt="kusto_query_metric_cpu_percent"/>
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -482,6 +460,10 @@ Look at the Overview blade again for the Compute Utilization. Notice the signifi
 <img src="../graphics/Azure_Portal_Compute_Query_Comparison.png" alt="Azure_Portal_Compute_Query_Comparison"/>
 
 >**NOTE:** If you continue to increase vCores for this database you can improve performance up to a threshold where all queries have plenty of CPU resources. This does not mean you must match the number of vCores to the number of concurrent users from your workload. In addition, you can change the Pricing Tier to use **Serverless** *Compute Tier* instead of **Provisioned** to achieve a more "auto-scaled" approach to a workload. For example, for this workload if you chose a min vCore value of 2 and max VCore value of 8, this workload would immediately scale to 8vCores.
+
+If you used Azure Log Analytics, you would see performance differences like the following (image has been annotated)
+
+<img src="../graphics/kusto_query_metric_cpu_percent_faster.png" alt="kusto_query_metric_cpu_percent_faster"/>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 3</a>: Optimizing application performance for Azure SQL Database</b></p>
 
