@@ -621,6 +621,8 @@ IR_[SalesLT]_[OrderRating]_259E8AEDBBD206F9A74F	CreateIndex		2020-02-15 10:47:26
 
 You can read about each column and its meaning in the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-tuning-recommendations-transact-sql?view=sql-server-ver15. This is the same DMV that will show recommendations for query plan regressions as part of Automatic Plan Correction.
 
+In addition to use T-SQL with DMVs, you can use Powershell to view recommendations with this command: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaserecommendedaction?view=azps-3.4.0.
+
 - **Notifications and Performance Overview in the Portal**
 
 When a recommendation is created, you will see visible evidence in the Azure Portal. First, the Notifications for the database will show an index recommendation:
