@@ -14,78 +14,35 @@ You’ve been responsible for getting your SQL fast, keeping it fast, and making
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-(<a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/00-Prerequisites.md" target="_blank">Make sure you check out the <b>Prerequisites</b> page before you start</a>. You'll need all of the items loaded there before you can proceed with the workshop.)
-
 In this module, you'll cover these topics:  
-[4.1](#4.1): Azure SQL performance capabilities and Tasks<br>
-[4.2](#4.2): Monitoring performance in Azure SQL<br>
+[4.1](#4.1): Azure SQL **performance capabilities** and Tasks<br>
+[4.2](#4.2): **Monitoring performance** in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): How to monitor performance in Azure SQL Database  
-[4.3](#4.3): Improving Performance in Azure SQL<br>
+[4.3](#4.3): **Improving Performance** in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Scaling your workload performance in Azure SQL Database<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#2): Optimizing application performance for Azure SQL Database.<br>
-[4.4](#4.3): Intelligent Performance in Azure SQL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): Optimizing application performance for Azure SQL Database.<br>
+[4.4](#4.4): **Intelligent Performance** in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4 (BONUS)](#4): Using Automatic Tuning in Azure SQL Database
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.1">4.1  Azure SQL performance capabilities and Tasks</h2></a>
 
-In this section you will learn how to monitor the performance of a SQL workload using tools and techniques both familiar to the SQL Server professional along with differences with Azure SQL.
+In this section you will learn the performance capabilities of Azure SQL, monitoring performance, an improving performance as compared to SQL Server. In addition, you will learn about Intelligent Performance capabilities that exist in Azure SQL Database some of which are unique to Azure.
 
 **Azure SQL Performance Capabilities**
 
-**Monitoring and Troubleshooting Performance**
+**Monitoring Performance**
 
 **Accelerating and Improving Performance**
+
+**Intelligent Performance**
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.2">4.2 Monitoring performance in Azure SQL</h2></a>
 
 In this section you will learn how to monitor the performance of a SQL workload using tools and techniques both familiar to the SQL Server professional along with differences with Azure SQL.
-
-**Monitoring SQL queries**
-
-- DMVs
-- Extended Events
-- Azure Portal
-- Azure Monitor (TODO: Joe Sack has thoughts)
-
-**Monitoring CPU usage**
-
-- DMVs
-- Azure Portal
-- Query Store
-
-**Monitoring Waits**
-
-- DMVs
-
-**Other Monitoring Methods**
-
-Alerts
-Intelligent Insights
-
-TODO: This is in preview. Do we want to cover it? https://docs.microsoft.com/en-us/azure/sql-database/sql-database-intelligent-insights
-
-sys.dm_exec_requests can be used to see wait types, duration, and wait resources for any active request. This DMV also works across Azure SQL. There can be some wait types that are unique to Azure SQL which can be found at XXXXXX...
-
-Some of the more common new wait type values new to Azure SQL are:
-
-XXXX
-XXXX
-XXXX
-
-SQL Server supports **sys.dm_os_wait_stats**. Azure SQL Database supports a database specific DMV for this called **sys.dm_db_wait_stats**. sys.dm_os_waits or sys.dm_db_wait_stats can be used with Azure SQL Database Managed Instance.
-
-- Query Store
-- Azure Portal
-
-**Monitoring Memory**
-
-**Monitoring Transaction Log Usage**
-
-**Monitoring I/O**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: How to monitor performance in Azure SQL Database</b></p>
 
@@ -142,13 +99,19 @@ Azure also supports a concept called **Azure Monitor Logs**. Azure Monitor Logs 
 
 The Azure Monitor Log system requires time to setup and establish logging for a deployed Azure SQL Database or Managed Instance. In some cases, once setup, the logging system is not available to capture metrics and events for an hour or more. Therefore, this activity will not walk through the process of setting up Azure Monitor Logs. If you using this activity in a self-paced fashion, you may choose to setup Azure Monitor Logs. In the Azure Portal, you can configure this under the **Diagnostic Settings** option for your database or Managed Instance. You can read more about how to configure this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging#enable-logging-of-diagnostics-telemetry.
 
+**Step 2: Prepare the workload script**
 
-**Step 2: Run the workload and observe performance**
+Edit the script script that runs ostress **sqlworkload.cmd**:<br><br>
+Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
+Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**
+Substitute the database you deployed in Module 2 for the **-d parameter**<br>
+Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
+
+**Step 3: Run the workload and observe performance**
 
 - Examine the workload query from the script **topcustomersales.sql**. 
 
 This database is not large so the query to retrieve customer and their associated sales information ordered by customers with the most sales shouldn't generate a large result set. It is possible to tune this query by reducing the number of columns from the result set but these are needed for demonstration purposes of this activity.
-
 
 ```sql
 SELECT c.*, soh.OrderDate, soh.DueDate, soh.ShipDate, soh.Status, soh.ShipToAddressID, soh.BillToAddressID, soh.ShipMethod, soh.TotalDue, soh.Comment, sod.*
@@ -162,12 +125,6 @@ GO
 ```
 - Run the workload from the command line using ostress.
 
-Edit the script script that runs ostress **sqlworkload.cmd**:<br><br>
-Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
-Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**
-Substitute the database you deployed in Module 2 for the **-d parameter**<br>
-Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
-
 This script will use 10 concurrent users running the workload query 2500 times.
 
 >**NOTE:** If you are not seeing CPU usage behavior with this workload for your environment you can adjust the **-n parameter** for number of users and **-r parameter** for iterations.
@@ -177,7 +134,7 @@ From a powershell command prompt, change to the directory for this module activi
 [vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\[vmusername] where you have cloned the GitHub repo.
 
 <pre>
-cd c:\users\[vmusername]\AzureSQLWorkshop\azuresqlworkshop\03-Performance\monitor_and_scale
+cd c:\users\[vmusername]AzureSQLWorkshop\azuresqlworkshop\04-Performance\monitor_and_scale
 </pre>
 
 Run the workload with the following command
@@ -337,12 +294,6 @@ Your results would look like the following:
 
 In this section you will learn how to improve the performance of a SQL workload in Azure SQL using your knowledge of SQL Server and gained knowledge from Module 4.2.
 
-**SQL Query Tuning**
-
-**Azure SQL Database Auto Tuning**
-
-**Scaling Performance**
-
 Here is a good article to reference: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems and https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Scaling your workload performance in Azure SQL Database</b></p>
@@ -481,7 +432,7 @@ All scripts for this activity can be found in the **azuresqlworkshop\04-Performa
 
 **Step 1 - Create a new table**
 
-Run the following statement (or use the script**order_rating_ddl.sql**) to create a table in the AdventureWorks database you have used in Activity 1 and 2:
+Run the following T-SQL statement (or use the script **order_rating_ddl.sql**) to create a table in the AdventureWorks database you have used in Activity 1 and 2:
 
 ```sql
 DROP TABLE IF EXISTS SalesLT.OrderRating;
@@ -495,7 +446,7 @@ OrderRatingComments char(500) not null);
 GO
 ```
 
-**Step 2 - Load up a query to monitor query execution**
+**Step 2 - Load queries to monitor query execution**
 
 - Use the following query or script **sqlrequests.sql** to look at active SQL queries *in the context of the AdventureWorks database*:
 
@@ -520,9 +471,18 @@ FROM sys.dm_io_virtual_file_stats
 (db_id('AdventureWorks0406'), 2);
 ```
 
-**Step 3 - Run the workload**
+**Step 3 - Prepare the workload script**
 
-Run the test INSERT workload using the script order_rating_insert_single.cmd. This script uses ostress to run 25 concurrent users running the following T-SQL statement (in the script **order_rating_insert_single.sql**):
+Edit the workload script **order_rating_insert_single.cmd**.
+
+Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
+Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**
+Substitute the database you deployed in Module 2 for the **-d parameter**<br>
+Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
+
+**Step 4 - Run the workload**
+
+Run the test INSERT workload using the script **order_rating_insert_single.cmd**. This script uses ostress to run 25 concurrent users running the following T-SQL statement (in the script **order_rating_insert_single.sql**):
 
 ```sql
 DECLARE @x int;
@@ -537,7 +497,21 @@ END
 ```
 You can see from this script that it is not exactly a real depiction of data coming from the website but it does simulate many order ratings being ingested into the database.
 
-**Step 4 - Observe query requests and duration**
+From a powershell command prompt, change to the directory for this module activity: 
+
+[vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\[vmusername] where you have cloned the GitHub repo.
+
+<pre>
+cd c:\users\[vmusername]AzureSQLWorkshop\azuresqlworkshop\04-Performance\tuning_applications
+</pre>
+
+Run the workload with the following command
+
+```Powershell
+.\query_order_rating_single.cmd
+```
+
+**Step 5 - Observe query requests and duration**
 
 Using the queries in Step 2 you should observe the following:
 
@@ -551,7 +525,7 @@ WRITELOG wait types are indicative of latency flushing to the transaction log. 2
 
 TODO: WRITELOG waits sometimes don't show up in Query Store?
 
-**Step 5 - Decide on a resolution**
+**Step 6 - Decide on a resolution**
 
 The problem is not a high% of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25%. The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the documenation for resource limits lists latency between 5-7ms (https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases).
 
@@ -561,9 +535,11 @@ One commit for each insert is not efficient but the application was not affected
 
 The T-SQL batch can be changed for the workload to wrap a BEGIN TRAN/COMMIT TRAN around the INSERT iterations.
 
-**Step 6 - Run the modified workload and observe**
+**Step 7 - Prepare and run the modified workload and observe**
 
-The modified workload can be found in the script **order_rating_insert.sql**. Run the modified workload using the script with ostress called **order_rating_insert.cmd**
+The modified workload can be found in the script **order_rating_insert.sql**. Prepare the workload script with edits **order_rating_insert.cmd** as you did in Step 3.
+
+Run the modified workload using the script with ostress called **order_rating_insert.cmd** similar to how you ran the workload script in Step 3.
 
 Now the workload runs in almost 5 seconds compared to even 18-19 seconds with a local SSD using singleton transactions. This is an example of tuning an application for SQL queries that will run after in or outside of Azure.
 
@@ -585,13 +561,107 @@ In this section you will learn about the built-in intelligent performance capabi
 
 **Automatic Plan Correction**
 
-**Azure SQL Database Auto Tuning**
+**Azure SQL Database Automatic Tuning**
 
-**Azure SQL Database Intelligent Insights**
+- Cover index recommendations and automation of indexes
+- Cover parameterized queries
+- APRC (referred from above)
+- Talk about the process of: 1) Seeing recommendations and getting confidence 2) Enabling Automatic Tuning.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS) </a>: Performance Recommendations from Azure SQL Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS) </a>: Performance Recommendations for Indexes from Azure SQL Database</b></p>
 
->This Activity is UNDER CONSTRUCTION
+>**NOTE:** This Activity assumes you have completed all the steps in Activity 3 in this Module. This activity takes a long period of time to run to observe performance recommendations per the design of Azure SQL Database recommendations. Instructor led labs typically do NOT go through this activity. If you do not go through this activity you can read through the results to understand how performance tuning recommendations work.
+
+All scripts for this activity can be found in the **azuresqlworkshop\04-Performance\tuning_recommendations** folder.
+
+This activity takes a long period of time to run to observe performance recommendations per the design of Azure SQL Database recommendations. Instructor led labs typically do NOT 
+
+**Step 1: Make the necessary edits to the workload script**
+
+Edit the workload script **query_order_rating.cmd** similar as you have done in previous activities in this module for server name, database, login, and password.
+
+**Step 2: Run the workload script**
+
+The script **query_order_rating.cmd** will use one user connection to run the following query for several hours (the current version of the script has the workload run for ~18 hours)
+
+>**WARNING:** If you are using the Serverless Compute Option running this workload likely consume the max vCore configuration and affect your billing like a Provisioned vCore configuration.
+
+```sql
+SELECT * FROM SalesLT.OrderRating
+WHERE OrderRatingID = 1
+```
+
+The SalesLT.OrderRating table has no indexes but enough rows that seeking a single row value requires a table scan which is not the most efficient method to retrieve a single row. Therefore, it makes sense that an index will help drastically improve the performance of this query. 
+
+If you run the following query you can observe SQL Server believes an index is missing from this table to make the query more efficient (An index recommendation would also appear when looking at the query plan)
+
+```sql
+SELECT * FROM sys.dm_db_missing_index_details
+```
+**Step 3: Observe query performance and look for recommendations**
+
+Azure SQL Database uses a combination of entries discovered in DMVs like sys.dm_db_missing_index_details, the Query Store, and machine learning algorithms to decide if it should make a recommendation to create an index.
+
+When Azure SQL Database detects a recommended index, an entry can be discovered in the DMV **sys.dm_db_tuning_recommendations**.
+
+A given query that has been identified that could be improved with a recommended index must run several executions over a period of time in order for the qualified index to be a candidate. In addition, Azure SQL Database deploys services in the cloud to look for candidate indexes. These services don't run constantly. Therefore, recommendations for workload may not show up immediately in the DMVs and/or the portal.
+
+>**NOTE:** Recommendations can expire if the workload is no longer running after a period of time. Our recommendation "engine" usually is looking at a 7 day period (this is subject to change). So if the workload hasn't been running for 7 days, the recommendation may be removed.
+
+There are different ways to observe recommendations:
+
+- **Review entries in sys.dm_db_tuning_recommendations**
+
+Once this workload is complete and the recommendations have been recognize (again there could be a delay here even after the workload has completed), you should results like this:
+
+<pre>
+name	type	reason	valid_since	last_refresh	state	is_executable_action	is_revertable_action	execute_action_start_time	execute_action_duration	execute_action_initiated_by	execute_action_initiated_time	revert_action_start_time	revert_action_duration	revert_action_initiated_by	revert_action_initiated_time	score	details
+IR_[SalesLT]_[OrderRating]_259E8AEDBBD206F9A74F	CreateIndex		2020-02-15 10:47:26.0000000	2020-02-15 10:47:26.0000000	{"currentValue":"Active","lastChange":"2/15/2020 10:58:53 AM","actionInitiatedBy":""}	1	1	1900-01-01 00:00:00.0000000	00:00:00.0000000		1900-01-01 00:00:00.0000000	1900-01-01 00:00:00.0000000	00:00:00.0000000		1900-01-01 00:00:00.0000000	3	{"createIndexDetails":{"indexName":"nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA","indexType":"NONCLUSTERED","schema":"[SalesLT]","table":"[OrderRating]","indexColumns":"[OrderRatingID]","includedColumns":""},"implementationDetails":{"method":"TSql","script":"CREATE NONCLUSTERED INDEX [nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA] ON [SalesLT].[OrderRating] ([OrderRatingID]) WITH (ONLINE = ON)"},"errorDetails":{"errorCode":null,"isRetryable":""},"estimatedImpact":[{"dimensionName":"SpaceChange","unit":"Megabytes","absoluteValue":153.6640625,"changeValueAbsolute":null,"changeValueRelative":null}],"observedImpact":[]}
+</pre>
+
+You can read about each column and its meaning in the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-tuning-recommendations-transact-sql?view=sql-server-ver15. This is the same DMV that will show recommendations for query plan regressions as part of Automatic Plan Correction.
+
+- **Notifications and Performance Overview in the Portal**
+
+When a recommendation is created, you will see visible evidence in the Azure Portal. First, the Notifications for the database will show an index recommendation:
+
+<img src="../graphics/Index_Recommendation_Notification.png" alt="Index_Recommendation_Notification"/>
+
+Next, if you look at Performance Overview you will performance information for the top 5 resource consuming queries as found in the Query Story and an indication of a recommendation:
+
+<img src="../graphics/Query_Performance_Overview.png" alt="Query_Performance_Overview"/>
+
+- **Drill into Query Performance Insights**
+
+Query Performance Insights is a visual reporting tool based on the Query Story. In this example, Query Performance Insights will show the specific query consuming resources and advice of any recommendations to improve query performance.
+
+<img src="../graphics/Query_Performance_Insights.png" alt="Query_Performance_Insights"/>
+
+Query Performance Insights provides customer reporting options. You can read more about how to use Query Performance Insights at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-query-performance.
+
+- **Go directly to Performance Recommendations**
+
+The Azure Portal also provides a way to directly see any performance recommendations:
+
+<img src="../graphics/Performance_Recommendations.png" alt="Performance_Recommendations"/>
+
+In this view you will see specific recommendations and history of any automatic tuning actions. In the case of an index, details of the index and table are displayed. The option to Automate is to enable Automatic Tuning:
+
+<img src="../graphics/Automatic_Tuning_Options.png" alt="Automatic_Tuning_Options"/>
+
+Automatic Tuning options can be set at the Database Server or database level. You can read more about how to enable Automatic Tuning at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning. If you would have enabled Automatic Tuning in this scenario, the index would have been automatically created.
+
+If you click on the recommended index you will get more details about the specific index:
+
+<img src="../graphics/create_index_recommendation.png" alt="create_index_recommendation"/>
+
+You will see details of the index, table, and space required. You have the option to apply the recommended index or view a T-SQL script that will be used to apply the index:
+
+<img src="../graphics/create_index_recommendation_script.png" alt="create_index_recommendation_script"/>
+
+Notice the index ia a non-clustered index that is applies as an online index. You can read more about online indexes at https://docs.microsoft.com/en-us/sql/relational-databases/indexes/perform-index-operations-online?view=sql-server-ver15.
+
+When an index has been applied based on a recommendation, either manually or through automatic tuning, the recommendation engine will also monitor query performance over a period of item with the applied index. If query performance degrades compared to before the index was applied, a recommendation can be made to drop the index.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
