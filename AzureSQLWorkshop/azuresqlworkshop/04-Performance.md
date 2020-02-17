@@ -14,6 +14,8 @@ You’ve been responsible for getting your SQL fast, keeping it fast, and making
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
+>**NOTE**: This module does not configure specific performance topics for **SQL Server in Azure Virtual Machine**. SQL Server in Azure Virtual Machine has all the capabilities of SQL Server you have deployed on-prem. There are some unique aspects to configuring performance for SQL Server in Azure Virtual Machine include Virtual Machine sizing and storage. These topics are covered in Module 1 of this workshop.
+
 In this module, you'll cover these topics:
 
 [4.1](#4.1): Azure SQL performance **capabilities**<br>
@@ -30,7 +32,16 @@ In this module, you'll cover these topics:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.1">4.1  Azure SQL performance capabilities</h2></a>
 
-In this section you will learn the performance capabilities of Azure SQL Database.
+In this section you will learn the performance capabilities of Azure SQL.
+
+- Memory, CPU, I/O Performance capacities
+- Indexes
+- Columnstore Indexes
+- In-Memory OLTP
+- Partitions
+- Resource Governance
+- Intelligent Performance
+
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -38,11 +49,31 @@ In this section you will learn the performance capabilities of Azure SQL Databas
 
 In this section you will learn how to perform common configuration and maintenance tasks for performance.
 
+- Server Configuration
+    - Configuring Tempdb    
+- Database Configuration
+    - Configuring Files and File Groups
+    - Configuring MAXDOP
+- Maintaining Indexes
+- Maintaining Statistics
+
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.3">4.3 Monitoring and troubleshooting performance in Azure SQL</h2></a>
 
 In this section you will learn how to monitor the performance of a SQL workload using tools and techniques both familiar to the SQL Server professional along with differences with Azure SQL.
+
+- Monitoring and Troubleshooting Performance Tools
+    - Azure Monitor Metrics and Logs
+    - Dynamic Management Views
+    - Query Store
+    - Extended Events
+- Monitoring Resource Usage
+- Monitoring Query Performance
+- Monitoring I/O and Memory
+- Tracing Query Performance
+- Debugging Query Plans
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: How to monitor performance in Azure SQL Database</b></p>
 
@@ -290,11 +321,20 @@ Your results would look like the following:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.4">4.4 Improving Performance in Azure SQL</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.4">4.4 Accelerating and Tuning Performance in Azure SQL</h2></a>
 
 In this section you will learn how to improve the performance of a SQL workload in Azure SQL using your knowledge of SQL Server and gained knowledge from Module 4.3.
 
-Here is a good article to reference: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems and https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources.
+- Scaling CPU Capacity
+- Application Performance Best Practices
+- Increase IOPS
+- Reducing IO Latency
+- Increasing Memory
+- Increasing Workers
+- Reducing Log Governance
+- Improving Application Latency
+
+References articles include https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems and https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Scaling your workload performance in Azure SQL Database</b></p>
 
