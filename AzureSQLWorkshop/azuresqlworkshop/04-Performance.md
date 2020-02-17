@@ -14,33 +14,33 @@ You’ve been responsible for getting your SQL fast, keeping it fast, and making
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-In this module, you'll cover these topics:  
-[4.1](#4.1): Azure SQL **performance capabilities** and Tasks<br>
-[4.2](#4.2): **Monitoring performance** in Azure SQL<br>
+In this module, you'll cover these topics:
+
+[4.1](#4.1): Azure SQL performance **capabilities**<br>
+[4.2](#4.2): **Configuring and Maintaining** for Performance<br>
+[4.3](#4.3): **Monitoring and troubleshooting performance** in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): How to monitor performance in Azure SQL Database  
-[4.3](#4.3): **Improving Performance** in Azure SQL<br>
+[4.4](#4.4): **Accelerating and Tuning Performance** in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Scaling your workload performance in Azure SQL Database<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): Optimizing application performance for Azure SQL Database.<br>
-[4.4](#4.4): **Intelligent Performance** in Azure SQL<br>
+[4.5](#4.5): **Intelligent Performance** in Azure SQL<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4 (BONUS)](#4): Using Automatic Tuning in Azure SQL Database
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.1">4.1  Azure SQL performance capabilities and Tasks</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.1">4.1  Azure SQL performance capabilities</h2></a>
 
-In this section you will learn the performance capabilities of Azure SQL, monitoring performance, an improving performance as compared to SQL Server. In addition, you will learn about Intelligent Performance capabilities that exist in Azure SQL Database some of which are unique to Azure.
-
-**Azure SQL Performance Capabilities**
-
-**Monitoring Performance**
-
-**Accelerating and Improving Performance**
-
-**Intelligent Performance**
+In this section you will learn the performance capabilities of Azure SQL Database.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.2">4.2 Monitoring performance in Azure SQL</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.2">4.2  Configuring and Maintaining for Performance</h2></a>
+
+In this section you will learn how to perform common configuration and maintenance tasks for performance.
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
+
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.3">4.3 Monitoring and troubleshooting performance in Azure SQL</h2></a>
 
 In this section you will learn how to monitor the performance of a SQL workload using tools and techniques both familiar to the SQL Server professional along with differences with Azure SQL.
 
@@ -290,9 +290,9 @@ Your results would look like the following:
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.3">4.3 Improving Performance in Azure SQL</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.4">4.4 Improving Performance in Azure SQL</h2></a>
 
-In this section you will learn how to improve the performance of a SQL workload in Azure SQL using your knowledge of SQL Server and gained knowledge from Module 4.2.
+In this section you will learn how to improve the performance of a SQL workload in Azure SQL using your knowledge of SQL Server and gained knowledge from Module 4.3.
 
 Here is a good article to reference: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems and https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources.
 
@@ -553,28 +553,60 @@ The concept of "batching" can help most applications including Azure. Read more 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.4">4.4 Intelligent Performance in Azure SQL</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.5">4.5 Intelligent Performance in Azure SQL</h2></a>
 
 In this section you will learn about the built-in intelligent performance capabilities of Azure SQL.
 
 **Intelligent Query Processing**
 
+Intelligent Query Processing (IQP) is a suite of new capabilities built into the Query Processor and enabled using the latest database compatibility level. Applications can gain performance with no code changes by simply using the latest database compatibility level.
+
+Azure SQL Database and Managed Instance support the same database compatibility, level required to use IQP (150) as SQL Server 2019. You can learn more about Intelligent Query Processing at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15.
+
+You can read more details and go through a hands-on lab with IQP using the SQL Server 2019 Workshop, Module 2 at https://github.com/microsoft/sqlworkshops/tree/master/sql2019workshop/sql2019wks/02_IntelligentPerformance. The only pre-requisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImports once you copy into Azure Blog Storage.
+
 **Automatic Plan Correction**
 
-**Azure SQL Database Automatic Tuning**
+One of the most difficult performance problems to solve with SQL Server are query plan regressions. A common scenario for query plan regression are parameter-sensitive plans (PSP). You can read more about troubleshooting problems related to PSP at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems.
 
-- Cover index recommendations and automation of indexes
-- Cover parameterized queries
-- APRC (referred from above)
-- Talk about the process of: 1) Seeing recommendations and getting confidence 2) Enabling Automatic Tuning.
+SQL Server 2017 and Azure SQL Database introduced the concept of Automatic Plan Correction (APC) by analyzing data in the Query Store. When the Query Store is enabled with a database in SQL Server 2017 (or later) and in Azure SQL Database, the SQL Server engine will look for query plan regressions and provide recommendations. You can see these recommendations in the DMV **sys.dm_db_tuning_recommendations**. These recommendations will include T-SQL statements to manually force a query plan when performance was "in a good state". 
+
+If you gain confidence in these recommendations, you can enable SQL Server to force plans automatically when regressions are encountered.
+
+Automatic Plan Correction can be enabled using ALTER DATABASE using the AUTOMATIC_TUNING argument. You can read more about this syntax at https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-ver15#arguments.
+
+For Azure SQL Database, you can also enable Automatic Plan Correction through automatic tuning options in the portal or REST APIs. You can read more about this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning-enable. Automatic Plan Correction recommendations are always enabled for any database where Query Store is enabled (which is the default for Azure SQL Database and Managed Instance). Automatic Plan Correction (FORCE_PLAN) is enabled by default for Azure SQL Database as of March, 2020 for new databases.
+
+To go through an demonstration of Automatic Plan Correction, use the following set of scripts: https://github.com/microsoft/bobsql/tree/master/demos/sqlserver/autotune. The only pre-requisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImports once you copy into Azure Blog Storage.
+
+**Automatic Tuning for Azure SQL Database**
+
+Automatic Plan Correction is an example of Automatic Tuning in Azure SQL and SQL Server.
+
+The cloud provides a method for Microsoft to provide additional services in form of performance recommendations and automation outside of plan recommendations.
+This capability is known as **Automatic Tuning for Azure SQL Database**. (also known in some parts of the documentation as *SQL Database Advisor*). These services run as background programs analyzing performance data from an Azure SQL Database and are included in the price of any database subscription.
+
+The *main scenario* Automatic Tuning for Azure SQL Database is designed to address are *indexes*. Automatic Tuning will analyze data from telemetry of a database including the Query Store and Dynamic Management Views to recommend indexes to be created that can improve application performance. Additionally, you can enable Automatic Tuning services to *automatically create indexes* that it believes will improve query performance. Automatic Tuning will also monitor index changes and recommend or automatically drop indexes that do not improve query performance. Automatic Tuning for Azure SQL Database takes a conservative approach to recommend indexes. This means that recommendations that may show up in a DMV like sys.dm_db_missing_index_details or a query showplan may not show up immediately as recommendations for Automatic Tuning. Automatic Tuning services monitor queries over time and use Machine Learning algorithms to make recommendations to truly affect query performance.
+
+One downside to Automatic Tuning for index recommendations is that it does not account for any overhead performance an index could cause insert, update, or delete operations.
+
+One additional scenario in preview for Automatic Tuning for Azure SQL Database is *parameterized queries*.
+
+Queries with non-parameterized values can lead to performance overhead because the execution plan is recompiled each time the non-parameterized values are different. In many cases, the same queries with different parameter values generate the same execution plans. These plans, however, are still separately added to the plan cache.
+
+The process of recompiling execution plans uses database resources, increases the query duration time, and overflows the plan cache. These events, in turn, cause plans to be evicted from the cache. This SQL Server behavior can be altered by setting the *forced parameterization* option on the database (this is done by executing the ALTER DATABASE T-SQL statement using the PARAMETERIZATION FORCED option.)
+
+Automatic tuning can analyze a query performance workload against a database over time and recommend forced parameterization for the database. If over time, performance degradation has been observed, the option will be disabled.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 4 (BONUS) </a>: Performance Recommendations for Indexes from Azure SQL Database</b></p>
+
+This activity will show you the steps and results of Automatic Tuning for Azure SQL Database recommendations for indexes.
 
 >**NOTE:** This Activity assumes you have completed all the steps in Activity 3 in this Module. This activity takes a long period of time to run to observe performance recommendations per the design of Azure SQL Database recommendations. Instructor led labs typically do NOT go through this activity. If you do not go through this activity you can read through the results to understand how performance tuning recommendations work.
 
 All scripts for this activity can be found in the **azuresqlworkshop\04-Performance\tuning_recommendations** folder.
 
-This activity takes a long period of time to run to observe performance recommendations per the design of Azure SQL Database recommendations. Instructor led labs typically do NOT 
+**This activity takes a long period of time** to run to observe performance recommendations per the design of Azure SQL Database recommendations. Instructor led labs typically do NOT go through this activity because it can take 1 or more days to complete the activity.
 
 **Step 1: Make the necessary edits to the workload script**
 
@@ -635,11 +667,11 @@ Next, if you look at Performance Overview you will performance information for t
 
 - **Drill into Query Performance Insights**
 
-Query Performance Insights is a visual reporting tool based on the Query Story. In this example, Query Performance Insights will show the specific query consuming resources and advice of any recommendations to improve query performance.
+Query Performance Insights is a visual reporting tool based on the Query Story. In this example, Query Performance Insights will show the specific query consuming the most resources and advice of any recommendations to improve query performance.
 
 <img src="../graphics/Query_Performance_Insights.png" alt="Query_Performance_Insights"/>
 
-Query Performance Insights provides customer reporting options. You can read more about how to use Query Performance Insights at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-query-performance.
+Query Performance Insights provides custom reporting options. You can read more about how to use Query Performance Insights at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-query-performance.
 
 - **Go directly to Performance Recommendations**
 
@@ -652,6 +684,10 @@ In this view you will see specific recommendations and history of any automatic 
 <img src="../graphics/Automatic_Tuning_Options.png" alt="Automatic_Tuning_Options"/>
 
 Automatic Tuning options can be set at the Database Server or database level. You can read more about how to enable Automatic Tuning at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning. If you would have enabled Automatic Tuning in this scenario, the index would have been automatically created.
+
+You can also view automatic tuning options through the DMV **sys.database_automatic_tuning_options**.
+
+Recommendations and automation for indexes and parameter sensitive plans are not available for Azure SQL Database Managed Instance or SQL Server (Automatic Plan Correction is available)
 
 If you click on the recommended index you will get more details about the specific index:
 
