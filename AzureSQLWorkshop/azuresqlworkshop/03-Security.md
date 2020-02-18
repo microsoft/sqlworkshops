@@ -386,7 +386,7 @@ In the Azure portal, navigate to your Azure SQL Database logical server. Then, i
 
 In this step, you'll review the selections you've made for your Azure SQL Database logical server. In the same pane as step 1 (Azure SQL Database logical server > Security > Advanced data security), you will also see information regarding Vulnerability Assessments and Advanced Threat Protection.  
 
-At the highest level, SQL Vulnerability Assessment (VA) is a scanning service that provide visibility into your security state. It then provides actionable steps to address any potential concerns. When you configure periodic recurring scans, you're enabling the service to scan your databases every seven days and check for any vulnerabilities. You can then choose to send those reports to the admins, subscription owners, or anyone else that might need to be made notified of changes. In order for this service to operate, you have to specify a storage account for the results to be stored. This storage account was deployed during deployment of your Azure SQL Database, as you opted in to turn on ADS. Review the options and add your email address if you want to view a recurring scan.  
+At the highest level, SQL Vulnerability Assessment (VA) is a scanning service that provides visibility into your security state. It then provides actionable steps to address any potential concerns. When you configure periodic recurring scans, you're enabling the service to scan your databases every seven days and check for any vulnerabilities. You can then choose to send those reports to the admins, subscription owners, or anyone else that might need to be made notified of changes. In order for this service to operate, you have to specify a storage account for the results to be stored. This storage account was deployed during deployment of your Azure SQL Database, as you opted in to turn on ADS. Review the options and add your email address if you want to view a recurring scan.  
 
 ![](../graphics/vasettings.png)  
 
@@ -542,7 +542,7 @@ You should get a result of the first ten names, with no masking applied. Why? Be
 Now, run the following query to create a new user and run the previous query as that user. You may notice the first few commands, they are a repeat from Activity 2, Step 3.  
 ```sql
 -- Create a new SQL user and give them a password
-CREATE USER Bob WITH PASSWORD = 'gocowboys1!';
+CREATE USER Bob WITH PASSWORD = 'goTitans1!';
 
 -- Until you run the following two lines, Bob has no access to read or write data
 ALTER ROLE db_datareader ADD MEMBER Bob;
@@ -647,7 +647,7 @@ The default query is querying the category `SQLSecurityAuditEvents`, so while yo
 
 ![](../graphics/laview.png)  
 
-This workshop won't go deep into KQL querying of logs, but there are many resources in the references above if you want more practice later.  
+This activity won't go deep into KQL querying of logs, but there are many resources in the references above if you want more practice later.  
 
 **Step 7 - Analyze audit logs and monitor security with the Log Analytics SQL Security dashboard**  
 
@@ -675,7 +675,7 @@ Back in the overview, select **Azure SQL - Security Insights**.
 
 ![](../graphics/securitydb.png)  
 
-This dashboard gives more auditing information to help you understand database activity, and gain insight into anomalies. Spend a few minutes reviewing the options here.  
+This dashboard gives more auditing information to help you understand database activity, and gain insight into anomalies. Spend a few minutes reviewing and drilling into the options here.  
 
 > Looking for another bonus security activity? Try this tutorial: [Always Encrypted: Protect sensitive data and store encryption keys in Azure Key Vault](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault?tabs=azure-powershell). You will need VS for this, you can download [Visual Studio Community for free here](https://visualstudio.microsoft.com/downloads/).   
 

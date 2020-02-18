@@ -62,7 +62,7 @@ Navigate to https://portal.azure.com/ and log in with your account, if you are n
 * **Documentation**: this searches docs.microsoft.com 
 * **Resource groups**: this allows you to select a resource group  
 
-Next, select **Azure SQL** under "Marketplace." This will bring you to the Azure SQL create experience. Take a few seconds to click around and explore.    
+Next, select **Azure SQL** under "Marketplace." This will bring you to the Azure SQL create experience. Take a few moments to click around and explore.    
 
 
 ![](../graphics/AzureSQLDeploymentOptions.gif)
@@ -200,7 +200,7 @@ And some time later ...
 And finally...
 ![](../graphics/deploymentunderway3.png)
 
-If, for whatever reason, you get lost from this page and the deployment has not completed, you can navigate to your resource group, and select **Deployments**. This will give you the various deployments, their statuses, and more information.  
+If, for whatever reason, you get lost from this page and the deployment has not completed, you can navigate to your resource group, and select **Deployments**. This will give you the various deployments, their status, and more information.  
 
 ![](../graphics/deploymentstatus.png)
 
