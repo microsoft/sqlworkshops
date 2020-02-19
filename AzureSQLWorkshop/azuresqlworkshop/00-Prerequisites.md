@@ -75,7 +75,7 @@ In order to complete this workshop, you need to install the following software:
 
 1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest).  
 
-1. Install the [Az PowerShell Module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-3.4.0). Open PowerShell and right-click on the icon in the taskbar and select **Pin to taskbar**. Close PowerShell.    
+1. Install the [Az PowerShell Module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-3.4.0). Open PowerShell and run `Set-ExecutionPolicy Unrestricted` and then right-click on the icon in the taskbar and select **Pin to taskbar**. Close PowerShell.    
 
 3. Install [Azure Data Studio February 2020 or later](https://docs.microsoft.com/en-us/sql/azure-data-studio/download). T-SQL and PowerShell notebooks are used in this course.  
 

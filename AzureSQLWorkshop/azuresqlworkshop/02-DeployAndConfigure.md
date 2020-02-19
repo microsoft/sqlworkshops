@@ -331,7 +331,7 @@ In this activity, you'll explore one scenario for bulk loading data from Azure B
 
 For this activity, you'll use the notebook called **LoadData.ipynb** which is under `azuresqlworkshop\02-DeployAndConfigure\loaddata\LoadData.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
 
-In this module and throughout the activities, you learned how to deploy and configure Azure SQL. In the next module, you'll dive in to security for Azure SQL.  
+In this module and throughout the activities, you learned how to deploy and configure Azure SQL. In the next module, you'll dive into security for Azure SQL.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

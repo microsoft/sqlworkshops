@@ -45,7 +45,6 @@ TODO: Put in text here that talks about the process for network security with Az
 The auditing feature tracks database events and writes events to an audit log in either Azure storage, Azure Monitor logs, or to an Event hub. Auditing helps maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate potential security violations. In this activity, you'll set up Auditing at the server level (also available at the database level).  
 
 > **Aside**: The main differences between auditing in Azure SQL and auditing in SQL Server are:  
-> * With Azure SQL Database, auditing is at server or database level, but with Azure SQL Managed Instance and SQL Server is at the server level.  
 > * XEvent auditing supports Azure Blob storage targets  
 > * [SQL Server Auditing](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15) is only available (with some differences) in Azure SQL Managed Instance
 > * For Azure SQL Managed Instance specifically:  
@@ -80,7 +79,7 @@ Next, select **Storage**. This option allows you to collect XEvent log files in 
 
 ![](../graphics/configstorage.png)  
 
-Next, select the subscription you're using for this workshop as well as the storage account that was created to be used with Advanced data security (should be *sql* + *a random string of letters and numbers*). In this storage account, auditing logs will be saved as a collection of blob files within a container named **sqldbauditlogs**.  
+Next, select the subscription you're using for this workshop as well as the storage account in the resource group with your ID that was created to be used with Advanced data security (should be *sql* + *a random string of letters and numbers*). In this storage account, auditing logs will be saved as a collection of blob files within a container named **sqldbauditlogs**.  
 
 You also have options for the number of days you want to retain data. The default, **0**, means to retain data forever. You can change this to something else, if you want to cut back on the storage that may be generated and charged here. For this exercise, input **7**.  
 
@@ -104,7 +103,7 @@ This is the end of this activity. In a later activity in this module, you'll see
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Create and manage firewall/vNet rules for Azure SQL Database</b></p>
 
-In this short activity, you'll see how to review and manage your firewall rules using the Azure portal.
+In this activity, you'll see how to review and manage your firewall rules using the Azure portal. You'll also see how to configure the most secure connection while using the public endpoint.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
 
@@ -222,7 +221,7 @@ In the Azure portal, navigate to your Azure SQL Database logical server. In the 
 
 ![](../graphics/aadadmin.png)  
 
-Search for you account. Easiest way is to type in your full email address. Click your user and then choose **Select**.  
+Search for you account. The easiest way is to type in your full account that's associated with your subscription. Click your user and then choose **Select**.  
 
 ![](../graphics/aadselect.png)  
 
@@ -253,14 +252,18 @@ Next to the server name, you should now be able to see that you are authenticate
 
 **Step 3 - Grant other users access (SQL)**  
 
-Now that you're authenticated using Azure AD, your next step might be to add other users. Just as in SQL Server, you can add new logins and users. In SSMS, using your Azure AD connection, right-click on your database and create a new query. Run the following.
+Now that you're authenticated using Azure AD, your next step might be to add other users. Just as in SQL Server, you can add new logins and users. In SSMS, using your Azure AD connection, right-click on your database **server** and create a new query. Run the following.
 
-> Note: You must right-click on the **database** within your Azure SQL Database logical server. In SQL Server and Azure SQL managed instance, you can query at the server level and use `USE DatabaseName`, but in Azure SQL Database, you must query the database directly, the `USE` statement is not supported. 
+> Note: For most queries in Azure SQL Database, you must right-click on the **database** within your Azure SQL Database logical server. In SQL Server and Azure SQL managed instance, you can query at the server level and use `USE DatabaseName`, but in Azure SQL Database, you must query the database directly, the `USE` statement is not supported. There are a few exceptions to querying Azure SQL Database, and one is logins. You must connect to the master database to create and alter logins. For more details, see [this page](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-manage-logins#administrator-access-path).   
 
 ```sql
 -- Create a new SQL login and give them a password
 CREATE LOGIN ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
+```
 
+Now you have a login at the server-level. The next step is to create a user in the AdventureWorks database and give the read/write access (if needed). Right-click on your AdventureWorks **database** and create a new query. Run the following.  
+
+```sql
 -- Create a new SQL user from that login
 CREATE USER ApplicationUser FOR LOGIN ApplicationUser;
 
@@ -269,7 +272,7 @@ ALTER ROLE db_datareader ADD MEMBER ApplicationUser;
 ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
 ```
 
-As you likely already know, the best practice is to create non-admin accounts at the database level, unless they need to be able to execute administrator tasks.  
+The best practice is to create non-admin accounts at the database level, unless they need to be able to execute administrator tasks.  
 
 
 **Step 4 - Grant other users access (Azure AD)**   
@@ -282,7 +285,7 @@ How you complete this next step will depend on how you are consuming this worksh
 
 1. With your neighbor, first determine who will be *Person A* and who will be *Person B*.  
 2. Both *Person A* and *Person B* should note their Azure VM's **Public IP Address** (can locate this in the Azure portal)
-3. *Person A* should run the following T-SQL to authorize *Person B* to their server:  
+3. *Person A* should run the following T-SQL when connected to their AdventureWorks database to authorize *Person B* to their server:  
 ```sql
 -- Create the Azure AD user with access to the server
 CREATE USER <Person B Azure AD account> FROM EXTERNAL PROVIDER;
@@ -295,7 +298,7 @@ EXECUTE sp_set_firewall_rule @name = N'AllowPersonB',
     @start_ip_address = 'Person B VM Public IP', 
     @end_ip_address = 'Person B VM Public IP'
 ```
-4. *Person B* should run the following T-SQL to authorize *Person A* to their server:
+4. *Person B* should run the following T-SQL when connected to their AdventureWorks database to authorize *Person A* to their server:
 ```sql
 -- Create the Azure AD user with access to the server
 CREATE USER <Person A Azure AD account> FROM EXTERNAL PROVIDER;
@@ -658,6 +661,8 @@ Then, select **View dashboard**.
 ![](../graphics/viewdb.png)  
 
 You should now see an overview dashboard. Drill in to **Azure SQL - Access to Sensitive Data**.  
+
+> Notes: You may need to wait 3-5 minutes and select **Refresh** for items to show up here.  
 
 ![](../graphics/securitydb.png)  
 

@@ -12,13 +12,13 @@ import java.util.concurrent.TimeUnit;
 public class App {
 
    // UPDATE WITH YOUR INFO
-   private static final String FAILOVER_GROUP_NAME = "aw-server-fg-ID";  // add failover group name
+   private static final String FAILOVER_GROUP_NAME = "aw-server-fg-ID";  // add workshop ID
    // UPDATE WITH YOUR INFO
-   private static final String DB_NAME = "AdventureWorksID";  // add database name
+   private static final String DB_NAME = "AdventureWorksID";  // add workshop ID
    // UPDATE WITH YOUR INFO
    private static final String USER = "cloudadmin";  // add database user
    // UPDATE WITH YOUR INFO
-   private static final String PASSWORD = "<Password>";  // add database password
+   private static final String PASSWORD = "password";  // add database password
    // DO NOT MODIFY
    private static final String READ_WRITE_URL = String.format("jdbc:" +
       "sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;" +

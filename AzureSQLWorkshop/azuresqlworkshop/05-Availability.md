@@ -11,7 +11,7 @@
 > You must complete the [prerequisites](../azuresqlworkshop/00-Prerequisites.md) before completing these activities. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.   
 
 
-Depending on the SLA your business requires, Azure SQL has the options you need including built-in capabilities. In this module, you will learn how to translate your knowledge of backup/restore, Always on failover cluster instances, and Always On availability groups to the options for business continuity in Azure SQL.
+Depending on the SLA your business requires, Azure SQL has the options you need and built-in capabilities. In this module, you will learn how to translate your knowledge of backup/restore, Always on failover cluster instances, and Always On availability groups to the options for business continuity in Azure SQL.
 
 
 In this module, you'll cover these topics:  
@@ -32,15 +32,15 @@ TODO: Explain how on prem you have to have a plan for DR and a BU/R strategy, bu
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: Undo errors to a point in time</b></p>
 
-In all organizations, big or small, mistakes can happen. That's why you always have to have a plan for how you will restore to where you need to be. In SQL Server, ideally, you want choose to [restore to a point in time](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model?view=sql-server-ver15), but you can only do that if you are running in full recovery model. Under the bulk-logged recovery model, it's more likely that you'll have to recover the database to the end of the transaction log backup.  
+In all organizations, big or small, accidents can happen. That's why you always have to have a plan for how you will restore to where you need to be. In SQL Server, ideally, you want choose to [restore to a point in time](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model?view=sql-server-ver15), but you can only do that if you are running in full recovery model. Under the bulk-logged recovery model, it's more likely that you'll have to recover the database to the end of the transaction log backup.  
 
 One of the benefits of Azure SQL is that Azure can take care of all of this for you. Since Azure SQL manages your backups and runs in full recovery model, it can restore you to any point in time (you can even [restore a deleted database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-recovery-using-backups#deleted-database-restore)). In this activity, you'll see how a common error can be recovered using point in time restore (PITR). This is easy to do in the portal or programmatically, but in this activity you'll see how to do it with the Azure CLI.  
 
-> Note: In this activity, you use auditing in Log Analytics to determine the time of a dropped database. Auditing and Log Analytics were configured in Module 3, so ensure you have completed that before attempting this activity.
+> Note: In this activity, you use auditing in Log Analytics to determine the time of a dropped database. Auditing and Log Analytics were configured in Module 3, so be sure you have completed that before attempting this activity.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-For this activity, you'll use the notebook called **pitr.ipynb** which is under `azuresqlworkshop\05-Availability\pitr\pitr.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
+In this activity, you'll use the notebook called **pitr.ipynb** which is under `azuresqlworkshop\05-Availability\pitr\pitr.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -55,7 +55,13 @@ In this activity, you'll get to see how the General purpose tier of Azure SQL Da
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-For this activity, you'll use the notebook called **basic-ha.ipynb** which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.     
+**Step 1 - Connect to the Azure PowerShell module**  
+
+Open PowerShell on your virtual machine and run `Connect-AzAccount`. This will walk you through authenticating.  
+
+**Step 2 - Main activity**  
+
+For the main part of this activity, you'll use the notebook called **basic-ha.ipynb** which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.     
 
 
 
@@ -111,7 +117,7 @@ Run the following commands (adding your information) to update your service tier
 
 First, set the `id` variable, replacing `0406` with your ID you've been using for the workshop.
 ```cli
-$id='0406'
+id='0406'
 ```
 
 Now, you can use the following command to update the service tier.  
@@ -145,14 +151,14 @@ Using the same way you've been connecting to your Azure SQL Database logical ser
 
 ![](../graphics/ssmsoptions.png)  
 
-Then select **Additional Connection Parameters** and copy and paste the following into the text box **updating your ID for the workshop**. Finally, select **Connect**.  
+Select **Connection Properties** and under "Connect to database" select **Browser server** and select your AdventureWorks database.  
+
+Then select **Additional Connection Parameters** and copy and paste the following into the text box. Finally, select **Connect**.  
 
 ```sql
-Server=aw-server<ID>.database.windows.net;Initial Catalog=AdventureWorks<ID>;ApplicationIntent=ReadOnly;
+ApplicationIntent=ReadOnly;
 ```  
 >Note: In using SSMS, you have to specify the server and database to which you want to connect read-only, because there may be multiple databases in a server with different capabilities as far as readable secondaries goes.
-
-![](../graphics/addconnparameters.png)  
 
 To test, try the following query on your database, and observe the results. Is it what you would expect?  
 
@@ -167,7 +173,7 @@ You can optionally re-connect and update the Additional Connection Parameters (r
 
 **(Bonus) Step 3 - Compare failover time to General purpose**  
 
-In Activity 1, you forced a failover in your General purpose database using the notebook **basic-ha.ipynb**. It took about one minute. Now that you've switched to Business critical, will the failover be faster?  
+In Activity 1, you forced a failover in your General purpose database using the notebook **basic-ha.ipynb**. If you recall, it took about one minute for the General purpose database. Now that you've switched to Business critical, will the failover be faster?  
 
 For this step, you'll use the same notebook from Activity 1, which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this step, and then return here.  
 
