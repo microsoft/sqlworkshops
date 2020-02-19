@@ -8,9 +8,9 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> 04 - SQL Server Big Data Clusters Architecture </h2>
 
-In this workshop you have covered <TODO: Explain where the student is at the moment>. The end of this Module contains several helpful references you can use in these exercises and in production.
+In this workshop you have covered creating and maintaining a Kubernetes Cluster. The end of this Module contains several helpful references you can use in these exercises and in production.
 
-This module covers Container technologies and how they are different than Virtual Machines. You'll learn about the need for container orchestration using Kubernetes.
+This module covers running Microsoft's Big Data Clusters on a Kubernetes Cluster.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
