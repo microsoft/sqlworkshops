@@ -128,11 +128,11 @@ Azure supports a concept called Azure Monitor with **Metrics** and **Logs**. **A
 
 Azure also supports a concept called **Azure Monitor Logs**. Azure Monitor Logs allow you to capture key metrics and events associated with Azure SQL Database in a log format for offline analysis. Azure Monitor logs can be sent to Event Hub, Azure Blog Storage, or Azure Log Analytics. You can read more about using logging for metrics and diagnostic events at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging. Azure SQL Database Managed Instance also supports logging with Azure Monitor but does not support the same set of events as with Azure SQL Database.
 
-The Azure Monitor Log system requires time to setup and establish logging for a deployed Azure SQL Database or Managed Instance. In some cases, once setup, the logging system is not available to capture metrics and events for an hour or more. Therefore, this activity will not walk through the process of setting up Azure Monitor Logs. If you using this activity in a self-paced fashion, you may choose to setup Azure Monitor Logs. In the Azure Portal, you can configure this under the **Diagnostic Settings** option for your database or Managed Instance. You can read more about how to configure this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging#enable-logging-of-diagnostics-telemetry.
+The Azure Monitor Log system requires time to setup and establish logging for a deployed Azure SQL Database or Managed Instance. In some cases, once setup, the logging system is not available to capture metrics and events for an hour or more. Therefore, this activity will not walk through the process of setting up Azure Monitor Logs. If you're using this activity in a self-paced fashion, you may choose to setup Azure Monitor Logs. In the Azure Portal, you can configure this under the **Diagnostic Settings** option for your database or Managed Instance. You can read more about how to configure this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging#enable-logging-of-diagnostics-telemetry.
 
 **Step 2: Prepare the workload script**
 
-Edit the script script that runs ostress **sqlworkload.cmd**:<br><br>
+Edit the script that runs ostress **sqlworkload.cmd**:<br><br>
 Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
 Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**
 Substitute the database you deployed in Module 2 for the **-d parameter**<br>
@@ -165,7 +165,7 @@ From a powershell command prompt, change to the directory for this module activi
 [vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\[vmusername] where you have cloned the GitHub repo.
 
 <pre>
-cd c:\users\[vmusername]AzureSQLWorkshop\azuresqlworkshop\04-Performance\monitor_and_scale
+cd c:\users\[vmusername]\sqlworkshops\AzureSQLWorkshop\azuresqlworkshop\04-Performance\monitor_and_scale
 </pre>
 
 Run the workload with the following command
@@ -215,7 +215,7 @@ The familiar SQL DMV dm_exec_requests can be used with Azure SQL Database but mu
 
 This DMV records of snapshot of resource usage for the database every 15 seconds (kept for 1 hour).  You should see the column **avg_cpu_percent** close to 100% for several of the snapshots. (at least in the high 90% range). This is a symptom of a workload pushing the limits of CPU resources for the database. You can read more details about this DMV at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current. This DMV also works with Azure SQL Database Managed Instance.
 
-For a SQL Server on-premises environment you would typically use a tool specific to the Operating System like Windows Performance Monitor to track overall resource usage such a CPU. If you ran this example on a on-premises SQL Server or SQL Server in a Virtual Machine with 2 CPUs you would see near 100% CPU utilization on the server.
+For a SQL Server on-premises environment you would typically use a tool specific to the Operating System like Windows Performance Monitor to track overall resource usage such a CPU. If you ran this example on a on-premises SQL Server or SQL Server in a Virtual Machine with 2 CPUs, you would see near 100% CPU utilization on the server.
 
 >**NOTE**: Another DMV called, **sys.resource_stats**, can be run in the context of the master database of the Azure Database Server to see resource usage for all Azure SQL Database databases associated with the server. This view is less granular and shows resource usage every 5 minutes (kept for 14 days).
 
@@ -298,13 +298,13 @@ Another method to see the same compute utilization metrics and others automatica
 
 <img src="../graphics/Azure_Monitor_Metrics.png" alt="Azure_Monitor_Metrics"/>
 
-You can read more about the Metrics Explorer for any Azure resource at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts. Metrics for Azure SQL Database are kept for 90+ days. Yuo can also read more details about Metrics in Azure Monitor at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics.
+You can read more about the Metrics Explorer for any Azure resource at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts. Metrics for Azure SQL Database are kept for 90+ days. You can also read more details about Metrics in Azure Monitor at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics.
 
-As you can see in the screenshot there are several metrics you can use to view with the Metrics Explorer. The default view of Metrics Explorer is for a 24 hour period showing a 5 minute granularity. The Compute Utilization view is the last hour with a 1 minute granularity (which you can change). To see the same view, select CPU percentage and change the capture for 1 hour. The granularity will change to 1 minute and should look like the following:
+As you can see in the screenshot there are several metrics you can use to view with the Metrics Explorer. The default view of Metrics Explorer is for a 24-hour period showing a 5 minute granularity. The Compute Utilization view is the last hour with a 1-minute granularity (which you can change). To see the same view, select CPU percentage and change the capture for 1 hour. The granularity will change to 1-minute and should look like the following:
 
 <img src="../graphics/Azure_Monitor_Metrics_CPU_1minrefresh.png" alt="Azure_Monitor_Metrics_CPU_1minrefresh"/>
 
-The default is a line chart but the Explorer view allows you to change the chart type. There are various options with Metrics Explorer including the ability to show multiple metrics on the same chart.
+The default is a line chart, but the Explorer view allows you to change the chart type. There are various options with Metrics Explorer including the ability to show multiple metrics on the same chart.
 
 If you had configured Azure Monitor Logs with a Log Analytics workspace (**not required for this activity**), you could use the following Kusto Query to see the same type of results for CPU utilization for the database:
 
@@ -346,7 +346,7 @@ All scripts for this activity can be found in the **azuresqlworkshop\04-Performa
 
 **Step 1: Decide options on how to scale performance**
 
-Since workload is CPU bound one way to improve performance is to increase CPU capacity or speed. A SQL Server user would have to move to a different machine or reconfigure a VM to get more CPU capacity. In some cases, even a SQL Server administrator may not have permission to make these scaling changes or the process could take time.
+Since workload is CPU bound, one way to improve performance is to increase CPU capacity or speed. A SQL Server user would have to move to a different machine or reconfigure a VM to get more CPU capacity. In some cases, even a SQL Server administrator may not have permission to make these scaling changes or the process could take time.
 
 For Azure, we can use ALTER DATABASE, az cli, or the portal to increase CPU capacity.
 
@@ -370,7 +370,7 @@ There are other methods to change the Pricing tier and one of them is with the T
 EXEC sp_query_store_flush_db
 ```
 
-- First, learn how to find out your current Pricing tier using T-SQL. The Pricing tier is also know as a *service objective*. Using SSMS, open the script **get_service_object.sql** or the T-SQL statements to find out this information:
+- First, learn how to find out your current Pricing tier using T-SQL. The Pricing tier is also known as a *service objective*. Using SSMS, open the script **get_service_object.sql** or the T-SQL statements to find out this information:
 
 ```sql
 SELECT database_name,slo_name,cpu_limit,max_db_memory, max_db_max_size_in_mb, primary_max_log_rate,primary_group_max_io, volume_local_iops,volume_pfs_iops
@@ -404,7 +404,7 @@ This statement comes back immediately but the scaling of the compute resources t
 
 <img src="../graphics/Azure_Portal_Update_In_Progress.png" alt="Azure_Portal_Update_In_Progress"/>
 
-TAnother way to monitor the progress of a change for the service object for Azure SQL Database is to use the DMV **sys.dm_operation_status**. This DMV exposes a history of changes to the database with ALTER DATABASE to the service objective and will show active progress of the change. Here is an example of this DMV after executing the above ALTER DATABASE statement:
+Another way to monitor the progress of a change for the service object for Azure SQL Database is to use the DMV **sys.dm_operation_status**. This DMV exposes a history of changes to the database with ALTER DATABASE to the service objective and will show active progress of the change. Here is an example of this DMV after executing the above ALTER DATABASE statement:
 
 <pre>
 session_activity_id	resource_type	resource_type_desc	major_resource_id	minor_resource_id	operation	state	state_desc	percent_complete	error_code	error_desc	error_severity	error_state	start_time	last_modify_time
@@ -418,7 +418,7 @@ When this is done using the queries listed above to verify the new service objec
 
 Now that the scaling has complete, we need to see if the workload duration is faster and whether waits on CPU resources has decreased.
 
-Run the workload again using the command **sqlworkload.cmd** that you executed in Section 4.2
+Run the workload again using the command **sqlworkload.cmd** that you executed in Section 4.3 Activity 1.
 
 **Step 4: Observe new performance of the workload**
 
@@ -440,7 +440,7 @@ Using the same techniques as in Section 4.2 Activity 1, look at the **Top Resour
 
 You will now see two queries (query_id). These are the same query but show up as different query_id values in Query Store because the scale operation required a restart so the query had to be recompiled. You can see in the report the overall and average duration was significantly less.
 
-Look also at the Query Wait Statistics report as you did in Section 4.2 Activity 1. You can see the overall average wait time for the query is less and a lower % of the overall duration. This is good indication that CPU is not as much of a resource bottleneck when the database had a lower number of vCores:<br>
+Look also at the Query Wait Statistics report as you did in Section 4.3 Activity 1. You can see the overall average wait time for the query is less and a lower % of the overall duration. This is good indication that CPU is not as much of a resource bottleneck when the database had a lower number of vCores:<br>
 
 <img src="../graphics/SSMS_Top_Wait_Stats_Query_Faster.png" alt="Azure_Portal_Update_In_Progress"/>
 
@@ -539,16 +539,16 @@ You can see from this script that it is not exactly a real depiction of data com
 
 From a powershell command prompt, change to the directory for this module activity: 
 
-[vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\[vmusername] where you have cloned the GitHub repo.
+[vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\\[vmusername] where you have cloned the GitHub repo.
 
 <pre>
-cd c:\users\[vmusername]AzureSQLWorkshop\azuresqlworkshop\04-Performance\tuning_applications
+cd c:\users\[vmusername]\sqlworkshops\AzureSQLWorkshop\azuresqlworkshop\04-Performance\tuning_applications
 </pre>
 
 Run the workload with the following command
 
 ```Powershell
-.\query_order_rating_single.cmd
+.\order_rating__insert_single.cmd
 ```
 
 **Step 5 - Observe query requests and duration**
@@ -567,11 +567,11 @@ TODO: WRITELOG waits sometimes don't show up in Query Store?
 
 **Step 6 - Decide on a resolution**
 
-The problem is not a high% of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25%. The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the documenation for resource limits lists latency between 5-7ms (https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases).
+The problem is not a high % of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25%. The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the documentation for resource limits lists latency between 5-7ms (https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases).
 
 If you examine the workload, you will see each INSERT is a single transaction commit which requires a transaction log flush.
 
-One commit for each insert is not efficient but the application was not affected on a local SSD because each commit was very fast. The Business Critical pricing tier (servie objective or SKU) provides local SSD drives with a lower latency but maybe there ia an application optimization.
+One commit for each insert is not efficient but the application was not affected on a local SSD because each commit was very fast. The Business Critical pricing tier (service objective or SKU) provides local SSD drives with a lower latency but maybe there is an application optimization.
 
 The T-SQL batch can be changed for the workload to wrap a BEGIN TRAN/COMMIT TRAN around the INSERT iterations.
 
@@ -601,9 +601,9 @@ In this section you will learn about the built-in intelligent performance capabi
 
 Intelligent Query Processing (IQP) is a suite of new capabilities built into the Query Processor and enabled using the latest database compatibility level. Applications can gain performance with no code changes by simply using the latest database compatibility level.
 
-Azure SQL Database and Managed Instance support the same database compatibility, level required to use IQP (150) as SQL Server 2019. You can learn more about Intelligent Query Processing at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15.
+Azure SQL Database and Managed Instance support the same database compatibility level required to use IQP (150) as SQL Server 2019. You can learn more about Intelligent Query Processing at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15.
 
-You can read more details and go through a hands-on lab with IQP using the SQL Server 2019 Workshop, Module 2 at https://github.com/microsoft/sqlworkshops/tree/master/sql2019workshop/sql2019wks/02_IntelligentPerformance. The only pre-requisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImports once you copy into Azure Blog Storage.
+You can read more details and go through a hands-on lab with IQP using the SQL Server 2019 Workshop, Module 2 at https://github.com/microsoft/sqlworkshops/tree/master/sql2019workshop/sql2019wks/02_IntelligentPerformance. The only prerequisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImporters once you copy into Azure Blog Storage.
 
 **Automatic Plan Correction**
 
@@ -617,7 +617,7 @@ Automatic Plan Correction can be enabled using ALTER DATABASE using the AUTOMATI
 
 For Azure SQL Database, you can also enable Automatic Plan Correction through automatic tuning options in the portal or REST APIs. You can read more about this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning-enable. Automatic Plan Correction recommendations are always enabled for any database where Query Store is enabled (which is the default for Azure SQL Database and Managed Instance). Automatic Plan Correction (FORCE_PLAN) is enabled by default for Azure SQL Database as of March, 2020 for new databases.
 
-To go through an demonstration of Automatic Plan Correction, use the following set of scripts: https://github.com/microsoft/bobsql/tree/master/demos/sqlserver/autotune. The only pre-requisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImports once you copy into Azure Blog Storage.
+To go through an demonstration of Automatic Plan Correction, use the following set of scripts: https://github.com/microsoft/bobsql/tree/master/demos/sqlserver/autotune. The only prerequisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImporters once you copy into Azure Blog Storage.
 
 **Automatic Tuning for Azure SQL Database**
 
@@ -626,7 +626,7 @@ Automatic Plan Correction is an example of Automatic Tuning in Azure SQL and SQL
 The cloud provides a method for Microsoft to provide additional services in form of performance recommendations and automation outside of plan recommendations.
 This capability is known as **Automatic Tuning for Azure SQL Database**. (also known in some parts of the documentation as *SQL Database Advisor*). These services run as background programs analyzing performance data from an Azure SQL Database and are included in the price of any database subscription.
 
-The *main scenario* Automatic Tuning for Azure SQL Database is designed to address are *indexes*. Automatic Tuning will analyze data from telemetry of a database including the Query Store and Dynamic Management Views to recommend indexes to be created that can improve application performance. Additionally, you can enable Automatic Tuning services to *automatically create indexes* that it believes will improve query performance. Automatic Tuning will also monitor index changes and recommend or automatically drop indexes that do not improve query performance. Automatic Tuning for Azure SQL Database takes a conservative approach to recommend indexes. This means that recommendations that may show up in a DMV like sys.dm_db_missing_index_details or a query showplan may not show up immediately as recommendations for Automatic Tuning. Automatic Tuning services monitor queries over time and use Machine Learning algorithms to make recommendations to truly affect query performance.
+The *main scenario* Automatic Tuning for Azure SQL Database is designed to address are *indexes*. Automatic Tuning will analyze data from telemetry of a database including the Query Store and Dynamic Management Views to recommend indexes to be created that can improve application performance. Additionally, you can enable Automatic Tuning services to *automatically create indexes* that it believes will improve query performance. Automatic Tuning will also monitor index changes and recommend or automatically drop indexes that do not improve query performance. Automatic Tuning for Azure SQL Database takes a conservative approach to recommend indexes. This means that recommendations that may show up in a DMV like sys.dm_db_missing_index_details or a query show plan may not show up immediately as recommendations for Automatic Tuning. Automatic Tuning services monitor queries over time and use Machine Learning algorithms to make recommendations to truly affect query performance.
 
 One downside to Automatic Tuning for index recommendations is that it does not account for any overhead performance an index could cause insert, update, or delete operations.
 
@@ -693,7 +693,7 @@ IR_[SalesLT]_[OrderRating]_259E8AEDBBD206F9A74F	CreateIndex		2020-02-15 10:47:26
 
 You can read about each column and its meaning in the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-tuning-recommendations-transact-sql?view=sql-server-ver15. This is the same DMV that will show recommendations for query plan regressions as part of Automatic Plan Correction.
 
-In addition to use T-SQL with DMVs, you can use Powershell to view recommendations with this command: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaserecommendedaction?view=azps-3.4.0.
+In addition to using T-SQL with DMVs, you can use Powershell to view recommendations with this command: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaserecommendedaction?view=azps-3.4.0.
 
 - **Notifications and Performance Overview in the Portal**
 
@@ -701,13 +701,13 @@ When a recommendation is created, you will see visible evidence in the Azure Por
 
 <img src="../graphics/Index_Recommendation_Notification.png" alt="Index_Recommendation_Notification"/>
 
-Next, if you look at Performance Overview you will performance information for the top 5 resource consuming queries as found in the Query Story and an indication of a recommendation:
+Next, if you look at Performance Overview you will see performance information for the top 5 resource consuming queries as found in the Query Story and an indication of a recommendation:
 
 <img src="../graphics/Query_Performance_Overview.png" alt="Query_Performance_Overview"/>
 
 - **Drill into Query Performance Insights**
 
-Query Performance Insights is a visual reporting tool based on the Query Story. In this example, Query Performance Insights will show the specific query consuming the most resources and advice of any recommendations to improve query performance.
+Query Performance Insights is a visual reporting tool based on the Query Store. In this example, Query Performance Insights will show the specific query consuming the most resources and advice of any recommendations to improve query performance.
 
 <img src="../graphics/Query_Performance_Insights.png" alt="Query_Performance_Insights"/>
 
@@ -737,7 +737,7 @@ You will see details of the index, table, and space required. You have the optio
 
 <img src="../graphics/create_index_recommendation_script.png" alt="create_index_recommendation_script"/>
 
-Notice the index ia a non-clustered index that is applies as an online index. You can read more about online indexes at https://docs.microsoft.com/en-us/sql/relational-databases/indexes/perform-index-operations-online?view=sql-server-ver15.
+Notice the index is a non-clustered index that is applies as an online index. You can read more about online indexes at https://docs.microsoft.com/en-us/sql/relational-databases/indexes/perform-index-operations-online?view=sql-server-ver15.
 
 When an index has been applied based on a recommendation, either manually or through automatic tuning, the recommendation engine will also monitor query performance over a period of item with the applied index. If query performance degrades compared to before the index was applied, a recommendation can be made to drop the index.
 
