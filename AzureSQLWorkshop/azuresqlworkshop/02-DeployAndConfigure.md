@@ -62,7 +62,7 @@ Navigate to https://portal.azure.com/ and log in with your account, if you are n
 * **Documentation**: this searches docs.microsoft.com 
 * **Resource groups**: this allows you to select a resource group  
 
-Next, select **Azure SQL** under "Marketplace." This will bring you to the Azure SQL create experience. Take a few seconds to click around and explore.    
+Next, select **Azure SQL** under "Marketplace." This will bring you to the Azure SQL create experience. Take a few moments to click around and explore.    
 
 
 ![](../graphics/AzureSQLDeploymentOptions.gif)
@@ -89,7 +89,7 @@ Then, select **OK**.
 
 **Step 4 - Opt-in for elastic pools**
 
-In Azure SQL DB, you then decide if you want this database to be a part of an Elastic Pool (new or existing). In Azure SQL MI, [creating an instance pool (public preview) currently requires a different flow](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool) than the Azure SQL create experience in the Azure portal.
+In Azure SQL DB, you then decide if you want this database to be a part of an Elastic Pool (new or existing). In Azure SQL MI, [creating an instance pool (public preview) currently requires a different flow](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool) than the Azure SQL create experience in the Azure portal. For this activity, select **No**.  
 
 **Step 5 - Purchasing model**  
 >For more details on purchasing models and comparisons, refer to [Module 1](../azuresqlworkshop/01-IntroToAzureSQL.md).  
@@ -200,7 +200,7 @@ And some time later ...
 And finally...
 ![](../graphics/deploymentunderway3.png)
 
-If, for whatever reason, you get lost from this page and the deployment has not completed, you can navigate to your resource group, and select **Deployments**. This will give you the various deployments, their statuses, and more information.  
+If, for whatever reason, you get lost from this page and the deployment has not completed, you can navigate to your resource group, and select **Deployments**. This will give you the various deployments, their status, and more information.  
 
 ![](../graphics/deploymentstatus.png)
 
@@ -331,7 +331,7 @@ In this activity, you'll explore one scenario for bulk loading data from Azure B
 
 For this activity, you'll use the notebook called **LoadData.ipynb** which is under `azuresqlworkshop\02-DeployAndConfigure\loaddata\LoadData.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
 
-In this module and throughout the activities, you learned how to deploy and configure Azure SQL. In the next module, you'll dive in to security for Azure SQL.  
+In this module and throughout the activities, you learned how to deploy and configure Azure SQL. In the next module, you'll dive into security for Azure SQL.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

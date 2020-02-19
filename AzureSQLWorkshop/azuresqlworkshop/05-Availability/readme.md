@@ -5,3 +5,8 @@ These represent demos and examples you can run that accompany Module 5. See [Mod
 ## pitr
 
 In this lab, you'll see how you can restore a database to a point in time using the Azure CLI and SSMS. Main notebook file [here](./pitr/pitr.ipynb).
+
+
+## fg
+
+In this lab, you'll see how to set up auto-failover groups in Azure SQL Database using a PowerShell notebook and SSMS. Main notebook file [here](./fg/fg-powershell.ipynb)
