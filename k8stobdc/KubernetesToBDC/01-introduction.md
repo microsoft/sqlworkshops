@@ -12,33 +12,15 @@ In this workshop you'll cover using a Process and various Platform components to
 
 This module covers Container technologies and how they are different than Virtual Machines. Then you'll learn about the need for container orchestration using Kubernetes. We'll start with some computer architecture basics, and introduce the Linux operating system in case you're new to that topic. There are many references and links throughout the module, and a further set of references at the bottom of this module. 
 
-<p style="border-bottom: 1px solid lightgrey;"></p>
+You can now start the Virtual Machine you created in the pre-requisites. You will run all commands from that environment.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b><a name="aks">Activity: Install Class Environment on AKS (Optional)</a></b></p>
-
-*(If you are taking this course on-line and not with an instructor-provided Kubernetes environment, you can use a Microsoft Azure subscription to deploy a Kubernetes Environment, complete with the SQL Server big data clusters feature. Your instructor may also have you use this deployment mechanism if in-class hardware is not practical or available)*
-
-In this lab you will deploy a BDC to the Azure Container Orchestration Tools (Such as Kubernetes or OpenShift) Service. You will need a client machine and a subscription to Microsoft Azure where you can create assets. This will take some time, so you'll do this now as you work through the next few modules, and then return to the installation process in a later module. 
-
-*NOTE: Your instructor may walk through these steps if the class environment does not have enough resources or time for each person to deploy. If so, they will provide you credentials to work with a pre-configured system in class.*
-
-Using the following steps, you will create a Resource Group in Azure that will hold your BDC on AKS. When you complete your lab you can delete this Resource Group which will stop the Azure charges for this course. 
-
-<p><b>Steps</b></p>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"> <a href="https://github.com/Microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/SQL2019BDC/00%20-%20Prerequisites.md" target="_blank">  Ensure that you have completed all prerequisites</a>.</p>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-big-data-tools?view=sqlallproducts-allversions" target="_blank"> Read the following article to install the big data cluster Tools, ensuring that you carefully follow each step</a>. Note that if you followed the pre-requisites properly, you will already have <i>Python</i>, <i>kubectl</i>, and <i>Azure Data Studio</i> installed, so those may be skipped. Follow all other instructions.</p>
-
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"> <a href="https://docs.microsoft.com/en-us/sql/big-data-cluster/quickstart-big-data-cluster-deploy?view=sqlallproducts-allversions" target="_blank"> Read the following article to deploy the bdc to AKS, ensuring that you carefully follow each step</a>. Stop at the section marked <b>Connect to the cluster</b>.</p>
- 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="1-3">1.1 Big Data Technologies: Operating Systems</a></h2>
 
 In this section you will learn more about the design the primary operating system (Linux) used with a Kubernetes Cluster. 
 
-<i>NOTE: This is not meant to be a comprehensive discussion of the merits of an operating system or ecostructure. The goal is to understand the salient features in each architecture as they pertain to processing large sets of data.</i>
+> NOTE: This is not meant to be a comprehensive discussion of the merits of an operating system or ecostructure. The goal is to understand the salient features in each architecture as they pertain to processing large sets of data.
 
 When working with large-scale, distributed data processing systems, there are two primary concepts to keep in mind: You should move as much processing to the data location as possible, and the storage system should be abstracted so that the code does not have to determine where to get its data from each node. Both Windows and Linux have specific attributes to keep in mind as you select hardware, drivers, and configurations for your systems. 
 

@@ -14,9 +14,9 @@ The focus of this workshop is to understand the hardware, software, and environm
 
 You'll start by understanding Containers and Kubernetes, moving on to a discussion of the hardware and software environment for Kubernetes, and then to more in-depth Kubernetes concepts. You'll follow-on with the SQL Server 2019 big data clusters architecture, and then how to use the entire system in a practical application, all with a focus on how to extrapolate what you have learned to create other solutions for your organization.
 
-**NOTE:** *This course is designed to be taught in-person with hardware provided by the instructional team. There are instructions for setting up your own hardware, virtual or Cloud environments for Kubernetes, but they are pointers to a more involved process you will carry out on your own if not attending in-person.* 
+> NOTE: This course is designed to be taught in-person with hardware provided by the instructional team. You will also get instructions for setting up your own hardware, virtual or Cloud environments for Kubernetes for a workshop backup or if you are not attending in-person. 
 
-This README.MD file explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
+This [github README.MD file](https://lab.github.com/githubtraining/introduction-to-github) explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
 (You can view all of the [source files for this workshop on this github site, along with other workshops as well. Open this link in a new tab to find out more.](https://github.com/microsoft/sqlworkshops))
 
@@ -28,19 +28,19 @@ In this workshop you'll learn:
 <br>
 
 - How Containers and Kubernetes work and when and where you can use them
-- Hardware considerations for setting up a production Kubernetes Cluster on -remises
+- Hardware considerations for setting up a production Kubernetes Cluster on-premises
 - Considerations for Virtual and Cloud-based environments for production Kubernetes Cluster
 
 The concepts and skills taught in this workshop form the starting points for:
    
-   Solution Architects, to understand how to put design an end-to-end solution.
+   Solution Architects, to understand how to design an end-to-end solution.
    System Administrators, Database Administrators, or Data Engineers, to understand how to put together an end-to-end solution.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"><b>     Business Applications of this Workshop</b></h2>
 
-Businesses require stable, secure environments at scale, which work in on-premises and in-cloud configurations. Using Kubernetes and Containers allows for manifest-driven Dev-Ops practices, which further streamline IT processes.
+Businesses require stable, secure environments at scale, which work in on-premises and in-cloud configurations. Using Kubernetes and Containers allows for manifest-driven DevOps practices, which further streamline IT processes.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -63,11 +63,11 @@ The solution includes the following technologies - although you are not limited 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/owl.png?raw=true"><b>     Before Taking this Workshop</b></h2>
 
-You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
-
-You must have a Microsoft Azure account with the ability to create assets.
-
-This workshop expects that you understand computer technologies, networking, SQL Server, HDFS, Spark, and general use of Hypervisors. 
+There are a few requirements for attending the workshop, listed below: 
+- You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
+- You must have a Microsoft Azure account with the ability to create assets.
+- This workshop expects that you understand computer technologies, networking, SQL Server, HDFS, Spark, and general use of Hypervisors. 
+- The **Setup** section below explains the steps you should take prior to coming to the workshop
 
 If you are new to these, here are a few references you can complete prior to class:
 
@@ -93,7 +93,7 @@ This workshop uses Kubernetes to deploy a workload, with a focus on Microsoft SQ
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Primary Audience:</td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Technical processionals  tasked with configuring, deploying and managing large-scale clustering systems</td></tr>
   <tr><td>Secondary Audience:</td><td> Data professionals tasked with working with data at scale</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Level: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px0;"> 300 </td></tr>
-  <tr><td>Type:</td><td>TODO: In-Person (self-guided possible)</td></tr>
+  <tr><td>Type:</td><td> In-Person (self-guided possible)</td></tr>
   <tr><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">Length: </td><td style="background-color: Cornsilk; color: black; padding: 5px 5px;">8</td></tr>
 
 </table>
