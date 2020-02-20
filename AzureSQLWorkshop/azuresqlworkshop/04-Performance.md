@@ -87,7 +87,7 @@ In this activity, you will take a typical workload based on SQL queries and lear
 
 Using the Azure SQL Database based on the AdventureWorksLT sample, you are given an example workload and need to observe its performance. You are told there appears to be a performance bottleneck. Your goal is to identify the possible bottleneck and identify solutions.
 
->**NOTE**: These scripts use the database name **AdventureWorks0406**. Anywhere this database name is used you should substitute in the name of the database you deployed in Module 2.
+>**NOTE**: Put in your exact database name where you see AdventureWorks`<ID`> in scripts. Anywhere this database name is used you should substitute in the name of the database you deployed in Module 2.
 
 **Step 1: Setup to monitor Azure SQL Database**
 
@@ -133,10 +133,10 @@ The Azure Monitor Log system requires time to setup and establish logging for a 
 **Step 2: Prepare the workload script**
 
 Edit the script that runs ostress **sqlworkload.cmd**:<br><br>
-Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
-Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**
-Substitute the database you deployed in Module 2 for the **-d parameter**<br>
-Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
+- Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
+- Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**<br>
+- Substitute the database you deployed in Module 2 for the **-d parameter**<br>
+- Substitute the password for the login for the Azure SQL Database Server created in Module 2 for the **-P parameter**.
 
 **Step 3: Run the workload and observe performance**
 
@@ -393,7 +393,7 @@ When you view the ALTER DATABASE documentation, notice the ability to click on y
 Using SSMS, run the script modify_service_objective.sql or T-SQL command:
 
 ```sql
-ALTER DATABASE AdventureWorks0406 MODIFY (SERVICE_OBJECTIVE = 'GP_Gen5_8');
+ALTER DATABASE AdventureWorks<ID> MODIFY (SERVICE_OBJECTIVE = 'GP_Gen5_8');
 ```
 
 This statement comes back immediately but the scaling of the compute resources take place in the background. A scale this small should take less than a minute and for a short period of time the database will be offline to make the change effective. You can monitor the progress of this scaling activity using the Azure Portal.<br>
@@ -504,7 +504,7 @@ ORDER BY waiting_tasks_count DESC;
 ```sql
 SELECT io_stall_write_ms/num_of_writes as avg_tlog_io_write_ms, * 
 FROM sys.dm_io_virtual_file_stats
-(db_id('AdventureWorks0406'), 2);
+(db_id('AdventureWorks<ID>'), 2);
 ```
 
 **Step 3 - Prepare the workload script**
@@ -544,7 +544,7 @@ cd c:\users\[vmusername]\sqlworkshops\AzureSQLWorkshop\azuresqlworkshop\04-Perfo
 Run the workload with the following command
 
 ```Powershell
-.\order_rating__insert_single.cmd
+.\order_rating_insert_single.cmd
 ```
 
 **Step 5 - Observe query requests and duration**
@@ -552,14 +552,12 @@ Run the workload with the following command
 Using the queries in Step 2 you should observe the following:
 
 - Many requests constantly have a wait_type of WRITELOG with a value > 0
-- The WRITELOG wait type is the highest count
+- The WRITELOG wait type is one of the highest count for wait types.
 - The avg time to write to the transaction log is somewhere around 2ms.
 
 The duration of this workload on a SQL Server 2019 instance with a SSD drive is somewhere around 15 seconds. The total duration using this on Azure SQL Database using a Gen5 v8core is around 32+ seconds. 
 
 WRITELOG wait types are indicative of latency flushing to the transaction log. 2ms per write doesn't seem like much but on a local SSD drive these waits may < 1ms.
-
-TODO: WRITELOG waits sometimes don't show up in Query Store?
 
 **Step 6 - Decide on a resolution**
 
@@ -580,8 +578,6 @@ Run the modified workload using the script with ostress called **order_rating_in
 Now the workload runs in almost 5 seconds compared to even 18-19 seconds with a local SSD using singleton transactions. This is an example of tuning an application for SQL queries that will run after in or outside of Azure.
 
 The workload runs so fast it may be difficult to observe diagnostic data from queries used previously in this activity. It is important to note that sys.dm_os_wait_stats cannot be cleared using DBCC SQLPERF as it can be with SQL Server.
-
-TODO: The first test is interesting. A GP MI with 8 vCore is MUCH SLOWER than GP v8core???? Even with "batched" INSERTs it was 10 seconds. WRITELOG waits can be very bad on MI????
 
 The concept of "batching" can help most applications including Azure. Read more at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-use-batching-to-improve-performance.
 
