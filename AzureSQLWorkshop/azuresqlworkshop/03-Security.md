@@ -203,7 +203,7 @@ In this activity, you'll see how to configure the most secure connection with a 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
 
-You've learned and seen how to configure the most secure network using Azure SQL Database with the public endpoint. This method of securing Azure SQL Database has been used for years. However, in 2019, Azure began moving towards a concept of a Private Link, which is more similar to the way that Azure SQL Managed Instance is deployed. Private Link allows you to connect to Azure SQL Database (and several other PaaS services) using a private endpoint, which means it has a private IP address within a speicifc vNet and Subnet. You can learn more about Private Link [in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-private-endpoint-overview).  
+You've learned and seen how to configure the most secure network using Azure SQL Database with the public endpoint. This method of securing Azure SQL Database has been used for years. However, in 2019, Azure began moving towards a concept of a Private Link, which is more similar to the way that Azure SQL Managed Instance is deployed. Private Link allows you to connect to Azure SQL Database (and several other PaaS services) using a private endpoint, which means it has a private IP address within a specifc vNet and Subnet. You can learn more about Private Link [in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-private-endpoint-overview).  
 
 > Note: As of the last update of this course, Private Link was in Public Preview. The documentation link above will have the latest information regarding its general availability.  
 
@@ -272,16 +272,61 @@ Review your deployment selections and then select **Create**.
 
 The deployment may take 1-2 minutes, but when it is finished, select **Go to resource**.  
 
-In the overview tab, you should now see your Azure SQL Database logical server associated with a Private IP. Note this IP address for the next step.  
+In the overview tab, you should now see your Azure SQL Database logical server associated with a Private IP.  
 
 ![](../graphics/peoverview.png)   
 
-
 **Step 6: Connect to the private endpoint**  
+
+In this step, you'll try to connect to the private endpoint. Using SSMS, right-click on your AdventureWorks<ID> database and select **New Query**. Run the following command:  
+
+```sql
+select client_net_address from sys.dm_exec_connections where session_id=@@SPID
+```
+
+This command lists the IP address of the client machine for the session you are connected with. If you navigate to your Azure virtual machine in the portal that you are using for the workshop, you might notice that the IP address you're connecting to Azure SQL Database is your **public** IP address. However, with Private Link, you should only be able to connect with your **private** IP address.  
+
+**Why did this happen?** In Activity 2, recall that you created a virtual network rule to allow connections from your VM's virtual network. Private Link doesn't overrule your existing rules, so in this case, you're still able to connect using the public endpoint.  
+
+Another thing you might be wondering, is if you are connecting to the private endpoint, **why are you still using the same server name?** In the backend, when you use solely the Private Link method of connecting (i.e. no firewall or virtual network rules), the information is processed as follows:  
+
+* `aw-server<ID>.database.windows.net`  
+    * Resolved by service to `aw-server<ID>.privatelink.database.net`  
+        * Resolved by service to `10.14.1.4` (the IP address of your private endpoint)  
+
+The service will block you from directly connecting using anything apart from `aw-server<ID>.database.windows.net`.  
+
+In order to leverage the private IP address, you need to delete all virtual network and firewall rules for your logical server.  
+
+In the Azure portal, for you Azure SQL Database logical server, in the left-hand taskbar, under Security, select **Firewalls and virtual networks**.   
+
+Delete **all** firewall rules and virtual networks. Then, select save. It should look similar to below:  
+
+![](../graphics/norules.png)  
+
+Don't forget to select **Save**.  
+
+Return to SSMS, right-click on your AdventureWorks database, and select **New Query**. This will create a fresh connection to your database.  
+
+Run the following query, and compare the results. Is the IP address returned your private or public VM IP address?  
+
+```sql
+select client_net_address from sys.dm_exec_connections where session_id=@@SPID
+```
+
+The result should now reflect your Azure VM's private IP address.  
+
 **Step 7: Clean up the private endpoint (*Required*)**  
 
+TODO: Test all labs and determine if this is actually required or not.  
 
+Since private link is in public preview (as of the last revision of this workshop), the rest of the workshop will leverage the **public endpoint**. In order to reconfigure your Azure SQL Database logical server so the public endpoint is used, you **must REPEAT Activity 2 Step 3 before proceeding**.  
 
+To **confirm this was successful**, create a new query, run the below query, and confirm that the IP address returned is the **public** IP address of your Azure VM.  
+
+```sql
+select client_net_address from sys.dm_exec_connections where session_id=@@SPID
+```
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -295,7 +340,7 @@ Azure RBAC roles (ctrl f for SQL) https://docs.microsoft.com/en-us/azure/role-ba
 Config of Azure AD: https://docs.microsoft.com/en-us/azure/security/fundamentals/database-best-practices#enable-database-authentication
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>Activity 3</a>: Getting started with Azure AD authentication</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Getting started with Azure AD authentication</b></p>
 
 In this activity, you'll learn how to configure an Azure AD administrator on a server level for Azure SQL Database. Next, you'll change your connection in SSMS from SQL authentication to Azure AD authentication, and you'll see how to grant other Azure AD users access to the database like normal users in SQL Server.  
   
@@ -425,7 +470,7 @@ TODO Add screenshots and test with Bob.
 TODO: Put in text here that talks about the process to protect information/encryption with Azure SQL comparing this to SQL Server
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Confirm TDE is enabled</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="5"><b>Activity 5</a>: Confirm TDE is enabled</b></p>
 
 This is a quick activity to show you how easily you can confirm that TDE is enabled, or you can enable it if it is not.  
 
@@ -453,7 +498,7 @@ TODO: Put in text here that talks about the process for security management with
 
 TODO: Topic Description CONTD
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="5"><b>Activity 5</a>: Advanced Data Security</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="6"><b>Activity 6</a>: Advanced Data Security</b></p>
 
 Advanced data security (ADS) is a unified package for advanced SQL security capabilities, providing a single go-to location for enabling and managing three main capabilities:  
 * [Data discovery & classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)  
@@ -613,7 +658,7 @@ You can also click specific alerts to see more details about them.
 In this activity, you learned how to configure and leverage some of the features in Advanced data security. In the following bonus activity, you'll expand on what you've learned throughout the security module by using various security features together.  
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="6">Activity 6</a>: Data classification, Dynamic data masking, and SQL Audit</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="7">Activity 7</a>: Data classification, Dynamic data masking, and SQL Audit</b></p>
 
 In this activity, you will learn how to audit users trying to view columns that were marked for data classification. This activity will combine several of the things you've already learned about in the module, and take those learnings to the next level.    
 
