@@ -272,7 +272,7 @@ Below the Top Resource Consuming Queries report in SSMS is a report called Query
 
 <img src="../graphics/SSMS_Top_Wait_Stats.png" alt="SSMS_Top_Wait_Stats"/>
 
-You can see the top wait category is CPU and the average wait time. Furthermore, the top query waiting for CPU is the query from the workload we are using.
+You can see the top wait category is CPU (this is equivalent to the wait_type SOS_SCHEDULER_YIELD which can be seen in **sys.dm_os_wait_stats**) and the average wait time. Furthermore, the top query waiting for CPU is the query from the workload we are using.
 
 Click on the bar chart for CPU to see more about query wait details. Hover over the bar chart for the query. Your results should look like the following:<br>
 
@@ -280,11 +280,7 @@ Click on the bar chart for CPU to see more about query wait details. Hover over 
 
 Notice that the average wait time for CPU for this query is a high % of the overall average duration for the query.
 
-The DMV **sys.dm_db_wait_stats** will show a high number of SOS_SCHEDULER_YIELD waits with this scenario.
-
 Given the evidence to this point, without any query tuning, our workload requires more CPU capacity than we have deployed for our Azure SQL Database.
-
-TODO: This is where we would interject Query Performance Insights since it uses the Query Store. The charts don't show what I expect so need to research.
 
 **Step 5: Observing performance using Azure Monitor**
 
@@ -311,7 +307,7 @@ If you had configured Azure Monitor Logs with a Log Analytics workspace (**not r
 ```kusto
 AzureMetrics
 | where MetricName == 'cpu_percent'
-| where Resource == "ADVENTUREWORKS0406"
+| where Resource == "<database name>"
 | project TimeGenerated, Average
 | render columnchart
 ```
@@ -370,13 +366,13 @@ There are other methods to change the Pricing tier and one of them is with the T
 EXEC sp_query_store_flush_db
 ```
 
-- First, learn how to find out your current Pricing tier using T-SQL. The Pricing tier is also known as a *service objective*. Using SSMS, open the script **get_service_object.sql** or the T-SQL statements to find out this information:
+- First, learn how to find out your current Pricing tier using T-SQL. The Pricing tier is also known as a *service objective*. Using SSMS, open the script **get_service_object.sql** or the T-SQL statements to find out this information (**you need to substitute in your database name**)
 
 ```sql
 SELECT database_name,slo_name,cpu_limit,max_db_memory, max_db_max_size_in_mb, primary_max_log_rate,primary_group_max_io, volume_local_iops,volume_pfs_iops
 FROM sys.dm_user_db_resource_governance;
 GO
-SELECT DATABASEPROPERTYEX('AdventureWorks0406', 'ServiceObjective');
+SELECT DATABASEPROPERTYEX('<database name>', 'ServiceObjective');
 GO
 ```
 
