@@ -401,7 +401,7 @@ The various slo_name values are not documented but you can see from the string v
 
 >**NOTE:** Testing shows that SQLDB_OP_... is the string used for Business Critical.
 
-The documentation for ALTER DATABASE shows all the possible options for service objectives and how they match to the Azure portal: https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15.
+The [documentation](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15) for ALTER DATABASE shows all the possible options for service objectives and how they match to the Azure portal.
 
 When you view the ALTER DATABASE documentation, notice the ability to click on your target SQL Server deployment to get the right syntax options. Click on SQL Database single database/elastic pool to see the options for Azure SQL Database. To match the compute scale you found in the portal you need the service object **'GP_Gen5_8'**
 
@@ -471,7 +471,7 @@ If you used Azure Log Analytics, you would see performance differences like the 
 
 >**IMPORTANT**: This activity assumes you have completed all Activities in Module 2
 
-Good article read: https://azure.microsoft.com/en-us/blog/resource-governance-in-azure-sql-database/
+Use this [article](https://azure.microsoft.com/en-us/blog/resource-governance-in-azure-sql-database/) as accompanying reference for this activity.
 
 In some cases, migrating an existing application and SQL query workload to Azure may uncover opportunities to optimize and tune queries.
 
@@ -576,7 +576,7 @@ WRITELOG wait types are indicative of latency flushing to the transaction log. 2
 
 **Step 6 - Decide on a resolution**
 
-The problem is not a high % of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25% (there is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the documentation for resource limits lists latency between 5-7ms (https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases).
+The problem is not a high % of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25% (this is information only. There is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases) for resource limits lists latency between 5-7ms (.
 
 If you examine the workload, you will see each INSERT is a single transaction commit which requires a transaction log flush.
 
@@ -594,7 +594,7 @@ Now the workload runs in almost 5 seconds compared to even 18-19 seconds with a 
 
 The workload runs so fast it may be difficult to observe diagnostic data from queries used previously in this activity. It is important to note that sys.dm_os_wait_stats cannot be cleared using DBCC SQLPERF as it can be with SQL Server.
 
-The concept of "batching" can help most applications including Azure. Read more at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-use-batching-to-improve-performance.
+The concept of "batching" can help most applications including Azure. Read more about batching in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
 >**NOTE:** Very large transactions can be affected by resource governance on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column.
 
@@ -608,30 +608,28 @@ In this section you will learn about the built-in intelligent performance capabi
 
 Intelligent Query Processing (IQP) is a suite of new capabilities built into the Query Processor and enabled using the latest database compatibility level. Applications can gain performance with no code changes by simply using the latest database compatibility level.
 
-Azure SQL Database and Managed Instance support the same database compatibility level required to use IQP (150) as SQL Server 2019. You can learn more about Intelligent Query Processing at https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15.
+Azure SQL Database and Managed Instance support the same database compatibility level required to use IQP (150) as SQL Server 2019. You can learn more about Intelligent Query Processing at [Intelligent query processing in SQL databases](https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15).
 
-You can read more details and go through a hands-on lab with IQP using the SQL Server 2019 Workshop, Module 2 at https://github.com/microsoft/sqlworkshops/tree/master/sql2019workshop/sql2019wks/02_IntelligentPerformance. The only prerequisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImporters once you copy into Azure Blog Storage.
+You can read more details and go through a hands-on lab with IQP using the SQL Server 2019 Workshop, [Module 2](https://github.com/microsoft/sqlworkshops/tree/master/sql2019workshop/sql2019wks/02_IntelligentPerformance). The only prerequisite you will need to change is to import a compatible version of the [WideWorldImporters database for Azure SQL Database](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15). For Managed Instance, you can also restore a backup of WideWorldImporters once you copy into Azure Blob Storage.
 
 **Automatic Plan Correction**
 
-One of the most difficult performance problems to solve with SQL Server are query plan regressions. A common scenario for query plan regression are parameter-sensitive plans (PSP). You can read more about troubleshooting problems related to PSP at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems.
+One of the most difficult performance problems to solve with SQL Server are query plan regressions. A common scenario for query plan regression are parameter-sensitive plans (PSP). You can read more about troubleshooting problems related to PSP in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems).
 
 SQL Server 2017 and Azure SQL Database introduced the concept of Automatic Plan Correction (APC) by analyzing data in the Query Store. When the Query Store is enabled with a database in SQL Server 2017 (or later) and in Azure SQL Database, the SQL Server engine will look for query plan regressions and provide recommendations. You can see these recommendations in the DMV **sys.dm_db_tuning_recommendations**. These recommendations will include T-SQL statements to manually force a query plan when performance was "in a good state". 
 
-If you gain confidence in these recommendations, you can enable SQL Server to force plans automatically when regressions are encountered.
+If you gain confidence in these recommendations, you can enable SQL Server to force plans automatically when regressions are encountered. Automatic Plan Correction can be enabled using ALTER DATABASE using the [AUTOMATIC_TUNING argument](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-ver15#arguments).
 
-Automatic Plan Correction can be enabled using ALTER DATABASE using the AUTOMATIC_TUNING argument. You can read more about this syntax at https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-ver15#arguments.
+For Azure SQL Database, you can also enable Automatic Plan Correction through automatic tuning options in the portal or REST APIs. You can read more about these techniques in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning-enable). Automatic Plan Correction recommendations are always enabled for any database where Query Store is enabled (which is the default for Azure SQL Database and Managed Instance). Automatic Plan Correction (FORCE_PLAN) is enabled by default for Azure SQL Database as of March, 2020 for new databases.
 
-For Azure SQL Database, you can also enable Automatic Plan Correction through automatic tuning options in the portal or REST APIs. You can read more about this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning-enable. Automatic Plan Correction recommendations are always enabled for any database where Query Store is enabled (which is the default for Azure SQL Database and Managed Instance). Automatic Plan Correction (FORCE_PLAN) is enabled by default for Azure SQL Database as of March, 2020 for new databases.
-
-To go through an demonstration of Automatic Plan Correction, use the following set of scripts: https://github.com/microsoft/bobsql/tree/master/demos/sqlserver/autotune. The only prerequisite you will need to change is to import a compatible version of the WideWorldImporters database into Azure SQL Database at https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15. For Managed Instance, you can also restore a backup of WideWorldImporters once you copy into Azure Blog Storage.
+To go through an demonstration of Automatic Plan Correction, use the following set of [scripts](https://github.com/microsoft/bobsql/tree/master/demos/sqlserver/autotune). The only prerequisite you will need to change is to import a compatible version of the [WideWorldImporters database for Azure SQL Database](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15). For Managed Instance, you can also restore a backup of WideWorldImporters once you copy into Azure Blog Storage.
 
 **Automatic Tuning for Azure SQL Database**
 
 Automatic Plan Correction is an example of Automatic Tuning in Azure SQL and SQL Server.
 
 The cloud provides a method for Microsoft to provide additional services in form of performance recommendations and automation outside of plan recommendations.
-This capability is known as **Automatic Tuning for Azure SQL Database**. (also known in some parts of the documentation as *SQL Database Advisor*). These services run as background programs analyzing performance data from an Azure SQL Database and are included in the price of any database subscription.
+This capability is known as [**Automatic Tuning for Azure SQL Database**](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning). (also known in some parts of the documentation as *SQL Database Advisor*). These services run as background programs analyzing performance data from an Azure SQL Database and are included in the price of any database subscription.
 
 The *main scenario* Automatic Tuning for Azure SQL Database is designed to address are *indexes*. Automatic Tuning will analyze data from telemetry of a database including the Query Store and Dynamic Management Views to recommend indexes to be created that can improve application performance. Additionally, you can enable Automatic Tuning services to *automatically create indexes* that it believes will improve query performance. Automatic Tuning will also monitor index changes and recommend or automatically drop indexes that do not improve query performance. Automatic Tuning for Azure SQL Database takes a conservative approach to recommend indexes. This means that recommendations that may show up in a DMV like sys.dm_db_missing_index_details or a query show plan may not show up immediately as recommendations for Automatic Tuning. Automatic Tuning services monitor queries over time and use Machine Learning algorithms to make recommendations to truly affect query performance.
 
@@ -683,6 +681,10 @@ Azure SQL Database uses a combination of entries discovered in DMVs like sys.dm_
 
 When Azure SQL Database detects a recommended index, an entry can be discovered in the DMV **sys.dm_db_tuning_recommendations**.
 
+```sql
+SELECT * FROM syus.dm_db_tuning_recommendations
+```
+
 A given query that has been identified that could be improved with a recommended index must run several executions over a period of time in order for the qualified index to be a candidate. In addition, Azure SQL Database deploys services in the cloud to look for candidate indexes. These services don't run constantly. Therefore, recommendations for workload may not show up immediately in the DMVs and/or the portal.
 
 >**NOTE:** Recommendations can expire if the workload is no longer running after a period of time. Our recommendation "engine" usually is looking at a 7 day period (this is subject to change). So if the workload hasn't been running for 7 days, the recommendation may be removed.
@@ -692,6 +694,10 @@ There are different ways to observe recommendations:
 - **Review entries in sys.dm_db_tuning_recommendations**
 
 Once this workload is complete and the recommendations have been recognize (again there could be a delay here even after the workload has completed), you should results like this:
+
+| name                                                        | type        | reason | valid_since                 | last_refresh                | state                                                                                 | is_executable_action | is_revertable_action | execution_action_start_time | execution_action_duration | revert_action_start_time                                 | revert_action_duration | revert_action_initiated_by | revert_action_initiated_time | score | details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 
+|-------------------------------------------------------------|-------------|--------|-----------------------------|-----------------------------|---------------------------------------------------------------------------------------|----------------------|----------------------|-----------------------------|---------------------------|----------------------------------------------------------|------------------------|----------------------------|------------------------------|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|---|---|---|---|---|
+| IR_[SalesLT]_[OrderRating]_259E8AEDBBD206F9A74F CreateIndex | CreateIndex |        | 2020-02-15 10:47:26.0000000 | 2020-02-15 10:47:26.0000000 | {"currentValue":"Active","lastChange":"2/15/2020 10:58:53 AM","actionInitiatedBy":""} | 1                    | 1                    | 1900-01-01 00:00:00.0000000 | 00:00:00.0000000          | 1900-01-01 00:00:00.0000000 1900-01-01 00:00:00.0000000  | 00:00:00.0000000       |                            | 1900-01-01 00:00:00.0000000  |  3    | {"createIndexDetails":{"indexName":"nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA","indexType":"NONCLUSTERED","schema":"[SalesLT]","table":"[OrderRating]","indexColumns":"[OrderRatingID]","includedColumns":""},"implementationDetails":{"method":"TSql","script":"CREATE NONCLUSTERED INDEX [nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA] ON [SalesLT].[OrderRating] ([OrderRatingID]) WITH (ONLINE = ON)"},"errorDetails":{"errorCode":null,"isRetryable":""},"estimatedImpact":[{"dimensionName":"SpaceChange","unit":"Megabytes","absoluteValue":153.6640625,"changeValueAbsolute":null,"changeValueRelative":null}],"observedImpact":[]} |
 
 <pre>
 name	type	reason	valid_since	last_refresh	state	is_executable_action	is_revertable_action	execute_action_start_time	execute_action_duration	execute_action_initiated_by	execute_action_initiated_time	revert_action_start_time	revert_action_duration	revert_action_initiated_by	revert_action_initiated_time	score	details
