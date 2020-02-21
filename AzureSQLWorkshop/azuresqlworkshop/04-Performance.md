@@ -93,7 +93,7 @@ Using the Azure SQL Database based on the AdventureWorksLT sample, you are given
 
 >**TIP**: To open a script file in the context of a database in SSMS, click on the database in Object Explorer and then use the File/Open menu in SSMS.
 
-- Launch SQL Server Management Studio (SSMS) and load a query *in the context of the database you deployed in Module 2* to monitor the Dynamic Management View (DMV) **sys.dm_exec_requests** from the script **sqlrequests.sql** which looks like the following:
+Launch SQL Server Management Studio (SSMS) and load a query *in the context of the database you deployed in Module 2* to monitor the Dynamic Management View (DMV) **sys.dm_exec_requests** from the script **dmexecrequests.sql** which looks like the following:
 
 ```sql
 SELECT er.session_id, er.status, er.command, er.wait_type, er.last_wait_type, er.wait_resource, er.wait_time
@@ -104,7 +104,7 @@ AND es.is_user_process = 1
 ```
 Unlike SQL Server, the familiar DMV dm_exec_requests shows active requests for a specific Azure SQL Database vs an entire server. Azure SQL Database Managed instance will behave just like SQL Server.
 
-In another session for SSMS *in the context of the database you deployed in Module 2* load a query to monitor a Dynamic Management View (DMV) unique to Azure SQL Database called **sys.dm_db_resource_stats** from a script called **azuresqlresourcestats.sql**
+In another session for SSMS *in the context of the database you deployed in Module 2* load a query to monitor a Dynamic Management View (DMV) unique to Azure SQL Database called **sys.dm_db_resource_stats** from a script called **dmdbresourcestats.sql**
 
 ```sql
 SELECT * FROM sys.dm_db_resource_stats
@@ -112,23 +112,23 @@ SELECT * FROM sys.dm_db_resource_stats
 
 This DMV will track overall resource usage of your workload against Azure SQL Database such as CPU, I/O, and memory.
 
-- Using Extended Events to Monitor Azure SQL Database
+**For further study: Using Extended Events to Monitor Azure SQL Database**
 
 When you deploy an Azure SQL Database, Azure Monitor metrics are available for a period of 90+ days for your database. You will learn later in this activity how to view those metrics.
 
-In addition, you can configure Extended Events sessions for Azure SQL Database and Azure SQL Database Managed Instance. You can read more about using Extended Events in Azure SQL Database at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr. Extended Events in with Azure SQL Database Managed Instance will be very much like SQL Server which you can read about at https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15.
-
-This activity will not walk through the process of setting up Extended Events but as a *bonus activity* users can setup Extended Events and trace any activities with this module.
+In addition, you can configure Extended Events sessions for Azure SQL Database and Azure SQL Database Managed Instance. You can read more about using Extended Events in Azure SQL Database in our [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr). Extended Events in with Azure SQL Database Managed Instance will be very much like SQL Server which you can also read about in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15).
 
 >**NOTE** Extended Events file targets for Managed Instance will also use Azure Blob Storage similar to Azure SQL Database. Azure Managed Instance will allow more events, targets, and actions than Azure SQL Database similar to SQL Server.
 
-- Using Azure Monitor with Azure SQL Database
+This activity will not walk through the process of setting up Extended Events but as a *bonus activity* users can setup Extended Events and trace any activities with this module.
+
+**For further study: Using Azure Monitor with Azure SQL Database**
 
 Azure supports a concept called Azure Monitor with **Metrics** and **Logs**. **Azure Monitor Metrics** are near real-time and are enabled when you deploy an Azure SQL Database. You will learn how to use Azure Monitor metrics later in this activity.
 
-Azure also supports a concept called **Azure Monitor Logs**. Azure Monitor Logs allow you to capture key metrics and events associated with Azure SQL Database in a log format for offline analysis. Azure Monitor logs can be sent to Event Hub, Azure Blog Storage, or Azure Log Analytics. You can read more about using logging for metrics and diagnostic events at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging. Azure SQL Database Managed Instance also supports logging with Azure Monitor but does not support the same set of events as with Azure SQL Database.
+Azure also supports a concept called **Azure Monitor Logs**. Azure Monitor Logs allow you to capture key metrics and events associated with Azure SQL Database in a log format for offline analysis. Azure Monitor logs can be sent to Event Hub, Azure Blog Storage, or Azure Log Analytics. You can read more about using logging for metrics and diagnostic events in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging). Azure SQL Database Managed Instance also supports logging with Azure Monitor but does not support the same set of events as with Azure SQL Database.
 
-The Azure Monitor Log system requires time to setup and establish logging for a deployed Azure SQL Database or Managed Instance. In some cases, once setup, the logging system is not available to capture metrics and events for an hour or more. Therefore, this activity will not walk through the process of setting up Azure Monitor Logs. If you're using this activity in a self-paced fashion, you may choose to setup Azure Monitor Logs. In the Azure Portal, you can configure this under the **Diagnostic Settings** option for your database or Managed Instance. You can read more about how to configure this at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging#enable-logging-of-diagnostics-telemetry.
+The Azure Monitor Log system requires time to setup and establish logging for a deployed Azure SQL Database or Managed Instance. In some cases, once setup, the logging system is not available to capture metrics and events for an hour or more. Therefore, this activity will not walk through the process of setting up Azure Monitor Logs. If you're using this activity in a self-paced fashion, you may choose to setup Azure Monitor Logs. In the Azure Portal, you can configure this under the **Diagnostic Settings** option for your database or Managed Instance. You can read more about how to configure this in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-metrics-diag-logging#enable-logging-of-diagnostics-telemetry).
 
 **Step 2: Prepare the workload script**
 
@@ -203,7 +203,15 @@ Your screen at the command prompt should look similar to the following
 [datetime] [ostress PID] Creating 10 thread(s) to process queries
 [datetime] [ostress PID] Worker threads created, beginning execution...</pre>
 
-- Use the query in SSMS to monitor dm_exec_requests (**sqlrequests.sql**) to observe active requests. Run this query 5 or 6 times and observe some of the results.
+- Use the query in SSMS to monitor dm_exec_requests (**dmexecrequests.sql**) to observe active requests. Run this query 5 or 6 times and observe some of the results
+
+```sql
+SELECT er.session_id, er.status, er.command, er.wait_type, er.last_wait_type, er.wait_resource, er.wait_time
+FROM sys.dm_exec_requests er
+INNER JOIN sys.dm_exec_sessions es
+ON er.session_id = es.session_id
+AND es.is_user_process = 1
+```
 
 You should see many of the requests have a status = RUNNABLE and last_wait_type = SOS_SCHEDULER_YIELD. One indicator of many RUNNABLE requests and many SOS_SCHEDULER_YIELD seen often is a possible lack of CPU resources for active queries.
 
@@ -211,9 +219,13 @@ You should see many of the requests have a status = RUNNABLE and last_wait_type 
 
 The familiar SQL DMV dm_exec_requests can be used with Azure SQL Database but must be run in the context of a database unlike SQL Server (or Azure SQL Database Managed Instance) where dm_exec_requests shows all active requests across the server instance.
 
-- Run the query in SSMS to monitor dm_db_resource_stats (**azuresqlresourcestats.sql**). Run the query to see the results of this DMV 3 or 4 times.
+- Run the query in SSMS to monitor **dm_db_resource_stats** (**dmdbresourcestats.sql**). Run the query to see the results of this DMV 3 or 4 times.
 
-This DMV records of snapshot of resource usage for the database every 15 seconds (kept for 1 hour).  You should see the column **avg_cpu_percent** close to 100% for several of the snapshots. (at least in the high 90% range). This is a symptom of a workload pushing the limits of CPU resources for the database. You can read more details about this DMV at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current. This DMV also works with Azure SQL Database Managed Instance.
+```sql
+SELECT * FROM sys.dm_db_resource_stats
+```
+
+This DMV records of snapshot of resource usage for the database every 15 seconds (kept for 1 hour).  You should see the column **avg_cpu_percent** close to 100% for several of the snapshots. (at least in the high 90% range). This is a symptom of a workload pushing the limits of CPU resources for the database. You can read more details about this DMV in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current). This DMV also works with Azure SQL Database Managed Instance.
 
 For a SQL Server on-premises environment you would typically use a tool specific to the Operating System like Windows Performance Monitor to track overall resource usage such a CPU. If you ran this example on a on-premises SQL Server or SQL Server in a Virtual Machine with 2 CPUs, you would see near 100% CPU utilization on the server.
 
@@ -228,9 +240,9 @@ Your duration time may vary but this typically takes at least 1-2 minutes.
 
 **Step 3: Use Query Store to do further performance analysis**
 
-Query Store is a capability in SQL Server to track performance execution of queries. Performance data is stored in the user database. You can read more about Query Store at https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15.
+Query Store is a capability in SQL Server to track performance execution of queries. Performance data is stored in the user database. You can read more about Query Store in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15).
 
-Query Store is not enabled by default for databases created in SQL Server but is on by default for Azure SQL Database (and Azure SQL Database Managed Instance). You can read more about Query Store and Azure SQL Database at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-operate-query-store.
+Query Store is not enabled by default for databases created in SQL Server but is on by default for Azure SQL Database (and Azure SQL Database Managed Instance). You can read more about Query Store and Azure SQL Database in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-operate-query-store).
 
 Query Store comes with a series of system catalog views to view performance data. SQL Server Management Studio (SSMS) provides reports using these system views.
 
@@ -294,7 +306,7 @@ Another method to see the same compute utilization metrics and others automatica
 
 <img src="../graphics/Azure_Monitor_Metrics.png" alt="Azure_Monitor_Metrics"/>
 
-You can read more about the Metrics Explorer for any Azure resource at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts. Metrics for Azure SQL Database are kept for 90+ days. You can also read more details about Metrics in Azure Monitor at https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics.
+You can read more about the Metrics Explorer for any Azure resource in the [documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts). Metrics for Azure SQL Database are kept for 90+ days. You can also read more details about Metrics in Azure Monitor in this documentation [page](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics).
 
 As you can see in the screenshot there are several metrics you can use to view with the Metrics Explorer. The default view of Metrics Explorer is for a 24-hour period showing a 5 minute granularity. The Compute Utilization view is the last hour with a 1-minute granularity (which you can change). To see the same view, select CPU percentage and change the capture for 1 hour. The granularity will change to 1-minute and should look like the following:
 
@@ -330,7 +342,10 @@ In this section you will learn how to improve the performance of a SQL workload 
 - Reducing Log Governance
 - Improving Application Latency
 
-References articles include https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems and https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources.
+References articles include 
+
+[Troubleshooting Performance on Azure SQL Database.](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems)<br>
+[Improving Database Performance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources)
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Scaling your workload performance in Azure SQL Database</b></p>
 
@@ -561,7 +576,7 @@ WRITELOG wait types are indicative of latency flushing to the transaction log. 2
 
 **Step 6 - Decide on a resolution**
 
-The problem is not a high % of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25%. The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the documentation for resource limits lists latency between 5-7ms (https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases).
+The problem is not a high % of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25% (there is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the documentation for resource limits lists latency between 5-7ms (https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases).
 
 If you examine the workload, you will see each INSERT is a single transaction commit which requires a transaction log flush.
 
@@ -729,9 +744,11 @@ You will see details of the index, table, and space required. You have the optio
 
 <img src="../graphics/create_index_recommendation_script.png" alt="create_index_recommendation_script"/>
 
-Notice the index is a non-clustered index that is applies as an online index. You can read more about online indexes at https://docs.microsoft.com/en-us/sql/relational-databases/indexes/perform-index-operations-online?view=sql-server-ver15.
+Notice the index is a non-clustered index that is applied as an online index. You can read more about online indexes in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/indexes/perform-index-operations-online?view=sql-server-ver15).
 
 When an index has been applied based on a recommendation, either manually or through automatic tuning, the recommendation engine will also monitor query performance over a period of item with the applied index. If query performance degrades compared to before the index was applied, a recommendation can be made to drop the index.
+
+In this module you did XXXXXX
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
