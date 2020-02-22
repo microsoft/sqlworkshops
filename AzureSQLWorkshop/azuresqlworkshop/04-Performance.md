@@ -8,7 +8,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>Overview</h2>
 
-> You must complete the [prerequisites](../azuresqlworkshop/00-Prerequisites.md) before completing these activities. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.     
+> You must complete the [prerequisites](../azuresqlworkshop/00-Prerequisites.md) before completing activities in this module. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.
 
 You’ve been responsible for getting your SQL fast, keeping it fast, and making it fast again when something is wrong. In this module, we’ll show you how to leverage your existing performance skills, processes, and tools and apply them to Azure SQL, including taking advantage of the intelligence in Azure to keep your database tuned.
 
@@ -100,23 +100,21 @@ SELECT er.session_id, er.status, er.command, er.wait_type, er.last_wait_type, er
 FROM sys.dm_exec_requests er
 INNER JOIN sys.dm_exec_sessions es
 ON er.session_id = es.session_id
-AND es.is_user_process = 1
+AND es.is_user_process = 1;
 ```
 Unlike SQL Server, the familiar DMV dm_exec_requests shows active requests for a specific Azure SQL Database vs an entire server. Azure SQL Database Managed instance will behave just like SQL Server.
 
 In another session for SSMS *in the context of the database you deployed in Module 2* load a query to monitor a Dynamic Management View (DMV) unique to Azure SQL Database called **sys.dm_db_resource_stats** from a script called **dmdbresourcestats.sql**
 
 ```sql
-SELECT * FROM sys.dm_db_resource_stats
+SELECT * FROM sys.dm_db_resource_stats;
 ```
 
 This DMV will track overall resource usage of your workload against Azure SQL Database such as CPU, I/O, and memory.
 
 **For further study: Using Extended Events to Monitor Azure SQL Database**
 
-When you deploy an Azure SQL Database, Azure Monitor metrics are available for a period of 90+ days for your database. You will learn later in this activity how to view those metrics.
-
-In addition, you can configure Extended Events sessions for Azure SQL Database and Azure SQL Database Managed Instance. You can read more about using Extended Events in Azure SQL Database in our [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr). Extended Events in with Azure SQL Database Managed Instance will be very much like SQL Server which you can also read about in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15).
+In addition, you can configure Extended Events sessions for Azure SQL Database and Azure SQL Database Managed Instance. You can read more about using Extended Events in Azure SQL Database in our [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr). Extended Events in Azure SQL Database Managed Instance will be very much like SQL Server which you can also read about in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15).
 
 >**NOTE** Extended Events file targets for Managed Instance will also use Azure Blob Storage similar to Azure SQL Database. Azure Managed Instance will allow more events, targets, and actions than Azure SQL Database similar to SQL Server.
 
@@ -132,7 +130,7 @@ The Azure Monitor Log system requires time to setup and establish logging for a 
 
 **Step 2: Prepare the workload script**
 
-Edit the script that runs ostress **sqlworkload.cmd**:<br><br>
+Edit the script that runs ostress **sqlworkload.cmd**:<br>
 - Substitute your Azure Database Server created in Module 2 for the **-S parameter**<br>
 - Substitute the login name created for the Azure SQL Database Server created in Module 2 for the **-U parameter**<br>
 - Substitute the database you deployed in Module 2 for the **-d parameter**<br>
@@ -151,7 +149,7 @@ INNER JOIN SalesLT.SalesOrderHeader soh
 ON c.CustomerID = soh.CustomerID
 INNER JOIN SalesLT.SalesOrderDetail sod
 ON soh.SalesOrderID = sod.SalesOrderID
-ORDER BY sod.LineTotal desc
+ORDER BY sod.LineTotal desc;
 GO
 ```
 - Run the workload from the command line using ostress.
@@ -210,10 +208,10 @@ SELECT er.session_id, er.status, er.command, er.wait_type, er.last_wait_type, er
 FROM sys.dm_exec_requests er
 INNER JOIN sys.dm_exec_sessions es
 ON er.session_id = es.session_id
-AND es.is_user_process = 1
+AND es.is_user_process = 1;
 ```
 
-You should see many of the requests have a status = RUNNABLE and last_wait_type = SOS_SCHEDULER_YIELD. One indicator of many RUNNABLE requests and many SOS_SCHEDULER_YIELD seen often is a possible lack of CPU resources for active queries.
+You should see many of the requests have a status = RUNNABLE and last_wait_type = SOS_SCHEDULER_YIELD. One indicator of many RUNNABLE requests and many SOS_SCHEDULER_YIELD waits is a possible lack of CPU resources for active queries.
 
 >**NOTE:** You may see one or more active requests with a command = SELECT and a wait_type = XE_LIVE_TARGET_TVF. These are queries run by services managed by Microsoft to help power capabilities like Performance Insights using Extended Events. Microsoft does not publish the details of these Extended Event sessions.
 
@@ -222,7 +220,7 @@ The familiar SQL DMV dm_exec_requests can be used with Azure SQL Database but mu
 - Run the query in SSMS to monitor **dm_db_resource_stats** (**dmdbresourcestats.sql**). Run the query to see the results of this DMV 3 or 4 times.
 
 ```sql
-SELECT * FROM sys.dm_db_resource_stats
+SELECT * FROM sys.dm_db_resource_stats;
 ```
 
 This DMV records of snapshot of resource usage for the database every 15 seconds (kept for 1 hour).  You should see the column **avg_cpu_percent** close to 100% for several of the snapshots. (at least in the high 90% range). This is a symptom of a workload pushing the limits of CPU resources for the database. You can read more details about this DMV in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current). This DMV also works with Azure SQL Database Managed Instance.
@@ -296,11 +294,13 @@ Given the evidence to this point, without any query tuning, our workload require
 
 **Step 5: Observing performance using Azure Monitor**
 
+Let's use one other method to view the performance of our workload.
+
 Azure Monitor provides performance metrics which you can view in various methods including Azure Portal. In the Overview page for an Azure SQL database, the standard default view is called **Compute Utilization** which you can see on the Overview blade for your database:<br><br>
 
 <img src="../graphics/Azure_Portal_Compute_Slow_Query.png" alt="Azure_Portal_Compute_Slow_Query"/>
 
-Notice in this example, the CPU utilization near 100% for a recent time range. This chart will show resource usage (defaults to CPU and I/O) over the last hour and is refreshed continually. If you click on the chart you customize the chart (Ex. bar chart) and look at other resource usage.
+Notice in this example, the CPU utilization is near 100% for a recent time range. This chart will show resource usage (defaults to CPU and I/O) over the last hour and is refreshed continually. If you click on the chart you can customize the chart (Ex. bar chart) and look at other resource usage.
 
 Another method to see the same compute utilization metrics and others automatically collected by Azure Monitor for Azure SQL Database is to use the **Metrics Explorer** under Monitoring in the portal (The Compute Utilization is a just a pre-defined view of the Metrics Explorer) If you click on Metrics you will see the following:
 
@@ -314,7 +314,7 @@ As you can see in the screenshot there are several metrics you can use to view w
 
 The default is a line chart, but the Explorer view allows you to change the chart type. There are various options with Metrics Explorer including the ability to show multiple metrics on the same chart.
 
-If you had configured Azure Monitor Logs with a Log Analytics workspace (**not required for this activity**), you could use the following Kusto Query to see the same type of results for CPU utilization for the database:
+If you had configured Azure Monitor Logs with a Log Analytics workspace (**not required for this activity**), you could use the following [Kusto Query](https://kusto.azurewebsites.net/docs/query/index.html) to see the same type of results for CPU utilization for the database:
 
 ```kusto
 AzureMetrics
@@ -326,6 +326,8 @@ AzureMetrics
 Your results would look like the following:
 
 <img src="../graphics/kusto_query_metric_cpu_percent.png" alt="kusto_query_metric_cpu_percent"/>
+
+Azure Monitor Logs have a delay when first configuring log diagnostics for a database so it is not appropriate to configure for an instructor-led version of this workshop. As a *bonus activity* if you are taking this workshop self-paced is to setup logging and observe results.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -351,7 +353,7 @@ References articles include
 
 >**IMPORTANT**: This activity assumes you have completed all the steps in Activity 1 in Module 4.
 
-In this activity you will take the results of your monitoring in Module 4.2 and learn how to scale your workload in Azure to see improved results.
+In this activity you will take the results of your monitoring in Module 4.3, Activity 1, and learn how to scale your workload in Azure to see improved results.
 
 All scripts for this activity can be found in the **azuresqlworkshop\04-Performance\monitor_and_scale** folder.
 
@@ -378,7 +380,7 @@ There are other methods to change the Pricing tier and one of them is with the T
 >**NOTE**: For this demo you must first flush the query store using the following script **flushhquerystore.sql** or T-SQL statement:
 
 ```sql
-EXEC sp_query_store_flush_db
+EXEC sp_query_store_flush_db;
 ```
 
 - First, learn how to find out your current Pricing tier using T-SQL. The Pricing tier is also known as a *service objective*. Using SSMS, open the script **get_service_object.sql** or the T-SQL statements to find out this information (**you need to substitute in your database name**)
@@ -420,7 +422,7 @@ Another way to monitor the progress of a change for the service object for Azure
 Run this query to see the output of this DMV at any point in time:
 
 ```sql
-SELECT * FROM sys.dm_operation_status
+SELECT * FROM sys.dm_operation_status;
 ```
 Here is an example of the output of this DMV after executing the above ALTER DATABASE statement:
 
@@ -475,7 +477,19 @@ Run the workload again using the command **sqlworkload.cmd** that you executed i
 
 - Observe DMV results
 
-Use the same queries from Section 4.2 Activity 1 to observe results from **dm_exec_requests** and **dm_db_resource_stats**.
+Use the same queries from Section 4.3 Activity 1 to observe results from **dm_exec_requests** and **dm_db_resource_stats**.
+
+```sql
+SELECT * FROM sys.dm_db_resource_stats;
+```
+
+```sql
+SELECT er.session_id, er.status, er.command, er.wait_type, er.last_wait_type, er.wait_resource, er.wait_time
+FROM sys.dm_exec_requests er
+INNER JOIN sys.dm_exec_sessions es
+ON er.session_id = es.session_id
+AND es.is_user_process = 1;
+```
 
 You will see there are more queries with a status of RUNNING (less RUNNABLE although this will appear some) and the avg_cpu_percent should drop to 40-60%.
 
@@ -705,7 +719,7 @@ The script **query_order_rating.cmd** will use one user connection to run the fo
 
 ```sql
 SELECT * FROM SalesLT.OrderRating
-WHERE OrderRatingID = 1
+WHERE OrderRatingID = 1;
 ```
 
 The SalesLT.OrderRating table has no indexes but enough rows that seeking a single row value requires a table scan which is not the most efficient method to retrieve a single row. Therefore, it makes sense that an index will help drastically improve the performance of this query. 
@@ -713,7 +727,7 @@ The SalesLT.OrderRating table has no indexes but enough rows that seeking a sing
 If you run the following query you can observe SQL Server believes an index is missing from this table to make the query more efficient (An index recommendation would also appear when looking at the query plan)
 
 ```sql
-SELECT * FROM sys.dm_db_missing_index_details
+SELECT * FROM sys.dm_db_missing_index_details;
 ```
 **Step 3: Observe query performance and look for recommendations**
 
@@ -722,7 +736,7 @@ Azure SQL Database uses a combination of entries discovered in DMVs like sys.dm_
 When Azure SQL Database detects a recommended index, an entry can be discovered in the DMV **sys.dm_db_tuning_recommendations**.
 
 ```sql
-SELECT * FROM syus.dm_db_tuning_recommendations
+SELECT * FROM syus.dm_db_tuning_recommendations;
 ```
 
 A given query that has been identified that could be improved with a recommended index must run several executions over a period of time in order for the qualified index to be a candidate. In addition, Azure SQL Database deploys services in the cloud to look for candidate indexes. These services don't run constantly. Therefore, recommendations for workload may not show up immediately in the DMVs and/or the portal.
@@ -828,7 +842,13 @@ Notice the index is a non-clustered index that is applied as an online index. Yo
 
 When an index has been applied based on a recommendation, either manually or through automatic tuning, the recommendation engine will also monitor query performance over a period of item with the applied index. If query performance degrades compared to before the index was applied, a recommendation can be made to drop the index.
 
-In this module you did XXXXXX
+**Module Summary**
+
+In this module you did learned about the performance capabilities of Azure SQL compared to SQL Server. You also learned fundamental performance tasks such as configuration and maintenance.
+
+Monitoring and troubleshooting are important so in this module you learned the various methods and tools to monitor and troubleshoot performance with hands-on activities for a CPU scaling scenario. You then learned how to improving CPU scaling for your workload without any migration required for your database. Improving application performance does not always require a new scale in Azure so you learned a common performance bottleneck scenario that you improved by tuning the query workload.
+
+Finally you learned the unique capabilities of Intelligent Performance in Azure SQL including a bonus hands-on activity to see how Automatic Tuning for indexes work in Azure SQL.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

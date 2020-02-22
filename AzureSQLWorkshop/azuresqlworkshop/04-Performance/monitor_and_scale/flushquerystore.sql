@@ -1,2 +1,2 @@
-EXEC sp_query_store_flush_db
+EXEC sp_query_store_flush_db;
 GO
