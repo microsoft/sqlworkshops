@@ -415,11 +415,51 @@ This statement comes back immediately but the scaling of the compute resources t
 
 <img src="../graphics/Azure_Portal_Update_In_Progress.png" alt="Azure_Portal_Update_In_Progress"/>
 
-Another way to monitor the progress of a change for the service object for Azure SQL Database is to use the DMV **sys.dm_operation_status**. This DMV exposes a history of changes to the database with ALTER DATABASE to the service objective and will show active progress of the change. Here is an example of this DMV after executing the above ALTER DATABASE statement:
+Another way to monitor the progress of a change for the service object for Azure SQL Database is to use the DMV **sys.dm_operation_status**. This DMV exposes a history of changes to the database with ALTER DATABASE to the service objective and will show active progress of the change. 
 
-<pre>
-session_activity_id	resource_type	resource_type_desc	major_resource_id	minor_resource_id	operation	state	state_desc	percent_complete	error_code	error_desc	error_severity	error_state	start_time	last_modify_time
-97F9474C-0334-4FC5-BFD5-337CDD1F9A21	0	Database	AdventureWorks0406		ALTER DATABASE	1	IN_PROGRESS	0	0		0	0	[datetime]	[datetime]</pre>
+Run this query to see the output of this DMV at any point in time:
+
+```sql
+SELECT * FROM sys.dm_operation_status
+```
+Here is an example of the output of this DMV after executing the above ALTER DATABASE statement:
+
+<table>
+  <tr>
+    <th>session_activity_id</th>
+    <th>resource_type</th>
+    <th>resource_type_desc</th>
+    <th>major_resource_id</th>
+    <th>minor_resource_id</th>
+    <th>operation</th>
+    <th>state</th>
+    <th>state_desc</th>
+    <th>percent_complete</th>
+    <th>error_code</th>
+    <th>error_desc</th>
+    <th>error_severity</th>
+    <th>error_state</th>
+    <th>start_time</th>
+    <th>last_modify_time</th>
+  </tr>
+  <tr>
+    <td>97F9474C-0334-4FC5-BFD5-337CDD1F9A21</td>
+    <td>0</td>
+    <td>Database</td>
+    <td>AdventureWorks0406</td>
+    <td></td>
+    <td>ALTER DATABASE</td>
+    <td>1</td>
+    <td>IN_PROGRESS</td>
+    <td>0</td>
+    <td>0</td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>[date time]</td>
+    <td>[date time]</td>
+  </tr>
+</table>
 
 During a change for the service objective, queries are allowed against the database until the final change is implemented so an application cannot connect for a very brief period of time. For Azure SQL Database Managed Instance, a change to Tier (or SKU) will allow queries and connections but prevents all database operations like creation of new databases (in these cases operations like these will fail with the error message "**The operation could not be completed because a service tier change is in progress for managed instance '[server]' Please wait for the operation in progress to complete and try again**".)
 
@@ -738,14 +778,9 @@ Once this workload is complete and the recommendations have been recognize (agai
   </tr>
 </table>
 
-<pre>
-name	type	reason	valid_since	last_refresh	state	is_executable_action	is_revertable_action	execute_action_start_time	execute_action_duration	execute_action_initiated_by	execute_action_initiated_time	revert_action_start_time	revert_action_duration	revert_action_initiated_by	revert_action_initiated_time	score	details
-IR_[SalesLT]_[OrderRating]_259E8AEDBBD206F9A74F	CreateIndex		2020-02-15 10:47:26.0000000	2020-02-15 10:47:26.0000000	{"currentValue":"Active","lastChange":"2/15/2020 10:58:53 AM","actionInitiatedBy":""}	1	1	1900-01-01 00:00:00.0000000	00:00:00.0000000		1900-01-01 00:00:00.0000000	1900-01-01 00:00:00.0000000	00:00:00.0000000		1900-01-01 00:00:00.0000000	3	{"createIndexDetails":{"indexName":"nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA","indexType":"NONCLUSTERED","schema":"[SalesLT]","table":"[OrderRating]","indexColumns":"[OrderRatingID]","includedColumns":""},"implementationDetails":{"method":"TSql","script":"CREATE NONCLUSTERED INDEX [nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA] ON [SalesLT].[OrderRating] ([OrderRatingID]) WITH (ONLINE = ON)"},"errorDetails":{"errorCode":null,"isRetryable":""},"estimatedImpact":[{"dimensionName":"SpaceChange","unit":"Megabytes","absoluteValue":153.6640625,"changeValueAbsolute":null,"changeValueRelative":null}],"observedImpact":[]}
-</pre>
+You can read about each column and its meaning in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-tuning-recommendations-transact-sql?view=sql-server-ver15) at. This is the same DMV that will show recommendations for query plan regressions as part of Automatic Plan Correction.
 
-You can read about each column and its meaning in the documentation at https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-tuning-recommendations-transact-sql?view=sql-server-ver15. This is the same DMV that will show recommendations for query plan regressions as part of Automatic Plan Correction.
-
-In addition to using T-SQL with DMVs, you can use Powershell to view recommendations with this command: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaserecommendedaction?view=azps-3.4.0.
+In addition to using T-SQL with DMVs, you can use [Powershell](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaserecommendedaction?view=azps-3.4.0.) to view recommendations.
 
 - **Notifications and Performance Overview in the Portal**
 
@@ -763,7 +798,7 @@ Query Performance Insights is a visual reporting tool based on the Query Store. 
 
 <img src="../graphics/Query_Performance_Insights.png" alt="Query_Performance_Insights"/>
 
-Query Performance Insights provides custom reporting options. You can read more about how to use Query Performance Insights at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-query-performance.
+Query Performance Insights provides custom reporting options. You can read more about how to use Query Performance Insights in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-query-performance).
 
 - **Go directly to Performance Recommendations**
 
@@ -775,7 +810,7 @@ In this view you will see specific recommendations and history of any automatic 
 
 <img src="../graphics/Automatic_Tuning_Options.png" alt="Automatic_Tuning_Options"/>
 
-Automatic Tuning options can be set at the Database Server or database level. You can read more about how to enable Automatic Tuning at https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning. If you would have enabled Automatic Tuning in this scenario, the index would have been automatically created.
+Automatic Tuning options can be set at the Database Server or database level. You can read more about how to enable Automatic Tuning in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning). If you would have enabled Automatic Tuning in this scenario, the index would have been automatically created.
 
 You can also view automatic tuning options through the DMV **sys.database_automatic_tuning_options**.
 
