@@ -695,9 +695,55 @@ There are different ways to observe recommendations:
 
 Once this workload is complete and the recommendations have been recognize (again there could be a delay here even after the workload has completed), you should results like this:
 
-| name                                                        | type        | reason | valid_since                 | last_refresh                | state                                                                                 | is_executable_action | is_revertable_action | execution_action_start_time | execution_action_duration | revert_action_start_time                                 | revert_action_duration | revert_action_initiated_by | revert_action_initiated_time | score | details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 
-|-------------------------------------------------------------|-------------|--------|-----------------------------|-----------------------------|---------------------------------------------------------------------------------------|----------------------|----------------------|-----------------------------|---------------------------|----------------------------------------------------------|------------------------|----------------------------|------------------------------|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|---|---|---|---|---|
-| IR_[SalesLT]_[OrderRating]_259E8AEDBBD206F9A74F CreateIndex | CreateIndex |        | 2020-02-15 10:47:26.0000000 | 2020-02-15 10:47:26.0000000 | {"currentValue":"Active","lastChange":"2/15/2020 10:58:53 AM","actionInitiatedBy":""} | 1                    | 1                    | 1900-01-01 00:00:00.0000000 | 00:00:00.0000000          | 1900-01-01 00:00:00.0000000 1900-01-01 00:00:00.0000000  | 00:00:00.0000000       |                            | 1900-01-01 00:00:00.0000000  |  3    | {"createIndexDetails":{"indexName":"nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA","indexType":"NONCLUSTERED","schema":"[SalesLT]","table":"[OrderRating]","indexColumns":"[OrderRatingID]","includedColumns":""},"implementationDetails":{"method":"TSql","script":"CREATE NONCLUSTERED INDEX [nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA] ON [SalesLT].[OrderRating] ([OrderRatingID]) WITH (ONLINE = ON)"},"errorDetails":{"errorCode":null,"isRetryable":""},"estimatedImpact":[{"dimensionName":"SpaceChange","unit":"Megabytes","absoluteValue":153.6640625,"changeValueAbsolute":null,"changeValueRelative":null}],"observedImpact":[]} |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-cly1{text-align:left;vertical-align:middle}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-cly1">name</th>
+    <th class="tg-cly1">type</th>
+    <th class="tg-cly1">reason</th>
+    <th class="tg-cly1">valid_since</th>
+    <th class="tg-cly1">last_refresh</th>
+    <th class="tg-0lax">state</th>
+    <th class="tg-0lax">is_executable_action</th>
+    <th class="tg-0lax">is_revertable_action</th>
+    <th class="tg-0lax">execute_action_start_time</th>
+    <th class="tg-0lax">execute_action_duration</th>
+    <th class="tg-0lax">execute_action_initiated_by</th>
+    <th class="tg-0lax">execute_action_initiated_time</th>
+    <th class="tg-0lax">revert_action_start_time</th>
+    <th class="tg-0lax">revert_action_duration</th>
+    <th class="tg-0lax">revert_action_initiated_by</th>
+    <th class="tg-0lax">revert_action_initiated_time</th>
+    <th class="tg-0lax">score</th>
+    <th class="tg-0lax">details</th>
+  </tr>
+  <tr>
+    <td class="tg-cly1">IR_[SalesLT]_[OrderRating]_259E8AEDBBD206F9A74F</td>
+    <td class="tg-cly1">CreateIndex</td>
+    <td class="tg-cly1"></td>
+    <td class="tg-cly1">2020-02-15 10:47:26.0000000</td>
+    <td class="tg-cly1">2020-02-15 10:47:26.0000000</td>
+    <td class="tg-0lax">{"currentValue":"Active","lastChange":"2/15/2020 10:58:53 AM","actionInitiatedBy":""}</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">1900-01-01 00:00:00.0000000</td>
+    <td class="tg-0lax">00:00:00.0000000</td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">1900-01-01 00:00:00.0000000</td>
+    <td class="tg-0lax">1900-01-01 00:00:00.0000000</td>
+    <td class="tg-0lax">00:00:00.0000000</td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">1900-01-01 00:00:00.0000000</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">"createIndexDetails":{"indexName":"nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA","indexType":"NONCLUSTERED","schema":"[SalesLT]","table":"[OrderRating]","indexColumns":"[OrderRatingID]","includedColumns":""},"implementationDetails":{"method":"TSql","script":"CREATE NONCLUSTERED INDEX [nci_wi_OrderRating_DED91E67127F8CBDCF60A730ADCCCEAA] ON [SalesLT].[OrderRating] ([OrderRatingID]) WITH (ONLINE = ON)"},"errorDetails":{"errorCode":null,"isRetryable":""},"estimatedImpact":[{"dimensionName":"SpaceChange","unit":"Megabytes","absoluteValue":153.6640625,"changeValueAbsolute":null,"changeValueRelative":null}],"observedImpact":[]}</td>
+  </tr>
+</table>
 
 <pre>
 name	type	reason	valid_since	last_refresh	state	is_executable_action	is_revertable_action	execute_action_start_time	execute_action_duration	execute_action_initiated_by	execute_action_initiated_time	revert_action_start_time	revert_action_duration	revert_action_initiated_by	revert_action_initiated_time	score	details
