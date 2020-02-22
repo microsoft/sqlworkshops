@@ -630,7 +630,7 @@ WRITELOG wait types are indicative of latency flushing to the transaction log. 2
 
 **Step 6 - Decide on a resolution**
 
-The problem is not a high % of log write activity. The Azure Portal and **sys.dm_db_resource_stats** don't show any numbers higher than 20-25% (this is information only. There is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases) for resource limits lists latency between 5-7ms (.
+The problem is not a high % of log write activity. The Azure Portal and **sys.dm_db_resource_stats** don't show any numbers higher than 20-25% (this is information only. There is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases) for resource limits lists latency between 5-7ms.
 
 If you examine the workload, you will see each INSERT is a single transaction commit which requires a transaction log flush.
 
@@ -854,7 +854,12 @@ Finally you learned the unique capabilities of Intelligent Performance in Azure 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 <ul>
-    <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitoring-tuning-index" target="_blank">Azure SQL Database Monitoring and performance tuning</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases" target="_blank">Resource Limits for Azure SQL Database</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits" target="_blank">Resource Limits for Azure SQL Database managed instance</a></li>
+    <li><a href="https://azure.microsoft.com/en-us/blog/resource-governance-in-azure-sql-database/"ht target="_blank">Resource governance in Azure SQL Database</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15" target="_blank">Intelligent Query Processing</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning" target="_blank">Automatic Tuning</a></li>
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
