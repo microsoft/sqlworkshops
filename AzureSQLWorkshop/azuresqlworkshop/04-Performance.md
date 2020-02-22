@@ -217,7 +217,7 @@ You should see many of the requests have a status = RUNNABLE and last_wait_type 
 
 The familiar SQL DMV dm_exec_requests can be used with Azure SQL Database but must be run in the context of a database unlike SQL Server (or Azure SQL Database Managed Instance) where dm_exec_requests shows all active requests across the server instance.
 
-- Run the query in SSMS to monitor **dm_db_resource_stats** (**dmdbresourcestats.sql**). Run the query to see the results of this DMV 3 or 4 times.
+- Run the query in SSMS to monitor **sys.dm_db_resource_stats** (**dmdbresourcestats.sql**). Run the query to see the results of this DMV 3 or 4 times.
 
 ```sql
 SELECT * FROM sys.dm_db_resource_stats;
@@ -630,7 +630,7 @@ WRITELOG wait types are indicative of latency flushing to the transaction log. 2
 
 **Step 6 - Decide on a resolution**
 
-The problem is not a high % of log write activity. The Azure Portal and **dm_db_resource_stats** don't show any numbers higher than 20-25% (this is information only. There is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases) for resource limits lists latency between 5-7ms (.
+The problem is not a high % of log write activity. The Azure Portal and **sys.dm_db_resource_stats** don't show any numbers higher than 20-25% (this is information only. There is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases) for resource limits lists latency between 5-7ms (.
 
 If you examine the workload, you will see each INSERT is a single transaction commit which requires a transaction log flush.
 
