@@ -630,11 +630,13 @@ WRITELOG wait types are indicative of latency flushing to the transaction log. 2
 
 **Step 6 - Decide on a resolution**
 
-The problem is not a high % of log write activity. The Azure Portal and **sys.dm_db_resource_stats** don't show any numbers higher than 20-25% (this is information only. There is not a need to query these). The problem is not an IOPS limit as well. The issue is that application requires low latency for transaction log writes but with the General Purpose database configuration a latency. In fact, the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases) for resource limits lists latency between 5-7ms.
+The problem is not a high % of log write activity. The Azure Portal and **sys.dm_db_resource_stats** don't show any numbers higher than 20-25% (this is information only. There is not a need to query these). The problem is not an IOPS limit as well. The issue is that this application workload is sensitive to low latency for transaction log writes and the General Purpose tier is not designed for this type of latency requirements. In fact, the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases) for resource limits lists latency between 5-7ms.
+
+>**NOTE:** General Purpose Azure SQL Database documents approximate I/O latency averages as 5-7 (writes) and 5-10 (reads) so you may experience latencies more like these numbers. Managed Instance General Purpose latencies are similar. If your application is very sensitive to I/O latencies you should consider Business Critical Tiers.
 
 If you examine the workload, you will see each INSERT is a single transaction commit which requires a transaction log flush.
 
-One commit for each insert is not efficient but the application was not affected on a local SSD because each commit was very fast. The Business Critical pricing tier (service objective or SKU) provides local SSD drives with a lower latency but maybe there is an application optimization.
+One commit for each insert is not efficient but the application was not affected on a local SSD because each commit was very fast. The Business Critical pricing tier (service objective or SKU) provides local SSD drives with a lower latency but maybe there is an application optimization so the workload is not as sensitive to I/O latency for the transaction log.
 
 The T-SQL batch can be changed for the workload to wrap a BEGIN TRAN/COMMIT TRAN around the INSERT iterations.
 
@@ -855,6 +857,8 @@ Finally you learned the unique capabilities of Intelligent Performance in Azure 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 <ul>
     <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitoring-tuning-index" target="_blank">Azure SQL Database Monitoring and performance tuning</a></li>
+    <li><a href="https://azure.microsoft.com/en-us/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/" target="_blank">Performance differences between Managed Instance and SQL Server</a></li>
+    <li><a href="https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525" target="_blank">Storage performance best practices and considerations for Azure SQL DB Managed Instance</a></li>
     <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases" target="_blank">Resource Limits for Azure SQL Database</a></li>
     <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits" target="_blank">Resource Limits for Azure SQL Database managed instance</a></li>
     <li><a href="https://azure.microsoft.com/en-us/blog/resource-governance-in-azure-sql-database/"ht target="_blank">Resource governance in Azure SQL Database</a></li>
