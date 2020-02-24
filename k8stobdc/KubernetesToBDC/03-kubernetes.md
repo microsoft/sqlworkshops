@@ -168,7 +168,7 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 		<tr style="vertical-align:top;">
 			<td> </td>
 			<td><a href="https://metallb.universe.tf/"><i>Ingress Management (Optional) </i></a> </td>
-			<td>A key difference between "Vanilla" Kubernetes and an Kubernetes-As-A-Service (such as Azure Kubernetes Service) is that services do not come with load balancing endpoints by default. Load balancer services for Kubernetes is enabled using software such as <i>MetalLb</i>. </td>
+			<td>A key difference between "Vanilla" Kubernetes and an Kubernetes-As-A-Service (such as Azure Kubernetes Service) is that services do not come with load balancing endpoints by default. Load balancer services for Kubernetes on-premises is enabled using a compenent that carries out ingress management.</td>
 		</tr>
 		<tr style="vertical-align:top;">
 			<td><a href="https://kubernetes.io/docs/concepts/architecture/cloud-controller/"><b>Control </b></a> </td>
@@ -364,11 +364,11 @@ Can this process be automated ?.
 
 Kubespray is a Cloud Native Computing Foundation project and with its own [GitHub repository](https://github.com/kubernetes-sigs/kubespray).
 
-### 3.2.5 What Is Ansible? ###
+### 3.2.4.1 An Overview of Ansible ###
 
 Ansible is an open source declarative tool for deploying applications and infrastructure-as-code. Components of an application or infrastructure are specified declaratively in ‘Runbooks’. Unlike other infrastructure-as-code tools, Ansible does not require that a special node is built for the purpose of deploying applications and infrastructure. All that is required is a host on which Ansible can be installed. Files known as inventory files are used to specify Ansible deployment targets. In the case of Kubespray, the deployment targets are the hosts which nodes and etcd instances are to be created on. Communication between Ansible and the deployment targets specified in an inventory file is via ssh.
 
-### 3.2.6 Prerequisites ###
+### 3.2.4.2 Prerequisites ###
 
 In order to carry out the deployment of the Kubernetes cluster, a basic understanding of the following tasks is required:
 
@@ -382,7 +382,7 @@ In order to carry out the deployment of the Kubernetes cluster, a basic understa
 
 - Basic Ubuntu firewall configuration
 
-### 3.2.7 Kubespray Workflow ###
+### 3.2.4.3 Kubespray Workflow ###
 
 Unlike other available deployment tools, Kubespray does everything for you in “One shot”. For example, Kubeadm requires that certificates on nodes are created manually, Kubespray not only leverages Kubeadm but it also looks after everything including certificate creation for you. Kubespray works against most of the popular public cloud providers and has been tested for the deployment of clusters with thousands of nodes. The real elegance of Kubespray is the reuse it promotes. If an organization has a requirement to deploy multiple clusters, once Kubespray is setup, for every new cluster that needs to be created, the only prerequisite is to create a new inventory file for the nodes the new cluster will use.
 3.2.5 High Level Kubespray Workflow
@@ -416,9 +416,7 @@ Note:
 - cluster.yml contains the play book for creating the Kubernetes cluster itself,
 - The entire cluster is deployed via a single invocation of the ansible-playbook command.
 
-### 3.2.8 Requirements ###
-
-### 3.2.9 Post Cluster Deployment Activities ###
+### 3.2.5 Post Cluster Deployment Activities ###
 
 Install kubectl - the primary tool for administering a Kubernetes cluster. kubectl requires a configuration file in order to access the cluster, by default kubectl will look for a file named config in the .kube directory under the home directory of the user that is logged in:
 
@@ -445,7 +443,7 @@ Now that your sandbox enivornment is up and running, its time to look at kubectl
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-## 3.2.10 Package Management ## 
+## 3.2.6 Application Deployment (Package Management) ## 
 
 The deployment of non-trivial applications often comes with following requirements:
 
@@ -473,7 +471,11 @@ Follow the steps in section 2.4.
 
 ## 3.3 OpenShift Container Platform ##
 
-## 3.3.1  OpenShift Container Platform - Why ?
+OpenShift Container Platform is a 100% Kubernetes compatible Platform-As-A-Service based on Kubernetes from Red Hat Software:
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_1_openshift.PNG?raw=true">
+
+## 3.3.1 The Requirment For Commercially Supported Distributions of Kubernetes ##
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Understanding what open-source means</b></p>
 
@@ -489,14 +491,7 @@ Follow the steps in section 2.4.
 
 5. In a browser navigate to the link https://landscape.cncf.io/ and make a mental note of the number of projects in the CNCF landscape.
 
-## 3.3.2  OpenShift Container Platform - What Is It ? ##
-
-OpenShift Container Platform from Red Hat Software is a platform as a service built on Kubernetes that supports
-the full software development lifecycle:
-
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_1_openshift.PNG?raw=true">
-
-## 3.3.3  OpenShift Container Platform Compared to Kubernetes ##
+## 3.3.2  OpenShift Container Platform Compared to Kubernetes ##
 
 <table style="width:100%">
   <tr>
@@ -890,7 +885,34 @@ kubectl get secret -n mssql-cluster
 ```
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="MySuperSecretP@ssw0rd"
 ```
-## 3.7 Disaster Recovery ##
+## 3.7 Services ##
+
+A service is an abstraction which defines a logical set of Pods and a policy by which to access them, or more simply put, a service provides the means by which clients running **outside** of a Kubernetes cluster to consume functionality provided by pods running **inside** the cluster.
+
+There are three types of service:
+
+- **ClusterIP**: this provides a virtual ip address that is only accessible from within the cluster. The motivation for this type of service is to provide pods that form different parts of an application, for example the front end back ends of the application, the means of communicating via a stable ip address. This is the default service.
+
+- **NodePort**: exposes the service via a static port on each node.
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_7_1_node_port.PNG?raw=true">
+
+- **LoadBalancer**: exposes the service via a single load balancer endpoint, this in turn routes traffics to pods running inside the cluster.
+
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_7_2_load_balancer.PNG?raw=true">
+
+- **ExternalName**: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value. No proxying of any kind is set up.
+
+When creating a Kubernetes cluster using Kubernetes-As-A-Service such as Azure Kubernetes Service, the default type of service that expose a cluster's pods to the outside world is LoadBalancer.
+By default the service type for Kubernetes clusters deployed on-premises, is NodePort. The term for the component that manages external access to a cluster in the context of routing, is ["Ingress controller"](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).  
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Working With Services</b></p>
+
+TODO: enter brief description of activity.
+
+<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
+
+## 3.8 Disaster Recovery ##
 
 The ecosystem in which a SQL Server 2019 big data cluster runs on Kubernetes comprises of different layers:
 
@@ -912,7 +934,7 @@ Options for backing up etcd include:
 
 - **[VMware Velero](https://github.com/vmware-tanzu/velero)** (formally Heptio Ark), this integrates with 3rd party storage APIs in order to backup the entire state of a Kubernetes cluster.
 
-## 3.8 Production Grade Kubernetes Clusters ##
+## 3.8 Kubernetes Best Practices ##
 
 Now that many of the most important Kubernetes concepts have been covered, what exactly does a Kubernetes cluster that is fit for production puproses look like ?, the simple answer is that a production grade cluster should adhere to many of the following points:
 

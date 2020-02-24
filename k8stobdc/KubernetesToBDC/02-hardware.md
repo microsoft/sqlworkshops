@@ -94,7 +94,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_8_vcenter.PNG?raw=true">
 
-9. Power on the virtual machine and install VMware tools:
+9. Power on the virtual machine:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_9_vcenter.PNG?raw=true">
 
