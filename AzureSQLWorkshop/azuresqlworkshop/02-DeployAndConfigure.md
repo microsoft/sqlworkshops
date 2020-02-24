@@ -29,7 +29,7 @@ In this module, you'll cover these topics:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.1">2.1 Pre-deployment planning</h2></a>
 
-Before you start deploying things in Azure, it's important to understand what your requirements are and how they match to offerings in Azure SQL. Using what you learned in Module 1, it's time to make a plan. You need to determine the following:  
+Before you start deploying things in Azure, it's important to understand what your requirements are and how they map to offerings in Azure SQL. Using what you learned in Module 1, it's time to make a plan. You need to determine the following:  
 * Deployment method: GUI or unattended?
 * Deployment option: VM, DB, Elastic Pool, MI, or Instance Pool?
 * Purchasing model: DTU or vCore?
@@ -53,6 +53,8 @@ Once you've completed your pre-deployment planning, it's time to deploy and veri
 In this activity, you'll deploy Azure SQL Database using the Azure portal. Throughout this exercise, you'll also get to explore the various options that are available to you. 
 
 **Step 1 - Deployment options**  
+
+> Note: If you are not already connected to your Azure VM, do that now. For instructions on how to do that, see [here](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/connect-logon). All of the exercises for the remainder of the workshop should be completed in your VM. If you want to make viewing the instructions easier, you might consider opening these instructions in a browser in you VM.
 
 Navigate to https://portal.azure.com/ and log in with your account, if you are not already. In the top search bar, type **Azure SQL** and review what appears:  
 ![](../graphics/search.png)
@@ -84,6 +86,8 @@ Select **Create new** next to "Server" and provide the following information:
 * *Location*: Use the same location as your resource group.  
 
 ![](../graphics/newserver.png)  
+
+> Note: If there are other requests or checkboxes here, accept the defaults.
 
 Then, select **OK**.
 
@@ -236,7 +240,7 @@ Expanding the databases and system databases should result in a view similar to 
 
 ![](../graphics/azureserver.png)   
 
-Spend a few minutes clicking around and exploring the differences, at first glance, between the Azure SQL Database logical server and Azure SQL Database. You won't deploy an Azure SQL Managed Instance as part of this workshop, but the image below shows how Azure SQL Managed Instance would appear in SSMS.
+Spend a few minutes clicking around and exploring the differences, at first glance, between the Azure SQL Database logical server and SQL Server. You won't deploy an Azure SQL Managed Instance as part of this workshop, but the image below shows how Azure SQL Managed Instance would appear in SSMS.
 
 
 ![](../graphics/miserver.png)   
@@ -249,6 +253,8 @@ Now that you've seen how Azure SQL appears in SSMS, let's explore a tool that ma
 **Step 1 - Open Azure Data Studio and Connect**  
 
 Open Azure Data Studio (ADS). When opening for the first time, you'll first be prompted to make a connection.  
+
+> Note: If you get prompted to enable preview features, select **Yes**.  
 
 ![](../graphics/adsconnect.png)  
 
@@ -292,7 +298,7 @@ Throughout the workshop, you'll be instructed at various points to open a notebo
 
 **Step 3 - Verify deployment queries**  
 
-Once you've deployed an instance of SQL (be in Azure SQL or SQL Server), there are typically some queries you would run to verify your deployment. In Azure SQL, some of these queries vary from SQL Server. In this step, you'll see what and how things change from SQL Server, and what is new.   
+Once you've deployed an instance of SQL (be it Azure SQL or SQL Server), there are typically some queries you would run to verify your deployment. In Azure SQL, some of these queries vary from SQL Server. In this step, you'll see what and how things change from SQL Server, and what is new.   
 
 For this step, you'll use the notebook **VerifyDeployment.ipynb** which is under `azuresqlworkshop\02-DeployAndConfigure\verifydeployment\VerifyDeployment.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
 
@@ -306,7 +312,7 @@ TODO: Put in text here that talks about the process to configure, and configure/
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="4">Activity 4</a>: Configure with Azure CLI</b></p>
 
-So you've seen the Azure portal, SSMS, and SQL Notebooks in ADS, but there are other tools available to you to use to manage Azure SQL. Two of the most popular are the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) and [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-3.3.0). They are similar in their functionality, but for this workshop we will focus on the Azure CLI.  
+So you've seen the Azure portal, SSMS, and SQL Notebooks in ADS, but there are other tools available to you to use to manage Azure SQL. Two of the most popular are the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) and [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-3.3.0). They are similar in their functionality, but for this activity we will focus on the Azure CLI.  
 
 To complete this activity, you'll use a PowerShell notebook, which is the same concept as a SQL notebook, but the coding language is PowerShell. You can use PowerShell notebooks to leverage Azure CLI or Azure PowerShell, but we will focus on Azure CLI. For more information on the Azure PowerShell module, [see the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-powershell-samples?tabs=single-database). For both of these tools, you can also use the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), which is an interactive shell environment that you can use through your browser in the Azure portal.  
 

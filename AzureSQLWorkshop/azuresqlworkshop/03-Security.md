@@ -17,14 +17,15 @@ Ensuring security and compliance of your data is always a top priority. In this 
 In this module, you'll cover these topics:  
 [3.1](#3.1): Platform and network security   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): Configure Auditing  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Create and manage firewall/vNet rules for Azure SQL Database  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Create and manage firewall/vNet rules for Azure SQL Database's public endpoint    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 3](#3): Create and manage Private Link for Azure SQL Database    
 [3.2](#3.2): Access management and Authorization   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 3](#3): Getting started with Azure AD authentication    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Getting started with Azure AD authentication    
 [3.3](#3.3): Information protection and encryption  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Confirm TDE is enabled   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 5](#5): Confirm TDE is enabled   
 [3.4](#3.4): Security management  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 5](#5): Advanced data security   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 6](#6): Data classification, Dynamic data masking, and SQL Audit
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 6](#6): Advanced data security   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 7](#7): Data classification, Dynamic data masking, and SQL Audit
 
 
 
@@ -69,7 +70,7 @@ Next, select **+ Create New Workspace**.
 
 ![](../graphics/newws.png)  
 
-Fill in the information according to the subscription, resource group, and location, that you are using to complete this workshop. We recommend naming your Log Analytics Workspace **azuresqlworkshopUID-la**, using your unique ID for your resources. Select **OK**.  
+Fill in the information according to the subscription, resource group, and location, that you are using to complete this workshop. We recommend naming your Log Analytics Workspace **azuresqlworkshopID-la**, using your unique ID for your resources. Select **OK**.  
 
 ![](../graphics/laws.png)  
 
@@ -101,13 +102,13 @@ This is the end of this activity. In a later activity in this module, you'll see
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Create and manage firewall/vNet rules for Azure SQL Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Create and manage firewall/vNet rules for Azure SQL Database's public endpoint</b></p>
 
 In this activity, you'll see how to review and manage your firewall rules using the Azure portal. You'll also see how to configure the most secure connection while using the public endpoint.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
 
-During deployment of Azure SQL Database, you selected "Allow Azure services and resources access to this server" to **ON**. If you can, switching it to **OFF** is the most secure configuration. In this activity, you'll see how to view and edit your firewall rules. Setting this up can be complicated, since it means you'll have to specify a range of IP addresses for all your connections (which can sometimes have dynamic IP addresses). A much easier alternative is to use Virtual network (vNet) rules to establish and to manage access from specific subnet(s) that contain VMs or other services that need to access the data. You'll walk through setting this up next.  
+During deployment of Azure SQL Database, you selected "Allow Azure services and resources access to this server" to **ON**. If you can, switching it to **OFF** is the most secure configuration of the public endpoint. In this activity, you'll see how to view and edit your firewall rules. Setting this up can be complicated, since it means you'll have to specify a range of IP addresses for all your connections (which can sometimes have dynamic IP addresses). A much easier alternative is to use Virtual network (vNet) rules to establish and to manage access from specific subnet(s) that contain VMs or other services that need to access the data. You'll walk through setting this up next.  
 
 In reality, you'll want to partner with your networking team to ensure you have the most secure, functional network. A few handy resources include:  
 * [Azure SQL Database network access controls](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-networkaccess-overview)
@@ -119,7 +120,7 @@ In reality, you'll want to partner with your networking team to ensure you have 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
 **Step 1 - create and manage firewall rules with the Azure portal**  
-In your Azure virtual machine, navigate to the Azure portal, specifically to your Azure SQL Database logical server. Select **Firewalls and virtual networks** from the left-hand menu.    
+In your Azure virtual machine, navigate to the Azure portal, specifically to your Azure SQL Database logical **server**. Select **Firewalls and virtual networks** from the left-hand menu.    
 
 ![](../graphics/fwvn.png)    
 
@@ -194,7 +195,139 @@ To confirm you still have access from your Azure VM, navigate to SSMS and refres
 
 If no errors occur, you have successfully configured access to your Azure SQL Database logical server from resources in your vNet, which can simplify the challenge of configuring access to all the IP addresses (static and dynamic) that need to access the data. You can now specify one or multiple subnets within a virtual network or networks, encompassing all of the resources within.        
 
+<br>
 
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>(Bonus) Activity 3</a>: Create and manage Private Link for Azure SQL Database</b></p>
+
+In this activity, you'll see how to configure the most secure connection with a new feature called Private Link.  
+
+<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
+
+You've learned and seen how to configure the most secure network using Azure SQL Database with the public endpoint. This method of securing Azure SQL Database has been used for years. However, in 2019, Azure began moving towards a concept of a Private Link, which is more similar to the way that Azure SQL Managed Instance is deployed. Private Link allows you to connect to Azure SQL Database (and several other PaaS services) using a private endpoint, which means it has a private IP address within a specifc vNet and Subnet. You can learn more about Private Link [in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-private-endpoint-overview).  
+
+> Note: As of the last update of this course, Private Link was in Public Preview. The documentation link above will have the latest information regarding its general availability.  
+
+In this activity, you'll use the Azure portal to configure Private Link for your existing Azure SQL Database logical server. You could alternatively use PowerShell or the Azure CLI. Since this is a bonus activity, it's important you follow the clean-up steps at the end of the activity. All future activities in this workshop are configured with the public endpoint.   
+
+<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
+
+In this activity, you will complete the following steps:  
+
+1. Navigate to the private endpoint experience in the Azure portal  
+1. Create a private endpoint - Basics
+1. Create a private endpoint - Resource 
+1. Create a private endpoint - Configuration
+1. Create a private endpoint - Confirm creation
+1. Connect to the private endpoint
+1. Clean up the private endpoint (**Required**)
+
+
+**Step 1: Navigate to the private endpoint experience in the Azure portal**    
+
+In the Azure portal, in the top taskbar search bar, enter **private link** and select **Private Link** under *Services*.  
+
+![](../graphics/plservice.png)  
+
+This is the center you can use for managing your various Private Link services across Azure.  
+
+Select **Private endpoints** from the left-hand menu, and select **+ Add**.  
+
+![](../graphics/privateendpoints.png)
+
+**Step 2: Create a private endpoint - Basics**   
+
+There are several pages you need to configure in order to create a private endpoint: Basics, Resource, Configuration, and Confirm creation. In this first step, fill in the subscription and resource group that you are using for the workshop.  
+
+For name, enter the name of your server + **-pe**. For example, for "aw-server0218", you would enter **aw-server0218-pe**. Finally, select the region that you deployed your Azure SQL Database in.  
+
+![](../graphics/pebasics.png)  
+
+Next, select **Next : Resource >**.  
+
+**Step 3: Create a private endpoint - Resource**   
+
+In this section, you're asked to connect to the resource you want to set up the private endpoint for. In this case, you want to connect to an Azure resource in your directory. Then, select the subscription, resource type, and resource name that you are using for the workshop.  
+
+> Note: If you were provided an environment for this workshop, be sure to select your assigned Azure SQL Database logical server.  
+
+![](../graphics/peresource.png)   
+
+Next, select **Next : Configuration**.  
+
+**Step 4: Create a private endpoint - Configuration**   
+
+In this step, you will configure your private endpoint to be created in the **same virtual network subnet as your Azure VM** for the workshop. This is the easiest way to ensure that you can connect to it from your virtual machine. There are other ways available (virtual network peering, vNet-to-vNet, VPN from on-premises), but you will not use those in this workshop.  
+
+Select your VM virtual network, it should be similar to **azuresqlworkshop<ID>-vnet** and the subnet should be **default**.  
+
+In order to connect privately with the endpoint you create, you'll also need a DNS record. This won't be covered in this activity, but you can learn more [here](https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview#dns-configuration). You can just leave the defaults.  
+
+Review and confirm your view looks similar to the following.  
+
+![](../graphics/peconfig.png)   
+
+Then, select **Review + create**. For this activity, you'll skip Tags, but you can add them similar to how you did during deployment.  
+
+**Step 5: Create a private endpoint - Confirm creation**  
+
+Review your deployment selections and then select **Create**.  
+
+The deployment may take 1-2 minutes, but when it is finished, select **Go to resource**.  
+
+In the overview tab, you should now see your Azure SQL Database logical server associated with a Private IP.  
+
+![](../graphics/peoverview.png)   
+
+**Step 6: Connect to the private endpoint**  [TODO NEEDS UPDATING]
+
+In this step, you'll try to connect to the private endpoint. Using SSMS, right-click on your AdventureWorks<ID> database and select **New Query**. Run the following command:  
+
+```sql
+select client_net_address from sys.dm_exec_connections where session_id=@@SPID
+```
+
+This command lists the IP address of the client machine or virtual network for the session you are connected with. If you navigate to your virtual network in the portal that you are using for the workshop (e.g. **azuresqlworkshop0406-vnet**), you might notice that the IP address you're connecting to Azure SQL Database is the **public** IP address of your virtual network. However, with Private Link, you should only be able to connect with the **private** IP address of your Azure virtual machine.  
+
+**Why did this happen?** In Activity 2, recall that you created a virtual network rule to allow connections from your VM's virtual network. Private Link doesn't overrule your existing rules, so in this case, you're still able to connect using the public endpoint.  
+
+Another thing you might be wondering, is if you are connecting to the private endpoint, **why are you still using the same server name?** In the backend, when you use solely the Private Link method of connecting (i.e. no firewall or virtual network rules), the information is processed as follows:  
+
+* `aw-server<ID>.database.windows.net`  
+    * Resolved by service to `aw-server<ID>.privatelink.database.net`  
+        * Resolved by service to `10.14.1.4` (the IP address of your private endpoint)  
+
+The service will block you from directly connecting using anything apart from `aw-server<ID>.database.windows.net`.  
+
+In order to leverage the private IP address, you need to delete all virtual network and firewall rules for your logical server (this essentially deletes public endpoint access).  
+
+In the Azure portal, for you Azure SQL Database logical server, in the left-hand taskbar, under Security, select **Firewalls and virtual networks**.   
+
+Delete **all** firewall rules and virtual networks. Then, select save. It should look similar to below:  
+
+![](../graphics/norules.png)  
+
+Don't forget to select **Save**.  
+
+Return to SSMS, right-click on your AdventureWorks database, and select **New Query**. This will create a fresh connection to your database.  
+
+Run the following query, and compare the results. Is the IP address returned your private or public VM IP address?  
+
+```sql
+select client_net_address from sys.dm_exec_connections where session_id=@@SPID
+```
+
+The result should now reflect your Azure VM's private IP address.  
+
+**Step 7: Clean up the private endpoint (*Required*)**  
+
+Since private link is in public preview (as of the last revision of this workshop), the rest of the workshop will leverage the **public endpoint**. In order to reconfigure your Azure SQL Database logical server so the public endpoint is used, you **must REPEAT Activity 2 Step 3 before proceeding**.  
+
+To **confirm this was successful**, create a new query, run the below query, and confirm that the IP address returned is the **public** IP address of your Azure VM.  
+
+TODO
+```sql
+select client_net_address from sys.dm_exec_connections where session_id=@@SPID
+```
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -208,7 +341,7 @@ Azure RBAC roles (ctrl f for SQL) https://docs.microsoft.com/en-us/azure/role-ba
 Config of Azure AD: https://docs.microsoft.com/en-us/azure/security/fundamentals/database-best-practices#enable-database-authentication
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>Activity 3</a>: Getting started with Azure AD authentication</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Getting started with Azure AD authentication</b></p>
 
 In this activity, you'll learn how to configure an Azure AD administrator on a server level for Azure SQL Database. Next, you'll change your connection in SSMS from SQL authentication to Azure AD authentication, and you'll see how to grant other Azure AD users access to the database like normal users in SQL Server.  
   
@@ -242,6 +375,10 @@ Notice that under *Authentication*, there are several different Azure Active Dir
 
 ![](../graphics/connecttoserver.png)  
 
+Next, you'll need to select your AdventureWorks database, which you can do by selecting **Options** > **Connect Properties** > **Connect to database** > **Browse server**.  
+
+Finally, select **Connect**.  
+
 > Note: If you get the following error, this indicates your organization requires you to select **Azure Active Directory - Universal with MFA**. Connect accordingly.  
 >
 > ![](../graphics/cannotconnect.png)
@@ -254,7 +391,7 @@ Next to the server name, you should now be able to see that you are authenticate
 
 Now that you're authenticated using Azure AD, your next step might be to add other users. Just as in SQL Server, you can add new logins and users. In SSMS, using your Azure AD connection, right-click on your database **server** and create a new query. Run the following.
 
-> Note: For most queries in Azure SQL Database, you must right-click on the **database** within your Azure SQL Database logical server. In SQL Server and Azure SQL managed instance, you can query at the server level and use `USE DatabaseName`, but in Azure SQL Database, you must query the database directly, the `USE` statement is not supported. There are a few exceptions to querying Azure SQL Database, and one is logins. You must connect to the master database to create and alter logins. For more details, see [this page](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-manage-logins#administrator-access-path).   
+> Note: For most queries in Azure SQL Database, you must right-click on the **database** within your Azure SQL Database logical server. In SQL Server and Azure SQL managed instance, you can query at the server level and use `USE DatabaseName`, but in Azure SQL Database, you must query the database directly, the `USE` statement is not supported. There are a few exceptions to querying Azure SQL Database, and one is logins. You must connect to the **master** database to create and alter logins. For more details, see [this page](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-manage-logins#administrator-access-path).   
 
 ```sql
 -- Create a new SQL login and give them a password
@@ -338,7 +475,7 @@ TODO Add screenshots and test with Bob.
 TODO: Put in text here that talks about the process to protect information/encryption with Azure SQL comparing this to SQL Server
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Confirm TDE is enabled</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="5"><b>(Bonus) Activity 5</a>: Confirm TDE is enabled</b></p>
 
 This is a quick activity to show you how easily you can confirm that TDE is enabled, or you can enable it if it is not.  
 
@@ -366,7 +503,7 @@ TODO: Put in text here that talks about the process for security management with
 
 TODO: Topic Description CONTD
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="5"><b>Activity 5</a>: Advanced Data Security</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="6"><b>Activity 6</a>: Advanced Data Security</b></p>
 
 Advanced data security (ADS) is a unified package for advanced SQL security capabilities, providing a single go-to location for enabling and managing three main capabilities:  
 * [Data discovery & classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)  
@@ -397,7 +534,7 @@ Lastly, you can configure your Advanced Threat Protection (ATP) settings. ATP en
 
 ![](../graphics/atptypes.png)  
 
-Just like you can configure who receives the VA scans, you can configure who receives the ATP alerts. Review the options and add your email address if you want to be alerted (recommended for future lab).  
+Just like you can configure who receives the VA scans, you can configure who receives the ATP alerts. Review the options and **add your email address** so you can view the alerts in a future lab.  
 
 ![](../graphics/atpsettings.png)  
 
@@ -472,10 +609,63 @@ Likely, you won't see any security alerts. In the next step, you will run a test
 
 **Step 6 - Testing ATP capabilities**  
 
-TODO with help of Bob  
+As you saw in an earlier step, ATP can be used to identify and alert when the following things are suspected of occurring:  
+
+* SQL injection
+* SQL injection vulnerability
+* Data exfiltration
+* Unsafe action
+* Brute force
+* Anomalous client login  
+
+In this step, you will trigger an alert. When an application (like SSMS or ADS) connects to SQL Server or Azure SQL, the `Application Name` is provided to Azure SQL. Azure SQL uses rules and machine learning to determine what the accepted or normal applications are. If there is an abnormal or known malicious application, ATP will trigger an alert. In this step, you will connect using an unknown application name in order to trigger the SQL injection alert.  
+
+> Note: To get the full experience of this step, you'll need access to the email address you provided for ATP alerts in Step 1 of this activity. If you need to update it, do so before proceeding.  
+
+Using SSMS, select **File** > **New** > **Database Engine Query** to create a query using a new connection.  
+
+![](../graphics/databaseenginequery.png)  
+
+In the main login window, fill in your AdventureWorksID information as you usually would, with SQL authentication. Before connecting, however, select **Options** > **Connection Properties**. Once in here, specify your AdventureWorks database using the "Connect to database" drop-down.  
+
+![](../graphics/connecttodb.png)  
+
+Then, select the **Additional Connection Parameters** tab and insert the following into the empty text box:  
+```
+Application Name=webappname
+```
+
+To connect, finally, select **Connect**.  
+![](../graphics/appname.png)  
+
+In the new query window, run the following query:  
+
+```sql
+select * from sys.databases where database_id like '' or 1 = 1 --' and family = 'test1'
+```
+
+Within a few minutes, you should receive an email similar to the following.  
+
+![](../graphics/atpemail.png)  
+
+Additionally, navigate to the Azure portal to your AdventureWorks database. In the left-hand menu, under Security, select **Advanced data security**. You should now see an alert.  
+
+![](../graphics/atpalert.png)  
+
+You can drill into that alert to see the overall security alerts.  
+
+![](../graphics/securityalerts.png)  
+
+You can also click specific alerts to see more details about them.  
+
+![](../graphics/potentialsqlinj.png)  
+
+In this activity, you learned how to configure and leverage some of the features in Advanced data security. In the following bonus activity, you'll expand on what you've learned throughout the security module by using various security features together.  
+
+> **Recommended clean up note:** You might consider closing all your query editors in SSMS and removing all connections except the one AAD connection.  
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="6">Activity 6</a>: Data classification, Dynamic data masking, and SQL Audit</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="7">Activity 7</a>: Data classification, Dynamic data masking, and SQL Audit</b></p>
 
 In this activity, you will learn how to audit users trying to view columns that were marked for data classification. This activity will combine several of the things you've already learned about in the module, and take those learnings to the next level.    
 
@@ -527,7 +717,7 @@ Select **Save**.
 
 **Step 3 - Query classified and masked columns**  
 
-Now, navigate to SSMS and create a new query in your AdventureWorks database.  
+Next, you will simulate someone querying the classified columns and explore dynamic data masking in action. Navigate to SSMS and create a new query in your AdventureWorks database.  
 
 ![](../graphics/newquery.png)   
 
@@ -626,7 +816,11 @@ Review the files and select **OK** one last time.
 
 ![](../graphics/mergeaudit.png)  
 
-You should now be able to see all the audit logs. Look for where you were testing with masking with Bob. You can select the statement, and then use the detail pane below to review the information. For example, for one of the queries where Bob tries to view classified data, under the `data_sensitivity_information` field, you can see the data that is classified. For more information on the naming conventions in audit logs, [see here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-audit-log-format).    
+You should now be able to see all the audit logs. Look for where you were testing with masking with Bob (should be near the bottom). You can select the statement, and then use the detail pane below to review the information. For example, for one of the queries where Bob tries to view classified data, under the `data_sensitivity_information` field, you can see the data that is classified. For more information on the naming conventions in audit logs, [see here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-audit-log-format). And example of what you might see under `data_sensitivty_information` is below.   
+
+```cxel
+<sensitivity_attributes max_rank="20" max_rank_desc="Medium"><sensitivity_attribute label="Confidential - GDPR" label_id="bf91e08c-f4f0-478a-b016-23422b2a65ff" information_type="Name" information_type_id="57845286-7598-22f5-3422-15b24aeb125e" rank="20" rank_desc="Medium"/></sensitivity_attributes>
+```
 
 This merged file can then be exported to an XEL or CSV file (or to a table) for additional analysis. You can also query the [Extended Events files using PowerShell](https://sqlscope.wordpress.com/reading-extended-event-files-using-client-side-tools-only/). 
 
@@ -646,7 +840,7 @@ Feel free to click around and understand what some of the options are.
 
 Then, click on **Log Analytics**. This takes you to a query editor but it is not T-SQL. This view allows you to query logs using Kusto query language or KQL, which is meant to be easy to use and understand by SQL professionals. For the KQL documentation, [refer here](https://docs.microsoft.com/en-us/azure/kusto/query/).  
 
-The default query is querying the category `SQLSecurityAuditEvents`, so while you might use this category now to view security related incidents, this tool can also be used for querying other Azure logs and categories in [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview).  
+The default query is querying the category `SQLSecurityAuditEvents`, so while you might use this category now to view security related incidents, this tool can also be used for querying other Azure logs and categories in [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview). For this step, you can look for the statements where Bob tried to access sensitive information, and expand the details to get the same information that you saw in SSMS.    
 
 ![](../graphics/laview.png)  
 
@@ -672,7 +866,7 @@ You can use this drill down to find out:
 1. Which principals are accessing sensitive data
 1. Which IPs are accessing sensitive data  
 
-Review what's available here, and how you can audit usage with this tool.  
+Review what's available here, and how you can audit usage with this tool. You can even click into each of these and see the related logs in Log Analytics.    
 
 When you're done, select the **X** in the top right corner of the **Azure SQL - Access to Sensitive Data** tab.  
 
