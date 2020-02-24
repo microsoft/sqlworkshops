@@ -349,7 +349,7 @@ This script will use 10 concurrent users running the workload query 2500 times.
 
 From a powershell command prompt, change to the directory for this module activity: 
 
-[vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\[vmusername] where you have cloned the GitHub repo.
+[vmusername] is the name of the user in your Windows Virtual Machine. Substitute in the path for c:\users\\[vmusername] where you have cloned the GitHub repo.
 
 <pre>
 cd c:\users\[vmusername]\sqlworkshops\AzureSQLWorkshop\azuresqlworkshop\04-Performance\monitor_and_scale
@@ -423,7 +423,7 @@ For a SQL Server on-premises environment you would typically use a tool specific
 <pre>[datetime] [ostress PID] Total IO waits: 0, Total IO wait time: 0 (ms)
 [datetime] [ostress PID] OSTRESS exiting normally, elapsed time: 00:01:22.637</pre>
 
-Your duration time may vary but this typically takes at least 1-2 minutes.
+Your duration time may vary but this typically takes at least 1-3 minutes. Make sure to let this run to completion. When the workload is done your will be put back at command prompt.
 
 **Step 3: Use Query Store to do further performance analysis**
 
@@ -634,7 +634,7 @@ This statement comes back immediately but the scaling of the compute resources t
 
 Another way to monitor the progress of a change for the service object for Azure SQL Database is to use the DMV **sys.dm_operation_status**. This DMV exposes a history of changes to the database with ALTER DATABASE to the service objective and will show active progress of the change. 
 
-Run this query to see the output of this DMV at any point in time:
+Run this query to see the output of this DMV at any point in time (You must be in the context of master):
 
 ```sql
 SELECT * FROM sys.dm_operation_status;
@@ -710,7 +710,7 @@ You will see there are more queries with a status of RUNNING (less RUNNABLE alth
 
 - Observe the new workload duration.
 
-The workload duration from **sqlworkload.cmd** should now be much less and somewhere ~20 seconds.
+The workload duration from **sqlworkload.cmd** should now be much less and somewhere ~30 seconds to 1 minute.
 
 - Observe Query Store reports
 
