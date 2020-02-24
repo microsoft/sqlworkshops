@@ -1,1 +1,0 @@
-ostress.exe -Sbobazuresqlserver.database.windows.net -Q"SELECT COUNT(*) FROM SalesLT.Customer" -Uthewandog -dAdventureWorks0406 -P$cprsqlserver2019 -n1 -r10000
