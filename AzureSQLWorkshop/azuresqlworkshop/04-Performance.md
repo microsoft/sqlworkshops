@@ -8,15 +8,13 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>Overview</h2>
 
-> [!IMPORTANT]
-> You must complete the [prerequisites](../azuresqlworkshop/00-Prerequisites.md) before completing activities in this module. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.
+> **IMPORTANT:** You must complete the [prerequisites](../azuresqlworkshop/00-Prerequisites.md) before completing activities in this module. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.
 
 You’ve been responsible for getting your SQL fast, keeping it fast, and making it fast again when something is wrong. In this module, we’ll show you how to leverage your existing performance skills, processes, and tools and apply them to Azure SQL, including taking advantage of the intelligence in Azure to keep your database tuned.
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
-> [!NOTE]
->This module does not configure specific performance topics for **SQL Server in Azure Virtual Machine**. SQL Server in Azure Virtual Machine has all the capabilities of SQL Server you have deployed on-prem. There are some unique aspects to configuring performance for SQL Server in Azure Virtual Machine include Virtual Machine sizing and storage. These topics are covered in Module 1 of this workshop.
+> **NOTE:** This module does not configure specific performance topics for **SQL Server in Azure Virtual Machine**. SQL Server in Azure Virtual Machine has all the capabilities of SQL Server you have deployed on-prem. There are some unique aspects to configuring performance for SQL Server in Azure Virtual Machine include Virtual Machine sizing and storage. These topics are covered in Module 1 of this workshop.
 
 In this module, you'll cover these topics:
 
@@ -307,7 +305,7 @@ This DMV will track overall resource usage of your workload against Azure SQL Da
 
 In addition, you can configure Extended Events sessions for Azure SQL Database and Azure SQL Database Managed Instance. You can read more about using Extended Events in Azure SQL Database in our [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr). Extended Events in Azure SQL Database Managed Instance will be very much like SQL Server which you can also read about in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15).
 
->**NOTE** Extended Events file targets for Managed Instance will also use Azure Blob Storage similar to Azure SQL Database. Azure Managed Instance will allow more events, targets, and actions than Azure SQL Database similar to SQL Server.
+>**NOTE:** Extended Events file targets for Managed Instance will also use Azure Blob Storage similar to Azure SQL Database. Azure Managed Instance will allow more events, targets, and actions than Azure SQL Database similar to SQL Server.
 
 This activity will not walk through the process of setting up Extended Events but as a *bonus activity* users can setup Extended Events and trace any activities with this module.
 
@@ -347,7 +345,7 @@ GO
 
 This script will use 10 concurrent users running the workload query 2500 times.
 
->**NOTE:** If you are not seeing CPU usage behavior with this workload for your environment you can adjust the **-n parameter** for number of users and **-r parameter** for iterations.
+>**TIP:** If you are not seeing CPU usage behavior with this workload for your environment you can adjust the **-n parameter** for number of users and **-r parameter** for iterations.
 
 From a powershell command prompt, change to the directory for this module activity: 
 
@@ -594,7 +592,7 @@ Instead of using the portal, I'll show you a different method to scale your work
 
 There are other methods to change the Pricing tier and one of them is with the T-SQL statement ALTER DATABASE.
 
->**NOTE**: For this demo you must first flush the query store using the following script **flushhquerystore.sql** or T-SQL statement:
+>**IMPORTANT:** For this demo you must first flush the query store using the following script **flushhquerystore.sql** or T-SQL statement:
 
 ```sql
 EXEC sp_query_store_flush_db;
@@ -732,7 +730,7 @@ Look at the Overview blade again for the Compute Utilization. Notice the signifi
 
 <img src="../graphics/Azure_Portal_Compute_Query_Comparison.png" alt="Azure_Portal_Compute_Query_Comparison"/>
 
->**NOTE:** If you continue to increase vCores for this database you can improve performance up to a threshold where all queries have plenty of CPU resources. This does not mean you must match the number of vCores to the number of concurrent users from your workload. In addition, you can change the Pricing Tier to use **Serverless** *Compute Tier* instead of **Provisioned** to achieve a more "auto-scaled" approach to a workload. For example, for this workload if you chose a min vCore value of 2 and max VCore value of 8, this workload would immediately scale to 8vCores.
+>**TIP:** If you continue to increase vCores for this database you can improve performance up to a threshold where all queries have plenty of CPU resources. This does not mean you must match the number of vCores to the number of concurrent users from your workload. In addition, you can change the Pricing Tier to use **Serverless** *Compute Tier* instead of **Provisioned** to achieve a more "auto-scaled" approach to a workload. For example, for this workload if you chose a min vCore value of 2 and max VCore value of 8, this workload would immediately scale to 8vCores.
 
 If you used Azure Log Analytics, you would see performance differences like the following (image has been annotated)
 
@@ -869,7 +867,7 @@ The workload runs so fast it may be difficult to observe diagnostic data from qu
 
 The concept of "batching" can help most applications including Azure. Read more about batching in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
->**NOTE:** Very large transactions can be affected by resource governance on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column.
+>**TIP:** Very large transactions can be affected by resource governance on Azure and the symptoms will be LOG_RATE_GOVERNOR. In this example, the char(500) not null column pads spaces and causes large tlog records. Performance can even be more optimized by making that column a variable length column.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -920,7 +918,7 @@ Automatic tuning can analyze a query performance workload against a database ove
 
 This activity will show you the steps and results of Automatic Tuning for Azure SQL Database recommendations for indexes.
 
->**NOTE:** This Activity assumes you have completed all the steps in Activity 3 in this Module. This activity takes a long period of time to run to observe performance recommendations per the design of Azure SQL Database recommendations. Instructor led labs typically do NOT go through this activity. If you do not go through this activity you can read through the results to understand how performance tuning recommendations work.
+>**IMPORTANT:** This Activity assumes you have completed all the steps in Activity 3 in this Module. This activity takes a long period of time to run to observe performance recommendations per the design of Azure SQL Database recommendations. Instructor led labs typically do NOT go through this activity. If you do not go through this activity you can read through the results to understand how performance tuning recommendations work.
 
 All scripts for this activity can be found in the **azuresqlworkshop\04-Performance\tuning_recommendations** folder.
 
@@ -1072,12 +1070,12 @@ Finally you learned the unique capabilities of Intelligent Performance in Azure 
 Keep in mind the following key points about Azure SQL Performance:
 
 - Fixed capacities to choose from for CPU, memory, and I/O.
-- Tools like DMVs and Extended Events like SQL Server.
+- Tools exist like DMVs and Extended Events like SQL Server.
 - Query Store on by default and powers query tuning.
-- New Azure functionality to replace existing like Azure Metrics.
-- DMVs new and designed for Azure.
-- New wait types specific to Azure.
-- Resource governance specific to Azure.
+- New Azure functionality exists to replace existing functionality like Azure Metrics.
+- DMVs exist that are new and designed for Azure.
+- New wait types exist specific to Azure.
+- Resource governance is specific to Azure.
 - Scale up and down without need to migrate.
 - Intelligent Performance to get faster with no code changes.
 
