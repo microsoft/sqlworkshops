@@ -8,13 +8,15 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> <h2>Overview</h2>
 
+> [!IMPORTANT]
 > You must complete the [prerequisites](../azuresqlworkshop/00-Prerequisites.md) before completing activities in this module. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.
 
 You’ve been responsible for getting your SQL fast, keeping it fast, and making it fast again when something is wrong. In this module, we’ll show you how to leverage your existing performance skills, processes, and tools and apply them to Azure SQL, including taking advantage of the intelligence in Azure to keep your database tuned.
 
 In each module you'll get more references, which you should follow up on to learn more. Also watch for links within the text - click on each one to explore that topic.
 
->**NOTE**: This module does not configure specific performance topics for **SQL Server in Azure Virtual Machine**. SQL Server in Azure Virtual Machine has all the capabilities of SQL Server you have deployed on-prem. There are some unique aspects to configuring performance for SQL Server in Azure Virtual Machine include Virtual Machine sizing and storage. These topics are covered in Module 1 of this workshop.
+> [!NOTE]
+>This module does not configure specific performance topics for **SQL Server in Azure Virtual Machine**. SQL Server in Azure Virtual Machine has all the capabilities of SQL Server you have deployed on-prem. There are some unique aspects to configuring performance for SQL Server in Azure Virtual Machine include Virtual Machine sizing and storage. These topics are covered in Module 1 of this workshop.
 
 In this module, you'll cover these topics:
 
@@ -34,29 +36,90 @@ In this module, you'll cover these topics:
 
 In this section you will learn the performance capabilities of Azure SQL.
 
-- Memory, CPU, I/O Performance capacities
-- Indexes
-- Columnstore Indexes
-- In-Memory OLTP
-- Partitions
-- Resource Governance
-- Intelligent Performance
+### Memory, CPU, I/O capacities
 
+**Azure SQL Database**
+
+Up to 128 vCores and 4TB Memory and 4TB Database (data).
+
+Hyperscale supports 100TB databases.
+
+**Azure SQL Database Managed Instance**
+
+Up to 80 vCores, 400GB Memory, and 8TB Database (data)
+
+The # of vCores and pricing tier also affects other resource capacities.
+
+Here are resources for you to review these capacities:
+
+[Azure SQL Database Resource Limits](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases)
+
+[Azure SQL Database Managed Instance Resource Limits](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits)
+
+### Indexes
+
+- All index types are supported across Azure SQL.
+- Online and resumable indexes fully supported
+- Columnstore Indexes available in almost all tiers
+
+### In-Memory OLTP
+
+Memory optimized tables are only available in Business Critical Tiers. The Memory Optimized FILEGROUP is pre-created in Azure SQL Database and Managed Instance when a database is created. The amount of memory for memory optimized tables is a % of the memory limit which is vCore dependent.
+
+### Partitions
+
+Partitions are supported for Azure SQL Database and Managed Instance. However, partitions can only use filegroups with Managed Instance.
+
+### Intelligent Performance
+
+Intelligent performance covers capabilities in Azure SQL that include Intelligent Query Processing, Automatic Plan Correction, and Automatic Tuning. Section 4.5 of this module covers all the details of these capabilities.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="4.2">4.2  Configuring and Maintaining for Performance</h2></a>
 
-In this section you will learn how to perform common configuration and maintenance tasks for performance.
+In this section you will learn how to perform common configuration and maintenance tasks for performance for Azure SQL:
 
-- Server Configuration
-    - Configuring Tempdb    
-- Database Configuration
-    - Configuring Files and File Groups
-    - Configuring MAXDOP
-- Maintaining Indexes
-- Maintaining Statistics
+### Configuring Tempdb
 
+- Always kept on local SSD drives so I/O perf shouldn’t be an issue.
+- For General Purpose tiers, we scale # files with vCores (2vcores=4 files,…) max of 16.
+- You get 12 files with Managed Instance independent of vCores but you can increase # files with T-SQL
+- MIXED_PAGE_ALLOCATION IS OFF and AUTOGROW_ALL_FILES is ON
+- Tempdb Metadata Optimization not supported
+
+### Database Configuration
+
+Database configuration is very much like SQL Server with some differences for Azure SQL. Consider these common topics for database configuration for performance.
+
+- Only full recovery supported so minimal logging for bulk operations not possible
+
+**Configuring Files and File Groups**
+
+- Azure SQL Database does not support any modification or creation of files or filegroups.
+- Managed Instance supports adding files and sizes but not physical placement.
+
+    The number of files and file size can be used to tune I/O performance. Read more [here](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525). 
+    User defined FILEGROUP not supported but you can’t physically place files anyway.
+
+**Configuring MAXDOP**
+
+Degree of parallelism works exactly the same in the engine for Azure SQL as SQL Server. You can configure max degree of parallelism (MAXDOP) similar to SQL Server:
+
+- ALTER DATABASE SCOPED CONFIGURATION to configure MAXDOP is supported for Azure SQL
+- sp_configure for 'max degree of parallelism' is supported for Managed Instance.
+- MAXDOP Query hints fully supported
+- Configuring MAXDOP with Resource Governor is supported only for Managed Instance
+
+### Maintaining Indexes
+
+Index creation and maintenance for Azure SQL is exactly the same as SQL Server.
+
+For example, rebuilding and reorganization of indexes fully supported as with SQL Server.
+
+### Maintaining Statistics
+
+Statistics were the same for Azure SQL as with SQL Server. Automatic statistics options for databases are available just like SQL Server.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -64,16 +127,144 @@ In this section you will learn how to perform common configuration and maintenan
 
 In this section you will learn how to monitor the performance of a SQL workload using tools and techniques both familiar to the SQL Server professional along with differences with Azure SQL.
 
-- Monitoring and Troubleshooting Performance Tools
-    - Azure Monitor Metrics and Logs
-    - Dynamic Management Views
-    - Query Store
-    - Extended Events
-- Monitoring Resource Usage
-- Monitoring Query Performance
-- Monitoring I/O and Memory
-- Tracing Query Performance
-- Debugging Query Plans
+An activity is included in this section to show you how to use familiar and new tools to monitor performance with azure SQL.
+
+### Monitoring and Troubleshooting Performance Tools
+
+**Azure Monitor Metrics and Logs**
+
+- Metrics and events specific to Azure SQL
+- Metrics and events for Azure resources
+
+**Dynamic Management Views (DMV)**
+
+- For Azure SQL Database many of these need to run in the context of the user database.
+- Some DMVs unique to Azure SQL.
+- Number of DMVs available different for SQL Server, Azure SQL Database, and Managed Instance.
+
+**Query Store**
+
+- Performance Overview and Query Performance Insights in portal uses Query Store
+- Catalog views and SSMS Reports work just like SQL Server
+
+**Extended Events**
+
+- Azure SQL DB supports file, ring_buffer, and counter targets. File targets stored in Azure Blob Storage
+- Azure MI supports all targets of SQL Server
+- Azure SQL DB supports a subset of SQL Server events plus Azure specific events
+- Azure SQL MI supports all SQL Server events plus other Azure specific events
+
+### Using Monitoring and Troubleshooting Performance Tools
+
+**Monitoring Resource Usage**
+
+- Azure Metrics and Logging
+- sys.dm_db_resource_stats
+- sys.dm_os_performance_counters
+
+**Monitoring Query Performance**
+
+- sys.dm_exec_requests and sys.dm_exec_query_stats
+- Query Performance Insights in Portal for Azure DB.
+- Query Store
+
+**Monitoring I/O and Memory**
+
+- sys.dm_io_virtual_file_stats
+- sys.dm_os_memory_clerks (differences between SQL, DB, and MI)
+- sys.dm_os_performance_counters
+- sys.dm_db_resource_stats
+
+**Monitoring Waits**
+
+- sys.dm_os_wait_stats
+- sys.dm_db_wait_stats for Azure SQL Database and Managed Instance. Only shows stats > 0 specific to a database.
+
+**Tracing Query Performance**
+
+- Extended Events.
+- SET STATISTIC TIME supported.
+
+**Debugging Query Plans**
+
+- Lightweight Query Profiling on by default (Activity Monitor and trace flags not supported).
+- SET SHOWPLAN and SSMS query plans all available.
+
+### Common Performance Scenarios
+
+**Running vs Waiting**
+
+Use Running vs Waiting "methodology" as you would SQL Server. Read more about this technique in our [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems).
+
+**Blocking and Deadlocking**
+
+Resolve blocking and deadlocking just as you would SQL Server. The system_health Extended Events session that includes deadlocks is available with Azure SQL Managed Instance.
+
+**High CPU Utilization**
+
+High CPU typically requires query tuning or more CPU resources.
+
+**PAGEIOLATCH and WRITELOG waits**
+
+- PAGEIOLATCH and WRITELOG high wait times may require change to Pricing Tier to get better IOPs and/or latency.
+- For Managed Instance, # files and/or file size can help with IOPs and I/O throttling
+- Business Critical is always the best for I/O sensitive applications
+- You may not have enough memory so move up tier or cores to get more
+- Applications may not be tuned such as singleton transactions or scans
+
+**PAGELATCH waits**
+
+PAGELATCH waits are just like SQL Server.
+
+**CHECKPOINT and I/O**
+
+- Databases use indirect checkpoints
+
+**Buffer Pool Limits**
+
+- Target is set to around “limit” in the docs – 3Gb.
+- You cannot control max or min server memory
+- Managed Instance supports RG
+
+**Memory Grants**
+
+- Over and underestimate can still be an issue
+- Resource Governor control exists for Managed Instance.
+
+**Plan Cache Issues**
+
+- Memory brokers still exist as with SQL Server.
+- FORCED_PARAMETERIZATION supported for Database and Managed Instance.
+- sp_configure option 'optimized for ad hoc workloads' supported in Managed Instance but not in Azure SQL Database.
+
+### Azure Specific Performance Scenarios
+
+**DTU Governance**
+
+- Throttling
+- IO_QUEUE_LIMIT wait
+
+**Transaction Log Governance**
+
+- LOG_RATE_GOVERNOR wait
+- INSTANCE_LOG_GOVERNOR wait
+
+**Worker Limits**
+
+- Error when concurrent worker limit reached for Azure SQL Database.
+- Managed Instance = SQL Server 'max worker threads' and THREADPOOL waits.
+
+**Managed Instance HADR Waits**
+
+HADR_DATABASE_FLOW_CONTROL and HADR_THROTTLE_LOG_RATE_SEND_RECV wait increase possible to ensure HA SLAs.
+
+**Be Aware Of...**
+
+Business Critical have AG replicas on by default so you may see unexpected HADR_SYNC_COMMIT waits.
+
+To further your knowledge of monitoring and troubleshooting performance with Azure SQL, complete the following Activity.
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: How to monitor performance in Azure SQL Database</b></p>
 
@@ -335,19 +526,45 @@ Azure Monitor Logs have a delay when first configuring log diagnostics for a dat
 
 In this section you will learn how to improve the performance of a SQL workload in Azure SQL using your knowledge of SQL Server and gained knowledge from Module 4.3.
 
-- Scaling CPU Capacity
-- Application Performance Best Practices
-- Increase IOPS
-- Reducing IO Latency
-- Increasing Memory
-- Increasing Workers
-- Reducing Log Governance
-- Improving Application Latency
+Use the following documentation a supplemental guide for this section: [Improving Database Performance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources)
 
-References articles include 
+One of the most important points to consider as you think about improving performance in Azure SQL is that in many cases application and query performing tuning is the best method. This includes:
 
-[Troubleshooting Performance on Azure SQL Database.](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#troubleshoot-performance-problems)<br>
-[Improving Database Performance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-monitor-tune-overview#improve-database-performance-with-more-resources)
+- Well designed Indexes
+- Using Batching
+- Using Stored Procedures
+- Using Parameterization
+- Correctly processing result sets
+
+With that mind, consider these techniques to improve performance using Azure SQL:
+
+**Scaling CPU Capacity**
+
+- Portal, T-SQL, Powershell, or REST
+- Downtime (can be very fast) with no migration required.
+- Hyperscale can scale very fast
+
+**Increasing IOPS and reducing IO latency**
+
+- Do you know to measure IOPS?.
+- IOPs restrictions may show the form of I/O latency.
+- For Azure Database, consider Business Critical or Hyperscale.
+- For Managed Instance, either move to Business Critical or change # files or file size.
+
+**Increasing Memory or Workers**
+
+- For Azure Database, scale up vCores with higher limits for more memory or workers.
+- For Managed Instance, scale up vCores for more memory
+- Increase Max worker threads for Managed Instance.
+- Be careful. Running out of workers may be an application problem like heavy blocking.
+
+**Improving Application Latency**
+
+Use redirect connections instead of proxy
+
+Go through the next two activities to see example of how to improve performance with Azure SQL:
+
+<p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Scaling your workload performance in Azure SQL Database</b></p>
 
@@ -851,6 +1068,18 @@ In this module you did learned about the performance capabilities of Azure SQL c
 Monitoring and troubleshooting are important so in this module you learned the various methods and tools to monitor and troubleshoot performance with hands-on activities for a CPU scaling scenario. You then learned how to improving CPU scaling for your workload without any migration required for your database. Improving application performance does not always require a new scale in Azure so you learned a common performance bottleneck scenario that you improved by tuning the query workload.
 
 Finally you learned the unique capabilities of Intelligent Performance in Azure SQL including a bonus hands-on activity to see how Automatic Tuning for indexes work in Azure SQL.
+
+Keep in mind the following key points about Azure SQL Performance:
+
+- Fixed capacities to choose from for CPU, memory, and I/O.
+- Tools like DMVs and Extended Events like SQL Server.
+- Query Store on by default and powers query tuning.
+- New Azure functionality to replace existing like Azure Metrics.
+- DMVs new and designed for Azure.
+- New wait types specific to Azure.
+- Resource governance specific to Azure.
+- Scale up and down without need to migrate.
+- Intelligent Performance to get faster with no code changes.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
