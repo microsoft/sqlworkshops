@@ -176,10 +176,12 @@ At the bottom, select **+ Add existing virtual network**. For the options, input
 * Subscription: *Select the subscription you're using for this workshop*  
 * Virtual network: **azuresqlworkshop`ID`-vnet** (replacing `ID` with your ID for the workshop and other resources)  
 * Subnet name / Address prefix : *Default is fine*  
+* Note that the `Microsoft.Sql` endpoint has not yet been enabled. Once this service endpoint is enabled, all access to your Azure SQL Database will come through private IP addresses. To learn more about service endpoints, see the [documentation](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview).
 
-![](../graphics/vmvnet.png)  
+![](../graphics/vmvnet2.png)  
 
-Select **OK**.  
+Select **Enable**, then select **OK**.    
+> Note: The warning says this takes up to 15 minutes, but in testing for the workshop, it usually takes <1 minute.
 
 Next, remove your Client IP address by selecting the **...** next to the End IP and select **Delete**.  
 
