@@ -40,7 +40,7 @@ One of the benefits of Azure SQL is that Azure can take care of all of this for 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-In this activity, you'll use the notebook called **pitr.ipynb** which is under `azuresqlworkshop\05-Availability\pitr\pitr.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
+For this activity, you'll use the notebook called **pitr.ipynb** which is under `azuresqlworkshop\05-Availability\pitr\pitr.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -120,7 +120,7 @@ First, set the `id` variable, replacing `0406` with your ID you've been using fo
 id='0406'
 ```
 
-Now, you can use the following command to update the service tier.  
+Now, you can use the following command to update the service tier to `BusinessCritical`.  
 ```cli
 az sql db update --resource-group azuresqlworkshop$id --server aw-server$id --name AdventureWorks$id --edition BusinessCritical --read-scale Enabled --zone-redundant false
 ```
@@ -160,7 +160,7 @@ ApplicationIntent=ReadOnly;
 ```  
 >Note: In using SSMS, you have to specify the server and database to which you want to connect read-only, because there may be multiple databases in a server with different capabilities as far as readable secondaries goes.
 
-To test, try the following query on your database, and observe the results. Is it what you would expect?  
+To test, try the following query on your database in a **new session**, and observe the results. Is it what you would expect?  
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
