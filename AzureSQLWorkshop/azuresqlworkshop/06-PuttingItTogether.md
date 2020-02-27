@@ -10,9 +10,9 @@
 
 In this workshop, you have covered deploying and configuring a secure, performant, and highly available solution with Azure SQL. The end of this Module contains several helpful references you can use in these exercises and in production.
 
-In the final activity, we’ll validate your Azure SQL expertise with a challenging problem-solution exercise. We’ll then broaden your horizons to the many other opportunities and resources for personal and corporate growth that Azure offers.  
+In the final activity, we’ll validate your Azure SQL expertise with a challenging problem-solution exercise.    
 
-This module can be used stand-alone, and does not require any prerequisites other than a laptop and a place to take notes (OneNote, Paint, PowerPoint, Visio, etc.). You may also just use a whiteboard or paper for your design. 
+This module can be used stand-alone and does not require any prerequisites other than a laptop and a place to take notes (OneNote, Paint, PowerPoint, Visio, etc.). You may also just use a whiteboard or paper for your design. 
 
 There are many elements in a single solution, and in this module you'll learn how to take the business scenario and determine the best resources and processes to use to satisfy the requirements while considering the constraints within the scenario. 
 
@@ -21,29 +21,29 @@ In production, there are normally 6 phases to create  a solution. These can be d
  - 01 **Discovery**: The original statement of the problem from the customer 
  - 02 **Envisioning**: A "blue-sky" description of what success in the project would look like. Often phrased as *"I can..."* statements
  - 03 **Architecture Design Session**: An initial layout of the technology options and choices for a preliminary solution
- - 04 **Proof-Of-Concept** (POC): After the optimal solution technologies and processes are selected, a POC is set up with a small representative example of what a solution might look like, as much as possible. If available, a currently-running solution in a prallel example can be used
+ - 04 **Proof-Of-Concept** (POC): After the optimal solution technologies and processes are selected, a POC is set up with a small representative example of what a solution might look like, as much as possible. If available, a currently-running solution in a parallel example can be used
  - 05 **Implementation**: Implementing a phased-in rollout of the completed solution based on findings from the previous phases
  - 06 **Handoff**: A post-mortem on the project with a discussion of future enhancements
  
 Throughout this module, if you want to leverage various templates, icons, stencils and other assets to assist you with each phase and also use these with your exercises, you can find them [here](https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources). These assets can also be used in your production workloads.  
 
-For this module, you'll focus on the <i>Discovery</i> and the <i>Architecture Design Session</i> phases only. If you wish to develop your solution further after the course, you can use the assets above to complete all phases.
+For this module, you'll focus on a portion of the <i>Architecture Design Session</i> phase only. If you wish to develop your solution further after the course, you can use the assets above to complete all phases.
 
 This module is slightly different than the other modules in that you will work in groups to work through a problem, and then present your findings. If you are completing this workshop in a self-study fashion, you can still work through the problems as a learning exercise.  
 
 This module will be broken up into several sections:  
-[6.1](#6.1): Select a scenario  
-[6.2](#6.2): Discovery    
-[6.3](#6.3): Architecture Design  
-
-TODO Note: Potentially remove discovery and just have scenario and AD
-
+[6.1](#6.1): Select a scenario    
+[6.2](#6.2): Architecture Design  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6.1">6.1 Select a scenario</h2></a>
 
-In this section you will review two business scenarios, and pick one to focus on for the rest of this module. The company descriptions, project goals, and constraints have already been laid out for you. 
+In this section you will review two business scenarios and pick one to focus on for the rest of this module. The company descriptions, project goals, and constraints have already been laid out for you.  
+
+Once you've picked a scenario, the first step is to fully understand the problem the company needs to solve, and any requirements and constraints they have on those goals. This is often in the form of a "Problem Statement", which is a formal set of paragraphs clearly defining the circumstances, present condition, and desired outcomes for a solution. At this point you want to avoid exploring how to solve the problem and focus on what you want to solve. 
+
+After everyone agrees on the problem statement, pull out as many requirements (*goals*) for the project as you can find, and then lay in any constraints the solution has. At this point, it's acceptable to have unrealistic constraints - later you can pull those back after showing a cost/benefit ratio on each requirement and constraint.  
 
 **Scenario 1: Global CDN system**   
 
@@ -73,7 +73,7 @@ Additionally, mission critical cloud applications, especially those mentioned ab
 
 
 *Scenario guidance*:
-* Start by selecting the Azure SQL deployment option, service tier and configuration that creates the highest availablity.  
+* Start by selecting the Azure SQL deployment option, service tier and configuration that creates the highest availability.  
 * Consider geo-redundancy.  
 * What role does co-location play in your solution?  
 * Determine a security strategy for meeting the data sensitivity requirements.
@@ -85,34 +85,14 @@ Additionally, mission critical cloud applications, especially those mentioned ab
 
 1. Read each of the scenarios.   
 1. Among your group, select one scenario to focus on.    
-
-
-<p style="border-bottom: 1px solid lightgrey;"></p>
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6.2">6.2 Discovery</h2></a>
-
-The first step in any project is to fully understand the problem the company needs to solve, and any requirements and constraints they have on those goals. This is often in the form of a "Problem Statement", which is a formal set of paragraphs clearly defining the circumstances, present condition, and desired outcomes for a solution. At this point you want to avoid exploring how to solve the problem, and focus on what you want to solve. 
-
-Begin with as complete an examination of the company and organization as you can. Gather information from as many sources as possible, and simplify the descriptions to have specific measurements and depictions of the environment.
-
-From there, lay out the problem, and then review that with all stakeholders. 
-
-After everyone agrees on the problem statement, pull out as many requirements (*goals*) for the project as you can find, and then lay in any constraints the solution has. At this point, it's acceptable to have unrealistic constraints - later you can pull those back after showing a cost/benefit ratio on each requirement and constraint.  
-
-
-
-<p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Tasks</b></p>
-
-In this section, complete the following tasks for the business scenario you selected in the previous section:  
-
 1. Come up with a problem statement. Usually, these are represented by a one-pager, but for this exercise, it can be informal and brief (1-2 sentences is fine).   
-1. Pull out as many requirements (using the *goals* may be a good start) for the project as you can find.      
+1. Pull out as many requirements for the project as you can find.      
 1. Supplement your problem statement with any additional info that is required. Are there sub-goals that you want to add? Any other constraints you can think of?  
 > Feel free to adapt the scenario to have more information where you want clarity - you can make assumptions about any part of the scenario.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6.3">6.3 Architecture Design</h2></a>
+<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6.2">6.2 Architecture Design</h2></a>
 
 With a firm understanding of what the customer needs, you can now consider the technologies and processes at your disposal for the solution. Each technology will have benefits and considerations, so you first want to identify all your options that will address each of the project's goals.  
 
@@ -123,9 +103,10 @@ After you have a preliminary solution in mind, the next step is often to present
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Tasks</b></p>
 
-1. List out the possible technologies and processes that could potentially be used in a solution.
+1. List out the possible technologies and processes that could potentially be used in a solution.  
+>Hint: For the security challenges, you might consider leveraging the Azure SQL Security Best Practices Playbook that's available in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-best-practice).  
 1. Using a decision matrix or some other decision process, select technologies and processes that will make up your preliminary solution. 
-1. Create a presentation (can use PowerPoint, a flipchart, or a document) that presents your project goals and constraints, as well as the recommended solution.
+1. Create a presentation (can use PowerPoint, a flipchart, or a document) that presents your project goals and constraints, as well as the recommended solution.   
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
