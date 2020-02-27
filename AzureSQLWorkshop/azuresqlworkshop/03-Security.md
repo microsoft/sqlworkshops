@@ -239,7 +239,7 @@ nslookup aw-server<ID>.database.windows.net
 This command allows you to understand details related to the DNS infrastructure. Your results should be similar to below:  
 ```cmd
 Server: Unknown
-Address: 168.22.222.22
+Address: 168.63.129.16
 
 Non-authoritative answer:
 Name:   cr2.eastus1-a.control.database.windows.net
@@ -251,6 +251,8 @@ The important things to look at are under the Non-authoritative answer:
 * **Name**: The endpoint starting with `cr2` is part of the public DNS hierarchy. Without getting too much into the hierarchy, `cr2` is the Control Ring 2 and then there are multiple data "slices" below it.  
 * **Address**: The IP address returned here should match the public IP address of your Azure VM. So even though SSMS' final hop might be through your VM's private IP address, the public IP address of your VM is still being used to connect in some capacity.  
 * **Aliases**: These are just various point within the DNS hierarchy, in this case the specific data "slice" and the endpoint you connect to.  
+
+> Fun fact: the **Address 168.63.129.16** is a virtual public IP address used to facilitate a communication channel to Azure platform resources. It's the case for all regions and all national clouds, and it will not change. You can read more about it in the [documentation](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
 Leave this command prompt open, so you can compare to Private Link in a later step.  
 
@@ -330,7 +332,7 @@ nslookup aw-server<ID>.database.windows.net
 As you saw in Step 0, this command allows you to understand details related to the DNS infrastructure. However, your results will be slightly different now.Your results with Private Link should be similar to below:  
 ```cmd
 Server: Unknown
-Address: 168.22.222.22
+Address: 168.63.129.16
 
 Non-authoritative answer:
 Name:   aw-server<ID>.privatelink.database.windows.net
