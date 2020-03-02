@@ -283,9 +283,9 @@ Consideration needs to be made for upgrading a Kubernetes cluster from one versi
 
   Create a new cluster, deploy a big data cluster to it and then restore a backup of the data from the original cluster. This approach requires more hardware than the in-situ upgrade method. If the upgrade spans multiple versions of Kubernetes, for example the upgrade is from version 1.15 to 1.17, this method allows a 1.17 cluster to be created from scratch cleanly and then the data from 1.15 cluster restored onto the new 1.17 cluster.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Create A Single Node Sandbox Environment</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: An Introduction To The Workshop Sandbox Environment</b></p>
 
-In the previous section we looked at the workshop sandbox environments from an infrastructure perpsective, in this activity we will deploy a single node Kubernetes cluster (and SQL Server 2019 big data cluster) on the workshop virtual machines. This activity will result in the following components being installed on your Ubuntu virtual machine:
+In the previous section we looked at the workshop sandbox environment from an infrastructure perpsective, in this activity we will take a first look at the Kubernetes cluster that has been deployed to this environment. In terms of Kubernetes and its associated tools, the sandbox environment consists of:
 
 - A single node Kubernetes cluster
 - kubectl
@@ -299,27 +299,29 @@ In the previous section we looked at the workshop sandbox environments from an i
 
 1. Log onto the your workshop virtual machine using a ssh client, your workshop leaders will provide you with an ip address, username and password. macOS users may use the ssh client already built into their operating system, windows users can use either [putty](https://www.putty.org/) or a DOS command shell.
 
-2. Download the deployment script using this command:
+To deploy the single node Kubernetes cluster on your own virtual machine outside of the workshop, perform the following steps:
+
+- Download the deployment script using this command:
 ```
 curl --output setup-bdc.sh https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/kubeadm/ubuntu-single-node-vm/setup-bdc.sh
 ```
-3. Set the permissions on this file such that it can be executed:
+- Set the permissions on this file such that it can be executed:
 ```
 chmod +x setup-bdc.sh
 ```
-4. Execute the cluster creation script as follows:
+- Execute the cluster creation script as follows:
 ```
 sudo ./setup-bdc.sh
 ```
-5. Now that your single node cluster is up and running, list some of the key processes that your sandbox Kubernetes cluster consists of:
+2. List the key processes that your sandbox Kubernetes cluster consists of:
 ```
 ps -ef | egrep'(containerd|docker|etcd|kubelet)'
 ```
-6. List the log files for the pods that form your sandbox big data cluster:
+3. List the log files for the pods that form your sandbox big data cluster:
 ```
 ls -l /var/log/pods
 ```
-7. Observe live process stats that include those of the comnponents that make up the sandbox Kubernetes cluster:
+4. Observe live process stats that include those of the comnponents that make up the sandbox Kubernetes cluster:
 ```
 top
 ```
@@ -703,13 +705,9 @@ In this activity we will look at the different storage objects associated with y
 
 Use the kubectl cheat sheet to  familiarise yourself with various kubectl commands in order to carry out the following on the jump server:
 
-1. List the storage classes available to the workshop Kubernetes cluster
+1. List the storage class(es) available to the workshop Kubernetes cluster.
 
-2. List the persistent volume claims present for the workshop SQL Server 2019 big data cluster
-
-3. From the list of persistent volume claims obtained in the previous step, pick a persistent volume claim and inspect it in detail using kubectl describe.
-
-4. List the persistent volumes present for the workshop SQL Server 2019 big data cluster.
+2. Describe the storage class(es) available to the workshop Kubernetes cluster.
  
 ### 3.4.6 Access Modes ###
 
@@ -961,3 +959,120 @@ kubectl api-versions | grep rbac
 - General disaster recovery best practices still apply as per any platform, **always test your backups**.
 
 ## 3.9 Troubleshooting ##
+
+Troubleshooting a SQL Server 2019 big data cluster, and in fact any application that runs on a Kubernetes cluster falls into two broad categories.
+
+### 3.9.1 Kubernetes Cluster Infrastructure Troubleshooting ###
+
+This relates to the actual infrastructure that the big data cluster runs on.
+
+### 3.9.1.1 Persistent Volume Storage ###
+
+Some generic steps to consider when troubleshooting a Kubernetes storage plugin include:
+
+- Check that the ip address endpoint associated with the storage service can be contacted from each node in the cluster, firewall rules might block this, also if VLANs are configured on a storage devices, the ip addresses by which the Kubernetes cluster talks to this device might need to be added to a CIDR white list.
+
+- If the storage plugin uses an API token, check that this is correct.
+
+- Irrespective of the plugin vendor it is likely that each node the cluster uses a daemonset to mount and unmount volumes, therefore check that the pod(s) associated with this are running on each node and are not throwing any errors.
+
+- Check the Linux syslog on each node.
+
+### 3.9.1.2 ImagePullBackOff ###
+
+The term *ImagePullBackOff* is an event a pod experiences when it cannot pull a container image, the causes of which may include:
+
+- The required image not being present in the image registry.
+
+- A node being unable to contact the image registry, the causes of this could include: firewall issues, a node that is not configured correctly to access the internet or general networking issue.
+
+- The file system used on one or more nodes to cache images running out of space.
+
+If a big data cluster is experiencing issues with pulling images, the output from describing a pod will contain an image pull backoff error message.
+
+*IMPORTANT*
+
+Old versions of container images do not get removed when a new version of a big data cluster is deployed to a Kubernetes cluster which has hosted a big data cluster before. It is therefore possible to run out of space on the worker node filesystems that are used to cache SQL Server 2019 big data clusters. Docker images are cached under /var/lib/docker by default. Microsoft's deployment guidance documentation should be consulted in order to determine the exact amount of storage required by the images a big data cluster, as this may vary from release to release.
+To establish the amount of free space free available to local image cache run the following command from within a Linux shell:
+```
+df -k /var
+```
+To remove old images, tagged CU1 for example, the following docker command can be used: 
+```
+docker rmi $(docker images | grep CU1 | tr -s ' ' | cut -d ' ' -f 3)
+```
+
+### 3.9.2 SQL Server 2019 Big Data Cluster Application Troubleshooting ###
+
+This relates to the deployment and running of the actual SQL Server 2019 big data cluster as an application.
+
+### 3.9.2.1 Big Data Cluster Deployment ###
+
+#### 3.9.2.1.1 Observing A Deployment By Monitoring Object Creation ####
+
+A SQL Server 2019 big data cluster is bootstrapped through a controller pod, this in turn creates all the other pods in the cluster. To begin with the big data cluster
+control plane will be created, followed by the data plane.
+
+View the big data cluster pods as they are created using this command:
+```
+kubectl get pods -n mssql-cluster
+```
+The initial state of a pod is *pending*. If a node in a Kubernetes cluster has never participated in a big data cluster deployment, or a new version of a big data cluster is deployed, most of the time that a pod spends in a state of pending will involve images being pulled from Microsoft's registry.
+
+Whilst in a state of pending, the activity a pod is currently performing can be viewed with: 
+```
+kubectl describe pod -n mssql-cluster -o wide
+```
+The *events* section in the output from this command contains information relating to what the pod is currently doing. 
+
+#### 3.9.2.1.2 Observing A Deployment By Tailing The Controller Log ####
+
+The deployment process is orchestrated by a single pod; named control-XXXXX, where XXXXX is a randomly generated five character string. The status of the deployment can be observed from a controller log perspective by performing the following commands:
+
+1. Obtain the name of the controller pod:
+```
+kubectl get po -n <cluster-namespace>
+```
+
+2. Shell into the controller container:
+```
+kubectl exec -it control-znvkt -n mssql-cluster -- /bin/bash
+```
+
+3. Change directory to the controller log directory:
+```
+cd /var/log/controller
+```
+
+4. This directory will contain a sub-directory with a name of the format YYYY-MM-DD, cd into this directory, for example if it is name 2020-02-29, issue:
+```
+cd 2020-02-29
+```
+
+5. Tail the controller log file:
+```
+tail -f controller.log
+```
+
+### 3.9.2.2 General Big Data Cluster Health Troubleshooting ###
+
+Issue:
+```
+kubectl get all -n mssql-cluster
+```
+
+In the output returned by this command, check that:
+
+- All pods are in a state of Running
+
+- The desired and current number of pods for each replicaset should match
+
+- The desired and current number of pods for each statefulset should match
+
+The status of each persistent volume claim assosiated with the big cluster namespace should be bound, verify this by running the following command:
+```
+kubectl get pvc -n mssql-cluster
+```
+
+
+
