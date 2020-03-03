@@ -73,7 +73,7 @@ Next, select **Single database** and click **Create**.
 
 **Step 2 - Database name**  
 
-Select the subscription and resource group you created in the prerequisites (or were provided to use), then enter a database name **AdventureWorksID** where ID is the unique identifier you used in the prerequisites, or the unique ID at the end of the resource group you were provided (e.g. TODO).  
+Select the subscription and resource group you created in the prerequisites (or were provided), then enter a database name **AdventureWorksID** where ID is the unique identifier you used in the prerequisites for your resource group, or the unique ID at the end of the Azure login you were provided (e.g. for `odl_user_160186@....com` the ID you will use for the entirety of the workshop is `160186`).  
 
 **Step 3 - Server**  
 
@@ -351,4 +351,4 @@ In this module and throughout the activities, you learned how to deploy and conf
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
 
-Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/azuresqlworkshop/azuresqlworkshop/03-Security.md" target="_blank"><i> 03 - Security</i></a>.
+Next, Continue to <a href="https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/03-Security.md" target="_blank"><i> 03 - Security</i></a>.

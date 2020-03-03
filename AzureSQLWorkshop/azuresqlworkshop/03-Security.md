@@ -144,7 +144,11 @@ Return to the Azure portal in your Azure VM. In the top bar, select the Azure Cl
 
 If this is your first time using the Azure Cloud Shell, you will be prompted to select a subscription to create a storage account and Microsoft Azure Files share. For this workshop, you can just use any of the storage accounts that are in your resource group already. More information about the Azure Cloud Shell can be found in the [documentation](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).    
 
-Then, you can select Bash or PowerShell. Select **Bash**. You should see a view similar to below.  
+Then, you can select Bash or PowerShell. Select **Bash**.  
+
+You may be prompted to select a storage account. If you are, select **Show advanced settings**, and select an existing storage account in **your** existing resource group for the workshop. For "File share" select **Create new** and call it **fsID** where ID is your unique ID for the workshop. Finally, select **Create**.    
+
+You should now see a view similar to below.  
 
 ![](../graphics/acsbash.png)  
 
@@ -174,7 +178,7 @@ In the Azure portal, navigate to your Azure SQL Database logical server (e.g. `a
 At the bottom, select **+ Add existing virtual network**. For the options, input the following:  
 * Name: **VmVnet**
 * Subscription: *Select the subscription you're using for this workshop*  
-* Virtual network: **azuresqlworkshop`ID`-vnet** (replacing `ID` with your ID for the workshop and other resources)  
+* Virtual network: Select the only virtual network that appears under **your resource group for the workshop**.   
 * Subnet name / Address prefix : *Default is fine*  
 * Note that the `Microsoft.Sql` endpoint has not yet been enabled. Once this service endpoint is enabled, all access to your Azure SQL Database will come through private IP addresses. To learn more about service endpoints, see the [documentation](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview).
 
@@ -199,7 +203,7 @@ If no errors occur, you have successfully configured access to your Azure SQL Da
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>(Bonus) Activity 3</a>: Create and manage Private Link for Azure SQL Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>(Bonus) Activity 3</a>: Create and manage Private Link for Azure SQL Database</b></p>
 
 In this activity, you'll see how to configure the most secure connection with a new feature called Private Link.  
 
@@ -292,7 +296,7 @@ Next, select **Next : Configuration**.
 
 In this step, you will configure your private endpoint to be created in the **same virtual network subnet as your Azure VM** for the workshop. This is the easiest way to ensure that you can connect to it from your virtual machine. There are other ways available (virtual network peering, VNet-to-VNet, VPN from on-premises), but you will not use those in this workshop.  
 
-Select your VM virtual network, it should be similar to **azuresqlworkshop<ID>-vnet** and the subnet should be **default**.  
+Select your VM virtual network, it should be similar to **azuresqlworkshop<ID>-vnet** or **win-vm-vnet** *under your resource group* and the subnet should be **default**.  
 
 In order to connect privately with the endpoint you create, you'll also need a DNS record. This won't be covered in this activity, but you can learn more [here](https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview#dns-configuration). You can just leave the defaults.  
 
@@ -342,7 +346,7 @@ Aliases:    aw-server<ID>.database.windows.net
 ```
 The important things to look at are under the Non-authoritative answer, and let's examine the differences:  
 * **Name**: Note that you're no longer pointing to the public DNS hierarchy, only to the Private Link DNS. This means less information is revealed about your database server.    
-* **Addresses**: For VNet rules, the address returned was the public IP address of your VM, but it should now be various *private* IP addresses within the Private Link hierarchy (one is the private endpoint of your Azure SQL Database).
+* **Addresses**: For VNet rules, the address returned was the public IP address of your VM, but it should now be one or more *private* IP addresses within the Private Link hierarchy (one is the private endpoint of your Azure SQL Database).
 * **Aliases**: Similar to the Name field, you're not seeing anything related to the DNS hierarchy, except that you can still connect to the server name (e.g. `aw-server0406.database.windows.net`).  
 
 One thing you might be wondering, is if you are connecting to the private endpoint, **why are you still using the same server name?** In the backend, when you use solely the Private Link method of connecting (i.e. no firewall or virtual network rules), the information is processed as follows:  
@@ -620,6 +624,8 @@ Your resulting view should be similar to below.
 ![](../graphics/vadashboard.png)  
 
 Every security risk has a risk level (high, medium, or low) and additional information. Select the security check **VA2065** to get a detailed view, similar to below. Review the status and other available information.   
+
+> Note: If **VA2065** does not fail, you can perform a similar exercise below, depending on what failed tests do occur.   
 
 ![](../graphics/va20651.png)  
 ![](../graphics/va20652.png)  

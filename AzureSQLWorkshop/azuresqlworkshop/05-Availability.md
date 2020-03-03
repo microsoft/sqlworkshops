@@ -30,7 +30,7 @@ In this module, you'll cover these topics:
 TODO: Explain how on prem you have to have a plan for DR and a BU/R strategy, but how it's built for you in Azure. Also talk about how it all works, ADR, LTR, etc.
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>Activity 1</a>: Undo errors to a point in time</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>(Bonus) Activity 1</a>: Undo errors to a point in time</b></p>
 
 In all organizations, big or small, accidents can happen. That's why you always have to have a plan for how you will restore to where you need to be. In SQL Server, ideally, you want choose to [restore to a point in time](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model?view=sql-server-ver15), but you can only do that if you are running in full recovery model. Under the bulk-logged recovery model, it's more likely that you'll have to recover the database to the end of the transaction log backup.  
 
