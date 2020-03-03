@@ -8,11 +8,11 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/textbubble.png"> <h2>06 - Putting it all together</h2>
 
-In this workshop, you have covered deploying and configuring a secure, performant, and highly available solution with Azure SQL. The end of this Module contains several helpful references you can use in these exercises and in production.
+In this workshop, you have covered deploying and configuring a secure, performant, and highly available solution with Azure SQL. The end of this module contains several helpful references you can use in these exercises and in production.
 
 In the final activity, we’ll validate your Azure SQL expertise with a challenging problem-solution exercise.    
 
-This module can be used stand-alone and does not require any prerequisites other than a laptop and a place to take notes (OneNote, Paint, PowerPoint, Visio, etc.). You may also just use a whiteboard or paper for your design. 
+This module can be used stand-alone and does not require any prerequisites other than a laptop and a place to take notes (OneNote, Paint, PowerPoint, Visio, etc.). You may also just use a whiteboard or paper for your designs. 
 
 There are many elements in a single solution, and in this module you'll learn how to take the business scenario and determine the best resources and processes to use to satisfy the requirements while considering the constraints within the scenario. 
 
@@ -27,7 +27,7 @@ In production, there are normally 6 phases to create  a solution. These can be d
  
 Throughout this module, if you want to leverage various templates, icons, stencils and other assets to assist you with each phase and also use these with your exercises, you can find them [here](https://github.com/microsoft/sqlworkshops/tree/master/ProjectResources). These assets can also be used in your production workloads.  
 
-For this module, you'll focus on a portion of the <i>Architecture Design Session</i> phase only. If you wish to develop your solution further after the course, you can use the assets above to complete all phases.
+For this module, you'll focus on a portion of the **Architecture Design Session** phase only. If you wish to develop your solution further after the course, you can use the assets above to complete all phases.
 
 This module is slightly different than the other modules in that you will work in groups to work through a problem, and then present your findings. If you are completing this workshop in a self-study fashion, you can still work through the problems as a learning exercise.  
 
@@ -39,9 +39,9 @@ This module will be broken up into several sections:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="6.1">6.1 Select a scenario</h2></a>
 
-In this section you will review two business scenarios and pick one to focus on for the rest of this module. The company descriptions, project goals, and constraints have already been laid out for you.  
+In this section, you will review two business scenarios and pick one to focus on for the rest of this module. The company descriptions, project goals, and constraints have already been laid out for you.  
 
-Once you've picked a scenario, the first step is to fully understand the problem the company needs to solve, and any requirements and constraints they have on those goals. This is often in the form of a "Problem Statement", which is a formal set of paragraphs clearly defining the circumstances, present condition, and desired outcomes for a solution. At this point you want to avoid exploring how to solve the problem and focus on what you want to solve. 
+Once you've picked a scenario, the first step is to fully understand the problem the company needs to solve, and any requirements and constraints they have on those goals. This is often in the form of a *Problem Statement*, which is a formal set of paragraphs clearly defining the circumstances, present condition, and desired outcomes for a solution. At this point you want to avoid exploring how to solve the problem and focus on what you want to solve. 
 
 After everyone agrees on the problem statement, pull out as many requirements (*goals*) for the project as you can find, and then lay in any constraints the solution has. At this point, it's acceptable to have unrealistic constraints - later you can pull those back after showing a cost/benefit ratio on each requirement and constraint.  
 
@@ -49,9 +49,9 @@ After everyone agrees on the problem statement, pull out as many requirements (*
 
 *Scenario description*:  
 
-Your customer is a provider for services and content delivery across the globe. They’ve requested your assistance in architecting a system that can handle thousands of writes per second to what is essentially an operational data mart. They also need to be able to perform real-time analytics on the data, to determine trends and identify anomalies, which they are currently doing with CLR applications. They are not looking for a data warehouse and utilize large portions of the SQL Surface area, but they need to be able to scale where their users live.  
+Your customer is a provider for services and content delivery across the globe. They’ve requested your assistance in architecting a system that can handle thousands of writes per second to what is essentially an operational data mart. They also need to be able to perform real-time analytics on the data, to determine trends and identify anomalies, which they are currently doing with CLR applications. They are not looking for a data warehouse and utilize large portions of the SQL surface area, but they need to be able to scale where their users live.  
 
-Additionally, they are trying to determine which authentication methods they should use in their hybrid environment. While the main solution and application will live in Azure, there is also an application on a non-Azure machine, a legacy application (they can't change the driver or connection string) on a non-Azure machine, and multiple users that run reports from SQL admin tools (SSMS, ADS, PowerShell) non-Azure machines. Wherever possible, they want to eliminate hardcoding passwords/secrets in the connection strings and app config files, and they want to eliminate using passwords in SQL tools in SQL tools or find a way to enhance that authentication.        
+Additionally, they are trying to determine which authentication methods they should use in their hybrid environment. While the main solution and application will live in Azure, there is also an application on a non-Azure machine, a legacy application (they can't change the driver or connection string) on a non-Azure machine, and multiple users that run reports from SQL admin tools (SSMS, ADS, PowerShell) on non-Azure machines. Wherever possible, they want to eliminate hardcoding passwords/secrets in the connection strings and app config files, and they want to eliminate using passwords in SQL tools in SQL tools or find a way to enhance that authentication.        
 
 
 *Scenario guidance*:
@@ -106,7 +106,7 @@ After you have a preliminary solution in mind, the next step is often to present
 1. List out the possible technologies and processes that could potentially be used in a solution.  
 >Hint: For the security challenges, you might consider leveraging the Azure SQL Security Best Practices Playbook that's available in the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-best-practice).  
 1. Using a decision matrix or some other decision process, select technologies and processes that will make up your preliminary solution. 
-1. Create a presentation (can use PowerPoint, a flipchart, or a document) that presents your project goals and constraints, as well as the recommended solution.   
+1. Create a presentation (can use PowerPoint, a whiteboard, or a document) that presents your project goals and constraints, as well as the recommended solution designs.   
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -119,6 +119,8 @@ After you have a preliminary solution in mind, the next step is often to present
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/" target="_blank">Azure Reference Architectures</a> - Recommended practices, along with considerations for scalability, availability, manageability, and security</li>
     <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/" target="_blank">Microsoft Cloud Adoption Framework for Azure</a> - Article on writing effective problem statements</li>
 	<li><a href="https://azure.microsoft.com/en-us/overview/trusted-cloud/" target="_blank">Microsoft Azure Trust Center</a> - Full reference site for Azure security, privacy and compliance</li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/" target="_blank">Microsoft Cloud Adoption Framework for Azure</a> - Article on writing effective problem statements</li>
+	<li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-best-practice" target="_blank">Azure SQL Security Playbook</a> - Best practices for securing your Azure SQL deployment</li>
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
