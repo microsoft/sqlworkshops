@@ -184,8 +184,8 @@ At the bottom, select **+ Add existing virtual network**. For the options, input
 
 ![](../graphics/vmvnet2.png)  
 
-Select **Enable**, then select **OK**.    
-> Note: The warning says this takes up to 15 minutes, but in testing for the workshop, it usually takes <1 minute.
+Select **Enable**, then **Count to 10** (i.e. wait a few seconds), then select **OK**.    
+> Note: The warning says this takes up to 15 minutes, but in testing for the workshop, it usually takes <1 minute. If you get an error, simply close the Create/Update window and start Step 3 from the beginning.  
 
 Next, remove your Client IP address by selecting the **...** next to the End IP and select **Delete**.  
 
@@ -461,29 +461,31 @@ Additionally, the Azure portal can only be used to create administrators, and Az
 
 How you complete this next step will depend on how you are consuming this workshop. If you were given an environment, find a neighbor to work with. If you are doing this self-paced, or in a group that is multi-organization, you will just review this step, observing the screenshots.  
 
-1. With your neighbor, first determine who will be *Person A* and who will be *Person B*.  
-2. Both *Person A* and *Person B* should note their Azure VM's **Public IP Address** (can locate this in the Azure portal)
-3. *Person A* should run the following T-SQL when connected to their AdventureWorks database to authorize *Person B* to their server:  
+1. With your neighbor, first determine who will be **Person A** and who will be **Person B**.  
+2. Both **Person A** and **Person B** should note their Azure VM's **Public IP Address** (can locate this in the Azure portal)
+3. **Person A** should run the following T-SQL when connected to their AdventureWorks database to authorize **Person B** to their server:  
 ```sql
 -- Create the Azure AD user with access to the server
-CREATE USER <Person B Azure AD account> FROM EXTERNAL PROVIDER;
+CREATE USER "Person B Azure AD account" FROM EXTERNAL PROVIDER;
 
 -- Until you run the following two lines, the user has no access to read or write data
-ALTER ROLE db_datareader ADD MEMBER <Person B Azure AD account>;
+ALTER ROLE db_datareader ADD MEMBER "Person B Azure AD account";
 
 -- Create firewall to allow Person B's Azure VM
 EXECUTE sp_set_firewall_rule @name = N'AllowPersonB',
     @start_ip_address = 'Person B VM Public IP', 
     @end_ip_address = 'Person B VM Public IP'
 ```
-4. *Person B* should run the following T-SQL when connected to their AdventureWorks database to authorize *Person A* to their server:
+4. **Person B** should run the following T-SQL when connected to their AdventureWorks database to authorize **Person A** to their server:
 ```sql
 -- Create the Azure AD user with access to the server
-CREATE USER <Person A Azure AD account> FROM EXTERNAL PROVIDER;
+CREATE USER "Person A Azure AD account" FROM EXTERNAL PROVIDER;
 
 -- Until you run the following two lines, the user has no access to read or write data
-ALTER ROLE db_datareader ADD MEMBER <Person A Azure AD account>;
-
+ALTER ROLE db_datareader ADD MEMBER "Person A Azure AD account";
+```
+This next code snippet should be run in the context of `master`, since it is a server-level setting.
+```sql
 -- Create firewall to allow Person A's Azure VM
 EXECUTE sp_set_firewall_rule @name = N'AllowPersonA',
     @start_ip_address = 'Person A VM Public IP', 
