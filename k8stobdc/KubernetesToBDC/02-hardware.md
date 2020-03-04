@@ -9,7 +9,7 @@
 
 # 02 - Hardware and Virtualization environment for Kubernetes #
 
-In this workshop you have covered the fundamentals behind contains and container orchestration. The end of this Module contains several helpful references you can use in these exercises and in production. 
+In this workshop you have covered the fundamentals behind containers and container orchestration. The end of this Module contains several helpful references you can use in these exercises and in production. 
 
 This module covers the infrastructure foundation for building a Kubernetes cluster. You will examine the cluster installation on a Hypervisor environment for the in-person class, and you will also get references for other architectures. 
 
@@ -19,8 +19,7 @@ This module covers the infrastructure foundation for building a Kubernetes clust
 
 ## 2.1 Kubernetes Targets ##
 
-Kubernetes and it's variants, can run on "bare metal" - a server-hardware system. You can also use a Hypervisor, such as VMWare or Hyper-V. In many companies, the IT infrastructure is completely virtualized, so this module covers the installation on that platform. Most of the principles for deploying Kubernetes apply when carrying out the activity on non-virtualized hardware, and you'll learn the differences as you progress through the exercises.
-
+Kubernetes and its variants can run on "bare metal" - a server hardware system. You can also use a Hypervisor, such as VMWare or Hyper-V. In many companies, the IT infrastructure is completely virtualized, so this module covers the installation using that platform. Most of the principles for deploying Kubernetes apply when carrying out the activity on non-virtualized hardware, and you'll learn the differences as you progress through the exercises.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -30,31 +29,31 @@ In this instructor-led session, the hardware for the hands on lab exercises cons
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_2_1_workshop_hw.PNG?raw=true">
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Basic Sandbox Environment Familiarisation</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Basic Sandbox Environment Familiarization</b></p>
 
-1. Connect to your sandbox environment using a ssh client. macOS comes with a built in client. Windows users may wish to user either [Putty](https://www.putty.org/) or a DOS command shell window. Your workshops tutors will make login credentials available to each attendee.
+1. Connect to your sandbox environment using a ssh client. Apple and Linux systems come with a built in client, as does the latest Windows operating system. You may also wish to use the graphical [Putty](https://www.putty.org/) tool. Your workshops tutors will make login credentials available to each attendee.
 
-2. Install the virt-what package using apt-get:
+2. Install the `virt-what` package using the `apt-get` command in Linux, once you have connected to your environment:
 
-```sudo apt-get install virt-what```
+`sudo apt-get install virt-what`
 
-3. Execute virt-what to verify the platform that your sandbox environment is running on:
+3. Execute `virt-what` to verify the platform that your sandbox environment is running on:
 
-```sudo virt-what```
+`sudo virt-what`
 
 4. Obtain the amount of memory your sandbox environment has by running the following command:
 
-```lsmem```
+`lsmem`
 
 5. Obtain the processor information for your sandbox environment by running the following command:
 
-```lscpu```
+`lscpu`
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 ## 2.3 Virtualised Infrastructure Setup and Configuration ##
 
-With the hardware and layout in place, you'll now turn to the configuration of the cluster environment. The operating system for each master and worker node is Ubuntu 18.04.3 LTS, and the storage orchestrator requires the open-iscsi package. To begin with, a virtual machine is required to base the template off for both the master and worker nodes:
+With the hardware and layout in place, you'll now turn to the configuration of the cluster environment. The operating system for each master and worker node is Ubuntu 18.04.3 LTS, and the storage orchestrator requires the `open-iscsi` package. To begin with, a virtual machine is required to base the template off for both the master and worker nodes:
 
 1. First start by creating a virtual machine in VMware vCenter:
 
@@ -90,7 +89,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_7_vcenter.PNG?raw=true">
 
-8. Review the configuration for the virtual machine and then hit FINISH:
+8. Review the configuration for the virtual machine and then hit `FINISH`:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_8_vcenter.PNG?raw=true">
 
@@ -141,15 +140,15 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_21_vcenter.PNG?raw=true">
 
-19. Select the default of /dev/sda as the device to install Ubuntu on:
+19. Select the default of `/dev/sda` as the device to install Ubuntu on:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_22_vcenter.PNG?raw=true">
 
-20. Select 'Done' to confirm the filesystem configuration:
+20. Select `Done` to confirm the filesystem configuration:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_23_vcenter.PNG?raw=true">
 
-21. Select 'Continue' to confirm that the target disk of the installation will be formatted (destructively):
+21. Select `Continue` to confirm that the target disk of the installation will be formatted (destructively):
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_24_vcenter.PNG?raw=true">
 
@@ -157,11 +156,11 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_25_vcenter.PNG?raw=true">
 
-23. Install the OpenSSH server:
+23. Install the `OpenSSH` server:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_26_vcenter.PNG?raw=true">
 
-24. Hit 'Done' to confirm that no featured server snaps are to be installed, the single node cluster script will install everything that is required:
+24. Hit `Done` to confirm that no featured server snaps are to be installed, the single node cluster script will install everything that is required:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_27_vcenter.PNG?raw=true">
 
@@ -185,7 +184,7 @@ With the hardware and layout in place, you'll now turn to the configuration of t
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_32_vcenter.PNG?raw=true">
 
-30. **We now have a virtual machine that a single node SQL Server 2019 Big Data Cluster can be delpoyed to using [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15)**. If the objective is to deplopy a production grade cluster, the following commands should be executed against the guest operating system, after which the virtual machine can be converted into a template:
+30. **We now have a virtual machine that a single node SQL Server 2019 Big Data Cluster can be deployed to using [this script](https://docs.microsoft.com/en-us/sql/big-data-cluster/deployment-script-single-node-kubeadm?view=sql-server-ver15)**. If the objective is to deploy a production grade cluster, the following commands should be executed against the guest operating system, after which the virtual machine can be converted into a template:
 
 ```
 apt-get install -q -y ebtables ethtool
@@ -201,17 +200,17 @@ echo net.ipv6.conf.lo.disable_ipv6=1 > /etc/sysctl.conf
 sysctl net.bridge.bridge-nf-call-iptables=1
 ```
 
-31. To create the virtual machine template, right click on the virtual machine, select 'Power' and then "Power Off":
+31. To create the virtual machine template, right click on the virtual machine, select `Power` and then `Power Off`:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_3_33_vcenter.PNG?raw=true">
 
-32. Right click on the virtual machine, select 'Template' and then "Convert to Template".
+32. Right click on the virtual machine, select `Template` and then `Convert to Template`.
 
 33. Deployment of a production grade Kubernetes cluster can be carried out using:
 
-- Kubeadm, as per the instructions in [Microsoft's online documentation](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-with-kubeadm?view=sql-server-ver15).
+- `Kubeadm`, as per the instructions in [Microsoft's online documentation](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-with-kubeadm?view=sql-server-ver15).
 
-- Or for an approach that leverages Kubeadm **and** automates the entire deployment process, [Kubespray](https://kubespray.io/#/) can be used.
+- Or for an approach that leverages `Kubeadm` **and** automates the entire deployment process, [`Kubespray`](https://kubespray.io/#/) can be used.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -221,7 +220,7 @@ In this instructor-led workshop, Storage Orchestration is facilitated via the [P
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Installing The Storage Plugin </b></p>
 
-The activity covers the installation of a Container Storage Interface compliant Kubernetes storage plugin using Helm. 
+The activity covers the installation of a Container Storage Interface compliant Kubernetes storage plugin using [Helm](https://helm.sh/). 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -231,66 +230,80 @@ kubectl get sc
 ```
 
 2. Verify that the iSCSI target endpoints are reachable:
-```
-ping <iSCSI target ip address(es)>
-```
 
-In this example, each IP address associated with the interfaces ct0 and ct1 should be reachable from each node host in the cluster:
+`ping <iSCSI target ip address(es)>`
+
+In this example, each IP address associated with the interfaces `ct0` and `ct1` should be reachable from each node host in the cluster:
 
 <img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_4_2_purity.PNG?raw=true">
 
-3. Confirm the version of helm that is installed by executing the command ```helm version```.
+3. Confirm the version of helm that is installed by executing the command
+
+ `helm version`
 
 4. Download the YAML template for the storage plugin configuration:
-```
-curl --output pso-values.yaml https://raw.githubusercontent.com/purestorage/helm-charts/master/pure-csi/values.yaml```
-```
 
-4. Using a text editor such as VI or nano, open the pso-values.yaml file.
+`curl --output pso-values.yaml https://raw.githubusercontent.com/purestorage/helm-charts/master/pure-csi/values.yaml`
 
-5. Uncomment lines 82 through to 84 by removing the hash symbol from each line.
+4. Using a text editor such as VI or nano, open the `pso-values.yaml` file.
 
-6. On line 83, replace the template IP address with the management endpoint IP address of the array that persistent volumes are to be created on.
+5. Uncomment lines 82 through to 84 by removing the hash symbol (`#`)from each line.
 
-7. On line 84, replace the template API token with API token for the array that persistent volumes are to be created on.
+6. On line 83, replace the `template IP addres`s` with the `management endpoint IP address` of the array that persistent volumes are to be created on.
+
+7. On line 84, replace the `template API token` with `API token for the array` that persistent volumes are to be created on.
 
 8. Add the repo containing the Helm chart for the storage plugin:
 
 - For all versions of Helm run:
+
 ```
 helm repo add pure https://purestorage.github.io/helm-charts
 helm repo update
 ```
+
 - For Helm version 2, also run:
+
 ```
 helm search pure-csi
 ```
+
 - For Helm version 3, also run:
+
 ```
 helm search repo pure-csi
 ```
 
-9. Perform a dry run install of the plugin, this will verify that the contents of the pso-values.yaml file is correct:
+9. Perform a dry run install of the plugin, this will verify that the contents of the `pso-values.yaml` file is correct:
+
 - For Helm version 2, run:
+
 ```
 helm install --name pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml --dry-run --debug
 ```
+
 - For Helm version 3, run:
+
 ```
 helm install pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml --dry-run --debug
 ```
 
-10. If the dry run of the installation completed successfully, the actual install of the plugin can be performed, otherwise the pso-values.yaml file needs to be corrected:
+10. If the dry run of the installation completed successfully, the actual install of the plugin can be performed, otherwise the `pso-values.yaml` file needs to be corrected:
+
 - For Helm version 2, run:
+
 ```
 helm install --name pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml
 ```
+
 - For Helm version 3, run:
+
 ```
 helm install pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml
 ```
 
 11. List the type of storage classes that are now installed, a new storage class should be present:
+
 ```
 kubectl get sc
 ```

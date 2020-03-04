@@ -10,9 +10,9 @@
 
 This workshop is taught using various components, which you will install and configure in the sections that follow. 
 
-> Note: Due to the nature of working with large-scale systems, it may not be possible for you to set up everything you need to perform each lab exercise.  Participation in each Activity is optional - we will be working through the exercises together, but if you cannot install any software or don't have an Azure account, the instructor will work through each exercise in the workshop. You will also have full access to these materials so that you can work through them later when you have more time and resources.
+> Note: Due to the nature of working with large-scale systems, it may not be possible for you to set up everything you need to perform each lab exercise.  Participation in each Activity is optional - we will be working through the exercises together, but if you cannot install any software or don't have an Azure account, the instructor will work through each exercise in the workshop. You will also have full access to these materials so that you can work through them later when you have more time and resources. Another option is to "pair-up" with a fellow student and work together on a single environment.
 
-For this workshop, you will use an instructor-provided Virtual Machine environment with Ubuntu as the operating system, with Docker, Kubernetes and Microsoft's SQL Server Big Data Cluster pre-installed. The intention of the course is that these systems are provided to you in class. However, to ensure that you have an environment available should something go wrong with the in-class system, or if you want to take this course outside of a classroom, you need to set up a Virtual Machine with these software components. 
+For this workshop, you will use an instructor-provided Virtual Machine environment with Ubuntu as the operating system, along with Docker, and Kubernetes pre-installed. The intention of the course is that these systems are provided to you in class. However, to ensure that you have an environment available should something go wrong with the in-class system, or if you want to take this course outside of a classroom, you need to set up a Virtual Machine with these software components. 
 
 > Note: If you wish to use another cloud service or a local Virtual Machine, it needs to match or exceed the [Microsoft Azure Standard_D8s_v3 Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general#dsv3-series-1) which  has the following requirements:
 - Ubuntu 16.04
@@ -22,7 +22,7 @@ For this workshop, you will use an instructor-provided Virtual Machine environme
 
 Whether you use the provided classroom system, the Microsoft Azure Virtual Machine, or another Virtual Machine system, the requirements for your local laptop are (*You will get instructions for setting these up in a moment*):
 
-- **A Microsoft Azure Account**: This workshop uses the Microsoft Azure platform to host the Kubernetes cluster (using an appropriately sized Virtual Machine). You can use an MSDN account for Azure, your own Azure account, or potentially one provided for you, as long as you can create about $50.00 (U.S.) worth of Microsoft Azure assets.
+- **A Microsoft Azure Account**: This workshop uses the Microsoft Azure platform to host the backup Kubernetes cluster (using an appropriately sized Virtual Machine). You can use an MSDN account for Azure, your own Azure account, or potentially one provided for you, as long as you can create about $75.00 (U.S.) worth of Microsoft Azure assets.
 - **The Azure Command Line Interface**: The Azure CLI allows you to work from the command line on multiple platforms to interact with your Azure subscription, and also has control statements for AKS.
 - **Microsoft Azure Data Studio**: The *Azure Data Studio* IDE, along with various Extensions, is used for deploying the system, and querying and management of the BDC. In addition, you will use this tool to participate in the workshop. Note: You can connect to a SQL Server 2019 Big Data Cluster using any SQL Server connection tool or application, such as SQL Server Management Studio, but this course will use Microsoft Azure Data Studio for cluster management, Jupyter Notebooks and other capabilities. 
 
@@ -49,7 +49,7 @@ You can also use your own account or one provided to you by your organization, b
 
 Your workshop invitation may have instructed you that they will provide a Microsoft Azure account for you to use. If so, you will receive instructions that it will be provided.
 
-**Unless you received explicit instructions in your workshop invitations, you much create either an MSDN or Personal account. You must have an account prior to the workshop.**
+**Unless you received explicit instructions in your workshop invitations, you must create either an MSDN or Personal Microsoft Azure account. You must have an account prior to the workshop. No Microsoft Azure assets will be provided the day of class unless instructed otherwise.**
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity 2: Prepare Your Workstation</b></p>
 
@@ -165,7 +165,7 @@ The system is now ready for class. Use the Linux <pre>shutdown -h</pre> command 
 
 Next, run the following command to de-allocate the machine safely so that you are no longer charged (except for the storage) until class starts.  
 
->Note: This command does not remove the Virtual Machine. You will start it again once you start the class. 
+>Note: This command does not remove the Virtual Machine. You will start it again once you start the class. Do NOT leave the system running in the Auzre Portal or it will use all your credits, and potentially result in additional charges.  
 
 <pre>az vm deallocate --name ReplaceWithVMName</pre>
 

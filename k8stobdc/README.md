@@ -8,13 +8,13 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"><b>     About this Workshop</b></h2>
 
-Welcome to this Microsoft solutions workshop on *Kubernetes - From Bare Metal to SQL Server Big Data Clusters*. In this workshop, you'll learn about setting up a production grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of [Jupyter Notebooks](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html) in Microsoft's [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15) tool to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
+Welcome to this Microsoft solutions workshop on *Kubernetes - From Bare Metal to SQL Server Big Data Clusters*. In this workshop, you'll learn about setting up a production-grade SQL Server 2019 big data cluster environment on Kubernetes. Topics covered include: hardware, virtualization, and Kubernetes, with a full deployment of SQL Server's Big Data Cluster on the environment that you will use in the class. You'll then walk through a set of [Jupyter Notebooks](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html) in Microsoft's [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15) tool to run T-SQL, Spark, and Machine Learning workloads on the cluster. You'll also receive valuable resources to learn more and go deeper on Linux, Containers, Kubernetes and SQL Server big data clusters.
 
 The focus of this workshop is to understand the hardware, software, and environment you need to work with [SQL Server 2019's big data clusters](https://docs.microsoft.com/en-us/sql/big-data-cluster/big-data-cluster-overview?view=sql-server-ver15) on a Kubernetes platform.
 
 You'll start by understanding Containers and Kubernetes, moving on to a discussion of the hardware and software environment for Kubernetes, and then to more in-depth Kubernetes concepts. You'll follow-on with the SQL Server 2019 big data clusters architecture, and then how to use the entire system in a practical application, all with a focus on how to extrapolate what you have learned to create other solutions for your organization.
 
-> NOTE: This course is designed to be taught in-person with hardware provided by the instructional team. You will also get instructions for setting up your own hardware, virtual or Cloud environments for Kubernetes for a workshop backup or if you are not attending in-person. 
+> NOTE: This course is designed to be taught in-person with hardware or virtual environments provided by the instructional team. You will also get details for setting up your own hardware, virtual or Cloud environments for Kubernetes for a workshop backup or if you are not attending in-person. 
 
 This [github README.MD file](https://lab.github.com/githubtraining/introduction-to-github) explains how the workshop is laid out, what you will learn, and the technologies you will use in this solution.
 
@@ -40,7 +40,7 @@ The concepts and skills taught in this workshop form the starting points for:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/building1.png?raw=true"><b>     Business Applications of this Workshop</b></h2>
 
-Businesses require stable, secure environments at scale, which work in on-premises and in-cloud configurations. Using Kubernetes and Containers allows for manifest-driven DevOps practices, which further streamline IT processes.
+Businesses require stable, secure environments at scale, which work in secure on-premises and in-cloud configurations. Using Kubernetes and Containers allows for manifest-driven DevOps practices, which further streamline IT processes.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -65,11 +65,11 @@ The solution includes the following technologies - although you are not limited 
 
 There are a few requirements for attending the workshop, listed below: 
 - You'll need a local system that you are able to install software on. The workshop demonstrations use Microsoft Windows as an operating system and all examples use Windows for the workshop. Optionally, you can use a Microsoft Azure Virtual Machine (VM) to install the software on and work with the solution.
-- You must have a Microsoft Azure account with the ability to create assets.
-- This workshop expects that you understand computer technologies, networking, SQL Server, HDFS, Spark, and general use of Hypervisors. 
+- You must have a Microsoft Azure account with the ability to create assets for the "backup" or self-taught path.
+- This workshop expects that you understand computer technologies, networking, the basics of SQL Server, HDFS, Spark, and general use of Hypervisors. 
 - The **Setup** section below explains the steps you should take prior to coming to the workshop
 
-If you are new to these, here are a few references you can complete prior to class:
+If you are new to any of these, here are a few references you can complete prior to class:
 
 -  [Microsoft SQL Server Administration and Use](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20764)
 -  [HDFS](https://data-flair.training/blogs/hadoop-hdfs-tutorial/)
@@ -86,7 +86,7 @@ or
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/education1.png?raw=true"><b>     Workshop Details</b></h2>
 
-This workshop uses Kubernetes to deploy a workload, with a focus on Microsoft SQL Server's big data clusters deployment for Big Data and Data Science workloads.
+This workshop uses Kubernetes to deploy a workload, with a focus on Microsoft SQL Server's big data clusters deployment for advanced analytics over large sets of data and Data Science workloads.
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
 

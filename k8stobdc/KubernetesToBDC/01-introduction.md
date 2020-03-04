@@ -12,7 +12,7 @@ In this workshop you'll cover using a Process and various Platform components to
 
 This module covers Container technologies and how they are different than Virtual Machines. Then you'll learn about the need for container orchestration using Kubernetes. We'll start with some computer architecture basics, and introduce the Linux operating system in case you're new to that topic. There are many references and links throughout the module, and a further set of references at the bottom of this module. 
 
-You can now start the Virtual Machine you created in the pre-requisites. You will run all commands from that environment.
+You may now start the Virtual Machine you created in the pre-requisites. You will run all commands from that environment.
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -40,7 +40,7 @@ In general, Linux treats almost everything as a file system or a process. For ge
 
 Both Windows and Linux (in the x86 architecture) are *Symmetric Multiprocessing* systems, which means that all processors are addressed as a single unit. In general, distributed processing systems should have larger, and more, processors at the "head" node. General Purpose (GP) processors are normally used in these systems, but for certain uses such as Deep Learning or Artificial Intelligence, Purpose-Built processors such as Graphics Processing Unit (GPU's) are used within the environment, and in some cases,  Advanced RISC Machines (ARM) chips can be brought into play for specific tasks. For the purposes of this workshop, you will not need these latter two technologies, although both Windows and Linux support them.
 
-<i>NOTE: Linux can be installed on chipsets other than x86 compatible systems. In this workshop, you will focus on x86 systems.</i>
+> NOTE: Linux can be installed on chipsets other than x86 compatible systems. In this workshop, you will focus on x86 systems.
 
 <ul>
     <li><a href="https://www.tecmint.com/check-linux-cpu-information/" target="_blank">Getting Processor Information using Linux utilities</a></li>
@@ -48,12 +48,11 @@ Both Windows and Linux (in the x86 architecture) are *Symmetric Multiprocessing*
 
 <h3>Memory</h3>
 
-Storage Nodes in a distributed processing system need a nominal amount of memory, and the processing nodes in the framework (Spark) included with BDC need more.
-Both Linux and Windows support large amounts of memory (most often as much as the system can hold) natively, and no special configuration for memory is needed.
+Storage Nodes in a distributed processing system need a nominal amount of memory, and the processing nodes in the framework (Spark) included with SQL Server big data clusters need much more. Both Linux and Windows support large amounts of memory (most often as much as the system can hold) natively, and no special configuration for memory is needed.
 
 Modern operating systems use a temporary area on storage to act as memory for light caching and also as being able to extend RAM memory. This should be avoided as much as possible in both Windows and Linux.
 
-While technically a Processor system, NUMA (Non-Uniform Memory Access) systems allow for special memory configurations to be mixed in a single server by a processor set. Both Linux and Windows support NUMA access.
+While technically a Processor system, [NUMA (Non-Uniform Memory Access) systems](https://www.kernel.org/doc/html/latest/vm/numa.html) allow for special memory configurations to be mixed in a single server by a processor set. Both Linux and Windows support NUMA access.
 
 <ul>
     <li><a href="https://www.linux.com/news/all-about-linux-swap-space" target="_blank">Monitoring the Swap File in Linux</a></li>
@@ -63,7 +62,7 @@ While technically a Processor system, NUMA (Non-Uniform Memory Access) systems a
 
 The general guidance for large-scale distributed processing systems is that the network between them be as fast and collision-free (in the case of TCP/IP) as possible. The networking stacks in both Windows and Linux require no special settings within the operating system, but you should thoroughly understand the driver settings as they apply to each NIC installed in your system, that each setting is best optimized for your networking hardware and topology and that the drivers are at the latest tested versions.
 
-Although a full discussion of the TCP/IP protocol is beyond the scope of this workshop, it's important that you have a good understanding of how it works, since it permeates every part of the BDC architecture. <a href="https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics" target="_blank">You can get a quick overview of TCP/IP here</a>.
+Although a full discussion of the TCP/IP protocol is beyond the scope of this workshop, it's important that you have a good understanding of how it works, since it permeates every part of a Kubernetes architecture. <a href="https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics" target="_blank">You can get a quick overview of TCP/IP here</a>.
 
 The other rule you should keep in mind is that in general you should have only the presentation of the data handled by the workstation or device that accesses the solution. Do not move large amounts of data back and forth over the network to have the data processed locally. That being said, there are times (such as certain IoT scenarios) where subsets of data should be moved to the client, but you will not face those scenarios in this workshop. 
 
@@ -82,7 +81,7 @@ The best way to learn an operating system is to install it and perform real-worl
 
 </table>
 
-The essential commands you should know for this workshop are below. In Linux you can often send the results of one command to another using the "pipe" symbol, similar to PowerShell: <b>|</b>. 
+The essential commands you should know for this workshop are listed below, with links to learn more. In Linux you can often send the results of one command to another using the "pipe" symbol, similar to PowerShell: <b>|</b>. 
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
 
@@ -145,15 +144,15 @@ One abstraction layer above installing software directly on hardware is using a 
 
 In this abstraction level, you have full control (and responsibility) for the entire operating system, but not the hardware. This isolates all process space and provides an entire "Virtual Machine" to applications. For scale-out systems, a Virtual Machine allows for a distribution and control of complete computer environments using only software.
 
-You can <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs" target="_blank">read the details of Microsoft's Hypervisor here</a>.
+You can <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs" target="_blank">read the details of Microsoft's Hypervisor here</a>, and [the VMWare approach is detailed here](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-302A4F73-CA2D-49DC-8727-81052727A763.html). Another popular Hypervisor is [VirtualBox, which you can read more about here](https://www.virtualbox.org/manual/UserManual.html). 
 
 <h3>Containers <i>(Docker)</i></h3>
 
 The next level of Abstraction is a <i>Container</i>. There are various types of Container technologies, in this workshop, you will focus on the docker container format, as implemented in the <a href="https://mobyproject.org/" target="_blank">Moby framework</a>.
 
-A Container is provided by the Container Runtime (Such as [containerd](https://containerd.io/)]) runtime engine, which sits above the operating system (Windows or Linux). In this abstraction, you do not control the hardware <i>or</i> the operating system. The Container has a very small Kernel in it, and can contain binaries such as Python, R, SQL Server, or other binaries. A Container with all its binaries is called an <i>Image</i>. You create a container from a file.
+A Container is provided by the Container Runtime (Such as [containerd](https://containerd.io/)]) runtime engine, which sits on the operating system (Windows or Linux). In this abstraction, you do not control the hardware <i>or</i> the operating system. In general, you create a manifest (in the case of Docker a "dockerfile") which is a text file containing the binaries, code, files or other assets you want to run in a Container. You then "build" that file into a binary object called an "Image", which you can then store in a "Repository". Now you can use the runtime commands to download (pull) that Image from the Repository and run it on your system. This running, protected memory space is now a "Container". 
 
-<i>(NOTE: The Container Image Kernel can run on Windows or Linux, but you will focus on the Linux Kernel Containers in this workshop.)</i>
+> NOTE: The Container service runs natively on Linux, but in Windows it often runs in a Virtual Machine environment running Linux as a VM. So in Windows you may see several layers of abstraction for Containers to run.
 
 <br>
 <img style="height: 300;" src="https://docs.docker.com/images/Container%402x.png?raw=true"> 
@@ -173,8 +172,8 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 
   <tr><td style="background-color: AliceBlue; color: black;"><b>Component</b></td><td style="background-color: AliceBlue; color: black;"><b>Used for</b></td></tr>
 
-  <tr><td>Cluster</td><td> Container Orchestration (Such as Kubernetes or OpenShift) cluster is a set of machines, known as nodes. One node controls the cluster and is designated the master node; the remaining nodes are worker nodes. The Container Orchestration *master* is responsible for distributing work between the workers, and for monitoring the health of the cluster.</td></tr>
-  <tr><td style="background-color: AliceBlue; color: black;">Node</td><td td style="background-color: AliceBlue; color: black;"> A node runs containerized applications. It can be either a physical machine or a virtual machine. A Cluster can contain a mixture of physical machine and virtual machines as Nodes.</td></tr>
+  <tr><td>Cluster</td><td> Container Orchestration (Such as Kubernetes or OpenShift) cluster is a set of machines, known as Nodes. One node controls the cluster and is designated the master node; the remaining nodes are worker nodes. The Container Orchestration *master* is responsible for distributing work between the workers, and for monitoring the health of the cluster.</td></tr>
+  <tr><td style="background-color: AliceBlue; color: black;">Node</td><td td style="background-color: AliceBlue; color: black;"> A Node runs containerized applications. It can be either a physical machine or a virtual machine. A Cluster can contain a mixture of physical machine and virtual machines as Nodes.</td></tr>
   <tr><td>Pod</td><td> A Pod is the atomic deployment unit of a Cluster. A pod is a logical group of one or more Containers and associated resources needed to run an application. Each Pod runs on a Node; a Node can run one or more Pods. The Cluster master automatically assigns Pods to Nodes in the Cluster.</td></tr>
  
 </table>
@@ -183,7 +182,7 @@ For Big Data systems, having lots of Containers is very advantageous to segment 
 <p><img style="height: 400; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/KubernetesCluster.png?raw=true"></p> 	 	
 <br>
 
-You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Container Orchestration systems here</a>. We're using the Azure Kubernetes Service (AKS) in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great set of tutorials for you to learn more here</a>.
+You can <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">learn much more about Container Orchestration systems here</a>. We're using the Azure Kubernetes Service (AKS) as a backup in this workshop, and <a href="https://aksworkshop.io/" target="_blank">they have a great set of tutorials for you to learn more here</a>.
 
 In SQL Server Big Data Clusters, the Container Orchestration system (Such as Kubernetes or OpenShift) is responsible for the state of the BDC; it is responsible for building and configuring the Nodes, assigns Pods to Nodes,creates and manages the Persistent Volumes (durable storage), and manages the operation of the Cluster.
 
@@ -191,9 +190,11 @@ In SQL Server Big Data Clusters, the Container Orchestration system (Such as Kub
 
 (You'll cover the storage aspects of Container Orchestration in more detail in a moment.)
 
+All of this orchestration is controlled by another set of text files, called "Manifests", which you will learn more about in the Modules that follow. You declare the state of the layout, networking, storage, redundancy and more in these files, load them to the Kubernetes environment, and it is responsible for instantiating and maintaining a Cluster with that configuration. 
+
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Familiarize Yourself with Container Orchestration using minikube</b></p>
 
-To practice with Kubernetes, you will use an online emulator to work with the `minikube` platform. 
+To practice with Kubernetes, you will use an online emulator to work with the `minikube` platform. This is a small Virtual Machine with a single Node acting as a full Cluster. 
 
 <p><b>Steps</b></p>
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkbox.png?raw=true"><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/ 
@@ -207,7 +208,7 @@ To practice with Kubernetes, you will use an online emulator to work with the `m
 
 Traditional storage uses a call from the operating system to an underlying I/O system, as you learned earlier. These file systems are either directly connected to the operating system or appear to be connected directly using a Storage Area Network. The blocks of data are stored and managed by the operating system. 
 
-For large scale-out data systems, the mounting point for an I/O is another abstraction. For SQL Server BDC, the most commonly used scale-out file system is the <a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank">Hadoop Data File System</a>, or <i>HDFS</i>. HDFS is a set of Java code that gathers disparate disk subsystems into a <i>Cluster</i> which is comprised of various <i>Nodes</i> - a <i>NameNode</i>, which manages the cluster's metadata, and <i>DataNodes</i> that physically store the data. Files and directories are represented on the NameNode by a structure called <i>inodes</i>. Inodes record attributes such as permissions, modification and access times, and namespace and diskspace quotas.
+For large scale-out data systems, the mounting point for an I/O is another abstraction. For SQL Server BDC, the most commonly used scale-out file system is the <a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank">Hadoop Data File System</a>, or <i>HDFS</i>. HDFS is a set of Java code that gathers disparate disk subsystems into a <i>Cluster</i> which is comprised of various <i>Nodes</i> - a <i>NameNode</i>, which manages the cluster's metadata, and <i>DataNodes</i> that physically store the data. Files and directories are represented on the NameNode by a structure called <i>inodes</i>. Inodes record attributes such as permissions, modification and access times, and namespace and disk space quotas.
 
 <p><img style="height: 300; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/hdfs.png?raw=true"></p> 	 	
 
@@ -247,8 +248,7 @@ You'll explore further operations with these tools in the rest of the course.
 If you have not completed the prerequisites for this workshop you can <a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-2017
 " target="_blank">install Azure Data Studio from this location</a>, and you will install the Extension to work with SQL Server big data clusters in a future module</a>.
 
-You can <a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-2017 
-" target="_blank">learn more about Azure Data Studio here</a>.
+You can <a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-2017" target="_blank">learn more about Azure Data Studio here</a>.
 
 <br>
 <p><img style="height: 300; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/ads.png?raw=true"></p> 	 	
