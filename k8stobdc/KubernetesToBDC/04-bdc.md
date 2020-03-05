@@ -27,7 +27,7 @@ Each of these functions are available separately based on the requirements of yo
 
 <h3><a name="2-1">4.1 Data Virtualization</a></h3>
 
-In both a Stand-Alone Instance configuration and within the BDC (BDC) configuration, you can use a series of *Connectors* to query data using the <a href="https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15" target="_blank"><i>PolyBase</i></a> feature. PolyBase enables your SQL Server instance to process Transact-SQL queries that read data from external data sources. Starting in SQL Server 2019, you can access external data in Hadoop, Azure Blob Storage and also external data in SQL Server, Oracle, Teradata, and MongoDB - as well as Generic ODBC sources. PolyBase pushes as much of the query as possible to the source system, which optimizes the query.
+In both a Stand-Alone Instance configuration and within the BDC (BDC) configuration, you can use a series of *Connectors* to query data using the <a href="https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15" target="_blank"><i>PolyBase</i></a> feature. PolyBase enables your SQL Server instance to process Transact-SQL queries that read data from external data sources. Starting in SQL Server 2019, you can access external data in Hadoop, Azure Blob Storage and also external data in SQL Server, Oracle, Teradata, and MongoDB. PolyBase pushes as much of the query predicate as possible to the source system, which optimizes the query.
 
 <br>
 <img style="height: 300; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://github.com/microsoft/sqlworkshops/blob/master/sqlserver2019bigdataclusters/graphics/datavirtualization1.png?raw=true">
@@ -68,7 +68,7 @@ The BDC can be deployed to three environments:
 
  - Locally for Testing (using minikube or another such environment)
  - In a Cloud Service (Such as the Azure Kubernetes Service - AKS)
- - On premises (using KubeADM)
+ - On premises (using KubeADM, KubeSpray and others)
 
 These architectures are not mutually exclusive - you can install some components on-premises, and others as a service. Your connections can interconnect across these environments. You'll explore more about deploying a BDC in the <i>03 Planning, Installation and Configuration</i> module.
 
@@ -100,7 +100,7 @@ The controller service provides the following core functionality:
  - Expose troubleshooting tools to detect and repair unexpected issues
  - Manage cluster security: ensure secure cluster endpoints, manage users and roles, configure credentials for intra-cluster communication
  - Manage the workflow of upgrades so that they are implemented safely
- - Manage high availability and DR for statefull services in the cluster
+ - Manage high availability and DR for stateful services in the cluster
 
 You have two ways of working with the Controller service: the `azdata` utility, and the <i>Azure Data Studio</i> tool. All communication to the controller service is conducted via a REST API over HTTPS. A self-signed certificate will be automatically generated for you at bootstrap time. Authentication to the controller service endpoint is based on username and password.
 
@@ -123,7 +123,6 @@ The Master Instance stores meta-data which is outside the scope of the meta-data
 - Details of external tables that provide access to the cluster data plane.
 - PolyBase external data sources and external tables defined in user databases.
 
-
 These components are used in the SQL Server Master Instance:
 
 <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 5px; border-color: gray;">
@@ -132,7 +131,6 @@ These components are used in the SQL Server Master Instance:
   <tr><td><b><a href="https://docs.microsoft.com/en-us/sql/advanced-analytics/?view=sql-server-ver15" target="_blank">SQL Server extensibility framework</a></b></td><td>Used for executing Machine Learning and other functionality in Java, R and Python code in SQL Server.</td></tr>
 
 </table>
-
 
 <h3>BDC: Compute Pool</h3>
 
@@ -216,7 +214,6 @@ In this section you will review the solution tutorial similar to the one you wil
 		<li><a href = "https://docs.microsoft.com/en-us//sql/big-data-cluster/big-data-cluster-overview?view=sqlallproducts-allversions" target="_blank">Books Online on this topic</a></li>
 		<li><a href = "https://www.dataonstorage.com/resource/video/msignite2018/brk4021-deep-dive-on-sql-server-and-big-data/" target="_blank">Session on Big Data at at Ignite</a></li> 
 </ul>
-
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b >Next Steps</b></p>
 

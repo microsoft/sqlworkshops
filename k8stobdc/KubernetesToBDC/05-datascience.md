@@ -8,15 +8,15 @@
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/textbubble.png?raw=true"> 05 - Using the SQL Server big data cluster on Kubernetes for Data Science </h2>
 
-In this workshop you have covered <TODO: Explain where the student is at the moment>. The end of this Module contains several helpful references you can use in these exercises and in production.
+In this workshop you have covered concepts and processes for using Kubernetes, and how to set up a SQL Server big data cluster on a Kubernetes Cluster. The end of this Module contains several helpful references you can use in these exercises and in production.
 
-This module covers Container technologies and how they are different than Virtual Machines. You'll learn about the need for container orchestration using Kubernetes.
+This module covers a complete workflow for this environment, focusing on a Data Science application. 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/pencil2.png?raw=true"><a name="4-0">4.0 End-To-End Solution with BDC</a></h2>
 
-Recall from <i>The Big Data Landscape</i> module that you learned about the Wide World Importers company. <a href="https://azure-scenarios-experience.azurewebsites.net/big-data.html" target="_blank">Wide World Importers </a> (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. They have a traditional N-tier application that uses a front-end (mobile, web and installed) that interacts with a scale-out middle-tier software product, which in turn stores data in a large SQL Server database that has been scaled-up to meet demand.  
+ <a href="https://azure-scenarios-experience.azurewebsites.net/big-data.html" target="_blank">Wide World Importers </a> (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. They have a traditional N-tier application that uses a front-end (mobile, web and installed) that interacts with a scale-out middle-tier software product, which in turn stores data in a large SQL Server database that has been scaled-up to meet demand.  
 
 <br>
 <img style="height: 150; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/WWI-002.png?raw=true">
@@ -31,11 +31,8 @@ WWI has now added web and mobile commerce to their platform, which has generated
 This presented the following four challenges - the IT team at WWI needs to:
 
  - Scale data systems to reach more consumers
-
  - Unlock business insights from multiple sources of structured and unstructured data
-
  - Apply deep analytics with high-performance responses
-
  - Enable AI into apps to actively engage with customers
 
 <br>
