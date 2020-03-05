@@ -453,17 +453,14 @@ ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
 The best practice is to create non-admin accounts at the database level, unless they need to be able to execute administrator tasks.  
 
 
-**Step 4 - Grant other users access (Azure AD)**   
+**Step 4 - Grant other users access (Azure AD) - *Demo/Whiteboard only***   
 
 Azure AD authentication is a little different. From the documentation, "*Azure Active Directory authentication requires that database users are created as contained. A contained database user maps to an identity in the Azure AD directory associated with the database and has no login in the master database. The Azure AD identity can either be for an individual user or a group*."  
 
 Additionally, the Azure portal can only be used to create administrators, and Azure RBAC roles don't propagate to Azure SQL Database logical servers, Azure SQL Databases, or Azure SQL Managed Instances. Additional server/database permissions must be granted using T-SQL.  
 
-How you complete this next step will depend on how you are consuming this workshop. If you were given an environment, find a neighbor to work with. If you are doing this self-paced, or in a group that is multi-organization, you will just review this step, observing the screenshots.  
+If you are attending in-person, your instructor will demo/whiteboard how to add Azure AD users and give them access. If you are attending this self-paced, you can review the scripts below. This scenario involves giving *Person B* access to *Person A*'s Azure SQL Database logical server from an Azure VM.  
 
-1. With your neighbor, first determine who will be **Person A** and who will be **Person B**.  
-2. Both **Person A** and **Person B** should note their Azure VM's **Public IP Address** (can locate this in the Azure portal)
-3. **Person A** should run the following T-SQL when connected to their AdventureWorks database to authorize **Person B** to their server:  
 ```sql
 -- Create the Azure AD user with access to the server
 CREATE USER "Person B Azure AD account" FROM EXTERNAL PROVIDER;
@@ -476,24 +473,7 @@ EXECUTE sp_set_firewall_rule @name = N'AllowPersonB',
     @start_ip_address = 'Person B VM Public IP', 
     @end_ip_address = 'Person B VM Public IP'
 ```
-4. **Person B** should run the following T-SQL when connected to their AdventureWorks database to authorize **Person A** to their server:
-```sql
--- Create the Azure AD user with access to the server
-CREATE USER "Person A Azure AD account" FROM EXTERNAL PROVIDER;
-
--- Until you run the following two lines, the user has no access to read or write data
-ALTER ROLE db_datareader ADD MEMBER "Person A Azure AD account";
-```
-This next code snippet should be run in the context of `master`, since it is a server-level setting.
-```sql
--- Create firewall to allow Person A's Azure VM
-EXECUTE sp_set_firewall_rule @name = N'AllowPersonA',
-    @start_ip_address = 'Person A VM Public IP', 
-    @end_ip_address = 'Person A VM Public IP'
-```
-5. **Person A** should now try to connect to **Person B**'s Azure SQL Database logical server.  
-6. **Person B** should now try to connect to **Person A**'s Azure SQL Database logical server.  
-7. **Person A** should have read access but no write access on **Person B**'s database. Similarly, **Person B** should have read access but no write access on **Person A**'s database. Each person should try the following commands on each database:  
+*Person B* should now be able to connect to the server from their Azure VM. Read commands should work, but write commands should fail.  
 ```sql
 -- Example of a read command
 SELECT *
@@ -504,12 +484,8 @@ UPDATE [SalesLT].[ProductCategory]
     SET ModifiedDate = GETDATE()
     WHERE ProductCategoryID = 1;
 ```  
-8. Compare results.  
 
-If you were not able to complete this exercise for whatever reason, some screenshots below are included. Note that "a" represents **Person A** and "b" represents **Person B** in this example.  
-
-
-TODO Add screenshots and test with Bob.  
+In the real-world, scenarios can get complex quickly. For more information, please refer to the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) and the [Azure SQL Network Security best practices](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-best-practice#network-security).
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
