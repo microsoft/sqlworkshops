@@ -229,31 +229,38 @@ The activity covers the installation of a Container Storage Interface compliant 
 kubectl get sc
 ```
 
-2. Verify that the iSCSI target endpoints are reachable:
+2. Verify that each iSCSI IP address associated with the interfaces `ct0` and `ct1` is reachable from every node host in the cluster via the use of the ping command:
 
-`ping <iSCSI target ip address(es)>`
-
-In this example, each IP address associated with the interfaces `ct0` and `ct1` should be reachable from each node host in the cluster:
-
-<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_4_2_purity.PNG?raw=true">
+<img style="width=80; float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/2_4_1_purity.PNG?raw=true">
 
 3. Confirm the version of helm that is installed by executing the command
 
  `helm version`
 
-4. Download the YAML template for the storage plugin configuration:
+4. Versions of Helm prior to version 3.0 require that a server side component known as 'Tiller' is installed on the Kubernetes cluster, if this is not present, install Tiller using the following commands:
+```
+kubectl -n kube-system create serviceaccount tiller
+
+kubectl create clusterrolebinding tiller \
+  --clusterrole=cluster-admin \
+  --serviceaccount=kube-system:tiller
+
+helm init --service-account tiller
+``` 
+
+5. Download the YAML template for the storage plugin configuration:
 
 `curl --output pso-values.yaml https://raw.githubusercontent.com/purestorage/helm-charts/master/pure-csi/values.yaml`
 
-4. Using a text editor such as VI or nano, open the `pso-values.yaml` file.
+6. Using a text editor such as VI or nano, open the `pso-values.yaml` file.
 
-5. Uncomment lines 82 through to 84 by removing the hash symbol (`#`)from each line.
+7. Uncomment lines 82 through to 84 by removing the hash symbol (`#`)from each line.
 
-6. On line 83, replace the `template IP addres`s` with the `management endpoint IP address` of the array that persistent volumes are to be created on.
+8. On line 83, replace the `template IP addres`s` with the `management endpoint IP address` of the array that persistent volumes are to be created on.
 
-7. On line 84, replace the `template API token` with `API token for the array` that persistent volumes are to be created on.
+9. On line 84, replace the `template API token` with `API token for the array` that persistent volumes are to be created on.
 
-8. Add the repo containing the Helm chart for the storage plugin:
+10. Add the repo containing the Helm chart for the storage plugin:
 
 - For all versions of Helm run:
 
@@ -274,7 +281,7 @@ helm search pure-csi
 helm search repo pure-csi
 ```
 
-9. Perform a dry run install of the plugin, this will verify that the contents of the `pso-values.yaml` file is correct:
+11. Perform a dry run install of the plugin, this will verify that the contents of the `pso-values.yaml` file is correct:
 
 - For Helm version 2, run:
 
@@ -288,7 +295,7 @@ helm install --name pure-storage-driver pure/pure-csi --namespace <namespace> -f
 helm install pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml --dry-run --debug
 ```
 
-10. If the dry run of the installation completed successfully, the actual install of the plugin can be performed, otherwise the `pso-values.yaml` file needs to be corrected:
+12. If the dry run of the installation completed successfully, the actual install of the plugin can be performed, otherwise the `pso-values.yaml` file needs to be corrected:
 
 - For Helm version 2, run:
 
@@ -302,7 +309,7 @@ helm install --name pure-storage-driver pure/pure-csi --namespace <namespace> -f
 helm install pure-storage-driver pure/pure-csi --namespace <namespace> -f <your_own_dir>/pso-values.yaml
 ```
 
-11. List the type of storage classes that are now installed, a new storage class should be present:
+13. List the type of storage classes that are now installed, a new storage class should be present:
 
 ```
 kubectl get sc

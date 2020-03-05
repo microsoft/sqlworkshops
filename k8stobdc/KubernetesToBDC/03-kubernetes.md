@@ -254,22 +254,22 @@ We'll begin with a set of definitions. These aren't all the terms used in Kubern
 Provision must be made for the control plane to be highly available, this includes:
 
 - The API server
-- Master Nodes
+- Master Nodes (which can only run on Linux hosts)
 - An `etcd` instance
 
-It is recommended that a production grade Cluster has a minimum of two master Nodes and three `etcd` instances.
+It is recommended that a production grade Cluster has a minimum of two master Nodes and three `etcd` instances, in that in the event of an etcd instance failure, the etcd cluster can only remain operational if quorum is establised.
 
 The standard method for bootstrapping the control plane in is to use the command ```kubeadm init```.
 
 ### 3.2.2 Worker Nodes ###
 
-A production-grade SQL Server 2019 Big Data Cluster requires a minimum of three Nodes each with 64 GB of RAM and 8 logical processors. This is a minimu, na da full sizing document is available from Microsoft. The standard method for bootstrapping worker Nodes and joining them to the Cluster is to use the command ```kubeadm join```.
+The minimum requirement for a production-grade SQL Server 2019 Big Data Cluster in terms of worker nodes is for three nodes, each with 64 GB of RAM and 8 logical processors. The standard method for bootstrapping worker Nodes and joining them to the Cluster is to use the command ```kubeadm join```.
 
 Consideration needs to be made for upgrading a Kubernetes Cluster from one version to another and allowing the Cluster to tolerate Node failure(s). There are two options:
 - **Upgrade each Node in the Cluster**
   This requires that a [`Taint`](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) is applied to a Node so that it cannot accept any Pods. The Node is then "drained" of its current Pod workload, after which it can be upgraded. When the Node is drained, the Pods that are running on it need somewhere else to go, therefore this approach mandates that there are N+1 worker Nodes (assuming one Node is upgraded at a time). This approach runs the risk that if the upgrade fails for any reason, the Cluster may be left in a state with worker Nodes on different versions of Kubernetes.
 - **Create a new Cluster**
-  In this case, you can create a new Cluster, deploy a big data Cluster to it, and then restore a backup of the data from the original Cluster. This approach requires more hardware than the upgrade method. If the upgrade spans multiple versions of Kubernetes  - for example, the upgrade is from version 1.15 to 1.17 - this method allows a 1.17 Cluster to be created from scratch cleanly and then the data from 1.15 Cluster restored onto the new 1.17 Cluster.
+  In this case, you can create a new Cluster, deploy a big data Cluster to it, and then restore a backup of the data from the original Cluster. This approach requires more hardware than the upgrade method. If the upgrade spans multiple versions of Kubernetes - for example, the upgrade is from version 1.15 to 1.17 - this method allows a 1.17 Cluster to be created from scratch cleanly and then the data from 1.15 Cluster restored onto the new 1.17 Cluster.
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: An Introduction To The Workshop Sandbox Environment (Optional)</b></p>
 
@@ -282,8 +282,6 @@ In the previous section we looked at the workshop sandbox environment from an in
 - Helm
 - The Kubernetes dashboard
 - A local-storage Storage Class
-- A SQL Server 2019 big data cluster
-- `The azdata` utility
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -328,9 +326,9 @@ top
 
 ### 3.2.3 Kubernetes Production Grade Deployments ###
 
-The environments used for the workshop hands on activities are created via a single script that leverages `kubeadm`. Consider that production deployments of a Kubernetes Cluster might require:
+The environments used for the workshop hands on activities are created via a single script that leverages `kubeadm`. A deployment of a Kubernetes Cluster that is fit for production purposes might require:
 
-- Deployment of multi-Node Clusters.
+- Deployment of multi-node Clusters.
 - Repeatable Cluster deployments for different environments with minimal scripting and manual command entry.
 
 Also consider the number of steps required to deploy a Cluster using `kubeadm`:
@@ -371,8 +369,6 @@ In order to carry out the deployment of the Kubernetes Cluster, a basic understa
 ### 3.2.4.3 Kubespray Workflow ###
 
 Unlike other available deployment tools, Kubespray does everything for you in “One shot”. For example, Kubeadm requires that certificates on Nodes are created manually, Kubespray not only leverages Kubeadm but it also looks after everything including certificate creation for you. Kubespray works against most of the popular public cloud providers and has been tested for the deployment of Clusters with thousands of Nodes. The real elegance of Kubespray is the reuse it promotes. If an organization has a requirement to deploy multiple Clusters, once Kubespray is setup, for every new Cluster that needs to be created, the only prerequisite is to create a new inventory file for the Nodes the new Cluster will use.
-
-#### 3.2.5 High Level Kubespray Workflow 
 
 The deployment of a Kubernetes Cluster via Kubespray follows this workflow:
 
@@ -424,11 +420,11 @@ Now that your sandbox environment is up and running, its time to work with the `
 
 ## 3.2.6 Application Deployment (Package Management) ## 
 
-The deployment of applications often comes with following requirements:
+The deployment of applications often comes with the following requirements:
 
-- The ability to package components together
-- Version control
-- The ability to downgrade and upgrade packaged applications
+- The ability to package components together.
+- Version control.
+- The ability to downgrade and upgrade packaged applications.
 
 > Simply using a `YAML` file does not meet the requirements of deploying complex applications - a problem exacerbated by the rise of microservice based architectures.
 
