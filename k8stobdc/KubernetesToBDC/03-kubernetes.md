@@ -392,9 +392,48 @@ Conceptually, the creation of a three-worker Node Cluster follows this graphic:
 - The `cluster.yaml` file contains the play book for creating the Kubernetes Cluster itself
 - The entire Cluster is deployed via a single invocation of the `ansible-playbook` command
 
+### 3.2.4.4 Configuration Management ###
+
+- The names of the hosts and their ip addresses on which cluster nodes and etcd instances will be built are defined in:
+  `kubespray/inventory/<cluster-name>/hosts.yml`
+
+- General Kubernetes cluster configuration information, such as the version of Kubernetes to be deployed is specified in:
+  `kubespray/inventory/<cluster-name>/group_vars/k8s-cluster/k8s-cluster.yml`
+
+### 3.2.4.5 Cluster Lifecycle Management ###
+
+To deploy a cluster using Kubespray:
+```
+ansible-playbook -i inventory/<cluster-name>/hosts.yml cluster.yml --become --become-user=root
+```
+To remove a cluster:
+```
+ansible-playbook -i inventory/<cluster-name>/hosts.yml reset.yml --become --become-user=root
+```
+Rebuild master nodes:
+```
+ansible-playbook -i inventory/<cluster-name>/hosts.yml recover-control-plane.yml --become --become-user=root
+```
+Add worker nodes / etcd instances:
+```
+ansible-playbook -i inventory/<cluster-name>/hosts.yml scale.yml --become --become-user=root
+```
+Remove nodes / etcd instances:
+```
+ansible-playbook -i inventory/<cluster-name>/hosts.yml remove-node.yml --become --become-user=root
+```
+Upgrade cluster to a newer version of Kubernetes:
+```
+ansible-playbook -i inventory/<cluster-name>/hosts.yml upgrade-cluster.yml --become --become-user=root
+```
+
 ### 3.2.5 Post Cluster Deployment Activities ###
 
-As a final step, we need to install the `kubectl` utility - the primary tool for administering a Kubernetes Cluster. The `kubectl` utility requires a configuration file in order to access the Cluster. By default `kubectl` will look for a file named config in the `.kube` directory under the home directory of the user that is logged in:
+Following a successful deployment of a Kubernetes cluster, the main tools used for administering and managing the a cluster should be deployed.
+
+### 3.2.5.1 Kubectl ###
+
+`kubectl` is the primary tool for administering a Kubernetes Cluster. The `kubectl` utility requires a configuration file in order to access the Cluster. By default `kubectl` will look for a file named config in the `.kube` directory under the home directory of the user that is logged in:
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_2_9_kubectl.png?raw=true">
 
@@ -406,7 +445,7 @@ The [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-applicati
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Kubectl Familiarization</b></p>
 
-Now that your sandbox environment is up and running, its time to work with the `kubectl` utility,  the primary command line tool for managing and administering Kubernetes Clusters. Use the [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) for assistance with this activity.
+Its time to work with the `kubectl` utility,  the primary command line tool for managing and administering Kubernetes Clusters. Use the [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) for assistance with this activity.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
@@ -418,7 +457,53 @@ Now that your sandbox environment is up and running, its time to work with the `
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-## 3.2.6 Application Deployment (Package Management) ## 
+## 3.2.5.2 Dashboard ## 
+
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Deploying The Kubernetes Dashboard</b></p>
+
+In this activity, the Kubernetes dashboard will be deployed to your sandbox Kubernetes cluster and accessed from a web browser running on your laptop.
+
+1. Install kubectl on your laptop. The [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) provides full instructions for installing kubectl on Windows, Linux and MacOs, following the instructions which are relevant for the operating system on your laptop.
+
+2. Use a file copy tool, Windows users may use [WinScp](https://winscp.net/eng/download.php), MacOs users may use [Filezilla](https://filezilla-project.org/download.php?platform=osx) and Linux users may use scp, to copy /etc/kubernetes/admin.conf from your sandbox virtual machine to .kube\config under the home directory of the user account that you use for logging into your laptop.
+
+3. Execute the following command to verify that both kubectl is installed and that it can access the context for connecting to the sandbox cluster:
+```
+kubectl cluster-info
+```
+4. Deploy the console:
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
+```
+
+5. Create a service account and clusterrolebinding for accessing the dashboard:
+```
+kubectl create serviceaccount dashboard-admin-sa
+kubectl create clusterrolebinding dashboard-admin-sa --clusterrole=cluster-admin --serviceaccount=default:dashboard-admin-sa
+```
+
+6. Obtain the secrets currently stored in the cluster:
+```
+kubectl get secrets
+```
+
+7. Describe the secret prefixed with dashboard-admin-sa-token, for example, if this is dashboard-admin-sa-token-kk287, issue the following command:
+```
+kubectl describe secret dashboard-admin-sa-token-kk287
+```
+
+8. From the outout of the describe command copy the long string of text that represents the token.
+
+9. Issue the following command from a command shell on your laptop, and leave the command running
+```
+kubectl proxy
+```
+
+10. Paste the following URL into the address bar of your laptop's browser: http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+
+11. The dashboard will ask ask you to authenticate either via a context config gile or a token, select the token option and then paste the token string into the token box.
+
+## 3.2.7 Application Deployment (Package Management) ## 
 
 The deployment of applications often comes with the following requirements:
 
@@ -633,7 +718,7 @@ A [reclaim policy](https://kubernetes.io/docs/tasks/administer-Cluster/change-pv
 
 ### 3.4.4 Pod Mobility ###
 
-Pods can either be *stateless* or *stateful*, having to do with whether the Pod is replicated as multiple copies or kept in a stateful manner by using an identifier. One of the most fundamental tasks that Kubernetes carries out is to ensure that the desired state of a Pod in terms of replicas and its actual state are the same. Pods typically run in either a [`ReplicaSet`](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) or a [`StatefulSet`](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). If a replica dies by a Node going offline for example, Kubernetes will schedule a new Pod to run on a healthy Node: 
+Pods can either be *stateless* or *stateful*. One of the most fundamental tasks that Kubernetes carries out is to ensure that the desired state of a Pod in terms of replicas and its actual state are the same. Pods typically run in either a [`ReplicaSet`](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) or a [`StatefulSet`](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). If a replica dies by a Node going offline for example, Kubernetes will schedule a new Pod to run on a healthy Node: 
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_3_4_stateless.png?raw=true">
 
@@ -683,10 +768,10 @@ The architecture of a SQL Server 2019 big data Cluster contains components that 
 
 Components of an application that are Clustered have some special requirements which are not catered for by ReplicaSets. Per the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), Clustered applications usually exhibit one or more of the following requirements:
 
-- Stable, unique network identifiers
-- Stable, persistent storage
-- Ordered, graceful deployment and scaling
-- Ordered, automated rolling updates
+- Stable, unique network identifiers,
+- Stable, persistent storage,
+- Ordered, graceful deployment and scaling,
+- Ordered, automated rolling updates.
 
 A key feature of a StatefulSet is that each member of a Cluster application requires its own Persistent Volume Claim, for this very reason, a StatefulSet uses a Persistent Volume Claim template:
 
@@ -718,7 +803,7 @@ kubectl get statefulset
 kubectl apply -f create-statefulset.yaml
 ```
 
-4. List the Persistent Volume Claims, why are there three of these associated with the statefulset that was just created.
+4. List the Persistent Volume Claims, why are there three of these associated with the statefulset that was just created ?.
 
 ### 3.4.8 Considerations for Choosing Storage
 
@@ -788,7 +873,7 @@ For a Storage Class that provides automatic provisioning, the Persistent Volume 
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-## 3.6 Management Of Sensitive Information
+## 3.5 Management Of Sensitive Information
 
 Key to managing sensitive information such as passwords is the Kubernetes `Secret` Object. Secrets encrypt information which is stored in `etcd`, at the time when a secret is required it is injected into a Pod(s) are made available via a temporary file system.
 
@@ -811,9 +896,12 @@ kubectl get secret -n mssql-Cluster
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="MySuperSecretP@ssw0rd"
 ```
 
-## 3.7 Services 
+## 3.6 Services 
 
-A *Service* is an abstraction which defines a logical set of Pods and a policy by which to access them, or more simply put, a service provides the means by which clients running **outside** of a Kubernetes Cluster to consume functionality provided by Pods running **inside** the Cluster.
+A *Service* is an abstraction which defines a logical set of Pods and a policy by which to access them. Simply put, a service provides the means by which:
+
+- clients running **outside** of a Kubernetes Cluster to consume functionality provided by Pods running **inside** the Cluster,
+- Pods that represent particular components, a frontend type service for example can communicate with Pods that represent a different service, a backend service for example. 
 
 There are three types of service:
 
@@ -821,7 +909,7 @@ There are three types of service:
 
 - **NodePort**: exposes the service via a static port on each Node.
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_7_1_Node_port.PNG?raw=true">
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/k8stobdc/graphics/3_7_1_node_port.PNG?raw=true">
 
 - **LoadBalancer**: exposes the service via a single load balancer endpoint, this in turn routes traffics to Pods running inside the Cluster.
 
@@ -832,13 +920,7 @@ There are three types of service:
 When creating a Kubernetes Cluster using a Kubernetes-As-A-Service such as Azure Kubernetes Service, the default type of service that expose a Cluster's Pods to the outside world is `LoadBalancer`.
 By default the service type for Kubernetes Clusters deployed on-premises, is a `NodePort`. `NodeNorts` and `LoadBalancers` operate in different ways, depending on what you want to expose. The term for the component that manages external access to a Cluster in the context of routing, is ["Ingress controller"](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/). 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/point1.png?raw=true"><b>Activity: Working With Services</b></p>
-
-TODO: enter brief description of activity.
-
-<p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
-
-## 3.8 Disaster Recovery
+## 3.7 Disaster Recovery
 
 The ecosystem in which a SQL Server 2019 big data Cluster runs on Kubernetes is comprises of various layers:
 
