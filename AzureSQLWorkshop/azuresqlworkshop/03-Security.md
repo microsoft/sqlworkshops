@@ -17,7 +17,7 @@ Ensuring security and compliance of your data is always a top priority. In this 
 In this module, you'll cover these topics:  
 [3.1](#3.1): Platform and network security   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): Configure Auditing  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Create and manage firewall/vNet rules for Azure SQL Database's public endpoint    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Create and manage firewall/VNet rules for Azure SQL Database's public endpoint    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Bonus) [Activity 3](#3): Create and manage Private Link for Azure SQL Database    
 [3.2](#3.2): Access management and Authorization   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 4](#4): Getting started with Azure AD authentication    
@@ -102,20 +102,20 @@ This is the end of this activity. In a later activity in this module, you'll see
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Create and manage firewall/vNet rules for Azure SQL Database's public endpoint</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Create and manage firewall/VNet rules for Azure SQL Database's public endpoint</b></p>
 
 In this activity, you'll see how to review and manage your firewall rules using the Azure portal. You'll also see how to configure the most secure connection while using the public endpoint.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
 
-During deployment of Azure SQL Database, you selected "Allow Azure services and resources access to this server" to **ON**. If you can, switching it to **OFF** is the most secure configuration of the public endpoint. In this activity, you'll see how to view and edit your firewall rules. Setting this up can be complicated, since it means you'll have to specify a range of IP addresses for all your connections (which can sometimes have dynamic IP addresses). A much easier alternative is to use Virtual network (vNet) rules to establish and to manage access from specific subnet(s) that contain VMs or other services that need to access the data. You'll walk through setting this up next.  
+During deployment of Azure SQL Database, you selected "Allow Azure services and resources access to this server" to **ON**. If you can, switching it to **OFF** is the most secure configuration of the public endpoint. In this activity, you'll see how to view and edit your firewall rules. Setting this up can be complicated, since it means you'll have to specify a range of IP addresses for all your connections (which can sometimes have dynamic IP addresses). A much easier alternative is to use Virtual network (VNet) rules to establish and to manage access from specific subnet(s) that contain VMs or other services that need to access the data. You'll walk through setting this up next.  
 
 In reality, you'll want to partner with your networking team to ensure you have the most secure, functional network. A few handy resources include:  
 * [Azure SQL Database network access controls](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-networkaccess-overview)
 * [Connecting your applications to Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connect-app)
 * [IP firewall rules for Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure)
 * [Data exfiltration prevention](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-private-endpoint-overview#data-exfiltration-prevention)  
-* [vNet endpoints and rules](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#anchor-how-to-by-using-firewall-portal-59j)  
+* [VNet endpoints and rules](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#anchor-how-to-by-using-firewall-portal-59j)  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
@@ -144,7 +144,11 @@ Return to the Azure portal in your Azure VM. In the top bar, select the Azure Cl
 
 If this is your first time using the Azure Cloud Shell, you will be prompted to select a subscription to create a storage account and Microsoft Azure Files share. For this workshop, you can just use any of the storage accounts that are in your resource group already. More information about the Azure Cloud Shell can be found in the [documentation](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).    
 
-Then, you can select Bash or PowerShell. Select **Bash**. You should see a view similar to below.  
+Then, you can select Bash or PowerShell. Select **Bash**.  
+
+You may be prompted to select a storage account. If you are, select **Show advanced settings**, and select an existing storage account in **your** existing resource group for the workshop. For "File share" select **Create new** and call it **fsID** where ID is your unique ID for the workshop. Finally, select **Create**.    
+
+You should now see a view similar to below.  
 
 ![](../graphics/acsbash.png)  
 
@@ -165,23 +169,23 @@ There are other commands available for creating, deleting, and updating rules, w
 
 Note that this method of setting the firewall rules (using the Azure portal or Azure Cloud Shell) grants your client IP address access to all of the databases that are in that logical server. After you've configured the server-level firewall rule, which you did above, you can optionally configure database-level firewall rules that apply to individual databases. This can only be done with T-SQL, using the command `EXECUTE sp_set_database_firewall_rule`. For more information, see the references in the **Description** of this activity.  
 
-**Step 3 - Create a vNet rule using the Azure portal**   
+**Step 3 - Create a VNet rule using the Azure portal**   
 
-You've now seen how to update firewall rules for specific IP addresses or ranges of IP addresses. However, VMs in Azure have dynamic IP addresses (they change). You can set up static IP addresses, but even this can be difficult to maintain. You can, alternatively, use virtual network (vNet) rules to manage access from specific subnet(s) that contain your VMs or other services. Let's see how.  
+You've now seen how to update firewall rules for specific IP addresses or ranges of IP addresses. However, VMs in Azure have dynamic IP addresses (they change). You can set up static IP addresses, but even this can be difficult to maintain. You can, alternatively, use virtual network (VNet) rules to manage access from specific subnet(s) that contain your VMs or other services. Let's see how.  
 
-In the Azure portal, navigate to your Azure SQL Database logical server (e.g. `aw-server0406`). In the left-hand menu, under Security, select **Firewalls and virtual networks**. This is where you added your Client IP address and turned "Allow Azure services and resources access to this server" to **OFF**. You can also manage access to vNets from here.  
+In the Azure portal, navigate to your Azure SQL Database logical server (e.g. `aw-server0406`). In the left-hand menu, under Security, select **Firewalls and virtual networks**. This is where you added your Client IP address and turned "Allow Azure services and resources access to this server" to **OFF**. You can also manage access to VNets from here.  
 
 At the bottom, select **+ Add existing virtual network**. For the options, input the following:  
 * Name: **VmVnet**
 * Subscription: *Select the subscription you're using for this workshop*  
-* Virtual network: **azuresqlworkshop`ID`-vnet** (replacing `ID` with your ID for the workshop and other resources)  
+* Virtual network: Select the only virtual network that appears under **your resource group for the workshop**.   
 * Subnet name / Address prefix : *Default is fine*  
 * Note that the `Microsoft.Sql` endpoint has not yet been enabled. Once this service endpoint is enabled, all access to your Azure SQL Database will come through private IP addresses. To learn more about service endpoints, see the [documentation](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview).
 
 ![](../graphics/vmvnet2.png)  
 
-Select **Enable**, then select **OK**.    
-> Note: The warning says this takes up to 15 minutes, but in testing for the workshop, it usually takes <1 minute.
+Select **Enable**, then **Count to 10** (i.e. wait a few seconds), then select **OK**.    
+> Note: The warning says this takes up to 15 minutes, but in testing for the workshop, it usually takes <1 minute. If you get an error, simply close the Create/Update window and start Step 3 from the beginning.  
 
 Next, remove your Client IP address by selecting the **...** next to the End IP and select **Delete**.  
 
@@ -195,26 +199,29 @@ To confirm you still have access from your Azure VM, navigate to SSMS and refres
 
 ![](../graphics/dbrefresh.png)  
 
-If no errors occur, you have successfully configured access to your Azure SQL Database logical server from resources in your vNet, which can simplify the challenge of configuring access to all the IP addresses (static and dynamic) that need to access the data. You can now specify one or multiple subnets within a virtual network or networks, encompassing all of the resources within.        
+If no errors occur, you have successfully configured access to your Azure SQL Database logical server from resources in your VNet, which can simplify the challenge of configuring access to all the IP addresses (static and dynamic) that need to access the data. You can now specify one or multiple subnets within a virtual network or networks, encompassing all of the resources within.        
 
 <br>
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>(Bonus) Activity 3</a>: Create and manage Private Link for Azure SQL Database</b></p>
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="3"><b>(Bonus) Activity 3</a>: Create and manage Private Link for Azure SQL Database</b></p>
 
 In this activity, you'll see how to configure the most secure connection with a new feature called Private Link.  
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
 
-You've learned and seen how to configure the most secure network using Azure SQL Database with the public endpoint. This method of securing Azure SQL Database has been used for years. However, in 2019, Azure began moving towards a concept of a Private Link, which is more similar to the way that Azure SQL Managed Instance is deployed. Private Link allows you to connect to Azure SQL Database (and several other PaaS services) using a private endpoint, which means it has a private IP address within a specifc vNet and Subnet. You can learn more about Private Link [in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-private-endpoint-overview).  
+You've learned and seen how to configure the most secure network using Azure SQL Database with the public endpoint. This method of securing Azure SQL Database has been used for years. However, in 2019, Azure began moving towards a concept of a Private Link, which is more similar to the way that Azure SQL Managed Instance is deployed. Private Link allows you to connect to Azure SQL Database (and several other PaaS services) using a private endpoint, which means it has a private IP address within a specific VNet and Subnet. You can learn more about Private Link [in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-private-endpoint-overview).  
 
 > Note: As of the last update of this course, Private Link was in Public Preview. The documentation link above will have the latest information regarding its general availability.  
 
 In this activity, you'll use the Azure portal to configure Private Link for your existing Azure SQL Database logical server. You could alternatively use PowerShell or the Azure CLI. Since this is a bonus activity, it's important you follow the clean-up steps at the end of the activity. All future activities in this workshop are configured with the public endpoint.   
 
+> Note: If you complete this activity, you must complete the last step, otherwise you may have issues in future activities. If you're not sure if you will have time to complete, most of the screenshots and results are included below, so you can simply read and review the activity.    
+
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
 In this activity, you will complete the following steps:  
 
+0. Examine the current connection
 1. Navigate to the private endpoint experience in the Azure portal  
 1. Create a private endpoint - Basics
 1. Create a private endpoint - Resource 
@@ -223,6 +230,35 @@ In this activity, you will complete the following steps:
 1. Connect to the private endpoint
 1. Clean up the private endpoint (**Required**)
 
+**Step 0: Examine the current connection**  
+
+When you deployed Azure SQL Database in Module 2, you set up access for your Azure VM through it's public endpoint, and the public IP address of your Azure VM. This means you will connect to the database with the public IP address of your VM.  
+
+By adding access from your specific VNet instead of the public IP address of your VM, connections to Azure SQL Database from your VM will appear to come through the private IP address of your VM (you can confirm this by running `select client_net_address from sys.dm_exec_connections where session_id=@@SPID`). You will see the same result once you configure Private Link, so on the surface it may appear that there is no difference. However, there is quite a significant difference, so in this step you will examine how you connect to the database when you have VNet rules configured, and after you configure Private Link, you'll check this again.  
+
+Open the command prompt and run the following command, replacing the `<ID>` with your ID for the workshop.  
+```cmd
+nslookup aw-server<ID>.database.windows.net  
+```
+This command allows you to understand details related to the DNS infrastructure. Your results should be similar to below:  
+```cmd
+Server: Unknown
+Address: 168.63.129.16
+
+Non-authoritative answer:
+Name:   cr2.eastus1-a.control.database.windows.net
+Address:    40.222.222.22
+Aliases:    aw-server<ID>.database.windows.net
+            dataslice2.eastus.database.windows.net
+```
+The important things to look at are under the Non-authoritative answer:  
+* **Name**: The endpoint starting with `cr2` is part of the public DNS hierarchy. Without getting too much into the hierarchy, `cr2` is the Control Ring 2 and then there are multiple data "slices" below it.  
+* **Address**: The IP address returned here should match the public IP address of your Azure VM. So even though SSMS' final hop might be through your VM's private IP address, the public IP address of your VM is still being used to connect in some capacity.  
+* **Aliases**: These are just various point within the DNS hierarchy, in this case the specific data "slice" and the endpoint you connect to.  
+
+> Fun fact: the **Address 168.63.129.16** is a virtual public IP address used to facilitate a communication channel to Azure platform resources. It's the case for all regions and all national clouds, and it will not change. You can read more about it in the [documentation](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16).
+
+Leave this command prompt open, so you can compare to Private Link in a later step.  
 
 **Step 1: Navigate to the private endpoint experience in the Azure portal**    
 
@@ -258,9 +294,9 @@ Next, select **Next : Configuration**.
 
 **Step 4: Create a private endpoint - Configuration**   
 
-In this step, you will configure your private endpoint to be created in the **same virtual network subnet as your Azure VM** for the workshop. This is the easiest way to ensure that you can connect to it from your virtual machine. There are other ways available (virtual network peering, vNet-to-vNet, VPN from on-premises), but you will not use those in this workshop.  
+In this step, you will configure your private endpoint to be created in the **same virtual network subnet as your Azure VM** for the workshop. This is the easiest way to ensure that you can connect to it from your virtual machine. There are other ways available (virtual network peering, VNet-to-VNet, VPN from on-premises), but you will not use those in this workshop.  
 
-Select your VM virtual network, it should be similar to **azuresqlworkshop<ID>-vnet** and the subnet should be **default**.  
+Select your VM virtual network, it should be similar to **azuresqlworkshop<ID>-vnet** or **win-vm-vnet** *under your resource group* and the subnet should be **default**.  
 
 In order to connect privately with the endpoint you create, you'll also need a DNS record. This won't be covered in this activity, but you can learn more [here](https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview#dns-configuration). You can just leave the defaults.  
 
@@ -280,7 +316,7 @@ In the overview tab, you should now see your Azure SQL Database logical server a
 
 ![](../graphics/peoverview.png)   
 
-**Step 6: Connect to the private endpoint**  [TODO NEEDS UPDATING]
+**Step 6: Connect to the private endpoint**   
 
 In this step, you'll try to connect to the private endpoint. Using SSMS, right-click on your AdventureWorks<ID> database and select **New Query**. Run the following command:  
 
@@ -288,48 +324,51 @@ In this step, you'll try to connect to the private endpoint. Using SSMS, right-c
 select client_net_address from sys.dm_exec_connections where session_id=@@SPID
 ```
 
-This command lists the IP address of the client machine or virtual network for the session you are connected with. If you navigate to your virtual network in the portal that you are using for the workshop (e.g. **azuresqlworkshop0406-vnet**), you might notice that the IP address you're connecting to Azure SQL Database is the **public** IP address of your virtual network. However, with Private Link, you should only be able to connect with the **private** IP address of your Azure virtual machine.  
 
-**Why did this happen?** In Activity 2, recall that you created a virtual network rule to allow connections from your VM's virtual network. Private Link doesn't overrule your existing rules, so in this case, you're still able to connect using the public endpoint.  
+When you deployed Azure SQL Database in Module 2, you set up access for your Azure VM through it's public endpoint, and the public IP address of your Azure VM. This means you will connect to the database with the public IP address of your VM.  
 
-Another thing you might be wondering, is if you are connecting to the private endpoint, **why are you still using the same server name?** In the backend, when you use solely the Private Link method of connecting (i.e. no firewall or virtual network rules), the information is processed as follows:  
+By adding access from your specific VNet instead of the public IP address of your VM, connections to Azure SQL Database from your VM will appear to come through the private IP address of your VM. You will see the same result now that you've configured Private Link. So where are the differences?  
+
+Return to the command prompt window that you used in Step 0. If you have since closed this window, open a new command prompt. Run the following command, replacing the `<ID>` with your ID for the workshop.  
+```cmd
+nslookup aw-server<ID>.database.windows.net  
+```
+As you saw in Step 0, this command allows you to understand details related to the DNS infrastructure. However, your results will be slightly different now.Your results with Private Link should be similar to below:  
+```cmd
+Server: Unknown
+Address: 168.63.129.16
+
+Non-authoritative answer:
+Name:   aw-server<ID>.privatelink.database.windows.net
+Addresses:    172.22.2.2
+            172.22.2.1
+Aliases:    aw-server<ID>.database.windows.net
+```
+The important things to look at are under the Non-authoritative answer, and let's examine the differences:  
+* **Name**: Note that you're no longer pointing to the public DNS hierarchy, only to the Private Link DNS. This means less information is revealed about your database server.    
+* **Addresses**: For VNet rules, the address returned was the public IP address of your VM, but it should now be one or more *private* IP addresses within the Private Link hierarchy (one is the private endpoint of your Azure SQL Database).
+* **Aliases**: Similar to the Name field, you're not seeing anything related to the DNS hierarchy, except that you can still connect to the server name (e.g. `aw-server0406.database.windows.net`).  
+
+One thing you might be wondering, is if you are connecting to the private endpoint, **why are you still using the same server name?** In the backend, when you use solely the Private Link method of connecting (i.e. no firewall or virtual network rules), the information is processed as follows:  
 
 * `aw-server<ID>.database.windows.net`  
     * Resolved by service to `aw-server<ID>.privatelink.database.net`  
         * Resolved by service to `10.14.1.4` (the IP address of your private endpoint)  
 
-The service will block you from directly connecting using anything apart from `aw-server<ID>.database.windows.net`.  
+Additionally, the service will block you from directly connecting using anything apart from `aw-server<ID>.database.windows.net`.  
 
-In order to leverage the private IP address, you need to delete all virtual network and firewall rules for your logical server (this essentially deletes public endpoint access).  
-
-In the Azure portal, for you Azure SQL Database logical server, in the left-hand taskbar, under Security, select **Firewalls and virtual networks**.   
-
-Delete **all** firewall rules and virtual networks. Then, select save. It should look similar to below:  
-
-![](../graphics/norules.png)  
-
-Don't forget to select **Save**.  
-
-Return to SSMS, right-click on your AdventureWorks database, and select **New Query**. This will create a fresh connection to your database.  
-
-Run the following query, and compare the results. Is the IP address returned your private or public VM IP address?  
-
-```sql
-select client_net_address from sys.dm_exec_connections where session_id=@@SPID
-```
-
-The result should now reflect your Azure VM's private IP address.  
 
 **Step 7: Clean up the private endpoint (*Required*)**  
 
-Since private link is in public preview (as of the last revision of this workshop), the rest of the workshop will leverage the **public endpoint**. In order to reconfigure your Azure SQL Database logical server so the public endpoint is used, you **must REPEAT Activity 2 Step 3 before proceeding**.  
+Since private link is in public preview (as of the last revision of this workshop), the rest of the workshop will leverage the **public endpoint** with VNet rules enabled. In order to reconfigure your Azure SQL Database logical server so the public endpoint is used, you **must delete the private endpoint**.  
 
-To **confirm this was successful**, create a new query, run the below query, and confirm that the IP address returned is the **public** IP address of your Azure VM.  
+Navigate to your Azure SQL Database logical server, and in the left-hand menu, under **Security**, select **Private endpoint connections**. Then, select your private endpoint, and click **Remove** and **Yes** to confirm.  
 
-TODO
-```sql
-select client_net_address from sys.dm_exec_connections where session_id=@@SPID
-```
+![](../graphics/deletepe.png)
+
+To **confirm this was successful**, open the command prompt and ensure that the `nslookup aw-server<ID>.database.windows.net` no longer references `privatelink.database.windows.net`.   
+
+Microsoft is actively investing heavily in Private Link for SQL and other services, to learn more refer to the [documentation](https://docs.microsoft.com/en-us/azure/private-link/index).  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -414,45 +453,27 @@ ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
 The best practice is to create non-admin accounts at the database level, unless they need to be able to execute administrator tasks.  
 
 
-**Step 4 - Grant other users access (Azure AD)**   
+**Step 4 - Grant other users access (Azure AD) - *Demo/Whiteboard only***   
 
 Azure AD authentication is a little different. From the documentation, "*Azure Active Directory authentication requires that database users are created as contained. A contained database user maps to an identity in the Azure AD directory associated with the database and has no login in the master database. The Azure AD identity can either be for an individual user or a group*."  
 
 Additionally, the Azure portal can only be used to create administrators, and Azure RBAC roles don't propagate to Azure SQL Database logical servers, Azure SQL Databases, or Azure SQL Managed Instances. Additional server/database permissions must be granted using T-SQL.  
 
-How you complete this next step will depend on how you are consuming this workshop. If you were given an environment, find a neighbor to work with. If you are doing this self-paced, or in a group that is multi-organization, you will just review this step, observing the screenshots.  
+If you are attending in-person, your instructor will demo/whiteboard how to add Azure AD users and give them access. If you are attending this self-paced, you can review the scripts below. This scenario involves giving *Person B* access to *Person A*'s Azure SQL Database logical server from an Azure VM.  
 
-1. With your neighbor, first determine who will be *Person A* and who will be *Person B*.  
-2. Both *Person A* and *Person B* should note their Azure VM's **Public IP Address** (can locate this in the Azure portal)
-3. *Person A* should run the following T-SQL when connected to their AdventureWorks database to authorize *Person B* to their server:  
 ```sql
 -- Create the Azure AD user with access to the server
-CREATE USER <Person B Azure AD account> FROM EXTERNAL PROVIDER;
+CREATE USER "Person B Azure AD account" FROM EXTERNAL PROVIDER;
 
 -- Until you run the following two lines, the user has no access to read or write data
-ALTER ROLE db_datareader ADD MEMBER <Person B Azure AD account>;
+ALTER ROLE db_datareader ADD MEMBER "Person B Azure AD account";
 
 -- Create firewall to allow Person B's Azure VM
 EXECUTE sp_set_firewall_rule @name = N'AllowPersonB',
     @start_ip_address = 'Person B VM Public IP', 
     @end_ip_address = 'Person B VM Public IP'
 ```
-4. *Person B* should run the following T-SQL when connected to their AdventureWorks database to authorize *Person A* to their server:
-```sql
--- Create the Azure AD user with access to the server
-CREATE USER <Person A Azure AD account> FROM EXTERNAL PROVIDER;
-
--- Until you run the following two lines, the user has no access to read or write data
-ALTER ROLE db_datareader ADD MEMBER <Person A Azure AD account>;
-
--- Create firewall to allow Person A's Azure VM
-EXECUTE sp_set_firewall_rule @name = N'AllowPersonA',
-    @start_ip_address = 'Person A VM Public IP', 
-    @end_ip_address = 'Person A VM Public IP'
-```
-5. **Person A** should now try to connect to **Person B**'s Azure SQL Database logical server.  
-6. **Person B** should now try to connect to **Person A**'s Azure SQL Database logical server.  
-7. **Person A** should have read access but no write access on **Person B**'s database. Similarly, **Person B** should have read access but no write access on **Person A**'s database. Each person should try the following commands on each database:  
+*Person B* should now be able to connect to the server from their Azure VM. Read commands should work, but write commands should fail.  
 ```sql
 -- Example of a read command
 SELECT *
@@ -463,12 +484,8 @@ UPDATE [SalesLT].[ProductCategory]
     SET ModifiedDate = GETDATE()
     WHERE ProductCategoryID = 1;
 ```  
-8. Compare results.  
 
-If you were not able to complete this exercise for whatever reason, some screenshots below are included. Note that "a" represents **Person A** and "b" represents **Person B** in this example.  
-
-
-TODO Add screenshots and test with Bob.  
+In the real-world, scenarios can get complex quickly. For more information, please refer to the [documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) and the [Azure SQL Network Security best practices](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-security-best-practice#network-security).
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -585,6 +602,8 @@ Your resulting view should be similar to below.
 ![](../graphics/vadashboard.png)  
 
 Every security risk has a risk level (high, medium, or low) and additional information. Select the security check **VA2065** to get a detailed view, similar to below. Review the status and other available information.   
+
+> Note: If **VA2065** does not fail, you can perform a similar exercise below, depending on what failed tests do occur.   
 
 ![](../graphics/va20651.png)  
 ![](../graphics/va20652.png)  
