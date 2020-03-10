@@ -58,12 +58,14 @@ In this activity, you'll deploy Azure SQL Database deployment using the Azure po
 
 Navigate to https://portal.azure.com/ and log in with your account, if you are not already. In the top search bar, type **Azure SQL** and review what appears:
 
-![](../graphics/search.png)
-* **Services**: this allows you to see your existing resources grouped by what type of service they are
-* **Resources**: this allows you to select specific resources
-* **Marketplace**: this allows you to deploy new resources
-* **Documentation**: this searches docs.microsoft.com 
-* **Resource groups**: this allows you to select a resource group  
+![](../graphics/search2.png)  
+
+There are a lot of different items and categories here, but basically this is giving you filters for what you want to search on. Let's break them down:
+* **Services**: if you select Services, then you're able to see the existing resources (i.e. already deployed) that you have all together. For example, if you clicked Azure SQL, you would see all of your SQL VMs, Databases, Logical servers, Managed Instances, and pools.
+* **Resources**: this searches based on existing resource names. For example, if you searched for "adventureworks" any resources with "adventureworks" in the name would return here.
+* **Marketplace**: this allows you to deploy new resources from the marketplace. 
+* **Documentation**: this searches docs.microsoft.com for relevant documentation
+* **Resource groups**: this allows you to search based on resource group name.
 
 Next, select **Azure SQL** under **Marketplace**. This will bring you to the Azure SQL create experience. Take a few moments to click around and explore.
 
@@ -79,7 +81,7 @@ Select the subscription and resource group you created in the prerequisites (or 
 
 **Step 3 - Server**  
 
-When you create an Azure SQL Managed Instance, supplying the server name is the same as in SQL Server. However, for databases and elastic pools, an Azure SQL Database server is required. This is a *logical* server that acts as a central administrative point for single or pooled database and includes logins, firewall rules, auditing rules, threat detection policies, and failover groups (more on these topics later). This logical server does not expose any instance-level access or features as with Azure SQL Managed Instance. You can read more on SQL Database servers [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-servers).  
+When you create an Azure SQL Managed Instance, supplying the server name is the same as in SQL Server. However, for databases and elastic pools, an Azure SQL Database server is required. This is a *logical* server that acts as a central administrative point for single or pooled database and includes logins, firewall rules, auditing rules, threat detection policies, and failover groups (more on these topics later). This logical server does not expose any instance-level access or features as with Azure SQL Managed Instance. For Azure SQL Database servers, the server name must be unique across all of Azure. You can read more on SQL Database servers [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-servers).  
 
 Select **Create new** next to **Server** and provide the following information:  
 * *Server name*: **aw-serverID** where ID is the same identifier you used for the database and resource group.  
@@ -89,7 +91,7 @@ Select **Create new** next to **Server** and provide the following information:
 
 ![](../graphics/newserver.png)  
 
-> Note: If there are other requests or checkboxes here, accept the defaults.
+> Note: If there are other checkboxes here, accept the defaults.
 
 Then, select **OK**.
 
@@ -108,7 +110,7 @@ For the purposes of this workshop, we'll focus on the vCore purchasing model (re
 **Step 6 - Service tier**  
 >For more details on service tiers and comparisons, refer to [Module 1](../azuresqlworkshop/01-IntroToAzureSQL.md).  
 
-The next decision is choosing the service tier for performance and availability. We recommend you start with the General Purpose and adjust as needed.  
+The next decision is choosing the service tier for performance and availability. Generally, we recommend you start with the General Purpose and adjust as needed. For the purposes of this workshop, be sure to select **General Purpose** here (should be the default).  
 
 **Step 7 - Hardware**
 >For more details on available hardware and comparisons, refer to [Module 1](../azuresqlworkshop/01-IntroToAzureSQL.md).  
@@ -169,7 +171,7 @@ Collations in SQL Server and Azure SQL tell the Database Engine how to treat cer
 * `CI` means it will be case insensitive, where `CS` is case sensitive
 * `AS` means it will be accent sensitive, where `AI` is accent insensitive
 
-There are other options available related to widths, UTF-8, etc., and more details about what you can and can't do with Azure SQL [here](https://docs.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver15).
+There are other options available related to character widths, UTF-8, etc., and more details about what you can and can't do with Azure SQL [here](https://docs.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver15).
 
 
 **Step 12 - Opt-in for Advanced Data Security**
@@ -198,7 +200,7 @@ Take time here to ensure all of your selections match the workshop instructions.
 
 Finally, select **Create** to deploy the service.  
 
-Soon after selecting Create, you will be redirected to a page that looks like this (below), and where you can monitor the status of your deployment.
+Soon after selecting Create, you will be redirected to a page that looks like this (below), and where you can monitor the status of your deployment. This deployment option and configuration typically takes less than five minutes to deploy. Some images of what you might see are below.  
 
 ![](../graphics/deploymentunderway.png)
 
@@ -238,6 +240,14 @@ Next, let's connect to your Azure SQL Database logical server and compare. First
 
 For server name, input the name of your Azure SQL Database logical server. You may need to refer to the Azure portal to get this, e.g. *aw-server0406.database.windows.net*.  
 
+> **Tip: locating resources in the Azure portal**  
+> If you're new to the portal, there are a few ways you can locate resources, and depending on who you talk to, they may use a different method. Here are a few options to get you started:  
+> 1. In the search bar type the **resource name** and select it under "Resources". For example, in the below image I search for a SQL Managed Instance called "antho-mi", and I can then select it.  
+> ![](../graphics/anthomi.png)  
+> 2. If you select **Microsoft Azure** in the top left corner of the Azure portal, it will take you to "Home". From here, you can select **Resource groups** and then select your resource group. This will bring you to a view of all the resources that you deploy in the resource group. You could alternatively select SQL Databases or Virtual machines, depending what you are looking for.  
+> ![](../graphics/azureservices.png)
+> 3. Other options / more information can be found in the [Azure portal overview](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-overview) documentation page.  
+
 Change the authentication to **SQL Server Authentication**, and input the corresponding Server Admin Login and Password (the one you provided during deployment in Activity 1)
 
 Check the **Remember password** box and select **Connect**.
@@ -264,7 +274,7 @@ Open Azure Data Studio (ADS). When opening for the first time, you'll first be p
 
 ![](../graphics/adsconnect.png)  
 
-Note that you can connect to your local instance of SQL Server 2019 here. Let's do that first. You can also supply a Server group and Name, if you want to group different connections together. For example, when you connect to SQL Server 2019, you might place it in a new Server group called **SQL Server 2019**. Since you are on a local server use a Server of **.** and connect to SQL Server 2019 by selecting **Connect**.  
+Note that you can connect to your local instance of SQL Server 2019 here. Let's do that first. You can also supply a Server group and Name, if you want to group different connections together. For example, when you connect to SQL Server 2019, create new Server group called **SQL Server 2019**. Since you are on a local server use a Server of **.** and connect to SQL Server 2019 by selecting **Connect**.  
 
 ![](../graphics/adsconnectss.png)  
 
@@ -283,6 +293,10 @@ Now, connect to your Azure SQL Database logical server, just as you did in SSMS,
 In your **Connections** tab, under **Servers**, you should now see both connections, and you should be able to expand the folders similar to SSMS.  
 
 ![](../graphics/adsservers.png)   
+
+Finally, to run queries in ADS, it's very similar to SSMS. Right-click on a database or server name and select **New query**. For Azure SQL Database, since you are not really getting a full "server", **`USE [DatabaseName]`** is not supported to change the database context. You must either change the connection to specifically the database you want to run a query on or use the drop-down. Change to the context of your **AdventureWorksID** database by selecting the drop-down box next to "master" and run `SELECT @@VERSION`.  
+
+![](../graphics/newqueryads.png)
 
 **Step 2 - Set up easy file access with ADS**  
 
