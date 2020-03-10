@@ -15,7 +15,7 @@ The in-class version of this workshop involves a short presentation, which you c
 Throughout the activities, it's important to also read the accompanying text to the steps, but know that you can always come back to this page to review what you did at a later time (after the workshop).  
 
 In this module, you'll cover these topics:  
-[2.1](#2.1): Pre-deployment planning
+[2.1](#2.1): Pre-deployment planning  
 [2.2](#2.2): Deploy and verify  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 1](#1): Deploy Azure SQL Database using the Azure portal   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Activity 2](#2): Initial connect and comparison  
@@ -60,7 +60,7 @@ Navigate to https://portal.azure.com/ and log in with your account, if you are n
 
 ![](../graphics/search2.png)  
 
-There are a lot of different items and categories here, but basically this is giving you filters for what you want to search on. Let's break them down:
+There are a lot of different items and categories here, but basically this is giving you filters for what you can search on. Let's break them down:
 * **Services**: if you select Services, then you're able to see the existing resources (i.e. already deployed) that you have all together. For example, if you clicked Azure SQL, you would see all of your SQL VMs, Databases, Logical servers, Managed Instances, and pools.
 * **Resources**: this searches based on existing resource names. For example, if you searched for "adventureworks" any resources with "adventureworks" in the name would return here.
 * **Marketplace**: this allows you to deploy new resources from the marketplace. 
@@ -77,7 +77,7 @@ Next, select **Single database** and click **Create**.
 
 **Step 2 - Database name**  
 
-Select the subscription and resource group you created in the prerequisites (or were provided), then enter a database name **AdventureWorksID** where ID is the unique identifier you used in the prerequisites for your resource group, or the unique ID at the end of the Azure login you were provided (e.g. for `odl_user_160186@....com` the ID you will use for the entirety of the workshop is `160186`).  
+Select the subscription and resource group you created in the prerequisites (or were provided), then enter a database name **AdventureWorksID** where ID is the unique identifier you used in the prerequisites for your resource group, or the unique ID at the end of the Azure login you were provided (e.g. for `odl_user_160186@....com` the ID you will use for the entirety of the workshop is `160186`, and for this step your database name would be **AdventureWorks160186**).  
 
 **Step 3 - Server**  
 
@@ -326,7 +326,7 @@ For this step, you'll use the notebook **VerifyDeployment.ipynb** which is under
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.3">2.3 Configure</h2></a>
 
-TODO: Put in text here that talks about the process to configure, and configure/deploy databases with Azure SQL comparing this to SQL Server
+![](../graphics/configure.png)
 
 <br>
 
@@ -346,8 +346,6 @@ For this activity, you'll use the notebook called **AzureCli.ipynb** which is un
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="2.4">2.4 Load data</h2></a>
-
-TODO: Put in text here that talks about the process to load data with Azure SQL comparing this to SQL Server
 
 <br>
 
