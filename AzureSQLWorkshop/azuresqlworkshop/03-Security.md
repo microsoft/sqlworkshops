@@ -232,7 +232,7 @@ In this activity, you will complete the following steps:
 
 When you deployed Azure SQL Database in Module 2, you set up access for your Azure VM through it's public endpoint, and the public IP address of your Azure VM. This means you will connect to the database with the public IP address of your VM.  
 
-By adding access from your specific VNet instead of the public IP address of your VM, connections to Azure SQL Database from your VM will appear to come through the private IP address of your VM (you can confirm this by running `select client_net_address from sys.dm_exec_connections where session_id=@@SPID`). You will see the same result once you configure Private Link, so on the surface it may appear that there is no difference. However, there is quite a significant difference, so in this step you will examine how you connect to the database when you have VNet rules configured, and after you configure Private Link, you'll check this again.  
+By adding access from your specific VNet instead of the public IP address of your VM, connections to Azure SQL Database from your VM will appear to come through the private IP address of your VM (you can confirm this by running `SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id=@@SPID;`). You will see the same result once you configure Private Link, so on the surface it may appear that there is no difference. However, there is quite a significant difference, so in this step you will examine how you connect to the database when you have VNet rules configured, and after you configure Private Link, you'll check this again.  
 
 Open the command prompt and run the following command, replacing the `<ID>` with your ID for the workshop.  
 ```cmd
@@ -319,9 +319,8 @@ In the overview tab, you should now see your Azure SQL Database logical server a
 In this step, you'll try to connect to the private endpoint. Using SSMS, right-click on your AdventureWorks<ID> database and select **New Query**. Run the following command:  
 
 ```sql
-select client_net_address from sys.dm_exec_connections where session_id=@@SPID
+SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id=@@SPID;
 ```
-
 
 When you deployed Azure SQL Database in Module 2, you set up access for your Azure VM through it's public endpoint, and the public IP address of your Azure VM. This means you will connect to the database with the public IP address of your VM.  
 
@@ -469,7 +468,7 @@ ALTER ROLE db_datareader ADD MEMBER "Person B Azure AD account";
 -- Create firewall to allow Person B's Azure VM
 EXECUTE sp_set_firewall_rule @name = N'AllowPersonB',
     @start_ip_address = 'Person B VM Public IP', 
-    @end_ip_address = 'Person B VM Public IP'
+    @end_ip_address = 'Person B VM Public IP';
 ```
 *Person B* should now be able to connect to the server from their Azure VM. Read commands should work, but write commands should fail.  
 ```sql
@@ -660,7 +659,7 @@ To connect, finally, select **Connect**.
 In the new query window, run the following query:  
 
 ```sql
-select * from sys.databases where database_id like '' or 1 = 1 --' and family = 'test1'
+SELECT * FROM sys.databases WHERE database_id like '' or 1 = 1 --' and family = 'test1';
 ```
 
 Within a few minutes, you should receive an email similar to the following.  
@@ -715,7 +714,7 @@ You can confirm that this was successful by viewing the **Overview** tab and con
 
 **Step 2 - Apply Dynamic Data Masking over the Name columns**  
 
-Dynamic Data Masking (DDM) is something available in Azure SQL as well as in SQL Server. It limits data exposure by masking sensitive data to non-privileged users. Azure SQL will recommend things for you to mask, or you can add masks manually. You'll mask the FirstName, MiddleName, and LastName columns which you reviewed in the previous step.  
+Dynamic Data Masking (DDM) is something available in Azure SQL as well as in SQL Server. It limits data exposure by masking sensitive data to non-privileged users at SQL Server vs the application having to code those type of rules. Azure SQL will recommend things for you to mask, or you can add masks manually. You'll mask the FirstName, MiddleName, and LastName columns which you reviewed in the previous step.  
 
 In the Azure portal, navigate to your Azure SQL Database. In the left-hand menu, under Security, select **Dynamic Data Masking** and then select **+ Add mask**.  
 
@@ -743,16 +742,17 @@ Next, you will simulate someone querying the classified columns and explore dyna
 
 > Note: You should be connected to this logical server using Azure AD authentication. If you are connected as `cloudadmin`, create a new connection and connect using Azure AD authentication.  
 
-Now, run the following query to return the classified (and in some cases masked) data.  
+Now, run the following query to return the classified (and in some cases columns marked for masked) data.  
 ```sql
 SELECT TOP 10 FirstName, MiddleName, LastName
-FROM SalesLT.Customer
+FROM SalesLT.Customer;
 ```
 You should get a result of the first ten names, with no masking applied. Why? Because you are the admin for this Azure SQL Database logical server.  
 
 ![](../graphics/names.png)   
 
-Now, run the following query to create a new user and run the previous query as that user. You may notice the first few commands, they are a repeat from Activity 2, Step 3.  
+Now, run the following query to create a new user and run the previous query as that user. You may notice the first few commands, they are a repeat from Activity 2, Step 3.
+
 ```sql
 -- Create a new SQL user and give them a password
 CREATE USER Bob WITH PASSWORD = 'goTitans1!';
@@ -836,7 +836,11 @@ Review the files and select **OK** one last time.
 
 ![](../graphics/mergeaudit.png)  
 
-You should now be able to see all the audit logs. Look for where you were testing with masking with Bob (should be near the bottom). You can select the statement, and then use the detail pane below to review the information. For example, for one of the queries where Bob tries to view classified data, under the `data_sensitivity_information` field, you can see the data that is classified. For more information on the naming conventions in audit logs, [see here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-audit-log-format). And example of what you might see under `data_sensitivty_information` is below.   
+You should now be able to see all the audit logs. Look for where you were testing with masking with Bob (should be near the bottom). You can select the statement, and then use the detail pane below to review the information. For example, for one of the queries where Bob tries to view classified data, under the `data_sensitivity_information` field, you can see the data that is classified. For more information on the naming conventions in audit logs, [see here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-audit-log-format). 
+
+>**TIP**: Double-click on the value of the data_sensitivity_information in the Details tab. It will display a pop-up where you can more easily read the data.
+
+And example of what you might see under `data_sensitivty_information` is below. 
 
 ```cxel
 <sensitivity_attributes max_rank="20" max_rank_desc="Medium"><sensitivity_attribute label="Confidential - GDPR" label_id="bf91e08c-f4f0-478a-b016-23422b2a65ff" information_type="Name" information_type_id="57845286-7598-22f5-3422-15b24aeb125e" rank="20" rank_desc="Medium"/></sensitivity_attributes>
