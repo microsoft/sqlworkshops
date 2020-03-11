@@ -635,9 +635,9 @@ As you saw in an earlier step, ATP can be used to identify and alert when the fo
 * Data exfiltration
 * Unsafe action
 * Brute force
-* Anomalous client login  
+* Anomalous client login
 
-In this step, you will trigger an alert. When an application (like SSMS or ADS) connects to SQL Server or Azure SQL, the `Application Name` is provided to Azure SQL. Azure SQL uses rules and machine learning to determine what the accepted or normal applications are. If there is an abnormal or known malicious application, ATP will trigger an alert. In this step, you will connect using an unknown application name in order to trigger the SQL injection alert.  
+In this activity you will see how a SQL Injection alert can be triggered through SSMS. SQL Injection alerts are intended for custom written application not for standard tools like SSMS. Therefore, to trigger an alert through SSMS as a test for a SQL Injection we need to "set" the **Application Name** (which is a connection property for clients connecting to SQL Server or Azure SQL).
 
 > Note: To get the full experience of this step, you'll need access to the email address you provided for ATP alerts in Step 1 of this activity. If you need to update it, do so before proceeding.  
 
@@ -645,7 +645,7 @@ Using SSMS, select **File** > **New** > **Database Engine Query** to create a qu
 
 ![](../graphics/databaseenginequery.png)  
 
-In the main login window, fill in your AdventureWorksID information as you usually would, with SQL authentication. Before connecting, however, select **Options** > **Connection Properties**. Once in here, specify your AdventureWorks database using the "Connect to database" drop-down.  
+In the main login window, fill in your AdventureWorksID login information as you usually would, with SQL authentication. Before connecting, however, select **Options** > **Connection Properties**. Once in here, specify your AdventureWorks database using the "Connect to database" drop-down.  
 
 ![](../graphics/connecttodb.png)  
 
@@ -677,16 +677,17 @@ You can drill into that alert to see the overall security alerts.
 
 You can also click specific alerts to see more details about them.  
 
-![](../graphics/potentialsqlinj.png)  
+![](../graphics/potentialsqlinj.png)
+
+You can learn more about SQL Injection attacks in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-injection?view=sql-server-ver15). You can read more about Advanced Threat Protection [here](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security).
 
 In this activity, you learned how to configure and leverage some of the features in Advanced data security. In the following bonus activity, you'll expand on what you've learned throughout the security module by using various security features together.  
 
 > **Recommended clean up note:** You might consider closing all your query editors in SSMS and removing all connections except the one AAD connection.  
 
-
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><b>(Bonus) <a name="7">Activity 7</a>: Data classification, Dynamic data masking, and SQL Audit</b></p>
 
-In this activity, you will learn how to audit users trying to view columns that were marked for data classification. This activity will combine several of the things you've already learned about in the module, and take those learnings to the next level.    
+In this activity, you will learn how to audit users trying to view columns that were marked for data classification. This activity will combine several of the things you've already learned about in the module, and take those learnings to the next level.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/checkmark.png?raw=true"><b>Steps</b></p>
 
