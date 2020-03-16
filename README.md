@@ -29,7 +29,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## Machine Learning and AI
 
-- [Workshop: SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops/tree/master/sqlserver2019bigdataclusters)
+- [Workshop: SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops-bdc)
 - [Workshop: Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/SQLServerMLServices)
 
 # Presentation Materials, Code, and References
