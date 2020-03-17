@@ -79,7 +79,9 @@ In order to complete this workshop, you need to install the following software:
 
 1. Open Azure Data Studio and select **New notebook** from the main page. For kernel, change to PowerShell. You should get a pop-up to the side that reads "Configure Python for Notebooks". Leave all the defaults and select **Install**. While it's installing, you can right-click on the icon in the taskbar and select **Pin to taskbar**.   
 
-1. In Azure Data Studio, if/when you get a pop-up asking to enable preview features, select **Yes**. When the installation of Python is complete and you have enabled preview features., you can close Azure Data Studio (no need to save the "New notebook").    
+1. In Azure Data Studio, if/when you get a pop-up asking to enable preview features, select **Yes**.  
+
+1. When the installation of Python is complete and you have enabled preview features, the final step is to select **Manage Packages** and select **Add new**. Search for `powershell-kernel` and make sure the package installed is **0.1.3** or later. You can close Azure Data Studio now (no need to save the "New notebook")..    
 
 2. Install [SQL Server Management Studio (SSMS) 18.4 or higher](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms). Several of the modules require features built only into SSMS. Once it installs, restart the virtual machine.      
 

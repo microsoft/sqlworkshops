@@ -423,9 +423,9 @@ For a SQL Server on-premises environment you would typically use a tool specific
 <pre>[datetime] [ostress PID] Total IO waits: 0, Total IO wait time: 0 (ms)
 [datetime] [ostress PID] OSTRESS exiting normally, elapsed time: 00:01:22.637</pre>
 
-Your duration time may vary but this typically takes at least 1-3 minutes. Make sure to let this run to completion. When the workload is done your will be put back at command prompt.
+Your duration time may vary but this typically takes at least 1-3 minutes. Make sure to let this run to completion. When the workload is done you will be put back at command prompt.
 
-**Step 3: Use Query Store to do further performance analysis**
+**Step 4: Use Query Store to do further performance analysis**
 
 Query Store is a capability in SQL Server to track performance execution of queries. Performance data is stored in the user database. You can read more about Query Store in the [documentation](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15).
 

@@ -141,7 +141,7 @@ Choices for networking for Azure SQL Database and Azure SQL Managed Instance are
 
 You can then choose to select Public endpoint or Private endpoint (preview). In this workshop we'll use the public endpoint and set the **Allow Azure services and resources to access this server** option to yes, meaning that other Azure services (e.g. Azure Data Factory or an Azure Virtual Machine) can access the database if you configure it. You can also select **Add current client IP address** if you want to be able to connect from the IP address from the client computer you used to deploy Azure SQL Database, which you do. Make sure your settings match below:
 
-![](../graphics/networkconnect.png)
+![](../graphics/networkconnect2.png)
 
 
 With Azure SQL Managed Instance, you deploy it inside an Azure virtual network and a subnet that is dedicated to managed instances. This enables you to have a completely secure, private IP address. Azure SQL Managed Instance provides the ability to connect an on-prem network to a managed instance, connect a managed instance to a linked server or other on-prem data store, and connect a managed instance to other resources. You can additionally enable a public endpoint so you can connect to managed instance from the Internet without a Virtual Private Network (VPN). This access is disabled by default.  
@@ -202,6 +202,8 @@ Finally, select **Create** to deploy the service.
 
 Soon after selecting Create, you will be redirected to a page that looks like this (below), and where you can monitor the status of your deployment. This deployment option and configuration typically takes less than five minutes to deploy. Some images of what you might see are below.  
 
+> Note: While you're waiting, you can open SSMS. It takes a while to open for the first time, and you'll use it in the next activity.    
+
 ![](../graphics/deploymentunderway.png)
 
 And some time later ...
@@ -242,10 +244,13 @@ For server name, input the name of your Azure SQL Database logical server. You m
 
 > **Tip: locating resources in the Azure portal**  
 > If you're new to the portal, there are a few ways you can locate resources, and depending on who you talk to, they may use a different method. Here are a few options to get you started:  
-> 1. In the search bar type the **resource name** and select it under "Resources". For example, in the below image I search for a SQL Managed Instance called "antho-mi", and I can then select it.  
-> ![](../graphics/anthomi.png)  
-> 2. If you select **Microsoft Azure** in the top left corner of the Azure portal, it will take you to "Home". From here, you can select **Resource groups** and then select your resource group. This will bring you to a view of all the resources that you deploy in the resource group. You could alternatively select SQL Databases or Virtual machines, depending what you are looking for.  
-> ![](../graphics/azureservices.png)
+> 1. In the search bar type the **resource name** and select it under "Resources". For example, in the below image I search for a SQL Database "adventureworks", and I can then select the one I'm using for the workshop.  
+> ![](../graphics/awdb.png)  
+> 2. If you select **Microsoft Azure** in the top left corner of the Azure portal, it will take you to "Home". From here, you can select **Resource groups** and then select your resource group.  
+> ![](../graphics/azureservices.png)  
+> This will bring you to a view of all the resources that you deploy in the resource group.  
+> ![](../graphics/rg.png)
+> You could alternatively select SQL Databases or Virtual machines, depending what you are looking for.   
 > 3. Other options / more information can be found in the [Azure portal overview](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-overview) documentation page.  
 
 Change the authentication to **SQL Server Authentication**, and input the corresponding Server Admin Login and Password (the one you provided during deployment in Activity 1)
@@ -280,7 +285,7 @@ Note that you can connect to your local instance of SQL Server 2019 here. Let's 
 
 You'll then go to a page that contains the **Server Dashboard**. Select the **Connections** button (red square in below image) to view your Server groups and connections.
 
-![](../graphics/serverdashboard.png)  
+![](../graphics/serverdashboard2.png)  
 
 Your results should be similar to what you saw in SSMS. Select the **New connection** button in the **Servers** bar.  
 
@@ -296,7 +301,7 @@ In your **Connections** tab, under **Servers**, you should now see both connecti
 
 Finally, to run queries in ADS, it's very similar to SSMS. Right-click on a database or server name and select **New query**. For Azure SQL Database, since you are not really getting a full "server", **`USE [DatabaseName]`** is not supported to change the database context. You must either change the connection to specifically the database you want to run a query on or use the drop-down. Change to the context of your **AdventureWorksID** database by selecting the drop-down box next to "master" and run `SELECT @@VERSION`.  
 
-![](../graphics/newqueryads.png)
+![](../graphics/newqueryads2.png)
 
 **Step 2 - Set up easy file access with ADS**  
 

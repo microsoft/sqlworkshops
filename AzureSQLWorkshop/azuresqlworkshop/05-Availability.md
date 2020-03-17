@@ -39,7 +39,11 @@ One of the benefits of Azure SQL is that Azure can take care of all of this for 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
-For this activity, you'll use the notebook called **pitr.ipynb** which is under `azuresqlworkshop\05-Availability\pitr\pitr.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.  
+For this activity, you'll use the notebook called **pitr.ipynb** which is under `azuresqlworkshop\05-Availability\pitr\pitr.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.   
+
+> Hint: To navigate to the folder you opened in Module 2 in ADS, you can select the **Explorer** button on the left-hand taskbar.  
+> ![](../graphics/explorer.png)  
+> If you don't see this view, you can open **in a new tab** [Activity 3, Step 2 in Module 2](https://github.com/microsoft/sqlworkshops/blob/master/AzureSQLWorkshop/azuresqlworkshop/02-DeployAndConfigure.md#3) and repeat the open folder exercise.   
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 

@@ -109,7 +109,7 @@ In this activity, you'll see how to review and manage your firewall rules using 
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
 
-During deployment of Azure SQL Database, you selected **Allow Azure services and resources access to this server** to **ON**. By leaving this **ON**, you're allowing any resource from any region or subscription the possibility to access your resource. If you can, switching it to **OFF** is the most secure configuration of the public endpoint, because it will block all connections/networks apart from ones you've added. In this activity, you'll see how to view and edit your firewall rules. Setting this up can be complicated, since it means you'll have to specify a range of IP addresses for all your connections (which can sometimes have dynamic IP addresses). A much easier alternative is to use Virtual network (VNet) rules to establish and to manage access from specific subnet(s) that contain VMs or other services that need to access the data. You'll walk through setting this up next.  
+During deployment of Azure SQL Database, you selected **Allow Azure services and resources access to this server** to **Yes**. By leaving this **Yes**, you're allowing any resource from any region or subscription the possibility to access your resource. If you can, switching it to **No** is the most secure configuration of the public endpoint, because it will block all connections/networks apart from ones you've added. In this activity, you'll see how to view and edit your firewall rules. Setting this up can be complicated, since it means you'll have to specify a range of IP addresses for all your connections (which can sometimes have dynamic IP addresses). A much easier alternative is to use Virtual network (VNet) rules to establish and to manage access from specific subnet(s) that contain VMs or other services that need to access the data. You'll walk through setting this up next.  
 
 In reality, you'll want to partner with your networking team to ensure you have the most secure, functional network. A few handy resources include:  
 * [Azure SQL Database network access controls](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-networkaccess-overview)
@@ -133,9 +133,9 @@ Select **Firewalls and virtual networks** under **Security** from the left-hand 
 
 ![](../graphics/fwvn.png)    
 
-Switch **Allow Azure services and resources to access this serve**r to **OFF**. During deployment, you should have added your Client IP address already, but if one of the Rules do not match your Client IP displayed (see below), select **Add Client IP**.  
+Switch **Allow Azure services and resources to access this serve**r to **No**. During deployment, you should have added your Client IP address already, but if one of the Rules do not match your Client IP displayed (see below), select **Add Client IP**.  
 
-![](../graphics/clientip.png)  
+![](../graphics/clientip2.png)  
 
 Finally, select **Save**. You can select **Overview** in the left hand menu to navigate back to the overview of your database.  
 
@@ -158,21 +158,27 @@ Return to the Azure portal in your Azure VM. In the top bar, select the Azure Cl
 
 ![](../graphics/cloudshell.png)  
 
-If this is your first time using the Azure Cloud Shell, you will be prompted to select a subscription to create a storage account and Microsoft Azure Files share. For this workshop, you can just use any of the storage accounts that are in your resource group already. More information about the Azure Cloud Shell can be found in the [documentation](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).    
+Then, you can select Bash or PowerShell. Select **Bash**.   
 
-Then, you can select Bash or PowerShell. Select **Bash**.  
+If this is your first time using the Azure Cloud Shell, you may be prompted to select a storage account. If you are, select **Show advanced settings**, and select an existing storage account in **your** existing resource group for the workshop. For "File share" select **Create new** and call it **fsID** where ID is your unique ID for the workshop. Finally, select **Create Storage**.  
 
-You may be prompted to select a storage account. If you are, select **Show advanced settings**, and select an existing storage account in **your** existing resource group for the workshop. For "File share" select **Create new** and call it **fsID** where ID is your unique ID for the workshop. Finally, select **Create Storage**.    
+![](../graphics/mountstorage.png)  
+
+More information about the Azure Cloud Shell can be found in the [documentation](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).    
+
 
 You should now see a view similar to below.  
 
 ![](../graphics/acsbash.png)  
 
-Next, run `az account list` to find the name of the subscription you are using for the workshop. The subscripition name is the string next to the field **"name"**. 
+Run `az account show`. If you were provided an environment to use, you can continue, because this is the only subscription you have access to. 
 
-Then, run `az account set --subscription 'my-subscription-name'` (don't include the quotes) to set the default subscription for this Azure Cloud Shell session. You can confirm this worked by running `az account show`.  
+> Note: if you were **not** provided an environment or have multiple subscriptions, you should run `az account list` to find the name of the subscription you are using for the workshop. The subscripition name is the string next to the field **"name"**.  
+> Then, run `az account set --subscription 'my-subscription-name'` (don't include the quotes) to set the default subscription for this Azure Cloud Shell session. You can confirm this worked by running `az account show`.  
 
 Now that you're set up, you can list your server's firewall settings with the following command, after filling in your resource group name (e.g. azuresqlworkshop0406) and server name (e.g. aw-server0406):  
+
+> Tip: You can use the **Tab** key on Windows to autocomplete. E.g. for Resource Group, if you only have one, you can type `A` + `Tab`.  
 
 ```bash
 az sql server firewall-rule list -g <ResourceGroup> -s <Server>
@@ -224,7 +230,7 @@ Optionally, you can create a new query and check how you're connecting to Azure 
 SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id=@@SPID;
 ```  
 
-The result should now be the **private** IP address of your Azure VM. You can confirm this by navigating to your Azure VM in the Azure portal, and comparing the result of the query to the information in the Overview of your Azure VM.    
+The result should now be the **private** IP address of your Azure VM. You can confirm this by navigating to your Azure VM in the Azure portal, and comparing the result of the query to the information in the Overview of your Azure VM. By doing this, you've configured more secure and private access to your Azure SQL Database.     
 
 <br>
 
@@ -235,9 +241,7 @@ In this activity, you'll see how to configure the most secure connection with a 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Description</b></p>
 
 You've learned and seen how to configure the most secure network using Azure SQL Database with the public endpoint. This method of securing Azure SQL Database has been used for years. However, in 2019, Azure began moving towards a concept of a Private Link, which is more similar to the way that Azure SQL Managed Instance is deployed. Private Link allows you to connect to Azure SQL Database (and several other PaaS services) using a private endpoint, which means it has a private IP address within a specific VNet and Subnet. You can learn more about Private Link [in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-private-endpoint-overview).  
-
-> Note: As of the last update of this course, Private Link was in Public Preview. The documentation link above will have the latest information regarding its general availability.  
-
+  
 In this activity, you'll use the Azure portal to configure Private Link for your existing Azure SQL Database logical server. You could alternatively use PowerShell or the Azure CLI. Since this is a bonus activity, it's important you follow the clean-up steps at the end of the activity. All future activities in this workshop are configured with the public endpoint.   
 
 > Note: If you complete this activity, you must complete the last step, otherwise you may have issues in future activities. If you're not sure if you will have time to complete, most of the screenshots and results are included below, so you can simply read and review the activity.    
@@ -364,8 +368,7 @@ Address: 168.63.129.16
 
 Non-authoritative answer:
 Name:   aw-server<ID>.privatelink.database.windows.net
-Addresses:    172.22.2.2
-            172.22.2.1
+Address:    10.2.0.5
 Aliases:    aw-server<ID>.database.windows.net
 ```
 The important things to look at are under the Non-authoritative answer, and let's examine the differences:  
@@ -377,7 +380,7 @@ One thing you might be wondering, is if you are connecting to the private endpoi
 
 * `aw-server<ID>.database.windows.net`  
     * Resolved by service to `aw-server<ID>.privatelink.database.net`  
-        * Resolved by service to `10.14.1.4` (the IP address of your private endpoint)  
+        * Resolved by service to `10.2.0.5` (the IP address of your private endpoint)  
 
 Additionally, the service will block you from directly connecting using anything apart from `aw-server<ID>.database.windows.net`.  
 
@@ -462,7 +465,7 @@ Now that you're authenticated using Azure AD, your next step might be to add oth
 CREATE LOGIN ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
 ```
 
-Now you have a login at the server-level. The next step is to create a user in the AdventureWorks database and give the read/write access (if needed). Right-click on your AdventureWorks **database** and create a new query. Run the following.  
+Now you have a login at the server-level. The next step is to create a user in the AdventureWorks database and give them read/write access (if needed). Right-click on your AdventureWorks **database** and create a new query. Run the following.  
 
 ```sql
 -- Create a new SQL user from that login
@@ -563,7 +566,7 @@ In the Azure portal, navigate to your Azure SQL Database logical server. Then, i
 
 In this step, you'll review the selections you've made for your Azure SQL Database logical server. In the same pane as step 1 (Azure SQL Database logical server > Security > Advanced data security), you will also see information regarding Vulnerability Assessments and Advanced Threat Protection.  
 
-At the highest level, SQL Vulnerability Assessment (VA) is a scanning service that provides visibility into your security state. It then provides actionable steps to address any potential concerns. When you configure periodic recurring scans, you're enabling the service to scan your databases every seven days and check for any vulnerabilities. You can then choose to send those reports to the admins, subscription owners, or anyone else that might need to be made notified of changes. In order for this service to operate, you have to specify a storage account for the results to be stored. This storage account was deployed during deployment of your Azure SQL Database, as you opted in to turn on ADS. Review the options and add your email address if you want to view a recurring scan.  
+At the highest level, SQL Vulnerability Assessment (VA) is a scanning service that provides visibility into your security state. It then provides actionable steps to address any potential concerns. When you configure periodic recurring scans, you're enabling the service to scan your databases every seven days and check for any vulnerabilities. You can then choose to send those reports to the admins, subscription owners, or anyone else that might need to be made notified of changes. In order for this service to operate, you have to specify a storage account for the results to be stored. This storage account was deployed during deployment of your Azure SQL Database, as you opted in to turn on ADS. Review the options and add your email address if you want to receive the results of the recurring scan (weekly).  
 
 ![](../graphics/vasettings.png)  
 
@@ -571,7 +574,7 @@ Lastly, you can configure your Advanced Threat Protection (ATP) settings. ATP en
 
 ![](../graphics/atptypes.png)  
 
-Just like you can configure who receives the VA scans, you can configure who receives the ATP alerts. Review the options and **add your email address** so you can view the alerts in a future lab.  
+Just like you can configure who receives the VA scans, you can configure who receives the ATP alerts. Review the options and **add your personal email address** so you can view the alerts in a future lab.  
 
 ![](../graphics/atpsettings.png)  
 
@@ -617,30 +620,29 @@ Select the **X** in the top right corner of DD&C to bring you back to the ADS da
 
 Next, select **Scan** to get the most current VA results. This will take a few moments, while VA scans all the databases in your Azure SQL Database logical server.    
 
-> Note: You might be wondering why you need to complete the scan again. When you configured ADS in Step 2, you set up periodic recurring scans. These scans take place every 7 days. By this definition, the first scan happened when you deployed the database. But since then, you have made several changes to the network and security, so to get an up-to-date report, you need to run the scan again.  
+> Note: You might be wondering why you need to complete the scan again. When you configured ADS in Step 2, you set up periodic recurring scans. These scans take place every 7 days. By this definition, the first scan happened when you deployed the database. But since then, you have made several changes related to security (networking and auditing specifically), so to get an up-to-date report, you need to run the scan again.  
 
 ![](../graphics/vascan.png)  
 
 Your resulting view should be similar to below.  
 
-![](../graphics/vadashboard.png)  
+![](../graphics/vadashboard2.png)  
 
-Every security risk has a risk level (high, medium, or low) and additional information. The rules in place are based on benchmarks provided by the Center for Internet Security (you can read more about the CIS benchmark [here](https://www.cisecurity.org/benchmark/microsoft_sql_server/)). Select the security check **VA2065** to get a detailed view, similar to below. Review the status and other available information.   
+Every security risk has a risk level (high, medium, or low) and additional information. The rules in place are based on benchmarks provided by the Center for Internet Security (you can read more about the CIS benchmark [here](https://www.cisecurity.org/benchmark/microsoft_sql_server/)). Select the security check **VA2109** to get a detailed view, similar to below. Review the status and other available information.   
 
-> Note: If **VA2065** does not fail, you can perform a similar exercise below, depending on what failed security checks do occur.   
+> Note: If **VA2109** does not fail, you can perform a similar exercise below, depending on what failed security checks do occur.   
 
-![](../graphics/va20651.png)  
-![](../graphics/va20652.png)  
+![](../graphics/va2109.png)  
 
-In this case, VA is suggesting that you configure a baseline of your server level firewall rules. Once you have a baseline, you can then monitor and assess any changes.  
+In this case, VA is suggesting that you configure a baseline of what principals have certain access. Once you have a baseline, you can then monitor and assess any changes.  
 
-Depending on the security check, there will be alternate views and recommendations. For this security check, you can select the **Approve as Baseline** button at the top of the details page. Now that a baseline is in place, this security check will fail in any future scans where the results are different from the baseline. Select **X** to exit the specific rule.    
+Depending on the security check, there will be alternate views and recommendations. Review the information that's provided. For this security check, you can select the **Approve as Baseline** button > **Yes** at the top of the details page. Now that a baseline is in place, this security check will fail in any future scans where the results are different from the baseline. Select **X** to exit the specific rule.    
 
-![](../graphics/vabaseline.png)  
+![](../graphics/vabaseline2.png)  
 
 You can then **optionally** complete another scan by selecting **Scan** and confirming that VA2065 is now showing up as a *Passed* security check.  
 
-![](../graphics/va20653.png)  
+![](../graphics/va2109passed.png)  
 
 If you click into the passed security check above, you should be able to see the baseline you configured. If anything changes in the future, VA scans will pick it up and the security check will fail.  
 
@@ -739,7 +741,7 @@ Select **Save**.
 
 ![](../graphics/save.png)  
 
-You can confirm that this was successful by viewing the **Overview** tab and confirming that MiddleName is now present in the list of classified columns under the SalesLT schema.  
+You can confirm that this was successful by viewing the **Overview** tab and confirming that MiddleName is now present in the list of classified columns under the SalesLT schema. Select **X**.    
 
 **Step 2 - Apply Dynamic Data Masking over the Name columns**  
 
@@ -899,6 +901,8 @@ The default query is querying the category `SQLSecurityAuditEvents`, so while yo
 
 ![](../graphics/laview.png)  
 
+> Note: It may take a few minutes for the results to show up here. You can refresh the query by selecting **Run** again.  
+
 This activity won't go deep into KQL querying of logs, but there are many resources in the references above if you want more practice later.  
 
 **Step 7 - Analyze audit logs and monitor security with the Log Analytics SQL Security dashboard**  
@@ -911,7 +915,7 @@ Then, select **View dashboard**.
 
 You should now see an overview dashboard. Drill in to **Azure SQL - Access to Sensitive Data**.  
 
-> Notes: You may need to wait 3-5 minutes and select **Refresh** for items to show up here.  
+> Note: You may need to wait 3-5 minutes and select **Refresh** for items to show up here.  
 
 ![](../graphics/securitydb.png)  
 
@@ -930,6 +934,10 @@ Back in the overview, select **Azure SQL - Security Insights**.
 ![](../graphics/securitydb.png)  
 
 This dashboard gives more auditing information to help you understand database activity, and gain insight into anomalies. Spend a few minutes reviewing and drilling into the options here.  
+
+In addition to these insights for Azure SQL services, by being in Azure you can leverage the Azure Security Center to monitor, manage, and respond to issues that arise across your entire Azure estate. If you want to look around (may be limited depending on your subscription level), you can search for **Security Center** and select under *Services*. To learn more about Azure Security Center, refer to the [documentation](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro).
+
+![](../graphics/securitycenter.png)
 
 > Looking for another bonus security activity? Try this tutorial: [Always Encrypted: Protect sensitive data and store encryption keys in Azure Key Vault](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault?tabs=azure-powershell). You will need VS for this, you can download [Visual Studio Community for free here](https://visualstudio.microsoft.com/downloads/).   
 
