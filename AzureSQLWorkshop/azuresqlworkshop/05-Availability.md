@@ -10,8 +10,7 @@
 
 > You must complete the [prerequisites](../azuresqlworkshop/00-Prerequisites.md) before completing these activities. You can also choose to audit the materials if you cannot complete the prerequisites. If you were provided an environment to use for the workshop, then you **do not need** to complete the prerequisites.   
 
-
-Depending on the SLA your business requires, Azure SQL has the options you need and built-in capabilities. In this module, you will learn how to translate your knowledge of backup/restore, Always on failover cluster instances, and Always On availability groups to the options for business continuity in Azure SQL.
+Depending on the SLA, RTO, and RPO your business requires, Azure SQL has the options you need and built-in capabilities. In this module, you will learn how to translate your knowledge of backup/restore, Always On Failover cluster instances, and Always On Availability Groups to the options for business continuity in Azure SQL.
 
 
 In this module, you'll cover these topics:  
@@ -36,7 +35,7 @@ In all organizations, big or small, accidents can happen. That's why you always 
 
 One of the benefits of Azure SQL is that Azure can take care of all of this for you. Since Azure SQL manages your backups and runs in full recovery model, it can restore you to any point in time (you can even [restore a deleted database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-recovery-using-backups#deleted-database-restore)). In this activity, you'll see how a common error can be recovered using point in time restore (PITR). This is easy to do in the portal or programmatically, but in this activity you'll see how to do it with the Azure CLI.  
 
-> Note: In this activity, you use auditing in Log Analytics to determine the time of a dropped database. Auditing and Log Analytics were configured in Module 3, so be sure you have completed that before attempting this activity.
+> Note: In this activity, you will use auditing in Log Analytics to determine the time of a dropped table done by accident. Auditing and Log Analytics were configured in Module 3, so be sure you have completed that before attempting this activity.
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
@@ -57,14 +56,18 @@ In this activity, you'll get to see how the General purpose tier of Azure SQL Da
 
 **Step 1 - Connect to the Azure PowerShell module**  
 
-Open PowerShell on your virtual machine and run `Connect-AzAccount`. This will walk you through authenticating.  
+Open PowerShell (not PowerShell ISE) on your virtual machine and run `Connect-AzAccount`. This will walk you through authenticating.
+
+When this successful, you should see results like this (your account details with vary) at the command prompt
+
+<pre>
+Account                                            SubscriptionName                    TenantId
+-------                                            ----------------                    --------
+odl_user_165187@cloudlabsaioutlook.onmicrosoft.com Microsoft Managed Labs Spektra - 04 f94768c8-8714-4abe-8e2d-37a64...</pre>
 
 **Step 2 - Main activity**  
 
 For the main part of this activity, you'll use the notebook called **basic-ha.ipynb** which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.     
-
-
-
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
