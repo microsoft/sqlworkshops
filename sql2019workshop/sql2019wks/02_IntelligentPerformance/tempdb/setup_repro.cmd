@@ -1,1 +1,0 @@
-sqlcmd -E -itempstress_ddl.sql
