@@ -12,8 +12,8 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 ## SQL Server Data Platform
 
 - [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops/tree/master/SQLGroundToCloud)
-- [Workshop: SQL Server 2019 on OpenShift](https://github.com/Microsoft/sqlworkshops/tree/master/SQLonOpenShift)
-- [Workshop: SQL Server 2019](https://github.com/microsoft/sqlworkshops/tree/master/sql2019workshop)
+- [Workshop: SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops-sqlonopenshift)
+- [Workshop: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019workshop)
 - [Workshop: SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops-bdc)
 - [Workshop: Kubernetes - From Bare Metal to SQL Server Big Data Clusters](https://github.com/microsoft/sqlworkshops-k8stobdc)
 - [Lab: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019lab) 
