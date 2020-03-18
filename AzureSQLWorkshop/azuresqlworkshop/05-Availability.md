@@ -26,7 +26,7 @@ In this module, you'll cover these topics:
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.1">5.1 Backup and restore</h2></a>
 
-TODO: Explain how on prem you have to have a plan for DR and a BU/R strategy, but how it's built for you in Azure. Also talk about how it all works, ADR, LTR, etc.
+
 <br>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="1"><b>(Bonus) Activity 1</a>: Undo errors to a point in time</b></p>
@@ -49,7 +49,6 @@ For this activity, you'll use the notebook called **pitr.ipynb** which is under 
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.2">5.2 Azure SQL high availability basics</h2></a>
 
-TODO: Explain basic architecture of general purpose/business critical/hyperscale for availability
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="2"><b>Activity 2</a>: Basic HA in Azure SQL Database</b></p>
 
@@ -60,14 +59,14 @@ In this activity, you'll get to see how the General purpose tier of Azure SQL Da
 
 **Step 1 - Connect to the Azure PowerShell module**  
 
-Open PowerShell (not PowerShell ISE) on your virtual machine and run `Connect-AzAccount`. This will walk you through authenticating.
+Open PowerShell on your virtual machine (should be pinned to taskbar from Prerequisites) and run `Connect-AzAccount`. This will walk you through authenticating. This step basically sets you up to be able to use the Azure PowerShell module from Azure Data Studio.  
 
-When this successful, you should see results like this (your account details with vary) at the command prompt
+When this successful, you should see results like this (your account details with vary) in PowerShell. You can close PowerShell now.  
 
 <pre>
 Account                                            SubscriptionName                    TenantId
 -------                                            ----------------                    --------
-odl_user_165187@cloudlabsaioutlook.onmicrosoft.com Microsoft Managed Labs Spektra - 04 f94768c8-8714-4abe-8e2d-37a64...</pre>
+odl_user_165187@...com            Microsoft Managed Labs Spektra - 04           f94768c8-8714...</pre>
 
 **Step 2 - Main activity**  
 
@@ -76,8 +75,6 @@ For the main part of this activity, you'll use the notebook called **basic-ha.ip
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <h2><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/pencil2.png"><a name="5.3">5.3 The highest availability</h2></a>
-
-TODO: We've shown you basics/how to get data back, now we'll show HA tech, what do you get in BC… Focus on BC here
 
 You've seen some of the capabilities that Azure SQL offers generally as far as high availability goes in Azure SQL. In this topic, you'll move to the Business critical service tier, which is meant to obtain the highest performance and availability of all Azure SQL service tiers (General purpose, Hyperscale, Business critical). Business critical is meant for mission-critical applications that need low latency and minimal downtime.  
 
@@ -136,7 +133,12 @@ This will take a few moments to complete, but while it's running, you can review
 * `read-scale`: This is not enabled by default, but there is no additional cost associated with it. By enabling it, you're enabling one of your secondary replicas to be used as a readable secondary.  
 * `zone-redundant`: By default, this is set to false, but you can set it to true if you want a multi-az deployment, with no additional cost. Note that this is only available in [certain regions](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview#services-support-by-region) and not (yet) in Azure SQL managed instance.  
 
-After it completes, you should see detailed information about the database that you changed.  
+After it completes, you should see detailed information about the updates in the Azure Cloud Shell output under two main categories (though you'll also see indicators under several other properties):  
+* `currentServiceObjectiveName`: should be `BC_Gen5_8` where `BC` stands for Business critical  
+* `currentSku`:  
+    * `name`: should be `BC_Gen5`
+    * `tier`: should be `BusinessCritical`  
+
 
 Another way to confirm this is to navigate to your database in the Azure portal and review the **Overview** tab, locating the **Pricing tier**.  
 
@@ -184,17 +186,8 @@ In Activity 1, you forced a failover in your General purpose database using the 
 
 For this step, you'll use the same notebook from Activity 1, which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this step, and then return here.  
 
-TODO: explanation of why it's so much faster in BC
-
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
-TODO in slides or in markdown  
-
-Compare geo-repl and FGs.  
-Both available in DB, GP/BS/HS?  
-Geo-repl is only avail in DB  
-FGs in MI and DB  
-Include chart  
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/point1.png"><a name="4"><b>Activity 4</a>: Geo-distributed auto-failover groups with read-scale in Business critical</b></p>
 
