@@ -201,6 +201,8 @@ For this activity, you'll use the notebook called **fg-powershell.ipynb** which 
 
 >Note: This activity is based off of a [tutorial in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-implement-geo-distributed-database?tabs=azure-powershell) that also has information about using the Azure portal and the Azure CLI. In this exercise, you will use the Az PowerShell module.  
 
+In this module and throughout the activities, you got to get hands-on with many availability-related features that are available for Azure SQL. In the next module, you'll take a look at one of two scenarios that challenge you to create a solution leveraging Azure SQL.  
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>

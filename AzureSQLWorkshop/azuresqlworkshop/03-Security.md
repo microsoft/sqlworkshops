@@ -244,7 +244,7 @@ You've learned and seen how to configure the most secure network using Azure SQL
   
 In this activity, you'll use the Azure portal to configure Private Link for your existing Azure SQL Database logical server. You could alternatively use PowerShell or the Azure CLI. Since this is a bonus activity, it's important you follow the clean-up steps at the end of the activity. All future activities in this workshop are configured with the public endpoint.   
 
-> Note: If you complete this activity, you must complete the last step, otherwise you may have issues in future activities. If you're not sure if you will have time to complete, most of the screenshots and results are included below, so you can simply read and review the activity.    
+> Note: If you complete this activity, you must complete up until the last step, otherwise you may have issues in future activities. If you're not sure if you will have time to complete, most of the screenshots and results are included below, so you can simply read and review the activity.    
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/checkmark.png"><b>Steps</b></p>
 
@@ -256,8 +256,7 @@ In this activity, you will complete the following steps:
 1. Create a private endpoint - Resource 
 1. Create a private endpoint - Configuration
 1. Create a private endpoint - Confirm creation
-1. Connect to the private endpoint
-1. Clean up the private endpoint (**Required**)
+1. Connect to the private endpoint  
 
 **Step 0: Examine the current connection**  
 
@@ -383,17 +382,6 @@ One thing you might be wondering, is if you are connecting to the private endpoi
         * Resolved by service to `10.2.0.5` (the IP address of your private endpoint)  
 
 Additionally, the service will block you from directly connecting using anything apart from `aw-server<ID>.database.windows.net`.  
-
-
-**Step 7: Clean up the private endpoint (*Required*)**  
-
-Since private link is in public preview (as of the last revision of this workshop), the rest of the workshop will leverage the **public endpoint** with VNet rules enabled. In order to reconfigure your Azure SQL Database logical server so the public endpoint is used, you **must delete the private endpoint**.  
-
-Navigate to your Azure SQL Database logical server, and in the left-hand menu, under **Security**, select **Private endpoint connections**. Then, select your private endpoint, and click **Remove** and **Yes** to confirm.  
-
-![](../graphics/deletepe.png)
-
-To **confirm this was successful**, open the command prompt and ensure that the `nslookup aw-server<ID>.database.windows.net` no longer references `privatelink.database.windows.net`.   
 
 Microsoft is actively investing heavily in Private Link for SQL and other services, to learn more refer to the [documentation](https://docs.microsoft.com/en-us/azure/private-link/index).  
 
