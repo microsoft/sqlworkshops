@@ -1,1 +1,0 @@
-hdbsql -i90 -Iinsertdata.sql -ubwsaphana -p<password> -dVANDELAY
