@@ -1,1 +1,0 @@
-INSERT INTO gl.accountsreceivable VALUES (1, TO_DATE('05/31/2016', 'MM/DD/YYYY'), 'Invoice 70510', 336252, 5549.90);

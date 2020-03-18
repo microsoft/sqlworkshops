@@ -1,1 +1,0 @@
-ostress -E -Q"exec letsgomavs" -n50 -r5000 -dDallasMavericks
