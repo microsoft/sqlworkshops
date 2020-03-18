@@ -146,15 +146,22 @@ Another way to confirm this is to navigate to your database in the Azure portal 
 
 > Note: There are many other ways to check this, but another way is through SSMS. If you right-click on your database and select **Properties** > **Configure SLO**, you can also view the changes.  
 
-**Step 2 - Leverage the read-only replica for reports**  
+**Step 2 - Compare failover time to General purpose**  
+
+In Activity 1, you forced a failover in your General purpose database using the notebook **basic-ha.ipynb**. If you recall, it took about one minute for the General purpose database. Now that you've switched to Business critical, will the failover be faster?  
+
+For this step, you'll use the same notebook from Activity 1, which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this step, and then return here.  
+
+
+**(Bonus) Step 3 - Leverage the read-only replica for reports**  
 
 Since you enabled the `read-scale` parameter, you have the ability to use one of the secondary replicas for read-only workloads. In order to access the read-only replica in applications, you just have to add the following parameter to your connection string for a database:  
 ```
 ApplicationIntent=ReadOnly;
 ```
-In SSMS, create a new connection (select **Connect** > **Database Engine**).  
+In SSMS, create a new query connection (select **File** > **New** > **Database Engine Query**).  
 
-![](../graphics/newconnect.png)  
+![](../graphics/newdbenginequery.png)  
 
 Using the same way you've been connecting to your Azure SQL Database logical server (either with SQL Auth or Azure AD Auth), select **Options**.  
 
@@ -169,22 +176,17 @@ ApplicationIntent=ReadOnly;
 ```  
 >Note: In using SSMS, you have to specify the server and database to which you want to connect read-only, because there may be multiple databases in a server with different capabilities as far as readable secondaries goes.
 
-To test, try the following query on your database in a **new session**, and observe the results. Is it what you would expect?  
+To test, try the following query on your new database engine query, and observe the results. Is it what you would expect?  
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 ![](../graphics/readonly.png)  
 
-You can optionally re-connect and update the Additional Connection Parameters (replace `ReadOnly` with `ReadWrite`), and confirm you are accessing the read-write primary replica.  
+You can optionally re-connect and update the Additional Connection Parameters (replace `ReadOnly` with `ReadWrite`), and confirm you are accessing the read-write primary replica. `ReadWrite` is the default, so if you don't select anything, that's what you'll be in.    
 
 ![](../graphics/readwrite.png)  
 
-**(Bonus) Step 3 - Compare failover time to General purpose**  
-
-In Activity 1, you forced a failover in your General purpose database using the notebook **basic-ha.ipynb**. If you recall, it took about one minute for the General purpose database. Now that you've switched to Business critical, will the failover be faster?  
-
-For this step, you'll use the same notebook from Activity 1, which is under `azuresqlworkshop\05-Availability\basic-ha\basic-ha.ipynb`. Navigate to that file in ADS to complete this step, and then return here.  
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
@@ -197,11 +199,18 @@ In this activity, you'll configure auto-failover groups for your Azure SQL Datab
 
 For this activity, you'll use the notebook called **fg-powershell.ipynb** which is under `azuresqlworkshop\05-Availability\fg\fg-powershell.ipynb`. Navigate to that file in ADS to complete this activity, and then return here.     
 
+>Note: This activity is based off of a [tutorial in the documentation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-implement-geo-distributed-database?tabs=azure-powershell) that also has information about using the Azure portal and the Azure CLI. In this exercise, you will use the Az PowerShell module.  
+
 <p style="border-bottom: 1px solid lightgrey;"></p>
 
 <p><img style="margin: 0px 15px 15px 0px;" src="../graphics/owl.png"><b>For Further Study</b></p>
 <ul>
-    <li><a href="url" target="_blank">TODO: Enter courses, books, posts, whatever the student needs to extend their study</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity" target="_blank">Business continuity overview</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-high-availability" target="_blank">High Availability overview</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-disaster-recovery" target="_blank">Outage Recovery Guidance</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-disaster-recovery-drills" target="_blank">Recovery drills</a></li>    
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-single-databases" target="_blank">vCore Resource Limits</a></li>    
+    <li><a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-implement-geo-distributed-database?tabs=azure-powershell" target="_blank">Docs: Implement a geo-distributed database</a></li>    
 </ul>
 
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="../graphics/geopin.png"><b >Next Steps</b></p>
