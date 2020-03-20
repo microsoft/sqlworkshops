@@ -1,6 +1,6 @@
 ![](https://github.com/microsoft/sqlworkshops/blob/master/graphics/microsoftlogo.png?raw=true)
 
-# Workshop: SQL Server 2019 Workshop
+# The Azure SQL Workshop
 
 #### <i>A Microsoft Course from the SQL Server team</i>
 
