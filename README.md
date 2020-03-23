@@ -11,7 +11,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## SQL Server Data Platform
 
-- [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops/tree/master/SQLGroundToCloud)
+- [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
 - [Workshop: SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops-sqlonopenshift)
 - [Workshop: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019workshop)
 - [Workshop: SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops-bdc)
@@ -22,8 +22,8 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 ## Azure SQL 
 
 - [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
-- [Workshop: Azure SQL](https://github.com/IrishSQL/MicrosoftAzureSQL/blob/master/ModernizingDatabase_withAzure_PRECON.pdf)
-- [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops/tree/master/AzureSQLLabs)
+- [Workshop: Azure SQL](https://github.com/microsoft/sqlworkshops-azuresqlworkshop)
+- [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops-azuresqllabs)
 
 ## Programming
 
