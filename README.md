@@ -23,7 +23,8 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 - [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops/tree/master/SQLGroundToCloud)
 - [Workshop: Azure SQL](https://github.com/microsoft/sqlworkshops-azuresqlworkshop)
-- [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops/tree/master/AzureSQLLabs)
+- [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops-azuresqllabs)
+
 
 ## Programming
 
