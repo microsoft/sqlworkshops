@@ -32,7 +32,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## Machine Learning and AI
 
-- [Workshop: Machine Learning with SQL Server](https://github.com/Microsoft/sqlworkshops/tree/master/SQLServerMLServices)
+- [Workshop: Machine Learning with SQL Server](https://github.com/microsoft/sqlworkshops-sqlmlsvc)
 
 # Presentation Materials, Code, and References
 
