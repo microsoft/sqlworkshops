@@ -28,7 +28,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## Programming
 
-- [Lab: Python for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/PythonForDataProfessionals)
+- [Lab: Python for Data Professionals](https://github.com/microsoft/sqlworkshops-pythonfordatapros)
 - [Workshop: R for Data Professionals](https://github.com/microsoft/sqlworkshops-RForDataProfessionals)
 
 ## Machine Learning and AI
