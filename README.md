@@ -3,7 +3,9 @@
 # SQL Server and Azure SQL Labs and Workshops
 ## (https://aka.ms/sqlworkshops)
 
-This [site](https://lab.github.com/githubtraining/introduction-to-github) is a map of learning content produced by and curated by the SQL Server and Azure SQL teams in Microsoft Engineering. These materials are meant to be instructor-led, but you can work through the materials on a test system on your own if desired. Labs are shorter and Workshops are more comprehensive. You can view all materials directly in this interface, or you can [view the raw github site for this content here](https://github.com/Microsoft/sqlworkshops). 
+This [site](https://lab.github.com/githubtraining/introduction-to-github) is a map of learning content produced by and curated by the SQL Server and Azure SQL teams in Microsoft Engineering. These materials are meant to be instructor-led, but you can work through the materials on a test system on your own if desired. Labs are shorter and Workshops are more comprehensive. You can view all materials directly in this interface, or you can [view the raw github site for this content here](https://github.com/Microsoft/sqlworkshops).
+
+To download a Workshop or Lab to your local computer, navigate to the Workshop or Lab's *github page* using the links below. Once there, click the **Clone or Download** button you see there. [More about that process is here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository). 
 
 *See the license information at the bottom of this README.md file*
 
@@ -27,7 +29,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 ## Programming
 
 - [Lab: Python for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/PythonForDataProfessionals)
-- [Workshop: R for Data Professionals](https://github.com/Microsoft/sqlworkshops/tree/master/RForDataProfessionals)
+- [Workshop: R for Data Professionals](https://github.com/microsoft/sqlworkshops-RForDataProfessionals)
 
 ## Machine Learning and AI
 
