@@ -33,7 +33,8 @@ These references deal with SQL Server code samples from our courses and other us
  <table style="tr:nth-child(even) {background-color: #f2f2f2;}; text-align: left; display: table; border-collapse: collapse; border-spacing: 2px; border-color: gray;">
   <tr><th style="background-color: #2c9004; color: white;">Code Sample Location  </th> <th style="background-color: #a0bc5d ; color: white;"> Description</th></tr>
 
-  <tr><td><a href="http://aka.ms/bobsqldemos" target="blank">http://aka.ms/bobsqldemos</a></td><td>Bob Ward's Demonstrations - Sample Code</td></tr>
+  <tr><td><a href="http://aka.ms/bobsqldemos" target="blank">http://aka.ms/bobsqldemos</a></td><td>Bob Ward's Demonstrations and Sample Code</td></tr>
+  <tr><td><a href="http://aka.ms/bw-presentations" target="blank">http://aka.ms/bw-presentations</a></td><td>Buck Woody's Demonstrations and Sample Code</td></tr>
   <tr><td><a href="http://aka.ms/annalytics" target="blank">http://aka.ms/annalytics</a></td><td>Anna Thomas' Demonstrations and Resources</td></tr>
   <tr><td><a href="https://github.com/Microsoft/sql-server-samples" target="blank">GitHub</a></td><td>SQL Server Samples - Sample Code</td></tr>
 

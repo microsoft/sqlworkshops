@@ -51,6 +51,7 @@ Many of these topics are quite deep, and take time to fully absorb. There are se
  - Practice (You can perform the steps with the technology by following a process to complete a task)
  - Mastery (You are able to explain the technology to others)
 
+[If you need a general "Data Literacy" course, you can find that here.](https://github.com/BuckWoody/presentations/tree/master/dataliteracy)
 
 These courses are designed for you to repeat many times to move through these phases. Before you embark on any of these, you may want to complete a "Learning how to Learn" course. <a href="https://www.coursera.org/learn/learning-how-to-learn" target="_blank">You can find more information on that here</a>. 
 
