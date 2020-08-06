@@ -26,7 +26,9 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 - [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
 - [Workshop: Azure SQL](https://github.com/microsoft/sqlworkshops-azuresqlworkshop)
 - [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops-azuresqllabs)
-- [Video Series: Azure SQL Bootcamp](https://channel9.msdn.com/Shows/Data-Exposed/Register-Now-Azure-SQL-Bootcamp-LIVE-with-Bob-Ward-and-Anna-Hoffman?WT.mc_id=azuresql4beg_azuresql-learnlive-video)
+- [Video Series: Azure SQL Bootcamp](https://aka.ms/azuresqlbootcamp)
+- [Video Series: Azure SQL For Beginners](https://aka.ms/azuresql4beginners)
+- [Video Series: Microsoft Learn - Azure SQL Fundamentals](https://aka.ms/azuresql4beginnersw)
 
 ## Programming
 
