@@ -66,6 +66,7 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/sqloperators" target="blank">http://aka.ms/SQLOperators</a></td><td>Showplan Logical and Physical Operators Reference</td></tr>  
   <tr><td><a href="http://aka.ms/sqlperfcenter" target="blank">http://aka.ms/SQLPerfCenter</a></td><td>Performance Center for SQL Server Database Engine and Azure SQL Database</td></tr>
   <tr><td><a href="http://aka.ms/sqlperfcounters" target="blank">http://aka.ms/SQLPerfCounters</a></td><td>SQL Server Performance Counters reference</td></tr>
+  <tr><td><a href="http://aka.ms/sqlprivacy" target="blank">http://aka.ms/sqlprivacy</a></td><td>SQL Server privacy supplement</td></tr>
   <tr><td><a href="http://aka.ms/sqlserverguides" target="blank">http://aka.ms/SQLServerGuides</a></td><td>All official SQL Server Guide publications containing information on Database Engine internals</td></tr>
   <tr><td><a href="http://aka.ms/sqlserversamples" target="blank">http://aka.ms/SQLServerSamples</a></td><td>SQL Server Samples Repository that demonstrate how to use Microsoft's SQL products including SQL Server, Azure SQL Database, and Azure SQL Data Warehouse</td></tr>
   <tr><td><a href="http://aka.ms/sqlserverteam" target="blank">http://aka.ms/SQLServerTeam</a></td><td>SQL Server Team blog</td></tr>
