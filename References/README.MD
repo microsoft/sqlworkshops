@@ -35,7 +35,7 @@ These references deal with SQL Server code samples from our courses and other us
 
   <tr><td><a href="http://aka.ms/bobsqldemos" target="blank">http://aka.ms/bobsqldemos</a></td><td>Bob Ward's Demonstrations and Sample Code</td></tr>
   <tr><td><a href="http://aka.ms/bw-presentations" target="blank">http://aka.ms/bw-presentations</a></td><td>Buck Woody's Demonstrations and Sample Code</td></tr>
-  <tr><td><a href="http://aka.ms/annalytics" target="blank">http://aka.ms/annalytics</a></td><td>Anna Thomas' Demonstrations and Resources</td></tr>
+  <tr><td><a href="http://aka.ms/annalytics" target="blank">http://aka.ms/annalytics</a></td><td>Anna Hoffman's Demonstrations and Resources</td></tr>
   <tr><td><a href="https://github.com/Microsoft/sql-server-samples" target="blank">GitHub</a></td><td>SQL Server Samples - Sample Code</td></tr>
 
 </table>
