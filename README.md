@@ -23,12 +23,14 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## Azure SQL 
 
-- [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
 - [Workshop: Azure SQL](https://github.com/microsoft/sqlworkshops-azuresqlworkshop)
+- [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
+- [Learning Path: Microsoft Learn - Azure SQL Fundamentals](https://aka.ms/azuresqlfundamentals)
 - [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops-azuresqllabs)
 - [Video Series: Azure SQL Bootcamp](https://aka.ms/azuresqlbootcamp)
 - [Video Series: Azure SQL For Beginners](https://aka.ms/azuresql4beginners)
-- [Video Series: Microsoft Learn - Azure SQL Fundamentals](https://aka.ms/azuresql4beginnersw)
+- [Video Series: Data Exposed](https://www.youtube.com/playlist?list=PLlrxD0HtieHieV7Jls72yFPSKyGqycbZR&WT.mc_id=dataexposed-c9-niner)
+
 
 ## Programming
 
