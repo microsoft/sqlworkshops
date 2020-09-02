@@ -74,6 +74,7 @@ These references deal with SQL Server in general, for many different versions an
   <tr><td><a href="http://aka.ms/sqlunicode" target="blank">http://aka.ms/SQLUnicode</a></td><td>Collation and Unicode support</i></td></tr>
   <tr><td><a href="http://aka.ms/sqlupdates" target="blank">http://aka.ms/SQLUpdates</a></td><td>Latest SQL Server Builds</td></tr>
   <tr><td><a href="http://aka.ms/sqlworkshops" target="blank">http://aka.ms/SQLWorkshops</a></td><td>In-Depth Training from the Azure Data Services Team</td></tr>
+  <tr><td><a href="http://aka.ms/ssms" target="blank">http://aka.ms/SSMS</a></td><td>SQL Server Management Studio (SSMS)</td></tr>
   <tr><td><a href="http://aka.ms/tigertoolbox" target="blank">http://aka.ms/TigerToolbox</a></td><td>SQL Server Tiger Team Toolbox</td></tr>
   <tr><td><a href="http://aka.ms/traceflags" target="blank">http://aka.ms/TraceFlags</a></td><td>SQL Server Trace Flags</td></tr>
   <tr><td><a href="http://aka.ms/uspwhatsup" target="blank">http://aka.ms/uspWhatsUp</a></td><td>Report all you need to know about in-flight queries and any blocking in SQL Server. Also available as SQL Notebook</td></tr>
