@@ -17,6 +17,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 - [Workshop: SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops-sqlonopenshift)
 - [Workshop: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019workshop)
 - [Workshop: SQL Server 2019 Big Data Clusters - Architecture](https://github.com/Microsoft/sqlworkshops-bdc)
+- [Workshop: Architecting SQL Server Big Data Cluster Solutions on Red Hat OpenShift](https://github.com/microsoft/sqlworkshops-bdconopenshift)
 - [Workshop: Kubernetes - From Bare Metal to SQL Server Big Data Clusters](https://github.com/microsoft/sqlworkshops-k8stobdc)
 - [Lab: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019lab) 
 - [Video Series: Data Exposed](https://www.youtube.com/playlist?list=PLlrxD0HtieHieV7Jls72yFPSKyGqycbZR&WT.mc_id=dataexposed-c9-niner)
