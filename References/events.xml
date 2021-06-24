@@ -1,0 +1,44 @@
+﻿<events>
+	<event category="Microsoft">
+		<title lang="en">Microsoft Events Catalog</title>
+		<url>https://events.microsoft.com</url>
+		<dateStart>May-2021</dateStart>
+		<dateEnd>June-2021</dateEnd>
+		<description>A fully-searchable catalog of events conducted by Microsoft and their partners.</description>
+	</event>
+	<event category="Microsoft">
+		<title lang="en">Microsoft Build</title>
+		<url>https://mybuild.microsoft.com/home</url>
+		<dateStart>25-May-2021</dateStart>
+		<dateEnd>27-May-2021</dateEnd>
+		<description>Explore what’s next in tech and the future of hybrid work. Join us May 25–27, 2021 at Microsoft Build.</description>
+	</event>
+	<event category="Microsoft">
+		<title lang="en">Microsoft Ignite</title>
+		<url>https://myignite.microsoft.com/home</url>
+		<dateStart>25-June-2021</dateStart>
+		<dateEnd>27-June-2021</dateEnd>
+		<description>Until our next event experience, check out the latest learning opportunities, recent event highlights, and more.</description>
+	</event>
+	<event category="Community">
+		<title lang="en">Dev Intersection</title>
+		<url>https://www.devintersection.com/#!/?track=sql</url>
+		<dateStart>8-June-2021</dateStart>
+		<dateEnd>10-June-2021</dateEnd>
+		<description>THE INTERSECTION OF CO-LOCATED TECHNOLOGY EVENTS: Microsoft SQL Server Azure SQL Conference and Azure + AI Conference</description>
+	</event>
+	<event category="Community">
+		<title lang="en">Data Toboggan</title>
+		<url>http://www.datatoboggan.co.uk/</url>
+		<dateStart>12-June-2021</dateStart>
+		<dateEnd>12-June-2021</dateEnd>
+		<description>A free, virtual conference focused on Azure Synapse and related services including Synapse Analytics including Machine Learning, Apache Spark, Serverless Pools, and Pipelines.</description>
+	</event>
+	<event category="Community">
+		<title lang="en">DATA SATURDAY 12 - DATA ANZ</title>
+		<url>https://datasaturdays.com/2021-06-25-datasaturday0012/</url>
+		<dateStart>25-June-2021</dateStart>
+		<dateEnd>25-June-2021</dateEnd>
+		<description>Data ANZ 2021 (Australia- New Zealand) is a free one-day online event offering content across Data Management and Administration, Cloud and Hybrid Architecture, Analytics, Business Intelligence, Artifical Intelligence, DevOps, Application Development and more.</description>
+	</event>
+</events>
