@@ -1,44 +1,86 @@
-﻿<events>
-	<event category="Microsoft">
-		<title lang="en">Microsoft Events Catalog</title>
-		<url>https://events.microsoft.com</url>
-		<dateStart>May-2021</dateStart>
-		<dateEnd>June-2021</dateEnd>
-		<description>A fully-searchable catalog of events conducted by Microsoft and their partners.</description>
-	</event>
-	<event category="Microsoft">
-		<title lang="en">Microsoft Build</title>
-		<url>https://mybuild.microsoft.com/home</url>
-		<dateStart>25-May-2021</dateStart>
-		<dateEnd>27-May-2021</dateEnd>
-		<description>Explore what’s next in tech and the future of hybrid work. Join us May 25–27, 2021 at Microsoft Build.</description>
-	</event>
-	<event category="Microsoft">
-		<title lang="en">Microsoft Ignite</title>
-		<url>https://myignite.microsoft.com/home</url>
-		<dateStart>25-June-2021</dateStart>
-		<dateEnd>27-June-2021</dateEnd>
-		<description>Until our next event experience, check out the latest learning opportunities, recent event highlights, and more.</description>
-	</event>
-	<event category="Community">
-		<title lang="en">Dev Intersection</title>
-		<url>https://www.devintersection.com/#!/?track=sql</url>
-		<dateStart>8-June-2021</dateStart>
-		<dateEnd>10-June-2021</dateEnd>
-		<description>THE INTERSECTION OF CO-LOCATED TECHNOLOGY EVENTS: Microsoft SQL Server Azure SQL Conference and Azure + AI Conference</description>
-	</event>
-	<event category="Community">
-		<title lang="en">Data Toboggan</title>
-		<url>http://www.datatoboggan.co.uk/</url>
-		<dateStart>12-June-2021</dateStart>
-		<dateEnd>12-June-2021</dateEnd>
-		<description>A free, virtual conference focused on Azure Synapse and related services including Synapse Analytics including Machine Learning, Apache Spark, Serverless Pools, and Pipelines.</description>
-	</event>
-	<event category="Community">
-		<title lang="en">DATA SATURDAY 12 - DATA ANZ</title>
-		<url>https://datasaturdays.com/2021-06-25-datasaturday0012/</url>
-		<dateStart>25-June-2021</dateStart>
-		<dateEnd>25-June-2021</dateEnd>
-		<description>Data ANZ 2021 (Australia- New Zealand) is a free one-day online event offering content across Data Management and Administration, Cloud and Hybrid Architecture, Analytics, Business Intelligence, Artifical Intelligence, DevOps, Application Development and more.</description>
-	</event>
+<events>
+<event category="Microsoft">
+<title lang="en">Microsoft Events Catalog</title>
+<url>https://events.microsoft.com</url>
+<dateStart>May-2021</dateStart>
+<dateEnd>June-2021</dateEnd>
+<description>A fully-searchable catalog of events conducted by Microsoft and their partners.</description>
+</event>
+<event category="Microsoft">
+<title lang="en">Microsoft Ignite</title>
+<url>https://myignite.microsoft.com/home</url>
+<dateStart>Fall TBD</dateStart>
+<dateEnd>Fall TBD</dateEnd>
+<description>Until our next event experience, check out the latest learning opportunities, recent event highlights, and more.</description>
+</event>
+<event category="Community">
+<title lang="en">EIGHT KB - Summer Edition</title>
+<url>https://eightkb.online/</url>
+<dateStart>28-July-2021</dateStart>
+<dateEnd>28-July-2021</dateEnd>
+<description>Free and completely online, the primary goal of this event is to deliver high value and highly technical, brain melting content that you'll be able to put to use immediately to improve your databse systems.</description>
+</event>
+<event category="Community">
+<title lang="en">Dativerse</title>
+<url>https://datagrillen.com/dativerse/</url>
+<dateStart>13-Aug-2021</dateStart>
+<dateEnd>13-Aug-2021</dateEnd>
+<description>Dativerse is a new event in the Microsoft Data Platform space with the aim that all its speakers contribute to the diversity of the Microsoft Data Platform Community. We try to elevate those that are usually underrepresented at conferences due to their race, gender, sexual orientation, location or any other reason. </description>
+</event>
+<event category="Community">
+<title lang="en">Data Platform Virtual Summit 2021</title>
+<url>https://dataplatformgeeks.com/dps2021/</url>
+<dateStart>08-Sept-2021</dateStart>
+<dateEnd>21-Sept-2021</dateEnd>
+<description>DPS 2021 virtual conference will cover all the time zones. With 20+ Training Classes, 150+ Breakout Sessions and 100+ World’s Best Educators – DPS 2021 is a focused learning event on Microsoft Azure Data, Analytics - Artificial Intelligence. Attend LIVE and get the recordings (12 months streaming access).</description>
+</event>
+<event category="Community">
+<title lang="en">Data Saturday #11 Croatia</title>
+<url>https://datasaturdays.com/2021-09-11-datasaturday0011/</url>
+<dateStart>11-Sept-2021</dateStart>
+<dateEnd>11-Sept-2021</dateEnd>
+<description>Data Saturday #11 Croatia is a free one-day event for professionals who use the Microsoft data platform. This community event offer content across data management, cloud and hybrid architecture, analytics, business intelligence, AI, and more.</description>
+</event>
+<event category="Community">
+<title lang="en">Data Saturday #10 Sofia</title>
+<url>https://datasaturdays.com/2021-09-11-datasaturday0011/</url>
+<dateStart>09-Oct-2021</dateStart>
+<dateEnd>09-Oct-2021</dateEnd>
+<description>Data Saturday #10 Sofia is a free one-day event for professionals who use the Microsoft data platform. This community event offer content across data management, cloud and hybrid architecture, analytics, business intelligence, AI, and more. We are planning event to be a hybrid event.</description>
+</event>
+<event category="Community">
+<title lang="en">Data Saturday #13 Minnesota</title>
+<url>https://datasaturdays.com/2021-10-16-datasaturday0013/</url>
+<dateStart>09-Oct-2021</dateStart>
+<dateEnd>09-Oct-2021</dateEnd>
+<description>Data Saturday #1Minnesota is a free virtual one-day event for all data learners and professionals seeking to learn.</description>
+</event>
+<event category="Community">
+<title lang="en">Difinity</title>
+<url>https://difinity.co.nz/</url>
+<dateStart>01-Nov-2021</dateStart>
+<dateEnd>02-Nov-2021</dateEnd>
+<description>Difinity is the largest Microsoft Data, AI, Power BI, Power Platform and Business Applications Conference in New Zealand focusing on Data Platform, AI, Business Intelligence, Business Applications, Power Platform, and Analytics.</description>
+</event>
+<event category="Community">
+<title lang="en">PASS Summit 2021</title>
+<url>https://passdatacommunitysummit.com/</url>
+<dateStart>08-Nov-2021</dateStart>
+<dateEnd>12-Nov-2021</dateEnd>
+<description>Join us for this free online Summit and connect, share, and learn with 1000s of your peers from the global data platform community.</description>
+</event>
+<event category="Community">
+<title lang="en">SQL Server Live!</title>
+<url>https://live360events.com/home.aspx</url>
+<dateStart>15-Nov-2021</dateStart>
+<dateEnd>19-Nov-2021</dateEnd>
+<description>SQL Server Live!: Providing content for data professionals to do more with their Microsoft data platform investment. Sessions will cover performance tuning, security, reporting, data integration, and modernizing the SQL Server infrastructure.</description>
+</event>
+<event category="Community">
+<title lang="en">Dev Intersection - Las Vegas</title>
+<url>https://www.devintersection.com/#!/?track=sql</url>
+<dateStart>7-Dec-2021</dateStart>
+<dateEnd>9-Dec-2021</dateEnd>
+<description>THE INTERSECTION OF CO-LOCATED TECHNOLOGY EVENTS: Microsoft SQL Server Azure SQL Conference and Azure + AI Conference</description>
+</event>
 </events>
