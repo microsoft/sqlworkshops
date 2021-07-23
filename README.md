@@ -38,10 +38,6 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 - [Lab: Python for Data Professionals](https://github.com/microsoft/sqlworkshops-pythonfordatapros)
 - [Workshop: R for Data Professionals](https://github.com/microsoft/sqlworkshops-RForDataProfessionals)
 
-## Machine Learning and AI
-
-- [Workshop: Machine Learning with SQL Server](https://github.com/microsoft/sqlworkshops-sqlmlsvc)
-
 # Presentation Materials, Code, and References
 
 - [Presentation Materials - *(PowerPoint Decks, etc.)*](https://github.com/Microsoft/sqlworkshops/tree/master/References/README.MD#decks)
