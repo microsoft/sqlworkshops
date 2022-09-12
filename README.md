@@ -13,9 +13,12 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## SQL Server Data Platform
 
+- [Workshop: SQL Server Security Ground to Cloud](https://github.com/David-Seis/SecureYourAzureData)
 - [Learning Path: Introduction to Azure Arc-enabled data services](https://docs.microsoft.com/en-us/learn/modules/intro-to-arc-enabled-data-services/)
-- [Lab: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019lab) 
 - [Video Series: Data Exposed](https://www.youtube.com/playlist?list=PLlrxD0HtieHieV7Jls72yFPSKyGqycbZR&WT.mc_id=dataexposed-c9-niner)
+
+### Archived
+- [Lab: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019lab) 
 - [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
 - [Workshop: SQL Server 2019 on OpenShift](https://github.com/microsoft/sqlworkshops-sqlonopenshift)
 - [Workshop: SQL Server 2019](https://github.com/microsoft/sqlworkshops-sql2019workshop)
@@ -25,14 +28,13 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## Azure SQL 
 
+- [Workshop: Azure SQL](https://github.com/microsoft/sqlworkshops-azuresqlworkshop)
+- [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
 - [Learning Path: Microsoft Learn - Azure SQL Fundamentals](https://aka.ms/azuresqlfundamentals)
 - [Lab: Microsoft Azure SQL Labs](https://github.com/microsoft/sqlworkshops-azuresqllabs)
 - [Video Series: Azure SQL Bootcamp](https://aka.ms/azuresqlbootcamp)
 - [Video Series: Azure SQL For Beginners](https://aka.ms/azuresql4beginners)
 - [Video Series: Data Exposed](https://www.youtube.com/playlist?list=PLlrxD0HtieHieV7Jls72yFPSKyGqycbZR&WT.mc_id=dataexposed-c9-niner)
-- [Workshop: Azure SQL](https://github.com/microsoft/sqlworkshops-azuresqlworkshop)
-- [Workshop: SQL Server Ground to Cloud](https://github.com/microsoft/sqlworkshops-sqlg2c)
-
 
 ## Programming
 
