@@ -13,6 +13,7 @@ Find a problem? Spot a bug? [Post an issue here](https://github.com/Microsoft/sq
 
 ## SQL Server Data Platform
 
+- [Workshop: The Cloud Workshop for the SQL Professional](https://github.com/microsoft/cloudsqlworkshop)
 - [Workshop: SQL Server 2022](https://github.com/microsoft/sqlworkshops-sql2022workshop)
 - [Workshop: Modernizing your Data Estate](https://github.com/sqlballs/msqlg2c)
 - [Workshop: SQL Server Security Ground to Cloud](https://github.com/David-Seis/SecureYourAzureData)
